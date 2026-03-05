@@ -1,0 +1,1 @@
+﻿WEBVTT Fala pessoal! Chegamos ao fim do nosso módulo sobre a Biblioteca Pandas. Espero que vocês tenham gostado e aproveitado bastante esse conteúdo. Agora vocês já sabem os conceitos iniciais dessa biblioteca e podem avançar na manipulação de dados utilizando o Python. Então, continuem os estudos porque tem muita coisa ainda bacana para aprender.

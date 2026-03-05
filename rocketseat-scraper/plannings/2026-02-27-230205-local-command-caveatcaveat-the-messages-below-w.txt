@@ -1,0 +1,878 @@
+
+ ▐▛███▜▌   Claude Code v2.1.62
+▝▜█████▛▘  Opus 4.6 · Claude Max
+  ▘▘ ▝▝    ~/projects/development/mmos-main
+
+❯ /clear 
+  ⎿  (no content)
+
+❯ /AIOS:agents:aios-master  
+@2026-02-27-223454-command-messageaiosagentsaios-mastercommand.txt 
+  ⎿  Read 2026-02-27-223454-command-messageaiosagentsaios-mastercommand.txt (926
+      lines)
+  ⎿  Loaded ../../../.claude/rules/mcp-usage.md
+
+● 👑 Orion ready.
+
+  Li o contexto da sessão anterior. Resumo do estado:
+
+  Pipeline: Rocketseat Transcrições → Skills
+
+  - Task lesson-to-skill v2.0 criada em
+  .aios-core/development/tasks/lesson-to-skill.md
+  - Piloto validado: rs-nomenclatura-de-variaveis em
+  .claude/skills/rs-nomenclatura-de-variaveis/SKILL.md
+  - Framing corrigido: lente ativa de desenvolvimento (não checklist de revisão)
+  - Formato final: Regras → Como escrever → Heurísticas → Anti-patterns → Como
+  verificar
+
+  Próximo passo pendente: escalar para as ~4,740 aulas via batch workflow.
+
+  O que quer fazer agora?
+
+❯ extraia as artimanhas e arquiteturas da nova versão do aios               
+  @/home/talle/projects/development/sa/legendsagents/.aios-core com seus    
+  hooks, skills e subagentes, principalemnte do agente dev para melhorar    
+  mos essa skills.                                                          
+  ⎿  Listed directory ../sa/legendsagents/.aios-core/
+
+● Explore(Extract AIOS v2 architecture patterns) Sonnet 4.6
+  ⎿  Done (54 tool uses · 108.0k tokens · 4m 57s)
+  (ctrl+o to expand)
+
+● Extração completa. Aqui está o resumo das artimanhas mais relevantes para
+  melhorar nossas skills:
+
+  ---
+  Artimanhas Chave da Nova Versão
+
+  1. Dev Agent (Dex) — O Mais Rico
+
+  13-Step Coder Protocol com self-critique obrigatório nos steps 5.5 e 6.5.
+  Nenhum step pode ser pulado.
+
+  Recovery System integrado:
+  - *track-attempt → registra tentativas em recovery/attempts.json
+  - *rollback → volta ao último estado bom
+  - Max 3 retries → auto-escalate para humano
+
+  Self-Healing CodeRabbit Loop:
+  - Story completa → roda CodeRabbit → auto-fix CRITICAL → re-roda (max 2
+  iterações)
+  - Se CRITICAL persiste → HALT, não marca complete
+
+  Decision Logging (YOLO mode): Toda decisão autônoma logada com timestamp,
+  razão, alternativas, git hash (para rollback).
+
+  2. Hooks (Observabilidade Zero-Cost)
+
+  6 hooks Python que capturam TUDO (pre/post tool use, prompt, stop, subagent,
+  compact) e mandam para monitor server via POST. Regra de ouro: 500ms timeout, 
+  silent fail — nunca bloqueia Claude.
+
+  3. Handoff Artifacts + Workflow Chains
+
+  Agents deixam YAML em .aios/handoffs/ ao completar trabalho. Próximo agent lê,
+   consulta workflow-chains.yaml, e sugere próximo comando automaticamente.
+  Continuidade cross-session stateful.
+
+  4. Agent MEMORY.md com Promoção Cross-Agent
+
+  Cada agent tem MEMORY.md persistente. Mesmo pattern em 3+ agents → "promotion
+  candidate" → eleva para CLAUDE.md global. Sistema auto-melhorável.
+
+  5. Wave Analysis (Paralelização Inteligente)
+
+  *waves usa Kahn's topological sort para detectar tasks parallelizáveis num
+  workflow. Calcula critical path, tempo sequencial vs paralelo, e % de ganho.
+
+  6. Workflow Intelligence (Sugestões 3-Tier)
+
+  1. Runtime (git status, story status) → determinístico
+  2. Pattern matching (workflow-patterns.yaml) → confidence score
+  3. Learned boost → patterns de sessões anteriores com sucesso ganham +0.15
+  base
+
+  7. AutoClaude v3.0 — Capability Matrix por Agent
+
+  canCreatePlan: false    # Dev não planeja (architect faz)
+  canExecute: true
+  selfCritique.enabled: true
+  recovery.maxAttempts: 3
+
+  Contrato formal que o orquestrador inspeciona antes de delegar.
+
+  8. Quality Gates 3 Camadas
+
+  1. Pre-commit: lint + test + typecheck
+  2. PR Automation: CodeRabbit + QA agent
+  3. Human Review: signoff com expiração de 24h
+
+  9. Constitution → Gates Mapeados
+
+  Cada princípio no constitution.md mapeia diretamente para um gate com
+  severidade (BLOCK/WARN/INFO).
+
+  10. Self-Contained Agents (Zero Startup)
+
+  Todo agent carrega TUDO do próprio .md. Dependencies são lazy-loaded só quando
+   comando é invocado. Greenfield Guard em todos.
+
+  ---
+  Como Aplicar nas Nossas Skills
+
+  As artimanhas mais diretamente aplicáveis para a pipeline lesson-to-skill:
+
+  ┌──────────────────────┬──────────────────────────────────────────────────┐
+  │      Artimanha       │                    Aplicação                     │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ 13-Step Protocol     │ Cada skill poderia ter um "implementation        │
+  │                      │ protocol" com steps obrigatórios                 │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Self-Critique        │ Adicionar checkpoint de auto-verificação na      │
+  │ Checkpoints          │ skill (o agent verifica seu próprio código)      │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Recovery/Rollback    │ Skills com "se falhar, faça X" built-in          │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Capability Matrix    │ Skills definirem o que o agent PODE e NÃO PODE   │
+  │                      │ fazer quando usando aquela lente                 │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Wave Analysis        │ Skills complexas com tasks parallelizáveis       │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Handoff Pattern      │ Skills que produzem artifacts para próxima skill │
+  │                      │  consumir                                        │
+  └──────────────────────┴──────────────────────────────────────────────────┘
+
+  Quer que eu aplique alguma dessas artimanhas na task lesson-to-skill ou no
+  formato da skill piloto?
+
+✻ Cooked for 5m 38s
+
+❯ salva isso aí tudo inclusive o que tu tem no thinking lá junto da pasta   
+  do scraper no pro4                                                        
+
+● Read 1 file (ctrl+o to expand)
+
+● Write(~/projects/development/pro4/professional/projects/rocketseat-scraper/aio
+       s-v2-extraction.md)
+  ⎿  Wrote 521 lines to
+     ../pro4/professional/projects/rocketseat-scraper/aios-v2-extraction.md
+      1 # AIOS v2 Architecture Extraction (legendsagents/.aios-core)
+      2 
+      3 > Extraído em 2026-02-27 para informar a pipeline Rocketseat Tran
+        scrições → Skills
+      4 
+      5 ---
+      6 
+      7 ## 1. CORE ARCHITECTURE
+      8 
+      9 ### 1.1 Constitution (`constitution.md`)
+     … +511 lines (ctrl+o to expand)
+
+● Salvo em /home/talle/projects/development/pro4/professional/projects/rocketsea
+  t-scraper/aios-v2-extraction.md.
+
+  Documento completo com todas as artimanhas extraídas: constitution, dev agent
+  (Dex), hooks, subagent orchestration, workflow intelligence, elicitation,
+  monitor, quality gates, workflow chains, e os 10 patterns inovadores + como
+  aplicar na pipeline de skills.
+
+✻ Cooked for 2m 5s
+
+❯ # Building a skill-creator for Claude: the definitive guide               
+                                                                            
+  **Claude's Agent Skills system — instruction folders with a SKILL.md file 
+   — represents a paradigm shift in how AI agents acquire domain            
+  expertise.** The description field in SKILL.md frontmatter is the single  
+  most important factor determining whether Claude activates a skill, yet   
+  Vercel's evaluations found skills went uninvoked **56% of the time** with 
+   default descriptions. This guide synthesizes Anthropic's official        
+  documentation, Manus AI's context engineering lessons, academic research  
+  on tool selection, and hard-won community experience into a comprehensive 
+   blueprint for building an optimized skill-creator system. Skills         
+  launched October 16, 2025 and became an open standard (agentskills.io) on 
+   December 18, 2025 — they now work across Claude, Manus, GitHub Copilot,  
+  and OpenAI Codex.                                                         
+                                                                            
+  ---                                                                       
+                                                                            
+  ## How skills actually work under the hood                                
+                                                                            
+  Every skill is a directory containing a `SKILL.md` file with YAML         
+  frontmatter and markdown instructions. Claude discovers and loads skills  
+  through a **three-level progressive disclosure** architecture — the core  
+  design pattern that makes the entire system viable:                       
+                                                                            
+  **Level 1 — Metadata (~100 tokens per skill).** At startup, Claude loads  
+  only the `name` and `description` from every installed skill's YAML       
+  frontmatter into its system prompt. This is the "table of contents" —     
+  just enough for Claude to know when each skill should be used without     
+  consuming significant context.                                            
+                                                                            
+  **Level 2 — Instructions (<5,000 tokens).** When Claude determines a      
+  skill is relevant to the user's request, it reads the full SKILL.md body  
+  via bash. The frontmatter is stripped; only the markdown instructions     
+  enter context.                                                            
+                                                                            
+  **Level 3 — Resources (effectively unlimited).** Scripts, reference       
+  files, templates, and assets in the skill directory are accessed only     
+  when referenced during execution. Critically, when Claude runs a bundled  
+  Python script, **the script's source code never enters the context        
+  window** — only its output consumes tokens.                               
+                                                                            
+  This architecture means you can install dozens of skills with near-zero   
+  overhead. The `name` and `description` fields in frontmatter aren't just  
+  metadata — they're the entire selection mechanism. Skills are embedded as 
+   XML in Claude's `Skill` tool definition:                                 
+                                                                            
+  ```xml                                                                    
+  <available_skills>                                                        
+    <skill>                                                                 
+      <name>pdf</name>                                                      
+      <description>Extract and analyze text from PDF                        
+  documents...</description>                                                
+      <location>user</location>                                             
+    </skill>                                                                
+  </available_skills>                                                       
+  ```                                                                       
+                                                                            
+  There is **no algorithmic routing or intent classification**. Claude uses 
+   pure LLM reasoning via its transformer forward pass to match user intent 
+   against skill descriptions. This means description quality directly      
+  determines triggering accuracy.                                           
+                                                                            
+  ---                                                                       
+                                                                            
+  ## The SKILL.md specification and required structure                      
+                                                                            
+  ### YAML frontmatter fields                                               
+                                                                            
+  The file must begin with YAML frontmatter between `---` markers. Two      
+  fields are required:                                                      
+                                                                            
+  | Field | Required | Constraints | Purpose |                              
+  |-------|----------|------------|---------|                               
+  | `name` | Yes | Max 64 chars, lowercase letters/numbers/hyphens only,    
+  kebab-case | Becomes the `/slash-command` in Claude Code |                
+  | `description` | Yes | Max 1024 chars (Claude Code) / 200 chars (API),   
+  no XML tags | **Primary mechanism** Claude uses to decide when to invoke  
+  |                                                                         
+  | `license` | No | — | License identifier (e.g., `MIT`, `Apache-2.0`) |   
+  | `compatibility` | No | 1-500 chars | Environment requirements |         
+  | `metadata` | No | Key-value pairs | Custom: `author`, `version`,        
+  `category`, `tags` |                                                      
+  | `allowed-tools` | No | Comma-separated, supports wildcards | Restricts  
+  tools: `"Read, Grep, Glob"` or `"Bash(git:*)"` |                          
+  | `context` | No | `fork` | Runs skill as isolated subagent |             
+  | `disable-model-invocation` | No | Boolean | `true` = only user can      
+  invoke (for dangerous ops) |                                              
+  | `user-invocable` | No | Boolean | `false` = only Claude can invoke      
+  (background knowledge) |                                                  
+  | `model` | No | Model identifier | e.g., `claude-opus-4-6` |             
+  | `mode` | No | Boolean | `true` = behavior modifier (debug-mode,         
+  expert-mode) |                                                            
+                                                                            
+  **Security restrictions**: XML angle brackets (`<` `>`) are forbidden in  
+  frontmatter because it appears in the system prompt and could enable      
+  injection. Names containing "claude" or "anthropic" are reserved. Safe    
+  YAML parsing prevents code execution.                                     
+                                                                            
+  ### Directory structure                                                   
+                                                                            
+  ```                                                                       
+  skill-name/                                                               
+  ├── SKILL.md              # Required — keep under 500 lines               
+  ├── scripts/              # Optional — executable code (output-only       
+  context cost)                                                             
+  │   ├── init_skill.py                                                     
+  │   └── validate.py                                                       
+  ├── references/           # Optional — docs loaded into context as needed 
+  │   ├── api-docs.md                                                       
+  │   └── detailed-guide.md                                                 
+  └── assets/               # Optional — templates, fonts, icons for output 
+      └── report-template.md                                                
+  ```                                                                       
+                                                                            
+  The file must be named exactly `SKILL.md` (case-sensitive). Folder names  
+  must use kebab-case. Claude Code **silently ignores** incorrectly named   
+  skills with no error message — this is a documented bug and common        
+  gotcha.                                                                   
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Writing descriptions that actually trigger                             
+                                                                            
+  The description field is where most skills fail. Anthropic's own          
+  documentation states: **"Currently Claude has a tendency to               
+  'undertrigger' skills — to not use them when they'd be useful."**         
+  Vercel's agent evaluations confirmed this: in 56% of test cases, skills   
+  were never invoked even when conditions matched.                          
+                                                                            
+  ### The "pushy" description pattern                                       
+                                                                            
+  Anthropic's official skill-creator recommends making descriptions         
+  explicitly enumerate trigger conditions. The formula is: `[What it does]  
+  + [When to use it] + [Specific trigger phrases] + [Negative boundaries]`. 
+                                                                            
+  **Weak description (will undertrigger):**                                 
+  ```yaml                                                                   
+  description: Helps with projects and documents.                           
+  ```                                                                       
+                                                                            
+  **Strong description (reliable activation):**                             
+  ```yaml                                                                   
+  description: "Analyzes Figma design files and generates developer handoff 
+   documentation.                                                           
+    Use when user uploads .fig files, asks for 'design specs', 'component   
+  documentation',                                                           
+    or 'design-to-code handoff'. Make sure to use this skill whenever the   
+  user mentions                                                             
+    design systems, UI specifications, or developer handoffs, even if they  
+  don't explicitly                                                          
+    mention Figma."                                                         
+  ```                                                                       
+                                                                            
+  **Production example from Sionic AI (ML experiments):**                   
+  ```yaml                                                                   
+  description: "GRPO training skill based on external vLLM server using     
+  ms-swift.                                                                 
+    Usage scenarios: (1) When performing GRPO training with the vLLM server 
+   running on a                                                             
+    separate GPU, (2) When encountering errors related to                   
+  vllm_skip_weight_sync,                                                    
+    (3) When encountering OpenAI API response parsing errors."              
+  ```                                                                       
+                                                                            
+  Notice how the Sionic example includes **exact error phrases** — Claude   
+  can then match these against future error messages. This pattern of       
+  encoding specific trigger strings dramatically improves activation rates. 
+                                                                            
+  ### Research-backed description principles                                
+                                                                            
+  Academic research on LLM tool selection reinforces several practices. The 
+   AutoTool paper (2025) found that effective tool descriptions need four   
+  elements: **name, functionality summary, input/output schema, and usage   
+  constraints**. ToolExpNet (ACL 2025) demonstrated that semantically       
+  similar descriptions between different tools cause selection confusion —  
+  each skill's description must clearly differentiate it from similar       
+  skills. The "Less-is-More" paper showed that generating "ideal" tool      
+  descriptions first, then matching to real tools, improves accuracy —      
+  suggesting descriptions should match the language users naturally employ. 
+                                                                            
+  ### Description optimization loop                                         
+                                                                            
+  Anthropic's skill-creator includes a systematic evaluation approach for   
+  tuning descriptions:                                                      
+                                                                            
+  1. Create 20 evaluation queries — a mix of should-trigger and             
+  should-not-trigger scenarios                                              
+  2. Save as JSON array with `query` and `should_trigger` fields            
+  3. Run each query 3 times against the current description (for reliable   
+  trigger rates)                                                            
+  4. Split 60/40 into train/test sets                                       
+  5. Use extended thinking to propose improved descriptions based on        
+  failure analysis                                                          
+  6. Iterate up to 5 times, selecting the best description by test score    
+                                                                            
+  You can also debug triggering directly by asking Claude: "When would you  
+  use the [skill name] skill?" Claude will quote the description back,      
+  revealing gaps in coverage.                                               
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Anatomy of excellent skills: real-world examples                       
+                                                                            
+  ### The docx skill (Anthropic's production skill)                         
+                                                                            
+  Anthropic's built-in document skills reveal the gold standard. The `docx` 
+   skill demonstrates the **decision tree pattern** — its SKILL.md body     
+  begins with a workflow router:                                            
+                                                                            
+  ```markdown                                                               
+  ## Workflow Decision Tree                                                 
+  ### Reading/Analyzing Content                                             
+  Use "Text extraction" or "Raw XML access" sections below                  
+  ### Creating New Document                                                 
+  Use "Creating a new Word document" workflow                               
+  ### Editing Existing Document                                             
+  - **Your own document + simple changes** → Use "Basic OOXML editing"      
+  workflow                                                                  
+  - **Someone else's document** → Use **"Redlining workflow"** (recommended 
+   default)                                                                 
+  ```                                                                       
+                                                                            
+  Each workflow then references separate files (`docx-js.md`, `ooxml.md`)   
+  that Claude reads only when needed. The SKILL.md itself serves as a       
+  **table of contents**, not an encyclopedia. This is progressive           
+  disclosure in action: the ~600-line OOXML reference loads only for        
+  editing tasks.                                                            
+                                                                            
+  ### The terraform skill (community, advanced pattern)                     
+                                                                            
+  Anton Babenko's terraform skill demonstrates scaling: a **524-line        
+  SKILL.md** (~4.4K tokens) backed by **6 reference files** (~26K tokens    
+  total). The references cover CI/CD workflows, code patterns, module       
+  patterns, quick reference, security compliance, and testing frameworks.   
+  Claude reads only the relevant reference file per task.                   
+                                                                            
+  ### The skill-creator meta-skill (Anthropic's official)                   
+                                                                            
+  The official skill-creator at `github.com/anthropics/skills` follows a    
+  structured workflow: user interview → planning reusable contents →        
+  initialization via `init_skill.py` → editing SKILL.md → packaging via     
+  `package_skill.py` → testing with parallel subagents → evaluation with    
+  blind comparison → iteration. It includes four modes: **Create, Eval,     
+  Improve, and Benchmark**. The packaging script validates frontmatter,     
+  checks naming conventions, and creates a `.skill` zip file.               
+                                                                            
+  ### Recommended SKILL.md template                                         
+                                                                            
+  ```markdown                                                               
+  ---                                                                       
+  name: your-skill-name                                                     
+  description: "Specific capability description. Use when [trigger          
+  conditions].                                                              
+    Handles [specific inputs] and produces [specific outputs]. Not for      
+    [anti-patterns]. Make sure to use this skill whenever the user mentions 
+                                                                            
+    [key terms], even if they don't explicitly ask for [skill domain]."     
+  ---                                                                       
+                                                                            
+  # Your Skill Name                                                         
+                                                                            
+  ## Overview                                                               
+  [1-2 sentence purpose. What problem this solves and why it exists.]       
+                                                                            
+  ## Prerequisites                                                          
+  [Required tools, packages, files, or context]                             
+                                                                            
+  ## Instructions                                                           
+                                                                            
+  ### Step 1: [First action]                                                
+  [Imperative instructions — "Analyze the input" not "You should analyze"]  
+                                                                            
+  ### Step 2: [Next action]                                                 
+  [Clear, step-by-step guidance with code examples if relevant]             
+                                                                            
+  ### Step 3: [Final action]                                                
+  [Completion criteria and quality checks]                                  
+                                                                            
+  ## Output format                                                          
+  [Concrete structure showing expected results]                             
+                                                                            
+  ## Examples                                                               
+  [2-3 complete input/output pairs — longer examples beat longer rules]     
+                                                                            
+  ## Error handling                                                         
+  [Edge cases, failure modes, what to do when things go wrong]              
+                                                                            
+  ## Resources                                                              
+  - For detailed API reference, see [reference.md](references/reference.md) 
+  - Run validation: `python scripts/validate.py <input>`                    
+                                                                            
+  ## Limitations                                                            
+  [What this skill cannot and should not do]                                
+  ```                                                                       
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Lessons from Manus AI's context engineering                            
+                                                                            
+  Manus AI (now part of Meta) adopted the Agent Skills open standard in     
+  January 2026 while adding proprietary execution capabilities. Their       
+  engineering blog, "Context Engineering for AI Agents," reveals several    
+  principles directly applicable to skill-creator design.                   
+                                                                            
+  **Static tool definitions with dynamic masking.** Rather than dynamically 
+   adding or removing tools mid-conversation (which breaks KV-cache and     
+  confuses the model), Manus keeps all tool definitions static and uses     
+  token-level logit masking to constrain which actions are valid at each    
+  state. For skills, this means: don't restructure the skill library        
+  mid-conversation. The metadata for all skills should remain stable in the 
+   system prompt throughout a session.                                      
+                                                                            
+  **File system as unlimited externalized memory.** Manus treats the        
+  filesystem as persistent, externalized context. Skills should reference   
+  files that can be loaded on-demand rather than inlining everything into   
+  SKILL.md. Compression strategies should be "restorable" — keep references 
+   (like URLs or file paths) even when content is dropped from context.     
+                                                                            
+  **Todo-list recitation for attention management.** Across ~50 average     
+  tool calls per task, Manus creates and updates a `todo.md` file that      
+  pushes objectives into the model's recent attention span. Skills handling 
+   complex multi-step workflows should similarly include a "recite your     
+  current status" step to prevent the "lost-in-the-middle" problem.         
+                                                                            
+  **Keep failed actions in context.** Error traces are intentionally        
+  preserved so the model can learn from mistakes within a session. Skill    
+  instructions should explicitly tell Claude to document failures rather    
+  than retry blindly.                                                       
+                                                                            
+  **Anti-few-shot pattern breaking.** Repetitive similar actions in context 
+   cause the model to "few-shot itself" into a rut. Skills that involve     
+  repeated operations should introduce structured variation in their        
+  serialization to prevent pattern lock-in.                                 
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Academic foundations for skill design                                  
+                                                                            
+  Research on LLM tool selection, meta-prompting, and instruction design    
+  provides the theoretical backbone for an optimized skill-creator.         
+                                                                            
+  ### Tool selection research                                               
+                                                                            
+  The **Voyager** framework (NeurIPS 2023) established the foundational     
+  architecture for skill libraries: an ever-growing collection of           
+  executable skills with natural language descriptions, retrieved via       
+  **embedding similarity**. Each skill's description is converted to an     
+  embedding vector; when the agent encounters a new task, it retrieves      
+  skills whose description embeddings are most aligned. Voyager validates   
+  skills through three feedback channels — execution errors, environment    
+  feedback, and peer review from another LLM — achieving **3.3x more unique 
+   items and 15.3x faster progression** versus baselines.                   
+                                                                            
+  The **CREATOR** framework (EMNLP 2023) introduced a critical insight:     
+  **disentangle abstract skill creation from concrete execution**. Its      
+  four-stage pipeline — Creation → Decision → Execution → Rectification —   
+  separates the "design a tool" step from the "use the tool" step,          
+  improving performance on MATH benchmarks. Every skill needs both          
+  documentation AND implementation, and a rectification stage allows error  
+  correction.                                                               
+                                                                            
+  **LATM** (ICLR 2024) demonstrated a division of labor: use a powerful     
+  model (GPT-4) for skill creation and a lighter model (GPT-3.5) for skill  
+  execution, achieving equivalent performance at significantly reduced      
+  cost. This maps directly to the skill-creator pattern: invest heavily in  
+  creating high-quality skills once, then let standard Claude execute them  
+  repeatedly.                                                               
+                                                                            
+  ### Meta-prompting and optimization                                       
+                                                                            
+  The **Automatic Prompt Engineer (APE)** approach treats instructions as   
+  programs to optimize: generate candidate prompts, evaluate each using a   
+  scoring function, and select the best. APE-generated instructions         
+  outperformed human-written prompts on 24 NLP tasks. **OPRO** (Google      
+  DeepMind) extends this with an optimization loop where the meta-prompt    
+  contains previous solutions and their scores, and the model generates     
+  improved candidates — yielding up to **8% improvement on GSM8K and 50% on 
+   Big-Bench Hard**.                                                        
+                                                                            
+  For a skill-creator, these findings prescribe a generate-evaluate-refine  
+  pipeline: produce multiple candidate skill descriptions, test them        
+  against evaluation queries, and iteratively improve based on the          
+  optimization history.                                                     
+                                                                            
+  **DSPy** (Stanford, ICLR 2024) replaces hand-crafted prompts with         
+  declarative signatures specifying input/output behavior, then             
+  automatically compiles optimized pipelines. Within minutes, DSPy-compiled 
+   programs outperform standard few-shot by **25-65%**. The implication:    
+  skills should be defined as declarative specifications (what they do)     
+  rather than rigid templates (how to do it), with automatic optimization   
+  of both instructions and examples.                                        
+                                                                            
+  ### Instruction design principles                                         
+                                                                            
+  The comprehensive "Prompt Report" survey (2024) cataloging 58 prompting   
+  techniques establishes that effective instructions should: begin with     
+  action verbs, provide explicit context, state constraints clearly, and    
+  use structured formats. "Principled Instructions Are All You Need" (2024) 
+   found that **positive framing ("do X") significantly outperforms         
+  negative framing ("don't do Y")** — a direct lesson for skill writing.    
+  NeurIPS 2024 research on instruction vs. exemplar optimization showed     
+  that **combining clear instructions WITH curated examples yields the best 
+   results** — optimizing either alone is insufficient.                     
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Seven critical pitfalls and how to avoid them                          
+                                                                            
+  **1. The silent naming failure.** Claude Code silently ignores skills     
+  with incorrect folder or file names. The name must be lowercase           
+  kebab-case (`review-code`, not `Review-Code`). The file must be exactly   
+  `SKILL.md` — not `skill.md`, `SKILL.MD`, or `Skill.md`. There is no error 
+   message; the skill simply doesn't appear.                                
+                                                                            
+  **2. The Prettier line-wrap bug.** When code formatters like Prettier     
+  (with `proseWrap: true`) wrap the description field to multiple lines in  
+  YAML, Claude Code silently ignores the entire skill. Keep descriptions on 
+   a single line or use YAML block scalar syntax carefully.                 
+                                                                            
+  **3. Monolithic skill bloat.** One community member split a single        
+  voice-and-tone skill into three specialized skills (overall voice, public 
+   audience, coaches audience) and saw dramatic improvement. Large skills   
+  produce generic output because instructions compete for attention within  
+  the context window. **Split when a skill exceeds ~300 lines** or serves   
+  multiple distinct purposes.                                               
+                                                                            
+  **4. Speculative skill building.** Anthropic's official guidance: "Don't  
+  write skills speculatively. Build them when you have real, repeated       
+  tasks." The litmus test: "Have I done this task at least five times? Will 
+   I do it at least ten more times?" Skills built without real-world        
+  iteration tend to accumulate irrelevant instructions.                     
+                                                                            
+  **5. ALL-CAPS directives.** Anthropic's skill-creator warns: "If you find 
+   yourself writing ALWAYS or NEVER in all caps, that's a yellow flag —     
+  reframe and explain the reasoning so that the model understands why."     
+  Explanation outperforms shouting.                                         
+                                                                            
+  **6. Wrong point-of-view.** Descriptions must use third person ("Extracts 
+   text from PDFs") not first person ("I can extract text"). Claude's       
+  system prompt uses third person, so matching this style improves          
+  activation accuracy.                                                      
+                                                                            
+  **7. Auto-triggering dangerous operations.** Skills with side effects —   
+  deployments, sending messages, database modifications — must set          
+  `disable-model-invocation: true` so only the user can invoke them via     
+  `/skill-name`.                                                            
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Building the skill-creator meta-skill                                  
+                                                                            
+  The skill-creator is itself a skill — a meta-skill that generates other   
+  skills. Based on Anthropic's official implementation, academic research,  
+  and community patterns, an optimized skill-creator should implement this  
+  pipeline:                                                                 
+                                                                            
+  ### Phase 1: Discovery interview                                          
+                                                                            
+  The skill-creator asks probing questions to understand the task: What     
+  specific workflow does this skill automate? What are the inputs and       
+  expected outputs? What are the edge cases? What does failure look like?   
+  What trigger phrases would a user naturally use? This maps to CREATOR's   
+  "abstract reasoning" phase — separating design from implementation.       
+                                                                            
+  ### Phase 2: Description generation and optimization                      
+                                                                            
+  Generate 3-5 candidate descriptions using the "pushy" pattern. Each       
+  should include what the skill does, when to use it, specific trigger      
+  phrases, and negative boundaries. Following APE/OPRO methodology,         
+  evaluate each against 20 test queries (10 should-trigger, 10              
+  should-not-trigger), run each 3 times, and select the highest-scoring     
+  description. Iterate up to 5 rounds.                                      
+                                                                            
+  ### Phase 3: Instruction authoring                                        
+                                                                            
+  Structure the SKILL.md body following the template above. Use imperative  
+  form, explain reasoning behind rules, include 2-3 complete input/output   
+  examples, and add error handling. Keep the main file under 500 lines. For 
+   complex skills, create a "menu" in SKILL.md that routes to separate      
+  reference files.                                                          
+                                                                            
+  ### Phase 4: Resource bundling                                            
+                                                                            
+  Identify what should be scripts (deterministic operations better handled  
+  by code), references (documentation loaded on demand), and assets         
+  (templates, fonts, icons). Scripts should handle operations where code    
+  execution is cheaper than token generation — sorting, validation, file    
+  manipulation, API calls.                                                  
+                                                                            
+  ### Phase 5: Testing and evaluation                                       
+                                                                            
+  Anthropic's skill-creator uses parallel subagent testing in Claude Code:  
+  spawn test cases as subagents, each running the skill against a specific  
+  scenario. Evaluate three dimensions: **triggering accuracy** (does it     
+  activate for correct queries and stay dormant for incorrect ones?),       
+  **functional correctness** (does it produce the right output?), and       
+  **performance delta** (does it improve over baseline Claude without the   
+  skill?). WorkOS's pipeline adds a "zero delta" check — if a skill adds no 
+   measurable value over baseline, it shouldn't exist.                      
+                                                                            
+  ### Phase 6: Iteration with contrastive feedback                          
+                                                                            
+  Following AVATAR's contrastive reasoning approach, analyze patterns in    
+  successful versus failed invocations. What description elements           
+  correlated with correct triggering? What instruction phrasing led to      
+  better outputs? Feed this analysis back into description and instruction  
+  refinement.                                                               
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Conclusion                                                             
+                                                                            
+  The Agent Skills system is less about technology and more about           
+  **information architecture** — organizing domain knowledge so an LLM can  
+  discover and load it efficiently. Three insights stand out as most        
+  actionable. First, the description field is not documentation; it's a     
+  **trigger specification** that must be aggressively optimized through     
+  systematic evaluation, not intuition. Second, progressive disclosure is   
+  the enabling architecture — skills should be structured as menus pointing 
+   to resources, not monolithic instruction dumps. Third, the academic      
+  consensus from Voyager through DSPy confirms that **combining             
+  instructions with curated examples, then automatically optimizing both    
+  against metrics, consistently outperforms hand-crafted approaches by      
+  25-65%**. A skill-creator that implements this generate-evaluate-refine   
+  loop — testing descriptions against trigger queries, testing outputs      
+  against quality benchmarks, and iterating based on contrastive failure    
+  analysis — will produce skills dramatically better than manual authoring. 
+   The key resources for implementation are Anthropic's official            
+  skill-creator at `github.com/anthropics/skills`, the 33-page building     
+  guide at `resources.anthropic.com`, and the engineering blog at `anthropi 
+  c.com/engineering/equipping-agents-for-the-real-world-with-agent-skills`. 
+   o quanto isso corrobora e o quanto diverge do aios?                      
+
+● Excelente pergunta. Vou fazer a análise direta.
+
+  ---
+  Onde AIOS já acerta (corrobora)
+
+  Progressive Disclosure — 100% alinhado. O AIOS já implementa os 3 níveis
+  exatos: Level 1 (name+description no startup ~100 tokens), Level 2 (SKILL.md
+  completo <5K), Level 3 (resources on demand). Isso está no nosso CLAUDE.md e é
+   praticado.
+
+  Lazy Loading — 100% alinhado. O IDE-FILE-RESOLUTION do AIOS v2 faz exatamente
+  o que o guia prescreve: dependencies só carregam quando o comando é invocado,
+  nunca no startup.
+
+  Self-Contained Files — alinhado. Cada agent/skill AIOS carrega tudo do próprio
+   .md. Zero startup overhead.
+
+  Scripts como output-only context cost — alinhado. O guia confirma que scripts
+  executados via bash nunca entram no contexto como source code, só o output.
+  AIOS já usa isso com greeting-builder.js, mmos-context-loader.cjs, etc.
+
+  Frontmatter fields — parcialmente alinhado. Usamos name, description, context:
+   fork, agent:, allowed-tools:, disable-model-invocation, user-invocable. Temos
+   campos extras não-standard (mode, hooks, model, skills) que são extensões
+  AIOS.
+
+  ---
+  Onde AIOS diverge (gaps críticos)
+
+  1. Description como trigger specification — GAP SEVERO
+
+  O guia diz que 56% das skills não ativam com descriptions genéricas. O AIOS
+  trata description como documentação, não como trigger spec. Nossas
+  descriptions são passivas:
+
+  # AIOS atual (fraco)
+  description: "Naming rules for writing code: descriptive names, no 
+  abbreviations"
+
+  # O que o guia prescreve (forte)
+  description: "Enforces variable naming rules when writing 
+  TypeScript/JavaScript code.
+    Use when user asks to 'write a function', 'create a component', 'implement 
+  feature',
+    or any code generation task. Apply naming rules: no abbreviations, no 
+  generic names,
+    cause over effect for booleans. Make sure to use this skill whenever writing
+   new code,
+    even if the user doesn't mention naming conventions."
+
+  Ação: A task lesson-to-skill precisa de um campo de description engineering
+  com trigger phrases explícitas.
+
+  2. Description Optimization Loop — NÃO EXISTE
+
+  O guia prescreve: 20 eval queries → 3 runs cada → train/test split → iterate
+  5x. AIOS não tem nada parecido. Nós criamos a description uma vez e nunca
+  testamos se ativa.
+
+  Ação: Criar uma task skill-eval que testa triggering.
+
+  3. Exemplos no SKILL.md — GAP
+
+  O guia cita pesquisa mostrando que instructions + examples combinados superam 
+  instructions-only em 25-65% (DSPy, NeurIPS). Nossa skill piloto
+  rs-nomenclatura-de-variaveis tem templates de código mas não tem input/output
+  examples completos do tipo "dado este código, produzo este resultado".
+
+  4. Decision Tree Pattern — PARCIAL
+
+  O docx skill da Anthropic abre com um workflow router ("Reading? → seção X.
+  Creating? → seção Y"). Nossas skills são lineares (Regras → Como escrever →
+  Heurísticas → Anti-patterns). Para skills de desenvolvimento isso pode ser OK,
+   mas skills complexas precisariam de routing.
+
+  5. Negative Boundaries na Description — GAP
+
+  O guia diz explicitamente para incluir "Not for [anti-patterns]" na
+  description. Nossas descriptions não dizem o que a skill NÃO faz, o que pode
+  causar ativação incorreta quando skills similares existirem (37+ skills rs-*
+  competindo).
+
+  6. Third Person na Description — DIVERGE
+
+  O guia diz "use third person: 'Extracts text from PDFs'". AIOS mistura —
+  algumas descriptions são instruções diretas ("Naming rules for writing code")
+  em vez de terceira pessoa ("Enforces naming rules when writing TypeScript
+  code").
+
+  7. Contrastive Feedback Loop — NÃO EXISTE
+
+  O guia prescreve analisar patterns em invocações bem-sucedidas vs falhadas e
+  retroalimentar a description. AIOS não tem observabilidade de triggering. Os
+  hooks do AIOS v2 capturam tool_use mas não capturam skill
+  activation/non-activation.
+
+  8. "Pushy" Pattern — DIVERGE DO TOM AIOS
+
+  O guia recomenda "Make sure to use this skill whenever..." — tom assertivo que
+   força ativação. O AIOS atual é mais descritivo/passivo. Isso explica
+  undertriggering.
+
+  ---
+  Onde AIOS está ALÉM do guia
+
+  1. Lente de Desenvolvimento (nosso framing)
+
+  O guia fala de skills como workflows/ferramentas. Nosso conceito de "lente
+  ativa que o agente absorve ao codar" é mais avançado — é uma skill que
+  modifica o COMPORTAMENTO do agente, não apenas executa uma tarefa. O guia não
+  cobre esse pattern de behavioral modification.
+
+  2. Agent ↔ Skill bidirecionality
+
+  AIOS tem Skill → Agent (via context: fork + agent:) e Agent → Skill (via
+  skills: no frontmatter). O guia menciona context: fork mas não explora a
+  direção inversa.
+
+  3. Hooks scoped por skill
+
+  O AIOS permite hooks: no frontmatter da skill para lifecycle events. O guia
+  não menciona isso.
+
+  4. Agent MEMORY.md + Cross-Agent Promotion
+
+  Skills que aprendem com uso e se auto-melhoram. O guia fala de "evaluate and
+  iterate" mas como processo manual, não como sistema automático.
+
+  5. Constitution → Gate Mapping
+
+  O guia não tem conceito de enforcement formal de regras de skills via gates
+  com severidade (BLOCK/WARN/INFO).
+
+  ---
+  Síntese: O que mudar na lesson-to-skill
+
+  ┌───────────────┬────────────────┬────────────────────────────────────────┐
+  │    Aspecto    │     Atual      │             Corrigir Para              │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Description   │ Passiva, ~60   │ Pushy trigger spec, ~200-400 chars,    │
+  │               │ chars          │ com trigger phrases                    │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Person        │ Misto          │ Third person consistente               │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Negative      │ Ausente        │ "Not for [X]" explícito                │
+  │ bounds        │                │                                        │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Examples      │ Templates only │ Input/output pairs completos           │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Eval loop     │ Zero           │ 20 queries → test triggering           │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Size guard    │ Sem limite     │ Max 300 linhas no SKILL.md             │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Error         │ Ausente        │ Seção "quando falha, faça X"           │
+  │ handling      │                │                                        │
+  └───────────────┴────────────────┴────────────────────────────────────────┘
+
+  O framing de "lente de desenvolvimento" é um diferencial nosso que o guia não
+  cobre — devemos manter e reforçar. Mas a engenharia de description é onde
+  estamos mais fracos e onde o ROI de melhoria é maior.
+
+  Quer que eu atualize a task lesson-to-skill v2 → v3 com essas correções?
+
+✻ Brewed for 51s

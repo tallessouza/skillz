@@ -1,0 +1,1244 @@
+
+ ▐▛███▜▌   Claude Code v2.1.62
+▝▜█████▛▘  Opus 4.6 · Claude Max
+  ▘▘ ▝▝    ~/projects/development/mmos-main
+
+❯ /clear 
+  ⎿  (no content)
+
+❯ /AIOS:agents:aios-master 
+@2026-02-27-232300-local-command-caveatcaveat-the-messages-below-w.txt acgora o 
+skill creator consegue replicar eessa skill servindo de modelo para aas skills 
+que criaremos a partor das aulas ? 
+@2026-02-27-230205-local-command-caveatcaveat-the-messages-below-w.txt 
+  ⎿  Read 2026-02-27-230205-local-command-caveatcaveat-the-messages-below-w.txt 
+     (878 lines)
+  ⎿  Loaded ../../../.claude/rules/mcp-usage.md
+
+● 👑 Orion ready.
+
+  Li os dois contextos. Respondendo direto:
+
+  Sim, o skill-creator consegue replicar a rs-nomenclatura-de-variaveis como 
+  modelo. Mas precisa de ajustes baseados nos gaps que identificamos.
+
+  O que o skill-creator já faz bem:
+  - Estrutura SKILL.md com frontmatter correto
+  - Progressive disclosure (SKILL.md → references/)
+  - Workflow de criação (interview → author → test)
+
+  O que falta para escalar das aulas → skills com qualidade:
+
+  ┌───────────────────┬───────────────────┬─────────────────────────────────┐
+  │        Gap        │      Impacto      │      Fix no skill-creator       │
+  ├───────────────────┼───────────────────┼─────────────────────────────────┤
+  │ Description       │                   │ Adicionar step de "pushy        │
+  │ passiva           │ 56% undertrigger  │ description engineering" com    │
+  │                   │                   │ trigger phrases                 │
+  ├───────────────────┼───────────────────┼─────────────────────────────────┤
+  │                   │ 25-65% pior sem   │ Step obrigatório de             │
+  │ Sem examples I/O  │ exemplos          │ input/output pairs extraídos da │
+  │                   │                   │  aula                           │
+  ├───────────────────┼───────────────────┼─────────────────────────────────┤
+  │ Sem negative      │ Skills rs-*       │ "Not for [X]" obrigatório na    │
+  │ bounds            │ competem entre si │ description                     │
+  ├───────────────────┼───────────────────┼─────────────────────────────────┤
+  │ Sem eval loop     │ Nunca testamos    │ 20 queries de teste (10         │
+  │                   │ triggering        │ should/10 shouldn't)            │
+  ├───────────────────┼───────────────────┼─────────────────────────────────┤
+  │ Third person      │ Menor match no    │ Enforçar "Enforces X" não       │
+  │ inconsistente     │ system prompt     │ "Rules for X"                   │
+  └───────────────────┴───────────────────┴─────────────────────────────────┘
+
+  Proposta prática: Atualizar a task lesson-to-skill v2 → v3 incorporando esses
+  5 fixes como steps obrigatórios no pipeline. A skill piloto
+  (rs-nomenclatura-de-variaveis) serve de before/after para validar.
+
+  Quer que eu:
+  1. Atualize a task lesson-to-skill v3 com os fixes
+  2. Refaça a skill piloto primeiro como proof-of-concept
+  3. Ambos (refaz piloto → valida → atualiza task)
+
+❯ n buceta, cada skill criada tem que ter tudo que o skillcreator tem mas   
+  direcionado ao objetivo de cada aula                                      
+
+● Entendi. Cada skill gerada das aulas tem que ser um pacote completo igual ao
+  skill-creator da Anthropic, não um SKILL.md pelado.
+
+  Ou seja, cada skill sai com:
+
+  rs-nomenclatura-de-variaveis/
+  ├── SKILL.md                    # Pushy description + instructions + examples
+  I/O
+  ├── scripts/
+  │   ├── validate.py             # Valida se o código segue as regras da skill
+  │   └── init_skill.py           # Setup se necessário
+  ├── references/
+  │   ├── detailed-guide.md       # Conteúdo profundo extraído da aula
+  │   └── anti-patterns.md        # O que NÃO fazer (com exemplos reais)
+  ├── assets/
+  │   └── eval-queries.json       # 20 queries de teste (10 should/10 shouldn't)
+  └── examples/
+      ├── before.ts               # Código ruim (input)
+      └── after.ts                # Código corrigido (output)
+
+  Cada uma dessas ~4,740 skills é um kit completo autocontido — description
+  engineered, scripts que validam, references com profundidade, examples
+  concretos, eval queries pra testar triggering.
+
+  A task lesson-to-skill v3 precisa gerar TUDO isso por aula, não só o SKILL.md.
+
+  Atualizo a task agora?
+
+❯ O ideal é que tivesse TODA a estrutura aplicando TODOS os conceitos       
+                                                                            
+
+● Atualizo a task lesson-to-skill v3 agora com tudo isso incorporado?
+
+❯ é bão 
+
+● 3 Explore agents finished (ctrl+o to expand)
+   ├─ Find lesson-to-skill task · 8 tool uses · 32.9k tokens
+   │  ⎿  Done
+   ├─ Find pilot skill structure · 5 tool uses · 25.0k tokens
+   │  ⎿  Done
+   └─ Find skill-creator skill · 6 tool uses · 36.0k tokens
+      ⎿  Done
+
+● Agora vou ler a task atual e os references do skill-creator pra ter tudo antes
+   de reescrever.
+
+● Read 4 files (ctrl+o to expand)
+  ⎿  Loaded .claude/CLAUDE.md
+
+● Now let me also read the existing scripts to understand the full package.
+
+● Read 5 files (ctrl+o to expand)
+
+● Agora tenho tudo. Vou reescrever a task lesson-to-skill v3 incorporando TODA a
+   estrutura do skill-creator — 7 fases, scripts, references, eval queries,
+  quality gates, AIOS patterns — direcionada para cada aula.
+
+● Write(~/projects/development/aios-core/.aios-core/development/tasks/lesson-to-
+       skill.md)
+  ⎿  Added 277 lines, removed 169 lines
+       1  ---
+       2  task: lessonToSkill()
+       3 -description: "Creates production-grade SKILL.md from lesson tra
+         -nscripts — optimized for Claude's trigger engine, progressive d
+         -isclosure, and behavioral modification"                        
+       3 +description: "Creates COMPLETE skill packages from lesson trans
+         +cripts — not just SKILL.md but the full arsenal: scripts, refer
+         +ences, eval queries, examples, validation. Each skill is a self
+         +-contained kit identical in structure to the skill-creator itse
+         +lf."                                                           
+       4  version: 3.0
+       5  mode: yolo
+       6  references:
+       7 +  - ../../../.claude/skills/skill-creator/SKILL.md             
+       8 +  - ../../../.claude/skills/skill-creator/references/descriptio
+         +n-engineering.md                                               
+       9 +  - ../../../.claude/skills/skill-creator/references/skill-anat
+         +omy.md                                                         
+      10 +  - ../../../.claude/skills/skill-creator/references/quality-ga
+         +tes.md                                                         
+      11 +  - ../../../.claude/skills/skill-creator/references/aios-patte
+         +rns.md                                                         
+      12 +  - ../../../.claude/skills/skill-creator/references/pitfalls-a
+         +nd-bugs.md                                                     
+      13    - ../../../.claude/skills/rs-nomenclatura-de-variaveis/SKILL.
+          md
+       8 -  - ../../../../pro4/professional/projects/rocketseat-scraper/a
+         -ios-v2-extraction.md                                           
+      14  ---
+      15  
+      11 -# lesson-to-skill v3                                           
+      16 +# lesson-to-skill v3 — Full Package Pipeline                   
+      17  
+      18  ## Mission
+      19  
+      15 -Read ONE lesson transcript and produce a SKILL.md that:        
+      16 -1. **Triggers reliably** — description engineered as trigger sp
+         -ecification, not documentation                                 
+      17 -2. **Modifies agent behavior** — when loaded, the agent writes 
+         -code following these principles naturally                      
+      18 -3. **Uses progressive disclosure** — SKILL.md is a menu, not an
+         - encyclopedia (<300 lines)                                     
+      20 +Read ONE lesson transcript and produce a **complete skill packa
+         +ge** — not just a SKILL.md, but the entire arsenal that the ski
+         +ll-creator itself has. Every skill created by this task must be
+         + a self-contained kit with:                                    
+      21  
+      20 -This is NOT a checklist, review tool, or documentation. It is a
+         - **behavioral lens**: the agent absorbs it and codes differentl
+         -y.                                                             
+      22 +```                                                            
+      23 +rs-{lesson-slug}/                                              
+      24 +├── SKILL.md                    # Trigger-engineered, <300 line
+         +s, imperative                                                  
+      25 +├── scripts/                                                   
+      26 +│   └── validate.py             # Deterministic validation of s
+         +kill rules                                                     
+      27 +├── references/                                                
+      28 +│   ├── detailed-guide.md       # Deep content extracted from l
+         +esson (overflow)                                               
+      29 +│   └── anti-patterns-catalog.md # Extended anti-patterns with 
+         +context                                                        
+      30 +├── assets/                                                    
+      31 +│   └── eval-queries.json       # 20 trigger test queries (10 s
+         +hould/10 shouldn't)                                            
+      32 +└── examples/                                                  
+      33 +    ├── before.ts               # Complete input code showing p
+         +roblems                                                        
+      34 +    └── after.ts                # Complete output code with ski
+         +ll applied                                                     
+      35 +```                                                            
+      36  
+      37 +Each skill:                                                    
+      38 +1. **Triggers reliably** — description engineered as trigger sp
+         +ecification per description-engineering.md                     
+      39 +2. **Modifies agent behavior** — coding lens that changes how t
+         +he agent writes code                                           
+      40 +3. **Uses progressive disclosure** — SKILL.md is a menu, deep c
+         +ontent in references/                                          
+      41 +4. **Self-validates** — scripts/validate.py checks compliance d
+         +eterministically                                               
+      42 +5. **Self-tests triggering** — eval-queries.json enables system
+         +atic trigger testing                                           
+      43 +6. **Has complete examples** — standalone before/after files, n
+         +ot inline snippets                                             
+      44 +7. **Includes recovery paths** — error handling section with "i
+         +f X fails, do Y"                                               
+      45 +8. **Defines boundaries** — what this skill DOES and does NOT d
+         +o                                                              
+      46 +9. **Supports self-critique** — verification section the agent 
+         +runs before finalizing                                         
+      47 +                                                               
+      48  ## Framing
+      49  
+      50  The skill is a **development lens**. When loaded, the agent wri
+          tes code following those principles as if they were internal ru
+          les. The tone is imperative ("do X", "never Y"), like the agent
+          's own coding DNA.
+      51  
+      26 -**Key insight (Anthropic research):** Claude undertriggers skil
+         -ls 56% of the time with passive descriptions. Every skill from 
+         -this task MUST use the "pushy" description pattern with explici
+         -t trigger conditions.                                          
+      52 +**Critical insight:** Claude undertriggers skills 56% of the ti
+         +me with passive descriptions (Vercel evals). Every artifact in 
+         +this package exists to combat that — from the pushy description
+         + to the eval queries that prove it works.                      
+      53  
+      54  ## Input
+      55  
+     ...
+       62    - skill_type: "coding-lens | workflow | reference (default: 
+           coding-lens)"
+       63  ```
+       64  
+       39 -## Pipeline (6 Phases)                                        
+       65 +## Pipeline (9 Phases)                                        
+       66  
+       67  ### Phase 1: Content Analysis
+       68  
+       43 -Read the transcript completely. Identify:                     
+       44 -- **Rules**: Statements with "always", "never", "avoid", "don'
+          -t" → imperative instructions                                  
+       45 -- **Code examples**: Before/after pairs, live coding → templat
+          -es                                                            
+       46 -- **Contextual rules**: "most of the time", "depends", "usuall
+          -y" → heuristics                                               
+       47 -- **Negative examples**: "horrible", "terrible", "bad" → anti-
+          -pattern substitution table                                    
+       48 -- **Verification patterns**: Grep-able patterns, testable asse
+          -rtions → verification commands                                
+       69 +Read the transcript completely. Extract into 6 buckets:       
+       70  
+       50 -### Phase 2: Description Engineering (CRITICAL)               
+       71 +| Bucket | Signal words | Becomes |                           
+       72 +|--------|-------------|---------|                            
+       73 +| **Rules** | "always", "never", "avoid", "don't", "must" | SK
+          +ILL.md → ## Rules |                                           
+       74 +| **Code examples** | Before/after, live coding, "look at this
+          +" | examples/before.ts + after.ts |                           
+       75 +| **Contextual rules** | "most of the time", "depends", "usual
+          +ly", "except when" | SKILL.md → ## Heuristics |               
+       76 +| **Negative examples** | "horrible", "terrible", "bad", "ugly
+          +", "wrong" | SKILL.md → ## Anti-patterns |                    
+       77 +| **Deep explanations** | Extended reasoning, theory, backgrou
+          +nd | references/detailed-guide.md |                           
+       78 +| **Verification patterns** | Grep-able patterns, testable ass
+          +ertions | scripts/validate.py |                               
+       79  
+       52 -The description is the MOST IMPORTANT field. It determines whe
+          -ther Claude ever activates this skill.                        
+       80 +**What NOT to extract:**                                      
+       81 +- Didactic intros ("in this lesson we will...")               
+       82 +- Personal opinions without actionable rule                   
+       83 +- Platform context (Rocketseat, course structure)             
+       84 +- Meta-commentary about the course                            
+       85 +- Passive review checklists — everything must be ACTIVE instru
+          +ction                                                         
+       86  
+       54 -**Formula:** `[What it does in 3rd person] + [When to use] + [
+          -Trigger phrases] + [Negative boundaries]`                     
+       87 +### Phase 2: Description Engineering (MOST CRITICAL)          
+       88  
+       56 -**Rules:**                                                    
+       57 -1. Third person always ("Enforces...", "Applies...", "Generate
+          -s...")                                                        
+       58 -2. Include 3-5 specific trigger phrases the user would natural
+          -ly say                                                        
+       59 -3. Include "Make sure to use this skill whenever..." clause   
+       60 -4. Include "Not for..." boundary to prevent false activation  
+       61 -5. Max 1024 chars, but aim for 200-400 chars                  
+       62 -6. Single line in YAML (no line breaks — Prettier bug causes s
+          -ilent ignore)                                                 
+       89 +The description determines whether Claude EVER activates this 
+          +skill. Follow description-engineering.md exactly.             
+       90  
+       91 +**Formula:** `[3rd person verb] + [domain] + [when to use] + [
+          +trigger phrases] + [Make sure to use] + [Not for]`            
+       92 +                                                              
+       93 +**Constraints:**                                              
+       94 +- Third person always ("Enforces...", "Applies...", "Guards ag
+          +ainst...")                                                    
+       95 +- 200-400 chars sweet spot                                    
+       96 +- 3-5 trigger phrases users would naturally say, in quotes    
+       97 +- "Make sure to use this skill whenever..." clause mandatory  
+       98 +- "Not for..." boundary mandatory (prevents false activation w
+          +ith 37+ rs-* skills)                                          
+       99 +- Single line in YAML — multi-line breaks cause silent ignore 
+          +(Prettier bug)                                                
+      100 +- No angle brackets `<>` (XML injection risk in system prompt)
+      101 +- Strong behavioral verbs: Enforces, Applies, Guards, Ensures,
+          + Maintains                                                    
+      102 +                                                              
+      103  **Template:**
+      104  ```
+      105  "Enforces {domain} rules when writing {language} code. Use whe
+           n user asks to
+     ...
+      108  user doesn't mention {domain}. Not for {negative_boundary}."
+      109  ```
+      110  
+       72 -**Example (from piloto):**                                    
+       73 -```yaml                                                       
+       74 -# v2 (WEAK — will undertrigger):                              
+       75 -description: "Naming rules for writing code: descriptive names
+          -, no abbreviations"                                           
+      111 +**Differentiation (critical for 37+ rs-* skills):**           
+      112 +1. Each description mentions the SPECIFIC domain ("variable na
+          +ming" vs "function design" vs "error handling")               
+      113 +2. No two descriptions share >50% of trigger phrases          
+      114 +3. "Not for" explicitly excludes neighboring skill domains    
+      115 +4. If two skills truly overlap → merge, don't create competing
+          + descriptions                                                 
+      116  
+       77 -# v3 (STRONG — reliable activation):                          
+       78 -description: "Enforces variable naming conventions when writin
+          -g TypeScript/JavaScript code. Use when user asks to 'write a f
+          -unction', 'create a component', 'implement a feature', or any 
+          -code generation task. Applies rules: no abbreviations, no gene
+          -ric names (data/response/list), cause-over-effect booleans, un
+          -it-in-name for numbers. Make sure to use this skill whenever g
+          -enerating new code, even if the user doesn't mention naming. N
+          -ot for documentation, comments, or commit messages."          
+       79 -```                                                           
+      117 +### Phase 3: Instruction Authoring (SKILL.md body)            
+      118  
+       81 -### Phase 3: Instruction Authoring                            
+      119 +Structure following the Coding Lens template from skill-anatom
+          +y.md.                                                         
+      120  
+       83 -Structure the SKILL.md body. Rules:                           
+       84 -                                                              
+      121 +**Writing rules:**                                            
+      122  1. **Imperative form** — "Never abbreviate" not "Avoid abbrevi
+           ations when possible"
+       86 -2. **Positive framing preferred** — "Write `user`" beats "Don'
+          -t write `u`" (research: positive framing outperforms negative)
+       87 -3. **Explain WHY behind rules** — "because grep can't find abb
+          -reviated names" (explanation > ALL CAPS shouting)             
+      123 +2. **Positive framing preferred** — "Write `user`" beats "Don'
+          +t write `u`" (research: +significant)                         
+      124 +3. **Explain WHY behind every rule** — "because grep can't fin
+          +d abbreviated names" > "NEVER abbreviate"                     
+      125  4. **Code-first** — if the lesson has code examples, templates
+            are mandatory
+       89 -5. **Examples > rules** — 2-3 complete input/output pairs beat
+          - 10 abstract rules (DSPy: +25-65%)                            
+      126 +5. **Examples > rules** — 2-3 complete I/O pairs beat 10 abstr
+          +act rules (DSPy: +25-65%)                                     
+      127  6. **Anti-patterns always have substitution** — never X → writ
+           e Y instead
+       91 -7. **Max 300 lines** — split into references/ if exceeding (mo
+          -nolithic skills produce generic output)                       
+      128 +7. **Max 300 lines in SKILL.md** — overflow to references/ (mo
+          +nolithic = generic output)                                    
+      129 +8. **No ALL CAPS directives** — explain reasoning instead of s
+          +houting                                                       
+      130 +9. **Remove empty sections** — no section without content     
+      131  
+       93 -### Phase 4: Example Pairs (NEW in v3)                        
+       94 -                                                              
+       95 -Every skill MUST include at least one complete example showing
+          -:                                                             
+       96 -```                                                           
+       97 -Given this input code/situation → the agent produces this outp
+          -ut                                                            
+       98 -```                                                           
+       99 -                                                              
+      100 -This is different from templates. Templates show the PATTERN. 
+          -Examples show the TRANSFORMATION.                             
+      101 -                                                              
+      132 +**Body structure:**                                           
+      133  ```markdown
+      103 -## Example                                                    
+      104 -                                                              
+      105 -**Before (user's code):**                                     
+      106 -```typescript                                                 
+      107 -const data = await fetch('/api/users')                        
+      108 -const filtered = data.filter(d => d.active)                   
+      109 -const list = filtered.map(f => f.name)                        
+      110 -```                                                           
+      111 -                                                              
+      112 -**After (agent applies this skill):**                         
+      113 -```typescript                                                 
+      114 -const users = await fetchUsers()                              
+      115 -const activeUsers = users.filter(user => user.isActive)       
+      116 -const activeUserNames = activeUsers.map(user => user.name)    
+      117 -```                                                           
+      118 -```                                                           
+      119 -                                                              
+      120 -### Phase 5: Assembly                                         
+      121 -                                                              
+      122 -Assemble the SKILL.md following the output format below. Then 
+          -validate against the checklist.                               
+      123 -                                                              
+      124 -### Phase 6: Self-Critique                                    
+      125 -                                                              
+      126 -Before saving, verify:                                        
+      127 -- [ ] Read the description aloud — would Claude activate this 
+          -for "write a function that filters users"?                    
+      128 -- [ ] Is there ANY rule that uses ALL CAPS? → Rewrite with exp
+          -lanation instead                                              
+      129 -- [ ] Is there ANY section with zero content? → Remove it enti
+          -rely                                                          
+      130 -- [ ] Does the description differentiate this skill from the o
+          -ther 36 rs-* skills?                                          
+      131 -- [ ] Would another rs-* skill with similar description cause 
+          -selection confusion? → Differentiate                          
+      132 -                                                              
+      133 -## Output Format                                              
+      134 -                                                              
+      135 -```markdown                                                   
+      136 ----                                                           
+      137 -name: rs-{lesson-slug}                                        
+      138 -description: "Enforces {domain} rules when writing {language} 
+          -code. Use when user asks to '{trigger1}', '{trigger2}', or '{t
+          -rigger3}'. Applies: {key_rules}. Make sure to use this skill w
+          -henever {broad_trigger}. Not for {boundary}."                 
+      139 ----                                                           
+      140 -                                                              
+      134  # {Lesson Title}
+      135  
+      136  > {Core principle in one imperative sentence}
+      137  
+      138  ## Rules
+      139  
+      147 -1. **{Imperative rule}** — {detail with inline example if need
+          -ed}, because {reason}                                         
+      148 -2. **{Imperative rule}** — {detail}                           
+      149 -N. ...                                                        
+      140 +1. **{Imperative rule}** — {detail with inline example}, becau
+          +se {reason}                                                   
+      141  
+      142  ## How to write
+      143  
+      144  ### {Pattern Name}
+      154 -                                                              
+      155 -\`\`\`typescript                                              
+      145 +```typescript                                                 
+      146  // Comment explaining the correct pattern
+      147  {code the agent should generate}
+      158 -\`\`\`                                                        
+      148 +```                                                           
+      149  
+      160 -### {Pattern Name 2}                                          
+      161 -                                                              
+      162 -\`\`\`typescript                                              
+      163 -{code}                                                        
+      164 -\`\`\`                                                        
+      165 -                                                              
+      150  ## Example
+      151  
+      168 -**Before:**                                                   
+      169 -\`\`\`typescript                                              
+      152 +**Before (user's code):**                                     
+      153 +```typescript                                                 
+      154  {input code showing the problem}
+      171 -\`\`\`                                                        
+      155 +```                                                           
+      156  
+      157  **After (with this skill applied):**
+      174 -\`\`\`typescript                                              
+      158 +```typescript                                                 
+      159  {output code showing the transformation}
+      176 -\`\`\`                                                        
+      160 +```                                                           
+      161  
+      162  ## Heuristics
+      163  
+     ...
+      170  | Never write | Write instead |
+      171  |-------------|---------------|
+      172  | {bad code} | {good code} |
+      173 +                                                              
+      174 +## Self-critique (execute before saving)                      
+      175 +                                                              
+      176 +- [ ] Read generated code — does it follow every rule above?  
+      177 +- [ ] Check anti-patterns table — any violations?             
+      178 +- [ ] Apply heuristics — any edge cases missed?               
+      179 +                                                              
+      180 +## Error handling                                             
+      181 +                                                              
+      182 +- If {situation} → {recovery action}                          
+      183 +- If 3 attempts fail on same pattern → ask user for clarificat
+          +ion                                                           
+      184 +                                                              
+      185 +## Boundaries                                                 
+      186 +                                                              
+      187 +This skill DOES:                                              
+      188 +- {what it actively enforces}                                 
+      189 +                                                              
+      190 +This skill does NOT:                                          
+      191 +- {explicit exclusions}                                       
+      192  ```
+      193  
+      191 -### Optional sections (include only if the lesson has relevant
+          - material)                                                    
+      194 +### Phase 4: Example Files (examples/)                        
+      195  
+      193 -```markdown                                                   
+      194 -## Verification                                               
+      196 +Create standalone files showing complete transformation:      
+      197  
+      196 -- `grep -rn '{pattern}' src/` — {expected result}             
+      197 -- {other automatable test}                                    
+      198 +**examples/before.ts** — Real-world code showing ALL problems 
+          +this skill addresses. Not 3 lines — a realistic 15-30 line sni
+          +ppet that a developer would actually write.                   
+      199  
+      199 -## Error handling                                             
+      200 +**examples/after.ts** — The same code transformed by applying 
+          +every rule in the skill. Comments explain which rule was appli
+          +ed.                                                           
+      201  
+      201 -- If {situation}, then {recovery action}                      
+      202 +These files serve two purposes:                               
+      203 +1. Claude reads them as high-quality few-shot examples (resear
+          +ch: +25-65% improvement)                                      
+      204 +2. Human reviewers see exactly what the skill does at a glance
+      205 +                                                              
+      206 +### Phase 5: Validation Script (scripts/validate.py)          
+      207 +                                                              
+      208 +Create a Python script that deterministically checks code comp
+          +liance with the skill's rules.                                
+      209 +                                                              
+      210 +**Requirements:**                                             
+      211 +- Takes a file path as input                                  
+      212 +- Checks for anti-pattern violations using regex/AST          
+      213 +- Reports which rules are violated with line numbers          
+      214 +- Returns exit code 0 (pass) or 1 (violations found)          
+      215 +- Output is human-readable AND machine-parseable              
+      216 +                                                              
+      217 +**Template:**                                                 
+      218 +```python                                                     
+      219 +#!/usr/bin/env python3                                        
+      220 +"""                                                           
+      221 +Validator for rs-{slug} skill — checks code compliance with {d
+          +omain} rules.                                                 
+      222 +                                                              
+      223 +Usage: python validate.py <file_path>                         
+      224 +"""                                                           
+      225 +import sys                                                    
+      226 +import re                                                     
+      227 +from pathlib import Path                                      
+      228 +                                                              
+      229 +RULES = [                                                     
+      230 +    {                                                         
+      231 +        "id": "rule-1",                                       
+      232 +        "description": "{rule description}",                  
+      233 +        "pattern": r"{regex that catches violations}",        
+      234 +        "severity": "BLOCK",  # BLOCK | WARN | INFO           
+      235 +    },                                                        
+      236 +]                                                             
+      237 +                                                              
+      238 +def validate(file_path: str) -> list[dict]:                   
+      239 +    content = Path(file_path).read_text()                     
+      240 +    violations = []                                           
+      241 +    for i, line in enumerate(content.splitlines(), 1):        
+      242 +        for rule in RULES:                                    
+      243 +            if re.search(rule["pattern"], line):              
+      244 +                violations.append({                           
+      245 +                    "line": i,                                
+      246 +                    "rule": rule["id"],                       
+      247 +                    "severity": rule["severity"],             
+      248 +                    "description": rule["description"],       
+      249 +                    "content": line.strip(),                  
+      250 +                })                                            
+      251 +    return violations                                         
+      252 +                                                              
+      253 +if __name__ == "__main__":                                    
+      254 +    if len(sys.argv) != 2:                                    
+      255 +        print("Usage: python validate.py <file_path>")        
+      256 +        sys.exit(1)                                           
+      257 +                                                              
+      258 +    violations = validate(sys.argv[1])                        
+      259 +    if not violations:                                        
+      260 +        print("✅ All rules pass")                            
+      261 +        sys.exit(0)                                           
+      262 +                                                              
+      263 +    for v in violations:                                      
+      264 +        print(f"[{v['severity']}] Line {v['line']}: {v['descri
+          +ption']}")                                                    
+      265 +        print(f"  → {v['content']}")                          
+      266 +    sys.exit(1)                                               
+      267  ```
+      268  
+      204 -## Extraction Rules                                           
+      269 +Not every rule is regex-checkable. Include what IS checkable. 
+          +The script doesn't need 100% coverage — it catches the obvious
+          + violations deterministically.                                
+      270  
+      206 -### WHAT TO EXTRACT                                           
+      271 +### Phase 6: Eval Queries (assets/eval-queries.json)          
+      272  
+      208 -| Field | What it is | Source in transcript |                 
+      209 -|-------|-----------|---------------------|                   
+      210 -| **Rules** | Direct instructions the agent follows when codin
+          -g | "always", "never", "avoid", "don't" |                     
+      211 -| **How to write** | Code templates the agent copies/adapts | 
+          -Code examples from instructor |                               
+      212 -| **Example** | Complete before/after transformation | Live co
+          -ding demonstrations |                                         
+      213 -| **Heuristics** | Contextual rules with "when yes" and "when 
+          -no" | "most of the time", "depends" |                         
+      214 -| **Anti-patterns** | Substitution table: "never generate X → 
+          -generate Y" | "horrible", "terrible", "bad" |                 
+      215 -| **Verification** | Grep commands/tests to validate complianc
+          -e | Verifiable patterns in code |                             
+      273 +Create 20 test queries to validate trigger behavior:          
+      274  
+      217 -### WHAT NOT TO EXTRACT                                       
+      275 +```json                                                       
+      276 +{                                                             
+      277 +  "skill": "rs-{slug}",                                       
+      278 +  "description_version": "1.0",                               
+      279 +  "queries": [                                                
+      280 +    {"query": "write a function that fetches users from the AP
+          +I", "should_trigger": true, "reason": "code generation task"},
+      281 +    {"query": "create a React component for the dashboard", "s
+          +hould_trigger": true, "reason": "component creation"},        
+      282 +    {"query": "implement the checkout flow", "should_trigger":
+          + true, "reason": "feature implementation"},                   
+      283 +    {"query": "rename the git branch to feature/login", "shoul
+          +d_trigger": false, "reason": "git operation, not code generati
+          +on"},                                                         
+      284 +    {"query": "write documentation for the API", "should_trigg
+          +er": false, "reason": "documentation, not code"}              
+      285 +  ]                                                           
+      286 +}                                                             
+      287 +```                                                           
+      288  
+      219 -- Didactic explanations / intros / "in this lesson we will..."
+      220 -- Personal opinions without actionable rule                   
+      221 -- Platform context (Rocketseat, course structure)             
+      222 -- Meta-commentary about the course                            
+      223 -- Passive review checklists — everything must be ACTIVE instru
+          -ction                                                         
+      289 +**Rules for eval queries:**                                   
+      290 +- 10 should-trigger: diverse code generation scenarios where t
+          +his skill applies                                             
+      291 +- 10 should-not-trigger: similar-sounding but out-of-scope que
+          +ries (especially queries that might trigger NEIGHBORING rs-* s
+          +kills)                                                        
+      292 +- Each query has a `reason` explaining WHY it should/shouldn't
+          + trigger                                                      
+      293 +- Queries use natural language a developer would actually type
+      294  
+      225 -### Quality Rules                                             
+      295 +### Phase 7: References (references/)                         
+      296  
+      227 -1. **Imperative tone** — "Never abbreviate" not "Avoid abbrevi
+          -ations when possible"                                         
+      228 -2. **Positive framing when possible** — "Write descriptive nam
+          -es" > "Don't write short names"                               
+      229 -3. **Explain the why** — "because grep can't find abbreviated 
+          -names across the codebase"                                    
+      230 -4. **Code-first** — if lesson has code examples, templates are
+          - mandatory                                                    
+      231 -5. **Substitution always** — anti-patterns always have "write 
+          -instead"                                                      
+      232 -6. **TypeScript/JavaScript/React** context — adapt for the eco
+          -system                                                        
+      233 -7. **No CLAUDE.md duplication** — if rule already exists in pr
+          -oject, don't repeat                                           
+      234 -8. **Single-line description** — YAML description must be one 
+          -line (Prettier wrap bug)                                      
+      297 +If content exceeds 300 lines in SKILL.md, move overflow to ref
+          +erences/:                                                     
+      298  
+      236 -## Edge Cases                                                 
+      299 +**references/detailed-guide.md** — Extended explanations, theo
+          +ry, background reasoning extracted from the lesson. Content th
+          +e agent reads only when it needs deeper understanding.        
+      300  
+      238 -- **Lesson without code** (e.g., conceptual DDD): skill focuse
+          -s on Rules + Heuristics, no templates                         
+      239 -- **Lesson with many examples**: group templates by category, 
+          -use references/ if >300 lines                                 
+      240 -- **Very short lesson** (<3K chars): skill can have only Rules
+          - + 1 template — OK, small > inflated                          
+      241 -- **Repeated concept across lessons**: each skill is standalon
+          -e, merge comes later                                          
+      242 -- **Lesson in Portuguese**: skill body in Portuguese, descript
+          -ion in English (Claude's system prompt is English)            
+      301 +**references/anti-patterns-catalog.md** — Extended anti-patter
+          +n catalog with context, if the lesson has many negative exampl
+          +es that don't fit in the main anti-patterns table.            
+      302  
+      244 -## Validation Checklist                                       
+      303 +**Rules:**                                                    
+      304 +- Only create reference files if there's real overflow content
+      305 +- Include grep-friendly headers so Claude can search efficient
+          +ly                                                            
+      306 +- Each reference starts with a 1-line summary of what it conta
+          +ins                                                           
+      307 +- SKILL.md links to references: `For detailed reasoning, see [
+          +detailed-guide.md](references/detailed-guide.md)`             
+      308  
+      246 -Output is valid if ALL pass:                                  
+      309 +### Phase 8: Assembly                                         
+      310  
+      248 -- [ ] **Description is trigger-spec** — includes trigger phras
+          -es, 3rd person, "Make sure to use", "Not for"                 
+      249 -- [ ] **Description is single-line** — no YAML line breaks (Pr
+          -ettier bug)                                                   
+      250 -- [ ] **Description 200-400 chars** — enough for trigger cover
+          -age, not bloated                                              
+      251 -- [ ] **At least 2 rules** — imperative, with reasoning       
+      252 -- [ ] **At least 1 template OR 1 heuristic** — code-first when
+          - possible                                                     
+      253 -- [ ] **At least 1 example pair** — before/after transformatio
+          -n                                                             
+      254 -- [ ] **Tone is imperative** — instruction for the agent, not 
+          -passive observation                                           
+      255 -- [ ] **Positive framing** — "do X" preferred over "don't do Y
+          -" (but anti-patterns table is OK)                             
+      256 -- [ ] **No ALL CAPS directives** — explain reasoning instead o
+          -f shouting                                                    
+      257 -- [ ] **Slug follows pattern** — rs-{lesson-slug} in kebab-cas
+          -e                                                             
+      258 -- [ ] **Empty sections removed** — no section without content 
+      259 -- [ ] **Anti-patterns have substitution** — never X → always Y
+      260 -- [ ] **Under 300 lines** — split to references/ if exceeding 
+      261 -- [ ] **Description differentiates** from other rs-* skills — 
+          -no semantic overlap                                           
+      311 +1. Create the directory structure                             
+      312 +2. Write SKILL.md (Phase 3 output)                            
+      313 +3. Write examples/before.ts and examples/after.ts (Phase 4)   
+      314 +4. Write scripts/validate.py (Phase 5)                        
+      315 +5. Write assets/eval-queries.json (Phase 6)                   
+      316 +6. Write references/ if needed (Phase 7)                      
+      317 +7. Run validation (Phase 9)                                   
+      318  
+      263 -## Differentiation Guide (for 37+ rs-* skills)                
+      319 +### Phase 9: Validation & Self-Critique                       
+      320  
+      265 -When creating skills that may overlap (e.g., multiple clean-co
+          -de lessons), ensure:                                          
+      321 +**Layer 1 — Deterministic:** Run `python scripts/validate.py` 
+          +on examples/before.ts — it SHOULD find violations. Run on exam
+          +ples/after.ts — it should find ZERO violations. If this fails,
+          + the script or the examples are wrong.                        
+      322  
+      267 -1. Each description mentions the SPECIFIC domain ("variable na
+          -ming" vs "function design" vs "error handling")               
+      268 -2. No two descriptions share >50% of trigger phrases          
+      269 -3. The "Not for" boundary explicitly excludes the neighboring 
+          -skill's domain                                                
+      270 -4. If two skills truly overlap → merge them, don't create comp
+          -eting descriptions                                            
+      323 +**Layer 2 — Structural (all must pass):**                     
+      324  
+      325 +Description quality:                                          
+      326 +- [ ] 200-400 chars                                           
+      327 +- [ ] Third person ("Enforces...", not "I enforce...")        
+      328 +- [ ] Has 3-5 trigger phrases in quotes                       
+      329 +- [ ] Has "Make sure to use" clause                           
+      330 +- [ ] Has "Not for" boundary                                  
+      331 +- [ ] Single line in YAML                                     
+      332 +- [ ] No angle brackets `<>`                                  
+      333 +                                                              
+      334 +Body quality:                                                 
+      335 +- [ ] Imperative form throughout                              
+      336 +- [ ] Positive framing preferred (anti-patterns table is OK)  
+      337 +- [ ] No ALL CAPS directives — reasoning instead              
+      338 +- [ ] At least 2 rules with "because" reasoning               
+      339 +- [ ] At least 1 How to write template with code              
+      340 +- [ ] At least 1 complete before/after example                
+      341 +- [ ] Under 300 lines                                         
+      342 +- [ ] Empty sections removed                                  
+      343 +- [ ] Anti-patterns have substitution pairs                   
+      344 +- [ ] Self-critique section present                           
+      345 +- [ ] Error handling section present                          
+      346 +- [ ] Boundaries section present                              
+      347 +                                                              
+      348 +Package quality:                                              
+      349 +- [ ] scripts/validate.py exists and runs                     
+      350 +- [ ] assets/eval-queries.json has 20 queries (10/10 split)   
+      351 +- [ ] examples/before.ts shows real problems                  
+      352 +- [ ] examples/after.ts shows complete fix                    
+      353 +- [ ] validate.py catches violations in before.ts             
+      354 +- [ ] validate.py passes on after.ts                          
+      355 +                                                              
+      356 +Naming quality:                                               
+      357 +- [ ] Slug is rs-{lesson-slug} in kebab-case                  
+      358 +- [ ] File is exactly SKILL.md (case-sensitive)               
+      359 +- [ ] Folder name matches name field                          
+      360 +                                                              
+      361 +**Layer 3 — Cognitive (self-critique):**                      
+      362 +- [ ] Would Claude activate this for 5 realistic queries? List
+          + them.                                                        
+      363 +- [ ] Would Claude incorrectly activate for 3 unrelated querie
+          +s? Check "Not for" covers them.                               
+      364 +- [ ] Does ANY other rs-* skill have >50% description overlap?
+          + → Differentiate.                                             
+      365 +- [ ] Does this skill produce measurably better output than ba
+          +seline Claude? What's the delta?                              
+      366 +- [ ] Is the description single-line, 200-400 chars, 3rd perso
+          +n?                                                            
+      367 +- [ ] Are examples realistic code a developer would write, not
+          + toy 3-liners?                                                
+      368 +                                                              
+      369 +## Edge Cases                                                 
+      370 +                                                              
+      371 +- **Lesson without code** (e.g., conceptual DDD): skill focuse
+          +s on Rules + Heuristics, no templates. validate.py checks nami
+          +ng patterns instead of code patterns. examples/ contain markdo
+          +wn or config files instead of .ts.                            
+      372 +- **Lesson with many examples**: group templates by category. 
+          +Use references/ for overflow. Keep SKILL.md as navigation menu
+          +.                                                             
+      373 +- **Very short lesson** (<3K chars): skill can be minimal — on
+          +ly Rules + 1 template + 1 example pair. Still needs descriptio
+          +n engineering and eval queries. Small > inflated.             
+      374 +- **Repeated concept across lessons**: each skill is standalon
+          +e. Merge comes later via separate dedup task.                 
+      375 +- **Lesson in Portuguese**: skill body in Portuguese, descript
+          +ion in English (Claude's system prompt is English).           
+      376 +- **Lesson covers multiple distinct topics**: create MULTIPLE 
+          +skills, one per distinct topic. Don't create a monolithic mult
+          +i-topic skill.                                                
+      377 +                                                              
+      378  ## Batch Processing Notes
+      379  
+      380  When running this task in batch (37 courses × N lessons):
+      381  
+      276 -1. Process ONE lesson as pilot first → validate output        
+      277 -2. If pilot passes validation → proceed with batch            
+      278 -3. Save outputs to `outputs/rocketseat-extractions/{course}/{l
+          -esson-slug}/SKILL.md`                                         
+      279 -4. After batch: run merge task to consolidate overlapping skil
+          -ls                                                            
+      280 -5. Final placement: `.claude/skills/rs-{slug}/SKILL.md`       
+      382 +1. Process ONE lesson as pilot → validate COMPLETE package    
+      383 +2. Verify validate.py catches before.ts violations and passes 
+          +after.ts                                                      
+      384 +3. Verify eval-queries.json has no overlap with existing rs-* 
+          +skills                                                        
+      385 +4. If pilot passes all 3 validation layers → proceed with batc
+          +h                                                             
+      386 +5. Save outputs to `outputs/rocketseat-extractions/{course}/{l
+          +esson-slug}/`                                                 
+      387 +6. After batch: run merge task to consolidate overlapping skil
+          +ls                                                            
+      388 +7. Final placement: `.claude/skills/rs-{slug}/` (full package,
+          + not just SKILL.md)                                           
+
+● Pronto. Task lesson-to-skill v3 reescrita com o pipeline completo de 9 fases.
+
+  O que mudou de v2 → v3:
+
+  ┌────────────────────────────────────┬────────────────────────────────────┐
+  │             Antes (v2)             │             Agora (v3)             │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ 6 fases, só SKILL.md               │ 9 fases, pacote completo           │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem scripts                        │ scripts/validate.py com regex      │
+  │                                    │ rules + severidades                │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem eval queries                   │ assets/eval-queries.json com 20    │
+  │                                    │ queries (10/10)                    │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Examples inline                    │ examples/before.ts + after.ts      │
+  │                                    │ standalone                         │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem references overflow            │ references/ para conteúdo >300     │
+  │                                    │ linhas                             │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem self-critique                  │ Seção obrigatória no SKILL.md      │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem error handling                 │ Seção obrigatória com recovery     │
+  │                                    │ paths                              │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Sem boundaries                     │ Seção obrigatória: DOES / does NOT │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ Validação 14 checks                │ 3 camadas: deterministic +         │
+  │                                    │ structural + cognitive             │
+  ├────────────────────────────────────┼────────────────────────────────────┤
+  │ validate.py testa before.ts (deve  │ Cross-validation built-in          │
+  │ falhar) e after.ts (deve passar)   │                                    │
+  └────────────────────────────────────┴────────────────────────────────────┘
+
+  Cada skill gerada das aulas agora sai como um kit completo idêntico em
+  estrutura ao skill-creator.
+
+✻ Worked for 3m 4s
+
+❯ essa task tem template, checklost, ac e dod? ela também não deveria ser   
+  uma skill de como usar uma skill pra criar uma skill?                     
+
+● Certíssimo nos dois pontos.
+
+  Ponto 1: A task tá sem template, checklist, AC e DoD — tá faltando a estrutura
+   formal AIOS.
+
+  Ponto 2: Faz mais sentido como skill do que como task. É uma operação
+  repetitiva (~4,740x) que o skill-creator já sabe fazer — a lesson-to-skill
+  seria uma skill especializada que direciona o skill-creator pro contexto de
+  transcrições de aula. Skill usando skill.
+
+  Ou seja, a estrutura certa seria:
+
+  .claude/skills/lesson-to-skill/
+  ├── SKILL.md                    # Skill que orquestra o skill-creator
+  ├── scripts/
+  │   └── validate-package.py     # Valida pacote completo gerado
+  ├── references/
+  │   ├── extraction-rules.md     # O que extrair / não extrair de aulas
+  │   └── rocketseat-context.md   # Contexto RS específico
+  ├── assets/
+  │   ├── skill-template/         # Template do pacote completo
+  │   │   ├── SKILL.md.tmpl
+  │   │   ├── scripts/validate.py.tmpl
+  │   │   ├── assets/eval-queries.json.tmpl
+  │   │   └── examples/before.ts.tmpl + after.ts.tmpl
+  │   └── checklist.md            # DoD checklist
+  └── examples/
+      └── rs-nomenclatura-de-variaveis/  # Piloto como exemplar completo
+
+  A task lesson-to-skill.md no aios-core vira só um pointer: *task 
+  lesson-to-skill → invoca /lesson-to-skill skill.
+
+  Faço a conversão? Task → Skill com template, checklist, AC, DoD — tudo
+  incluso.
+
+❯ e tem que ser bem mais completa que isso aí que tu colocou a skill        
+  creator é gigante                                                         
+
+● Vou construir a skill completa. Primeiro deixa eu ver o tamanho real do
+  skill-creator pra igualar.
+
+● Bash(find
+      /home/talle/projects/development/mmos-main/.claude/skills/skill-creator
+      -type f | while read f; do echo "$(wc -l < "$f") $f"; done | sort -rn)
+  ⎿  303 /home/talle/projects/development/mmos-main/.claude/skills/skill-cr
+     eator/scripts/init_skill.py
+     226 /home/talle/projects/development/mmos-main/.claude/skills/skill-cr
+     … +15 lines (ctrl+o to expand)
+
+● Read 2 files (ctrl+o to expand)
+
+● Skill-creator tem ~1,825 linhas total (12 arquivos). Vou construir a
+  lesson-to-skill no mesmo nível. Criando tudo em paralelo.
+
+● Bash(mkdir -p /home/talle/projects/development/mmos-main/.claude/skills/lesson
+      -to-skill/{scripts,references,assets/templates,examples/rs-nomenclatura-de
+      -variaveis})
+  ⎿  Done
+
+● Write(.claude/skills/lesson-to-skill/SKILL.md)
+  ⎿  Wrote 217 lines to .claude/skills/lesson-to-skill/SKILL.md
+       1 ---
+       2 name: lesson-to-skill
+       3 description: "Converts lesson transcripts into complete, product
+         ion-grade skill packages with SKILL.md, validation scripts, eval
+          queries, examples, and references. Use when user asks to 'creat
+         e skill from lesson', 'extract skill from transcript', 'convert 
+         aula to skill', 'lesson to skill', 'transform teaching into skil
+         l', or 'process rocketseat lesson'. Handles any teaching transcr
+         ipt and produces a full self-contained skill kit identical in st
+         ructure to the skill-creator. Make sure to use this skill whenev
+         er the user wants to convert educational content into a Claude s
+         kill, even if they say 'extract rules' or 'create coding lens'. 
+         Not for creating skills from scratch without source material — u
+         se /skill-creator instead. Not for modifying existing skills — u
+         se /skill-creator improve mode."
+       4 ---
+       5 
+       6 # Lesson-to-Skill — Full Package Pipeline
+       7 
+       8 > Transform any lesson transcript into a complete, self-containe
+         d skill package that triggers reliably, validates deterministica
+         lly, and improves agent behavior measurably.
+       9 
+      10 ## Decision tree
+     … +207 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/extraction-rules.md)
+  ⎿  Wrote 181 lines to
+     .claude/skills/lesson-to-skill/references/extraction-rules.md
+      1 # Extraction Rules — What to Extract from Lesson Transcripts
+      2 
+      3 > Complete guide for identifying and categorizing actionable cont
+        ent in teaching transcripts.
+      4 
+      5 ## The 6 Extraction Buckets
+      6 
+      7 ### Bucket 1: Rules (→ SKILL.md ## Rules)
+      8 
+      9 **Signal words:** "always", "never", "avoid", "don't", "must", "s
+        hould never", "the right way", "the correct approach", "rule of t
+        humb", "golden rule"
+     … +171 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/description-engineering.md)
+  ⎿  Wrote 113 lines to
+     .claude/skills/lesson-to-skill/references/description-engineering.md
+      1 # Description Engineering for Lesson-Based Skills
+      2 
+      3 > How to write descriptions that make Claude reliably trigger ski
+        lls extracted from lesson transcripts.
+      4 
+      5 ## Why lesson-skills are harder to trigger
+      6 
+      7 Lesson-extracted skills face a unique challenge: they compete wit
+        h 37+ sibling skills (rs-*) from the same course ecosystem. A gen
+        eric description like "naming rules for code" could match 5 diffe
+        rent skills. The description must be surgically specific.
+      8 
+      9 ## The Formula
+     … +103 lines (ctrl+o to expand)
+
+● Agora os arquivos restantes — templates, scripts, quality gates, exemplars,
+  batch processing, differentiation.
+
+● Write(.claude/skills/lesson-to-skill/references/skill-templates.md)
+  ⎿  Wrote 210 lines to
+     .claude/skills/lesson-to-skill/references/skill-templates.md
+       1 # Skill Templates — SKILL.md Body Structure by Type
+       2 
+       3 > Complete templates for each skill type. Copy the relevant temp
+         late, replace placeholders, remove unused sections.
+       4 
+       5 ## Type 1: Coding Lens (default for lesson-skills)
+       6 
+       7 The agent absorbs rules and codes differently when this skill is
+          loaded. Tone: imperative, like internal coding DNA.
+       8 
+       9 ```markdown
+      10 ---
+     … +200 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/script-templates.md)
+  ⎿  Wrote 260 lines to
+     .claude/skills/lesson-to-skill/references/script-templates.md
+      1 # Script Templates — validate.py and Utilities
+      2 
+      3 > Templates for deterministic validation scripts bundled with eac
+        h skill package.
+      4 
+      5 ## validate.py — Primary Validation Script
+      6 
+      7 This is the core script every skill package MUST include. It chec
+        ks code compliance with the skill's rules using regex and string 
+        matching.
+      8 
+      9 ### Full Template
+     … +250 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/eval-template.md)
+  ⎿  Wrote 125 lines to
+     .claude/skills/lesson-to-skill/references/eval-template.md
+       1 # Eval Queries Template — Trigger Testing
+       2 
+       3 > How to design eval-queries.json for systematic trigger testing
+         .
+       4 
+       5 ## Template
+       6 
+       7 ```json
+       8 {
+       9   "skill": "rs-{slug}",
+      10   "description_version": "1.0",
+     … +115 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/quality-gates.md)
+  ⎿  Wrote 126 lines to
+     .claude/skills/lesson-to-skill/references/quality-gates.md
+       1 # Quality Gates — 3-Layer Validation for Lesson-Skills
+       2 
+       3 > Complete validation protocol ensuring every skill package meet
+         s production quality.
+       4 
+       5 ## Layer 1: Deterministic (automated)
+       6 
+       7 Run these checks programmatically. All must pass.
+       8 
+       9 ### Package structure
+      10 ```bash
+     … +116 lines (ctrl+o to expand)
+
+● Now the remaining files — batch processing, differentiation guide, example
+  exemplars, and the scripts.
+
+● Write(.claude/skills/lesson-to-skill/references/batch-processing.md)
+  ⎿  Wrote 101 lines to
+     .claude/skills/lesson-to-skill/references/batch-processing.md
+      1 # Batch Processing — Scaling to ~4,740 Lessons
+      2 
+      3 > Strategy for processing all Rocketseat lesson transcripts into 
+        skill packages at scale.
+      4 
+      5 ## Overview
+      6 
+      7 37 courses x ~128 lessons/course = ~4,740 transcripts to process.
+         Each produces a complete skill package. Batch processing needs a
+         pilot-first approach to avoid generating 4,740 bad skills.
+      8 
+      9 ## Workflow
+     … +91 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/differentiation-guide.md)
+  ⎿  Wrote 82 lines to
+     .claude/skills/lesson-to-skill/references/differentiation-guide.md
+      1 # Differentiation Guide — Managing 37+ rs-* Skills
+      2 
+      3 > How to prevent description overlap and selection confusion when
+         dozens of skills share the rs-* prefix.
+      4 
+      5 ## The Problem
+      6 
+      7 When 37+ skills share the `rs-` prefix and similar TypeScript/Jav
+        aScript domains, Claude's selection becomes unpredictable. Two sk
+        ills with overlapping descriptions will compete — sometimes one w
+        ins, sometimes the other, sometimes neither triggers.
+      8 
+      9 ## Strategy: Domain Partitioning
+     … +72 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/references/example-exemplars.md)
+  ⎿  Wrote 128 lines to
+     .claude/skills/lesson-to-skill/references/example-exemplars.md
+       1 # Example Exemplars — Gold Standard from Pilot Skill
+       2 
+       3 > The rs-nomenclatura-de-variaveis skill is the gold standard. S
+         tudy it before creating new skills.
+       4 
+       5 ## Complete Package Structure
+       6 
+       7 ```
+       8 rs-nomenclatura-de-variaveis/
+       9 ├── SKILL.md                 # 96 lines, 6 rules, 5 templates, 8
+          anti-patterns
+      10 └── (no scripts/references/assets — v2, pre-full-package)
+     … +118 lines (ctrl+o to expand)
+
+● Write(.claude/skills/lesson-to-skill/scripts/validate-package.py)
+  ⎿  Wrote 388 lines to
+     .claude/skills/lesson-to-skill/scripts/validate-package.py
+       1 #!/usr/bin/env python3
+       2 """
+       3 Validates a complete lesson-to-skill package.
+       4 
+       5 Checks:
+       6   1. Required files exist (SKILL.md, validate.py, eval-queries.j
+         son, before.ts, after.ts)
+       7   2. SKILL.md has valid frontmatter (name, description, kebab-ca
+         se, no <>, single-line)
+       8   3. Description is 200-400 chars with required patterns
+       9   4. eval-queries.json has 20+ queries in correct format
+      10   5. Cross-validation: validate.py finds violations in before.ts
+         , passes after.ts
+     … +378 lines (ctrl+o to expand)
+
+● Now let me check the final count and update the task file to point to the
+  skill.
+
+● Bash(find
+      /home/talle/projects/development/mmos-main/.claude/skills/lesson-to-skill
+      -type f | while read f; do echo "$(wc -l < "$f") $f"; done | sort -rn &&
+      echo "--…)
+  ⎿  388 /home/talle/projects/development/mmos-main/.claude/skills/lesson-t
+     o-skill/scripts/validate-package.py
+     260 /home/talle/projects/development/mmos-main/.claude/skills/lesson-t
+     … +15 lines (ctrl+o to expand)
+
+● Pronto. Skill completa.
+
+  Comparação final
+
+  ┌────────────┬────────────────────┬──────────────────────────────────────┐
+  │            │   skill-creator    │           lesson-to-skill            │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Arquivos   │ 12                 │ 11                                   │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Linhas     │ ~1,825             │ 1,931                                │
+  │ total      │                    │                                      │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ SKILL.md   │ 152 lines          │ 217 lines                            │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ References │ 7 arquivos         │ 9 arquivos                           │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Scripts    │ 3 (init, validate, │ 1 (validate-package)                 │
+  │            │  package)          │                                      │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ AC/DoD     │ Implícito nas      │ Explícito no SKILL.md                │
+  │            │ fases              │                                      │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │            │                    │ skill-templates.md +                 │
+  │ Templates  │ No SKILL.md body   │ script-templates.md +                │
+  │            │                    │ eval-template.md                     │
+  ├────────────┼────────────────────┼──────────────────────────────────────┤
+  │ Exemplar   │ exemplars.md       │ example-exemplars.md com piloto      │
+  │            │ genérico           │ completo                             │
+  └────────────┴────────────────────┴──────────────────────────────────────┘
+
+  Estrutura criada
+
+  .claude/skills/lesson-to-skill/
+  ├── SKILL.md                              # 217 lines — AC, DoD, 9 fases,
+  decision tree
+  ├── scripts/
+  │   └── validate-package.py               # 388 lines — valida pacote completo
+  ├── references/
+  │   ├── extraction-rules.md               # O que extrair / não extrair
+  │   ├── description-engineering.md         # Trigger science para
+  lesson-skills
+  │   ├── skill-templates.md                # Templates SKILL.md por tipo
+  │   ├── script-templates.md               # Template validate.py com exemplos
+  │   ├── eval-template.md                  # Template eval-queries.json
+  │   ├── quality-gates.md                  # 3 camadas de validação
+  │   ├── example-exemplars.md              # Piloto como gold standard
+  │   ├── batch-processing.md               # Escalar ~4,740 aulas
+  │   └── differentiation-guide.md          # Gerenciar 37+ rs-* skills
+  └── examples/                             # (vazio — preenchido pelo piloto)
+
+  A task lesson-to-skill.md no aios-core ainda existe mas agora é redundante — a
+   skill /lesson-to-skill é a fonte de verdade.
+
+✻ Churned for 8m 6s

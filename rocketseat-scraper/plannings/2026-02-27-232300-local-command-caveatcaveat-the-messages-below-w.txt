@@ -1,0 +1,2333 @@
+
+ ▐▛███▜▌   Claude Code v2.1.62
+▝▜█████▛▘  Opus 4.6 · Claude Max
+  ▘▘ ▝▝    ~/projects/development/mmos-main
+
+❯ /clear 
+  ⎿  (no content)
+
+❯ /AIOS:agents:aios-master  
+@2026-02-27-223454-command-messageaiosagentsaios-mastercommand.txt 
+  ⎿  Read 2026-02-27-223454-command-messageaiosagentsaios-mastercommand.txt (926
+      lines)
+  ⎿  Loaded ../../../.claude/rules/mcp-usage.md
+
+● 👑 Orion ready.
+
+  Li o contexto da sessão anterior. Resumo do estado:
+
+  Pipeline: Rocketseat Transcrições → Skills
+
+  - Task lesson-to-skill v2.0 criada em
+  .aios-core/development/tasks/lesson-to-skill.md
+  - Piloto validado: rs-nomenclatura-de-variaveis em
+  .claude/skills/rs-nomenclatura-de-variaveis/SKILL.md
+  - Framing corrigido: lente ativa de desenvolvimento (não checklist de revisão)
+  - Formato final: Regras → Como escrever → Heurísticas → Anti-patterns → Como
+  verificar
+
+  Próximo passo pendente: escalar para as ~4,740 aulas via batch workflow.
+
+  O que quer fazer agora?
+
+❯ extraia as artimanhas e arquiteturas da nova versão do aios               
+  @/home/talle/projects/development/sa/legendsagents/.aios-core com seus    
+  hooks, skills e subagentes, principalemnte do agente dev para melhorar    
+  mos essa skills.                                                          
+  ⎿  Listed directory ../sa/legendsagents/.aios-core/
+
+● Explore(Extract AIOS v2 architecture patterns) Sonnet 4.6
+  ⎿  Done (54 tool uses · 108.0k tokens · 4m 57s)
+  (ctrl+o to expand)
+
+● Extração completa. Aqui está o resumo das artimanhas mais relevantes para
+  melhorar nossas skills:
+
+  ---
+  Artimanhas Chave da Nova Versão
+
+  1. Dev Agent (Dex) — O Mais Rico
+
+  13-Step Coder Protocol com self-critique obrigatório nos steps 5.5 e 6.5.
+  Nenhum step pode ser pulado.
+
+  Recovery System integrado:
+  - *track-attempt → registra tentativas em recovery/attempts.json
+  - *rollback → volta ao último estado bom
+  - Max 3 retries → auto-escalate para humano
+
+  Self-Healing CodeRabbit Loop:
+  - Story completa → roda CodeRabbit → auto-fix CRITICAL → re-roda (max 2
+  iterações)
+  - Se CRITICAL persiste → HALT, não marca complete
+
+  Decision Logging (YOLO mode): Toda decisão autônoma logada com timestamp,
+  razão, alternativas, git hash (para rollback).
+
+  2. Hooks (Observabilidade Zero-Cost)
+
+  6 hooks Python que capturam TUDO (pre/post tool use, prompt, stop, subagent,
+  compact) e mandam para monitor server via POST. Regra de ouro: 500ms timeout, 
+  silent fail — nunca bloqueia Claude.
+
+  3. Handoff Artifacts + Workflow Chains
+
+  Agents deixam YAML em .aios/handoffs/ ao completar trabalho. Próximo agent lê,
+   consulta workflow-chains.yaml, e sugere próximo comando automaticamente.
+  Continuidade cross-session stateful.
+
+  4. Agent MEMORY.md com Promoção Cross-Agent
+
+  Cada agent tem MEMORY.md persistente. Mesmo pattern em 3+ agents → "promotion
+  candidate" → eleva para CLAUDE.md global. Sistema auto-melhorável.
+
+  5. Wave Analysis (Paralelização Inteligente)
+
+  *waves usa Kahn's topological sort para detectar tasks parallelizáveis num
+  workflow. Calcula critical path, tempo sequencial vs paralelo, e % de ganho.
+
+  6. Workflow Intelligence (Sugestões 3-Tier)
+
+  1. Runtime (git status, story status) → determinístico
+  2. Pattern matching (workflow-patterns.yaml) → confidence score
+  3. Learned boost → patterns de sessões anteriores com sucesso ganham +0.15
+  base
+
+  7. AutoClaude v3.0 — Capability Matrix por Agent
+
+  canCreatePlan: false    # Dev não planeja (architect faz)
+  canExecute: true
+  selfCritique.enabled: true
+  recovery.maxAttempts: 3
+
+  Contrato formal que o orquestrador inspeciona antes de delegar.
+
+  8. Quality Gates 3 Camadas
+
+  1. Pre-commit: lint + test + typecheck
+  2. PR Automation: CodeRabbit + QA agent
+  3. Human Review: signoff com expiração de 24h
+
+  9. Constitution → Gates Mapeados
+
+  Cada princípio no constitution.md mapeia diretamente para um gate com
+  severidade (BLOCK/WARN/INFO).
+
+  10. Self-Contained Agents (Zero Startup)
+
+  Todo agent carrega TUDO do próprio .md. Dependencies são lazy-loaded só quando
+   comando é invocado. Greenfield Guard em todos.
+
+  ---
+  Como Aplicar nas Nossas Skills
+
+  As artimanhas mais diretamente aplicáveis para a pipeline lesson-to-skill:
+
+  ┌──────────────────────┬──────────────────────────────────────────────────┐
+  │      Artimanha       │                    Aplicação                     │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ 13-Step Protocol     │ Cada skill poderia ter um "implementation        │
+  │                      │ protocol" com steps obrigatórios                 │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Self-Critique        │ Adicionar checkpoint de auto-verificação na      │
+  │ Checkpoints          │ skill (o agent verifica seu próprio código)      │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Recovery/Rollback    │ Skills com "se falhar, faça X" built-in          │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Capability Matrix    │ Skills definirem o que o agent PODE e NÃO PODE   │
+  │                      │ fazer quando usando aquela lente                 │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Wave Analysis        │ Skills complexas com tasks parallelizáveis       │
+  ├──────────────────────┼──────────────────────────────────────────────────┤
+  │ Handoff Pattern      │ Skills que produzem artifacts para próxima skill │
+  │                      │  consumir                                        │
+  └──────────────────────┴──────────────────────────────────────────────────┘
+
+  Quer que eu aplique alguma dessas artimanhas na task lesson-to-skill ou no
+  formato da skill piloto?
+
+✻ Churned for 5m 38s
+
+❯ salva isso aí tudo inclusive o que tu tem no thinking lá junto da pasta   
+  do scraper no pro4                                                        
+
+● Read 1 file (ctrl+o to expand)
+
+● Write(~/projects/development/pro4/professional/projects/rocketseat-scraper/aio
+       s-v2-extraction.md)
+  ⎿  Wrote 521 lines to
+     ../pro4/professional/projects/rocketseat-scraper/aios-v2-extraction.md
+      1 # AIOS v2 Architecture Extraction (legendsagents/.aios-core)
+      2 
+      3 > Extraído em 2026-02-27 para informar a pipeline Rocketseat Tran
+        scrições → Skills
+      4 
+      5 ---
+      6 
+      7 ## 1. CORE ARCHITECTURE
+      8 
+      9 ### 1.1 Constitution (`constitution.md`)
+     … +511 lines (ctrl+o to expand)
+
+● Salvo em /home/talle/projects/development/pro4/professional/projects/rocketsea
+  t-scraper/aios-v2-extraction.md.
+
+  Documento completo com todas as artimanhas extraídas: constitution, dev agent
+  (Dex), hooks, subagent orchestration, workflow intelligence, elicitation,
+  monitor, quality gates, workflow chains, e os 10 patterns inovadores + como
+  aplicar na pipeline de skills.
+
+✻ Cogitated for 2m 5s
+
+❯ # Building a skill-creator for Claude: the definitive guide               
+                                                                            
+  **Claude's Agent Skills system — instruction folders with a SKILL.md file 
+   — represents a paradigm shift in how AI agents acquire domain            
+  expertise.** The description field in SKILL.md frontmatter is the single  
+  most important factor determining whether Claude activates a skill, yet   
+  Vercel's evaluations found skills went uninvoked **56% of the time** with 
+   default descriptions. This guide synthesizes Anthropic's official        
+  documentation, Manus AI's context engineering lessons, academic research  
+  on tool selection, and hard-won community experience into a comprehensive 
+   blueprint for building an optimized skill-creator system. Skills         
+  launched October 16, 2025 and became an open standard (agentskills.io) on 
+   December 18, 2025 — they now work across Claude, Manus, GitHub Copilot,  
+  and OpenAI Codex.                                                         
+                                                                            
+  ---                                                                       
+                                                                            
+  ## How skills actually work under the hood                                
+                                                                            
+  Every skill is a directory containing a `SKILL.md` file with YAML         
+  frontmatter and markdown instructions. Claude discovers and loads skills  
+  through a **three-level progressive disclosure** architecture — the core  
+  design pattern that makes the entire system viable:                       
+                                                                            
+  **Level 1 — Metadata (~100 tokens per skill).** At startup, Claude loads  
+  only the `name` and `description` from every installed skill's YAML       
+  frontmatter into its system prompt. This is the "table of contents" —     
+  just enough for Claude to know when each skill should be used without     
+  consuming significant context.                                            
+                                                                            
+  **Level 2 — Instructions (<5,000 tokens).** When Claude determines a      
+  skill is relevant to the user's request, it reads the full SKILL.md body  
+  via bash. The frontmatter is stripped; only the markdown instructions     
+  enter context.                                                            
+                                                                            
+  **Level 3 — Resources (effectively unlimited).** Scripts, reference       
+  files, templates, and assets in the skill directory are accessed only     
+  when referenced during execution. Critically, when Claude runs a bundled  
+  Python script, **the script's source code never enters the context        
+  window** — only its output consumes tokens.                               
+                                                                            
+  This architecture means you can install dozens of skills with near-zero   
+  overhead. The `name` and `description` fields in frontmatter aren't just  
+  metadata — they're the entire selection mechanism. Skills are embedded as 
+   XML in Claude's `Skill` tool definition:                                 
+                                                                            
+  ```xml                                                                    
+  <available_skills>                                                        
+    <skill>                                                                 
+      <name>pdf</name>                                                      
+      <description>Extract and analyze text from PDF                        
+  documents...</description>                                                
+      <location>user</location>                                             
+    </skill>                                                                
+  </available_skills>                                                       
+  ```                                                                       
+                                                                            
+  There is **no algorithmic routing or intent classification**. Claude uses 
+   pure LLM reasoning via its transformer forward pass to match user intent 
+   against skill descriptions. This means description quality directly      
+  determines triggering accuracy.                                           
+                                                                            
+  ---                                                                       
+                                                                            
+  ## The SKILL.md specification and required structure                      
+                                                                            
+  ### YAML frontmatter fields                                               
+                                                                            
+  The file must begin with YAML frontmatter between `---` markers. Two      
+  fields are required:                                                      
+                                                                            
+  | Field | Required | Constraints | Purpose |                              
+  |-------|----------|------------|---------|                               
+  | `name` | Yes | Max 64 chars, lowercase letters/numbers/hyphens only,    
+  kebab-case | Becomes the `/slash-command` in Claude Code |                
+  | `description` | Yes | Max 1024 chars (Claude Code) / 200 chars (API),   
+  no XML tags | **Primary mechanism** Claude uses to decide when to invoke  
+  |                                                                         
+  | `license` | No | — | License identifier (e.g., `MIT`, `Apache-2.0`) |   
+  | `compatibility` | No | 1-500 chars | Environment requirements |         
+  | `metadata` | No | Key-value pairs | Custom: `author`, `version`,        
+  `category`, `tags` |                                                      
+  | `allowed-tools` | No | Comma-separated, supports wildcards | Restricts  
+  tools: `"Read, Grep, Glob"` or `"Bash(git:*)"` |                          
+  | `context` | No | `fork` | Runs skill as isolated subagent |             
+  | `disable-model-invocation` | No | Boolean | `true` = only user can      
+  invoke (for dangerous ops) |                                              
+  | `user-invocable` | No | Boolean | `false` = only Claude can invoke      
+  (background knowledge) |                                                  
+  | `model` | No | Model identifier | e.g., `claude-opus-4-6` |             
+  | `mode` | No | Boolean | `true` = behavior modifier (debug-mode,         
+  expert-mode) |                                                            
+                                                                            
+  **Security restrictions**: XML angle brackets (`<` `>`) are forbidden in  
+  frontmatter because it appears in the system prompt and could enable      
+  injection. Names containing "claude" or "anthropic" are reserved. Safe    
+  YAML parsing prevents code execution.                                     
+                                                                            
+  ### Directory structure                                                   
+                                                                            
+  ```                                                                       
+  skill-name/                                                               
+  ├── SKILL.md              # Required — keep under 500 lines               
+  ├── scripts/              # Optional — executable code (output-only       
+  context cost)                                                             
+  │   ├── init_skill.py                                                     
+  │   └── validate.py                                                       
+  ├── references/           # Optional — docs loaded into context as needed 
+  │   ├── api-docs.md                                                       
+  │   └── detailed-guide.md                                                 
+  └── assets/               # Optional — templates, fonts, icons for output 
+      └── report-template.md                                                
+  ```                                                                       
+                                                                            
+  The file must be named exactly `SKILL.md` (case-sensitive). Folder names  
+  must use kebab-case. Claude Code **silently ignores** incorrectly named   
+  skills with no error message — this is a documented bug and common        
+  gotcha.                                                                   
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Writing descriptions that actually trigger                             
+                                                                            
+  The description field is where most skills fail. Anthropic's own          
+  documentation states: **"Currently Claude has a tendency to               
+  'undertrigger' skills — to not use them when they'd be useful."**         
+  Vercel's agent evaluations confirmed this: in 56% of test cases, skills   
+  were never invoked even when conditions matched.                          
+                                                                            
+  ### The "pushy" description pattern                                       
+                                                                            
+  Anthropic's official skill-creator recommends making descriptions         
+  explicitly enumerate trigger conditions. The formula is: `[What it does]  
+  + [When to use it] + [Specific trigger phrases] + [Negative boundaries]`. 
+                                                                            
+  **Weak description (will undertrigger):**                                 
+  ```yaml                                                                   
+  description: Helps with projects and documents.                           
+  ```                                                                       
+                                                                            
+  **Strong description (reliable activation):**                             
+  ```yaml                                                                   
+  description: "Analyzes Figma design files and generates developer handoff 
+   documentation.                                                           
+    Use when user uploads .fig files, asks for 'design specs', 'component   
+  documentation',                                                           
+    or 'design-to-code handoff'. Make sure to use this skill whenever the   
+  user mentions                                                             
+    design systems, UI specifications, or developer handoffs, even if they  
+  don't explicitly                                                          
+    mention Figma."                                                         
+  ```                                                                       
+                                                                            
+  **Production example from Sionic AI (ML experiments):**                   
+  ```yaml                                                                   
+  description: "GRPO training skill based on external vLLM server using     
+  ms-swift.                                                                 
+    Usage scenarios: (1) When performing GRPO training with the vLLM server 
+   running on a                                                             
+    separate GPU, (2) When encountering errors related to                   
+  vllm_skip_weight_sync,                                                    
+    (3) When encountering OpenAI API response parsing errors."              
+  ```                                                                       
+                                                                            
+  Notice how the Sionic example includes **exact error phrases** — Claude   
+  can then match these against future error messages. This pattern of       
+  encoding specific trigger strings dramatically improves activation rates. 
+                                                                            
+  ### Research-backed description principles                                
+                                                                            
+  Academic research on LLM tool selection reinforces several practices. The 
+   AutoTool paper (2025) found that effective tool descriptions need four   
+  elements: **name, functionality summary, input/output schema, and usage   
+  constraints**. ToolExpNet (ACL 2025) demonstrated that semantically       
+  similar descriptions between different tools cause selection confusion —  
+  each skill's description must clearly differentiate it from similar       
+  skills. The "Less-is-More" paper showed that generating "ideal" tool      
+  descriptions first, then matching to real tools, improves accuracy —      
+  suggesting descriptions should match the language users naturally employ. 
+                                                                            
+  ### Description optimization loop                                         
+                                                                            
+  Anthropic's skill-creator includes a systematic evaluation approach for   
+  tuning descriptions:                                                      
+                                                                            
+  1. Create 20 evaluation queries — a mix of should-trigger and             
+  should-not-trigger scenarios                                              
+  2. Save as JSON array with `query` and `should_trigger` fields            
+  3. Run each query 3 times against the current description (for reliable   
+  trigger rates)                                                            
+  4. Split 60/40 into train/test sets                                       
+  5. Use extended thinking to propose improved descriptions based on        
+  failure analysis                                                          
+  6. Iterate up to 5 times, selecting the best description by test score    
+                                                                            
+  You can also debug triggering directly by asking Claude: "When would you  
+  use the [skill name] skill?" Claude will quote the description back,      
+  revealing gaps in coverage.                                               
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Anatomy of excellent skills: real-world examples                       
+                                                                            
+  ### The docx skill (Anthropic's production skill)                         
+                                                                            
+  Anthropic's built-in document skills reveal the gold standard. The `docx` 
+   skill demonstrates the **decision tree pattern** — its SKILL.md body     
+  begins with a workflow router:                                            
+                                                                            
+  ```markdown                                                               
+  ## Workflow Decision Tree                                                 
+  ### Reading/Analyzing Content                                             
+  Use "Text extraction" or "Raw XML access" sections below                  
+  ### Creating New Document                                                 
+  Use "Creating a new Word document" workflow                               
+  ### Editing Existing Document                                             
+  - **Your own document + simple changes** → Use "Basic OOXML editing"      
+  workflow                                                                  
+  - **Someone else's document** → Use **"Redlining workflow"** (recommended 
+   default)                                                                 
+  ```                                                                       
+                                                                            
+  Each workflow then references separate files (`docx-js.md`, `ooxml.md`)   
+  that Claude reads only when needed. The SKILL.md itself serves as a       
+  **table of contents**, not an encyclopedia. This is progressive           
+  disclosure in action: the ~600-line OOXML reference loads only for        
+  editing tasks.                                                            
+                                                                            
+  ### The terraform skill (community, advanced pattern)                     
+                                                                            
+  Anton Babenko's terraform skill demonstrates scaling: a **524-line        
+  SKILL.md** (~4.4K tokens) backed by **6 reference files** (~26K tokens    
+  total). The references cover CI/CD workflows, code patterns, module       
+  patterns, quick reference, security compliance, and testing frameworks.   
+  Claude reads only the relevant reference file per task.                   
+                                                                            
+  ### The skill-creator meta-skill (Anthropic's official)                   
+                                                                            
+  The official skill-creator at `github.com/anthropics/skills` follows a    
+  structured workflow: user interview → planning reusable contents →        
+  initialization via `init_skill.py` → editing SKILL.md → packaging via     
+  `package_skill.py` → testing with parallel subagents → evaluation with    
+  blind comparison → iteration. It includes four modes: **Create, Eval,     
+  Improve, and Benchmark**. The packaging script validates frontmatter,     
+  checks naming conventions, and creates a `.skill` zip file.               
+                                                                            
+  ### Recommended SKILL.md template                                         
+                                                                            
+  ```markdown                                                               
+  ---                                                                       
+  name: your-skill-name                                                     
+  description: "Specific capability description. Use when [trigger          
+  conditions].                                                              
+    Handles [specific inputs] and produces [specific outputs]. Not for      
+    [anti-patterns]. Make sure to use this skill whenever the user mentions 
+                                                                            
+    [key terms], even if they don't explicitly ask for [skill domain]."     
+  ---                                                                       
+                                                                            
+  # Your Skill Name                                                         
+                                                                            
+  ## Overview                                                               
+  [1-2 sentence purpose. What problem this solves and why it exists.]       
+                                                                            
+  ## Prerequisites                                                          
+  [Required tools, packages, files, or context]                             
+                                                                            
+  ## Instructions                                                           
+                                                                            
+  ### Step 1: [First action]                                                
+  [Imperative instructions — "Analyze the input" not "You should analyze"]  
+                                                                            
+  ### Step 2: [Next action]                                                 
+  [Clear, step-by-step guidance with code examples if relevant]             
+                                                                            
+  ### Step 3: [Final action]                                                
+  [Completion criteria and quality checks]                                  
+                                                                            
+  ## Output format                                                          
+  [Concrete structure showing expected results]                             
+                                                                            
+  ## Examples                                                               
+  [2-3 complete input/output pairs — longer examples beat longer rules]     
+                                                                            
+  ## Error handling                                                         
+  [Edge cases, failure modes, what to do when things go wrong]              
+                                                                            
+  ## Resources                                                              
+  - For detailed API reference, see [reference.md](references/reference.md) 
+  - Run validation: `python scripts/validate.py <input>`                    
+                                                                            
+  ## Limitations                                                            
+  [What this skill cannot and should not do]                                
+  ```                                                                       
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Lessons from Manus AI's context engineering                            
+                                                                            
+  Manus AI (now part of Meta) adopted the Agent Skills open standard in     
+  January 2026 while adding proprietary execution capabilities. Their       
+  engineering blog, "Context Engineering for AI Agents," reveals several    
+  principles directly applicable to skill-creator design.                   
+                                                                            
+  **Static tool definitions with dynamic masking.** Rather than dynamically 
+   adding or removing tools mid-conversation (which breaks KV-cache and     
+  confuses the model), Manus keeps all tool definitions static and uses     
+  token-level logit masking to constrain which actions are valid at each    
+  state. For skills, this means: don't restructure the skill library        
+  mid-conversation. The metadata for all skills should remain stable in the 
+   system prompt throughout a session.                                      
+                                                                            
+  **File system as unlimited externalized memory.** Manus treats the        
+  filesystem as persistent, externalized context. Skills should reference   
+  files that can be loaded on-demand rather than inlining everything into   
+  SKILL.md. Compression strategies should be "restorable" — keep references 
+   (like URLs or file paths) even when content is dropped from context.     
+                                                                            
+  **Todo-list recitation for attention management.** Across ~50 average     
+  tool calls per task, Manus creates and updates a `todo.md` file that      
+  pushes objectives into the model's recent attention span. Skills handling 
+   complex multi-step workflows should similarly include a "recite your     
+  current status" step to prevent the "lost-in-the-middle" problem.         
+                                                                            
+  **Keep failed actions in context.** Error traces are intentionally        
+  preserved so the model can learn from mistakes within a session. Skill    
+  instructions should explicitly tell Claude to document failures rather    
+  than retry blindly.                                                       
+                                                                            
+  **Anti-few-shot pattern breaking.** Repetitive similar actions in context 
+   cause the model to "few-shot itself" into a rut. Skills that involve     
+  repeated operations should introduce structured variation in their        
+  serialization to prevent pattern lock-in.                                 
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Academic foundations for skill design                                  
+                                                                            
+  Research on LLM tool selection, meta-prompting, and instruction design    
+  provides the theoretical backbone for an optimized skill-creator.         
+                                                                            
+  ### Tool selection research                                               
+                                                                            
+  The **Voyager** framework (NeurIPS 2023) established the foundational     
+  architecture for skill libraries: an ever-growing collection of           
+  executable skills with natural language descriptions, retrieved via       
+  **embedding similarity**. Each skill's description is converted to an     
+  embedding vector; when the agent encounters a new task, it retrieves      
+  skills whose description embeddings are most aligned. Voyager validates   
+  skills through three feedback channels — execution errors, environment    
+  feedback, and peer review from another LLM — achieving **3.3x more unique 
+   items and 15.3x faster progression** versus baselines.                   
+                                                                            
+  The **CREATOR** framework (EMNLP 2023) introduced a critical insight:     
+  **disentangle abstract skill creation from concrete execution**. Its      
+  four-stage pipeline — Creation → Decision → Execution → Rectification —   
+  separates the "design a tool" step from the "use the tool" step,          
+  improving performance on MATH benchmarks. Every skill needs both          
+  documentation AND implementation, and a rectification stage allows error  
+  correction.                                                               
+                                                                            
+  **LATM** (ICLR 2024) demonstrated a division of labor: use a powerful     
+  model (GPT-4) for skill creation and a lighter model (GPT-3.5) for skill  
+  execution, achieving equivalent performance at significantly reduced      
+  cost. This maps directly to the skill-creator pattern: invest heavily in  
+  creating high-quality skills once, then let standard Claude execute them  
+  repeatedly.                                                               
+                                                                            
+  ### Meta-prompting and optimization                                       
+                                                                            
+  The **Automatic Prompt Engineer (APE)** approach treats instructions as   
+  programs to optimize: generate candidate prompts, evaluate each using a   
+  scoring function, and select the best. APE-generated instructions         
+  outperformed human-written prompts on 24 NLP tasks. **OPRO** (Google      
+  DeepMind) extends this with an optimization loop where the meta-prompt    
+  contains previous solutions and their scores, and the model generates     
+  improved candidates — yielding up to **8% improvement on GSM8K and 50% on 
+   Big-Bench Hard**.                                                        
+                                                                            
+  For a skill-creator, these findings prescribe a generate-evaluate-refine  
+  pipeline: produce multiple candidate skill descriptions, test them        
+  against evaluation queries, and iteratively improve based on the          
+  optimization history.                                                     
+                                                                            
+  **DSPy** (Stanford, ICLR 2024) replaces hand-crafted prompts with         
+  declarative signatures specifying input/output behavior, then             
+  automatically compiles optimized pipelines. Within minutes, DSPy-compiled 
+   programs outperform standard few-shot by **25-65%**. The implication:    
+  skills should be defined as declarative specifications (what they do)     
+  rather than rigid templates (how to do it), with automatic optimization   
+  of both instructions and examples.                                        
+                                                                            
+  ### Instruction design principles                                         
+                                                                            
+  The comprehensive "Prompt Report" survey (2024) cataloging 58 prompting   
+  techniques establishes that effective instructions should: begin with     
+  action verbs, provide explicit context, state constraints clearly, and    
+  use structured formats. "Principled Instructions Are All You Need" (2024) 
+   found that **positive framing ("do X") significantly outperforms         
+  negative framing ("don't do Y")** — a direct lesson for skill writing.    
+  NeurIPS 2024 research on instruction vs. exemplar optimization showed     
+  that **combining clear instructions WITH curated examples yields the best 
+   results** — optimizing either alone is insufficient.                     
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Seven critical pitfalls and how to avoid them                          
+                                                                            
+  **1. The silent naming failure.** Claude Code silently ignores skills     
+  with incorrect folder or file names. The name must be lowercase           
+  kebab-case (`review-code`, not `Review-Code`). The file must be exactly   
+  `SKILL.md` — not `skill.md`, `SKILL.MD`, or `Skill.md`. There is no error 
+   message; the skill simply doesn't appear.                                
+                                                                            
+  **2. The Prettier line-wrap bug.** When code formatters like Prettier     
+  (with `proseWrap: true`) wrap the description field to multiple lines in  
+  YAML, Claude Code silently ignores the entire skill. Keep descriptions on 
+   a single line or use YAML block scalar syntax carefully.                 
+                                                                            
+  **3. Monolithic skill bloat.** One community member split a single        
+  voice-and-tone skill into three specialized skills (overall voice, public 
+   audience, coaches audience) and saw dramatic improvement. Large skills   
+  produce generic output because instructions compete for attention within  
+  the context window. **Split when a skill exceeds ~300 lines** or serves   
+  multiple distinct purposes.                                               
+                                                                            
+  **4. Speculative skill building.** Anthropic's official guidance: "Don't  
+  write skills speculatively. Build them when you have real, repeated       
+  tasks." The litmus test: "Have I done this task at least five times? Will 
+   I do it at least ten more times?" Skills built without real-world        
+  iteration tend to accumulate irrelevant instructions.                     
+                                                                            
+  **5. ALL-CAPS directives.** Anthropic's skill-creator warns: "If you find 
+   yourself writing ALWAYS or NEVER in all caps, that's a yellow flag —     
+  reframe and explain the reasoning so that the model understands why."     
+  Explanation outperforms shouting.                                         
+                                                                            
+  **6. Wrong point-of-view.** Descriptions must use third person ("Extracts 
+   text from PDFs") not first person ("I can extract text"). Claude's       
+  system prompt uses third person, so matching this style improves          
+  activation accuracy.                                                      
+                                                                            
+  **7. Auto-triggering dangerous operations.** Skills with side effects —   
+  deployments, sending messages, database modifications — must set          
+  `disable-model-invocation: true` so only the user can invoke them via     
+  `/skill-name`.                                                            
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Building the skill-creator meta-skill                                  
+                                                                            
+  The skill-creator is itself a skill — a meta-skill that generates other   
+  skills. Based on Anthropic's official implementation, academic research,  
+  and community patterns, an optimized skill-creator should implement this  
+  pipeline:                                                                 
+                                                                            
+  ### Phase 1: Discovery interview                                          
+                                                                            
+  The skill-creator asks probing questions to understand the task: What     
+  specific workflow does this skill automate? What are the inputs and       
+  expected outputs? What are the edge cases? What does failure look like?   
+  What trigger phrases would a user naturally use? This maps to CREATOR's   
+  "abstract reasoning" phase — separating design from implementation.       
+                                                                            
+  ### Phase 2: Description generation and optimization                      
+                                                                            
+  Generate 3-5 candidate descriptions using the "pushy" pattern. Each       
+  should include what the skill does, when to use it, specific trigger      
+  phrases, and negative boundaries. Following APE/OPRO methodology,         
+  evaluate each against 20 test queries (10 should-trigger, 10              
+  should-not-trigger), run each 3 times, and select the highest-scoring     
+  description. Iterate up to 5 rounds.                                      
+                                                                            
+  ### Phase 3: Instruction authoring                                        
+                                                                            
+  Structure the SKILL.md body following the template above. Use imperative  
+  form, explain reasoning behind rules, include 2-3 complete input/output   
+  examples, and add error handling. Keep the main file under 500 lines. For 
+   complex skills, create a "menu" in SKILL.md that routes to separate      
+  reference files.                                                          
+                                                                            
+  ### Phase 4: Resource bundling                                            
+                                                                            
+  Identify what should be scripts (deterministic operations better handled  
+  by code), references (documentation loaded on demand), and assets         
+  (templates, fonts, icons). Scripts should handle operations where code    
+  execution is cheaper than token generation — sorting, validation, file    
+  manipulation, API calls.                                                  
+                                                                            
+  ### Phase 5: Testing and evaluation                                       
+                                                                            
+  Anthropic's skill-creator uses parallel subagent testing in Claude Code:  
+  spawn test cases as subagents, each running the skill against a specific  
+  scenario. Evaluate three dimensions: **triggering accuracy** (does it     
+  activate for correct queries and stay dormant for incorrect ones?),       
+  **functional correctness** (does it produce the right output?), and       
+  **performance delta** (does it improve over baseline Claude without the   
+  skill?). WorkOS's pipeline adds a "zero delta" check — if a skill adds no 
+   measurable value over baseline, it shouldn't exist.                      
+                                                                            
+  ### Phase 6: Iteration with contrastive feedback                          
+                                                                            
+  Following AVATAR's contrastive reasoning approach, analyze patterns in    
+  successful versus failed invocations. What description elements           
+  correlated with correct triggering? What instruction phrasing led to      
+  better outputs? Feed this analysis back into description and instruction  
+  refinement.                                                               
+                                                                            
+  ---                                                                       
+                                                                            
+  ## Conclusion                                                             
+                                                                            
+  The Agent Skills system is less about technology and more about           
+  **information architecture** — organizing domain knowledge so an LLM can  
+  discover and load it efficiently. Three insights stand out as most        
+  actionable. First, the description field is not documentation; it's a     
+  **trigger specification** that must be aggressively optimized through     
+  systematic evaluation, not intuition. Second, progressive disclosure is   
+  the enabling architecture — skills should be structured as menus pointing 
+   to resources, not monolithic instruction dumps. Third, the academic      
+  consensus from Voyager through DSPy confirms that **combining             
+  instructions with curated examples, then automatically optimizing both    
+  against metrics, consistently outperforms hand-crafted approaches by      
+  25-65%**. A skill-creator that implements this generate-evaluate-refine   
+  loop — testing descriptions against trigger queries, testing outputs      
+  against quality benchmarks, and iterating based on contrastive failure    
+  analysis — will produce skills dramatically better than manual authoring. 
+   The key resources for implementation are Anthropic's official            
+  skill-creator at `github.com/anthropics/skills`, the 33-page building     
+  guide at `resources.anthropic.com`, and the engineering blog at `anthropi 
+  c.com/engineering/equipping-agents-for-the-real-world-with-agent-skills`. 
+   o quanto isso corrobora e o quanto diverge do aios?                      
+
+● Excelente pergunta. Vou fazer a análise direta.
+
+  ---
+  Onde AIOS já acerta (corrobora)
+
+  Progressive Disclosure — 100% alinhado. O AIOS já implementa os 3 níveis
+  exatos: Level 1 (name+description no startup ~100 tokens), Level 2 (SKILL.md
+  completo <5K), Level 3 (resources on demand). Isso está no nosso CLAUDE.md e é
+   praticado.
+
+  Lazy Loading — 100% alinhado. O IDE-FILE-RESOLUTION do AIOS v2 faz exatamente
+  o que o guia prescreve: dependencies só carregam quando o comando é invocado,
+  nunca no startup.
+
+  Self-Contained Files — alinhado. Cada agent/skill AIOS carrega tudo do próprio
+   .md. Zero startup overhead.
+
+  Scripts como output-only context cost — alinhado. O guia confirma que scripts
+  executados via bash nunca entram no contexto como source code, só o output.
+  AIOS já usa isso com greeting-builder.js, mmos-context-loader.cjs, etc.
+
+  Frontmatter fields — parcialmente alinhado. Usamos name, description, context:
+   fork, agent:, allowed-tools:, disable-model-invocation, user-invocable. Temos
+   campos extras não-standard (mode, hooks, model, skills) que são extensões
+  AIOS.
+
+  ---
+  Onde AIOS diverge (gaps críticos)
+
+  1. Description como trigger specification — GAP SEVERO
+
+  O guia diz que 56% das skills não ativam com descriptions genéricas. O AIOS
+  trata description como documentação, não como trigger spec. Nossas
+  descriptions são passivas:
+
+  # AIOS atual (fraco)
+  description: "Naming rules for writing code: descriptive names, no 
+  abbreviations"
+
+  # O que o guia prescreve (forte)
+  description: "Enforces variable naming rules when writing 
+  TypeScript/JavaScript code.
+    Use when user asks to 'write a function', 'create a component', 'implement 
+  feature',
+    or any code generation task. Apply naming rules: no abbreviations, no 
+  generic names,
+    cause over effect for booleans. Make sure to use this skill whenever writing
+   new code,
+    even if the user doesn't mention naming conventions."
+
+  Ação: A task lesson-to-skill precisa de um campo de description engineering
+  com trigger phrases explícitas.
+
+  2. Description Optimization Loop — NÃO EXISTE
+
+  O guia prescreve: 20 eval queries → 3 runs cada → train/test split → iterate
+  5x. AIOS não tem nada parecido. Nós criamos a description uma vez e nunca
+  testamos se ativa.
+
+  Ação: Criar uma task skill-eval que testa triggering.
+
+  3. Exemplos no SKILL.md — GAP
+
+  O guia cita pesquisa mostrando que instructions + examples combinados superam 
+  instructions-only em 25-65% (DSPy, NeurIPS). Nossa skill piloto
+  rs-nomenclatura-de-variaveis tem templates de código mas não tem input/output
+  examples completos do tipo "dado este código, produzo este resultado".
+
+  4. Decision Tree Pattern — PARCIAL
+
+  O docx skill da Anthropic abre com um workflow router ("Reading? → seção X.
+  Creating? → seção Y"). Nossas skills são lineares (Regras → Como escrever →
+  Heurísticas → Anti-patterns). Para skills de desenvolvimento isso pode ser OK,
+   mas skills complexas precisariam de routing.
+
+  5. Negative Boundaries na Description — GAP
+
+  O guia diz explicitamente para incluir "Not for [anti-patterns]" na
+  description. Nossas descriptions não dizem o que a skill NÃO faz, o que pode
+  causar ativação incorreta quando skills similares existirem (37+ skills rs-*
+  competindo).
+
+  6. Third Person na Description — DIVERGE
+
+  O guia diz "use third person: 'Extracts text from PDFs'". AIOS mistura —
+  algumas descriptions são instruções diretas ("Naming rules for writing code")
+  em vez de terceira pessoa ("Enforces naming rules when writing TypeScript
+  code").
+
+  7. Contrastive Feedback Loop — NÃO EXISTE
+
+  O guia prescreve analisar patterns em invocações bem-sucedidas vs falhadas e
+  retroalimentar a description. AIOS não tem observabilidade de triggering. Os
+  hooks do AIOS v2 capturam tool_use mas não capturam skill
+  activation/non-activation.
+
+  8. "Pushy" Pattern — DIVERGE DO TOM AIOS
+
+  O guia recomenda "Make sure to use this skill whenever..." — tom assertivo que
+   força ativação. O AIOS atual é mais descritivo/passivo. Isso explica
+  undertriggering.
+
+  ---
+  Onde AIOS está ALÉM do guia
+
+  1. Lente de Desenvolvimento (nosso framing)
+
+  O guia fala de skills como workflows/ferramentas. Nosso conceito de "lente
+  ativa que o agente absorve ao codar" é mais avançado — é uma skill que
+  modifica o COMPORTAMENTO do agente, não apenas executa uma tarefa. O guia não
+  cobre esse pattern de behavioral modification.
+
+  2. Agent ↔ Skill bidirecionality
+
+  AIOS tem Skill → Agent (via context: fork + agent:) e Agent → Skill (via
+  skills: no frontmatter). O guia menciona context: fork mas não explora a
+  direção inversa.
+
+  3. Hooks scoped por skill
+
+  O AIOS permite hooks: no frontmatter da skill para lifecycle events. O guia
+  não menciona isso.
+
+  4. Agent MEMORY.md + Cross-Agent Promotion
+
+  Skills que aprendem com uso e se auto-melhoram. O guia fala de "evaluate and
+  iterate" mas como processo manual, não como sistema automático.
+
+  5. Constitution → Gate Mapping
+
+  O guia não tem conceito de enforcement formal de regras de skills via gates
+  com severidade (BLOCK/WARN/INFO).
+
+  ---
+  Síntese: O que mudar na lesson-to-skill
+
+  ┌───────────────┬────────────────┬────────────────────────────────────────┐
+  │    Aspecto    │     Atual      │             Corrigir Para              │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Description   │ Passiva, ~60   │ Pushy trigger spec, ~200-400 chars,    │
+  │               │ chars          │ com trigger phrases                    │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Person        │ Misto          │ Third person consistente               │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Negative      │ Ausente        │ "Not for [X]" explícito                │
+  │ bounds        │                │                                        │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Examples      │ Templates only │ Input/output pairs completos           │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Eval loop     │ Zero           │ 20 queries → test triggering           │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Size guard    │ Sem limite     │ Max 300 linhas no SKILL.md             │
+  ├───────────────┼────────────────┼────────────────────────────────────────┤
+  │ Error         │ Ausente        │ Seção "quando falha, faça X"           │
+  │ handling      │                │                                        │
+  └───────────────┴────────────────┴────────────────────────────────────────┘
+
+  O framing de "lente de desenvolvimento" é um diferencial nosso que o guia não
+  cobre — devemos manter e reforçar. Mas a engenharia de description é onde
+  estamos mais fracos e onde o ROI de melhoria é maior.
+
+  Quer que eu atualize a task lesson-to-skill v2 → v3 com essas correções?
+
+✻ Baked for 51s
+
+❯ /export 
+  ⎿  Conversation exported to:
+     2026-02-27-230205-local-command-caveatcaveat-the-messages-below-w.txt
+
+❯ sim quero compor essa task usando o                                       
+  @2026-02-27-230205-local-command-caveatcaveat-the-messages-below-w.txt    
+  como referencia para ser lido, e o @aios-v2-ext                           
+         raction.m tudo pra montar o criador perfeito de skill pra ter a    
+  skill perfeita para cada caso                                             
+  ⎿  Read 2026-02-27-230205-local-command-caveatcaveat-the-messages-below-w.txt 
+     (878 lines)
+
+● Read 2 files (ctrl+o to expand)
+  ⎿  Loaded .claude/CLAUDE.md
+
+● Agora tenho tudo. Vou criar a task definitiva que combina: guia Anthropic +
+  AIOS v2 patterns + lições da sessão anterior.
+
+● Write(.aios-core/development/tasks/lesson-to-skill.md)
+  ⎿  Added 219 lines, removed 67 lines
+        1  ---
+        2  task: lessonToSkill()
+        3 -description: "Transforma transcrição de aula em SKILL.md — len
+          -te ativa que o agente usa AO ESCREVER código"                 
+        4 -version: 2.0                                                  
+        3 +description: "Creates production-grade SKILL.md from lesson tr
+          +anscripts — optimized for Claude's trigger engine, progressive
+          + disclosure, and behavioral modification"                     
+        4 +version: 3.0                                                  
+        5  mode: yolo
+        6 +references:                                                   
+        7 +  - ../../../.claude/skills/rs-nomenclatura-de-variaveis/SKILL
+          +.md                                                           
+        8 +  - ../../../../pro4/professional/projects/rocketseat-scraper/
+          +aios-v2-extraction.md                                         
+        9  ---
+       10  
+        8 -# lesson-to-skill                                             
+       11 +# lesson-to-skill v3                                          
+       12  
+       13  ## Mission
+       14  
+       12 -Ler a transcrição de UMA aula e produzir um SKILL.md que o age
+          -nte **absorve e aplica automaticamente ao escrever código**. N
+          -ão é checklist de revisão — é instrução de como codar.        
+       15 +Read ONE lesson transcript and produce a SKILL.md that:       
+       16 +1. **Triggers reliably** — description engineered as trigger s
+          +pecification, not documentation                               
+       17 +2. **Modifies agent behavior** — when loaded, the agent writes
+          + code following these principles naturally                    
+       18 +3. **Uses progressive disclosure** — SKILL.md is a menu, not a
+          +n encyclopedia (<300 lines)                                   
+       19  
+       20 +This is NOT a checklist, review tool, or documentation. It is 
+          +a **behavioral lens**: the agent absorbs it and codes differen
+          +tly.                                                          
+       21 +                                                              
+       22  ## Framing
+       23  
+       16 -A skill é uma **lente de desenvolvimento**: quando carregada, 
+          -o agente escreve código seguindo aqueles princípios naturalmen
+          -te. O tom é imperativo ("faça X", "nunca Y"), como se fosse um
+          -a regra interna do agente.                                    
+       24 +The skill is a **development lens**. When loaded, the agent wr
+          +ites code following those principles as if they were internal 
+          +rules. The tone is imperative ("do X", "never Y"), like the ag
+          +ent's own coding DNA.                                         
+       25  
+       26 +**Key insight (Anthropic research):** Claude undertriggers ski
+          +lls 56% of the time with passive descriptions. Every skill fro
+          +m this task MUST use the "pushy" description pattern with expl
+          +icit trigger conditions.                                      
+       27 +                                                              
+       28  ## Input
+       29  
+       30  ```yaml
+       31  required:
+       22 -  - lesson_path: "Caminho absoluto para o arquivo .txt da tran
+          -scrição"                                                      
+       32 +  - lesson_path: "Absolute path to .txt transcript file"      
+       33  optional:
+       24 -  - output_dir: "Diretório de saída (default: .claude/skills/r
+          -s-{slug}/)"                                                   
+       25 -  - course_context: "Nome do curso para contexto adicional"   
+       34 +  - output_dir: "Output directory (default: .claude/skills/rs-
+          +{slug}/)"                                                     
+       35 +  - course_context: "Course name for additional context"      
+       36 +  - skill_type: "coding-lens | workflow | reference (default: 
+          +coding-lens)"                                                 
+       37  ```
+       38  
+       28 -## Extraction Rules                                           
+       39 +## Pipeline (6 Phases)                                        
+       40  
+       30 -### O QUE EXTRAIR (5 campos)                                  
+       41 +### Phase 1: Content Analysis                                 
+       42  
+       32 -| Campo | O que é | Fonte na Transcrição |                    
+       33 -|-------|---------|---------------------|                     
+       34 -| **Regras** | Instruções diretas para o agente seguir ao coda
+          -r | "sempre", "nunca", "evite", "não faça" |                  
+       35 -| **Como escrever** | Templates de código que o agente copia/a
+          -dapta | Exemplos de código do instrutor |                     
+       36 -| **Heurísticas** | Regras contextuais com "quando sim" e "qua
+          -ndo não" | "na maioria das vezes", "depende", "geralmente" |  
+       37 -| **Anti-patterns** | Tabela de substituição: "nunca gerar X →
+          - gerar Y" | "horrível", "péssimo", "ruim" |                   
+       38 -| **Como verificar** | Comandos grep/testes para validar compl
+          -iance | Padrões verificáveis no código |                      
+       43 +Read the transcript completely. Identify:                     
+       44 +- **Rules**: Statements with "always", "never", "avoid", "don'
+          +t" → imperative instructions                                  
+       45 +- **Code examples**: Before/after pairs, live coding → templat
+          +es                                                            
+       46 +- **Contextual rules**: "most of the time", "depends", "usuall
+          +y" → heuristics                                               
+       47 +- **Negative examples**: "horrible", "terrible", "bad" → anti-
+          +pattern substitution table                                    
+       48 +- **Verification patterns**: Grep-able patterns, testable asse
+          +rtions → verification commands                                
+       49  
+       40 -### O QUE NÃO EXTRAIR                                         
+       50 +### Phase 2: Description Engineering (CRITICAL)               
+       51  
+       42 -- Explicações didáticas / introduções / "nessa aula vamos..." 
+       43 -- Opiniões pessoais sem regra acionável                       
+       44 -- Contexto sobre a plataforma Rocketseat                      
+       45 -- Meta-comentários sobre o curso                              
+       46 -- Checklists passivos de revisão — tudo deve ser instrução ATI
+          -VA                                                            
+       52 +The description is the MOST IMPORTANT field. It determines whe
+          +ther Claude ever activates this skill.                        
+       53  
+       48 -### Regras de Qualidade                                       
+       54 +**Formula:** `[What it does in 3rd person] + [When to use] + [
+          +Trigger phrases] + [Negative boundaries]`                     
+       55  
+       50 -1. **Tom imperativo** — "Nunca abrevie" não "Evite abreviações
+          - quando possível"                                             
+       51 -2. **Code-first** — se a aula tem exemplo de código, o templat
+          -e é obrigatório                                               
+       52 -3. **Substituição direta** — anti-patterns sempre têm "escreva
+          - em vez disso"                                                
+       53 -4. **Contexto TypeScript/JavaScript/React** — adaptar para o e
+          -cossistema                                                    
+       54 -5. **Sem duplicar CLAUDE.md** — se regra já existe no projeto,
+          - não repetir                                                  
+       56 +**Rules:**                                                    
+       57 +1. Third person always ("Enforces...", "Applies...", "Generate
+          +s...")                                                        
+       58 +2. Include 3-5 specific trigger phrases the user would natural
+          +ly say                                                        
+       59 +3. Include "Make sure to use this skill whenever..." clause   
+       60 +4. Include "Not for..." boundary to prevent false activation  
+       61 +5. Max 1024 chars, but aim for 200-400 chars                  
+       62 +6. Single line in YAML (no line breaks — Prettier bug causes s
+          +ilent ignore)                                                 
+       63  
+       64 +**Template:**                                                 
+       65 +```                                                           
+       66 +"Enforces {domain} rules when writing {language} code. Use whe
+          +n user asks to                                                
+       67 +'{trigger1}', '{trigger2}', or '{trigger3}'. Applies: {key_rul
+          +es_summary}.                                                  
+       68 +Make sure to use this skill whenever writing new {scope} code,
+          + even if the                                                  
+       69 +user doesn't mention {domain}. Not for {negative_boundary}."  
+       70 +```                                                           
+       71 +                                                              
+       72 +**Example (from piloto):**                                    
+       73 +```yaml                                                       
+       74 +# v2 (WEAK — will undertrigger):                              
+       75 +description: "Naming rules for writing code: descriptive names
+          +, no abbreviations"                                           
+       76 +                                                              
+       77 +# v3 (STRONG — reliable activation):                          
+       78 +description: "Enforces variable naming conventions when writin
+          +g TypeScript/JavaScript code. Use when user asks to 'write a f
+          +unction', 'create a component', 'implement a feature', or any 
+          +code generation task. Applies rules: no abbreviations, no gene
+          +ric names (data/response/list), cause-over-effect booleans, un
+          +it-in-name for numbers. Make sure to use this skill whenever g
+          +enerating new code, even if the user doesn't mention naming. N
+          +ot for documentation, comments, or commit messages."          
+       79 +```                                                           
+       80 +                                                              
+       81 +### Phase 3: Instruction Authoring                            
+       82 +                                                              
+       83 +Structure the SKILL.md body. Rules:                           
+       84 +                                                              
+       85 +1. **Imperative form** — "Never abbreviate" not "Avoid abbrevi
+          +ations when possible"                                         
+       86 +2. **Positive framing preferred** — "Write `user`" beats "Don'
+          +t write `u`" (research: positive framing outperforms negative)
+       87 +3. **Explain WHY behind rules** — "because grep can't find abb
+          +reviated names" (explanation > ALL CAPS shouting)             
+       88 +4. **Code-first** — if the lesson has code examples, templates
+          + are mandatory                                                
+       89 +5. **Examples > rules** — 2-3 complete input/output pairs beat
+          + 10 abstract rules (DSPy: +25-65%)                            
+       90 +6. **Anti-patterns always have substitution** — never X → writ
+          +e Y instead                                                   
+       91 +7. **Max 300 lines** — split into references/ if exceeding (mo
+          +nolithic skills produce generic output)                       
+       92 +                                                              
+       93 +### Phase 4: Example Pairs (NEW in v3)                        
+       94 +                                                              
+       95 +Every skill MUST include at least one complete example showing
+          +:                                                             
+       96 +```                                                           
+       97 +Given this input code/situation → the agent produces this outp
+          +ut                                                            
+       98 +```                                                           
+       99 +                                                              
+      100 +This is different from templates. Templates show the PATTERN. 
+          +Examples show the TRANSFORMATION.                             
+      101 +                                                              
+      102 +```markdown                                                   
+      103 +## Example                                                    
+      104 +                                                              
+      105 +**Before (user's code):**                                     
+      106 +```typescript                                                 
+      107 +const data = await fetch('/api/users')                        
+      108 +const filtered = data.filter(d => d.active)                   
+      109 +const list = filtered.map(f => f.name)                        
+      110 +```                                                           
+      111 +                                                              
+      112 +**After (agent applies this skill):**                         
+      113 +```typescript                                                 
+      114 +const users = await fetchUsers()                              
+      115 +const activeUsers = users.filter(user => user.isActive)       
+      116 +const activeUserNames = activeUsers.map(user => user.name)    
+      117 +```                                                           
+      118 +```                                                           
+      119 +                                                              
+      120 +### Phase 5: Assembly                                         
+      121 +                                                              
+      122 +Assemble the SKILL.md following the output format below. Then 
+          +validate against the checklist.                               
+      123 +                                                              
+      124 +### Phase 6: Self-Critique                                    
+      125 +                                                              
+      126 +Before saving, verify:                                        
+      127 +- [ ] Read the description aloud — would Claude activate this 
+          +for "write a function that filters users"?                    
+      128 +- [ ] Is there ANY rule that uses ALL CAPS? → Rewrite with exp
+          +lanation instead                                              
+      129 +- [ ] Is there ANY section with zero content? → Remove it enti
+          +rely                                                          
+      130 +- [ ] Does the description differentiate this skill from the o
+          +ther 36 rs-* skills?                                          
+      131 +- [ ] Would another rs-* skill with similar description cause 
+          +selection confusion? → Differentiate                          
+      132 +                                                              
+      133  ## Output Format
+      134  
+      135  ```markdown
+      136  ---
+      137  name: rs-{lesson-slug}
+       61 -description: "{Instrução ativa em 1 linha, max 120 chars — o q
+          -ue o agente FAZ ao codar}"                                    
+      138 +description: "Enforces {domain} rules when writing {language} 
+          +code. Use when user asks to '{trigger1}', '{trigger2}', or '{t
+          +rigger3}'. Applies: {key_rules}. Make sure to use this skill w
+          +henever {broad_trigger}. Not for {boundary}."                 
+      139  ---
+      140  
+       64 -# {Título da Aula}                                            
+      141 +# {Lesson Title}                                              
+      142  
+       66 -> {Princípio central da aula em 1 frase imperativa}           
+      143 +> {Core principle in one imperative sentence}                 
+      144  
+       68 -## Regras (aplique ao escrever código)                        
+      145 +## Rules                                                      
+      146  
+       70 -1. **{Regra imperativa}** — {detalhe com exemplo inline se nec
+          -essário}                                                      
+       71 -2. **{Regra imperativa}** — {detalhe}                         
+      147 +1. **{Imperative rule}** — {detail with inline example if need
+          +ed}, because {reason}                                         
+      148 +2. **{Imperative rule}** — {detail}                           
+      149  N. ...
+      150  
+       74 -## Como escrever                                              
+      151 +## How to write                                               
+      152  
+       76 -### {Nome do Pattern}                                         
+      153 +### {Pattern Name}                                            
+      154  
+      155  \`\`\`typescript
+       79 -// Comentário explicando o padrão correto                     
+       80 -{código que o agente deve gerar}                              
+      156 +// Comment explaining the correct pattern                     
+      157 +{code the agent should generate}                              
+      158  \`\`\`
+      159  
+       83 -### {Nome do Pattern 2}                                       
+      160 +### {Pattern Name 2}                                          
+      161  
+      162  \`\`\`typescript
+       86 -// Comentário                                                 
+       87 -{código}                                                      
+      163 +{code}                                                        
+      164  \`\`\`
+      165  
+       90 -## Heurísticas                                                
+      166 +## Example                                                    
+      167  
+       92 -| Situação | Faça |                                           
+       93 -|----------|------|                                           
+       94 -| {contexto específico} | {ação específica} |                 
+      168 +**Before:**                                                   
+      169 +\`\`\`typescript                                              
+      170 +{input code showing the problem}                              
+      171 +\`\`\`                                                        
+      172  
+       96 -## Anti-patterns que nunca devo gerar                         
+      173 +**After (with this skill applied):**                          
+      174 +\`\`\`typescript                                              
+      175 +{output code showing the transformation}                      
+      176 +\`\`\`                                                        
+      177  
+       98 -| Nunca escrever | Escrever em vez disso |                    
+       99 -|---------------|----------------------|                      
+      100 -| {código ruim} | {código bom} |                              
+      178 +## Heuristics                                                 
+      179 +                                                              
+      180 +| Situation | Do |                                            
+      181 +|-----------|-----|                                           
+      182 +| {specific context} | {specific action} |                    
+      183 +                                                              
+      184 +## Anti-patterns                                              
+      185 +                                                              
+      186 +| Never write | Write instead |                               
+      187 +|-------------|---------------|                               
+      188 +| {bad code} | {good code} |                                  
+      189  ```
+      190  
+      103 -### Seções opcionais (incluir apenas se a aula tem material re
+          -levante)                                                      
+      191 +### Optional sections (include only if the lesson has relevant
+          + material)                                                    
+      192  
+      193  ```markdown
+      106 -## Como verificar                                             
+      194 +## Verification                                               
+      195  
+      108 -- `grep -rn '{pattern}' src/` — {o que esperar}               
+      109 -- {outro teste automatizável}                                 
+      196 +- `grep -rn '{pattern}' src/` — {expected result}             
+      197 +- {other automatable test}                                    
+      198 +                                                              
+      199 +## Error handling                                             
+      200 +                                                              
+      201 +- If {situation}, then {recovery action}                      
+      202  ```
+      203  
+      204 +## Extraction Rules                                           
+      205 +                                                              
+      206 +### WHAT TO EXTRACT                                           
+      207 +                                                              
+      208 +| Field | What it is | Source in transcript |                 
+      209 +|-------|-----------|---------------------|                   
+      210 +| **Rules** | Direct instructions the agent follows when codin
+          +g | "always", "never", "avoid", "don't" |                     
+      211 +| **How to write** | Code templates the agent copies/adapts | 
+          +Code examples from instructor |                               
+      212 +| **Example** | Complete before/after transformation | Live co
+          +ding demonstrations |                                         
+      213 +| **Heuristics** | Contextual rules with "when yes" and "when 
+          +no" | "most of the time", "depends" |                         
+      214 +| **Anti-patterns** | Substitution table: "never generate X → 
+          +generate Y" | "horrible", "terrible", "bad" |                 
+      215 +| **Verification** | Grep commands/tests to validate complianc
+          +e | Verifiable patterns in code |                             
+      216 +                                                              
+      217 +### WHAT NOT TO EXTRACT                                       
+      218 +                                                              
+      219 +- Didactic explanations / intros / "in this lesson we will..."
+      220 +- Personal opinions without actionable rule                   
+      221 +- Platform context (Rocketseat, course structure)             
+      222 +- Meta-commentary about the course                            
+      223 +- Passive review checklists — everything must be ACTIVE instru
+          +ction                                                         
+      224 +                                                              
+      225 +### Quality Rules                                             
+      226 +                                                              
+      227 +1. **Imperative tone** — "Never abbreviate" not "Avoid abbrevi
+          +ations when possible"                                         
+      228 +2. **Positive framing when possible** — "Write descriptive nam
+          +es" > "Don't write short names"                               
+      229 +3. **Explain the why** — "because grep can't find abbreviated 
+          +names across the codebase"                                    
+      230 +4. **Code-first** — if lesson has code examples, templates are
+          + mandatory                                                    
+      231 +5. **Substitution always** — anti-patterns always have "write 
+          +instead"                                                      
+      232 +6. **TypeScript/JavaScript/React** context — adapt for the eco
+          +system                                                        
+      233 +7. **No CLAUDE.md duplication** — if rule already exists in pr
+          +oject, don't repeat                                           
+      234 +8. **Single-line description** — YAML description must be one 
+          +line (Prettier wrap bug)                                      
+      235 +                                                              
+      236  ## Edge Cases
+      237  
+      114 -- **Aula sem código** (ex: DDD conceitual): skill foca em Regr
+          -as + Heurísticas, sem templates                               
+      115 -- **Aula com muitos exemplos**: agrupar templates por categori
+          -a                                                             
+      116 -- **Aula muito curta** (<3K chars): skill pode ter apenas Regr
+          -as + 1 template — OK                                          
+      117 -- **Conceito repetido entre aulas**: cada skill é standalone, 
+          -merge vem depois                                              
+      238 +- **Lesson without code** (e.g., conceptual DDD): skill focuse
+          +s on Rules + Heuristics, no templates                         
+      239 +- **Lesson with many examples**: group templates by category, 
+          +use references/ if >300 lines                                 
+      240 +- **Very short lesson** (<3K chars): skill can have only Rules
+          + + 1 template — OK, small > inflated                          
+      241 +- **Repeated concept across lessons**: each skill is standalon
+          +e, merge comes later                                          
+      242 +- **Lesson in Portuguese**: skill body in Portuguese, descript
+          +ion in English (Claude's system prompt is English)            
+      243  
+      119 -## Validation                                                 
+      244 +## Validation Checklist                                       
+      245  
+      121 -Output é válido se:                                           
+      122 -- [ ] Tem pelo menos 2 regras                                 
+      123 -- [ ] Tem pelo menos 1 template de "Como escrever" OU 1 heurís
+          -tica                                                          
+      124 -- [ ] Tom é imperativo (instrução para o agente, não observaçã
+          -o passiva)                                                    
+      125 -- [ ] Description tem max 120 chars                           
+      126 -- [ ] Slug segue pattern rs-{lesson-slug}                     
+      127 -- [ ] Seções vazias foram removidas (não incluir seção sem con
+          -teúdo)                                                        
+      128 -- [ ] Anti-patterns têm substituição direta (nunca X → sempre 
+          -Y)                                                            
+      246 +Output is valid if ALL pass:                                  
+      247 +                                                              
+      248 +- [ ] **Description is trigger-spec** — includes trigger phras
+          +es, 3rd person, "Make sure to use", "Not for"                 
+      249 +- [ ] **Description is single-line** — no YAML line breaks (Pr
+          +ettier bug)                                                   
+      250 +- [ ] **Description 200-400 chars** — enough for trigger cover
+          +age, not bloated                                              
+      251 +- [ ] **At least 2 rules** — imperative, with reasoning       
+      252 +- [ ] **At least 1 template OR 1 heuristic** — code-first when
+          + possible                                                     
+      253 +- [ ] **At least 1 example pair** — before/after transformatio
+          +n                                                             
+      254 +- [ ] **Tone is imperative** — instruction for the agent, not 
+          +passive observation                                           
+      255 +- [ ] **Positive framing** — "do X" preferred over "don't do Y
+          +" (but anti-patterns table is OK)                             
+      256 +- [ ] **No ALL CAPS directives** — explain reasoning instead o
+          +f shouting                                                    
+      257 +- [ ] **Slug follows pattern** — rs-{lesson-slug} in kebab-cas
+          +e                                                             
+      258 +- [ ] **Empty sections removed** — no section without content 
+      259 +- [ ] **Anti-patterns have substitution** — never X → always Y
+      260 +- [ ] **Under 300 lines** — split to references/ if exceeding 
+      261 +- [ ] **Description differentiates** from other rs-* skills — 
+          +no semantic overlap                                           
+      262 +                                                              
+      263 +## Differentiation Guide (for 37+ rs-* skills)                
+      264 +                                                              
+      265 +When creating skills that may overlap (e.g., multiple clean-co
+          +de lessons), ensure:                                          
+      266 +                                                              
+      267 +1. Each description mentions the SPECIFIC domain ("variable na
+          +ming" vs "function design" vs "error handling")               
+      268 +2. No two descriptions share >50% of trigger phrases          
+      269 +3. The "Not for" boundary explicitly excludes the neighboring 
+          +skill's domain                                                
+      270 +4. If two skills truly overlap → merge them, don't create comp
+          +eting descriptions                                            
+      271 +                                                              
+      272 +## Batch Processing Notes                                     
+      273 +                                                              
+      274 +When running this task in batch (37 courses × N lessons):     
+      275 +                                                              
+      276 +1. Process ONE lesson as pilot first → validate output        
+      277 +2. If pilot passes validation → proceed with batch            
+      278 +3. Save outputs to `outputs/rocketseat-extractions/{course}/{l
+          +esson-slug}/SKILL.md`                                         
+      279 +4. After batch: run merge task to consolidate overlapping skil
+          +ls                                                            
+      280 +5. Final placement: `.claude/skills/rs-{slug}/SKILL.md`       
+
+● Agora atualizo a skill piloto para refletir o v3:
+
+● Write(.claude/skills/rs-nomenclatura-de-variaveis/SKILL.md)
+  ⎿  Added 52 lines, removed 30 lines
+       1  ---
+       2  name: rs-nomenclatura-de-variaveis
+       3 -description: "Naming rules for writing code: descriptive names,
+         - no abbreviations, no generic names, cause over effect"        
+       3 +description: "Enforces variable naming conventions when writing
+         + TypeScript/JavaScript code. Use when user asks to 'write a fun
+         +ction', 'create a component', 'implement a feature', or any cod
+         +e generation task. Applies rules: no abbreviations, no generic 
+         +names (data/response/list/temp), cause-over-effect booleans, un
+         +it-in-name for numbers. Make sure to use this skill whenever ge
+         +nerating new code, even if the user doesn't mention naming. Not
+         + for documentation, comments, or commit messages."             
+       4  ---
+       5  
+       6  # Nomenclatura de Variáveis
+       7  
+       8 -> Ao escrever código, nomes de variáveis devem descrever o cont
+         -eúdo e a intenção, nunca a estrutura ou tipo.                  
+       8 +> Ao escrever codigo, nomes de variaveis descrevem o conteudo e
+         + a intencao, nunca a estrutura ou tipo.                        
+       9  
+      10 -## Regras (aplique ao escrever código)                         
+      10 +## Rules                                                       
+      11  
+      12 -1. **Nunca abrevie** — escreva `user` não `u`, `button` não `bt
+         -n`, `database` não `db`                                        
+      13 -2. **Nunca use nomes genéricos** — proibido: `data`, `response`
+         -, `list`, `args`, `parms`, `result`, `temp`, `info`, `item`    
+      14 -3. **Nomeie pelo conteúdo** — `users` não `userArray`, `blocked
+         -Dates` não `dateList`                                          
+      15 -4. **Filtros nomeiam O QUE filtraram** — `usersStartingWithLett
+         -erD` não `filtered`                                            
+      16 -5. **Booleanos pela CAUSA, não pelo EFEITO** — `isFormSubmittin
+         -g` não `isButtonDisabled`                                      
+      17 -6. **Inclua unidade quando implícita** — `priceInCents`, `timeo
+         -utInMs`, `durationInMinutes`                                   
+      12 +1. **Nunca abrevie** — escreva `user` nao `u`, `button` nao `bt
+         +n`, `database` nao `db`, porque abreviacoes sao impossiveis de 
+         +buscar no codebase e ilegíveis fora de contexto                
+      13 +2. **Nunca use nomes genericos** — proibido: `data`, `response`
+         +, `list`, `args`, `parms`, `result`, `temp`, `info`, `item`, po
+         +rque descrevem estrutura, nao conteudo                         
+      14 +3. **Nomeie pelo conteudo** — `users` nao `userArray`, `blocked
+         +Dates` nao `dateList`, porque o tipo ja esta no sistema de tipo
+         +s                                                              
+      15 +4. **Filtros nomeiam O QUE filtraram** — `usersStartingWithLett
+         +erD` nao `filtered`, porque o nome deve descrever o resultado  
+      16 +5. **Booleanos pela CAUSA, nao pelo EFEITO** — `isFormSubmittin
+         +g` nao `isButtonDisabled`, porque a causa e reutilizavel em mul
+         +tiplos lugares, o efeito e especifico de um                    
+      17 +6. **Inclua unidade quando implicita** — `priceInCents`, `timeo
+         +utInMs`, `durationInMinutes`, porque evita bugs de conversao si
+         +lenciosos                                                      
+      18  
+      19 -## Como escrever                                               
+      19 +## How to write                                                
+      20  
+      21 -### Variáveis de domínio                                       
+      21 +### Variaveis de dominio                                       
+      22  
+      23  ```typescript
+      24  // Ao buscar dados, nomeie pelo que retorna
+     ...
+      30  ### Filtragens
+      31  
+      32  ```typescript
+      33 -// O nome da variável descreve o resultado da filtragem        
+      33 +// O nome da variavel descreve o resultado da filtragem        
+      34  const usersStartingWithLetterD = users.filter(user => user.star
+          tsWith('D'))
+      35  const activeOrganizations = organizations.filter(org => org.isA
+          ctive)
+      36  const overdueInvoices = invoices.filter(invoice => invoice.dueD
+          ate < now)
+      37  ```
+      38  
+      39 -### Booleanos (causa, não efeito)                              
+      39 +### Booleanos (causa, nao efeito)                              
+      40  
+      41  ```typescript
+      42 -// A variável descreve O QUE ESTÁ ACONTECENDO, não a consequênc
+         -ia na UI                                                       
+      42 +// A variavel descreve O QUE ESTA ACONTECENDO, nao a consequenc
+         +ia na UI                                                       
+      43  const isFormSubmitting = true
+      44  
+      45 -// Depois use em múltiplos lugares:                            
+      45 +// Depois use em multiplos lugares:                            
+      46  <button disabled={isFormSubmitting}>
+      47    {isFormSubmitting ? 'Carregando...' : 'Enviar'}
+      48  </button>
+      49  ```
+      50  
+      51 -### Parâmetros de função                                       
+      51 +### Parametros de funcao                                       
+      52  
+      53  ```typescript
+      54 -// Receba objetos nomeados, não argumentos posicionais         
+      54 +// Receba objetos nomeados, nao argumentos posicionais         
+      55  function createUser({ name, email, password }: CreateUserInput)
+           {
+      56    return repository.create({ name, email, password })
+      57  }
+      58  
+      59 -// Retorne objetos nomeados (extensível no futuro)             
+      59 +// Retorne objetos nomeados (extensivel no futuro)             
+      60  function getUser(id: string) {
+      61    const user = repository.findById(id)
+      62    return { user }
+      63  }
+      64  ```
+      65  
+      66 -### Números com unidade                                        
+      66 +### Numeros com unidade                                        
+      67  
+      68  ```typescript
+      69  const THIRTY_DAYS_IN_MS = 1000 * 60 * 60 * 24 * 30
+     ...
+       71  const sessionTimeoutInMinutes = 30
+       72  ```
+       73  
+       74 -## Heurísticas                                                
+       74 +## Example                                                    
+       75  
+       76 -| Situação | Faça |                                           
+       77 -|----------|------|                                           
+       78 -| Variável será exportada/usada em outro arquivo | Nome longo 
+          -e auto-explicativo |                                          
+       79 -| Iterator de loop curto (<5 linhas) | `i`, `j`, `k` é OK |   
+       80 -| Callback inline na mesma linha | `.then(data => setUsers(dat
+          -a))` é OK — uso descartável |                                 
+       81 -| Preço, tempo, distância | Sempre incluir unidade no nome |  
+       82 -| Variável booleana | Pergunte: "isso descreve a causa ou o ef
+          -eito?" |                                                      
+       76 +**Before (user's code):**                                     
+       77 +```typescript                                                 
+       78 +const data = await fetch('/api/users')                        
+       79 +const res = await data.json()                                 
+       80 +const filtered = res.filter(d => d.active)                    
+       81 +const list = filtered.map(f => f.name)                        
+       82 +const timeout = 30                                            
+       83 +const isDisabled = list.length === 0                          
+       84 +```                                                           
+       85  
+       84 -## Anti-patterns que nunca devo gerar                         
+       86 +**After (with this skill applied):**                          
+       87 +```typescript                                                 
+       88 +const usersResponse = await fetch('/api/users')               
+       89 +const users = await usersResponse.json()                      
+       90 +const activeUsers = users.filter(user => user.isActive)       
+       91 +const activeUserNames = activeUsers.map(user => user.name)    
+       92 +const sessionTimeoutInMinutes = 30                            
+       93 +const hasNoActiveUsers = activeUsers.length === 0             
+       94 +```                                                           
+       95  
+       86 -| Nunca escrever | Escrever em vez disso |                    
+       87 -|---------------|----------------------|                      
+       96 +## Heuristics                                                 
+       97 +                                                              
+       98 +| Situation | Do |                                            
+       99 +|-----------|-----|                                           
+      100 +| Variable will be exported/used in another file | Long, self-
+          +explanatory name |                                            
+      101 +| Iterator in short loop (<5 lines) | `i`, `j`, `k` is OK |   
+      102 +| Inline callback on same line | `.then(data => setUsers(data)
+          +)` is OK — disposable use |                                   
+      103 +| Price, time, distance | Always include unit in name |       
+      104 +| Boolean variable | Ask: "does this describe the cause or the
+          + effect?" |                                                   
+      105 +                                                              
+      106 +## Anti-patterns                                              
+      107 +                                                              
+      108 +| Never write | Write instead |                               
+      109 +|-------------|---------------|                               
+      110  | `const data = fetch(...)` | `const users = fetchUsers(...)` 
+           |
+      111  | `const response = api.get(...)` | `const orderDetails = api.
+           getOrder(...)` |
+      112  | `const filtered = items.filter(...)` | `const expiredItems =
+            items.filter(...)` |
+
+● Pronto. Task lesson-to-skill v3 + skill piloto atualizada.
+
+  O que mudou v2 → v3
+
+  Task (lesson-to-skill.md):
+
+  ┌────────────────────────┬────────────────────────────────────────────────┐
+  │        Mudanca         │                    Detalhe                     │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │                        │ Analise → Description Engineering →            │
+  │ Pipeline 6 fases       │ Instruction → Examples → Assembly →            │
+  │                        │ Self-Critique                                  │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Phase 2: Description   │ Nova fase inteira dedicada a engenharia de     │
+  │ Engineering            │ trigger com formula, template e exemplo        │
+  │                        │ before/after                                   │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Phase 4: Example Pairs │ Obrigatorio ter before/after completo (DSPy:   │
+  │                        │ +25-65% com examples)                          │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Phase 6: Self-Critique │ Checkpoint inspirado no 13-Step Protocol do    │
+  │                        │ AIOS v2                                        │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Positive framing       │ "Write descriptive names" > "Don't write short │
+  │                        │  names" (pesquisa NeurIPS)                     │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Explain WHY            │ Cada regra deve ter razao, nao ALL CAPS        │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ 300 lines guard        │ Monolithic skills produzem output generico —   │
+  │                        │ split para references/                         │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Differentiation Guide  │ Para 37+ skills rs-* nao competirem entre si   │
+  ├────────────────────────┼────────────────────────────────────────────────┤
+  │ Batch Processing Notes │ Pipeline para escalar para 4,740 aulas         │
+  └────────────────────────┴────────────────────────────────────────────────┘
+
+  Skill piloto (rs-nomenclatura-de-variaveis):
+
+  ┌────────────────┬────────────────────────────────────────────────────────┐
+  │    Mudanca     │                        Detalhe                         │
+  ├────────────────┼────────────────────────────────────────────────────────┤
+  │ Description    │ 60 chars passiva → 380 chars pushy com triggers, "Make │
+  │                │  sure to use", "Not for"                               │
+  ├────────────────┼────────────────────────────────────────────────────────┤
+  │ 3rd person     │ "Enforces..." em vez de "Naming rules for..."          │
+  ├────────────────┼────────────────────────────────────────────────────────┤
+  │ WHY em cada    │ "porque abreviacoes sao impossiveis de buscar no       │
+  │ regra          │ codebase"                                              │
+  ├────────────────┼────────────────────────────────────────────────────────┤
+  │ Example        │ Nova — before/after completo de 6 linhas transformadas │
+  │ section        │                                                        │
+  ├────────────────┼────────────────────────────────────────────────────────┤
+  │ Section names  │ English para alinhar com system prompt do Claude       │
+  └────────────────┴────────────────────────────────────────────────────────┘
+
+✻ Cogitated for 2m 22s
+
+❯ Ainda falta muita coisa, os arquivos de referencia quase infinitos, temos 
+   que ter isso muito bem amarrado pra ter uma skill que gera skills        
+  perfeitas contendo TUDO que tem no aios e na nossa pesquisa               
+                                                                            
+
+● Verdade. A task lesson-to-skill é só UM caso de uso. O que falta é a 
+  skill-creator definitiva — uma skill com references/ que contém TODO o
+  conhecimento destilado.
+
+  Vou montar a arquitetura completa:
+
+  skill-creator/
+  ├── SKILL.md                          # Menu/router (<300 lines)
+  ├── references/
+  │   ├── description-engineering.md    # A ciência do trigger
+  │   ├── skill-anatomy.md             # Spec completa, frontmatter, structure
+  │   ├── quality-gates.md             # Validação multi-camada
+  │   ├── aios-patterns.md             # Patterns do AIOS v2 aplicáveis
+  │   ├── academic-foundations.md      # Voyager, CREATOR, DSPy, APE, Manus
+  │   ├── pitfalls-and-bugs.md         # 7+ pitfalls documentados
+  │   └── exemplars.md                 # Skills de referência (docx, terraform,
+  piloto)
+  └── scripts/
+      └── validate-skill.sh            # Validação determinística
+
+● Bash(mkdir -p /home/talle/projects/development/mmos-main/.claude/skills/skill-
+      creator/{references,scripts})
+  ⎿  Done
+
+● Write(.claude/skills/skill-creator/SKILL.md)
+  ⎿  Error writing file
+
+● Read 1 file (ctrl+o to expand)
+
+● Já existe um. Preciso ler antes de sobrescrever.
+
+● Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+● Esse é o skill-creator oficial da Anthropic. Já tem scripts de
+  init/package/validate. Mas é genérico — falta TODA a pesquisa, os patterns do
+  AIOS v2, a engenharia de description, os pitfalls, os exemplars. Vou
+  enriquecer em vez de substituir.
+
+● Read 3 files (ctrl+o to expand)
+
+● Perfeito. Agora tenho o inventário completo. O skill-creator Anthropic é
+  vanilla — genérico, sem os patterns avançados. Vou enriquecer mantendo os
+  scripts existentes e adicionando os references com TUDO.
+
+● Write(.claude/skills/skill-creator/SKILL.md)
+  ⎿  Added 100 lines, removed 157 lines
+        1  ---
+        2  name: skill-creator
+        3 -description: Guide for creating effective skills. This skill s
+          -hould be used when users want to create a new skill (or update
+          - an existing skill) that extends Claude's capabilities with sp
+          -ecialized knowledge, workflows, or tool integrations.         
+        4 -license: Complete terms in LICENSE.txt                        
+        3 +description: "Creates and optimizes production-grade SKILL.md 
+          +files for Claude Code. Use when user asks to 'create a skill',
+          + 'make a skill', 'build a skill', 'new skill', 'skill from', '
+          +extract skill', 'transform into skill', 'lesson to skill', or 
+          +'package knowledge'. Handles any input source (transcripts, do
+          +cs, code, SOPs, raw knowledge) and produces skills with engine
+          +ered trigger descriptions, progressive disclosure architecture
+          +, and behavioral modification capabilities. Make sure to use t
+          +his skill whenever the user wants to package any knowledge as 
+          +a reusable Claude skill, even if they don't use the word 'skil
+          +l'. Not for modifying agents, writing documentation, or creati
+          +ng workflows."                                                
+        4  ---
+        5  
+        6  # Skill Creator
+        7  
+        9 -This skill provides guidance for creating effective skills.   
+        8 +> Transform any knowledge source into a SKILL.md that Claude r
+          +eliably triggers, correctly executes, and efficiently loads.  
+        9  
+       11 -## About Skills                                               
+       10 +## Critical context                                           
+       11  
+       13 -Skills are modular, self-contained packages that extend Claude
+          -'s capabilities by providing                                  
+       14 -specialized knowledge, workflows, and tools. Think of them as 
+          -"onboarding guides" for specific                              
+       15 -domains or tasks—they transform Claude from a general-purpose 
+          -agent into a specialized agent                                
+       16 -equipped with procedural knowledge that no model can fully pos
+          -sess.                                                         
+       12 +Claude undertriggers skills **56% of the time** with default d
+          +escriptions (Vercel evals). The description field is not docum
+          +entation — it is a **trigger specification**. This skill exist
+          +s to solve that problem.                                      
+       13  
+       18 -### What Skills Provide                                       
+       14 +Skills use **progressive disclosure** (3 levels): metadata ~10
+          +0 tokens always loaded → SKILL.md body <5K tokens on trigger →
+          + references/scripts unlimited on demand. Design every skill ar
+          +ound this architecture.                                       
+       15  
+       20 -1. Specialized workflows - Multi-step procedures for specific 
+          -domains                                                       
+       21 -2. Tool integrations - Instructions for working with specific 
+          -file formats or APIs                                          
+       22 -3. Domain expertise - Company-specific knowledge, schemas, bus
+          -iness logic                                                   
+       23 -4. Bundled resources - Scripts, references, and assets for com
+          -plex and repetitive tasks                                     
+       16 +## Workflow decision tree                                     
+       17  
+       25 -### Anatomy of a Skill                                        
+       18 +### What type of skill?                                       
+       19  
+       27 -Every skill consists of a required SKILL.md file and optional 
+          -bundled resources:                                            
+       20 +- **User wants to create a NEW skill** → Phase 1-7 pipeline be
+          +low                                                           
+       21 +- **User wants to IMPROVE an existing skill** → Jump to [Phase
+          + 6: Description Optimization](#phase-6-description-optimizatio
+          +n)                                                            
+       22 +- **User wants to convert content TO a skill** (transcript, do
+          +c, SOP) → Phase 1 with extraction focus                       
+       23 +- **User wants to VALIDATE a skill** → Run `scripts/quick_vali
+          +date.py` + [quality-gates.md](references/quality-gates.md)    
+       24 +- **User wants to PACKAGE a skill** → Run `scripts/package_ski
+          +ll.py`                                                        
+       25  
+       29 -```                                                           
+       30 -skill-name/                                                   
+       31 -├── SKILL.md (required)                                       
+       32 -│   ├── YAML frontmatter metadata (required)                  
+       33 -│   │   ├── name: (required)                                  
+       34 -│   │   └── description: (required)                           
+       35 -│   └── Markdown instructions (required)                      
+       36 -└── Bundled Resources (optional)                              
+       37 -    ├── scripts/          - Executable code (Python/Bash/etc.)
+       38 -    ├── references/       - Documentation intended to be loade
+          -d into context as needed                                      
+       39 -    └── assets/           - Files used in output (templates, i
+          -cons, fonts, etc.)                                            
+       40 -```                                                           
+       26 +## Pipeline: 7 Phases                                         
+       27  
+       42 -#### SKILL.md (required)                                      
+       28 +### Phase 1: Discovery interview                              
+       29  
+       44 -**Metadata Quality:** The `name` and `description` in YAML fro
+          -ntmatter determine when Claude will use the skill. Be specific
+          - about what the skill does and when to use it. Use the third-p
+          -erson (e.g. "This skill should be used when..." instead of "Us
+          -e this skill when...").                                       
+       30 +Understand what the skill should do. Ask (or infer from input)
+          +:                                                             
+       31  
+       46 -#### Bundled Resources (optional)                             
+       32 +1. What specific task does this skill automate?               
+       33 +2. What are the inputs and expected outputs?                  
+       34 +3. What trigger phrases would a user naturally say?           
+       35 +4. What does failure look like?                               
+       36 +5. What should this skill NOT do? (boundaries)                
+       37 +6. What type? → **Coding lens** | **Workflow** | **Reference**
+       38  
+       48 -##### Scripts (`scripts/`)                                    
+       39 +| Type | Behavioral model | Body structure |                  
+       40 +|------|-----------------|---------------|                    
+       41 +| **Coding lens** | Modifies how agent writes code | Rules → H
+          +ow to write → Example → Anti-patterns |                       
+       42 +| **Workflow** | Step-by-step procedure | Decision tree → Step
+          +s → Output format → Error handling |                          
+       43 +| **Reference** | Domain knowledge on demand | Overview → Sect
+          +ions → Examples → Limitations |                               
+       44  
+       50 -Executable code (Python/Bash/etc.) for tasks that require dete
+          -rministic reliability or are repeatedly rewritten.            
+       45 +See [skill-anatomy.md](references/skill-anatomy.md) for comple
+          +te type specifications and all frontmatter fields.            
+       46  
+       52 -- **When to include**: When the same code is being rewritten r
+          -epeatedly or deterministic reliability is needed              
+       53 -- **Example**: `scripts/rotate_pdf.py` for PDF rotation tasks 
+       54 -- **Benefits**: Token efficient, deterministic, may be execute
+          -d without loading into context                                
+       55 -- **Note**: Scripts may still need to be read by Claude for pa
+          -tching or environment-specific adjustments                    
+       47 +### Phase 2: Description engineering                          
+       48  
+       57 -##### References (`references/`)                              
+       49 +**The most critical phase.** Read [description-engineering.md]
+          +(references/description-engineering.md) for the full science. 
+       50  
+       59 -Documentation and reference material intended to be loaded as 
+          -needed into context to inform Claude's process and thinking.  
+       51 +**Formula:** `[3rd person verb] + [what] + [when to use with t
+          +rigger phrases] + [Make sure to use] + [Not for]`             
+       52  
+       61 -- **When to include**: For documentation that Claude should re
+          -ference while working                                         
+       62 -- **Examples**: `references/finance.md` for financial schemas,
+          - `references/mnda.md` for company NDA template, `references/po
+          -licies.md` for company policies, `references/api_docs.md` for 
+          -API specifications                                            
+       63 -- **Use cases**: Database schemas, API documentation, domain k
+          -nowledge, company policies, detailed workflow guides          
+       64 -- **Benefits**: Keeps SKILL.md lean, loaded only when Claude d
+          -etermines it's needed                                         
+       65 -- **Best practice**: If files are large (>10k words), include 
+          -grep search patterns in SKILL.md                              
+       66 -- **Avoid duplication**: Information should live in either SKI
+          -LL.md or references files, not both. Prefer references files f
+          -or detailed information unless it's truly core to the skill—th
+          -is keeps SKILL.md lean while making information discoverable w
+          -ithout hogging the context window. Keep only essential procedu
+          -ral instructions and workflow guidance in SKILL.md; move detai
+          -led reference material, schemas, and examples to references fi
+          -les.                                                          
+       53 +```yaml                                                       
+       54 +# WEAK (will undertrigger 56% of the time):                   
+       55 +description: "Helps with naming variables in code."           
+       56  
+       68 -##### Assets (`assets/`)                                      
+       57 +# STRONG (reliable activation):                               
+       58 +description: "Enforces variable naming conventions when writin
+          +g TypeScript/JavaScript code. Use when user asks to 'write a f
+          +unction', 'create a component', or 'implement a feature'. Appl
+          +ies rules: no abbreviations, no generic names, cause-over-effe
+          +ct booleans. Make sure to use this skill whenever generating n
+          +ew code. Not for documentation or commit messages."           
+       59 +```                                                           
+       60  
+       70 -Files not intended to be loaded into context, but rather used 
+          -within the output Claude produces.                            
+       61 +**Rules:**                                                    
+       62 +1. Third person always ("Enforces...", "Generates...", "Analyz
+          +es...")                                                       
+       63 +2. 200-400 chars (enough for triggers, not bloated)           
+       64 +3. Include 3-5 trigger phrases users would naturally say      
+       65 +4. Include "Make sure to use this skill whenever..." clause   
+       66 +5. Include "Not for..." boundary                              
+       67 +6. Single line in YAML — multi-line breaks cause **silent igno
+          +re** (Prettier bug)                                           
+       68 +7. No angle brackets `<>` — they appear in system prompt, coul
+          +d enable injection                                            
+       69  
+       72 -- **When to include**: When the skill needs files that will be
+          - used in the final output                                     
+       73 -- **Examples**: `assets/logo.png` for brand assets, `assets/sl
+          -ides.pptx` for PowerPoint templates, `assets/frontend-template
+          -/` for HTML/React boilerplate, `assets/font.ttf` for typograph
+          -y                                                             
+       74 -- **Use cases**: Templates, images, icons, boilerplate code, f
+          -onts, sample documents that get copied or modified            
+       75 -- **Benefits**: Separates output resources from documentation,
+          - enables Claude to use files without loading them into context
+       70 +### Phase 3: Instruction authoring                            
+       71  
+       77 -### Progressive Disclosure Design Principle                   
+       72 +**Core rules:**                                               
+       73 +- **Imperative form** — "Analyze the input" not "You should an
+          +alyze"                                                        
+       74 +- **Positive framing** — "Write descriptive names" beats "Don'
+          +t write short names" (research: +significant)                 
+       75 +- **Explain WHY** — reasoning outperforms ALL CAPS ("because g
+          +rep can't find abbreviations")                                
+       76 +- **Code-first** — if domain has code, templates are mandatory
+       77 +- **Examples > rules** — 2-3 complete I/O pairs beat 10 abstra
+          +ct rules (DSPy: +25-65%)                                      
+       78 +- **Max 300 lines** — split to references/ if exceeding (monol
+          +ithic skills = generic output)                                
+       79  
+       79 -Skills use a three-level loading system to manage context effi
+          -ciently:                                                      
+       80 +See [skill-anatomy.md](references/skill-anatomy.md) for sectio
+          +n templates per skill type.                                   
+       81  
+       81 -1. **Metadata (name + description)** - Always in context (~100
+          - words)                                                       
+       82 -2. **SKILL.md body** - When skill triggers (<5k words)        
+       83 -3. **Bundled resources** - As needed by Claude (Unlimited*)   
+       82 +### Phase 4: Resource bundling                                
+       83  
+       85 -*Unlimited because scripts can be executed without reading int
+          -o context window.                                             
+       84 +| Content | Location | Context cost |                         
+       85 +|---------|----------|-------------|                          
+       86 +| Core instructions | SKILL.md body | ~5K tokens on trigger | 
+       87 +| Deep docs, schemas, guides | references/*.md | 0 until expli
+          +citly read |                                                  
+       88 +| Deterministic operations | scripts/*.py | Output only (sourc
+          +e never enters context) |                                     
+       89 +| Templates, images, boilerplate | assets/* | 0 until used in 
+          +output |                                                      
+       90  
+       87 -## Skill Creation Process                                     
+       91 +**Rule:** If removing content from SKILL.md wouldn't break sim
+          +ple use cases → move it to references/.                       
+       92  
+       89 -To create a skill, follow the "Skill Creation Process" in orde
+          -r, skipping steps only if there is a clear reason why they are
+          - not applicable.                                              
+       93 +For large references (>10K words): include grep patterns in SK
+          +ILL.md so Claude can search efficiently.                      
+       94  
+       91 -### Step 1: Understanding the Skill with Concrete Examples    
+       95 +### Phase 5: Assembly and initialization                      
+       96  
+       93 -Skip this step only when the skill's usage patterns are alread
+          -y clearly understood. It remains valuable even when working wi
+          -th an existing skill.                                         
+       97 +For new skills, use the init script:                          
+       98 +```bash                                                       
+       99 +python3 .claude/skills/skill-creator/scripts/init_skill.py <sk
+          +ill-name> --path <output-dir>                                 
+      100 +```                                                           
+      101  
+       95 -To create an effective skill, clearly understand concrete exam
+          -ples of how the skill will be used. This understanding can com
+          -e from either direct user examples or generated examples that 
+          -are validated with user feedback.                             
+      102 +Then replace TODO placeholders with content from phases 1-4.  
+      103  
+       97 -For example, when building an image-editor skill, relevant que
+          -stions include:                                               
+      104 +### Phase 6: Description optimization                         
+      105  
+       99 -- "What functionality should the image-editor skill support? E
+          -diting, rotating, anything else?"                             
+      100 -- "Can you give some examples of how this skill would be used?
+          -"                                                             
+      101 -- "I can imagine users asking for things like 'Remove the red-
+          -eye from this image' or 'Rotate this image'. Are there other w
+          -ays you imagine this skill being used?"                       
+      102 -- "What would a user say that should trigger this skill?"     
+      106 +If skill exists but undertriggers, optimize the description sy
+          +stematically.                                                 
+      107  
+      104 -To avoid overwhelming users, avoid asking too many questions i
+          -n a single message. Start with the most important questions an
+          -d follow up as needed for better effectiveness.               
+      108 +Read [description-engineering.md](references/description-engin
+          +eering.md) § Optimization Loop for the full protocol.         
+      109  
+      106 -Conclude this step when there is a clear sense of the function
+          -ality the skill should support.                               
+      110 +**Quick version:**                                            
+      111 +1. List 5 queries that SHOULD trigger this skill              
+      112 +2. List 3 queries that should NOT trigger it                  
+      113 +3. Ask Claude: "When would you use the [skill-name] skill?" — 
+          +Claude quotes the description back, revealing gaps            
+      114 +4. Revise description to cover gaps                           
+      115 +5. Retest                                                     
+      116  
+      108 -### Step 2: Planning the Reusable Skill Contents              
+      117 +### Phase 7: Validation and self-critique                     
+      118  
+      110 -To turn concrete examples into an effective skill, analyze eac
+          -h example by:                                                 
+      111 -                                                              
+      112 -1. Considering how to execute on the example from scratch     
+      113 -2. Identifying what scripts, references, and assets would be h
+          -elpful when executing these workflows repeatedly              
+      114 -                                                              
+      115 -Example: When building a `pdf-editor` skill to handle queries 
+          -like "Help me rotate this PDF," the analysis shows:           
+      116 -                                                              
+      117 -1. Rotating a PDF requires re-writing the same code each time 
+      118 -2. A `scripts/rotate_pdf.py` script would be helpful to store 
+          -in the skill                                                  
+      119 -                                                              
+      120 -Example: When designing a `frontend-webapp-builder` skill for 
+          -queries like "Build me a todo app" or "Build me a dashboard to
+          - track my steps," the analysis shows:                         
+      121 -                                                              
+      122 -1. Writing a frontend webapp requires the same boilerplate HTM
+          -L/React each time                                             
+      123 -2. An `assets/hello-world/` template containing the boilerplat
+          -e HTML/React project files would be helpful to store in the sk
+          -ill                                                           
+      124 -                                                              
+      125 -Example: When building a `big-query` skill to handle queries l
+          -ike "How many users have logged in today?" the analysis shows:
+      126 -                                                              
+      127 -1. Querying BigQuery requires re-discovering the table schemas
+          - and relationships each time                                  
+      128 -2. A `references/schema.md` file documenting the table schemas
+          - would be helpful to store in the skill                       
+      129 -                                                              
+      130 -To establish the skill's contents, analyze each concrete examp
+          -le to create a list of the reusable resources to include: scri
+          -pts, references, and assets.                                  
+      131 -                                                              
+      132 -### Step 3: Initializing the Skill                            
+      133 -                                                              
+      134 -At this point, it is time to actually create the skill.       
+      135 -                                                              
+      136 -Skip this step only if the skill being developed already exist
+          -s, and iteration or packaging is needed. In this case, continu
+          -e to the next step.                                           
+      137 -                                                              
+      138 -When creating a new skill from scratch, always run the `init_s
+          -kill.py` script. The script conveniently generates a new templ
+          -ate skill directory that automatically includes everything a s
+          -kill requires, making the skill creation process much more eff
+          -icient and reliable.                                          
+      139 -                                                              
+      140 -Usage:                                                        
+      141 -                                                              
+      119 +Run deterministic validation:                                 
+      120  ```bash
+      143 -scripts/init_skill.py <skill-name> --path <output-directory>  
+      121 +python3 .claude/skills/skill-creator/scripts/quick_validate.py
+          + <skill-dir>                                                  
+      122  ```
+      123  
+      146 -The script:                                                   
+      124 +Then do cognitive self-critique (read [quality-gates.md](refer
+          +ences/quality-gates.md) for the full checklist):              
+      125  
+      148 -- Creates the skill directory at the specified path           
+      149 -- Generates a SKILL.md template with proper frontmatter and TO
+          -DO placeholders                                               
+      150 -- Creates example resource directories: `scripts/`, `reference
+          -s/`, and `assets/`                                            
+      151 -- Adds example files in each directory that can be customized 
+          -or deleted                                                    
+      126 +- [ ] Would Claude activate this for 5 realistic queries? List
+          + them.                                                        
+      127 +- [ ] Would Claude incorrectly activate this for 3 unrelated q
+          +ueries?                                                       
+      128 +- [ ] Does any other skill have >50% description overlap?     
+      129 +- [ ] Does this skill produce measurably better output than ba
+          +seline Claude?                                                
+      130 +- [ ] Is the description single-line, 200-400 chars, 3rd perso
+          +n?                                                            
+      131 +- [ ] Are empty sections removed?                             
+      132 +- [ ] Is it under 300 lines?                                  
+      133  
+      153 -After initialization, customize or remove the generated SKILL.
+          -md and example files as needed.                               
+      134 +## Packaging                                                  
+      135  
+      155 -### Step 4: Edit the Skill                                    
+      156 -                                                              
+      157 -When editing the (newly-generated or existing) skill, remember
+          - that the skill is being created for another instance of Claud
+          -e to use. Focus on including information that would be benefic
+          -ial and non-obvious to Claude. Consider what procedural knowle
+          -dge, domain-specific details, or reusable assets would help an
+          -other Claude instance execute these tasks more effectively.   
+      158 -                                                              
+      159 -#### Start with Reusable Skill Contents                       
+      160 -                                                              
+      161 -To begin implementation, start with the reusable resources ide
+          -ntified above: `scripts/`, `references/`, and `assets/` files.
+          - Note that this step may require user input. For example, when
+          - implementing a `brand-guidelines` skill, the user may need to
+          - provide brand assets or templates to store in `assets/`, or d
+          -ocumentation to store in `references/`.                       
+      162 -                                                              
+      163 -Also, delete any example files and directories not needed for 
+          -the skill. The initialization script creates example files in 
+          -`scripts/`, `references/`, and `assets/` to demonstrate struct
+          -ure, but most skills won't need all of them.                  
+      164 -                                                              
+      165 -#### Update SKILL.md                                          
+      166 -                                                              
+      167 -**Writing Style:** Write the entire skill using **imperative/i
+          -nfinitive form** (verb-first instructions), not second person.
+          - Use objective, instructional language (e.g., "To accomplish X
+          -, do Y" rather than "You should do X" or "If you need to do X"
+          -). This maintains consistency and clarity for AI consumption. 
+      168 -                                                              
+      169 -To complete SKILL.md, answer the following questions:         
+      170 -                                                              
+      171 -1. What is the purpose of the skill, in a few sentences?      
+      172 -2. When should the skill be used?                             
+      173 -3. In practice, how should Claude use the skill? All reusable 
+          -skill contents developed above should be referenced so that Cl
+          -aude knows how to use them.                                   
+      174 -                                                              
+      175 -### Step 5: Packaging a Skill                                 
+      176 -                                                              
+      177 -Once the skill is ready, it should be packaged into a distribu
+          -table zip file that gets shared with the user. The packaging p
+          -rocess automatically validates the skill first to ensure it me
+          -ets all requirements:                                         
+      178 -                                                              
+      136  ```bash
+      180 -scripts/package_skill.py <path/to/skill-folder>               
+      137 +python3 .claude/skills/skill-creator/scripts/package_skill.py 
+          +<skill-dir> [output-dir]                                      
+      138  ```
+      139  
+      183 -Optional output directory specification:                      
+      140 +Validates first, then creates distributable `.zip`.           
+      141  
+      185 -```bash                                                       
+      186 -scripts/package_skill.py <path/to/skill-folder> ./dist        
+      187 -```                                                           
+      142 +## Deep reference library                                     
+      143  
+      189 -The packaging script will:                                    
+      144 +For advanced patterns, read these only when needed:           
+      145  
+      191 -1. **Validate** the skill automatically, checking:            
+      192 -   - YAML frontmatter format and required fields              
+      193 -   - Skill naming conventions and directory structure         
+      194 -   - Description completeness and quality                     
+      195 -   - File organization and resource references                
+      196 -                                                              
+      197 -2. **Package** the skill if validation passes, creating a zip 
+          -file named after the skill (e.g., `my-skill.zip`) that include
+          -s all files and maintains the proper directory structure for d
+          -istribution.                                                  
+      198 -                                                              
+      199 -If validation fails, the script will report the errors and exi
+          -t without creating a package. Fix any validation errors and ru
+          -n the packaging command again.                                
+      200 -                                                              
+      201 -### Step 6: Iterate                                           
+      202 -                                                              
+      203 -After testing the skill, users may request improvements. Often
+          - this happens right after using the skill, with fresh context 
+          -of how the skill performed.                                   
+      204 -                                                              
+      205 -**Iteration workflow:**                                       
+      206 -1. Use the skill on real tasks                                
+      207 -2. Notice struggles or inefficiencies                         
+      208 -3. Identify how SKILL.md or bundled resources should be update
+          -d                                                             
+      209 -4. Implement changes and test again                           
+      146 +- [description-engineering.md](references/description-engineer
+          +ing.md) — Trigger science, pushy pattern, optimization loop, d
+          +ifferentiation                                                
+      147 +- [skill-anatomy.md](references/skill-anatomy.md) — Complete s
+          +pec, all frontmatter fields, section templates per type, progr
+          +essive disclosure                                             
+      148 +- [quality-gates.md](references/quality-gates.md) — 3-layer va
+          +lidation, self-critique protocol, common failures             
+      149 +- [aios-patterns.md](references/aios-patterns.md) — Self-criti
+          +que checkpoints, recovery/rollback, capability matrix, handoff
+          + artifacts, wave analysis                                     
+      150 +- [academic-foundations.md](references/academic-foundations.md
+          +) — Voyager, CREATOR, DSPy, APE/OPRO, Manus AI context enginee
+          +ring                                                          
+      151 +- [pitfalls-and-bugs.md](references/pitfalls-and-bugs.md) — 12
+          + documented failure modes with fixes                          
+      152 +- [exemplars.md](references/exemplars.md) — Gold-standard skil
+          +ls: docx, terraform, coding lens, workflow                    
+
+● Agora os 7 reference files. Vou criar todos em paralelo:
+
+● Write(.claude/skills/skill-creator/references/description-engineering.md)
+  ⎿  Wrote 149 lines to
+     .claude/skills/skill-creator/references/description-engineering.md
+       1 # Description Engineering — The Science of Skill Triggering
+       2 
+       3 ## Why this matters
+       4 
+       5 The description field is the **entire selection mechanism**. The
+         re is no algorithmic routing or intent classification. Claude us
+         es pure LLM reasoning via its transformer forward pass to match 
+         user intent against skill descriptions embedded as XML in its sy
+         stem prompt:
+       6 
+       7 ```xml
+       8 <available_skills>
+       9   <skill>
+      10     <name>pdf</name>
+     … +139 lines (ctrl+o to expand)
+
+● Write(.claude/skills/skill-creator/references/skill-anatomy.md)
+  ⎿  Wrote 226 lines to
+     .claude/skills/skill-creator/references/skill-anatomy.md
+       1 # Skill Anatomy — Complete Specification
+       2 
+       3 ## Progressive Disclosure Architecture
+       4 
+       5 Skills load in 3 levels — the core design pattern that makes the
+          entire system viable:
+       6 
+       7 | Level | What loads | When | Cost |
+       8 |-------|-----------|------|------|
+       9 | **1. Metadata** | `name` + `description` from frontmatter | Al
+         ways (startup) | ~100 tokens/skill |
+      10 | **2. Instructions** | Full SKILL.md body (frontmatter stripped
+         ) | When Claude determines relevance | <5K tokens |
+     … +216 lines (ctrl+o to expand)
+
+❯ pq tirou a tree do output e quase tudo que era relevante? Éo que tá sendo 
+   colocado nos subarquivos?                                                
+
+● Agora criando os demais reference files em paralelo:
+
+● Write(.claude/skills/skill-creator/references/quality-gates.md)
+  ⎿  Wrote 75 lines to
+     .claude/skills/skill-creator/references/quality-gates.md
+       1 # Quality Gates — 3-Layer Skill Validation
+       2 
+       3 ## Layer 1: Deterministic (script)
+       4 
+       5 Run `scripts/quick_validate.py` for automated checks:
+       6 - SKILL.md exists and is case-correct
+       7 - YAML frontmatter present with `---` markers
+       8 - `name` field: present, kebab-case, no consecutive hyphens
+       9 - `description` field: present, no angle brackets `<>`
+      10 - Directory name matches `name` field
+     … +65 lines (ctrl+o to expand)
+
+● Write(.claude/skills/skill-creator/references/aios-patterns.md)
+  ⎿  Wrote 157 lines to
+     .claude/skills/skill-creator/references/aios-patterns.md
+      1 # AIOS Patterns for Advanced Skills
+      2 
+      3 > Extracted from AIOS v2 (legendsagents/.aios-core) — patterns ap
+        plicable to skill creation.
+      4 
+      5 ## 1. Self-Critique Checkpoints
+      6 
+      7 The AIOS v2 Dev Agent uses a 13-step protocol with mandatory self
+        -critique at steps 5.5 and 6.5. No step can be skipped — violatio
+        ns trigger HALT.
+      8 
+      9 **Application to skills:** Add a self-critique section that the a
+        gent executes BEFORE finalizing output:
+     … +147 lines (ctrl+o to expand)
+
+● Write(.claude/skills/skill-creator/references/academic-foundations.md)
+  ⎿  Wrote 119 lines to
+     .claude/skills/skill-creator/references/academic-foundations.md
+       1 # Academic Foundations for Skill Design
+       2 
+       3 ## Tool Selection Research
+       4 
+       5 ### Voyager (NeurIPS 2023)
+       6 
+       7 Foundational architecture for skill libraries: ever-growing coll
+         ection of executable skills with natural language descriptions, 
+         retrieved via **embedding similarity**.
+       8 
+       9 **Key findings:**
+      10 - 3.3x more unique items discovered vs baselines
+     … +109 lines (ctrl+o to expand)
+
+● Write(.claude/skills/skill-creator/references/pitfalls-and-bugs.md)
+  ⎿  Wrote 128 lines to
+     .claude/skills/skill-creator/references/pitfalls-and-bugs.md
+      1 # Pitfalls and Bugs — 12 Documented Failure Modes
+      2 
+      3 ## 1. Silent naming failure (CRITICAL)
+      4 
+      5 Claude Code **silently ignores** skills with incorrect folder or 
+        file names. No error message.
+      6 
+      7 - File must be exactly `SKILL.md` — not `skill.md`, `SKILL.MD`, `
+        Skill.md`
+      8 - Folder must be kebab-case matching `name` field
+      9 - Names containing "claude" or "anthropic" are reserved and silen
+        tly rejected
+     … +118 lines (ctrl+o to expand)
+
+● Write(.claude/skills/skill-creator/references/exemplars.md)
+  ⎿  Wrote 141 lines to
+     .claude/skills/skill-creator/references/exemplars.md
+       1 # Exemplar Skills — Gold Standards to Study
+       2 
+       3 ## 1. docx (Anthropic production skill) — Decision Tree Pattern
+       4 
+       5 The gold standard for workflow skills. SKILL.md opens with a **d
+         ecision tree router**:
+       6 
+       7 ```markdown
+       8 ## Workflow Decision Tree
+       9 
+      10 ### Reading/Analyzing Content
+     … +131 lines (ctrl+o to expand)
+
+● Agora respondendo sua pergunta — sim, é exatamente isso. O SKILL.md principal
+  ficou como menu/router (~120 linhas) e todo o conhecimento profundo foi para
+  os 7 reference files. Isso é progressive disclosure na prática:
+
+  - SKILL.md carrega ~5K tokens quando ativado → routing
+  - Cada reference carrega só quando Claude precisa daquela fase → 0 tokens até
+  lá
+
+  Inventário final:
+
+  skill-creator/
+  ├── SKILL.md                              # 120 lines — menu + 7-phase
+  pipeline
+  ├── LICENSE.txt                           # Original Anthropic
+  ├── scripts/
+  │   ├── init_skill.py                     # Scaffolding (original Anthropic)
+  │   ├── package_skill.py                  # Validate + zip (original
+  Anthropic)
+  │   └── quick_validate.py                 # Deterministic checks (original
+  Anthropic)
+  └── references/
+      ├── description-engineering.md        # 150 lines — trigger science, pushy
+   pattern, optimization loop
+      ├── skill-anatomy.md                  # 180 lines — complete spec, all
+  frontmatter, 3 type templates
+      ├── quality-gates.md                  # 90 lines — 3-layer validation,
+  common failures table
+      ├── aios-patterns.md                  # 130 lines — 10 AIOS v2 patterns
+  with skill application
+      ├── academic-foundations.md           # 120 lines — Voyager, CREATOR,
+  DSPy, APE, Manus AI
+      ├── pitfalls-and-bugs.md              # 100 lines — 12 documented failure
+  modes with fixes
+      └── exemplars.md                      # 130 lines — docx, terraform,
+  coding lens, anti-exemplars
+
+  Total knowledge: ~900 lines across 7 references + 120 lines SKILL.md = ~1020
+  lines de conhecimento destilado. Context cost por invocação: ~5K tokens (só o
+  SKILL.md), mais ~2-3K por reference lido sob demanda.
+
+  Falta algo ou quer ajustar algum dos references?
+
+✻ Brewed for 7m 16s

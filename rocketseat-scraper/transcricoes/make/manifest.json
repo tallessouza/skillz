@@ -1,0 +1,394 @@
+{
+  "journey_slug": "make",
+  "modules": [
+    {
+      "slug": "fundamentos-12",
+      "title": "Conceitos Essenciais",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Introdução - Make",
+          "slug": "introducao-make",
+          "video_id": "c59f9f67-e142-4d45-b5bb-85cee11edf95",
+          "has_transcription": true,
+          "description": "Seja bem-vindo ao curso de Make da Rocketseat! Sou Luiz Carvalho e vou te guiar nessa jornada sobre automação. O Make é uma ferramenta poderosa para integrar APIs e facilitar projetos. Vou compartilhar minha experiência desde 2020, quando comecei a usar essa plataforma. Vamos explorar conceitos fundamentais, como organização de cenários, conexões e manipulação de dados. Não se preocupe com a quantidade de conteúdo; vamos aprender na prática. Estou animado para te ajudar a transformar ideias em automações. Vamos juntos!",
+          "duration": 761,
+          "type": "video",
+          "file": "01-fundamentos-12/001-introducao-make.txt",
+          "chars": 10865,
+          "status": "ok"
+        },
+        {
+          "title": "Conhecendo a Interface do Make",
+          "slug": "conhecendo-a-interface-do-make",
+          "video_id": "0987cef1-9402-4ae4-ba45-c19b1b521913",
+          "has_transcription": true,
+          "description": "Nesta aula, apresento o Make, uma ferramenta de automação super amigável. Mostro como criar uma conta e a importância de organizar suas automações e contas de clientes. Falo sobre a interface, onde você pode gerenciar usuários, planos e acessar templates prontos, especialmente para Google Sheets. Além disso, menciono a importância de manter as conexões seguras e como acessar o suporte e a Make Academy para aprofundar conhecimentos. Prepare-se para explorar conceitos e práticas nas próximas aulas!",
+          "duration": 606,
+          "type": "video",
+          "file": "01-fundamentos-12/002-conhecendo-a-interface-do-make.txt",
+          "chars": 8748,
+          "status": "ok"
+        },
+        {
+          "title": "Estrutura Básica de Cenários",
+          "slug": "estrutura-basica-de-cenarios",
+          "video_id": "222a837b-9dd2-43eb-b67a-5ad9fc0bd49a",
+          "has_transcription": true,
+          "description": "Nesta aula, abordamos como configurar cenários e usar ferramentas nativas, além de discutir tratativas de erro. Expliquei a importância de ter processos bem definidos antes de automatizá-los, já que a automação não conserta falhas, apenas otimiza o que já funciona. O Make, nossa ferramenta de automação, precisa de diretrizes claras para operar corretamente. Também exploramos a configuração de cenários, módulos nativos e como lidar com erros, garantindo que suas automações funcionem de forma eficiente.",
+          "duration": 1155,
+          "type": "video",
+          "file": "01-fundamentos-12/003-estrutura-basica-de-cenarios.txt",
+          "chars": 15054,
+          "status": "ok"
+        },
+        {
+          "title": "Importando e Exportando Templates",
+          "slug": "importando-e-exportando-templates",
+          "video_id": "53ace9eb-99ca-4381-8bd4-4aeb141a7d67",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar a importação e exportação de templates, um recurso essencial para agilizar automações entre diferentes contas. Aprenderemos como um arquivo JSON pode ser transferido, permitindo replicar cenários rapidamente, especialmente em situações comuns como integração com minichat e planilhas. Discutiremos também a necessidade de ajustar webhooks e conexões após a importação. Além disso, você pode compartilhar esses arquivos facilmente, oferecendo flexibilidade no uso. Prepare-se para aplicar isso na prática!",
+          "duration": 326,
+          "type": "video",
+          "file": "01-fundamentos-12/004-importando-e-exportando-templates.txt",
+          "chars": 4758,
+          "status": "ok"
+        },
+        {
+          "title": "Conexões, Organização e Time",
+          "slug": "conexoes-organizacao-e-time",
+          "video_id": "f4ccece0-fa7e-450c-849a-b4c10ffd8b54",
+          "has_transcription": true,
+          "description": "Nesta aula, abordamos as configurações essenciais do Make, como timezone, usuários e conexões. Falei sobre a importância de ajustar o fuso horário conforme o cliente, evitando problemas com automações. Também expliquei como adicionar usuários, ressaltando que apenas pessoas realmente responsáveis devem ter acesso de admin. Por fim, discutimos as diferentes formas de conectar contas, destacando os riscos de desconectar contas feitas via login. Agora, vamos avançar para os fundamentos e operações. Te vejo na próxima!",
+          "duration": 503,
+          "type": "video",
+          "file": "01-fundamentos-12/005-conexoes-organizacao-e-time.txt",
+          "chars": 6924,
+          "status": "ok"
+        },
+        {
+          "title": "Filtros e Routers",
+          "slug": "filtros-e-routers",
+          "video_id": "d97c110b-057e-4186-b030-232027983560",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei os conceitos fundamentais de roteadores e filtros no Make, essenciais para qualquer automação. Comentei como esses elementos controlam o fluxo de dados, permitindo ou bloqueando informações com base em condições específicas. Demonstrei a importância de entender essa lógica para garantir que suas automações funcionem como esperado. Destacamos que, sem dominar esses conceitos, será difícil ter sucesso nas automações. Na próxima aula, vamos nos aprofundar nos tipos de filtros e suas regras. Até lá!",
+          "duration": 1169,
+          "type": "video",
+          "file": "01-fundamentos-12/006-filtros-e-routers.txt",
+          "chars": 13747,
+          "status": "ok"
+        },
+        {
+          "title": "Aprofundando os Filtros",
+          "slug": "aprofundando-os-filtros-1",
+          "video_id": "08148aba-0f8b-45fc-bb3d-b30a37a4a6ee",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos a importância dos filtros no Make, que controlam a lógica dos cenários de automação. Aprendemos sobre as regras AND e OR, que definem como as condições devem ser avaliadas para que um dado seja processado. Com exemplos práticos, mostrei como tratar dados como CPF, considerando diferentes formatos. A compreensão desses filtros é crucial para criar automações eficientes e garantir que as condições certas sejam atendidas. Na próxima aula, vamos aprofundar nos tipos de filtro e debugging.",
+          "duration": 975,
+          "type": "video",
+          "file": "01-fundamentos-12/007-aprofundando-os-filtros.txt",
+          "chars": 10832,
+          "status": "ok"
+        },
+        {
+          "title": "Tipos de Filtro",
+          "slug": "tipos-de-filtro",
+          "video_id": "d8040c93-3c16-4d48-bba0-6559b39bfa33",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos os diferentes tipos de filtros e operadores que você pode usar em dados. Começamos com filtros de existência, onde verificamos se um campo está presente ou não. Depois, discutimos filtros de texto, como \"igual a\", \"contém\" e \"começa com\", além da importância do case insensitive. Por fim, abordamos filtros numéricos e como aplicar funções como arredondamento. Também falamos sobre a importância de debugar filtros para entender por que certas condições passam ou não. Nos vemos na próxima!",
+          "duration": 1317,
+          "type": "video",
+          "file": "01-fundamentos-12/008-tipos-de-filtro.txt",
+          "chars": 13978,
+          "status": "ok"
+        },
+        {
+          "title": "Operações e Mapping",
+          "slug": "operacoes-e-mapping-1",
+          "video_id": "4b0834a4-5c15-4d9e-8984-b8e5afe26ad2",
+          "has_transcription": true,
+          "description": "Na aula de hoje, abordamos dois conceitos essenciais do Make: contagem de operações e mapeamento. Primeiro, discutimos como calcular o número de operações em um fluxo de automação, essencial para entender o consumo do seu plano. Depois, falamos sobre mapeamento, que envolve identificar e utilizar variáveis de saída de cada módulo em cenários subsequentes. Esses conceitos são fundamentais para garantir que sua automação funcione de maneira eficiente e dentro dos limites do seu plano. Vamos aplicar isso em exercícios nas próximas aulas!",
+          "duration": 364,
+          "type": "video",
+          "file": "01-fundamentos-12/009-operacoes-e-mapping.txt",
+          "chars": 4669,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "exercicios",
+      "title": "Exercícios",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "Exercícios - Introdução",
+          "slug": "exercicios-introducao",
+          "video_id": "90b08531-0d67-4da5-bfaa-993b62f1a75b",
+          "has_transcription": true,
+          "description": "Nessa aula, vamos mergulhar em exercícios práticos para criar automações usando o Postman e JSON. Vou te guiar na configuração do Postman, onde você fará chamadas HTTP e testará APIs. Não se preocupe se alguns conceitos não ficarem claros agora; vamos aprofundar mais adiante. Você vai criar um endpoint no Make e inserir um corpo JSON para testar. O foco será entender como usar essas ferramentas para automatizar processos. Vamos juntos nessa jornada!\n\nAqui abaixo está o JSON utilizado em aula:\n```json\n[\n  {\n    \"affiliations\": [],\n    \"api_token\": \"26cQOjOTmcB7xg5ra4UnsB2HaTo37kbru9NRwJal\",\n    \"checkout_url\": \"https://goduto.com.br/subscribe/eduto\",\n    \"contact\": {\n      \"id\": \"9f747cd1-08f1-428d-abd1-d8d2305b35b5\",\n      \"name\": \"Luis Carvalho\",\n      \"company_name\": \"\",\n      \"email\": \"luisvasconcelos@gmail.com\",\n      \"doc\": \"01765366512\",\n      \"phone_number\": \"71991063556\",\n      \"phone_local_code\": \"55\",\n      \"address\": \"Rua 1\",\n      \"address_number\": \"121\",\n      \"address_comp\": \"\",\n      \"address_district\": \"Centro\",\n      \"address_city\": \"Salvador\",\n      \"address_state\": \"BA\",\n      \"address_state_full_name\": \"BA\",\n      \"address_country\": \"BR\",\n      \"address_zip_code\": \"44710000\",\n      \"lead\": []\n    },\n    \"contracts\": [],\n    \"dates\": {\n      \"canceled_at\": null,\n      \"confirmed_at\": null,\n      \"created_at\": \"2025-08-17T00:45:51Z\",\n      \"expires_at\": \"2025-08-17T03:00:00Z\",\n      \"ordered_at\": \"2025-08-17T00:28:51Z\",\n      \"unavailable_until\": null,\n      \"updated_at\": \"2025-08-17T00:46:07Z\",\n      \"warranty_until\": null\n    },\n    \"ecommerces\": [],\n    \"extras\": {\n      \"accepted_terms_url\": 0,\n      \"accepted_privacy_policy_url\": 0\n    },\n    \"id\": \"9fa6dee7-a3bb-48be-8ccf-1256b0bfe32c\",\n    \"infrastructure\": {\n      \"city\": \"Salvador\",\n      \"city_lat_long\": \"-16.987354,-39.004366\",\n      \"country\": \"BR\",\n      \"facebook_browser_id\": \"fb.2.1873224566057.26983154991140357\",\n      \"ga_id\": \"GA1.1.927546037.1753224566\",\n      \"ip\": \"780.80.15.143\",\n      \"region\": \"ba\",\n      \"user_agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\",\n      \"host\": \"goduto.com.br\"\n    },\n    \"invoice\": {\n      \"charge_at\": \"2025-08-17\",\n      \"created_at\": \"2025-08-17T00:46:07Z\",\n      \"cycle\": 1,\n      \"discount_value\": 0,\n      \"id\": \"in_JESY9WyoGv87q9y4F\",\n      \"increment_value\": 0,\n      \"period_end\": \"2026-08-15\",\n      \"period_start\": \"2025-08-16\",\n      \"status\": \"waiting_payment\",\n      \"tax_value\": 0,\n      \"tries\": 0,\n      \"try\": 0,\n      \"type\": \"cycle\",\n      \"value\": 838.8\n    },\n    \"is_order_bump\": 0,\n    \"is_reissue\": 0,\n    \"items\": [\n      {\n        \"id\": \"1724069209\",\n        \"image_url\": \"https://storage.googleapis.com/disk.clkdmg.site/clients/9cc1a3f4-9a17-4b4c-a023-e275254c70c2/images/products/9cf054af-0aea-48ce-bdfd-88480f1a7e1a.png\",\n        \"internal_id\": \"9ccda6f5-6600-427a-b2fb-08d7b7c189a0\",\n        \"marketplace_id\": \"1724069209\",\n        \"marketplace_name\": \"asaas\",\n        \"name\": \"Edu-TO Anual\",\n        \"offer\": {\n          \"id\": \"9e906f21-4bf5-4c12-9b74-2899cc753709\",\n          \"name\": \"Assinatura Anual  (2025)\"\n        },\n        \"producer\": {\n          \"contact_email\": null,\n          \"marketplace_id\": \"1723554933\",\n          \"name\": \"Servicos Administrativos Ltda\"\n        },\n        \"qty\": 1,\n        \"total_value\": 838.8,\n        \"type\": \"plan\",\n        \"unit_value\": 838.8\n      }\n    ],\n    \"last_transaction\": [],\n    \"payment\": {\n      \"affiliate_value\": 0,\n      \"acquirer\": {\n        \"code\": \"\",\n        \"message\": \"\",\n        \"name\": \"\",\n        \"nsu\": \"\",\n        \"tid\": \"\"\n      },\n      \"can_try_again\": 1,\n      \"coupon\": null,\n      \"currency\": \"BRL\",\n      \"discount_value\": 0,\n      \"gross\": 838.8,\n      \"installments\": {\n        \"value\": 838.8,\n        \"qty\": 1,\n        \"interest\": 0\n      },\n      \"marketplace_id\": \"pay_7x1duypogdo1s19e\",\n      \"marketplace_name\": \"asaas\",\n      \"marketplace_value\": 0,\n      \"method\": \"pix\",\n      \"net\": 838.8,\n      \"processing_times\": {\n        \"started_at\": \"2025-08-17T00:46:00.993Z\",\n        \"finished_at\": \"2025-08-17T00:46:03.046Z\",\n        \"delay_in_seconds\": 2\n      },\n      \"refund_reason\": \"\",\n      \"refuse_reason\": \"\",\n      \"tax\": {\n        \"value\": 0,\n        \"rate\": 0\n      },\n      \"total\": 838.8,\n      \"pix\": {\n        \"qrcode\": {\n          \"signature\": \"00020101021226860014br.gov.bcb.pix2564qrpix.bradesco.com.br/qr/v2/6827a358-da4d-4602-bfc7-13f6ce10bb7e5204000053039865406838.805802BR5905ASAAS6009JOINVILLE62070503***630464F6\",\n          \"url\": \"https://go.eduto.com.br/api/checkout/invoices/9fa6dee7-a3bb-48be-8ccf-1256b0bfe32c/qrcodes/pix\"\n        },\n        \"expiration_date\": \"2025-08-17\"\n      }\n    },\n    \"product\": {\n      \"id\": \"1724069209\",\n      \"image_url\": \"https://storage.googleapis.com/disk.clkdmg.site/clients/9cc1a3f4-9a17-4b4c-a023-e275254c70c2/images/products/9cf054af-0aea-48ce-bdfd-88480f1a7e1a.png\",\n      \"internal_id\": \"9ccda6f5-6600-427a-b2fb-08d7b7c189a0\",\n      \"marketplace_id\": \"1724069209\",\n      \"marketplace_name\": \"asaas\",\n      \"name\": \"Edu-TO Anual\",\n      \"offer\": {\n        \"id\": \"9e906f21-4bf5-4c12-9b74-2899cc753709\",\n        \"name\": \"Assinatura Anual  (2025)\"\n      },\n      \"producer\": {\n        \"marketplace_id\": \"1723554933\",\n        \"name\": \"Servicos Administrativos Ltda\",\n        \"contact_email\": \"\"\n      },\n      \"qty\": 1,\n      \"total_value\": 838.8,\n      \"type\": \"plan\",\n      \"unit_value\": 838.8\n    },\n    \"self_attribution\": null,\n    \"shipment\": {\n      \"carrier\": \"\",\n      \"service\": \"\",\n      \"tracking\": \"\",\n      \"value\": 0,\n      \"status\": \"\",\n      \"delivery_time\": \"\"\n    },\n    \"shipping\": {\n      \"name\": \" - \",\n      \"value\": 0\n    },\n    \"source\": {\n      \"source\": \"9e9072b3266543e59242398bd37a5bcf-9e9072b3266543e59242398bd37a5bcf\",\n      \"checkout_source\": null,\n      \"utm_source\": null,\n      \"utm_campaign\": null,\n      \"utm_medium\": null,\n      \"utm_content\": null,\n      \"utm_term\": null,\n      \"pptc\": {\n        \"tracking_id\": \"\",\n        \"tracking_name\": \"\",\n        \"tracking_type\": \"\",\n        \"tracking_publisher\": \"\",\n        \"user_name\": \"\",\n        \"checkout_id\": \"9e9072b3-2665-43e5-9242-398bd37a5bcf\",\n        \"checkout_name\": \"(Principal-2025)\",\n        \"utm_campaign\": \"\",\n        \"utm_medium\": \"\",\n        \"utm_term\": \"\",\n        \"utm_content\": \"\"\n      }\n    },\n    \"status\": \"waiting_payment\",\n    \"subscription\": {\n      \"can_cancel\": 1,\n      \"canceled_at\": null,\n      \"charged_every_days\": 365,\n      \"charged_times\": 0,\n      \"id\": \"sub_NX5FIVBvXDFWgnBJ\",\n      \"internal_id\": \"9fa6e514-a128-46b8-9376-bc32210c5ce1\",\n      \"last_status\": \"inactive\",\n      \"last_status_at\": \"2025-08-17T00:46:07Z\",\n      \"name\": \"Edu-TO Anual\",\n      \"started_at\": \"2025-08-17T00:46:07Z\",\n      \"subscription_code\": \"sub_NX5FIVBvXDFWgnBJ\",\n      \"trial_days\": 0,\n      \"trial_finished_at\": null,\n      \"trial_started_at\": null\n    },\n    \"type\": \"producer\",\n    \"webhook_type\": \"transaction\"\n  }\n]\n```",
+          "duration": 563,
+          "type": "video",
+          "file": "02-exercicios/001-exercicios-introducao.txt",
+          "chars": 7954,
+          "status": "ok"
+        },
+        {
+          "title": "Roteador e Fallback",
+          "slug": "roteador-e-fallback",
+          "video_id": "a89df325-fef8-4342-9369-65dd75f56c82",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como implementar roteadores e a funcionalidade de fallback em automações. Começamos configurando um webhook e uma planilha de teste. Demonstrei como criar rotas e a importância de definir um caminho de fallback, que é ativado quando nenhum filtro é atendido. Utilizei exemplos práticos para mostrar como os dados são direcionados, evitando duplicidades. Ao final, incentivei os alunos a criarem suas próprias planilhas e testarem esses conceitos. Nos vemos na próxima aula!",
+          "duration": 417,
+          "type": "video",
+          "file": "02-exercicios/002-roteador-e-fallback.txt",
+          "chars": 4919,
+          "status": "ok"
+        },
+        {
+          "title": "AND e OR",
+          "slug": "and-e-or",
+          "video_id": "e922ffcf-8d49-4a0e-898d-2b8c1173ee1d",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos como aplicar regras I e OU em automações, usando um exemplo prático de um checkout de infoproduto. Discutimos a importância de diferenciar entre status de pagamento, como \"aguardando pagamento\" e \"não confirmado\", e como isso impacta a automação. Demonstrei como criar regras para identificar pagamentos pendentes e confirmados, além de mostrar como a condição OU permite que diferentes critérios sejam atendidos simultaneamente. Essa compreensão é crucial para planejar automações eficazes. Até a próxima!",
+          "duration": 691,
+          "type": "video",
+          "file": "02-exercicios/003-and-e-or.txt",
+          "chars": 7715,
+          "status": "ok"
+        },
+        {
+          "title": "Exists",
+          "slug": "exists",
+          "video_id": "f5a34238-4924-40c2-baee-1a96168504ee",
+          "has_transcription": true,
+          "description": "Hoje, conversamos sobre os filtros \"Existe\" e \"Não Existe\", que são bem diretos e deterministas. Esses filtros avaliam se um dado está presente ou não, sendo que a ausência pode ser representada por NULL ou por um campo vazio. Demonstrei como isso se aplica na prática, usando o campo `addressComplement`. Ao criar o filtro, você verá que um campo vazio é interpretado como não existente. Vamos juntos praticar isso e seguir para a próxima aula!",
+          "duration": 265,
+          "type": "video",
+          "file": "02-exercicios/004-exists.txt",
+          "chars": 2882,
+          "status": "ok"
+        },
+        {
+          "title": "Igual e Contém",
+          "slug": "igual-e-contem",
+          "video_id": "e3cfe09f-8353-4161-87cf-9af99860be40",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como comparar variáveis textuais, focando em operações como \"igual\" ou \"diferente\". Demonstrei a importância de considerar letras maiúsculas e minúsculas ao usar o \"equal to\" e como isso pode ser ajustado com \"case insensitive\". Também mostrei como transformar texto usando a função \"lower\" para garantir comparações precisas. Por fim, discutimos a flexibilidade necessária em consultas, destacando a utilidade de manipular dados para obter resultados corretos. Espero que tenha sido claro!",
+          "duration": 619,
+          "type": "video",
+          "file": "02-exercicios/005-igual-e-contem.txt",
+          "chars": 7000,
+          "status": "ok"
+        },
+        {
+          "title": "Maior ou Igual a",
+          "slug": "maior-ou-igual-a",
+          "video_id": "efe66410-e0be-4af0-9691-450ce1d08750",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos como aplicar filtros numéricos em variáveis, especificamente usando operadores como maior ou igual. Discutimos a importância de garantir que a variável seja do tipo correto, como NUMBER, para que os operadores funcionem adequadamente. Demonstrei como arredondar valores e aplicar essas regras em um exemplo prático, destacando que a correspondência entre os tipos de dados é crucial. Finalizei enfatizando que, embora o sistema possa realizar algumas conversões, é melhor evitar misturar tipos. Te vejo na próxima!",
+          "duration": 306,
+          "type": "video",
+          "file": "02-exercicios/006-maior-ou-igual-a.txt",
+          "chars": 3064,
+          "status": "ok"
+        },
+        {
+          "title": "Datetime",
+          "slug": "datetime",
+          "video_id": "0c188755-2963-447b-8cf9-9570022d998f",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei a complexidade de trabalhar com datas e horários em programação. Falei sobre a importância de formatar corretamente as datas para evitar confusões, especialmente ao usar filtros. Demonstrei como o `formatDate` pode ajudar a igualar os formatos, facilitando comparações. Também abordei a questão dos fusos horários e como isso pode impactar os resultados. Encorajei a prática com exercícios para solidificar esses conceitos, pois trabalhar com datas pode ser desafiador. Vamos em frente!",
+          "duration": 642,
+          "type": "video",
+          "file": "02-exercicios/007-datetime.txt",
+          "chars": 6323,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "intermediario",
+      "title": "APIs, Módulos e Estruturas de Dados",
+      "order": 3,
+      "lessons": [
+        {
+          "title": "Introdução - Intermediário",
+          "slug": "introducao-intermediario",
+          "video_id": "bf92fd52-a300-4d94-94ef-45acfb5ed122",
+          "has_transcription": true,
+          "description": "Neste módulo intermediário do Make Academy, vamos explorar conceitos mais avançados como Webhooks e HTTP. Revisaremos também alguns pontos dos fundamentos, como manipulação de variáveis e estruturas de dados. O foco será em funções mais complexas e tratativas de erros. Começaremos com HTTP e APIs, essenciais para entender o que acontece por trás da plataforma. A ideia é desbloquear um novo nível de uso do Make. Estou animado para essa jornada com vocês!",
+          "duration": 122,
+          "type": "video",
+          "file": "03-intermediario/001-introducao-intermediario.txt",
+          "chars": 1838,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução à API's e HTTP",
+          "slug": "introducao-a-ap-is-e-http",
+          "video_id": "82485306-7bd5-4478-9597-2e12c6a07057",
+          "has_transcription": true,
+          "description": "Nesta aula, eu introduzo o conceito de HTTP, que significa Protocolo de Transferência de Hipertexto, e sua relação com APIs. Explico como o HTTP atua como um meio de comunicação entre cliente e servidor, usando a analogia de um garçom em um restaurante. A API facilita a interação entre sistemas, enquanto o HTTP é o protocolo que transporta as informações. Essa base é essencial para entender como tudo funciona na prática, especialmente em relação à plataforma Make que vamos explorar em seguida.",
+          "duration": 689,
+          "type": "video",
+          "file": "03-intermediario/002-introducao-a-api-s-e-http.txt",
+          "chars": 8835,
+          "status": "ok"
+        },
+        {
+          "title": "Aprofundando em APIs e HTTP",
+          "slug": "aprofundando-em-ap-is-e-http",
+          "video_id": "e2dba6a7-14f6-4050-9ddc-a6912a79b4d7",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos os métodos HTTP e como eles se aplicam a requisições de APIs. Discutimos os principais métodos: GET para buscar dados, POST para enviar informações, PUT para atualizar dados existentes, PATCH para modificações parciais e DELETE para remoções. Também falamos sobre a importância dos endpoints, headers e do corpo das requisições. Finalizamos com um exemplo prático de como fazer uma chamada HTTP usando a plataforma Make, destacando a simplicidade que ela oferece para interagir com APIs.",
+          "duration": 1867,
+          "type": "video",
+          "file": "03-intermediario/003-aprofundando-em-apis-e-http.txt",
+          "chars": 23723,
+          "status": "ok"
+        },
+        {
+          "title": "Módulos",
+          "slug": "modulos",
+          "video_id": "ef3fae37-ed84-462d-be0f-abcf738d4fcf",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei o conceito de webhooks e gatilhos, destacando suas diferenças. Enquanto o webhook escuta dados continuamente, o gatilho é acionado de forma programada. Abordei também os módulos e bundles, essenciais para estruturar automações mais complexas. Discuti os tipos de módulos no Make, como ações, buscas e gatilhos, exemplificando com Google Sheets. Enfatizei que um módulo pode ser tanto uma requisição de API quanto um gatilho, dependendo da configuração. Na próxima aula, falaremos sobre bundles.",
+          "duration": 525,
+          "type": "video",
+          "file": "03-intermediario/004-modulos.txt",
+          "chars": 6140,
+          "status": "ok"
+        },
+        {
+          "title": "Bundles, Arrays e Collections",
+          "slug": "bundles-arrays-e-collections",
+          "video_id": "f7a70328-08c6-40fb-84f1-75fa43886fa0",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei a estrutura de dados chamada \"bundle\", que organiza informações em pares de chave e valor. Discuti como os dados podem ser isolados, coletados em coleções ou organizados em arrays. Cada um desses formatos tem suas particularidades: enquanto os bundles são flexíveis, os arrays exigem uma estrutura fixa. Abordei também a importância de entender como manipular esses dados em diferentes contextos, preparando você para desafios mais complexos nas próximas aulas. Vamos juntos!",
+          "duration": 1706,
+          "type": "video",
+          "file": "03-intermediario/005-bundles-arrays-e-collections.txt",
+          "chars": 19079,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "processamento-de-dados-e-controle-de-fluxo",
+      "title": "Processamento de Dados e Controle de Fluxo",
+      "order": 4,
+      "lessons": [
+        {
+          "title": "Iterador",
+          "slug": "iterador",
+          "video_id": "5f4b04b2-2885-494f-b42f-7cdf887ab010",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como trabalhar com Arrays usando duas ferramentas fundamentais no Make: o Iterator e o Array Aggregator. O Iterator é responsável por descompactar um Array em vários bundles, permitindo que você trabalhe com cada item individualmente. Demonstrei isso com um exemplo prático de um carrinho de compras, onde conseguimos extrair IDs de diferentes itens. A ideia é que, ao entender o funcionamento do Iterator, você possa manipular dados de forma mais eficiente e organizada. Nos vemos na próxima!",
+          "duration": 378,
+          "type": "video",
+          "file": "04-processamento-de-dados-e-controle-de-fluxo/001-iterador.txt",
+          "chars": 4716,
+          "status": "ok"
+        },
+        {
+          "title": "Agregadores",
+          "slug": "agregadores",
+          "video_id": "b845f801-3ccf-42a1-94cf-6d75895de89c",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei o conceito de agregadores, ferramentas essenciais para automações que lidam com grandes volumes de dados, mas que precisam de um resultado consolidado. Diferente dos iteradores, que expandem dados em múltiplos pacotes, os agregadores reúnem informações em um único bloco. Utilizei um exemplo prático de um sistema de agendamento médico, onde transformamos múltiplos horários vagos em uma resposta única e clara. Essa abordagem facilita a interação com a inteligência artificial, otimizando a comunicação. Até a próxima!",
+          "duration": 390,
+          "type": "video",
+          "file": "04-processamento-de-dados-e-controle-de-fluxo/002-agregadores.txt",
+          "chars": 5222,
+          "status": "ok"
+        },
+        {
+          "title": "Webhooks",
+          "slug": "webhooks",
+          "video_id": "56318338-6917-44c8-9612-f55ac5404d82",
+          "has_transcription": true,
+          "description": "Hoje, falamos sobre Webhooks, uma ferramenta poderosa disponível no Make. Diferente das APIs, os Webhooks são personalizados e flexíveis, permitindo a troca de dados de forma simples. Mostrei como eles funcionam na prática, com exemplos de integração entre plataformas, como um sistema de atendimento e um agente de IA no WhatsApp. Também discutimos a capacidade do Webhook de receber e devolver informações, além de sua flexibilidade em lidar com diferentes tipos de dados. Espero que tenha ficado claro!",
+          "duration": 1039,
+          "type": "video",
+          "file": "04-processamento-de-dados-e-controle-de-fluxo/003-webhooks.txt",
+          "chars": 13812,
+          "status": "ok"
+        },
+        {
+          "title": "Error Handling",
+          "slug": "error-handling",
+          "video_id": "e9ba4992-416e-43c4-89e0-361cac72b296",
+          "has_transcription": true,
+          "description": "Nesta aula, discuti como lidar com erros em automações, focando em duas abordagens principais: o uso do `break` e do `ignore`. O `break` é essencial quando os dados não podem ser perdidos, pois ele armazena os erros e tenta reprocessá-los. Já o `ignore` é útil quando podemos descartar dados problemáticos sem interromper o fluxo. Compartilhei exemplos práticos de situações reais, como falhas na coleta de leads, para ilustrar a importância dessas tratativas. Espero que você aproveite!",
+          "duration": 534,
+          "type": "video",
+          "file": "04-processamento-de-dados-e-controle-de-fluxo/004-error-handling.txt",
+          "chars": 7291,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "avancado",
+      "title": "Funções Compostas, Postman e Documentações",
+      "order": 5,
+      "lessons": [
+        {
+          "title": "Funções Compostas",
+          "slug": "funcoes-compostas",
+          "video_id": "24d23b0e-3dfd-421e-93ba-0bf7ba36419d",
+          "has_transcription": true,
+          "description": "Hoje, explorei as funções compostas no Make, que permitem aninhar funções para transformar dados em uma única requisição. Demonstrei como manipular datas, usando `now` e `formatDate`, além de adicionar dias com `addDays`. Mostrei também onde encontrar diretrizes para formatação. O foco foi entender que, ao combinar funções, podemos simplificar processos e alcançar resultados desejados de forma mais eficiente. Essa abordagem é avançada, mas poderosa para otimizar seu trabalho. Até a próxima aula!",
+          "duration": 488,
+          "type": "video",
+          "file": "05-avancado/001-funcoes-compostas.txt",
+          "chars": 6390,
+          "status": "ok"
+        },
+        {
+          "title": "Usando o Postman",
+          "slug": "usando-o-postman",
+          "video_id": "9faf5c80-0189-4e82-86f1-bd285eca7324",
+          "has_transcription": true,
+          "description": "Hoje, apresento o Postman, uma ferramenta incrível para testar APIs. É super fácil de usar e gratuita, basta fazer login. No vídeo, mostro como criar uma nova requisição, escolher métodos HTTP e inserir URLs. A ideia é validar automações antes de implementá-las em outras plataformas, como o Make. O Postman permite verificar se tudo está correto, desde a autenticação até o corpo da requisição. Vamos explorar como ele pode facilitar seu trabalho com APIs. Até a próxima!",
+          "duration": 467,
+          "type": "video",
+          "file": "05-avancado/002-usando-o-postman.txt",
+          "chars": 6366,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução à Leitura de Documentação",
+          "slug": "introducao-a-leitura-de-documentacao",
+          "video_id": "1b0fe280-da86-4e64-8de1-82c0f8aaa3bd",
+          "has_transcription": true,
+          "description": "Hoje, vamos explorar a documentação da API do ZAPI, uma ferramenta que considero excelente pela sua didática e riqueza de detalhes. Discutimos como a documentação funciona como um cardápio, mostrando as funcionalidades disponíveis e como utilizá-las. Também comparamos com outras documentações, como a da Lead Lovers, destacando a importância de entender como ler e interpretar essas informações. Por fim, abordamos as dificuldades que podem surgir ao lidar com documentações menos claras e a relevância disso no uso de APIs.",
+          "duration": 952,
+          "type": "video",
+          "file": "05-avancado/003-introducao-a-leitura-de-documentacao.txt",
+          "chars": 13088,
+          "status": "ok"
+        },
+        {
+          "title": "Encerramento",
+          "slug": "encerramento-90",
+          "video_id": "d6e0fc15-1147-4cec-85fc-e1c201824b5f",
+          "has_transcription": true,
+          "description": "Chegamos ao final do módulo de Make Academy e quero agradecer pela sua presença. Este material é um grande referencial sobre o Make, cobrindo tudo que podemos fazer na plataforma. Embora você não use todos os conceitos imediatamente, eles serão úteis quando surgirem desafios nas automações. O Make é poderoso e, se você encontrar problemas, volte aqui para buscar soluções. Espero que aproveite bem esse conteúdo. Qualquer dúvida, me encontre no Instagram. Até a próxima!",
+          "duration": 133,
+          "type": "video",
+          "file": "05-avancado/004-encerramento.txt",
+          "chars": 1907,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 29,
+    "with_vtt": 29,
+    "without_vtt": 0,
+    "total_chars": 247839
+  }
+}

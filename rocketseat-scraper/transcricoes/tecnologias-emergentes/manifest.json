@@ -1,0 +1,124 @@
+{
+  "journey_slug": "tecnologias-emergentes",
+  "modules": [
+    {
+      "slug": "aulas-19",
+      "title": "Tecnologias Emergentes",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Boas Vindas",
+          "slug": "boas-vindas-2039",
+          "video_id": "65efcbd2-0e83-42bb-95c8-f3347c5d0231",
+          "has_transcription": true,
+          "description": "Neste curso de Tecnologias Emergentes, vou te guiar por inovações que estão moldando nosso futuro, como inteligência artificial, blockchain, Web3, IoT e realidade aumentada. Vamos explorar como essas tecnologias funcionam, seus impactos na sociedade e como você pode utilizá-las para se destacar profissionalmente. O objetivo é te deixar por dentro das tendências e preparar você para o futuro da tecnologia. Estou animado para essa jornada e espero te ver nas aulas!",
+          "duration": 60,
+          "type": "video",
+          "file": "01-aulas-19/001-boas-vindas.txt",
+          "chars": 970,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução às Tecnologias Emergentes",
+          "slug": "introducao-as-tecnologias-emergentes",
+          "video_id": "1cc2445b-49e3-4823-819b-7939269c8a96",
+          "has_transcription": true,
+          "description": "Nessa aula, introduzimos o conceito de tecnologias emergentes e seu impacto na sociedade e nos negócios. Discutimos como essas inovações, como inteligência artificial e realidade virtual, evoluem rapidamente e trazem mudanças disruptivas. Exemplos práticos, como o ChatGPT e o Pix, ilustram como essas tecnologias se tornaram parte do nosso cotidiano. Também abordamos a curva de adoção de tecnologia, destacando que nem todas as inovações são bem-sucedidas, como o caso do Google Glass. Vamos juntos explorar essas transformações!",
+          "duration": 1148,
+          "type": "video",
+          "file": "01-aulas-19/002-introducao-as-tecnologias-emergentes.txt",
+          "chars": 15000,
+          "status": "ok"
+        },
+        {
+          "title": "Tecnologias Disruptivas",
+          "slug": "tecnologias-disruptivas",
+          "video_id": "2943a81a-c385-48bf-ad8f-3163131e5c18",
+          "has_transcription": false,
+          "description": "Nesta aula, exploramos o conceito de tecnologia disruptiva, que são inovações que transformam mercados e modelos de negócios, tornando soluções mais eficientes e acessíveis. Discutimos exemplos como Netflix, Uber e WhatsApp, que mudaram a forma como consumimos conteúdo, nos deslocamos e nos comunicamos. Também analisamos a Amazon Go, uma proposta inovadora que, apesar do potencial disruptivo, enfrentou desafios operacionais e financeiros. Ao final, você entendeu o impacto dessas tecnologias no nosso cotidiano. Nos vemos na próxima aula!",
+          "duration": 529,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Inteligência Artificial e Automação",
+          "slug": "inteligencia-artificial-e-automacao",
+          "video_id": "50928057-c930-4d2a-893c-b8bd4a22b582",
+          "has_transcription": true,
+          "description": "Nessa aula, exploramos a inteligência artificial (IA) e automação como tecnologias emergentes. Começamos definindo IA, que simula a inteligência humana para resolver problemas e aprender com dados, com exemplos práticos como assistentes virtuais e chatbots. Em seguida, discutimos automação, que realiza tarefas com mínima intervenção humana, incluindo robótica e automação de processos. Também abordamos como essas tecnologias impactam negócios, trazendo eficiência e desafios éticos. O objetivo é que você veja como aplicar essas tendências na sua carreira.",
+          "duration": 681,
+          "type": "video",
+          "file": "01-aulas-19/004-inteligencia-artificial-e-automacao.txt",
+          "chars": 9638,
+          "status": "ok"
+        },
+        {
+          "title": "Blockchain, Criptomoedas e Web3",
+          "slug": "blockchain-criptomoedas-e-web-3",
+          "video_id": "cfebecff-2c56-4a9a-a212-03036c3e35be",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos as tecnologias emergentes, focando em blockchain, criptomoedas e Web3. Começamos definindo blockchain como um livro digital descentralizado e imutável, que garante segurança e transparência nas transações. Discutimos como as criptomoedas, como Bitcoin e Ethereum, se baseiam nessa tecnologia. Em seguida, falamos sobre Web3, a evolução da internet, que promove descentralização e controle dos usuários sobre seus dados. Também abordamos exemplos práticos, como NFTs e o metaverso, além dos desafios que essas tecnologias enfrentam.",
+          "duration": 437,
+          "type": "video",
+          "file": "01-aulas-19/005-blockchain-criptomoedas-e-web3.txt",
+          "chars": 6380,
+          "status": "ok"
+        },
+        {
+          "title": "IoT e Conectividade",
+          "slug": "io-t-e-conectividade",
+          "video_id": "a07ecd8d-4cf3-4b0c-85e5-c6b1e2a52a63",
+          "has_transcription": true,
+          "description": "Nessa aula, exploramos o conceito de Internet das Coisas (IoT) e sua conectividade. Discutimos como dispositivos inteligentes se interconectam para coletar e trocar dados, permitindo automação e integração com inteligência artificial. Exemplos práticos, como casas inteligentes e wearables, ilustram o uso cotidiano da IoT. Também falamos sobre a importância do 5G para suportar essa tecnologia, destacando desafios como segurança e interoperabilidade. Ao final, ficou claro que a IoT está moldando um futuro mais automatizado e conectado.",
+          "duration": 421,
+          "type": "video",
+          "file": "01-aulas-19/006-iot-e-conectividade.txt",
+          "chars": 6396,
+          "status": "ok"
+        },
+        {
+          "title": "Realidade Virtual e Aumentada",
+          "slug": "realidade-virtual-e-aumentada",
+          "video_id": "2de36b76-39d3-4294-a1fe-76b6b4c62bac",
+          "has_transcription": true,
+          "description": "Nessa aula, exploramos as diferenças entre realidade virtual (VR) e realidade aumentada (AR). A VR cria ambientes digitais imersivos, enquanto a AR sobrepõe elementos virtuais ao mundo real. Discutimos exemplos como Pokémon Go, que popularizou a AR, e o uso de VR em treinamentos médicos. Ambas as tecnologias estão revolucionando a interação digital, com aplicações em entretenimento, saúde e comércio. O futuro promete uma integração ainda maior com inteligência artificial e IoT, tornando essas experiências mais acessíveis.",
+          "duration": 282,
+          "type": "video",
+          "file": "01-aulas-19/007-realidade-virtual-e-aumentada.txt",
+          "chars": 4133,
+          "status": "ok"
+        },
+        {
+          "title": "Explorando o Futuro e Oportunidades",
+          "slug": "explorando-o-futuro-e-oportunidades",
+          "video_id": "a43e72bc-5d59-49a5-bd01-e05623cb0357",
+          "has_transcription": true,
+          "description": "Nesta aula, discutimos como as tendências tecnológicas moldam o futuro do trabalho e abrem portas para novas oportunidades. Focamos em áreas como inteligência artificial, sustentabilidade, saúde, transporte, finanças e educação, mostrando como essas inovações estão transformando carreiras. A ideia é que, ao entender essas mudanças, você possa se preparar melhor para o mercado, adquirindo habilidades relevantes e se adaptando a um mundo em constante evolução. Fique atento e invista no seu desenvolvimento contínuo!",
+          "duration": 401,
+          "type": "video",
+          "file": "01-aulas-19/008-explorando-o-futuro-e-oportunidades.txt",
+          "chars": 5911,
+          "status": "ok"
+        },
+        {
+          "title": "Encerramento",
+          "slug": "encerramento-66",
+          "video_id": "50b2e2a6-3070-4c60-b27a-f2fb8a533cca",
+          "has_transcription": false,
+          "description": "Chegamos ao final do curso sobre tecnologias emergentes! Discutimos o que são essas inovações e seu propósito, além de como elas se tornam tendências duradouras em nosso cotidiano. Você viu como essas tecnologias impactam áreas como educação, saúde e finanças, o que te ajuda a identificar oportunidades no mercado. Espero que tenha absorvido bem esse conteúdo, pois ele é fundamental para projetar sua carreira, seja a atual ou a que você deseja. Parabéns pela conclusão!",
+          "duration": 119,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 9,
+    "with_vtt": 7,
+    "without_vtt": 2,
+    "total_chars": 48428
+  }
+}

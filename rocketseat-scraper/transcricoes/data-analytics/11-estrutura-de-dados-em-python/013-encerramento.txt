@@ -1,0 +1,1 @@
+﻿WEBVTT Chegamos ao fim, ao nosso módulo sobre estruturas de dados em Python, onde a gente aprendeu sobre listas, dicionários, tuplas, sets. Agora a gente tem uma base para armazenamento de dados dentro dessas estruturas. Então, a gente consegue continuar avançando dentro da nossa formação Data Analytics. Então, aguardo vocês nos próximos módulos.

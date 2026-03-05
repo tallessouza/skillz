@@ -1,0 +1,33 @@
+
+
+# Environment & Secrets (AIOS)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Dependencies (AIOS)
+node_modules/
+node_modules
+
+# Build & Logs (AIOS)
+dist/
+build/
+.next/
+*.log
+logs/
+
+# IDE & OS (AIOS)
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+# Next.js generated
+next-env.d.ts
+
+# AIOS Local (AIOS)
+.aios-core/local/
+.claude/settings.local.json
+.aios/install-log.txt

@@ -1,0 +1,1 @@
+﻿WEBVTT Agora, nessa etapa aqui, a gente vai focar no TypeScript. Então, eu vou mostrar pra você como incluir o TypeScript em uma aplicação Node e a gente também vai ver outros detalhezinhos juntos aqui na prática, tá? Então, bora codar!

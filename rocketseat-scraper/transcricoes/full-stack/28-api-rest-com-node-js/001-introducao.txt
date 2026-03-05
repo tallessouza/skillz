@@ -1,0 +1,1 @@
+﻿WEBVTT Estamos dando início a uma nova etapa na nossa jornada de estudos Node e, nessa etapa aqui, vamos focar em API REST. Você vai aprender a criar uma API REST com o Node. Primeiro, a gente vai focar nos fundamentos de uma API REST. A gente vai também utilizar TypeScript, Express, Skin Validation e por aí vai, tá? Então, bora começar.

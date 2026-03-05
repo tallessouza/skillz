@@ -1,0 +1,243 @@
+{
+  "journey_slug": "engenharia-de-prompt",
+  "modules": [
+    {
+      "slug": "conceitos-e-pratica",
+      "title": "Conceitos e Prática",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Boas vindas Engenharia Prompt",
+          "slug": "boas-vindas-2048",
+          "video_id": "bb4e8be8-5238-42a3-8c32-e8febd293858",
+          "has_transcription": false,
+          "description": "Neste curso de Engenharia de Prompt, vou te mostrar como a inteligência artificial pode ser uma aliada poderosa em diversas áreas. Vamos aprender a criar prompts eficazes, indo além do básico, com foco em lógica, estratégia e criatividade. Ao final, você será capaz de usar a IA de forma profissional, transformando suas ideias em resultados concretos. Prepare-se para uma abordagem prática que mudará sua forma de trabalhar e resolver problemas.",
+          "duration": 94,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "O que é engenharia de Prompt e por que ela importa",
+          "slug": "o-que-e-engenharia-de-prompt-e-por-que-ela-importa",
+          "video_id": "937d8f49-1ecf-4a9d-ba7f-42f24fbe6fcf",
+          "has_transcription": true,
+          "description": "📗 Material: [Engenharia de Prompts](https://gamma.app/docs/Engenharia-de-Prompts--rm0pvld0pkmrsut?mode=doc)\n\nNesta aula, vamos explorar a engenharia de prompts, que é a arte de se comunicar com a inteligência artificial. Um prompt é basicamente uma instrução que você dá à IA, como pedir para criar um roteiro de vídeo. Aprender a estruturar bons prompts é crucial, pois isso resulta em respostas mais precisas e úteis. Essa habilidade está em alta no mercado, com muitas oportunidades surgindo para profissionais que dominam essa técnica.",
+          "duration": 295,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/002-o-que-e-engenharia-de-prompt-e-por-que-ela-importa.txt",
+          "chars": 3766,
+          "status": "ok"
+        },
+        {
+          "title": "Zero-Shot Prompting",
+          "slug": "zero-shot-prompting",
+          "video_id": "b163277e-fcd9-49d2-96ca-85f183c618af",
+          "has_transcription": true,
+          "description": "📗 Material: [Zero-Shot Prompting](https://axiomatic-basin-551.notion.site/Zero-Shot-Prompting-20140bd60220803abae3ebb45f1f4f97)\n\nNesta aula, vamos explorar a técnica de prompt chamada Zero Shot, que você pode já estar utilizando sem perceber. Vou apresentar um guia prático que facilitará nosso aprendizado, permitindo que você consulte as técnicas sempre que precisar. A Zero Shot consiste em dar instruções diretas à IA, sem exemplos, ideal para tarefas simples e objetivas. Mostrarei como aplicar isso com um exemplo prático, destacando suas vantagens, como rapidez e facilidade.",
+          "duration": 221,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/003-zero-shot-prompting.txt",
+          "chars": 3370,
+          "status": "ok"
+        },
+        {
+          "title": "Few-Shot Prompting",
+          "slug": "few-shot-prompting",
+          "video_id": "76bb1094-4678-4497-8544-4e53865f8e08",
+          "has_transcription": true,
+          "description": "📗 Material: [Few-Shot Prompting](https://axiomatic-basin-551.notion.site/Few-Shot-Prompting-20140bd6022080af81d8f211fb9fe868)\n\nNessa aula, explorei a técnica de Few Shot, que consiste em fornecer exemplos antes de fazer uma pergunta principal à inteligência artificial. Diferente da técnica de Zero Shot, aqui você estabelece um padrão ou estilo desejado para as respostas. Mostrei como usar templates para facilitar esse processo e compartilhei exemplos práticos. Essa abordagem é ótima para garantir clareza e consistência nas respostas, especialmente em contextos profissionais e de treinamento.",
+          "duration": 203,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/004-few-shot-prompting.txt",
+          "chars": 3058,
+          "status": "ok"
+        },
+        {
+          "title": "Prompt de Follow-Up",
+          "slug": "prompt-de-follow-up",
+          "video_id": "968330a9-872c-443b-961f-3a72d5b6c576",
+          "has_transcription": true,
+          "description": "📗 Material: [Prompt de Follow-Up](https://axiomatic-basin-551.notion.site/Prompt-de-Follow-Up-20140bd60220803bae71e6c22db4836e)\n\nNessa aula, explorei a técnica de prompt de follow-up, que permite dar continuidade a conversas anteriores sem começar do zero. Mostrei como refinar ou aprofundar respostas, especialmente quando elas não atendem às suas necessidades. Demonstrei isso com exemplos práticos, como criar um post para o LinkedIn sobre especialização em inteligência artificial. A ideia é interagir continuamente, ajustando o tom e o conteúdo até chegar ao resultado ideal. Essa abordagem facilita a personalização e a adequação das respostas.",
+          "duration": 271,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/005-prompt-de-follow-up.txt",
+          "chars": 3588,
+          "status": "ok"
+        },
+        {
+          "title": "Meta Prompt",
+          "slug": "meta-prompt",
+          "video_id": "3bd618fa-2271-4508-8b74-21f9eb564032",
+          "has_transcription": true,
+          "description": "📗 Material: [Meta Prompt](https://axiomatic-basin-551.notion.site/Meta-Prompt-20140bd6022080eaafcaf6ae8ea8bd8c)\n\nNessa aula, explorei a técnica de meta prompt, que é super útil para criar e aprimorar prompts. Mostrei como usar um template para gerar prompts eficazes, adaptando-o a diferentes tarefas. Demonstrei um exemplo prático de como criar ideias de postagens no LinkedIn para empreendedores na área de tecnologia. A técnica ajuda a evitar erros, melhora a estrutura dos prompts e é ótima para treinar equipes e padronizar a comunicação com a IA. É uma ferramenta poderosa para quem quer se aprofundar nesse assunto!",
+          "duration": 291,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/006-meta-prompt.txt",
+          "chars": 4114,
+          "status": "ok"
+        },
+        {
+          "title": "Refinamento de perguntas",
+          "slug": "refinamento-de-perguntas",
+          "video_id": "f04579ec-8298-441a-9e16-611532440cd5",
+          "has_transcription": true,
+          "description": "📗 Material: [Refinamento de perguntas](https://axiomatic-basin-551.notion.site/Refinamento-de-Perguntas-20140bd60220802a81f6e930aea7b1db)\n\nNessa aula, explorei a técnica de refinamento de perguntas para otimizar interações com a IA. Mostrei como tornar perguntas iniciais mais específicas e claras, evitando respostas genéricas. Demonstrei isso com exemplos práticos, como direcionar perguntas para um gerente de projetos. Ao refinar as perguntas, conseguimos respostas mais úteis e aplicáveis, além de desenvolver nosso pensamento crítico. Essa abordagem ajuda a reduzir tentativas e erros, tornando a experiência com a IA mais eficiente.",
+          "duration": 279,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/007-refinamento-de-perguntas.txt",
+          "chars": 3758,
+          "status": "ok"
+        },
+        {
+          "title": "Verificação cognitiva",
+          "slug": "verificacao-cognitiva",
+          "video_id": "11f66010-218d-440e-91fe-fea9146ad752",
+          "has_transcription": true,
+          "description": "📗 Material: [Verificação cognitiva](https://axiomatic-basin-551.notion.site/Verifica-o-Cognitiva-20140bd6022080e6960fde3d001086c4)\n\nNessa aula, explorei a técnica de verificação cognitiva, que permite que você peça à inteligência artificial para revisar e explicar a lógica por trás de suas respostas. Essa abordagem é útil para garantir que as respostas sejam coerentes, especialmente em análises e decisões. Demonstrei como aplicar essa técnica com um exemplo prático sobre a construção de um portfólio de arquiteto. Ao entender a lógica por trás das sugestões, você pode evitar respostas superficiais e aumentar sua confiança nas informações.",
+          "duration": 227,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/008-verificacao-cognitiva.txt",
+          "chars": 3274,
+          "status": "ok"
+        },
+        {
+          "title": "Persona do usuário",
+          "slug": "persona-do-usuario",
+          "video_id": "82de0a87-57e8-4aa2-84e4-9f0ae83526c9",
+          "has_transcription": true,
+          "description": "📗 Material: [Persona do usuário](https://axiomatic-basin-551.notion.site/Persona-do-Usu-rio-20140bd602208067b89bcbf4dea4a48d)\n\nNessa aula, explorei a técnica de persona do usuário, que consiste em adaptar o conteúdo ao perfil do público-alvo. Falei sobre como isso é útil para criadores de conteúdo, professores e profissionais de diversas áreas, permitindo uma comunicação mais clara e empática. Demonstrei um exemplo prático, explicando o conceito de ROI de forma simples para um empreendedor iniciante. Essa abordagem ajuda a personalizar respostas e a se conectar melhor com diferentes perfis, ampliando as possibilidades de aplicação.",
+          "duration": 231,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/009-persona-do-usuario.txt",
+          "chars": 3340,
+          "status": "ok"
+        },
+        {
+          "title": "Role Prompting",
+          "slug": "role-prompting",
+          "video_id": "63080ac3-247b-48e8-91cf-8b3b17a74a05",
+          "has_transcription": true,
+          "description": "📗 Material: [Role Prompting](https://axiomatic-basin-551.notion.site/Role-Prompting-20140bd6022080d2b74bc3915c428a24)\n\nNessa aula, explorei a técnica de \"Rule Prompting\", que envolve atribuir um papel específico à inteligência artificial. Diferente da técnica de persona, aqui pedimos que a IA se comporte como um profissional, como um advogado ou gerente de projeto. O objetivo é obter respostas alinhadas à perspectiva e linguagem desse papel. Mostrei como isso pode ser útil para simular conselhos de especialistas, revisar propostas e até preparar respostas para clientes insatisfeitos. Essa abordagem enriquece a análise e a tomada de decisões.",
+          "duration": 264,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/010-role-prompting.txt",
+          "chars": 3640,
+          "status": "ok"
+        },
+        {
+          "title": "Ancoragem de memória",
+          "slug": "ancoragem-de-memoria",
+          "video_id": "c756ad68-4cd4-4168-ac45-2f118b0f31d7",
+          "has_transcription": false,
+          "description": "📗 Material: [Ancoragem de memória](https://axiomatic-basin-551.notion.site/Ancoragem-de-Mem-ria-20140bd6022080559674f0cf13d0f430)\n\nNesta aula, explorei a técnica de ancoragem de memória, que ajuda a manter a consistência nas respostas da IA durante conversas longas. Mostrei como relembrar a IA sobre padrões ou estilos previamente estabelecidos, garantindo que ela não se desvie do tom ou formato desejado. Utilizei exemplos práticos, como criar conteúdos para diferentes públicos, e demonstrei como reforçar esses padrões em prompts subsequentes. Essa abordagem é útil para manter a clareza e a continuidade nas interações com a inteligência artificial.",
+          "duration": 300,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Cadeia de pensamento",
+          "slug": "cadeia-de-pensamento",
+          "video_id": "00ac0a9d-3a85-42a1-bd35-9046d02d9a58",
+          "has_transcription": true,
+          "description": "📗 Material: [Cadeia de pensamento](https://axiomatic-basin-551.notion.site/Cadeia-de-Pensamento-Chain-of-Thought-20140bd6022080a3ab8bfe3ae563af5f)\n\nNesta aula, apresento a técnica de cadeia de pensamento, que orienta a IA a raciocinar passo a passo antes de responder. Essa abordagem é ideal para resolver problemas lógicos, análises e decisões complexas. Demonstro como aplicar essa técnica, usando um exemplo prático sobre a troca de um sistema de gestão por um ERP na nuvem. A ideia é obter respostas mais estruturadas e confiáveis, detalhando cada etapa do raciocínio até chegar a uma recomendação final.",
+          "duration": 217,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/012-cadeia-de-pensamento.txt",
+          "chars": 2943,
+          "status": "ok"
+        },
+        {
+          "title": "Prompt de dois passos",
+          "slug": "prompt-de-dois-passos",
+          "video_id": "58a2e1a7-8922-4b9b-bb3f-2af99ef869df",
+          "has_transcription": true,
+          "description": "📗 Material: [Prompt de dois passos](https://axiomatic-basin-551.notion.site/Prompt-de-Dois-Passos-20140bd6022080279b03fea9c7263427)\n\nNessa aula, explorei a técnica de prompt de dois passos, que divide a tarefa em duas etapas. Primeiro, a IA cria uma estrutura e, em seguida, gera a resposta final. Essa abordagem ajuda a evitar respostas superficiais e permite um desenvolvimento mais claro e profundo. Demonstrei como usar essa técnica para criar conteúdos estruturados, como artigos e apresentações, garantindo organização e lógica. Essa metodologia é especialmente útil em contextos educacionais e na produção de materiais profissionais.",
+          "duration": 117,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/013-prompt-de-dois-passos.txt",
+          "chars": 1592,
+          "status": "ok"
+        },
+        {
+          "title": "Empilhamento de Prompts",
+          "slug": "empilhamento-de-prompts",
+          "video_id": "3960a447-e831-4c51-83f7-0921a2802b20",
+          "has_transcription": true,
+          "description": "📗 Material: [Empilhamento de Prompts](https://axiomatic-basin-551.notion.site/Empilhamento-de-prompts-Prompt-Layering-20140bd60220801393e6fe32f8ad5ecc)\n\nNessa aula, exploramos a técnica de empilhamento de prompts, que permite dividir tarefas complexas em várias etapas interconectadas, ao contrário do método de dois passos. Mostrei como essa abordagem pode ser aplicada em diversas situações, como planejamento de campanhas e criação de cursos. Utilizamos um exemplo prático em três etapas, onde cada fase depende da anterior, garantindo clareza e coerência. Além disso, discutimos como personalizar o ChatGPT para obter resultados mais precisos e relevantes.",
+          "duration": 241,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/014-empilhamento-de-prompts.txt",
+          "chars": 3526,
+          "status": "ok"
+        },
+        {
+          "title": "Autoconsistência",
+          "slug": "autoconsistencia",
+          "video_id": "60cc4c2b-9977-4f03-a9f1-c5a5514c07f5",
+          "has_transcription": true,
+          "description": "📗 Material: [Autoconsistência](https://axiomatic-basin-551.notion.site/Autoconsist-ncia-Self-Consistency-20140bd6022080bdad6cde7a622a6344)\n\nNessa aula, exploramos a técnica de autoconsciência, que envolve pedir à IA para gerar várias respostas a um mesmo prompt. O objetivo é comparar essas respostas e escolher a mais lógica e eficiente. Essa abordagem é útil para brainstorm, decisões críticas e construção de conteúdo. Demonstrei como aplicar isso, pedindo três perspectivas diferentes sobre engajamento em e-commerce. A técnica estimula o pensamento crítico e ajuda a evitar decisões precipitadas, promovendo uma análise mais rica e diversificada.",
+          "duration": 199,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/015-autoconsistencia.txt",
+          "chars": 2955,
+          "status": "ok"
+        },
+        {
+          "title": "Prompt iterativo",
+          "slug": "prompt-iterativo",
+          "video_id": "191b2942-a5fb-44c5-a57b-a9a9c3333f03",
+          "has_transcription": false,
+          "description": "📗 Material: [Prompt iterativo](https://axiomatic-basin-551.notion.site/Prompt-iterativo-Iterative-Prompting-20140bd6022080448b76eabbe843b95a)\n\nNesta aula, explorei a técnica de prompt interativo, que se baseia na interação passo a passo para alcançar respostas desejadas. Discuti como ajustar e refinar conteúdos, utilizando ciclos curtos de prompts. Demonstrei exemplos práticos, como categorizar desafios de uma empresa e incluir exemplos reais. Essa abordagem é ótima para tarefas complexas, permitindo ajustes contínuos sem perder o histórico da conversa. É uma ferramenta poderosa para prototipar textos, roteiros e comunicações.",
+          "duration": 233,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Temperatura",
+          "slug": "temperatura",
+          "video_id": "31b8b140-be83-46b6-8825-78f42d91a5f2",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos o conceito de temperatura na inteligência artificial, que ajusta o nível de criatividade nas respostas. Aprendemos que, ao definir a temperatura, podemos obter respostas mais precisas ou mais criativas, dependendo da tarefa. Demonstrei como interagir com um modelo de IA, pedindo exemplos de respostas em diferentes temperaturas, desde a objetividade até a criatividade máxima. Essa flexibilidade é essencial para adaptar a IA às suas necessidades, seja para tarefas técnicas ou criativas.",
+          "duration": 563,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/017-temperatura.txt",
+          "chars": 7488,
+          "status": "ok"
+        },
+        {
+          "title": "Comparativo entre as técnicas",
+          "slug": "comparativo-entre-as-tecnicas",
+          "video_id": "087b79f1-a3d7-453b-ae7b-0e4448713625",
+          "has_transcription": true,
+          "description": "📗 Material: [Tabela comparativa](https://axiomatic-basin-551.notion.site/Engenharia-de-Prompt-20140bd6022080fa8359d2b0588d3b89)\n\nNesta aula, explorei diversas técnicas para otimizar a interação com inteligência artificial. Criei uma tabela que você pode consultar sempre que precisar, ajudando a relembrar o propósito de cada técnica. Abordamos desde perguntas diretas até estratégias mais complexas, como a técnica de cadeia de pensamento e o empilhamento de prompts. Essas abordagens permitem que você adapte suas interações conforme o contexto e a necessidade, garantindo respostas mais precisas e relevantes.",
+          "duration": 468,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/018-comparativo-entre-as-tecnicas.txt",
+          "chars": 6547,
+          "status": "ok"
+        },
+        {
+          "title": "Encerramento",
+          "slug": "encerramento-73",
+          "video_id": "9e501cbf-1142-40f6-8660-49558c7b465e",
+          "has_transcription": true,
+          "description": "Parabéns por finalizar o curso de Engenharia de Prompt! Agora, você não só utiliza a inteligência artificial, mas também a projeta e comanda. Aprendeu a estruturar prompts de maneira estratégica e desenvolveu uma mentalidade de engenheiro de prompt, o que é incrível. Com essas novas habilidades, você pode criar, ensinar, automatizar e empreender. Aproveite esse conhecimento valioso e continue explorando e pensando como um verdadeiro engenheiro de prompt. Um grande abraço!",
+          "duration": 64,
+          "type": "video",
+          "file": "01-conceitos-e-pratica/019-encerramento.txt",
+          "chars": 841,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 19,
+    "with_vtt": 16,
+    "without_vtt": 3,
+    "total_chars": 57800
+  }
+}

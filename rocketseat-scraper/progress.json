@@ -1,0 +1,3846 @@
+{
+  "rs-acessibilidade-com-react-js-estilos-globais-10": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-acessibilidade-com-react-js-adicionando-novas-features-a-pagina": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-acessibilidade-com-react-js-estrutura-do-html": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-acessibilidade-com-react-js-concluindo-sobre-acessibilidade": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-acessibilidade-com-react-js-contraste-da-pagina": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-acessibilidade-com-react-js-estruturando-a-pagina": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-acessibilidade-com-react-js-funcionalidades-da-web-acessivel": {
+    "status": "ok",
+    "duration": 87
+  },
+  "rs-acessibilidade-com-react-js-conhecendo-leitores-de-tela": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-acessibilidade-com-react-js-entendendo-acessibilidade-para-modais": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-acessibilidade-com-react-js-conhecendo-o-radix-ui": {
+    "status": "ok",
+    "duration": 95
+  },
+  "rs-agentes-de-ia-com-n-8-n-boas-vindas-2055": {
+    "status": "ok",
+    "duration": 35
+  },
+  "rs-acessibilidade-com-react-js-html-landmarks": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-acessibilidade-com-react-js-setup-do-projeto-1": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-acessibilidade-com-react-js-introducao-a-acessibilidade-na-web": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-acessibilidade-com-react-js-introducao-ao-curso": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-agentes-de-ia-com-n-8-n-analisando-dados-de-execucao": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-acessibilidade-com-react-js-implementando-dialog": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-acessibilidade-com-react-js-textos-alternativos": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-acessibilidade-com-react-js-guidelines-de-acessibilidade": {
+    "status": "ok",
+    "duration": 101
+  },
+  "rs-acessibilidade-com-react-js-testando-acessibilidade-da-pagina": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-agentes-de-ia-com-n-8-n-cloud-ou-self-hosted": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-agentes-de-ia-com-n-8-n-criando-uma-primeira-trigger-webhook": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-agentes-de-ia-com-n-8-n-conectando-variaveis-entre-nos": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-agentes-de-ia-com-n-8-n-entrada-processamento-saida": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-agentes-de-ia-com-n-8-n-diferenca-entre-n-8-n-zapier-e-make": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-agentes-de-ia-com-n-8-n-o-que-e-o-n-8-n": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-agentes-de-ia-com-n-8-n-gestao-de-variaveis-novo": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-agentes-de-ia-com-n-8-n-http-request": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-agentes-de-ia-com-n-8-n-onde-o-n-8-n-entra-na-stack": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-agentes-de-ia-com-n-8-n-overview-do-n-8-n-novo": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-agentes-de-ia-com-n-8-n-retorno-do-webhook": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-agentes-de-ia-com-n-8-n-componente-open-ai": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-agentes-de-ia-com-n-8-n-chat-model": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-agentes-de-ia-com-n-8-n-instalando-n-8-n-easypanel": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-agentes-de-ia-com-n-8-n-memoria-parte-1": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-agentes-de-ia-com-n-8-n-componente-open-ai-assistants": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-agentes-de-ia-com-n-8-n-componentes-agente-de-ia": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-agentes-de-ia-com-n-8-n-self-hosted-infra": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-agentes-de-ia-com-n-8-n-memoria-parte-2": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-agentes-de-ia-com-n-8-n-trigger-agente-de-ia": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-agentes-de-ia-com-n-8-n-tools-novo": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-angular-angular-cli-global-vs-comando-npx-do-npm": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-conhecendo-mais-sobre-o-angular-cli": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-criando-e-executando-o-primeiro-projeto-angular": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-angular-encerramento-88": {
+    "status": "ok",
+    "duration": 39
+  },
+  "rs-angular-conhecendo-o-ambiente-de-desenvolvimento-do-angular": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-analisando-a-estrutura-do-projeto": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-angular-debugando-a-aplicacao-com-o-angular-dev-tools": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-entendendo-a-compatibilidade-de-versoes": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-debugando-a-aplicacao-com-o-vs-code-debugger": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-debugando-a-aplicacao-com-o-console-log": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-angular-instalando-o-node-js-e-o-npm": {
+    "status": "ok",
+    "duration": 44
+  },
+  "rs-angular-instalando-as-dependencias-do-projeto-com-npm": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-instalando-o-vs-code-e-as-extensoes-necessarias": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-introducao-analisando-um-projeto-angular": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-introducao-configurando-o-ambiente-de-desenvolvimento": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-aplicando-estilos-dinamicos-com-class-binding": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-aplicando-margin-e-width-da-maneira-correta": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-o-que-e-o-angular-e-seu-proposito": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-angular-atif-atelse-if-e-atelse": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-atfor": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-aplicando-estilos-dinamicos-com-style-binding": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-angular-atlet": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-atswitch": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-class-binding-na-pratica": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-encerramento-87": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-como-criar-um-service-e-fazer-a-injecao-de-dependencia": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-estrategia-de-view-encapsulation-none": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-estrutura-inline-do-componente": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-estrutura-de-arquivos-do-componente": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-importando-fontes-do-google-fonts": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-estrategia-de-view-encapsulation-emulated": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-angular-estilizando-o-componente-com-classes-globais": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-angular-estrategia-de-view-encapsulation-shadow-dom": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-angular-importando-icones-do-font-awesome-via-npm": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-importando-icones-do-font-awesome-via-cdn": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-introducao-controle-de-fluxo-e-variaveis-no-template": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-introducao-comunicacao-entre-componentes": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-introducao-trabalhando-com-imagens-icones-e-fontes": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-ng-on-init-vs-constructor": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-ng-on-changes": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-introducao-services-e-gerenciamento-de-estado": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-angular-o-que-e-um-componente": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-angular-passando-valores-para-o-componente-com-at-input": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-passando-valores-para-o-template-do-componente": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-angular-pub-sub-classe-behavior-subject": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-para-que-servem-os-services": {
+    "status": "ok",
+    "duration": 92
+  },
+  "rs-angular-pub-sub-classe-subject": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-pub-sub-gerenciamento-de-estado-com-behavior-subject": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-pub-sub-introducao": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-pub-sub-o-que-e-um-observable": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-recebendo-valores-do-componente-com-at-output": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-pub-sub-operadores-do-rxjs": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-referenciando-um-componente-dentro-de-outro-componente": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-service-com-instancia-unica-e-multiplas-injecoes-de-dependencias": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-style-binding-na-pratica": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-trabalhando-com-fontes-de-texto-proprias": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-trabalhando-com-imagens-1": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-trabalhando-com-sv-gs": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-utilizando-o-event-binding": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-utilizando-o-host-e-host-context": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-angular-utilizando-o-root": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-utilizando-o-property-binding": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-utilizando-o-two-way-data-binding": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-view-encapsulation-para-estilizacoes": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-adicionando-icones-e-criando-a-pasta-assets": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-adicionando-foco-no-input-de-comentario-com-at-view-child": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-adicionando-comentarios-no-modal-e-atualizando-a-fonte-de-verdade": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-analisando-os-proximos-passos-do-desenvolvimento": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-angular-analisando-o-problema-de-mutacao-da-lista-de-tarefas": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-apresentando-o-roadmap-do-projeto": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-apresentando-o-resultado-final-do-projeto-no-vs-code": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-atualizando-o-status-da-tarefa-no-service": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-corrigindo-o-problema-de-mutacao-da-lista-de-tarefas": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-criando-a-funcao-geradora-de-i-ds": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-criando-a-interface-da-tarefa": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-configuracao-do-drag-and-drop-nas-colunas-de-status-da-tarefa": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-angular-configurando-o-formulario-do-modal-de-criacao-e-edicao": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-angular-criando-e-validando-o-form-control-de-novo-comentario": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-criando-logica-de-atualizacao-de-comentarios-no-task-service": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-criando-o-layout-da-mensagem-de-tarefas-nao-disponiveis": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-criando-o-projeto-angular": {
+    "status": "ok",
+    "duration": 48
+  },
+  "rs-angular-criando-o-layout-das-colunas-de-tarefas": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-criando-o-layout-do-modal-de-comentarios-da-tarefa-parte-2": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-criando-o-metodo-de-adicionar-tarefa": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-criando-o-layout-do-modal-de-comentarios-da-tarefa-parte-1": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-criando-o-service-para-abertura-dos-modais": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-definindo-a-sessao-de-conteudo-principal": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-definindo-a-estrutura-da-lista-de-tarefas": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-definindo-a-responsabilidade-dos-modais": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-definindo-o-local-de-abertura-dos-modais": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-instalando-o-angular-material-cdk": {
+    "status": "ok",
+    "duration": 40
+  },
+  "rs-angular-deletando-a-tarefa": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-angular-instalando-o-prettier": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-angular-desenhando-a-visao-integrada-da-aplicacao": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-instalando-o-tailwind": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-angular-introducao-157": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-entendendo-o-funcionamento-do-drag-and-drop": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-angular-introducao-154": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-definindo-o-local-de-gerenciamento-das-tarefas": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-angular-limitando-o-nome-e-a-descricao-da-tarefa-com-o-pipe-slice": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-mostrando-mensagem-de-tarefas-nao-disponiveis": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-recuperando-tarefas-do-local-storage": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-removendo-comentarios-da-tarefa": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-renderizando-as-tarefas-com-async-pipe-e-atlet": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-retornando-dados-ao-fechar-o-modal-de-criacao-e-edicao": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-renderizando-os-comentarios-da-tarefa-no-modal": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-revisando-as-funcionalidades-do-projeto": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-angular-atualizando-o-ambiente-de-desenvolvimento-para-o-angular-20": {
+    "status": "ok",
+    "duration": 48
+  },
+  "rs-angular-revisando-os-principais-conceitos": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-revisando-os-principais-conceitos-que-serao-utilizados": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-angular-aplicando-o-feature-based-components-no-projeto": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-angular-exemplo-2-sistema-de-rh": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-diferencas-entre-telas-do-sistema-e-feature": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-definindo-a-estrutura-de-pastas": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-angular-introducao-167": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-exemplo-3-sistema-de-gerenciamento-de-projetos-mp-4": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-regras-de-dependencia": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-aplicando-porcentagem-com-percent-pipe": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-compreendendo-fusos-horarios-e-datas-em-utc": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-configurando-o-default-currency-code-da-aplicacao": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-angular-configurando-a-regiao-da-aplicacao": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-conversao-de-java-script-com-json-pipe": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-angular-configurando-o-default-date-pipe-options-da-aplicacao": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-angular-criando-pipes-customizados": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-entendendo-o-parametro-currency-code-do-currency-pipe": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-entendendo-o-parametro-display-do-currency-pipe": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-formatacao-monetaria-com-currency-pipe": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-finalizando-o-modulo-2": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-formatacao-de-decimais-com-decimal-pipe": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-entendendo-os-parametros-digits-info-e-locale-do-currency-pipe": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-angular-inscricao-em-observables-com-async-pipe": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-formatacao-de-datas-com-date-pipe": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-angular-introducao-a-pipes": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-iterando-sobre-objetos-de-maps-com-key-value-pipe": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-mapeando-textos-por-chave-com-o-i-18-n-select-pipe": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-manipulando-texto-com-lower-case-pipe-upper-case-pipe-e-title-case-pipe": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-mapeando-textos-por-quantidade-com-o-i-18-n-plural-pipe": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-padroes-de-datas": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-o-que-sao-pipes": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-slice-pipe-para-manipulacao-de-arrays": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-slice-pipe-para-manipulacao-de-textos": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-pipes-puros-e-impuros": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-angular-utilizando-datas-em-utc-no-desenvolvimento-de-software": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-adicionando-mensagem-de-lista-vazia": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-adicionando-redirecionamento-nos-botoes-de-login-e-cadastro": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-angular-adicionando-redirecionamento-para-tela-de-criacao": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-angular-adicionando-redirecionamento-para-tela-de-detalhes": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-angular-adicionando-logica-de-toggle-de-favorito": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-angular-adicionando-redirecionamento-nos-itens-do-header": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-aplicando-validacao-de-erros-nos-campos-de-e-mail-e-senha-do-login": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-aplicando-lazy-loading-nas-rotas": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-atualizando-dados-de-avaliacao-do-filme": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-clone-do-projeto-e-instalacao-das-dependencias": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-angular-binding-dos-detalhes-do-filme": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-configurando-guard-para-rotas-de-login-e-registro": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-configuracao-da-collection-do-back-end-e-teste-dos-endpoints": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-configurando-rota-nao-encontrada": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-angular-configurando-a-rota-de-login-e-registro": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-configurando-a-rota-de-area-autenticada": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-configurando-service-para-gerenciamento-do-token": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-configurando-o-guard-para-rotas-autenticadas": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-convertendo-o-filtro-para-um-componente": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-corrigindo-comportamento-de-abertura-do-menu": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-corrigindo-mensagens-de-lista-vazia": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-criando-environments": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-criando-interceptor-para-envio-do-token-nas-requisicoes": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-criando-metodo-para-validacao-do-token": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-criando-formulario-de-registro-com-signal-forms": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-criando-formulario-de-login-com-signal-forms": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-desabilitando-botao-de-login": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-desabilitando-botao-de-registrar": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-criando-um-validador-personalizado-para-confirmacao-de-senha": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-desabilitando-botao-de-salvar": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-implementando-botao-de-cancelar": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-angular-evitando-chamadas-duplicadas-no-login": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-implementando-limpagem-do-filtro": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-fazendo-o-binding-das-informacoes-dos-filmes": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-angular-implementando-logica-de-logout-1": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-implementando-display-no-nome-do-usuario-no-header": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-implementando-logica-de-avaliacao-do-filme": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-implementando-filtro-de-filmes": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-angular-implementando-logica-de-login-com-rx-js": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-angular-implementando-logica-de-registrar-novo-usuario-com-rx-resource": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-implementando-logica-de-preenchimento-das-estrelas": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-angular-implementando-logica-para-identificar-filme-favorito": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-implementando-mensagem-de-sucesso-do-registro": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-angular-implementando-logica-para-salvar-filme": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-implementando-mensagens-de-erro-ao-registrar-usuario": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-implementando-requisicao-de-listagem-de-filmes": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-implementando-mensagens-de-sucesso-e-erro": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-implementando-mensagens-de-erro-no-login": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-implementando-requisicao-de-login-com-armazenamento-de-token": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-implementando-requisicao-de-registro-de-usuario": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-angular-implementando-requisicao-para-salvar-arquivo": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-implementando-requisicoes-de-favoritar-filme": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-introducao-177": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-angular-introducao-171": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-angular-introducao-172": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-implementando-two-way-data-binding-para-recuperacao-dos-campos": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-listando-filmes-favoritos": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-mostrando-mensagem-para-lista-de-filmes-vazia": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-listando-os-filmes-no-template": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-angular-refatorando-a-logica-de-login-para-utilizar-o-rx-resource": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-removendo-metodos-desnecessarios": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-angular-retornando-detalhes-do-filme": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-angular-testando-o-interceptor": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-salvando-o-nome-do-usuario-no-local-storage": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-angular-visao-da-estrutura-em-feature-based-components": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-angular-visao-geral-do-projeto-2": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-visao-dos-componentes": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-angular-visao-das-caracteristicas-do-back-end": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-angular-curso-introdutorio-ajuste-geral-em-todos-os-componentes": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-curso-introdutorio-ciclo-de-vida-de-um-componente-ng-on-init": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-curso-introdutorio-componente-interface-base-com-ng-content": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-angular-curso-introdutorio-componente-navbar": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-curso-introdutorio-componente-item-da-lista-de-certificados": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-angular-curso-introdutorio-componente-primary-button": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-curso-introdutorio-componente-secondary-button": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-angular-curso-introdutorio-instalando-o-node-js-1": {
+    "status": "ok",
+    "duration": 39
+  },
+  "rs-angular-curso-introdutorio-criando-o-primeiro-componente": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-curso-introdutorio-criando-e-estilizando-a-mensagem-de-erro-dos-inputs": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-curso-introdutorio-introducao-ao-curso-1": {
+    "status": "ok",
+    "duration": 41
+  },
+  "rs-angular-curso-introdutorio-instalando-o-visual-studio-code-e-extensoes": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-curso-introdutorio-estilizando-o-estado-focus-dos-inputs": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-angular-curso-introdutorio-lista-de-certificados": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-angular-curso-introdutorio-adicionando-atividades-na-lista-do-formulario": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-angular-curso-introdutorio-visao-geral-do-projeto-figma": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-curso-introdutorio-criando-rotas-da-aplicacao-1": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-angular-curso-introdutorio-usando-o-router-para-navegacao-via-type-script": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-curso-introdutorio-criando-inputs-para-os-botoes-1": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-angular-curso-introdutorio-usando-o-ng-model-no-formulario": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-angular-curso-introdutorio-usando-router-link-para-navegacao-entre-as-paginas": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-angular-curso-introdutorio-criando-a-funcionalidade-de-download-do-certificado": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-angular-curso-introdutorio-recuperando-informacoes-dos-certificados-nas-paginas": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-angular-curso-introdutorio-fazendo-o-deploy-da-aplicacao": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-angular-curso-introdutorio-exibindo-as-informacoes-do-certificado-na-pagina": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-angular-curso-introdutorio-listando-o-historico-de-certificados-gerados": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-angular-curso-introdutorio-revisando-a-aplicacao-antes-do-deploy": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-api-com-bun-configurando-es-lint-no-projeto": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-api-com-bun-criando-api-com-bun-e-elysia": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-api-com-bun-migrations-no-drizzle": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-api-com-bun-postgre-sql-no-docker-compose": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-api-com-bun-configurando-drizzle-orm": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-api-com-bun-criando-seed-com-drizzle": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-api-com-bun-relacionamentos-no-drizzle": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-api-com-bun-tipagem-na-entrada-de-dados": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-api-com-bun-rota-cadastro-de-restaurante": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-api-com-bun-variaveis-ambiente-no-bun": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-api-com-bun-envio-de-e-mail-com-nodemailer": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-api-com-bun-lidando-com-erros-no-elysia": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-api-com-bun-rota-restaurante-gerenciado": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-api-com-bun-rota-logout-e-derivacao": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-api-com-bun-rota-envio-do-link-de-autenticacao": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-api-com-bun-rota-perfil-do-usuario-logado": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-api-com-bun-rota-autenticacao-pelo-link": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-api-com-bun-schema-de-links-de-autenticacao": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-api-com-bun-configurando-relacionamentos-no-drizzle": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-api-com-bun-setup-da-autenticacao-jwt": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-api-com-bun-rota-aprovar-pedido": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-api-com-bun-rota-detalhes-do-pedido": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-api-com-bun-rota-metrica-de-pedidos-cancelados": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-api-com-bun-rota-metrica-de-pedidos-mensais": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-api-com-bun-rota-listagem-de-pedidos": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-api-com-bun-rota-metrica-de-pedidos-diarios": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-api-com-bun-rota-metrica-de-receita-mensal": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-devops-injetando-falha-nas-aplicacoes": {
+    "status": "ok",
+    "duration": 87
+  },
+  "rs-node-js-2023-gerando-token-jwt-1": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-ia-node-marketplace-inteligente-visao-geral-da-api": {
+    "status": "bad_format",
+    "duration": 25
+  },
+  "rs-next-js-melhorando-o-seo-da-landing-page": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-next-js-fazendo-o-deploy-1": {
+    "status": "ok",
+    "duration": 94
+  },
+  "rs-devops-contexto-de-um-mundo-sem-dev-ops": {
+    "status": "ok",
+    "duration": 96
+  },
+  "rs-next-js-entendendo-ssg-e-isr-na-app-router": {
+    "status": "ok",
+    "duration": 99
+  },
+  "rs-next-js-migrando-a-listagem-de-posts": {
+    "status": "ok",
+    "duration": 104
+  },
+  "rs-next-js-migrando-a-landing-page": {
+    "status": "ok",
+    "duration": 107
+  },
+  "rs-next-js-criando-o-loading-tsx": {
+    "status": "ok",
+    "duration": 108
+  },
+  "rs-next-js-entendendo-os-react-server-components": {
+    "status": "ok",
+    "duration": 113
+  },
+  "rs-next-js-entendendo-sobre-os-arquivos-especiais-e-client-components": {
+    "status": "ok",
+    "duration": 116
+  },
+  "rs-next-js-melhorando-o-seo-da-pagina-do-post": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-melhorando-seo-na-pagina-de-listagem-de-posts": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-next-js-o-que-e-seo": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-seo-e-core-web-vitals": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-adicionando-o-calendar": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-next-js-busca-dinamica-1": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-ajustes-finais-8": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-next-js-conhecendo-o-projeto-2036": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-componente-period-section": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-next-js-ajustes-visuais": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-next-js-configurando-es-lint-prettier-e-lefthook": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-continuando-a-home": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-next-js-criando-a-funcao-de-submit": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-next-js-continuando-o-appointment-card": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-criando-a-base-do-appointment-form": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-criando-a-server-action": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-criando-a-funcionalidade-de-delecao-de-um-agendamento": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-criando-logica-para-os-periodos": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-criando-o-date-picker": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-criando-o-input-de-calendario": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-criando-o-appointment-card": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-next-js-criando-o-input-de-telefone-com-mascara": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-criando-o-navigation-button": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-next-js-criando-o-select-de-data-parte-02": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-next-js-criando-o-select-de-data-parte-01": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-next-js-criando-o-schema-do-appointment-form": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-next-js-criando-os-primeiros-inputs": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-next-js-editando-um-agendamento": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-next-js-criando-server-action-para-a-edicao": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-next-js-entendendo-o-que-e-o-docker": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-next-js-entendendo-o-docker-compose-1": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-finalizando-o-deploy": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-finalizando-o-visual-do-appointment-form": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-next-js-iniciando-a-home": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-next-js-instalando-o-docker-client": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-next-js-iniciando-nosso-system-design": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-listando-os-agendamentos": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-next-js-iniciando-o-deploy-do-projeto": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-next-js-instalando-e-configurando-o-prisma-2": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-melhorando-o-date-picker": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-setup-inicial-next-js": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-next-js-refatorando-a-server-action": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-o-que-sao-server-actions": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-next-js-utilizando-o-revalidate-path": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-next-js-atualizacao-de-cache-dos-likes": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-buscando-issues-do-board": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-aplicando-filtro-na-listagem": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-next-js-autenticacao-com-better-auth": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-next-js-cache-no-next-js": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-next-js-client-e-server-components": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-carregamento-das-interacoes-na-issue": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-next-js-componentes-de-secao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-carregando-interacoes-no-board": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-next-js-encerramento-91": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-next-js-efeitos-de-hover-e-focus": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-criacao-de-comentarios": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-next-js-estrutura-da-pagina-de-issue": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-next-js-estrutura-do-board": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-next-js-estrutura-do-cabecalho": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-formulario-de-comentarios-2024": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-estrutura-dos-cards": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-next-js-gerando-open-graph-image": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-funcionalidade-de-like": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-next-js-loading-state-da-pagina-de-issue": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-metadados-das-paginas": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-next-js-pagina-de-issue-e-deduplicacao": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-next-js-listagem-de-comentarios": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-next-js-parallel-e-intercepting-routes": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-next-js-modal-do-detalhe-da-issue": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-next-js-partial-pre-rendering-suspense-api": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-search-parameters-com-nuqs": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-roteamento-e-layouts-no-next-js": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-next-js-setup-do-react-query": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-next-js-setup-do-projeto-next-js-1": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-setup-da-api-hono-com-drizzle-e-better-auth": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-next-js-app-router-e-testes-abstraindo-client-components": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-next-js-app-router-e-testes-client-boundaries-e-encadeamentop": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-app-router-e-testes-arquitetura-do-next-js": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-next-js-app-router-e-testes-criando-projeto-next-js-1": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-next-js-app-router-e-testes-arvore-de-componentes-no-next-js": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-next-js-app-router-e-testes-grupos-e-rotas-dinamicas": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-next-js-app-router-e-testes-fetch-de-dados-nos-componentes": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-next-js-app-router-e-testes-rotas-e-layouts-mkv-mp-4": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-next-js-app-router-e-testes-loading-e-streaming-ssr": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-next-js-app-router-e-testes-react-server-components": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-next-js-app-router-e-testes-api-busca-de-produtos": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-next-js-app-router-e-testes-suspense-api-no-react": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-app-router-e-testes-ajustes-no-deploy-da-aplicacao": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-next-js-app-router-e-testes-adicionando-ao-carrinho-2": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-app-router-e-testes-buscando-produtos-da-api-4": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-app-router-e-testes-cache-e-memoizacao": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-app-router-e-testes-comandos-personalizados": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-next-js-app-router-e-testes-configurando-favicon": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-next-js-app-router-e-testes-criando-estrutura-do-app": {
+    "status": "ok",
+    "duration": 48
+  },
+  "rs-next-js-app-router-e-testes-contexto-do-carrinho": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-next-js-app-router-e-testes-criando-fetch-api-wrapper": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-next-js-app-router-e-testes-criando-layout-da-aplicacao": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-next-js-app-router-e-testes-componente-header-7": {
+    "status": "ok",
+    "duration": 91
+  },
+  "rs-next-js-app-router-e-testes-finalizacao-do-modulo-2": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-next-js-app-router-e-testes-fetch-de-dados-do-produto": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-next-js-app-router-e-testes-fetch-de-produtos-na-home": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-app-router-e-testes-formulario-de-busca": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-next-js-app-router-e-testes-geracao-estatica-na-build": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-next-js-app-router-e-testes-loading-da-busca": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-next-js-app-router-e-testes-gerando-opengraph-image": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-next-js-app-router-e-testes-page-metadata-no-next-seo": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-next-js-app-router-e-testes-loading-da-home": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-next-js-app-router-e-testes-pagina-de-busca-1": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-next-js-app-router-e-testes-route-handlers-no-next": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-app-router-e-testes-pagina-detalhe-do-produto": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-next-js-app-router-e-testes-setup-do-cypress-e-2-e": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-next-js-app-router-e-testes-testando-a-busca": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-next-js-app-router-e-testes-pagina-home-2": {
+    "status": "ok",
+    "duration": 91
+  },
+  "rs-next-js-app-router-e-testes-testando-o-carrinho": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-next-js-app-router-e-testes-variaveis-ambiente-client-e-server": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-aplicando-streams-no-modulo-http": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-next-js-app-router-e-testes-workflow-de-ci-com-cypress": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-atualizacao-de-registros": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-conhecendo-http-status-codes": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-capturando-query-parameters": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-consumindo-uma-stream-completa": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-criando-id-unico-e-universal-uuid": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-node-js-2023-criando-banco-de-dados-json": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-criando-middleware-de-json": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-criando-regex-dos-parametros": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-criando-um-projeto-node": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-criando-stream-de-leitura": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-node-watch": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-node-js-2023-entendendo-buffers-no-node": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-filtrando-lista-do-banco-de-dados": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-introducao-51": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-entendendo-streams-no-node": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-remocao-de-registros": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-persistindo-banco-de-dados": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-rotas-de-criacao-e-listagem-metodos-http": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-rotas-com-parametros-regex": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-route-e-query-parameters": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-separando-rotas-da-aplicacao": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-salvando-usuarios-em-memoria-headers": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-categorizando-os-testes": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-stream-de-escrita-e-transformacao": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-configurando-o-knex": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-node-js-2023-configurando-es-lint-2": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-configurando-banco-de-testes": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-conhecendo-o-fastify": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-configurando-um-hook-global": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-criacao-de-transacoes": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-criando-aplicacao-2": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-node-js-2023-criando-primeira-migration": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-criando-primeiro-teste-1": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-node-js-2023-criando-tabela-de-transacoes": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-deploy-do-app-no-render": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-entendendo-o-type-script": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-introducao-52": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-entendo-testes-automatizados": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-node-js-2023-estrategias-de-acesso-ao-banco": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-listagem-das-transacoes": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-finalizando-testes-da-aplicacao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-plugins-do-fastify": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-realizando-queries-com-knex": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-node-js-2023-preparando-para-deploy": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-resumo-de-transacoes": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-node-js-2023-requisitos-da-aplicacao": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-testando-criacao-de-transacao": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-testando-listagem-de-transacoes": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-tratando-env-com-zod": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-tipagem-no-knex": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-validando-existencia-do-cookie": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-utilizando-cookies-no-fastify": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-variaveis-ambiente-7": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-carregando-variaveis-ambiente": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-aprendendo-sobre-test-environment": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-autorizacao-por-cargos-rbac": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-caso-de-uso-de-academias-proximas": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-de-busca-de-academias": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-caso-de-uso-de-autenticacao": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-de-check-in": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-node-js-2023-caso-de-uso-de-metricas": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-caso-de-uso-de-historico": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-caso-de-uso-de-criacao-de-academia": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-caso-de-uso-de-perfil": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-de-registro": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-de-validar-de-check-in": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-configurando-vitest": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-configurando-es-lint-3": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-node-js-2023-controller-de-criacao-de-academia": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-controller-de-perfil": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-criacao-de-um-usuario": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-controllers-das-rotas-de-check-ins": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-controller-de-registro": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-criando-aliases-de-importacao": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-node-js-2023-criando-projeto-node-js": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-node-js-2023-criando-schema-do-prisma": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-definindo-requisitos-e-regras": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-criando-test-environment-2024": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-executando-testes-e-2-e-no-ci": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-estrategia-de-refresh-de-token": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-node-js-2023-fundamentos-do-docker": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-executando-testes-unitarios-no-ci": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-factories-dos-casos-de-uso": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-gerando-coverage-de-testes": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-fundamentos-do-prisma-orm": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-hash-da-senha-e-validacao": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-handler-de-erros-global": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-node-js-2023-implementacao-do-refresh-token": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-implementando-jwt-no-fastify": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-in-memory-databases": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-introducao-53": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-lidando-com-erros-do-use-case": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-interface-do-repositorio": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-inversao-de-dependencias-1": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-node-js-2023-outros-controllers-da-academia": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-postgre-sql-com-docker": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-primeiro-teste-unitario": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-refatorando-instancias-nos-testes": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-principios-da-autenticacao-jwt": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-repository-pattern": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-relacionamentos-entre-tabelas": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-repositorio-de-academias": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-repositorios-do-prisma": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-teste-e-2-e-da-autenticacao": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-tdd-and-mocking": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-teste-e-2-e-do-perfil": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-teste-e-2-e-do-registro": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-utilizando-factory-pattern": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-node-js-2023-usando-versoes-exatas-do-npm": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-testes-de-rbac": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-testes-e-2-e-de-rotas-de-academias": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-testes-e-2-e-de-rotas-de-check-ins": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-utilizando-ui-do-vitest": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-node-js-2023-testes-e-controller-de-autenticacao": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-utilizando-o-docker-compose": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-validando-distancia-do-check-in": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-validando-data-do-check-in": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-node-js-2023-abstraindo-criacao-de-entidades": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-comentar-na-pergunta": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-validando-horario-do-check-in": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-caso-de-uso-comentar-na-resposta": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-caso-de-uso-buscar-pergunta-pelo-slug": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-node-js-2023-caso-de-uso-criar-pergunta": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-anexos-nas-respostas": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-aggregates-and-watched-lists": {
+    "status": "ok",
+    "duration": 91
+  },
+  "rs-node-js-2023-caso-de-uso-deletar-comentario-da-pergunta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-caso-de-uso-deletar-comentario-da-resposta": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-deletar-pergunta": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-caso-de-uso-deletar-resposta": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-caso-de-uso-editar-pergunta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-caso-de-uso-editar-resposta": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-caso-de-uso-envio-de-notificacao": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-caso-de-uso-ler-notificacao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-caso-de-uso-listar-comentarios-da-pergunta": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-caso-de-uso-escolher-melhor-resposta": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-node-js-2023-caso-de-uso-listar-comentarios-da-resposta": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-caso-de-uso-listar-perguntas-recentes": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-configuracao-do-es-lint-1": {
+    "status": "ok",
+    "duration": 42
+  },
+  "rs-node-js-2023-caso-de-uso-listar-respostas-da-pergunta": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-classe-base-de-aggregate-root": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-classe-base-de-entidades": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-classe-base-de-comentarios": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-criando-erros-genericos": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-dependencias-externas": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-node-js-2023-criando-pergunta-com-anexos": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-entidade-de-notificacao": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-entidades-de-anexo": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-editando-pergunta-com-anexos": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-design-de-software-e-ddd": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-node-js-2023-entidades-e-casos-de-uso": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-entidades-de-comentarios": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-enviando-notificacao-no-subscriber": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-node-js-2023-evento-resposta-criada": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-excluindo-anexos-da-pergunta": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-estrutura-de-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-node-js-2023-factories-de-testes": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-functional-error-handling": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-gerando-dados-ficticios": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-node-js-2023-fluxo-de-melhor-resposta": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-node-js-2023-fundamentos-de-subdominios": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-fundamentos-de-clean-architecture": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-mapeando-propriedades": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-fluxo-de-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 96
+  },
+  "rs-node-js-2023-id-das-entidades": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-getters-and-setters-das-entidades": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-node-js-2023-path-aliases-e-vitest-globals": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-node-js-2023-mapeando-relacionamentos": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-primeiro-caso-de-uso": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-pattern-watched-list": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-refatorando-casos-de-uso": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-ouvindo-um-evento-de-dominio": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-node-js-2023-refatorando-testes-unitarios": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-node-js-2023-refatorando-as-pastas": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-refatorando-os-testes-unitarios": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-node-js-2023-problemas-com-error-handling": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-node-js-2023-testando-classes-de-erro": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-testando-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-teste-de-edicao-da-pergunta": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-value-object-de-slug": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-caso-de-uso-upload-do-anexo": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-casos-de-uso-autenticacao-e-cadastro": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-banco-de-dados-isolado-nos-testes": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-node-js-2023-ajustes-no-cache": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-comunicacao-entre-camadas": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-configurando-es-lint-e-prettier-1": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-node-js-2023-comentario-da-resposta-com-autor": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-node-js-2023-configurando-autenticacao-jwt": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-configurando-vitest-com-swc": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-controller-comentar-resposta": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-controller-buscar-pergunta-por-slug": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-controller-de-autenticacao": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-controller-comentario-com-autor": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-controller-comentar-pergunta": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-controller-de-criacao-de-pergunta": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-controller-de-criacao-de-conta": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-controller-de-listagem-de-perguntas": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-controller-deletar-comentario-da-pergunta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-controller-deletar-comentario-da-resposta": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-controller-deletar-pergunta": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-controller-deletar-resposta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-controller-escolher-melhor-resposta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-controller-editar-pergunta": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-controller-editar-resposta": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-controller-listar-respostas-da-pergunta": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-controller-listar-comentarios-da-pergunta": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-controller-listar-comentarios-da-resposta": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-controller-leitura-de-notificacao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-controller-responder-pergunta": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-conversa-entre-camadas-mappers": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-controller-upload-de-arquivo": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-criando-decorator-de-autenticacao": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-node-js-2023-copiando-camada-de-dominio": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-criando-env-module": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-node-js-2023-criando-camada-de-infraestrutura": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-criando-pipe-de-validacao-do-zod": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-criando-mappers-do-prisma": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-criando-pergunta-com-anexos-2024": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-criando-projeto-com-nest": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-criando-repositorio-de-cache": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-node-js-2023-criando-servico-do-prisma": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-criando-schema-do-prisma-2024": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-criando-service-do-redis": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-node-js-2023-dados-relacionados-em-uma-api-rest": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-disparando-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-node-js-2023-extensao-rest-client-no-vs-code": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-gerando-hash-da-senha-2": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-implementacao-da-criptografia": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-node-js-2023-finalizando-schema-do-prisma-1": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-node-js-2023-implementando-questions-repository": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-node-js-2023-editando-perguntas-com-anexos": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-node-js-2023-implementando-cache-com-redis": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-node-js-2023-gateways-de-criptografia": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-node-js-2023-entendendo-as-camadas": {
+    "status": "ok",
+    "duration": 95
+  },
+  "rs-node-js-2023-implementando-repositorios": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-node-js-2023-implementando-repositorios-do-prisma": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-introducao-54": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-node-js-2023-integrando-cache-no-prisma": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-node-js-2023-integracao-com-cloudflare-r-2": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-listando-perguntas-recentes": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-perguntas-com-anexos": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-modulos-servicos-e-controllers": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-node-js-2023-presenter-de-perguntas": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-node-js-2023-listando-comentarios-com-autor": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-node-js-2023-persistindo-anexos-no-banco": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-node-js-2023-prisma-comentario-com-autor": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-refatorando-controller-de-cadastro": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-node-js-2023-protegendo-totas-com-guards": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-prisma-e-controller-detalhe-da-pergunta": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-node-js-2023-refatorando-controller-de-autenticacao": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-refatorando-testes-e-2-e": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-registrando-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-node-js-2023-rotas-privadas-por-padrao": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-node-js-2023-setup-do-prisma": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-respostas-com-anexos": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-node-js-2023-setup-docker-compose": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-node-js-2023-stubs-de-criptografia": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-testando-caso-de-uso-de-upload": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-node-js-2023-testando-controller-de-upload": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-node-js-2023-testando-persistencia-em-cache": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-testando-retorno-dos-detalhes-da-pergunta": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-testes-e-2-e-de-usuarios": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-node-js-2023-testes-do-cadastro-e-autenticacao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-testes-e-2-e-de-perguntas": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-node-js-2023-testes-e-2-e-de-eventos-de-dominio": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-node-js-2023-tratando-erros-nos-controllers": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-node-js-2023-usando-config-module-no-nest-js": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-utilizando-factories-nos-testes-e-2-e": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-redux-zustand-criando-api-de-cursos-json-server": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-redux-zustand-configurando-autoplay": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-node-js-2023-value-object-comentario-com-autor": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-redux-zustand-carregando-dados-do-curso": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-redux-zustand-criando-hook-global": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-node-js-2023-value-object-detalhes-da-pergunta": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-redux-zustand-criando-interface-de-loading": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-redux-zustand-criando-reducer-do-player": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-redux-zustand-criando-store-do-redux": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-redux-zustand-criando-testes-unitarios": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-redux-zustand-disparando-actions-no-redux": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-redux-zustand-estrutura-base-da-ui": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-redux-zustand-destacando-aula-atual": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-redux-zustand-radix-collapsible-nos-modulos": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-redux-zustand-scrollbar-na-sidebar": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-redux-zustand-migrando-do-redux-p-zustand": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-redux-zustand-selecionando-aula-atual": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-redux-zustand-fundamentos-do-redux": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-redux-zustand-separando-componentes-2": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-redux-zustand-setup-do-zustand": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-redux-zustand-testes-unitarios-no-zustand": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-redux-zustand-utilizando-redux-dev-tools": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-redux-zustand-ui-dos-modulos-e-player": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-redux-zustand-utilizando-async-thunks": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-criando-monorepo-com-turbo-repo": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-saa-s-next-js-rbac-criando-primeiras-permissoes": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-criando-tipagem-das-subjects": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-criando-pacote-de-autenticacao": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-saa-s-next-js-rbac-definindo-permissoes-do-app": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-es-lint-and-type-script-no-monorepo": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-saa-s-next-js-rbac-permissoes-com-condicionais": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-saa-s-next-js-rbac-otimizando-a-tipagem-das-permissoes": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-saa-s-next-js-rbac-introducao-82": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-saa-s-next-js-rbac-introducao-ao-casl": {
+    "status": "ok",
+    "duration": 90
+  },
+  "rs-saa-s-next-js-rbac-ajustes-nos-cascades-do-banco-de-dados": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-saa-s-next-js-rbac-permissoes-por-cargos": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-saa-s-next-js-rbac-associacao-automatica-via-e-mail": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-criando-middleware-de-autenticacao": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-saa-s-next-js-rbac-saa-s-multi-tenant-and-rbac": {
+    "status": "ok",
+    "duration": 100
+  },
+  "rs-saa-s-next-js-rbac-fluxo-de-o-auth-com-git-hub": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-saa-s-next-js-rbac-criando-seed-do-banco-de-dados": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-saa-s-next-js-rbac-error-handling-no-fastify": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-listagem-e-detalhe-da-organizacao": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-saa-s-next-js-rbac-rota-aceitar-convite": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-saa-s-next-js-rbac-rota-atualizar-membro": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-saa-s-next-js-rbac-obtendo-afiliacao": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-saa-s-next-js-rbac-rota-atualizar-projeto": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-saa-s-next-js-rbac-requisitos-da-aplicacao-2024": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-saa-s-next-js-rbac-rota-atualizar-organizacao": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-saa-s-next-js-rbac-rota-cadastro-de-usuario": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-saa-s-next-js-rbac-rota-autenticacao-via-senha": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-rota-convites-pendentes": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-saa-s-next-js-rbac-rota-autenticacao-com-github": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-saa-s-next-js-rbac-rota-criacao-de-projetos": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-saa-s-next-js-rbac-rota-deletar-convite": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-saa-s-next-js-rbac-rota-criacao-de-convites": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-rota-dados-de-faturamento": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-saa-s-next-js-rbac-rota-criacao-de-organizacao": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-rota-detalhes-do-convite": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-saa-s-next-js-rbac-rota-listagem-de-convites": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-saa-s-next-js-rbac-rota-detalhes-do-projeto": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-saa-s-next-js-rbac-rota-remover-membro": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-saa-s-next-js-rbac-rota-encerrar-organizacao": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-rota-rejeitar-convite": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-saa-s-next-js-rbac-rota-listagem-de-projetos": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-saa-s-next-js-rbac-rota-membros-da-organizacao": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-rota-perfil-do-usuario-logado-1": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-saa-s-next-js-rbac-rota-remover-projeto": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-saa-s-next-js-rbac-variaveis-ambiente-8": {
+    "status": "bad_format",
+    "duration": 23
+  },
+  "rs-saa-s-next-js-rbac-rota-transferir-organizacao": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-saa-s-next-js-rbac-setup-do-swagger": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-saa-s-next-js-rbac-rota-troca-de-senha": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-aceitando-e-rejeitando-convites": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-saa-s-next-js-rbac-setup-do-app-com-fastify": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-saa-s-next-js-rbac-action-aceitar-convite": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-saa-s-next-js-rbac-action-criacao-de-projeto": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-saa-s-next-js-rbac-action-remover-membro": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-saa-s-next-js-rbac-setup-do-banco-de-dados": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-saa-s-next-js-rbac-action-criacao-de-organizacao": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-saa-s-next-js-rbac-atualizar-cargo-do-membro": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-saa-s-next-js-rbac-autenticacao-via-git-hub": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-componente-project-switcher": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-saa-s-next-js-rbac-componente-header-8": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-componente-organization-switcher": {
+    "status": "ok",
+    "duration": 81
+  },
+  "rs-saa-s-next-js-rbac-comportamento-do-sheet": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-saa-s-next-js-rbac-criando-hook-use-form-state": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-saa-s-next-js-rbac-convidar-novo-usuario": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-saa-s-next-js-rbac-criando-novos-usuarios": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-saa-s-next-js-rbac-edicao-da-organizacao": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-saa-s-next-js-rbac-estrutura-de-convites-pendentes": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-saa-s-next-js-rbac-estados-de-erro-do-formulario": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-lidando-com-convite-p-outro-e-mail": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-saa-s-next-js-rbac-evitando-reset-do-formulario": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-exibindo-organizacao-ativa": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-saa-s-next-js-rbac-estrutura-dos-projetos": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-saa-s-next-js-rbac-interception-routes-no-next-js": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-saa-s-next-js-rbac-listagem-de-convites": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-saa-s-next-js-rbac-listagem-de-projetos-1": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-saa-s-next-js-rbac-listando-organizacoes": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-saa-s-next-js-rbac-listagem-de-membros-2": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-saa-s-next-js-rbac-listando-projetos-no-dropdown": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-saa-s-next-js-rbac-modal-de-criacao-de-projeto": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-saa-s-next-js-rbac-obtendo-permissoes-do-usuario": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-saa-s-next-js-rbac-navegacao-do-app-por-abas": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-saa-s-next-js-rbac-pagina-aceitar-convite": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-saa-s-next-js-rbac-obtendo-usuario-autenticado": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-saa-s-next-js-rbac-pagina-configuracoes-da-org": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-saa-s-next-js-rbac-pagina-criar-organizacao": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-saa-s-next-js-rbac-pagina-criar-projeto": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-pagina-de-cadastro-1": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-saa-s-next-js-rbac-pagina-de-autenticacao": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-saa-s-next-js-rbac-permissao-para-criar-projeto": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-saa-s-next-js-rbac-parallel-routes-no-next-js": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-saa-s-next-js-rbac-permissoes-nas-abas": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-saa-s-next-js-rbac-setup-do-projeto-next-js": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-saa-s-next-js-rbac-setup-do-shadcn-ui": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-saa-s-next-js-rbac-realizando-login-do-usuario": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-saa-s-next-js-rbac-setup-do-cliente-http-ky": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-tabela-de-fatura-billing": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-saa-s-next-js-rbac-temas-dark-light-com-next-themes": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-saa-s-next-js-rbac-utilizando-server-actions": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-saa-s-next-js-rbac-usando-o-hook-use-action-state": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-saa-s-next-js-rbac-utilizando-variaveis-ambiente": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-saa-s-next-js-rbac-deploy-do-front-end": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-saa-s-next-js-rbac-dominio-e-app-github": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-saa-s-next-js-rbac-opcoes-de-deploy-back-end": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-saa-s-next-js-rbac-deploy-do-back-end": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-saa-s-next-js-rbac-setup-github-e-database": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-saa-s-next-js-rbac-opcoes-de-deploy-front-end": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-saa-s-next-js-rbac-testando-app-front-end": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-seguranca-para-devs-algumas-perguntas-de-seguranca": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-seguranca-para-devs-boas-vindas-ao-curso": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-seguranca-para-devs-alguns-conselhos-sobre-a-pagina-de-reset-de-senha": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-alguns-conselhos-sobre-o-comportamento-das-sessoes": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-seguranca-para-devs-gerando-passkey-fido": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-seguranca-para-devs-como-evitar-vazamento-de-token-no-reset-de-senha": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-seguranca-para-devs-boas-praticas-para-autenticacao-e-criacao-de-senha": {
+    "status": "ok",
+    "duration": 106
+  },
+  "rs-seguranca-para-devs-gerando-token-de-reset-de-senha-seguro": {
+    "status": "ok",
+    "duration": 87
+  },
+  "rs-seguranca-para-devs-headers-http-para-o-content-type": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-seguranca-para-devs-headers-http-para-o-cors": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-seguranca-para-devs-implementando-otp": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-login-sem-senha-com-fido": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-mais-alguns-headers-http": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-seguranca-para-devs-seguranca-no-armazenamento-de-senhas": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-seguranca-para-devs-senha-e-autenticacao-em-sistemas-legados": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-seguranca-para-devs-seguranca-em-multiplos-fatores-de-autenticacao": {
+    "status": "ok",
+    "duration": 96
+  },
+  "rs-seguranca-para-devs-abra-popups-com-noopener": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-seguranca-para-devs-validando-passkey-fido": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-seguranca-para-devs-sobre-reset-de-senha-e-user-enumeration": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-seguranca-para-devs-sobre-sessoes": {
+    "status": "ok",
+    "duration": 87
+  },
+  "rs-seguranca-para-devs-click-jacking-em-iframe": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-seguranca-para-devs-alternativas-a-innerhtml": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-seguranca-para-devs-iframe-atributo-sandbox": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-seguranca-para-devs-dom-clobbering-js": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-seguranca-para-devs-css-sniffer": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-seguranca-para-devs-listando-pacotes-antigos-do-node-js": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-seguranca-para-devs-local-storage-html": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-seguranca-para-devs-css-e-tag-manager-aumentando-a-superficie-de-ataques": {
+    "status": "ok",
+    "duration": 107
+  },
+  "rs-seguranca-para-devs-json-serializacao-validacao": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-seguranca-para-devs-object-prototype-pollution": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-seguranca-para-devs-processo-de-calculo-de-hash-para-integrity": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-seguranca-para-devs-subresource-integrity-sri": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-seguranca-para-devs-web-messaging-api-html": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-broken-access-control-em-aplicacoes": {
+    "status": "ok",
+    "duration": 91
+  },
+  "rs-seguranca-para-devs-cliente-side-request-forgery-csrf": {
+    "status": "ok",
+    "duration": 87
+  },
+  "rs-seguranca-para-devs-cross-site-request-forgery-csrf": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-error-reporting-em-backend": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-seguranca-para-devs-execucao-de-comandos-do-so-em-aplicacoes": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-seguranca-para-devs-input-validation-e-falhas": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-seguranca-para-devs-nosql-injection": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-seguranca-para-devs-serializacao-em-backend": {
+    "status": "ok",
+    "duration": 85
+  },
+  "rs-seguranca-para-devs-server-side-request-forgery-ssrf": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-seguranca-para-devs-encerramento-do-curso-seguranca": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-seguranca-para-devs-validacao-de-entrada-e-sanitizacao": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-seguranca-para-devs-unvalidated-redirects-em-backend": {
+    "status": "ok",
+    "duration": 94
+  },
+  "rs-seguranca-para-devs-ci-com-criptografia-e-segredos": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-seguranca-para-devs-gerenciamento-de-segredos": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-seguranca-para-devs-acesso-ssh": {
+    "status": "ok",
+    "duration": 95
+  },
+  "rs-seguranca-para-devs-sast": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-seguranca-para-devs-modelagem-de-ameacas": {
+    "status": "ok",
+    "duration": 110
+  },
+  "rs-seguranca-para-devs-logging": {
+    "status": "ok",
+    "duration": 118
+  },
+  "rs-seguranca-para-devs-tls-com-lets-encrypt": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-testes-e-arquitetura-no-frontend-estilos-e-fontes-do-design-system": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-testes-e-arquitetura-no-frontend-iniciando-com-o-next-js": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-testes-e-arquitetura-no-frontend-eslint-prettier-e-lefthook": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-seguranca-para-devs-web-application-firewall": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-seguranca-para-devs-seguranca-em-gestao-de-dependencias": {
+    "status": "ok",
+    "duration": 95
+  },
+  "rs-testes-e-arquitetura-no-frontend-setup-design-system": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-testes-e-arquitetura-no-frontend-overview-do-projeto-6": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-testes-e-arquitetura-no-frontend-setup-docker-docker-compose-e-prisma": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-testes-e-arquitetura-no-frontend-setup-testes": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-a-home-page-3": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-primeiro-teste-da-sidebar-content": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-testes-e-arquitetura-no-frontend-atualizar-search-input-com-a-url": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-prompt-list-e-prompt-card": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-testes-e-arquitetura-no-frontend-arquitetura-de-software": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-testes-e-arquitetura-no-frontend-corrigindo-os-testes-com-polyfill": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-seed-e-migrando-para-o-prisma-v-7": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-testes-e-arquitetura-no-frontend-finalizando-sidebar-e-incrementando-os-testes": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-os-testes-do-prisma-prompt-repository": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-testes-e-arquitetura-no-frontend-finalizando-a-lista-de-prompts": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-testes-e-arquitetura-no-frontend-implementando-a-barra-de-pesquisa": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-testes-e-arquitetura-no-frontend-implementando-a-renderizacao-da-lista": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-testes-e-arquitetura-no-frontend-integrando-a-server-action-com-o-formulario": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-testes-e-arquitetura-no-frontend-iniciando-a-busca-de-prompts": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-testes-e-arquitetura-no-frontend-iniciando-a-sidebar": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-testes-e-arquitetura-no-frontend-salvando-a-busca-na-url": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-comportamento-de-criar-novo-prompt": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-testes-e-arquitetura-no-frontend-react-client-components-vs-react-server-components": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-testes-e-arquitetura-no-frontend-separando-as-regras-de-negocio": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-a-server-action": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-comportamentos-da-sidebar-content": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-a-pagina-de-novo-prompt": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-testes-e-arquitetura-no-frontend-detalhe-do-react-hook-form": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-testes-e-arquitetura-no-frontend-adicionando-o-toast": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-copy-button": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-o-use-case": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-a-create-prompt-action": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-testes-e-arquitetura-no-frontend-incrementando-o-formulario-de-criacao": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-testes-e-arquitetura-no-frontend-teste-e-qualidade": {
+    "status": "ok",
+    "duration": 94
+  },
+  "rs-testes-e-arquitetura-no-frontend-integrando-server-action-ao-formulario": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-testes-e-arquitetura-no-frontend-melhorando-o-feedback-para-o-usuario": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-componente-logo": {
+    "status": "ok",
+    "duration": 45
+  },
+  "rs-testes-e-arquitetura-no-frontend-server-actions-em-ambientes-de-teste": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-create-prompt-use-case": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-prompt-list-e-prompt-card": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-o-copy-button": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-testes-e-arquitetura-no-frontend-adicionando-no-nuqs": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-o-prompt-form": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-testes-e-arquitetura-no-frontend-adicionar-mais-testes-ao-prisma-prompt-repository": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-testes-e-arquitetura-no-frontend-adicionar-animacoes-e-corrigindo-teste-e-2-e": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-testes-e-arquitetura-no-frontend-cobrindo-cenarios-no-prompt-card": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-testes-e-arquitetura-no-frontend-configurando-o-playwright": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-testes-e-arquitetura-no-frontend-construindo-a-tela-de-edicao": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-a-delete-prompt-action": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-delete-prompt-use-case": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-primeiro-teste-e-2-e": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-botao-de-delecao": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-o-teste-e-2-e-de-delecao": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-teste-e-2-e-para-criacao-de-prompt": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-testes-unitarios-para-responsividade": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-testes-unitarios-da-action-de-delecao": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-testes-e-2-e-para-responsividade": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-testes-e-arquitetura-no-frontend-implementando-responsividade": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-testes-e-arquitetura-no-frontend-introducao-playwright": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-testes-e-arquitetura-no-frontend-diferencas-entre-matchers-do-jest": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-testes-e-arquitetura-no-frontend-melhorando-os-testes-do-prompt-form": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-testes-e-arquitetura-no-frontend-tdd-com-testes-e-2-e": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-a-action-de-update": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-o-use-case-de-update": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-o-sucesso-na-delecao": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-testes-e-arquitetura-no-frontend-testando-com-e-2-e-duplicidade": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-testes-e-arquitetura-no-frontend-teste-e-2-e-para-busca-de-prompt": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-testes-e-arquitetura-no-frontend-dicas-e-fechamento": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-testes-e-arquitetura-no-frontend-adicionando-o-revalidate-path": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-testes-e-arquitetura-no-frontend-criando-pipeline-de-ci": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-testes-e-arquitetura-no-frontend-fazendo-o-deploy-2": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-testes-e-arquitetura-no-frontend-o-que-e-ci": {
+    "status": "ok",
+    "duration": 69
+  }
+}

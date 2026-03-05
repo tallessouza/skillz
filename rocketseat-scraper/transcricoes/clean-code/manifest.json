@@ -1,0 +1,281 @@
+{
+  "journey_slug": "clean-code",
+  "modules": [
+    {
+      "slug": "clean-code-curso",
+      "title": "Clean Code",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "O que é ou não é Clean Code?",
+          "slug": "o-que-e-ou-nao-e-clean-code",
+          "video_id": "106588ae-2f86-44ed-97a1-965f0c5982ed",
+          "has_transcription": true,
+          "description": "Descubra o que é Clean Code na prática! Entenda seus pilares: legibilidade, manutenibilidade, previsibilidade e confiança. Desmistifique o que não é Clean Code, como teoria, estrutura de pastas, código pequeno, arquitetura ou performance. Uma visão real para desenvolvedores.",
+          "duration": 739,
+          "type": "video",
+          "file": "01-clean-code-curso/001-o-que-e-ou-nao-e-clean-code.txt",
+          "chars": 9984,
+          "status": "ok"
+        },
+        {
+          "title": "Princípios do código limpo",
+          "slug": "principios-do-codigo-limpo",
+          "video_id": "3d8c7664-2331-4c12-8666-3396f43bcb6c",
+          "has_transcription": true,
+          "description": "Aprenda os 5 princípios essenciais do Clean Code para trabalho em equipe: testes automatizados, revisão de código, refatoração constante, simplicidade (KISS) e iterações curtas. Entenda como aplicá-los para manter a legibilidade, manutenibilidade e confiança em seus projetos, evitando um código sujo e difícil de manter ao longo do tempo.",
+          "duration": 844,
+          "type": "video",
+          "file": "01-clean-code-curso/002-principios-do-codigo-limpo.txt",
+          "chars": 11187,
+          "status": "ok"
+        },
+        {
+          "title": "Nomenclatura de variáveis",
+          "slug": "nomenclatura-de-variaveis-download-exercicio",
+          "video_id": "729945d0-d2b7-4b3c-8353-64e20353cbcd",
+          "has_transcription": true,
+          "description": "Nesta aula de Clean Code, domine a nomenclatura de variáveis. Aprenda a evitar diminutivos e nomes genéricos (`data`, `u`), priorizando nomes descritivos e semânticos. Um exemplo prático demonstra como nomes claros (`availableWeekdays`) elevam a legibilidade do código, facilitando o entendimento e manutenção.",
+          "duration": 697,
+          "type": "video",
+          "file": "01-clean-code-curso/003-nomenclatura-de-variaveis.txt",
+          "chars": 9034,
+          "status": "ok"
+        },
+        {
+          "title": "Código limpo em booleanos",
+          "slug": "codigo-limpo-em-booleanos",
+          "video_id": "03247681-d3c7-4a98-a428-a16c8f881126",
+          "has_transcription": false,
+          "description": null,
+          "duration": 354,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Causa vs Efeito",
+          "slug": "causa-vs-efeito",
+          "video_id": "e2fd6199-ae2f-49af-9e24-0b4c66fc4329",
+          "has_transcription": true,
+          "description": "Aprenda a diferença entre causa e efeito na nomenclatura de variáveis. Evite nomear variáveis pelo seu *efeito* (ex: `isButtonDisabled`) e priorize a *causa* (ex: `isFormSubmitting`) para um código mais claro e legível. Essencial para Clean Code em JavaScript.",
+          "duration": 290,
+          "type": "video",
+          "file": "01-clean-code-curso/005-causa-vs-efeito.txt",
+          "chars": 4294,
+          "status": "ok"
+        },
+        {
+          "title": "Código em inglês",
+          "slug": "codigo-em-ingles",
+          "video_id": "c55be265-46fe-497a-93fb-29628bcc86c5",
+          "has_transcription": true,
+          "description": "Diego Fernandes defende que todo código (variáveis, funções, tabelas) deve ser em inglês. Misturar idiomas torna o código inacessível para leitores de tela e menos limpo. Ele enfatiza a importância de escrever em inglês para a carreira e sugere usar tradutor se necessário.",
+          "duration": 236,
+          "type": "video",
+          "file": "01-clean-code-curso/006-codigo-em-ingles.txt",
+          "chars": 3348,
+          "status": "ok"
+        },
+        {
+          "title": "Regras em condicionais",
+          "slug": "regras-em-condicionais",
+          "video_id": "7d046141-caeb-4d46-8d79-b5c0db303b0a",
+          "has_transcription": true,
+          "description": "Aprenda regras essenciais de Clean Code para condicionais em JavaScript. Evite negações, prefira early return ao invés de else na maioria dos casos, e fuja de condicionais aninhadas para um código mais legível e fácil de manter.",
+          "duration": 645,
+          "type": "video",
+          "file": "01-clean-code-curso/007-regras-em-condicionais.txt",
+          "chars": 7712,
+          "status": "ok"
+        },
+        {
+          "title": "Parâmetros e desestruturação",
+          "slug": "parametros-e-desestruturacao",
+          "video_id": "7227f699-d888-4780-86c4-d194ef167be5",
+          "has_transcription": true,
+          "description": "Aprenda a usar desestruturação para passar parâmetros de forma limpa e legível em JavaScript. Evite o repasse de objetos genéricos e prefira receber e retornar objetos nomeados em suas funções para um código mais claro e extensível.",
+          "duration": 769,
+          "type": "video",
+          "file": "01-clean-code-curso/008-parametros-e-desestruturacao.txt",
+          "chars": 10291,
+          "status": "ok"
+        },
+        {
+          "title": "Números mágicos",
+          "slug": "numeros-magicos",
+          "video_id": "47106587-4398-4a85-9f12-86c36ca090dc",
+          "has_transcription": true,
+          "description": "Aprenda a identificar e eliminar 'números mágicos' no seu código JavaScript. Entenda como cálculos obscuros afetam a legibilidade e manutenção. Veja exemplos práticos com datas, timeouts e preços, e descubra técnicas para usar constantes e nomes descritivos, tornando seu código mais claro e profissional.",
+          "duration": 508,
+          "type": "video",
+          "file": "01-clean-code-curso/009-numeros-magicos.txt",
+          "chars": 7241,
+          "status": "ok"
+        },
+        {
+          "title": "Comentários vs Documentação",
+          "slug": "comentarios-vs-documentacao",
+          "video_id": "3eaa77b4-972d-42b9-8006-5136fc777f95",
+          "has_transcription": true,
+          "description": "Diego Fernandes discute a diferença entre comentários e documentação em código limpo. Ele enfatiza que comentários não devem explicar 'o que' o código faz, mas sim 'por que' algo foi implementado de uma certa maneira (ex: limitações, workarounds). Alerta contra o uso de comentários como documentação, pois se tornam desatualizados e difíceis de manter.",
+          "duration": 248,
+          "type": "video",
+          "file": "01-clean-code-curso/010-comentarios-vs-documentacao.txt",
+          "chars": 3810,
+          "status": "ok"
+        },
+        {
+          "title": "Evite Syntatic Sugars",
+          "slug": "evite-syntatic-sugars",
+          "video_id": "5d4cde94-dba3-4f51-b2c4-3c425ef9a9b4",
+          "has_transcription": true,
+          "description": "Aprenda a identificar e evitar Syntatic Sugars no JavaScript que prejudicam a legibilidade do código. Entenda por que usar construtores explícitos (Number(), Boolean(), String()) é melhor que atalhos como `+` para conversão numérica ou `!!` para booleanos, garantindo código mais claro e acessível para todos os desenvolvedores.",
+          "duration": 310,
+          "type": "video",
+          "file": "01-clean-code-curso/011-evite-syntatic-sugars.txt",
+          "chars": 4658,
+          "status": "ok"
+        },
+        {
+          "title": "Desacoplando componentes",
+          "slug": "desacoplando-componentes",
+          "video_id": "be01e01f-6bb2-4f3a-94ac-cb118d64545e",
+          "has_transcription": true,
+          "description": "Aprenda a desacoplar componentes React para um código mais limpo. Entenda os momentos ideais para dividir componentes, focando em isolar lógica (variáveis, funções, hooks) que serve apenas a uma parte específica da interface. Evite componentes inchados e melhore a manutenibilidade.",
+          "duration": 563,
+          "type": "video",
+          "file": "01-clean-code-curso/012-desacoplando-componentes.txt",
+          "chars": 8373,
+          "status": "ok"
+        },
+        {
+          "title": "Componentes puros",
+          "slug": "componentes-puros",
+          "video_id": "eedf9cbb-bab4-49b6-ae24-df4ef2dc1ca4",
+          "has_transcription": true,
+          "description": "Aprenda sobre Componentes Puros no React. Entenda como o conceito de funções puras se aplica a componentes, evitando que a lógica de negócio os torne dependentes do contexto. Veja como desacoplar componentes de forma eficaz, passando funções via props para garantir reusabilidade e testabilidade, permitindo que sejam facilmente movidos na aplicação.",
+          "duration": 400,
+          "type": "video",
+          "file": "01-clean-code-curso/013-componentes-puros.txt",
+          "chars": 6797,
+          "status": "ok"
+        },
+        {
+          "title": "Funções e eventos no React",
+          "slug": "funcoes-e-eventos-no-react",
+          "video_id": "b9692834-b03b-47c6-9e81-3970bbafd04f",
+          "has_transcription": true,
+          "description": "Aprenda um padrão de nomes para funções e eventos no React. Use `handle` para funções internas disparadas por eventos do usuário (ex: `handleClick`) e `on` para funções recebidas via props que representam callbacks de eventos (ex: `onCreateItem`). Mantenha a consistência no seu código.",
+          "duration": 155,
+          "type": "video",
+          "file": "01-clean-code-curso/014-funcoes-e-eventos-no-react.txt",
+          "chars": 2310,
+          "status": "ok"
+        },
+        {
+          "title": "Composição vs Customização",
+          "slug": "composicao-vs-customizacao",
+          "video_id": "fe3291f7-61b5-4454-bdc4-91a694bac3a3",
+          "has_transcription": true,
+          "description": "Aprenda a diferença entre configuração (customização via props) e composição em componentes React. Entenda como o excesso de props pode gerar complexidade e inflexibilidade. Descubra como a composição, dividindo componentes maiores em sub-componentes, melhora a legibilidade, manutenção e flexibilidade do seu código, com um exemplo prático de `Input`.",
+          "duration": 788,
+          "type": "video",
+          "file": "01-clean-code-curso/015-composicao-vs-customizacao.txt",
+          "chars": 10959,
+          "status": "ok"
+        },
+        {
+          "title": "Condicionais no render",
+          "slug": "condicionais-no-render",
+          "video_id": "5cc8ec55-9ec1-4ffa-b384-266384139eae",
+          "has_transcription": true,
+          "description": "Nesta aula de Clean Code, Diego Fernandes mostra como otimizar condicionais no render do React. Aprenda a mover lógicas JavaScript complexas para fora do JSX, mantendo o código limpo e o HTML menos dependente de operações diretas.",
+          "duration": 111,
+          "type": "video",
+          "file": "01-clean-code-curso/016-condicionais-no-render.txt",
+          "chars": 1304,
+          "status": "ok"
+        },
+        {
+          "title": "Clean code no back-end",
+          "slug": "clean-code-no-back-end",
+          "video_id": "4b1c2e7c-895f-48ad-a034-b70faf69ec73",
+          "has_transcription": true,
+          "description": "Explora Clean Code no backend, desmistificando sua relação com Clean Architecture, DDD e SOLID. Aprenda que código limpo não depende de arquiteturas complexas e que a testabilidade é um pilar fundamental. Entenda por que esses conceitos avançados são menos aplicáveis no frontend e nem sempre necessários no backend, mas como podem refinar seu código.",
+          "duration": 445,
+          "type": "video",
+          "file": "01-clean-code-curso/017-clean-code-no-back-end.txt",
+          "chars": 7292,
+          "status": "ok"
+        },
+        {
+          "title": "Princípios de SOLID",
+          "slug": "principios-de-solid",
+          "video_id": "ab812be6-572c-42c7-ad13-a0b35a6a9187",
+          "has_transcription": true,
+          "description": "Explore os 5 princípios SOLID (SRP, OCP, LSP, ISP, DIP) aplicados na prática em Node.js e React. Entenda como eles se conectam para criar código limpo, testável e manutenível, com exemplos claros para cada um. Cuidado para não cair na paralisia por análise!",
+          "duration": 939,
+          "type": "video",
+          "file": "01-clean-code-curso/018-principios-de-solid.txt",
+          "chars": 14677,
+          "status": "ok"
+        },
+        {
+          "title": "Exemplo prático de SOLID",
+          "slug": "exemplo-pratico-de-solid",
+          "video_id": "301abc1b-6373-4c9e-9062-f61da42f702a",
+          "has_transcription": true,
+          "description": "Nesta aula prática de Clean Code em Node.js, Diego Fernandes demonstra os princípios SOLID. Veja como aplicar SRP, OCP, LSP, DIP e ISP ao refatorar um cálculo de desconto de pedidos, criando um código mais extensível, flexível e de fácil manutenção. Entenda a conexão entre os princípios e como eles otimizam seu projeto.",
+          "duration": 1038,
+          "type": "video",
+          "file": "01-clean-code-curso/019-exemplo-pratico-de-solid.txt",
+          "chars": 14848,
+          "status": "ok"
+        },
+        {
+          "title": "Princípios de DDD",
+          "slug": "principios-de-ddd",
+          "video_id": "84f08411-03d4-4464-af96-f9d075eeee5a",
+          "has_transcription": true,
+          "description": "Nesta aula, Diego Fernandes aborda os princípios do DDD (Domain Driven Design). Entenda o que é Domínio (o problema), Subdomínios (áreas específicas), Entidades (atores) e Casos de Uso (ações). Aprenda a identificar esses elementos conversando com Domain Experts e a importância de nomear corretamente as entidades em diferentes contextos para um código mais limpo.",
+          "duration": 896,
+          "type": "video",
+          "file": "01-clean-code-curso/020-principios-de-ddd.txt",
+          "chars": 10921,
+          "status": "ok"
+        },
+        {
+          "title": "Exemplo prático de DDD",
+          "slug": "exemplo-pratico-de-ddd",
+          "video_id": "1623b57d-9e9d-48be-9f7d-bfd714d470c6",
+          "has_transcription": true,
+          "description": "Explore um exemplo prático de DDD no Node.js, focando em como o software representa o mundo real, independente de tecnologias como banco de dados. Aprenda a estruturar entidades e subdomínios (Compras, Logística) e a criar casos de uso. Entenda que entidades de código não precisam refletir a estrutura do DB, priorizando regras de negócio e a funcionalidade da aplicação sem dependências externas.",
+          "duration": 949,
+          "type": "video",
+          "file": "01-clean-code-curso/021-exemplo-pratico-de-ddd.txt",
+          "chars": 11274,
+          "status": "ok"
+        },
+        {
+          "title": "Unindo DDD ao SOLID",
+          "slug": "unindo-ddd-ao-solid",
+          "video_id": "5a683844-5b72-4df8-aa56-cf8236eade01",
+          "has_transcription": true,
+          "description": "Aprenda a unir DDD e SOLID, focando na Inversão de Dependências. Veja como desacoplar sua aplicação de camadas externas (bancos, APIs) usando interfaces de repositório. Desenvolva regras de negócio independentes de infraestrutura, ganhando confiança e facilidade de manutenção.",
+          "duration": 581,
+          "type": "video",
+          "file": "01-clean-code-curso/022-unindo-ddd-ao-solid.txt",
+          "chars": 8181,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 22,
+    "with_vtt": 21,
+    "without_vtt": 1,
+    "total_chars": 168495
+  }
+}

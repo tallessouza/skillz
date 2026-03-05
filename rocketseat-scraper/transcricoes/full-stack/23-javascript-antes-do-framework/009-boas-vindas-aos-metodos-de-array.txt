@@ -1,0 +1,1 @@
+﻿WEBVTT Nessa etapa aqui você vai aprender a utilizar métodos de Array, são métodos muito úteis de você conhecer, seja para percorrer os itens de um Array, manipular esses itens, retornar o novo Array e por aí vai. São muitas as possibilidades, então vem comigo que eu vou mostrar para você cada método de forma separada nessa etapa aqui.

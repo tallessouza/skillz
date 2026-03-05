@@ -1,0 +1,323 @@
+{
+  "journey_slug": "agentes-de-ia-com-n-8-n",
+  "modules": [
+    {
+      "slug": "iniciando-com-n-8-n",
+      "title": "Iniciando com n8n",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Boas vindas",
+          "slug": "boas-vindas-2055",
+          "video_id": "91f0b0be-1287-4f63-a49a-2ef10cb6216a",
+          "has_transcription": true,
+          "description": "Bem-vindos ao nosso treinamento sobre N8n! Sou Bruno Fazoli e trago uma bagagem em tecnologia e inteligência artificial. Neste curso, vamos explorar essa ferramenta incrível, ideal para automação de processos. Compartilharei experiências de projetos que realizei com grandes empresas, como o Banco do Brasil e Google. Meu objetivo é simplificar o aprendizado e ajudar você a construir uma base sólida. Vamos nos conectar nas redes sociais para trocarmos ideias e crescer juntos nessa jornada!",
+          "duration": 195,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/001-boas-vindas.txt",
+          "chars": 3457,
+          "status": "ok"
+        },
+        {
+          "title": "O que é o N8N",
+          "slug": "o-que-e-o-n-8-n",
+          "video_id": "7a49a03c-3f47-470e-8223-3cbb3f55fd1f",
+          "has_transcription": true,
+          "description": "Hoje, vamos explorar o N8N, uma ferramenta incrível que tem ganhado destaque por sua capacidade de conectar sistemas e automatizar workflows. Vou explicar como funciona essa plataforma, que permite criar processos de trabalho de forma flexível, mesmo para quem não é tão técnico. Vamos ver exemplos práticos de como integrar diferentes aplicativos, como um formulário com o Slack, e discutir se o N8N pode substituir a programação tradicional. Prepare-se para entender como essa ferramenta pode economizar tempo e facilitar sua vida!",
+          "duration": 377,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/002-o-que-e-o-n8n.txt",
+          "chars": 6500,
+          "status": "ok"
+        },
+        {
+          "title": "Onde o N8N entra na stack",
+          "slug": "onde-o-n-8-n-entra-na-stack",
+          "video_id": "387e4ee0-a997-4305-bd3a-1f7a18bba89b",
+          "has_transcription": true,
+          "description": "Hoje, exploramos como o N8n se encaixa na arquitetura de desenvolvimento de sistemas. Ele atua na camada de back-end, substituindo a necessidade de programar em linguagens como Python ou Java. O N8n permite automatizar processos, integrando o front-end com fluxos de trabalho sem codificação. Discutimos a estrutura básica de um aplicativo, onde o front se comunica com o back, e como o N8n facilita essa comunicação, tornando a criação de automações mais rápida e acessível.",
+          "duration": 229,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/003-onde-o-n8n-entra-na-stack.txt",
+          "chars": 3595,
+          "status": "ok"
+        },
+        {
+          "title": "Cloud ou Self-hosted",
+          "slug": "cloud-ou-self-hosted",
+          "video_id": "c52d7bda-47df-4f6d-84ec-d3a2db8e3e73",
+          "has_transcription": true,
+          "description": "Nesta aula, discutimos a popularidade do N8n, especialmente sua versão self-hosted, que permite instalação na infraestrutura própria sem custos de SaaS. Abordamos os diferentes planos de preços, suas execuções de workflows e as vantagens e desvantagens de optar pelo self-hosted em comparação com soluções em nuvem. Falei sobre a importância de considerar a infraestrutura, a escalabilidade e a necessidade de suporte técnico, além de como isso pode impactar a escolha entre as duas opções.",
+          "duration": 663,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/004-cloud-ou-self-hosted.txt",
+          "chars": 9788,
+          "status": "ok"
+        },
+        {
+          "title": "Diferença entre N8N, Zapier e Make",
+          "slug": "diferenca-entre-n-8-n-zapier-e-make",
+          "video_id": "d3e05cef-307c-497f-a399-9be657c5e710",
+          "has_transcription": true,
+          "description": "Antes de começarmos a explorar o N8n, é importante entender que ele se encaixa na categoria de ferramentas low-code e no-code, que facilitam a integração entre sistemas. O N8n se destaca por ser versátil e econômico, especialmente em sua versão comunitária. Comparado ao Zapier e ao Make, o N8n é mais técnico, enquanto as outras opções são mais intuitivas para não desenvolvedores. Todas essas ferramentas estão se especializando em automações com IA, cada uma com seus próprios custos e características.",
+          "duration": 367,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/005-diferenca-entre-n8n-zapier-e-make.txt",
+          "chars": 5857,
+          "status": "ok"
+        },
+        {
+          "title": "Overview do N8N",
+          "slug": "overview-do-n-8-n-novo",
+          "video_id": "6362c97e-73ea-481d-b10b-f7132f9fd53a",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar o N8n e suas automações de forma prática. Começamos criando uma conta na versão cloud, que nos oferece um trial gratuito de 14 dias. Vou guiá-los pela interface, mostrando como adicionar e conectar blocos para criar workflows. Discutiremos categorias de nós, como triggers, aplicativos e transformação de dados. A ideia é entender como esses blocos se interconectam para automatizar processos, sem nos preocuparmos com a instalação local. Vamos colocar a mão na massa!",
+          "duration": 577,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/006-overview-do-n8n.txt",
+          "chars": 10204,
+          "status": "ok"
+        },
+        {
+          "title": "Entrada - Processamento - Saída",
+          "slug": "entrada-processamento-saida",
+          "video_id": "b8a603d0-4ed6-45a1-bb73-af3d32f3b63f",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei a lógica do N8n usando a analogia de um carteiro. O N8n funciona como um comunicador que recebe informações (as cartas), processa e as envia para seus destinos. Para isso, é essencial entender o fluxo de entrada, processamento e saída. Cada bloco no N8n representa essa estrutura, onde eventos de entrada disparam ações, e os dados são transformados antes de serem enviados para os aplicativos de destino. Compreender essa dinâmica é fundamental para automações eficazes.",
+          "duration": 403,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/007-entrada-processamento-saida.txt",
+          "chars": 5766,
+          "status": "ok"
+        },
+        {
+          "title": "Criando uma primeira Trigger (Webhook)",
+          "slug": "criando-uma-primeira-trigger-webhook",
+          "video_id": "34843afe-73de-4cc9-bd92-84ae27a67701",
+          "has_transcription": true,
+          "description": "Hoje, vamos construir nossa primeira automação no N8n, começando com uma trigger. Inicialmente, os blocos estão desconectados, mas vamos conectar tudo. A trigger que escolhemos é um webhook, que atua como um carteiro, recebendo dados de sistemas externos. Vou mostrar como configurar esse webhook e testá-lo usando o Postman. Enviamos um dado simples, como a moeda USD, e verificamos se a automação funciona corretamente. Vamos lá!",
+          "duration": 484,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/008-criando-uma-primeira-trigger-webhook.txt",
+          "chars": 8258,
+          "status": "ok"
+        },
+        {
+          "title": "Analisando dados de execução",
+          "slug": "analisando-dados-de-execucao",
+          "video_id": "73a7296a-98a7-4b99-8f05-1e87e2bb8568",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos o ambiente de desenvolvimento do N8n, focando na execução de workflows e na visualização de logs. Aprendemos a usar a URL de teste e como acessar os dados recebidos durante uma execução. Mostrei como verificar detalhes de requisições, tanto POST quanto GET, e a importância de visualizar logs para identificar problemas. Também demonstrei como importar dados do ambiente de produção para facilitar testes e manutenção. O exemplo do WebHook ilustra bem como integrar diferentes fontes de dados.",
+          "duration": 247,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/009-analisando-dados-de-execucao.txt",
+          "chars": 4288,
+          "status": "ok"
+        },
+        {
+          "title": "HTTP Request",
+          "slug": "http-request",
+          "video_id": "b8b839dd-c884-423e-acdd-98afe02ff12c",
+          "has_transcription": true,
+          "description": "Na aula, exploramos como automatizar a busca de cotações de moedas usando a Awesome API. Começamos testando a API no Postman para garantir que tudo funcionasse corretamente. Depois, configuramos um bloco de HTTP request no N8N, onde encontramos um pequeno desafio relacionado à autenticação. Aprendemos a criar uma chave de API para contornar restrições de infraestrutura. O próximo passo será conectar a requisição e retornar as informações para o usuário.",
+          "duration": 641,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/010-http-request.txt",
+          "chars": 9927,
+          "status": "ok"
+        },
+        {
+          "title": "Gestão de variáveis",
+          "slug": "gestao-de-variaveis-novo",
+          "video_id": "320cf92a-5cac-4a2f-aba1-8a27515afd92",
+          "has_transcription": true,
+          "description": "Nesta aula, mostrei como conectar variáveis em um fluxo de automação, focando na integração entre um gatilho e uma API de cotação. Discutimos a importância de gerenciar entradas, processamento e saídas, além de como extrair apenas os dados necessários, como o par de moedas. Utilizei o componente setEditFields para mapear e armazenar a variável moeda de forma eficiente. Também abordei como referenciar nós anteriores e a estrutura do JSON, preparando o terreno para a próxima etapa: inserir essa variável na requisição.",
+          "duration": 423,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/011-gestao-de-variaveis.txt",
+          "chars": 6966,
+          "status": "ok"
+        },
+        {
+          "title": "Conectando variáveis entre nós",
+          "slug": "conectando-variaveis-entre-nos",
+          "video_id": "d056a0e9-a781-497d-963f-e51a2b0ce658",
+          "has_transcription": true,
+          "description": "Na aula de hoje, finalizei a automação conectando a variável de moeda capturada ao nosso nó de requisição HTTP. Mostrei como a API facilita a interpretação das moedas e fizemos a conexão entre os blocos, garantindo que a entrada, processamento e saída funcionassem corretamente. Após testar no modo de desenvolvimento, preparei a automação para o modo produção, utilizando o Postman para realizar a requisição. Agora, vamos configurar a saída final do nosso webhook, que é crucial para completar o processo.",
+          "duration": 300,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/012-conectando-variaveis-entre-nos.txt",
+          "chars": 4845,
+          "status": "ok"
+        },
+        {
+          "title": "Retorno do Webhook",
+          "slug": "retorno-do-webhook",
+          "video_id": "3357eabb-6bb4-47cb-8124-b8dad4bd28be",
+          "has_transcription": true,
+          "description": "Chegamos à etapa final da nossa aula, onde configuramos um webhook no N8n. Mostrei como usar o nó \"respond to webhook\" para retornar informações processadas, como a cotação de moedas. Falei sobre a diferença entre automação e webhook, destacando a simplicidade do N8n em comparação com programações tradicionais. Testamos a configuração no Postman e tudo funcionou perfeitamente. Com apenas alguns blocos, conseguimos criar uma automação eficiente, demonstrando o potencial do no-code.",
+          "duration": 269,
+          "type": "video",
+          "file": "01-iniciando-com-n-8-n/013-retorno-do-webhook.txt",
+          "chars": 4400,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "primeiro-agente-de-ia",
+      "title": "Primeiro agente de IA",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "Boas vindas",
+          "slug": "boas-vindas-2056",
+          "video_id": "9d1e37c2-15ab-4bbb-a02d-53d5a81f76db",
+          "has_transcription": false,
+          "description": "Neste treinamento de N8n, vamos explorar conceitos intermediários sobre agentes de IA. Meu objetivo é que, ao final, você compreenda não apenas como construir esses agentes, mas também o raciocínio por trás disso. Sou Bruno Fazoli, com experiência em inteligência artificial desde 2016 e fundador da Let's Bot, onde trabalhamos com grandes empresas. Estou aqui para compartilhar meu conhecimento e experiências, ajudando você a evitar armadilhas comuns. Vamos nos conectar nas redes sociais e começar essa jornada juntos!",
+          "duration": 151,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Cloud ou Self-host para agentes de IA",
+          "slug": "agentes-de-ia",
+          "video_id": "2b2c4015-3567-4364-b19d-f47968e27c7a",
+          "has_transcription": false,
+          "description": "Nesta aula, vamos explorar o N8n, focando na construção de agentes de IA e na escolha entre as versões hosted e self-hosted. A versão cloud oferece praticidade, mas pode não ser ideal para quem precisa de muitas execuções de workflow, já que as limitações de mensagens podem ser um problema. Optar pelo self-hosted traz mais controle e flexibilidade, embora a responsabilidade pela infraestrutura recaia sobre nós. Vamos nos aprofundar nessa abordagem e desenvolver nossos agentes de IA de forma intermediária.",
+          "duration": 194,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Self-hosted Infra",
+          "slug": "self-hosted-infra",
+          "video_id": "644dbdad-e4ca-4d51-82f6-470bf0deabf1",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos explorar como configurar o N8n self-hosted, começando pela documentação oficial. Vou mostrar como navegar pelo GitHub e entender as opções de hospedagem disponíveis, como DigitalOcean e AWS. Minha sugestão é usar a Hostinger, que oferece um serviço prático e acessível. Vou explicar como escolher o plano certo e instalar o EasyPanel, que facilita a gestão do servidor. Com isso, você terá tudo pronto para rodar o N8n de forma simples e eficiente.",
+          "duration": 444,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/003-self-hosted-infra.txt",
+          "chars": 7542,
+          "status": "ok"
+        },
+        {
+          "title": "Instalando N8N - Easypanel",
+          "slug": "instalando-n-8-n-easypanel",
+          "video_id": "ffa01108-f824-4d2e-a9d3-fd267a38326c",
+          "has_transcription": true,
+          "description": "Na aula de hoje, mostrei como instalar o N8n de forma super simples no Easy Panel. Começamos criando um projeto e adicionando o serviço N8n. O processo de instalação foi rápido e, após a configuração inicial, consegui acessar a plataforma. Também expliquei como ativar a conta e resolver um pequeno erro com a chave de ativação. Agora, estamos prontos para explorar o N8n e criar agentes de IA ilimitados, aproveitando todos os recursos disponíveis.",
+          "duration": 319,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/004-instalando-n8n-easypanel.txt",
+          "chars": 5222,
+          "status": "ok"
+        },
+        {
+          "title": "Componentes - Agente de IA",
+          "slug": "componentes-agente-de-ia",
+          "video_id": "6407f707-11a6-4fe2-a066-4d9cb885ec9c",
+          "has_transcription": true,
+          "description": "Agora que temos o N8n instalado, vamos explorar a construção de agentes de IA. Começamos com a personalização da interface, onde você pode optar pelo modo claro ou escuro. Em seguida, focamos nos componentes de IA disponíveis no N8n, como o AI Agent e o OpenAI. Mostro como configurar esses blocos, destacando a importância dos prompts e das opções de configuração. A ideia é construir tudo internamente no N8n, evitando a dependência de ferramentas externas, o que simplifica o processo.",
+          "duration": 478,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/005-componentes-agente-de-ia.txt",
+          "chars": 7969,
+          "status": "ok"
+        },
+        {
+          "title": "Componente OpenAI",
+          "slug": "componente-open-ai",
+          "video_id": "a038a7c3-c39a-48ff-928b-b1dbbb5045f9",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei o nó chamado OpenAI, focando em como interagir com a API para manipulação de textos, imagens e áudios. Mostrei como selecionar modelos específicos, como o ChatGPT, e enviar prompts para obter respostas. Também abordei a geração de imagens e a conversão de texto em áudio, além de como realizar upload de arquivos para fine-tuning de modelos personalizados. O objetivo é entender as funcionalidades da API da OpenAI e suas aplicações práticas.",
+          "duration": 264,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/006-componente-openai.txt",
+          "chars": 4499,
+          "status": "ok"
+        },
+        {
+          "title": "Componente OpenAI (Assistants)",
+          "slug": "componente-open-ai-assistants",
+          "video_id": "da293654-2e2f-4e6a-ba8f-54b122825731",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei a OpenAI Platform, focando na criação e gerenciamento de assistentes de IA. Abordei como gerar uma API key, a importância de organizar projetos e como conectar o N8n a esses assistentes. Demonstrei a diferença entre usar um agente de IA, um assistente e as APIs da OpenAI. Também mostrei como criar um assistente e interagir com ele. O objetivo é entender essas distinções para utilizar as ferramentas de maneira eficaz.",
+          "duration": 760,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/007-componente-openai-assistants.txt",
+          "chars": 11867,
+          "status": "ok"
+        },
+        {
+          "title": "Trigger agente de IA",
+          "slug": "trigger-agente-de-ia",
+          "video_id": "53a20aaf-fc66-45b8-8fcf-ef6748c90eb7",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos construir um agente de IA diretamente no N8n, utilizando o AI Engine. Começamos configurando um chat input e criando um prompt para um assistente financeiro que fornece cotações de moeda. Usamos um chat trigger para testar a interação, mas é importante lembrar que, para uma aplicação real, substituiremos isso por um webhook. O webhook permitirá conectar nosso agente a plataformas externas, como WhatsApp. Vamos explorar como integrar um modelo de IA para potencializar nosso agente.",
+          "duration": 285,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/008-trigger-agente-de-ia.txt",
+          "chars": 4666,
+          "status": "ok"
+        },
+        {
+          "title": "Chat Model",
+          "slug": "chat-model",
+          "video_id": "8b78daef-5a82-4bfe-9f72-ac3df53a73d1",
+          "has_transcription": true,
+          "description": "Nesta aula, mostrei como utilizar a plataforma N8n para conectar diferentes modelos de linguagem de forma prática e eficiente. Em vez de lidar com a complexidade de várias APIs, você pode simplesmente trocar entre os modelos com um clique. Discuti a importância de experimentar diferentes LLMs, como OpenAI e Gemini, para equilibrar custo e desempenho. Além disso, enfatizei como a estrutura de agentes de IA do N8n facilita a construção de soluções flexíveis, economizando tempo e esforço no desenvolvimento.",
+          "duration": 404,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/009-chat-model.txt",
+          "chars": 6738,
+          "status": "ok"
+        },
+        {
+          "title": "Memória - Parte 1",
+          "slug": "memoria-parte-1",
+          "video_id": "458c3261-6064-4898-b920-840da6bcc7bf",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como integrar o modelo de chat da OpenAI com um agente de IA. Começamos configurando o ambiente, enviando mensagens e analisando o fluxo de entrada, processamento e saída. Discuti a importância de adicionar memória ao agente para que ele possa reter informações, em vez de funcionar apenas como uma chamada de API. Também demonstrei como configurar um servidor Redis no EasyPanel para gerenciar essa memória. O objetivo é criar um agente mais humano e interativo.",
+          "duration": 554,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/010-memoria-parte-1.txt",
+          "chars": 8006,
+          "status": "ok"
+        },
+        {
+          "title": "Memória - Parte 2",
+          "slug": "memoria-parte-2",
+          "video_id": "60d045c7-7c6d-4112-b6ea-1aa399c43a1b",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como integrar a memória interna do N8n usando o Redis. Mostrei como ele armazena o histórico de conversas em tabelas associadas a session IDs, permitindo que a IA lembre das interações. Abordei a importância do tempo de vida das tabelas para evitar sobrecarga no servidor. Também expliquei como o histórico se torna parte do prompt enviado à OpenAI, garantindo uma experiência mais fluida. O Redis se destaca pela sua eficiência na gestão de dados temporários, facilitando a construção de agentes de IA mais inteligentes.",
+          "duration": 565,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/011-memoria-parte-2.txt",
+          "chars": 8730,
+          "status": "ok"
+        },
+        {
+          "title": "Tools",
+          "slug": "tools-novo",
+          "video_id": "801e094b-940e-493f-8dfb-602de76f4160",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei como criar automações e agentes de IA usando o N8n, destacando a praticidade em comparação com a codificação manual. Mostrei como integrar uma API de cotação de moedas ao nosso agente, permitindo que ele respondesse a perguntas sobre câmbio. Utilizando ferramentas do N8n, transformamos a URL em dinâmica, capturando informações em tempo real sem precisar escrever código. Ao final, demonstrei a eficácia e a simplicidade dessa abordagem, ressaltando o poder do low-code.",
+          "duration": 1168,
+          "type": "video",
+          "file": "02-primeiro-agente-de-ia/012-tools.txt",
+          "chars": 17735,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 25,
+    "with_vtt": 23,
+    "without_vtt": 2,
+    "total_chars": 166825
+  }
+}

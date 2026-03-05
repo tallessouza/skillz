@@ -1,0 +1,1 @@
+﻿WEBVTT A partir de agora, o nosso toco será ORM. Aqui, você vai compreender o que é um ORM e vai aprender a utilizar, na prática, o Prisma ORM, que é um dos ORMs mais utilizados do mercado. Inclusive, vai ver, na prática, todas as facilidades que um ORM traz ao manipular banco de dados na nossa aplicação. Então, vamos começar.

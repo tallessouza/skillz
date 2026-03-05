@@ -1,0 +1,620 @@
+{
+  "journey_slug": "introducao-a-aws",
+  "modules": [
+    {
+      "slug": "fundamentos-de-cloud-e-aws",
+      "title": "Introdução à Nuvem e AWS",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "O que é Cloud Computing",
+          "slug": "o-que-e-cloud-computing",
+          "video_id": "67265742-ef0a-44af-8098-620c69c11490",
+          "has_transcription": true,
+          "description": "Nessa aula, vamos explorar o conceito de Cloud Computing, focando na AWS. Vou explicar por que optar por provedores de nuvem é vantajoso em relação a servidores locais, abordando os benefícios como escalabilidade e flexibilidade. Vamos conhecer os modelos IaaS, PaaS e SaaS, além de discutir a diferença entre eles. Também falaremos sobre os principais provedores de nuvem, suas características e o crescimento do uso de soluções em nuvem nos últimos anos. Prepare-se para entender como a nuvem pode transformar seu trabalho!",
+          "duration": 912,
+          "type": "video",
+          "file": "01-fundamentos-de-cloud-e-aws/001-o-que-e-cloud-computing.txt",
+          "chars": 16517,
+          "status": "ok"
+        },
+        {
+          "title": "Por que usar AWS como desenvolvedor",
+          "slug": "por-que-usar-aws-como-desenvolvedor",
+          "video_id": "1e3ed1bb-96b9-4a67-a548-ff3c949db16b",
+          "has_transcription": true,
+          "description": "Na aula de hoje, discutimos os principais motivos para escolher a AWS como provedor de nuvem. Falei sobre a escalabilidade das aplicações, o custo reduzido conforme o uso e a variedade de ferramentas inovadoras disponíveis. Abordei também a segurança robusta e a flexibilidade em serviços, além da integração com linguagens de programação e ferramentas populares. A AWS facilita o desenvolvimento ágil e oferece uma comunidade forte para suporte. Prepare-se para explorar mais sobre esses recursos nas próximas aulas!",
+          "duration": 621,
+          "type": "video",
+          "file": "01-fundamentos-de-cloud-e-aws/002-por-que-usar-aws-como-desenvolvedor.txt",
+          "chars": 11274,
+          "status": "ok"
+        },
+        {
+          "title": "Criando conta gratuita",
+          "slug": "criando-conta-gratuita",
+          "video_id": "907a585b-72e4-4060-91bd-15876d0c5ea8",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos criar uma conta na AWS e explorar como utilizá-la. Começamos acessando o site da AWS e seguindo o processo de registro, que inclui a validação do e-mail e a definição de uma senha. Optamos pelo plano gratuito, que oferece serviços limitados por seis meses. Também é necessário fornecer um cartão de crédito para possíveis cobranças. Após a criação da conta, já podemos acessar o Management Console e iniciar a configuração de serviços como o EC2. Nos vemos na próxima aula!",
+          "duration": 259,
+          "type": "video",
+          "file": "01-fundamentos-de-cloud-e-aws/003-criando-conta-gratuita.txt",
+          "chars": 4725,
+          "status": "ok"
+        },
+        {
+          "title": "Navegando no Console AWS",
+          "slug": "navegando-no-console-aws",
+          "video_id": "d17eb3ff-ef72-419c-854f-0fae8f466983",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei o console da AWS, mostrando como personalizá-lo e navegar entre os recursos disponíveis. Falei sobre a CLI da AWS, que já vem instalada no Cloud Shell, e como você pode configurar alertas para monitorar gastos. Também abordei a importância de escolher a região para criar recursos e como acessar serviços variados, desde armazenamento até inteligência artificial. A ideia é que você se familiarize com a interface e as funcionalidades da AWS para facilitar seu aprendizado. Nos vemos na próxima!",
+          "duration": 393,
+          "type": "video",
+          "file": "01-fundamentos-de-cloud-e-aws/004-navegando-no-console-aws.txt",
+          "chars": 7117,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "fundamentos-essenciais-da-aws",
+      "title": "Fundamentos essenciais da AWS",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "Regiões, AZs e Arquitetura Global",
+          "slug": "regioes-a-zs-e-arquitetura-global",
+          "video_id": "e05f3964-2776-4532-b125-c9f736c9e155",
+          "has_transcription": true,
+          "description": "Nessa aula, exploramos as regiões da AWS e sua importância na arquitetura global. Discutimos como escolher a região certa, considerando fatores como latência, conformidade e disponibilidade de serviços. Aprendemos sobre a diferença entre regiões e zonas de disponibilidade (AZs), destacando a importância da escalabilidade e resiliência. Também abordamos estratégias de multi-região e multi-AZ, enfatizando como essas escolhas impactam a performance e a experiência do usuário. Vamos continuar aprofundando esses conceitos nas próximas aulas!",
+          "duration": 527,
+          "type": "video",
+          "file": "02-fundamentos-essenciais-da-aws/001-regioes-azs-e-arquitetura-global.txt",
+          "chars": 9988,
+          "status": "ok"
+        },
+        {
+          "title": "IAM – Usuários, Grupos e Políticas",
+          "slug": "iam-usuarios-grupos-e-politicas",
+          "video_id": "7d8df99b-9498-47c2-b09a-517a735a85eb",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos explorar o IAM (Identity and Access Management) da AWS, que é fundamental para gerenciar identidades e acessos. Vou mostrar como criar e gerenciar usuários e grupos, definir permissões e monitorar atividades. Discutiremos a importância das políticas de acesso e como organizá-las em grupos. Também abordaremos a configuração de MFA para aumentar a segurança. O objetivo é garantir que vocês entendam como gerenciar acessos de forma eficaz e segura na AWS. Nos vemos na próxima aula!",
+          "duration": 693,
+          "type": "video",
+          "file": "02-fundamentos-essenciais-da-aws/002-iam-usuarios-grupos-e-politicas.txt",
+          "chars": 12886,
+          "status": "ok"
+        },
+        {
+          "title": "Gerando Access Keys e Configurando AWS CLI",
+          "slug": "gerando-access-keys-e-configurando-aws-cli",
+          "video_id": "bb7d0749-e8d9-43f1-92e9-5f479e10c854",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos focar na configuração da AWS CLI, essencial para gerenciar seus recursos de forma mais eficiente. Começamos com a instalação, que varia conforme o sistema operacional: Linux, Mac ou Windows. Depois, criamos uma access key com o usuário admin, evitando o uso do root por segurança. Mostrei como configurar a CLI com o comando `aws configure`, definindo a região padrão e o formato de saída. Ao final, demonstrei como consultar recursos, como buckets S3 e grupos de segurança, tudo de forma rápida e prática. Nos vemos na próxima aula!",
+          "duration": 310,
+          "type": "video",
+          "file": "02-fundamentos-essenciais-da-aws/003-gerando-access-keys-e-configurando-aws-cli.txt",
+          "chars": 5585,
+          "status": "ok"
+        },
+        {
+          "title": "Billing - Controlando Custos com Alarmes",
+          "slug": "billing-controlando-custos-com-alarmes",
+          "video_id": "f8272d97-957a-4c1e-a8af-820321a91693",
+          "has_transcription": true,
+          "description": "Hoje, vamos falar sobre como configurar um orçamento na AWS para evitar surpresas com gastos. Aprendemos na aula passada a usar a CLI, e agora é hora de usar a conta root para criar um budget. Mostrei como você pode ser notificado quando seus gastos atingirem certos limites, como um centavo ou cinco dólares. Isso é super útil para quem está começando e quer controlar os custos. Não esqueça de configurar o MFA na conta root para mais segurança. Até a próxima!",
+          "duration": 274,
+          "type": "video",
+          "file": "02-fundamentos-essenciais-da-aws/004-billing-controlando-custos-com-alarmes.txt",
+          "chars": 5210,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "computacao-e-armazenamento",
+      "title": "Computação para desenvolvedores",
+      "order": 3,
+      "lessons": [
+        {
+          "title": "Criando Primeira Instância EC2",
+          "slug": "criando-primeira-instancia-ec-2",
+          "video_id": "2b7cd1f3-a271-4144-ad46-45d8b38e4fad",
+          "has_transcription": true,
+          "description": "Hoje, iniciamos nossa jornada com o EC2, a nuvem de computação da AWS. Vamos entender o que é, como criar nossa primeira instância e explorar os parâmetros necessários. Falamos sobre o nome da instância, imagens do sistema operacional e tipos de instância, como a t3.micro, que é gratuita. Também discutimos a importância do KeyPair para acesso seguro e as configurações de rede. Por fim, mostramos como conectar à instância via SSH. Nos vemos na próxima aula!",
+          "duration": 768,
+          "type": "video",
+          "file": "03-computacao-e-armazenamento/001-criando-primeira-instancia-ec2.txt",
+          "chars": 13544,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando Ambiente Dev Node",
+          "slug": "configurando-ambiente-dev-node-e-python",
+          "video_id": "aaacff27-2fd4-4a81-bea9-833acef73163",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos aprofundar na criação e configuração de uma instância na AWS. Aprendemos a configurar ambientes com Node e Python, além de instalar ferramentas essenciais como Git e wget. Demonstrei como acessar a instância via terminal, realizar atualizações e instalar pacotes necessários. Também discutimos a configuração do Git e a instalação do Node.js. Por fim, lembrei a importância de encerrar a instância para evitar custos. Espero que aproveitem! Nos vemos na próxima aula.",
+          "duration": 266,
+          "type": "video",
+          "file": "03-computacao-e-armazenamento/002-configurando-ambiente-dev-node.txt",
+          "chars": 4518,
+          "status": "ok"
+        },
+        {
+          "title": "EC2 Auto Scaling e Load Balancing",
+          "slug": "ec-2-auto-scaling-e-load-balancing",
+          "video_id": "7ba5c811-4387-49b9-a97b-2ca5cd74ce35",
+          "has_transcription": true,
+          "description": "Hoje, vamos explorar outscaling e load balancing na AWS, focando em como automatizar a criação de instâncias EC2. Começamos entendendo o conceito de Amazon Machine Images (EMI), que permite criar instâncias com configurações pré-definidas, evitando a configuração manual toda vez. Depois, abordamos como criar um Auto Scaling Group e um Load Balancer, que distribui a carga entre as instâncias criadas. Assim, conseguimos gerenciar a capacidade de forma eficiente e responsiva. Nos vemos na próxima aula!",
+          "duration": 587,
+          "type": "video",
+          "file": "03-computacao-e-armazenamento/003-ec2-auto-scaling-e-load-balancing.txt",
+          "chars": 10906,
+          "status": "ok"
+        },
+        {
+          "title": "Containers AWS ECS Fargate",
+          "slug": "containers-aws-ecs-fargate",
+          "video_id": "927e3ff1-b84f-4db2-a5d3-eec92fb126fd",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos explorar o Amazon Elastic Container Service (ECS) e como ele facilita a execução de containers Docker sem precisar de configurações complexas. Discutimos as opções de cluster, como Fargate, que permite uma abordagem serverless, onde a AWS cuida de tudo pra você. Mostrei como criar um cluster e um serviço, além de definir uma Task com uma imagem do WordPress. Essa simplicidade do ECS com Fargate é uma ótima solução para quem quer agilidade em seus projetos. Nos vemos na próxima aula!",
+          "duration": 389,
+          "type": "video",
+          "file": "03-computacao-e-armazenamento/004-containers-aws-ecs-fargate.txt",
+          "chars": 7277,
+          "status": "ok"
+        },
+        {
+          "title": "Spot Instances e Cost Optimization",
+          "slug": "spot-instances-e-cost-optimization",
+          "video_id": "96b98c43-a326-4e41-9d91-6fb137f56846",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos as Spot Instances na AWS, que oferecem uma forma de economizar até 90% em comparação com instâncias tradicionais. Discuti como essas instâncias funcionam em um modelo de leilão, onde você compartilha recursos e pode perder acesso a qualquer momento. Abordei cenários ideais para utilizá-las, como em CI/CD e backups, e como configurar um Spot Fleet para otimizar custos. O foco é entender quando vale a pena usar Spot Instances, especialmente para empresas que precisam gerenciar grandes volumes de EC2.",
+          "duration": 569,
+          "type": "video",
+          "file": "03-computacao-e-armazenamento/005-spot-instances-e-cost-optimization.txt",
+          "chars": 9591,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "armazenamento",
+      "title": "Armazenamento",
+      "order": 4,
+      "lessons": [
+        {
+          "title": "Primeiros Buckets Upload Arquivos",
+          "slug": "primeiros-buckets-upload-arquivos",
+          "video_id": "a2d409c9-5a9d-47a6-bb37-7486ff3467c5",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos explorar o Amazon S3, o principal serviço de armazenamento de arquivos da AWS. Discutimos como criar um bucket, a importância de um nome único globalmente e as configurações iniciais, como controle de acesso e criptografia. Também abordamos o Object Lock, que protege arquivos de alterações, e como gerenciar custos com o Requestors Pay. Por fim, fizemos um upload de um arquivo e falamos sobre a organização e compartilhamento de objetos no S3. Nos próximos vídeos, vamos aprofundar mais nesses tópicos.",
+          "duration": 462,
+          "type": "video",
+          "file": "04-armazenamento/001-primeiros-buckets-upload-arquivos.txt",
+          "chars": 8347,
+          "status": "ok"
+        },
+        {
+          "title": "Versionamento Ciclo de Vida das Storage Classes",
+          "slug": "versionamento-ciclo-de-vida-das-storage-classes",
+          "video_id": "9a04ac59-de8f-4ac4-8edf-bc31c221c3c9",
+          "has_transcription": true,
+          "description": "Na aula de hoje, vamos explorar o versionamento de arquivos no S3. Começamos habilitando o versionamento no bucket e aprendemos como isso garante a segurança dos dados, permitindo restaurar versões anteriores. Discutimos também as diferentes classes de armazenamento, como Standard, Intelligent Tiering e Glacier, e suas características, incluindo custos e tempos de recuperação. Por fim, abordamos a configuração de regras de ciclo de vida para automatizar a transição de objetos entre classes de armazenamento. Nos vemos na próxima!",
+          "duration": 721,
+          "type": "video",
+          "file": "04-armazenamento/002-versionamento-ciclo-de-vida-das-storage-classes.txt",
+          "chars": 12648,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando S3 Static Website Hosting",
+          "slug": "configurando-s-3-static-website-hosting",
+          "video_id": "c3c43cf7-d5d8-459e-9448-79387580de6e",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como criar um site estático utilizando o Amazon S3. Ao invés de configurar um servidor, você pode simplesmente fazer o upload dos seus arquivos HTML, CSS e JavaScript diretamente no S3. Mostrei como habilitar o Static Website Hosting, configurar as permissões corretas e criar um arquivo de política de bucket para permitir o acesso público. Ao final, conseguimos visualizar o site funcionando, incluindo uma página de erro personalizada. Espero que tenham gostado!",
+          "duration": 314,
+          "type": "video",
+          "file": "04-armazenamento/003-configurando-s3-static-website-hosting.txt",
+          "chars": 5389,
+          "status": "ok"
+        },
+        {
+          "title": "Integrando S3 SDK Aplicação Node.js",
+          "slug": "integrando-s-3-sdk-aplicacao-node-js",
+          "video_id": "9a973ffc-dc82-488c-a465-3508248464d8",
+          "has_transcription": true,
+          "description": "Nesta aula, mostrei como integrar o SDK da AWS com o S3 usando Node.js. Começamos criando um projeto básico com npm e instalando as dependências necessárias. Em seguida, configurei as credenciais da AWS e criei um serviço S3 para listar objetos em um bucket. Também desenvolvemos rotas para acessar esses arquivos via API. Ao final, executei o servidor e fiz uma requisição para demonstrar a listagem dos arquivos. Espero que tenham gostado e até a próxima!",
+          "duration": 772,
+          "type": "video",
+          "file": "04-armazenamento/004-integrando-s3-sdk-aplicacao-node-js.txt",
+          "chars": 12085,
+          "status": "ok"
+        },
+        {
+          "title": "S3 Event Notifications e Lambda Triggers",
+          "slug": "s-3-event-notifications-e-lambda-triggers",
+          "video_id": "45bd3469-805b-4b37-be29-3d27ed62f1ba",
+          "has_transcription": false,
+          "description": null,
+          "duration": 504,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "S3 Performance e Otimização",
+          "slug": "s-3-performance-e-otimizacao",
+          "video_id": "769baf0c-2131-4262-b35f-d4beb44fad32",
+          "has_transcription": true,
+          "description": "Nesta aula, discutimos como otimizar a performance no S3, abordando os desafios de upload e download, especialmente em regiões distantes. Demonstrei como o Transfer Acceleration pode acelerar uploads, mostrando a diferença de tempo ao habilitá-lo. Também explorei o CloudFront, que melhora downloads utilizando cache em edge locations. Realizamos testes práticos para comparar tempos de transferência e entender como essas ferramentas podem beneficiar o desempenho em aplicações reais. Espero que tenham achado útil!",
+          "duration": 475,
+          "type": "video",
+          "file": "04-armazenamento/006-s3-performance-e-otimizacao.txt",
+          "chars": 8768,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "bancos-de-dados",
+      "title": "Relacionais e não relacionais",
+      "order": 5,
+      "lessons": [
+        {
+          "title": "Criando RDS Postgres na Prática",
+          "slug": "criando-rds-postgres-na-pratica",
+          "video_id": "e28c1406-8df5-4aa4-a962-d0fcd9425df9",
+          "has_transcription": true,
+          "description": "Nessa aula, vamos explorar bancos de dados na AWS, começando pela diferença entre relacionais e não relacionais. Aprendemos que bancos relacionais armazenam dados em tabelas com chaves primárias e estrangeiras, enquanto os não relacionais utilizam formatos variados, como JSON. Focamos no RDS da AWS, criando um banco de dados PostgreSQL e configurando uma instância EC2 para testes. Também abordamos como conectar e criar tabelas, finalizando com um exemplo prático de criação de uma tabela simples. Nos vemos na próxima!",
+          "duration": 677,
+          "type": "video",
+          "file": "05-bancos-de-dados/001-criando-rds-postgres-na-pratica.txt",
+          "chars": 12536,
+          "status": "ok"
+        },
+        {
+          "title": "Segurança no RDS, VPC, SGs e Credenciais",
+          "slug": "seguranca-no-rds-vpc-s-gs-e-credenciais",
+          "video_id": "039b5dde-a349-4c21-b04c-65e4be248eff",
+          "has_transcription": true,
+          "description": "Na aula passada, exploramos a configuração do nosso primeiro banco de dados no RDS da AWS. Aprendemos a criar um cluster, um banco de dados e uma tabela, além de comandos básicos. Discutimos a importância da segurança, especialmente ao deixar o banco público e como isso pode ser arriscado. Mostrei como desativar o acesso público e criar um Security Group específico para permitir conexões seguras. Finalmente, conectamos ao banco de dados via SSH, instalamos o PSQL e garantimos que apenas instâncias autorizadas possam acessá-lo. Nos vemos na próxima!",
+          "duration": 565,
+          "type": "video",
+          "file": "05-bancos-de-dados/002-seguranca-no-rds-vpc-sgs-e-credenciais.txt",
+          "chars": 10691,
+          "status": "ok"
+        },
+        {
+          "title": "Conectando Aplicação ao RDS",
+          "slug": "conectando-aplicacao-ao-rds",
+          "video_id": "ec3729bc-a9cd-49dc-b569-20b49f745e0b",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos como conectar uma aplicação Node.js ao Amazon RDS. Começamos criando um projeto básico e instalando a dependência `pg` para PostgreSQL. Em seguida, configuramos o arquivo `index.js`, definindo as credenciais e o endpoint do banco. Aprendemos a realizar operações como conectar, criar tabelas e inserir dados. Também discutimos a importância da segurança nas configurações, como o uso de variáveis de ambiente. Finalizamos testando a conexão e verificando os registros criados. Nos vemos na próxima!",
+          "duration": 506,
+          "type": "video",
+          "file": "05-bancos-de-dados/003-conectando-aplicacao-ao-rds.txt",
+          "chars": 8708,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução ao DynamoDB e Tabelas NoSQL",
+          "slug": "introducao-ao-dynamo-db-e-tabelas-no-sql",
+          "video_id": "e84e860f-9d06-41ee-9daf-d56374349d9f",
+          "has_transcription": true,
+          "description": "Nessa aula, exploramos o DynamoDB, um banco de dados não relacional da AWS. Aprendemos sobre suas características, como a flexibilidade na criação de tabelas e a cobrança baseada em leituras e gravações. Demonstrei como criar uma tabela, definir chaves de partição e configurar índices secundários. Também discutimos a importância do TTL e como fazer backups e exportações. Ao final, enfatizei a diferença de custos entre operações de scan e query. Até a próxima!",
+          "duration": 713,
+          "type": "video",
+          "file": "05-bancos-de-dados/004-introducao-ao-dynamodb-e-tabelas-nosql.txt",
+          "chars": 12915,
+          "status": "ok"
+        },
+        {
+          "title": "Operações CRUD no DynamoDB com SDK",
+          "slug": "operacoes-crud-no-dynamo-db-com-sdk",
+          "video_id": "186ac7e5-743f-42ab-81de-c2d5a7fd99a0",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos a integração com o DynamoDB usando o AWS SDK. Começamos configurando o cliente do DynamoDB e importando os comandos necessários, como Put, Get, Update e Delete. Demonstrei como criar, ler, atualizar e deletar itens em uma tabela, utilizando comandos simples e diretos. Também discutimos a flexibilidade do DynamoDB em armazenar dados sem a rigidez de um esquema fixo. Finalizamos com a execução do código e conferimos os resultados. Até a próxima!",
+          "duration": 489,
+          "type": "video",
+          "file": "05-bancos-de-dados/005-operacoes-crud-no-dynamodb-com-sdk.txt",
+          "chars": 7918,
+          "status": "ok"
+        },
+        {
+          "title": "Consultas e Índices no DynamoDB (Query, Scan, GSI e LSI)",
+          "slug": "consultas-e-indices-no-dynamo-db-query-scan-gsi-e-lsi",
+          "video_id": "b80cbe7c-88e9-4b6d-bc0d-093c61329f21",
+          "has_transcription": true,
+          "description": "Nesta aula, continuamos explorando o DynamoDB, focando em índices, especificamente os Global Secondary Index (GSI) e Local Secondary Index (LCI). Demonstrei como criar uma tabela chamada \"Orders\" com Partition Key e Sort Key, além de adicionar itens. Mostrei a importância de usar scans com cautela e como os GSIs podem otimizar consultas. Também discutimos a diferença entre GSI e LCI, enfatizando que o LCI é criado junto com a tabela, enquanto o GSI pode ser adicionado posteriormente. Nos vemos na próxima!",
+          "duration": 633,
+          "type": "video",
+          "file": "05-bancos-de-dados/006-consultas-e-indices-no-dynamodb-query-scan-gsi-e-lsi.txt",
+          "chars": 11722,
+          "status": "ok"
+        },
+        {
+          "title": "Modelagem de Dados NoSQL no DynamoDB (Single Table Design)",
+          "slug": "modelagem-de-dados-no-sql-no-dynamo-db-single-table-design",
+          "video_id": "34043a4d-8099-4aea-8913-80572a6f19a2",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos a modelagem de dados no DynamoDB, focando no design de uma única tabela. Discuti como evitar custos altos ao criar múltiplas tabelas e índices, utilizando uma única tabela para armazenar diferentes tipos de dados, como usuários, pedidos e produtos. Mostrei como usar chaves de partição e ordenação para otimizar consultas, permitindo buscas eficientes e relacionamentos entre dados. Ao final, criamos um exemplo prático de uma tabela chamada AppData, demonstrando essa abordagem.",
+          "duration": 585,
+          "type": "video",
+          "file": "05-bancos-de-dados/007-modelagem-de-dados-nosql-no-dynamodb-single-table-design.txt",
+          "chars": 10385,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "boas-praticas",
+      "title": "Boas práticas",
+      "order": 6,
+      "lessons": [
+        {
+          "title": "Escalabilidade em Bancos na AWS",
+          "slug": "escalabilidade-em-bancos-na-aws",
+          "video_id": "68f75908-b50d-4122-bc36-447db46790e8",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos as boas práticas de escalabilidade em bancos de dados, focando em RDS e DynamoDB. Discutimos a diferença entre escalabilidade vertical e horizontal, como escolher a configuração ideal de instâncias e a importância de entender as limitações de CPU e RAM. Abordamos também a complexidade de manter a consistência dos dados em réplicas de leitura. Por fim, vimos como a escalabilidade pode impactar o desempenho e os custos, especialmente em períodos de alta demanda.",
+          "duration": 783,
+          "type": "video",
+          "file": "06-boas-praticas/001-escalabilidade-em-bancos-na-aws.txt",
+          "chars": 14007,
+          "status": "ok"
+        },
+        {
+          "title": "Aula 28 Custos e Otimizações no RDS e DynamoDB",
+          "slug": "aula-28-custos-e-otimizacoes-no-rds-e-dynamo-db",
+          "video_id": "aeaf46bd-655a-4191-a8d5-4605cd915460",
+          "has_transcription": true,
+          "description": "Na aula de hoje, discutimos a escalabilidade e os custos associados a bancos de dados na AWS. Abordamos como decisões simples podem resultar em despesas elevadas, como a escolha errada de instâncias ou configurações. Expliquei a importância de entender os diferentes modelos de cobrança, como RDS e DynamoDB, e como otimizar custos sem comprometer a performance. Também compartilhei dicas práticas, como usar instâncias Graviton2 e ajustar a retenção de backups, para economizar e melhorar a eficiência.",
+          "duration": 835,
+          "type": "video",
+          "file": "06-boas-praticas/002-aula-28-custos-e-otimizacoes-no-rds-e-dynamodb.txt",
+          "chars": 14145,
+          "status": "ok"
+        },
+        {
+          "title": "RDS Read Replicas e Multi AZ",
+          "slug": "rds-read-replicas-e-multi-az",
+          "video_id": "814caf8d-eb2c-426c-bcb9-817c3fcc0d8f",
+          "has_transcription": true,
+          "description": "Hoje, exploramos as diferenças entre Read Replicas e Multi-AZ no RDS. Enquanto o Multi-AZ foca na alta disponibilidade com réplicas síncronas, as Read Replicas são assíncronas e visam a escalabilidade de leitura. Discutimos como configurar ambos os recursos na AWS, destacando a importância de escolher a estratégia certa conforme suas necessidades. Também abordamos o impacto nos custos ao optar por múltiplas instâncias. Espero que essa aula tenha esclarecido suas dúvidas sobre esses conceitos fundamentais!",
+          "duration": 463,
+          "type": "video",
+          "file": "06-boas-praticas/003-rds-read-replicas-e-multi-az.txt",
+          "chars": 8044,
+          "status": "ok"
+        },
+        {
+          "title": "RDS Automated Backups e Point in Time Recovery",
+          "slug": "rds-automated-backups-e-point-in-time-recovery",
+          "video_id": "96f066a1-044c-4b0e-814f-2ac8e08f6128",
+          "has_transcription": true,
+          "description": "Na aula de hoje, discutimos a importância de backups em bancos de dados, especialmente em ambientes de produção, onde a perda de dados pode ser crítica. Abordamos o backup automático na AWS, que permite configurar a retenção de dados por até 35 dias, e o conceito de Point-in-Time Recovery (PTR), que possibilita restaurar o banco a qualquer momento dentro desse período. Expliquei como a AWS combina snapshots e logs de transação para facilitar essa recuperação. Até a próxima aula!",
+          "duration": 610,
+          "type": "video",
+          "file": "06-boas-praticas/004-rds-automated-backups-e-point-in-time-recovery.txt",
+          "chars": 10752,
+          "status": "ok"
+        },
+        {
+          "title": "DynamoDB Global Tables e DAX",
+          "slug": "dynamo-db-global-tables-e-dax",
+          "video_id": "407713fa-00ff-433e-a106-248d8c2ba49a",
+          "has_transcription": true,
+          "description": "Nessa aula, vamos explorar o DynamoDB, focando nas Global Tables e no DAX. As Global Tables permitem replicação automática em várias regiões, facilitando a gestão de dados globais. Discutimos a complexidade e os custos associados à replicação multi-regional e como o DynamoDB simplifica esse processo. Também abordamos o DAX, que melhora a performance ao armazenar em cache as leituras, reduzindo a latência. Vamos ver como configurar tudo isso na AWS e entender as vantagens e cuidados necessários.",
+          "duration": 845,
+          "type": "video",
+          "file": "06-boas-praticas/005-dynamodb-global-tables-e-dax.txt",
+          "chars": 14706,
+          "status": "ok"
+        },
+        {
+          "title": "DynamoDB Streams e Lambda Integration",
+          "slug": "dynamo-db-streams-e-lambda-integration",
+          "video_id": "9962ce63-1389-47ea-aabc-73afd8da04bd",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos o DynamoDB Streams e sua integração com o Lambda. Aprendemos como o DynamoDB pode acionar funções Lambda automaticamente quando há alterações nas tabelas, permitindo criar pipelines reativos. Discutimos os tipos de informações que os eventos podem fornecer, como imagens anteriores e novas de itens, e como isso pode ser útil para auditoria e replicação de dados. Também fizemos uma demonstração prática de como configurar e monitorar esses eventos no CloudWatch. Até a próxima!",
+          "duration": 437,
+          "type": "video",
+          "file": "06-boas-praticas/006-dynamodb-streams-e-lambda-integration.txt",
+          "chars": 7483,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "deploy-e-ci-cd",
+      "title": "Deploy simplificado",
+      "order": 7,
+      "lessons": [
+        {
+          "title": "Introdução ao AWS Lightsail Containers",
+          "slug": "introducao-ao-aws-lightsail-containers",
+          "video_id": "eb41641f-2918-401e-9062-edbec1b351bc",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei as funcionalidades do AWS LightSail, uma ferramenta que simplifica a criação de aplicações, como blogs ou landing pages, para quem não tem experiência com a AWS. Mostrei como criar uma instância de WordPress com apenas alguns cliques, gerenciar configurações e até registrar domínios. O LightSail é ideal para quem busca uma solução prática e acessível, permitindo que você lance seu projeto rapidamente, cuidando até da parte de HTTPS. Até a próxima!",
+          "duration": 489,
+          "type": "video",
+          "file": "07-deploy-e-ci-cd/001-introducao-ao-aws-lightsail-containers.txt",
+          "chars": 8102,
+          "status": "ok"
+        },
+        {
+          "title": "Deploy de App Dockerizado no App Runner",
+          "slug": "deploy-de-app-dockerizado-no-app-runner",
+          "video_id": "981ab26c-8541-4c23-b5d7-f909afd5d86b",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos o AppRunner, uma ferramenta da AWS que facilita o deploy de aplicações containerizadas, similar ao LightSail, mas focada em containers. Aprendemos a conectar repositórios, configurar builds e ajustar recursos como vCPU e memória. O AppRunner simplifica o processo, permitindo que você suba aplicações rapidamente, sem complicações. Também discutimos configurações de segurança, rede e observabilidade, destacando como o serviço gerencia automaticamente aspectos como DNS e HTTPS. Nos vemos na próxima!",
+          "duration": 436,
+          "type": "video",
+          "file": "07-deploy-e-ci-cd/002-deploy-de-app-dockerizado-no-app-runner.txt",
+          "chars": 7913,
+          "status": "ok"
+        },
+        {
+          "title": "Deploy no ECS + Fargate – visão prática",
+          "slug": "deploy-no-ecs-fargate-visao-pratica",
+          "video_id": "3611f1ed-ab45-4c85-92d1-38a89ffea34b",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos o ECS com Fargate, uma maneira simplificada de fazer deploy na AWS. Discutimos como o ECS orquestra e o Fargate executa serviços de forma serverless. Demonstrei a criação de um cluster, task definition e service, usando Nginx como exemplo. Embora o processo seja um pouco mais complexo que o AppRunner, ele permite gerenciar múltiplos serviços em um único cluster. Finalizei lembrando da importância de deletar o cluster para evitar custos. Até a próxima!",
+          "duration": 281,
+          "type": "video",
+          "file": "07-deploy-e-ci-cd/003-deploy-no-ecs-fargate-visao-pratica.txt",
+          "chars": 5271,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "ci-cd-para-devs",
+      "title": "CI/CD para Devs",
+      "order": 8,
+      "lessons": [
+        {
+          "title": "Integração GitHub Actions + AWS CLI",
+          "slug": "integracao-git-hub-actions-aws-cli",
+          "video_id": "d962a93a-309c-408d-ab06-6b73a96f8efc",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar GitHub Actions, CI/CD e como integrar com a AWS. Começamos definindo CI/CD como um processo de entrega contínua, onde o código é validado e implantado automaticamente. Aprendemos que o GitHub Actions orquestra a automação, mas não realiza o deploy, que é feito por ferramentas como CLI e Terraform. Também abordamos a autenticação via OpenID Connect, permitindo que o GitHub se conecte à AWS de forma segura. Ao final, criamos um exemplo prático de integração.",
+          "duration": 802,
+          "type": "video",
+          "file": "08-ci-cd-para-devs/001-integracao-github-actions-aws-cli.txt",
+          "chars": 12864,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução ao CodeCommit, CodeBuild e CodePipeline",
+          "slug": "introducao-ao-code-commit-code-build-e-code-pipeline",
+          "video_id": "6f9ececb-e272-4c34-aa40-a5304daf2daf",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos três ferramentas da AWS: CodeCommit, CodeBuild e CodePipeline, que oferecem uma alternativa à integração contínua sem depender de serviços externos como GitHub. O CodeCommit funciona como um repositório Git gerenciado, enquanto o CodeBuild cuida da construção de aplicações em containers. O CodePipeline orquestra todo o processo de integração e entrega. Demonstrei como criar um repositório, configurar builds e pipelines, destacando que a AWS está recomendando o uso de provedores externos, já que o CodeCommit está sendo descontinuado.",
+          "duration": 607,
+          "type": "video",
+          "file": "08-ci-cd-para-devs/002-introducao-ao-codecommit-codebuild-e-codepipeline.txt",
+          "chars": 10737,
+          "status": "ok"
+        },
+        {
+          "title": "Criando Pipeline Completa de Build e Deploy",
+          "slug": "criando-pipeline-completa-de-build-e-deploy",
+          "video_id": "67096ab5-e868-4280-9a46-f42046e77a7f",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar a criação de uma pipeline completa de build e deploy, passando por todo o fluxo desde o desenvolvimento até a implantação automatizada. Começamos configurando o código básico de uma aplicação em Go (utilizada apenas como exemplo de referência), seguido pela criação de um Dockerfile para facilitar o build da aplicação. Em seguida, integramos a AWS, criando um repositório ECR e ajustando o workflow no GitHub Actions para automatizar o processo de build e deploy. É importante ressaltar que você, como desenvolvedor, deve ser responsável por conhecer e saber configurar os steps de build e o Dockerfile específicos para sua linguagem e projeto, adaptando os conceitos apresentados para seu contexto. Ao final, conseguimos realizar o deploy da aplicação, demonstrando a flexibilidade do Docker para diferentes linguagens e tecnologias.",
+          "duration": 938,
+          "type": "video",
+          "file": "08-ci-cd-para-devs/003-criando-pipeline-completa-de-build-e-deploy.txt",
+          "chars": 14954,
+          "status": "ok"
+        },
+        {
+          "title": "Boas Práticas de CI/CD em Ambientes AWS",
+          "slug": "boas-praticas-de-ci-cd-em-ambientes-aws",
+          "video_id": "8d14c957-dcee-497d-9b1b-68288cce31cf",
+          "has_transcription": true,
+          "description": "Nesta aula final do módulo, discutimos boas práticas em segurança e automação. Enfatizei a importância de conceder permissões mínimas necessárias e evitar o uso de credenciais expostas, como access key e secret key. Abordei a criação de roles específicas para diferentes ambientes e a necessidade de manter builds consistentes. Também mencionei a importância de usar tags corretas para facilitar rollbacks e a distinção entre infraestrutura e pipelines. Por fim, demonstrei como limpar recursos no AWS. Vejo vocês na próxima aula!",
+          "duration": 432,
+          "type": "video",
+          "file": "08-ci-cd-para-devs/004-boas-praticas-de-ci-cd-em-ambientes-aws.txt",
+          "chars": 7646,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "serverless-e-ap-is",
+      "title": "Funções Serverless",
+      "order": 9,
+      "lessons": [
+        {
+          "title": "Lambda - Criando Sua Primeira Função",
+          "slug": "lambda-criando-sua-primeira-funcao",
+          "video_id": "c8dafa81-3ada-4d8d-b7f3-1804ceb3b8fb",
+          "has_transcription": true,
+          "description": "Na aula de hoje, mergulhamos no AWS Lambda, um serviço serverless que permite executar código sem gerenciar servidores. Aprendemos sobre a criação, execução e teste de funções Lambda, além de conceitos como triggers e eventos. Discutimos a importância do Code Start, limitações de tempo de execução e como configurar a memória e permissões. Também abordamos como utilizar imagens de contêiner e a simplicidade de implementar funções com Lambda, destacando sua escalabilidade automática e eficiência. Espero que aproveitem!\n\nCódigo 1:\n```ts\nexport const handler = async (event) => {\n    console.log('Evento recebido:', JSON.stringify(event, null, 2));\n    \n    const response = {\n        statusCode: 200,\n        body: JSON.stringify({\n            message: 'Olá! Esta é minha primeira função Lambda!',\n            timestamp: new Date().toISOString(),\n            event: event\n        })\n    };\n    \n    return response;\n};\n```\n\nCódigo 2:\n```ts\nexport const handler = async (event) => {\n    const nome = event.nome || 'Visitante';\n    const hora = new Date().getHours();\n    let saudacao = 'Bom dia';\n    \n    if (hora >= 12 && hora < 18) {\n        saudacao = 'Boa tarde';\n    } else if (hora >= 18) {\n        saudacao = 'Boa noite';\n    }\n    \n    return {\n        statusCode: 200,\n        body: JSON.stringify({\n            mensagem: `${saudacao}, ${nome}!`,\n            hora: hora,\n            timestamp: new Date().toISOString()\n        })\n    };\n};\n```",
+          "duration": 902,
+          "type": "video",
+          "file": "09-serverless-e-ap-is/001-lambda-criando-sua-primeira-funcao.txt",
+          "chars": 16719,
+          "status": "ok"
+        },
+        {
+          "title": "Lambda com Node.js e DynamoDB",
+          "slug": "lambda-com-node-js-e-dynamo-db",
+          "video_id": "344c85bc-3521-4e74-8097-af64378dc13b",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei a integração do AWS Lambda com o DynamoDB usando Node.js. O foco foi entender como essa conexão funciona, não apenas o código. Criamos uma tabela no DynamoDB para armazenar usuários e ajustamos as permissões da Lambda via IAM. Mostrei como gerenciar permissões específicas para operações no banco de dados. Ao final, testamos a função Lambda, que conseguiu inserir dados no DynamoDB de forma simples e eficaz, destacando a praticidade da arquitetura serverless. Até a próxima!\n\n```ts\nimport { DynamoDBClient } from '@aws-sdk/client-dynamodb';\nimport { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';\n\nconst client = new DynamoDBClient({});\nconst dynamodb = DynamoDBDocumentClient.from(client);\nconst TABLE_NAME = process.env.TABLE_NAME || 'usuarios';\n\nexport const handler = async (event) => {\n    try {\n        const body = typeof event.body === 'string' ? JSON.parse(event.body) : (event.body || event);\n        const { nome, email, idade } = body;\n        \n        if (!nome || !email) {\n            return {\n                statusCode: 400,\n                headers: {\n                    'Content-Type': 'application/json',\n                    'Access-Control-Allow-Origin': '*'\n                },\n                body: JSON.stringify({\n                    erro: 'Nome e email são obrigatórios'\n                })\n            };\n        }\n        \n        // Gerar ID único\n        const id = Date.now().toString();\n        \n        const item = {\n            id: id,\n            nome: nome,\n            email: email,\n            idade: idade || null,\n            criadoEm: new Date().toISOString()\n        };\n        \n        await dynamodb.send(new PutCommand({\n            TableName: TABLE_NAME,\n            Item: item\n        }));\n        \n        return {\n            statusCode: 201,\n            headers: {\n                'Content-Type': 'application/json',\n                'Access-Control-Allow-Origin': '*'\n            },\n            body: JSON.stringify({\n                mensagem: 'Usuário criado com sucesso',\n                usuario: item\n            })\n        };\n        \n    } catch (error) {\n        console.error('Erro ao criar usuário:', error);\n        return {\n            statusCode: 500,\n            headers: {\n                'Content-Type': 'application/json',\n                'Access-Control-Allow-Origin': '*'\n            },\n            body: JSON.stringify({\n                erro: 'Erro ao criar usuário',\n                detalhes: error.message\n            })\n        };\n    }\n};\n```",
+          "duration": 401,
+          "type": "video",
+          "file": "09-serverless-e-ap-is/002-lambda-com-node-js-e-dynamodb.txt",
+          "chars": 7225,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "ap-is-na-aws",
+      "title": "APIs na AWS",
+      "order": 10,
+      "lessons": [
+        {
+          "title": "Automatizando Uploads S3 com Lambda",
+          "slug": "automatizando-uploads-s-3-com-lambda",
+          "video_id": "921f6897-4dea-46cf-987b-6686ca6c66c4",
+          "has_transcription": true,
+          "description": "Na aula de hoje, exploramos a integração entre o AWS Lambda e o S3. Começamos deletando uma tabela desnecessária e, em seguida, criamos um bucket no S3 para armazenar imagens. A ideia principal foi configurar um Lambda que gera thumbnails de fotos enviadas para uma pasta específica no S3. Aprendemos a definir permissões e a criar eventos que acionam o Lambda quando uma nova imagem é carregada. No final, testamos o fluxo e confirmamos que as imagens processadas e suas thumbnails foram salvas corretamente. Até a próxima!\n\n```ts\nimport { \n    S3Client, \n    GetObjectCommand, \n    PutObjectCommand, \n    CopyObjectCommand, \n    DeleteObjectCommand, \n    HeadObjectCommand, \n    PutObjectTaggingCommand \n} from '@aws-sdk/client-s3';\n\nconst s3 = new S3Client({});\n\nconst TAMANHO_MAXIMO = 10 * 1024 * 1024;\nconst TIPOS_PERMITIDOS = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf'];\n\nexport const handler = async (event) => {\n    console.log('Evento S3 recebido:', JSON.stringify(event, null, 2));\n    \n    try {\n        for (const record of event.Records) {\n            if (record.eventSource !== 'aws:s3') {\n                console.log('Evento não é do S3, ignorando...');\n                continue;\n            }\n            \n            const bucket = record.s3.bucket.name;\n            const key = decodeURIComponent(record.s3.object.key.replace(/\\+/g, ' '));\n            const eventName = record.eventName;\n            \n            console.log(`Processando arquivo: ${key} no bucket ${bucket}`);\n            console.log(`Tipo de evento: ${eventName}`);\n            \n            const objectInfo = await s3.send(new HeadObjectCommand({\n                Bucket: bucket,\n                Key: key\n            }));\n            \n            console.log('Informações do arquivo:', {\n                tamanho: `${(objectInfo.ContentLength / 1024 / 1024).toFixed(2)} MB`,\n                tipo: objectInfo.ContentType,\n                modificado: objectInfo.LastModified,\n                metadata: objectInfo.Metadata\n            });\n            \n            const validacao = await validarArquivo(objectInfo, key);\n            \n            if (!validacao.valido) {\n                console.error(`Validação falhou para ${key}:`, validacao.erros);\n                \n                const rejectedKey = key.replace('uploads/', 'rejected/');\n                await s3.send(new CopyObjectCommand({\n                    Bucket: bucket,\n                    CopySource: `${bucket}/${key}`,\n                    Key: rejectedKey\n                }));\n                \n                await s3.send(new DeleteObjectCommand({\n                    Bucket: bucket,\n                    Key: key\n                }));\n                \n                console.error(JSON.stringify({\n                    nivel: 'ERRO',\n                    timestamp: new Date().toISOString(),\n                    bucket: bucket,\n                    arquivo: key,\n                    motivo: validacao.erros.join(', ')\n                }));\n                \n                continue;\n            }\n            \n            const contentType = objectInfo.ContentType || '';\n            \n            if (contentType.startsWith('image/')) {\n                await processarImagem(bucket, key, objectInfo);\n            } else if (contentType.includes('pdf')) {\n                await processarPDF(bucket, key, objectInfo);\n            } else {\n                await processarGenerico(bucket, key, objectInfo);\n            }\n            \n            await s3.send(new PutObjectTaggingCommand({\n                Bucket: bucket,\n                Key: key,\n                Tagging: {\n                    TagSet: [\n                        { Key: 'Processado', Value: 'true' },\n                        { Key: 'DataProcessamento', Value: new Date().toISOString() },\n                        { Key: 'Tipo', Value: contentType }\n                    ]\n                }\n            }));\n            \n            console.log(JSON.stringify({\n                nivel: 'INFO',\n                timestamp: new Date().toISOString(),\n                bucket: bucket,\n                arquivo: key,\n                status: 'processado_com_sucesso',\n                tipo: contentType\n            }));\n        }\n        \n        return {\n            statusCode: 200,\n            body: JSON.stringify({\n                mensagem: 'Arquivos processados com sucesso'\n            })\n        };\n        \n    } catch (error) {\n        console.error('Erro ao processar upload:', error);\n        console.error(JSON.stringify({\n            nivel: 'ERRO',\n            timestamp: new Date().toISOString(),\n            erro: error.message,\n            stack: error.stack\n        }));\n        throw error;\n    }\n};\n\nasync function validarArquivo(objectInfo, key) {\n    const erros = [];\n    \n    if (objectInfo.ContentLength > TAMANHO_MAXIMO) {\n        erros.push(`Arquivo muito grande: ${(objectInfo.ContentLength / 1024 / 1024).toFixed(2)}MB (máximo: ${TAMANHO_MAXIMO / 1024 / 1024}MB)`);\n    }\n    \n    const contentType = objectInfo.ContentType || '';\n    if (!TIPOS_PERMITIDOS.includes(contentType)) {\n        erros.push(`Tipo de arquivo não permitido: ${contentType}`);\n    }\n    \n    if (key.length > 255) {\n        erros.push('Nome do arquivo muito longo (máximo: 255 caracteres)');\n    }\n    \n    if (!key.startsWith('uploads/')) {\n        erros.push('Arquivo deve estar na pasta uploads/');\n    }\n    \n    return {\n        valido: erros.length === 0,\n        erros: erros\n    };\n}\n\nasync function processarImagem(bucket, key, objectInfo) {\n    console.log(`Processando imagem: ${key}`);\n    \n    try {\n        const objeto = await s3.send(new GetObjectCommand({\n            Bucket: bucket,\n            Key: key\n        }));\n        \n        const chunks = [];\n        for await (const chunk of objeto.Body) {\n            chunks.push(chunk);\n        }\n        const buffer = Buffer.concat(chunks);\n        \n        console.log(`Imagem baixada: ${key} (${buffer.length} bytes)`);\n        \n        const processedKey = key.replace('uploads/', 'processed/');\n        await s3.send(new CopyObjectCommand({\n            Bucket: bucket,\n            CopySource: `${bucket}/${key}`,\n            Key: processedKey,\n            MetadataDirective: 'COPY'\n        }));\n        \n        console.log(`Imagem copiada para: ${processedKey}`);\n        \n        const thumbnailKey = key.replace('uploads/', 'thumbnails/').replace(/\\.[^/.]+$/, '_thumb.jpg');\n        await s3.send(new CopyObjectCommand({\n            Bucket: bucket,\n            CopySource: `${bucket}/${key}`,\n            Key: thumbnailKey,\n            MetadataDirective: 'COPY'\n        }));\n        \n        console.log(`Thumbnail criado: ${thumbnailKey}`);\n        \n    } catch (error) {\n        console.error(`Erro ao processar imagem ${key}:`, error);\n        throw error;\n    }\n}\n\nasync function processarPDF(bucket, key, objectInfo) {\n    console.log(`Processando PDF: ${key}`);\n    \n    try {\n        const processedKey = key.replace('uploads/', 'processed/');\n        await s3.send(new CopyObjectCommand({\n            Bucket: bucket,\n            CopySource: `${bucket}/${key}`,\n            Key: processedKey,\n            MetadataDirective: 'COPY'\n        }));\n        \n        console.log(`PDF copiado para: ${processedKey}`);\n        \n    } catch (error) {\n        console.error(`Erro ao processar PDF ${key}:`, error);\n        throw error;\n    }\n}\n\nasync function processarGenerico(bucket, key, objectInfo) {\n    console.log(`Processando arquivo genérico: ${key}`);\n    \n    try {\n        const processedKey = key.replace('uploads/', 'processed/');\n        await s3.send(new CopyObjectCommand({\n            Bucket: bucket,\n            CopySource: `${bucket}/${key}`,\n            Key: processedKey,\n            MetadataDirective: 'COPY'\n        }));\n        \n        console.log(`Arquivo copiado para: ${processedKey}`);\n        \n    } catch (error) {\n        console.error(`Erro ao processar arquivo ${key}:`, error);\n        throw error;\n    }\n}\n```",
+          "duration": 456,
+          "type": "video",
+          "file": "10-ap-is-na-aws/001-automatizando-uploads-s3-com-lambda.txt",
+          "chars": 8335,
+          "status": "ok"
+        },
+        {
+          "title": "API Gateway – Criando API REST",
+          "slug": "api-gateway-criando-api-rest",
+          "video_id": "9a1f7aa4-d036-4224-8300-94ac506a0e13",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos como integrar o AWS Lambda com o API Gateway. Começamos entendendo o que é o API Gateway e suas funcionalidades, como gerenciamento de endpoints, autenticação e monitoramento. Em seguida, criamos uma API REST, definimos recursos e métodos, e utilizamos mocks para testar as respostas. Também discutimos a criação de ambientes de desenvolvimento e produção, além de como configurar logs para monitorar as requisições. Ao final, mostramos como validar alterações em diferentes estágios. Espero que aproveitem!",
+          "duration": 833,
+          "type": "video",
+          "file": "10-ap-is-na-aws/002-api-gateway-criando-api-rest.txt",
+          "chars": 15257,
+          "status": "ok"
+        },
+        {
+          "title": "API Gateway e Lambda - Backend sem Servidor",
+          "slug": "api-gateway-e-lambda-backend-sem-servidor",
+          "video_id": "5abc7232-ae63-4fa6-9c75-b0c099b098de",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar a integração entre API Gateway e Lambda. Já conhecemos essas ferramentas e agora vamos fazer um código que recebe um nome e retorna uma saudação com base na hora do dia. Vamos criar um recurso no API Gateway chamado \"saudação\", onde configuramos um método GET que chama nossa função Lambda. Após alguns cliques, conseguimos fazer o deploy e garantir que os logs estejam funcionando no CloudWatch. É uma integração bem prática! Nos vemos na próxima aula!\n\n```ts\nexport const handler = async (event) => {\n    console.log('Evento recebido:', JSON.stringify(event, null, 2));\n    \n    try {\n        // Obter parâmetros da query string\n        const nome = event.queryStringParameters?.nome || 'Visitante';\n        const hora = new Date().getHours();\n        \n        // Determinar saudação baseada na hora\n        let saudacao = 'Bom dia';\n        if (hora >= 12 && hora < 18) {\n            saudacao = 'Boa tarde';\n        } else if (hora >= 18) {\n            saudacao = 'Boa noite';\n        }\n        \n        return {\n            statusCode: 200,\n            headers: {\n                'Content-Type': 'application/json',\n                'Access-Control-Allow-Origin': '*'\n            },\n            body: JSON.stringify({\n                mensagem: `${saudacao}, ${nome}!`,\n                hora: hora,\n                timestamp: new Date().toISOString()\n            })\n        };\n        \n    } catch (error) {\n        console.error('Erro ao processar:', error);\n        return {\n            statusCode: 500,\n            headers: {\n                'Content-Type': 'application/json',\n                'Access-Control-Allow-Origin': '*'\n            },\n            body: JSON.stringify({\n                erro: 'Erro ao processar requisição',\n                mensagem: error.message\n            })\n        };\n    }\n};\n```",
+          "duration": 159,
+          "type": "video",
+          "file": "10-ap-is-na-aws/003-api-gateway-e-lambda-backend-sem-servidor.txt",
+          "chars": 3141,
+          "status": "ok"
+        },
+        {
+          "title": "Autenticação JWT e Uso do Cognito",
+          "slug": "autenticacao-jwt-e-uso-do-cognito",
+          "video_id": "9116bbec-c2cd-40c8-9776-de0f781cebcd",
+          "has_transcription": true,
+          "description": "Na nossa última aula, finalizamos a autenticação JWT utilizando o Cognito e o API Gateway. Aprendemos a criar um user pool, realizar login e obter tokens JWT, além de validar esses tokens no Lambda para proteger nossos endpoints. Discutimos o que é JWT e como ele armazena informações do usuário. Também fizemos ajustes no código do Lambda para lidar com claims e configuramos o API Gateway para exigir autenticação. Por fim, limpamos os recursos criados. Espero que tenham aproveitado!\n\nCódigo Lambda\n```ts\nexport const handler = async (event) => {\n    if (!event.requestContext || !event.requestContext.authorizer) {\n        return {\n            statusCode: 401,\n            headers: {\n                'Content-Type': 'application/json',\n                'Access-Control-Allow-Origin': '*'\n            },\n            body: JSON.stringify({\n                erro: 'Esta função deve ser chamada através do API Gateway com Authorizer configurado'\n            })\n        };\n    }\n\n    const claims = event.requestContext.authorizer.claims\n    \n    const hora = new Date().getHours();\n    let saudacao = 'Bom dia';\n    \n    if (hora >= 12 && hora < 18) {\n        saudacao = 'Boa tarde';\n    } else if (hora >= 18) {\n        saudacao = 'Boa noite';\n    }\n    \n    return {\n        statusCode: 200,\n        headers: {\n            'Content-Type': 'application/json',\n            'Access-Control-Allow-Origin': '*'\n        },\n        body: JSON.stringify({\n            mensagem: `${saudacao}, ${claims.email || 'Usuário'}!`,\n            usuario: {\n                email: claims.email,\n                userId: claims.sub\n            },\n            informacoes: {\n                autenticado: true,\n                timestamp: new Date().toISOString()\n            }\n        })\n    };\n};\n```\n\nComando AWS CloudShell\n```\nUSERNAME=\"\"\nPASSWORD=\"\"\nCLIENT_ID=\"\"\nCLIENT_SECRET=\"\"\nREGION=\"us-east-1\"\n\nMESSAGE=\"${USERNAME}${CLIENT_ID}\"\nSECRET_HASH=$(echo -n \"$MESSAGE\" | openssl dgst -sha256 -hmac \"$CLIENT_SECRET\" -binary | base64)\n\naws cognito-idp initiate-auth \\\n  --auth-flow USER_PASSWORD_AUTH \\\n  --client-id \"$CLIENT_ID\" \\\n  --auth-parameters USERNAME=\"$USERNAME\",PASSWORD=\"$PASSWORD\",SECRET_HASH=\"$SECRET_HASH\" \\\n  --region \"$REGION\" \\\n  --query 'AuthenticationResult.IdToken' \\\n  --output text\n```",
+          "duration": 531,
+          "type": "video",
+          "file": "10-ap-is-na-aws/004-autenticacao-jwt-e-uso-do-cognito.txt",
+          "chars": 9876,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 45,
+    "with_vtt": 44,
+    "without_vtt": 1,
+    "total_chars": 438427
+  }
+}

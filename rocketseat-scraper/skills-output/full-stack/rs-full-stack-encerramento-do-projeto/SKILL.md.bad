@@ -1,0 +1,8 @@
+This transcript is a course closing message — congratulations, portfolio sharing encouragement, and a teaser for the next module. There is **zero technical content, no code, no patterns, no concepts, and no procedures**.
+
+Creating a skill from this would produce an empty/fluff skill that:
+- Would never trigger meaningfully
+- Would waste a slot in the skill registry
+- Violates the quality gate "No empty sections"
+
+**Recommendation:** Skip this lesson. No skill should be created for `encerramento-do-projeto`.

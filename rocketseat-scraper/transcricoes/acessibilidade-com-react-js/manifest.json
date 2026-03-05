@@ -1,0 +1,234 @@
+{
+  "journey_slug": "acessibilidade-com-react-js",
+  "modules": [
+    {
+      "slug": "acessibilodade-com-reactjs",
+      "title": "Acessibilidade na Prática",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Introdução ao curso",
+          "slug": "introducao-ao-curso",
+          "video_id": "c416ad88-b12d-4b53-b425-9f9bf3b1a7ed",
+          "has_transcription": true,
+          "description": "Joseph Oliveira apresenta o curso \"Acessibilidade com React\". Aprenda a importância e como aplicar acessibilidade: da teoria das guidelines à prática com HTML semântico, ferramentas e bibliotecas ReactJS para componentes acessíveis. Um curso prático com base teórica.",
+          "duration": 83,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/001-introducao-ao-curso.txt",
+          "chars": 1479,
+          "status": "ok"
+        },
+        {
+          "title": "Introdução à acessibilidade na Web",
+          "slug": "introducao-a-acessibilidade-na-web",
+          "video_id": "e376939e-ae2a-4bab-b2ab-9f53a3324902",
+          "has_transcription": true,
+          "description": "[Material de apoio](https://efficient-sloth-d85.notion.site/Acessibilidade-e51b21ba35e64e99b0075a8702338af2)",
+          "duration": 292,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/002-introducao-a-acessibilidade-na-web.txt",
+          "chars": 5148,
+          "status": "ok"
+        },
+        {
+          "title": "Guidelines de acessibilidade",
+          "slug": "guidelines-de-acessibilidade",
+          "video_id": "719bdaf2-682e-4fce-9f12-cd9069ded693",
+          "has_transcription": true,
+          "description": "A aula aborda as Guidelines de Acessibilidade (WCAG), criadas pela WAI/W3C. Explora seus 4 princípios (Perceptível, Operável, Compreensível, Robusto) e os níveis de critérios (A, AA, AAA). Detalha a importância de seguir essas diretrizes globais, com exemplos práticos de aplicação para tornar a web mais acessível a todos.",
+          "duration": 796,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/003-guidelines-de-acessibilidade.txt",
+          "chars": 13128,
+          "status": "ok"
+        },
+        {
+          "title": "Funcionalidades da WEB acessível",
+          "slug": "funcionalidades-da-web-acessivel",
+          "video_id": "269b9b25-5636-4245-9675-25c93c892d2e",
+          "has_transcription": true,
+          "description": "Explore funcionalidades de acessibilidade na web, analisando exemplos práticos em sites como WAI e Meta. Veja como o atributo `lang`, texto alternativo (`alt`) para imagens (incluindo IA), contraste de cores e `aria-hidden` são aplicados. Aprenda a inspecionar esses elementos com as ferramentas do navegador.",
+          "duration": 414,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/004-funcionalidades-da-web-acessivel.txt",
+          "chars": 6637,
+          "status": "ok"
+        },
+        {
+          "title": "Setup do projeto",
+          "slug": "setup-do-projeto-1",
+          "video_id": "54809808-d942-4e1f-a3e2-478aaf72f24a",
+          "has_transcription": true,
+          "description": "Nesta aula prática, configure um projeto Next.js do zero para acessibilidade. Aprenda a estruturar pastas, limpar arquivos, configurar TypeScript e personalizar o `_document.tsx` para controle global do HTML. Integre fontes do Google Fonts e prepare o ambiente para as próximas aulas.",
+          "duration": 603,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/005-setup-do-projeto.txt",
+          "chars": 9930,
+          "status": "ok"
+        },
+        {
+          "title": "Estilos globais",
+          "slug": "estilos-globais-10",
+          "video_id": "3dd75244-7e16-4808-826b-a1e1d9582f91",
+          "has_transcription": true,
+          "description": "Configure estilos CSS globais na aplicação React. Resete estilos padrão, defina fontes e aplique o background da Rocketseat, identificando um problema inicial de contraste para acessibilidade.",
+          "duration": 128,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/006-estilos-globais.txt",
+          "chars": 1914,
+          "status": "ok"
+        },
+        {
+          "title": "Estruturando a página",
+          "slug": "estruturando-a-pagina",
+          "video_id": "b306504f-20dc-485a-87da-87c23284ad87",
+          "has_transcription": true,
+          "description": "Nesta aula, iniciamos a estruturação de uma página web intencionalmente não acessível, inspirada no blog da Rocketseat. Utilizamos React, Next.js e CSS Modules para criar um header com logo e navegação, além de conteúdo com títulos e parágrafos, preparando a base para futuras implementações de acessibilidade.",
+          "duration": 785,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/007-estruturando-a-pagina.txt",
+          "chars": 11477,
+          "status": "ok"
+        },
+        {
+          "title": "Testando acessibilidade da página",
+          "slug": "testando-acessibilidade-da-pagina",
+          "video_id": "6cc47a8f-84df-416d-8309-469f261f472b",
+          "has_transcription": true,
+          "description": "Aprenda a testar a acessibilidade de páginas web. Explore o Lighthouse para auditorias e o axe-core (extensão e integração React) para feedback em tempo real no desenvolvimento. Identifique e entenda problemas comuns como falta de alt text, contraste e ordem de títulos, preparando-se para corrigi-los.",
+          "duration": 1087,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/008-testando-acessibilidade-da-pagina.txt",
+          "chars": 16311,
+          "status": "ok"
+        },
+        {
+          "title": "HTML Landmarks",
+          "slug": "html-landmarks",
+          "video_id": "1a979d18-4b4c-4bfa-8467-a9e59b2ded39",
+          "has_transcription": true,
+          "description": "Aprenda HTML Landmarks para acessibilidade. Corrija erros estruturais usando <header>, <main>, <footer> e <nav>. Entenda a diferença entre elementos semânticos e ARIA roles, e use aria-label para navegação assistiva.",
+          "duration": 1138,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/009-html-landmarks.txt",
+          "chars": 16519,
+          "status": "ok"
+        },
+        {
+          "title": "Textos alternativos",
+          "slug": "textos-alternativos",
+          "video_id": "04c47d04-0007-46c9-9256-32e0a13f83c7",
+          "has_transcription": true,
+          "description": "Corrija problemas de acessibilidade adicionando textos alternativos a imagens e SVGs. Aprenda a usar o atributo `alt`, `aria-label` e `<title>` em SVGs, além de boas práticas para descrever logos e evitar redundância, garantindo que leitores de tela interpretem corretamente o conteúdo visual.",
+          "duration": 931,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/010-textos-alternativos.txt",
+          "chars": 13468,
+          "status": "ok"
+        },
+        {
+          "title": "Contraste da página",
+          "slug": "contraste-da-pagina",
+          "video_id": "6ff56a57-2eeb-4e6c-b182-02aced03b83c",
+          "has_transcription": true,
+          "description": "Aprenda a identificar e corrigir problemas de contraste em páginas web. Veja como aplicar cores que atendam aos requisitos de acessibilidade da WCAG, ajustando globalmente a cor do texto e resolvendo casos específicos como links no footer, garantindo um contraste adequado para todos os elementos da página.",
+          "duration": 377,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/011-contraste-da-pagina.txt",
+          "chars": 5652,
+          "status": "ok"
+        },
+        {
+          "title": "Estrutura do HTML",
+          "slug": "estrutura-do-html",
+          "video_id": "79171d80-f292-4c8c-86ba-eba837abbfa0",
+          "has_transcription": true,
+          "description": "Aprenda a otimizar a estrutura HTML para acessibilidade. Corrija o título da página, adicione o atributo de linguagem (lang) e organize a hierarquia dos cabeçalhos (H1, H2, etc.) para garantir semântica correta e melhor suporte a tecnologias assistivas.",
+          "duration": 515,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/012-estrutura-do-html.txt",
+          "chars": 7576,
+          "status": "ok"
+        },
+        {
+          "title": "Conhecendo leitores de tela",
+          "slug": "conhecendo-leitores-de-tela",
+          "video_id": "497efd60-0b30-4491-8f25-58b3b1104830",
+          "has_transcription": true,
+          "description": "Explore leitores de tela, ferramentas assistivas que narram o conteúdo da tela com voz sintética. Aprenda a usar o ChromeVox para testar a acessibilidade, entendendo como ele interpreta atributos como `alt`, `aria-label` e `aria-hidden`. Descubra como leitores de tela ajudam a identificar e corrigir problemas de redundância e leitura indesejada em aplicações web.",
+          "duration": 370,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/013-conhecendo-leitores-de-tela.txt",
+          "chars": 5757,
+          "status": "ok"
+        },
+        {
+          "title": "Adicionando novas features à página",
+          "slug": "adicionando-novas-features-a-pagina",
+          "video_id": "9361f594-dda9-405d-bda9-ca0675a6ca30",
+          "has_transcription": true,
+          "description": "Nesta aula, implementamos um modal simples de 'Termos de Uso' com React e CSS, cobrindo estrutura, estilização e renderização condicional (`useState`). Ao testar com leitor de tela, notamos que o modal não anuncia sua abertura, evidenciando a importância de atributos ARIA para acessibilidade e preparando para futuras melhorias.",
+          "duration": 636,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/014-adicionando-novas-features-a-pagina.txt",
+          "chars": 9979,
+          "status": "ok"
+        },
+        {
+          "title": "Entendendo acessibilidade para modais",
+          "slug": "entendendo-acessibilidade-para-modais",
+          "video_id": "f6cbfd4a-db95-4a0a-8b82-4b8f1032bced",
+          "has_transcription": true,
+          "description": "Aprenda a tornar modais customizados acessíveis. Veja como usar `role=\"dialog\"`, `aria-labelledby`, `aria-describedby` e `aria-controls`. Entenda como focar o modal programaticamente com `useRef` e `useEffect` para leitores de tela.",
+          "duration": 878,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/015-entendendo-acessibilidade-para-modais.txt",
+          "chars": 12796,
+          "status": "ok"
+        },
+        {
+          "title": "Conhecendo o Radix-UI",
+          "slug": "conhecendo-o-radix-ui",
+          "video_id": "17e54e9c-5c5b-47f1-a0b6-81f739a1a92b",
+          "has_transcription": true,
+          "description": "Conheça o Radix UI, uma biblioteca de componentes React acessíveis e sem estilização. A aula demonstra como ele resolve desafios de acessibilidade como focus trap e navegação por teclado, apresentando exemplos de Dialog e Select. Entenda como o Radix UI facilita a criação de interfaces robustas e acessíveis para leitores de tela.",
+          "duration": 519,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/016-conhecendo-o-radix-ui.txt",
+          "chars": 8190,
+          "status": "ok"
+        },
+        {
+          "title": "Implementando Dialog",
+          "slug": "implementando-dialog",
+          "video_id": "55828215-b427-4617-902e-e905c3a27ce6",
+          "has_transcription": true,
+          "description": "Nesta aula, Joseph Oliveira ensina a implementar um modal acessível usando Radix UI React Dialog. Substitua a solução manual, instale o Radix e estruture o modal com componentes como Root, Trigger, Portal e Content. Veja como o Radix gerencia automaticamente a acessibilidade, incluindo foco, navegação por teclado (ESC, Tab) e trap de foco, além de aplicar estilos.",
+          "duration": 770,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/017-implementando-dialog.txt",
+          "chars": 12316,
+          "status": "ok"
+        },
+        {
+          "title": "Concluindo sobre acessibilidade",
+          "slug": "concluindo-sobre-acessibilidade",
+          "video_id": "5ecb5c17-be21-4276-a2e0-d401c7fd4b2f",
+          "has_transcription": true,
+          "description": "Joseph Oliveira conclui o curso revisitando contraste e ferramentas (XDevTools). Destaca que acessibilidade vai além de testes automatizados, focando na usabilidade e perspectiva do usuário. Enfatiza a importância das regras da WAI, inspiração em outros sites (ex: Skip to Content) e layout consistente. Regras são chave, ferramentas são secundárias.",
+          "duration": 437,
+          "type": "video",
+          "file": "01-acessibilodade-com-reactjs/018-concluindo-sobre-acessibilidade.txt",
+          "chars": 6935,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 18,
+    "with_vtt": 18,
+    "without_vtt": 0,
+    "total_chars": 165212
+  }
+}

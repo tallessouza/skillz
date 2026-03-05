@@ -1,0 +1,282 @@
+{
+  "journey_slug": "redux-zustand",
+  "modules": [
+    {
+      "slug": "redux-zustand-1",
+      "title": "Redux e Zustand",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Fundamentos do Redux",
+          "slug": "fundamentos-do-redux",
+          "video_id": "d7df7d83-77e7-4f72-bd71-34b2e8092ffc",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar os fundamentos do Redux, uma biblioteca popular para gerenciamento de estado em aplicações JavaScript. Além disso, discutiremos algumas alternativas ao Redux e entenderemos como funciona a arquitetura Flux.",
+          "duration": 993,
+          "type": "video",
+          "file": "01-redux-zustand-1/001-fundamentos-do-redux.txt",
+          "chars": 16061,
+          "status": "ok"
+        },
+        {
+          "title": "Criando store do Redux",
+          "slug": "criando-store-do-redux",
+          "video_id": "ad6d0724-57b8-4bc8-a610-56f37c347ef2",
+          "has_transcription": true,
+          "description": "[Commit: A base do Redux - Criando store do Redux](https://github.com/rocketseat-education/ignite-redux-zustand/commit/76714107810a22cd8722c57a896f840228ddd7fd)\n\nNesta aula, você irá criar o projeto utilizando Vite, configurar o Redux utilizando o Redux Toolkit e compartilhar a store para toda a aplicação.",
+          "duration": 737,
+          "type": "video",
+          "file": "01-redux-zustand-1/002-criando-store-do-redux.txt",
+          "chars": 10237,
+          "status": "ok"
+        },
+        {
+          "title": "Disparando actions no Redux",
+          "slug": "disparando-actions-no-redux",
+          "video_id": "0ddd3341-91bc-448a-85ee-4fabc3fd6dc9",
+          "has_transcription": true,
+          "description": "[Commit: A base do Redux - Disparando actions no Redux](https://github.com/rocketseat-education/ignite-redux-zustand/commit/136f4108709ae301606c97f036fa49c0247deca9)\n\nNesta aula, você aprenderá como realizar um dispatch no Redux, que é o processo de disparar uma ação para atualizar o estado da aplicação. Além disso, você aprenderá a integrar a store do Redux ao TypeScript, aproveitando os benefícios de tipagem estática fornecidos por essa linguagem.",
+          "duration": 563,
+          "type": "video",
+          "file": "01-redux-zustand-1/003-disparando-actions-no-redux.txt",
+          "chars": 7626,
+          "status": "ok"
+        },
+        {
+          "title": "Utilizando Redux DevTools",
+          "slug": "utilizando-redux-dev-tools",
+          "video_id": "766094f0-3053-4af5-9f8b-3f675079acd8",
+          "has_transcription": true,
+          "description": "Aprenda sobre a extensão Redux DevTools para o navegador e melhore sua experiência de desenvolvimento com Redux.",
+          "duration": 186,
+          "type": "video",
+          "file": "01-redux-zustand-1/004-utilizando-redux-devtools.txt",
+          "chars": 2992,
+          "status": "ok"
+        },
+        {
+          "title": "Estrutura base da UI",
+          "slug": "estrutura-base-da-ui",
+          "video_id": "dc4ddc40-7b87-4966-888b-79a5bd556c96",
+          "has_transcription": true,
+          "description": "[Commit: Interface da aplicação - Estrutura base da UI](https://github.com/rocketseat-education/ignite-redux-zustand/commit/6ec1111e2210ae927167129b4e6a291a22fd8dd1)\n\nNessa aula, você irá instalar e configurar o Tailwindcss para iniciar o desenvolvimento da interface da aplicação.",
+          "duration": 708,
+          "type": "video",
+          "file": "01-redux-zustand-1/005-estrutura-base-da-ui.txt",
+          "chars": 9656,
+          "status": "ok"
+        },
+        {
+          "title": "UI dos módulos e player",
+          "slug": "ui-dos-modulos-e-player",
+          "video_id": "2457b955-51c3-48fd-a6a5-0053908185b8",
+          "has_transcription": true,
+          "description": "[Commit: Interface da aplicação - UI dos módulos e player](https://github.com/rocketseat-education/ignite-redux-zustand/commit/50d59cb8a3e552d1e52d4fc7aea16ef71ca5c7a5)\n\nNesta aula, vamos continuar o desenvolvimento da UI, focando na criação da interface dos módulos e do player.",
+          "duration": 466,
+          "type": "video",
+          "file": "01-redux-zustand-1/006-ui-dos-modulos-e-player.txt",
+          "chars": 6224,
+          "status": "ok"
+        },
+        {
+          "title": "Scrollbar na sidebar",
+          "slug": "scrollbar-na-sidebar",
+          "video_id": "148b9b1a-c7a6-4f98-9c28-2e6802d4d89e",
+          "has_transcription": true,
+          "description": "[Commit: Interface da aplicação - Scrollbar na sidebar](https://github.com/rocketseat-education/ignite-redux-zustand/commit/0647eaf475bc934f415e01b353d38e6e8ef645c0)\n\nNessa aula, você irá configurar a listagem de módulos para ter uma barra de rolagem (scrollbar) e estilizá-la usando o plugin tailwind-scrollbar.",
+          "duration": 291,
+          "type": "video",
+          "file": "01-redux-zustand-1/007-scrollbar-na-sidebar.txt",
+          "chars": 3516,
+          "status": "ok"
+        },
+        {
+          "title": "Separando componentes",
+          "slug": "separando-componentes-2",
+          "video_id": "456d7122-a9be-4a68-becd-d0ec98b02eda",
+          "has_transcription": true,
+          "description": "[Commit: Interface da aplicação - Separando componentes](https://github.com/rocketseat-education/ignite-redux-zustand/commit/15f91500384c0e2a80cfd4c98528168203e254d6)\n\nNessa aula, será ensinado como separar o HTML da página em componentes menores, permitindo uma organização e reutilização eficiente do código.",
+          "duration": 317,
+          "type": "video",
+          "file": "01-redux-zustand-1/008-separando-componentes.txt",
+          "chars": 3727,
+          "status": "ok"
+        },
+        {
+          "title": "Radix Collapsible nos módulos",
+          "slug": "radix-collapsible-nos-modulos",
+          "video_id": "69f196c7-e623-4f60-8146-13a54eec01be",
+          "has_transcription": true,
+          "description": "[Commit: Interface da aplicação - Radix Collapsible nos módulos](https://github.com/rocketseat-education/ignite-redux-zustand/commit/bd93d5a96cadfcf2e25a463a40ae6e3443849077)\n\nNesta aula, vamos aprender a utilizar o pacote `@radix-ui/react-collapsible` para adicionar a funcionalidade de abrir e fechar nos módulos.",
+          "duration": 286,
+          "type": "video",
+          "file": "01-redux-zustand-1/009-radix-collapsible-nos-modulos.txt",
+          "chars": 4222,
+          "status": "ok"
+        },
+        {
+          "title": "Criando reducer do player",
+          "slug": "criando-reducer-do-player",
+          "video_id": "b7867c89-47bd-483b-87e5-6d4c406574fe",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Criando reducer do player](https://github.com/rocketseat-education/ignite-redux-zustand/commit/03fac78aea3b5dfbd950ab62ba25f1da53cd711f)\n\nNessa aula, vamos configurar um `slice` da store do Redux para armazenar os dados dos módulos e aulas. Em seguida, utilizaremos o hook `useAppSelector` para recuperar essas informações na página.\n\n```tsx\nmodules: [\n  {\n    id: '1',\n    title: 'Iniciando com React',\n    lessons: [\n      { id: 'Jai8w6K_GnY', title: 'CSS Modules', duration: '13:45' },\n      { id: 'w-DW4DhDfcw', title: 'Estilização do Post', duration: '10:05' },\n      { id: 'D83-55LUdKE', title: 'Componente: Header', duration: '06:33' },\n      { id: 'W_ATsETujaY', title: 'Componente: Sidebar', duration: '09:12' },\n      { id: 'Pj8dPeameYo', title: 'CSS Global', duration: '03:23' },\n      { id: '8KBq2vhwbac', title: 'Form de comentários', duration: '11:34' },\n    ],\n  },\n  {\n    id: '2',\n    title: 'Estrutura da aplicação',\n    lessons: [\n      { id: 'gE48FQXRZ_o', title: 'Componente: Comment', duration: '13:45' },\n      { id: 'Ng_Vk4tBl0g', title: 'Responsividade', duration: '10:05' },\n      { id: 'h5JA3wfuW1k', title: 'Interações no JSX', duration: '06:33' },\n      { id: '1G0vSTqWELg', title: 'Utilizando estado', duration: '09:12' },\n    ],\n  },\n],\n```",
+          "duration": 482,
+          "type": "video",
+          "file": "01-redux-zustand-1/010-criando-reducer-do-player.txt",
+          "chars": 6569,
+          "status": "ok"
+        },
+        {
+          "title": "Selecionando aula atual",
+          "slug": "selecionando-aula-atual",
+          "video_id": "1068a880-91ff-48ca-abc4-32b93c04ea37",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Selecionando aula atual](https://github.com/rocketseat-education/ignite-redux-zustand/commit/96c02dc0e0c2814d8ba96e5293e4ad173ab7643c)\n\nNessa aula, vamos criar o primeiro reducer do player, que permitirá alterar a aula selecionada.",
+          "duration": 542,
+          "type": "video",
+          "file": "01-redux-zustand-1/011-selecionando-aula-atual.txt",
+          "chars": 6585,
+          "status": "ok"
+        },
+        {
+          "title": "Destacando aula atual",
+          "slug": "destacando-aula-atual",
+          "video_id": "93d83427-576c-4e82-a72d-1862688daea1",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Destacando aula atual](https://github.com/rocketseat-education/ignite-redux-zustand/commit/a11db44f7adfa8b5d086e0a9ee8d5050a50d48bf)\n\nNesta aula, será adicionado alguns estilos para destacar na listagem qual é a aula selecionada.",
+          "duration": 385,
+          "type": "video",
+          "file": "01-redux-zustand-1/012-destacando-aula-atual.txt",
+          "chars": 4438,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando autoplay",
+          "slug": "configurando-autoplay",
+          "video_id": "6d84f391-a6fc-4e32-aeac-093bd771fd09",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Configurando autoplay](https://github.com/rocketseat-education/ignite-redux-zustand/commit/abaad341b88134b2aa5634c6f52a7afd3f2356cd)\n\nNessa aula, vamos criar um novo reducer para trocar de aula e ser executado sempre ao fim de uma aula. Além disso, configuraremos o autoplay do vídeo, permitindo que a próxima aula seja reproduzida automaticamente assim que a atual for concluída.",
+          "duration": 411,
+          "type": "video",
+          "file": "01-redux-zustand-1/013-configurando-autoplay.txt",
+          "chars": 5214,
+          "status": "ok"
+        },
+        {
+          "title": "Criando hook global",
+          "slug": "criando-hook-global",
+          "video_id": "87ff461b-e1a6-463d-aac5-bfd67aa27a2e",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Criando hook global](https://github.com/rocketseat-education/ignite-redux-zustand/commit/31dbb3aceca7149068ff2b105238cfcc9fb5e4a8)\n\nNesta aula, vamos criar um hook global para recuperar a aula atual e o módulo dela da store.\n\nEsse hook será desenvolvido para facilitar o uso dessa informação em múltiplos locais da aplicação.",
+          "duration": 220,
+          "type": "video",
+          "file": "01-redux-zustand-1/014-criando-hook-global.txt",
+          "chars": 2699,
+          "status": "ok"
+        },
+        {
+          "title": "Criando testes unitários",
+          "slug": "criando-testes-unitarios",
+          "video_id": "e130b959-6933-445e-9398-957999cdbd19",
+          "has_transcription": true,
+          "description": "[Commit: Aplicação com Redux - Criando testes unitários](https://github.com/rocketseat-education/ignite-redux-zustand/commit/0ddc495aae1c9fcdcf8f2a09931ba09ee0ac6447)\n\nNessa aula, você aprenderá a criar testes unitários para o reducer do player, utilizando a biblioteca de testes chamada [vitest](https://vitest.dev/).",
+          "duration": 566,
+          "type": "video",
+          "file": "01-redux-zustand-1/015-criando-testes-unitarios.txt",
+          "chars": 7438,
+          "status": "ok"
+        },
+        {
+          "title": "Criando API de cursos (JSON Server)",
+          "slug": "criando-api-de-cursos-json-server",
+          "video_id": "51d54cb5-ed43-4b8f-ae44-b2e1a173537e",
+          "has_transcription": true,
+          "description": "[Commit: Conectando à API - Criando API de cursos (JSON Server)](https://github.com/rocketseat-education/ignite-redux-zustand/commit/e52a004ba2f5faacc60500da73b4132031031474)\n\nNessa aula, será configurado o pacote [json-server](https://github.com/typicode/json-server) para gerar uma API fake e ser utilizada para receber as requisições.",
+          "duration": 241,
+          "type": "video",
+          "file": "01-redux-zustand-1/016-criando-api-de-cursos-json-server.txt",
+          "chars": 3396,
+          "status": "ok"
+        },
+        {
+          "title": "Carregando dados do curso",
+          "slug": "carregando-dados-do-curso",
+          "video_id": "7d83d180-ddeb-499f-85b0-805b7a66d833",
+          "has_transcription": true,
+          "description": "[Commit: Conectando à API - Carregando dados do curso](https://github.com/rocketseat-education/ignite-redux-zustand/commit/98211cb4617fdbb6d124501e0aa7d9c7f554ff1a)\n\nNessa aula, será realizado o carregamento dos dados do curso. Os dados obtidos serão então armazenados na store do Redux.",
+          "duration": 641,
+          "type": "video",
+          "file": "01-redux-zustand-1/017-carregando-dados-do-curso.txt",
+          "chars": 8545,
+          "status": "ok"
+        },
+        {
+          "title": "Utilizando Async Thunks",
+          "slug": "utilizando-async-thunks",
+          "video_id": "c8be4b9d-6cf0-46e7-abb9-c9a883cb0403",
+          "has_transcription": true,
+          "description": "[Commit: Conectando à API - Utilizando Async Thunks](https://github.com/rocketseat-education/ignite-redux-zustand/commit/e831639653edf332c2462d0c505708139fba0b62)\n\nNessa aula, vamos explorar a funcionalidade de Async Thunk do Redux Toolkit para criar reducers assíncronos. Você aprenderá a utilizar os recursos do Redux Toolkit para lidar com operações assíncronas, como chamadas API, e como implementar reducers assíncronos de maneira eficiente.",
+          "duration": 706,
+          "type": "video",
+          "file": "01-redux-zustand-1/018-utilizando-async-thunks.txt",
+          "chars": 9417,
+          "status": "ok"
+        },
+        {
+          "title": "Criando interface de loading",
+          "slug": "criando-interface-de-loading",
+          "video_id": "a479be67-37b6-4933-b17a-01649c0af691",
+          "has_transcription": true,
+          "description": "[Commit: Conectando à API - Criando interface de loading](https://github.com/rocketseat-education/ignite-redux-zustand/commit/6ede76c66704d617dcff0685910d2128afc4c85b)\n\nNessa aula, será adicionado o campo de `isLoading` na store e por meio dele iremos mostrar um loading na interface.",
+          "duration": 283,
+          "type": "video",
+          "file": "01-redux-zustand-1/019-criando-interface-de-loading.txt",
+          "chars": 3431,
+          "status": "ok"
+        },
+        {
+          "title": "Setup do Zustand",
+          "slug": "setup-do-zustand",
+          "video_id": "27b9768a-4f9b-4aa2-a1ff-4a741df8c94e",
+          "has_transcription": true,
+          "description": "[Commit: Do Redux ao Zustand - Setup do Zustand](https://github.com/rocketseat-education/ignite-redux-zustand/commit/1f738e7b4ca8340d57da1ca4860f6826d7e95248)\n\nNessa aula, vamos instalar o Zustand e iniciar a migração do Redux para essa biblioteca.",
+          "duration": 658,
+          "type": "video",
+          "file": "01-redux-zustand-1/020-setup-do-zustand.txt",
+          "chars": 10465,
+          "status": "ok"
+        },
+        {
+          "title": "Migrando do Redux p/ Zustand",
+          "slug": "migrando-do-redux-p-zustand",
+          "video_id": "7917cb7f-12c9-4996-ada3-3995afedc75e",
+          "has_transcription": true,
+          "description": "[Commit: Do Redux ao Zustand - Migrando do Redux p/ Zustand](https://github.com/rocketseat-education/ignite-redux-zustand/commit/ac4bd70da3fae88655efc0c1fbf57f57e2575f7a)\n\nNessa aula, vamos concluir a migração de todos os locais que utilizam o Redux para utilizar a nova store do Zustand.",
+          "duration": 789,
+          "type": "video",
+          "file": "01-redux-zustand-1/021-migrando-do-redux-p-zustand.txt",
+          "chars": 11924,
+          "status": "ok"
+        },
+        {
+          "title": "Testes unitários no zustand",
+          "slug": "testes-unitarios-no-zustand",
+          "video_id": "b10530d7-d58e-40aa-9434-2d3975593f38",
+          "has_transcription": true,
+          "description": "[Commit: Do Redux ao Zustand - Testes unitários no zustand](https://github.com/rocketseat-education/ignite-redux-zustand/commit/4371a729b27ed7b76762efbfe9850c3a78e32850)\n\nPara finalizar, vamos criar os testes para a store do zustand, exatamente como fizemos anteriormente para o Redux.",
+          "duration": 562,
+          "type": "video",
+          "file": "01-redux-zustand-1/022-testes-unitarios-no-zustand.txt",
+          "chars": 8505,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 22,
+    "with_vtt": 22,
+    "without_vtt": 0,
+    "total_chars": 152887
+  }
+}

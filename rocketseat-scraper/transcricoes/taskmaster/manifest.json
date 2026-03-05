@@ -1,0 +1,234 @@
+{
+  "journey_slug": "taskmaster",
+  "modules": [
+    {
+      "slug": "task-master",
+      "title": "Aulas",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Abertura",
+          "slug": "abertura-50",
+          "video_id": "9e39a8bc-1d91-4870-a772-662d059e7a55",
+          "has_transcription": true,
+          "description": "Você já se deu conta de quanto tempo perdemos reescrevendo código por falta de planejamento? Muitas vezes, somos tentados a pular direto para a codificação, mas isso pode ser um grande erro, especialmente com as IAs generativas que, apesar de poderosas, não têm memória. É aí que entra o Taskmaster, uma ferramenta gratuita e open source que transforma documentos em listas de tarefas organizadas. Neste curso, vou te mostrar como usá-lo para aumentar a velocidade e a qualidade do seu desenvolvimento, evitando retrabalho. Vamos juntos nessa!",
+          "duration": 208,
+          "type": "video",
+          "file": "01-task-master/001-abertura.txt",
+          "chars": 3033,
+          "status": "ok"
+        },
+        {
+          "title": "O problema a ser resolvido",
+          "slug": "o-problema-a-ser-resolvido",
+          "video_id": "779dfe61-f75f-4384-820b-35f6592ca610",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos explorar como transformar um extenso documento de requisitos de projeto em tarefas gerenciáveis para o desenvolvimento de um sistema de gerenciamento de invoices. Usando ferramentas como Jira, Linear ou Trello, você aprenderá a priorizar e organizar essas tarefas de forma eficiente. Vou apresentar uma solução que facilita esse processo, permitindo que você se concentre na parte criativa do desenvolvimento. Prepare-se para conhecer a ferramenta Task Master, que tornará sua vida muito mais fácil!",
+          "duration": 141,
+          "type": "video",
+          "file": "01-task-master/002-o-problema-a-ser-resolvido.txt",
+          "chars": 2163,
+          "status": "ok"
+        },
+        {
+          "title": "Task Master - Alternativa moderna no gerenciamento de tarefas",
+          "slug": "task-master-alternativa-moderna-no-gerenciamento-de-tarefas",
+          "video_id": "cbb3993e-4045-4008-a065-205e84d8434e",
+          "has_transcription": true,
+          "description": "No vídeo de hoje, vamos explorar a aplicação Next e como integrar o Taskmaster. Mostrei que salvei tanto o PDF quanto a versão em Markdown, pois o texto é mais eficaz para trabalhar com LLMs. Vou demonstrar as funcionalidades do Taskmaster, comparando com ferramentas tradicionais de gerenciamento. É importante notar que o Taskmaster é uma ferramenta de linha de comando, sem interface gráfica. Vamos configurar um projeto e discutir a escolha de ambientes e modelos, garantindo que você não gaste mais do que o necessário.",
+          "duration": 379,
+          "type": "video",
+          "file": "01-task-master/003-task-master-alternativa-moderna-no-gerenciamento-de-tarefas.txt",
+          "chars": 5695,
+          "status": "ok"
+        },
+        {
+          "title": "Conhecendo a casa do Task Master",
+          "slug": "conhecendo-a-casa-do-task-master",
+          "video_id": "65303df5-f73a-429a-a02c-b7b1b3ec0c57",
+          "has_transcription": true,
+          "description": "- 🔗 [Task Master](https://www.task-master.dev/)\n- 📗 [Doc: Task Master](https://docs.task-master.dev/introduction)\n- 🔗 [GitHub: claude-task-master](https://github.com/eyaltoledano/claude-task-master)\n- 🛠️ [Extensão oficial Taskmaster AI](https://marketplace.visualstudio.com/items?itemName=Hamster.task-master-hamster)\n\n*Caso necessário:*\n- 🛠️ [Instalação do Node.js e npm](https://nodejs.org/en/download/current)\n\nNo vídeo, apresento o Taskmaster, uma ferramenta que emula um terminal para gerenciar tarefas. Mostro como acessar a homepage, onde você encontra instruções de instalação simples com o npm. Falo sobre a documentação em construção e a importância de usar a linha de comando para explorar seus recursos. Também menciono o GitHub como uma fonte valiosa de informações, e a nova extensão para VS Code que facilita o acompanhamento de tarefas. Explore as URLs recomendadas para se familiarizar com o Taskmaster!",
+          "duration": 229,
+          "type": "video",
+          "file": "01-task-master/004-conhecendo-a-casa-do-task-master.txt",
+          "chars": 3278,
+          "status": "ok"
+        },
+        {
+          "title": "Gerar tarefas automaticamente com IA",
+          "slug": "gerar-tarefas-automaticamente-com-ia",
+          "video_id": "6a64242a-3ea4-445a-b461-a932c19c04a8",
+          "has_transcription": true,
+          "description": "No próximo vídeo, vamos solicitar ao Taskmaster uma análise da complexidade das tarefas para que possamos dividi-las em subtarefas, evitando surpresas com custos. Vou executar o comando `tmmodels` para ajustar o modelo principal e incluir o Perplexity para trazer melhores práticas. Em seguida, geraremos 20 tarefas a partir do documento PRD, armazenando-as em um arquivo JSON. Por fim, vamos revisar a lista de tarefas e definir o status delas, como \"concluída\".",
+          "duration": 562,
+          "type": "video",
+          "file": "01-task-master/005-gerar-tarefas-automaticamente-com-ia.txt",
+          "chars": 7325,
+          "status": "ok"
+        },
+        {
+          "title": "Analisar a complexidade das tarefas e criar subtarefas automaticamente",
+          "slug": "analisar-a-complexidade-das-tarefas-e-criar-subtarefas-automaticamente",
+          "video_id": "311a061d-2e6d-4294-a849-9248e37ff5af",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos a tarefa 2.2 usando o TM Show, onde analisamos detalhes de implementação e subtarefas. Discutimos a importância da análise de complexidade para gerenciar prioridades e dependências. Demonstrei como gerar relatórios de complexidade e expandir tarefas com o Taskmaster, além de acompanhar a telemetria de cada etapa. Ao final, integramos o uso do Taskmaster no fluxo de desenvolvimento, preparando-nos para interagir com a ferramenta através do chat.",
+          "duration": 522,
+          "type": "video",
+          "file": "01-task-master/006-analisar-a-complexidade-das-tarefas-e-criar-subtarefas-automaticamente.txt",
+          "chars": 6557,
+          "status": "ok"
+        },
+        {
+          "title": "Task Master: VSCode Extension",
+          "slug": "task-master-vs-code-extension",
+          "video_id": "b600ed67-b61d-4fca-9aaa-86d70e5a3a42",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei a nova extensão do Taskmaster para o VS Code, que traz uma interface visual interativa, permitindo gerenciar tarefas de forma mais intuitiva. Mostrei como mover tarefas entre status e adicionar notas com timestamps. Também discuti a nova funcionalidade de ajuste de complexidade das tarefas e subtarefas. Por fim, mencionei a importância do servidor MCP para interagir com o Taskmaster. Na próxima aula, vamos configurar esse servidor e aprofundar nossa interação com as tarefas.",
+          "duration": 485,
+          "type": "video",
+          "file": "01-task-master/007-task-master-vscode-extension.txt",
+          "chars": 6934,
+          "status": "ok"
+        },
+        {
+          "title": "Trabalhando com Tags",
+          "slug": "trabalhando-com-tags",
+          "video_id": "3458a613-415b-40d8-9229-55ccb6b2e7f9",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei o uso de tags no Taskmaster, uma funcionalidade que facilita a organização das tarefas em projetos longos. Mostrei como criar tags que podem ser copiadas da master e como isso ajuda a manter um histórico sem sobrecarregar a lista de tarefas. Também discutimos a importância de manter o arquivo Tasks.json sob controle de versão, evitando perdas. Por fim, demonstrei como alternar entre tags e algumas operações adicionais, como renomear e deletar tags.",
+          "duration": 355,
+          "type": "video",
+          "file": "01-task-master/008-trabalhando-com-tags.txt",
+          "chars": 4632,
+          "status": "ok"
+        },
+        {
+          "title": "Usando o MCP para Interagir com o Task Master",
+          "slug": "usando-o-mcp-para-interagir-com-o-task-master",
+          "video_id": "23c14a44-a49c-4c6c-a204-1a1a8d77b910",
+          "has_transcription": true,
+          "description": "Nesta aula, eu compartilho como integrar chaves de API em ferramentas de inteligência artificial, usando o Taskmaster como exemplo. Começo destacando a importância de salvar arquivos de planejamento, que se tornam artefatos valiosos. Mostro como configurar o ambiente no terminal e utilizo o Cursor para interagir com o Taskmaster, demonstrando como solicitar e gerenciar tarefas de forma eficiente. Ao final, enfatizo a importância de salvar o planejamento em um arquivo Markdown para referência futura.",
+          "duration": 807,
+          "type": "video",
+          "file": "01-task-master/009-usando-o-mcp-para-interagir-com-o-task-master.txt",
+          "chars": 10685,
+          "status": "ok"
+        },
+        {
+          "title": "Desbloqueando recursos adicionais no claude code",
+          "slug": "desbloqueando-recursos-adicionais-no-claude-code",
+          "video_id": "d9a21fe4-ae63-418e-a353-3e9033c0c561",
+          "has_transcription": true,
+          "description": "Na aula de hoje, explorei o Cloud Code e suas funcionalidades, incluindo a organização de comandos e o uso do Taskmaster. Demonstrei como acessar comandos com uma simples barra e como compactar o contexto para otimizar o espaço. Apresentei também os subagentes do Taskmaster, que permitem a execução paralela de tarefas, aumentando a eficiência. Falei sobre o Orchestrator, Executor e Checker, que trabalham juntos para gerenciar e revisar tarefas. Prepare-se para ver esses conceitos em ação!",
+          "duration": 590,
+          "type": "video",
+          "file": "01-task-master/010-desbloqueando-recursos-adicionais-no-claude-code.txt",
+          "chars": 7879,
+          "status": "ok"
+        },
+        {
+          "title": "Criação de Infraestrutura de QA - Parte 1",
+          "slug": "criacao-de-infraestrutura-de-qa-parte-1",
+          "video_id": "e65a4d12-1dc1-4ad8-aeb5-f2a87d9763db",
+          "has_transcription": true,
+          "description": "Nesta aula, iniciamos o desenvolvimento de uma infraestrutura de QA usando o Task Master. Embora tenha marcado algumas tarefas como concluídas, tudo foi uma simulação para mostrar como gerenciar tarefas. Abordamos a importância de configurar testes automatizados, Prettier, ESLint e TypeScript. Também incluímos o Husky para garantir a qualidade do código antes do push. Demonstrei como o Task Master facilita a execução de subtarefas, assegurando um fluxo de trabalho organizado e eficiente. No próximo vídeo, continuaremos com a instalação da infraestrutura de QA.",
+          "duration": 576,
+          "type": "video",
+          "file": "01-task-master/011-criacao-de-infraestrutura-de-qa-parte-1.txt",
+          "chars": 7098,
+          "status": "ok"
+        },
+        {
+          "title": "Criação de Infraestrutura de QA - Parte 2",
+          "slug": "criacao-de-infraestrutura-de-qa-parte-2",
+          "video_id": "1744a953-fad5-4ff0-a6cf-5945050d99bc",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos construir uma infraestrutura de QA utilizando LLMs. Enquanto a LLM realiza as tarefas, eu analiso as configurações, como o PrinterRC e o arquivo .gitignore, que definem a formatação e os arquivos a serem ignorados. Acompanhei o progresso, verifiquei os commits e os scripts no package.json. Ao final, criei um repositório remoto e implementei um sistema de QA para garantir a qualidade do código. Agora, estamos prontos para avançar no desenvolvimento com mais segurança.",
+          "duration": 495,
+          "type": "video",
+          "file": "01-task-master/012-criacao-de-infraestrutura-de-qa-parte-2.txt",
+          "chars": 5950,
+          "status": "ok"
+        },
+        {
+          "title": "Criação das Diretrizes de Desenvolvimento",
+          "slug": "criacao-das-diretrizes-de-desenvolvimento",
+          "video_id": "4a2616f5-dfda-4abb-bf9c-15fabd5620e0",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei o Dev Workflow MDC, um arquivo crucial que orienta nosso desenvolvimento. Fiz algumas alterações, como renomear a pasta de logs para devlogs, e discuti a importância de manter a qualidade nas entregas, especialmente ao executar QA. Também criei diretrizes para o desenvolvimento, enfatizando a necessidade de uma lista to-do e a execução de QA antes dos commits. Finalizei destacando a relevância do Taskmaster e como adaptaremos esse workflow para o Cloud Code na próxima etapa.",
+          "duration": 531,
+          "type": "video",
+          "file": "01-task-master/013-criacao-das-diretrizes-de-desenvolvimento.txt",
+          "chars": 6619,
+          "status": "ok"
+        },
+        {
+          "title": "Liberar o Sonnet 4 para desenvolver a primeira tarefa",
+          "slug": "liberar-o-sonnet-4-para-desenvolver-primeira-tarefa",
+          "video_id": "1fe81d20-3040-4151-9909-e27cc9b29661",
+          "has_transcription": true,
+          "description": "Nesta aula, compartilho a importância de uma boa preparação antes de iniciar o desenvolvimento, utilizando o ditado sobre afiar o machado. Mostro como organizo tarefas com um sistema de priorização e uma infraestrutura de QA para garantir a qualidade do código. Acompanhamos o progresso de um projeto, destacando a necessidade de commits atômicos e a execução de QA antes de cada commit. No final, menciono que farei uma revisão de código com o auxílio de inteligência artificial. Vamos continuar no próximo vídeo!",
+          "duration": 733,
+          "type": "video",
+          "file": "01-task-master/014-liberar-o-sonnet-4-para-desenvolver-a-primeira-tarefa.txt",
+          "chars": 7683,
+          "status": "ok"
+        },
+        {
+          "title": "Tarefa finalizada com sucesso e pull request aberto",
+          "slug": "tarefa-finalizada-com-sucesso-e-pull-request-aberto",
+          "video_id": "c5f189ad-4fb0-4625-86d0-6a1a8438a5cd",
+          "has_transcription": true,
+          "description": "Nesta aula, acompanhamos o desenvolvimento de componentes e a criação de rotas para exibição no navegador. Enfrentamos dificuldades com TypeScript e linting, mas conseguimos resolver. O aluno finalizou tarefas, criou um pull request e, embora o markdown tenha apresentado problemas, as alterações foram significativas. Ao final, testamos as rotas de demonstração e discutimos melhorias. Na próxima aula, vamos focar no Cloud Code e revisar o pull request. Uma jornada intensa, mas produtiva!",
+          "duration": 889,
+          "type": "video",
+          "file": "01-task-master/015-tarefa-finalizada-com-sucesso-e-pull-request-aberto.txt",
+          "chars": 7099,
+          "status": "ok"
+        },
+        {
+          "title": "Preparação Claude: Code Layout Fix e Review e Merge do PR",
+          "slug": "preparacao-claude-code-layout-fix-e-review-e-merge-do-pr",
+          "video_id": "aaec61c4-d623-410f-99b9-7e78fe40e01c",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos o Cloud Code, uma ferramenta de desenvolvimento que opera no terminal, ao contrário do Cursor, que é um editor de código com IA. Mostrei como inicializar o Cloud Code e integrar instruções ao arquivo cloud.md, preparando-o para o projeto. Também discutimos como solicitar um Code Review para um pull request no GitHub, utilizando sub-agentes especializados. Finalizamos o merge do PR, destacando a importância de melhorias contínuas no código. Na próxima aula, vamos usar o Taskmaster para aprimorar uma tarefa.",
+          "duration": 754,
+          "type": "video",
+          "file": "01-task-master/016-preparacao-claude-code-layout-fix-e-review-e-merge-do-pr.txt",
+          "chars": 9807,
+          "status": "ok"
+        },
+        {
+          "title": "Atualização Tarefa 7 e sua Implementação",
+          "slug": "atualizacao-tarefa-7-e-sua-implementacao",
+          "video_id": "96f4ff5b-2af3-40ec-a1b8-b35ccf155362",
+          "has_transcription": true,
+          "description": "Nesta aula, explorei como gerenciar tarefas usando o TaskMaster e a importância de evitar o prop-drilling em React. Abordei a utilização da Context API e como prefiro usar Zustand com IMA para gerenciar estados. Demonstrei como refinar tarefas, implementar uma store global e garantir a qualidade do código através de diretrizes rigorosas. Também discuti a importância de revisões de código com ferramentas diferentes, como o Gemini, para assegurar um desenvolvimento mais robusto. Espero que você tenha aprendido bastante!",
+          "duration": 1047,
+          "type": "video",
+          "file": "01-task-master/017-atualizacao-tarefa-7-e-sua-implementacao.txt",
+          "chars": 10733,
+          "status": "ok"
+        },
+        {
+          "title": "Considerações Finais",
+          "slug": "consideracoes-finais-1",
+          "video_id": "e214bd90-f1e8-4cd3-ac56-84f53067a7dc",
+          "has_transcription": true,
+          "description": "Chegamos ao final de mais um conteúdo! Sou Fábio Vedovelli, da Rocket City, e é sempre um prazer compartilhar conhecimento. Neste vídeo, falei sobre a importância do Taskmaster no desenvolvimento de software moderno. Embora não resolva todos os problemas, ele é fundamental para manter meu fluxo de trabalho organizado e eficiente. Com ele, nunca me sinto perdido em projetos antigos e consigo responder rapidamente sobre o andamento das funcionalidades. Agradeço por assistir e até a próxima!",
+          "duration": 63,
+          "type": "video",
+          "file": "01-task-master/018-consideracoes-finais.txt",
+          "chars": 1021,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 18,
+    "with_vtt": 18,
+    "without_vtt": 0,
+    "total_chars": 114191
+  }
+}

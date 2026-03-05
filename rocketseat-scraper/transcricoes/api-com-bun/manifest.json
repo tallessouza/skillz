@@ -1,0 +1,440 @@
+{
+  "journey_slug": "api-com-bun",
+  "modules": [
+    {
+      "slug": "aulas-4",
+      "title": "Setup e estrutura do projeto",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Criando API com Bun e Elysia",
+          "slug": "criando-api-com-bun-e-elysia",
+          "video_id": "90bc2089-2a8f-4884-86ee-8c5d97d94924",
+          "has_transcription": true,
+          "description": "[Commit: Criando API com Bun e Elysia](https://github.com/rocketseat-education/api-com-bun/commit/6ee70e2fce5b722dec4f7d3acbee4e7b22d80fd7)\n\nNesta aula, vamos iniciar o desenvolvimento de uma API para um painel de gerenciamento de pedidos. Vamos focar nas funcionalidades para o gerente da loja, como acompanhar pedidos, alterar status, métricas, gráficos e listagens. Utilizaremos o Bun como tecnologia no back-end, que é uma alternativa ao Node e ao Deno. O Bun é construído em cima do motor do Safari, o JSCore, e possui melhor performance e menos configurações necessárias. Além disso, o código escrito com o Bun é compatível com as APIs do Node. Vamos criar o projeto e as rotas HTTP utilizando o framework ElysiaJS.",
+          "duration": 749,
+          "type": "video",
+          "file": "01-aulas-4/001-criando-api-com-bun-e-elysia.txt",
+          "chars": 11580,
+          "status": "ok"
+        },
+        {
+          "title": "PostgreSQL no Docker Compose",
+          "slug": "postgre-sql-no-docker-compose",
+          "video_id": "a438bc41-23dd-4362-9203-3b2f7e0e2aa4",
+          "has_transcription": true,
+          "description": "[Commit: PostgreSQL no Docker Compose](https://github.com/rocketseat-education/api-com-bun/commit/a514b79052d70229e4a97450ddc2275efcbd2322)\n\nNesta aula, vamos configurar o banco de dados da nossa aplicação usando o Docker.",
+          "duration": 184,
+          "type": "video",
+          "file": "01-aulas-4/002-postgresql-no-docker-compose.txt",
+          "chars": 3060,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando Drizzle ORM",
+          "slug": "configurando-drizzle-orm",
+          "video_id": "ddcfea13-66b1-4979-be14-3027722f66c4",
+          "has_transcription": true,
+          "description": "[Commit: Configurando Drizzle ORM](https://github.com/rocketseat-education/api-com-bun/commit/7ef5f128cffd14f07de10b506cb3885036b5705b)\n\nNesta aula, vamos começar a configurar e utilizar o Drizzle, um ORM para JavaScript. O Drizzle é agnóstico de runtime, o que significa que pode ser executado em qualquer ambiente que execute JavaScript. Ele não cria uma ponte entre a aplicação e o banco de dados, o que pode ser vantajoso em casos de uso mais complexos. O Drizzle segue uma API mais próxima de um Query Builder, permitindo que escrevamos queries de forma semelhante ao SQL.\n\nA partir da versão [0.21.0 ](https://orm.drizzle.team/kit-docs/upgrade-21#how-to-migrate-to-0210) o arquivo `drizzle.config.ts` deve ficar: \n\n```ts\nimport type { Config } from \"drizzle-kit\";\n\nexport default {\n  schema: \"./src/db/schema/index.ts\",\n  out: \"./drizzle\",\n  dialect: \"postgresql\",\n} satisfies Config;\n```\n\nValeu [Arthur Sosnowski](https://app.rocketseat.com.br/me/arthop) pelo feedback!",
+          "duration": 803,
+          "type": "video",
+          "file": "01-aulas-4/003-configurando-drizzle-orm.txt",
+          "chars": 13136,
+          "status": "ok"
+        },
+        {
+          "title": "Relacionamentos no Drizzle",
+          "slug": "relacionamentos-no-drizzle",
+          "video_id": "d50a88c4-e07e-4ef6-b5f7-d035644cb356",
+          "has_transcription": true,
+          "description": "[Commit: Relacionamentos no Drizzle](https://github.com/rocketseat-education/api-com-bun/commit/362e4deed4a1bc89aaefc7d8f858b94b8bcbd184)\n\nNesta aula, vamos aprender a como configurar relacionamentos em um banco de dados usando o Drizzle ORM.",
+          "duration": 412,
+          "type": "video",
+          "file": "01-aulas-4/004-relacionamentos-no-drizzle.txt",
+          "chars": 6152,
+          "status": "ok"
+        },
+        {
+          "title": "Migrations no Drizzle",
+          "slug": "migrations-no-drizzle",
+          "video_id": "3ba163b3-1f99-43e0-a2c4-cb3fa0d82ca6",
+          "has_transcription": true,
+          "description": "[Commit: Migrations no Drizzle](https://github.com/rocketseat-education/api-com-bun/commit/7e5bc34210587367ddb745d241ba97e434d063d8)\n\nNessa aula, vamos aprender a usar o Drizzle para executar migrations no banco de dados. Criaremos um arquivo migrate.ts, importaremos o Postgres e o Drizzle, estabeleceremos a conexão com o banco, e executaremos as migrations programaticamente, encerrando a conexão ao final. Utilizaremos o Drizzle Studio para visualizar e testar as tabelas criadas.",
+          "duration": 584,
+          "type": "video",
+          "file": "01-aulas-4/005-migrations-no-drizzle.txt",
+          "chars": 8769,
+          "status": "ok"
+        },
+        {
+          "title": "Variáveis Ambiente no Bun",
+          "slug": "variaveis-ambiente-no-bun",
+          "video_id": "aace4fc4-2951-4b93-bc25-a5c7649ce3c4",
+          "has_transcription": true,
+          "description": "[Commit: Variáveis Ambiente no Bun](https://github.com/rocketseat-education/api-com-bun/commit/2be852dfd8a0dcabf4e1553167cbc440d8053366)\n\nNesta aula, aprendemos sobre como o Bun lê arquivos de variáveis ambiente de forma automatizada.",
+          "duration": 206,
+          "type": "video",
+          "file": "01-aulas-4/006-variaveis-ambiente-no-bun.txt",
+          "chars": 2919,
+          "status": "ok"
+        },
+        {
+          "title": "Criando seed com Drizzle",
+          "slug": "criando-seed-com-drizzle",
+          "video_id": "2be93714-e514-489b-82ae-ae5111a5c86d",
+          "has_transcription": true,
+          "description": "[Commit: Criando seed com Drizzle](https://github.com/rocketseat-education/api-com-bun/commit/25f343f5edf42469c6315af7bab3ff378f2ce967)\n\nNessa aula, vamos aprender a criar um arquivo de Seed indispensável para população de dados fictícios no banco de dados. Utilizaremos o FakerJS para gerar informações aleatórias e o Drizzle para realizar inserções programáticas. Ao final, teremos um script \"ban seed\" que executa o Seed, preenchendo o banco de dados com usuários, gerente e um restaurante.",
+          "duration": 757,
+          "type": "video",
+          "file": "01-aulas-4/007-criando-seed-com-drizzle.txt",
+          "chars": 10974,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando ESLint no projeto",
+          "slug": "configurando-es-lint-no-projeto",
+          "video_id": "07aec506-53ae-46b4-81ff-174c5dd186a2",
+          "has_transcription": true,
+          "description": "[Commit: Configurando ESLint no projeto](https://github.com/rocketseat-education/api-com-bun/commit/ff414f72a80c906113b0a791aa88ec16694977bd)\n\nNessa aula, vamos aprender a configurar o ESLint de forma avançada, instalando o `rocketseat-eslint-config` e o `eslint-plugin Drizzle` como dependências de desenvolvimento. Com essa configuração, teremos um linting personalizado para evitar erros comuns, como deletes sem a cláusula where em queries do Drizzle. Além disso, criaremos um script \"ban lint\" para facilitar a execução do ESLint.",
+          "duration": 288,
+          "type": "video",
+          "file": "01-aulas-4/008-configurando-eslint-no-projeto.txt",
+          "chars": 3778,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Cadastro de restaurante",
+          "slug": "rota-cadastro-de-restaurante",
+          "video_id": "81102667-8aef-4f8a-bee1-2c133bac7a4b",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Cadastro de restaurante](https://github.com/rocketseat-education/api-com-bun/commit/75ab45abb15694474be6cea2d6ba571cec7a8f03)\n\nNesta aula, vamos explorar o Elysia, uma ferramenta que ainda não foi abordada em detalhes. Vamos criar uma rota completa para entender a sintaxe do Elysia, como buscar dados do corpo da requisição e retornar códigos de resposta diferentes.",
+          "duration": 495,
+          "type": "video",
+          "file": "01-aulas-4/009-rota-cadastro-de-restaurante.txt",
+          "chars": 7700,
+          "status": "ok"
+        },
+        {
+          "title": "Tipagem na entrada de dados",
+          "slug": "tipagem-na-entrada-de-dados",
+          "video_id": "f3721c8b-d2e6-4223-9f34-6103654ea9de",
+          "has_transcription": true,
+          "description": "[Commit: Tipagem na entrada de dados](https://github.com/rocketseat-education/api-com-bun/commit/f42602734d97aeac76e66cd47f69aaa44b1dd392)\n\nDentro do framework Elijia, temos um sistema de tipagem de dados de entrada e saída integrado. Isso significa que não é necessário utilizar ferramentas externas como Zod, Joy ou Yup para fazer a validação dos dados recebidos no corpo da requisição.",
+          "duration": 195,
+          "type": "video",
+          "file": "01-aulas-4/010-tipagem-na-entrada-de-dados.txt",
+          "chars": 2831,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "autenticacao",
+      "title": "Autenticação",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "Schema de Links de Autenticação",
+          "slug": "schema-de-links-de-autenticacao",
+          "video_id": "86dad9ff-fb11-4275-9add-711324c21e17",
+          "has_transcription": true,
+          "description": "[Commit: Schema de Links de Autenticação](https://github.com/rocketseat-education/api-com-bun/commit/b70974b77e3c24f7bfd422a33a805b901c9b2452)\n\nNesta aula, vamos iniciar o processo de autenticação em nossa aplicação. Em vez de usar a autenticação convencional por e-mail e senha, vamos implementar uma estratégia chamada \"password-less\". Essa estratégia permite que os usuários façam login sem a necessidade de uma senha. Vamos utilizar a estratégia do \"Magic Link\", onde o usuário insere seu e-mail e recebe um link de autenticação por e-mail. Ao clicar no link, o usuário é redirecionado para nossa aplicação já autenticado. Essa abordagem é mais segura, pois não precisamos armazenar senhas sensíveis em nosso banco de dados. Vamos começar criando uma tabela para armazenar os links de autenticação e em seguida, implementar as rotas de login e callback.",
+          "duration": 381,
+          "type": "video",
+          "file": "02-autenticacao/001-schema-de-links-de-autenticacao.txt",
+          "chars": 5593,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Envio do link de autenticação",
+          "slug": "rota-envio-do-link-de-autenticacao",
+          "video_id": "ff61dc21-ff9c-4fa4-937c-e122d10e36f4",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Envio do link de autenticação](https://github.com/rocketseat-education/api-com-bun/commit/9b4592341b41a86c4ac183bba55c32e0c281294d)\n\nNesta aula, criamos uma rota para autenticação, onde validamos o e-mail recebido no corpo da requisição. Utilizamos o Drizzle para fazer a seleção de dados no banco de dados. Em seguida, geramos um código de autenticação e inserimos na tabela `auth_links`. Por fim, criamos um link de autenticação utilizando o construtor `URL` e exibimos no console. A rota de envio de e-mail será abordada em aulas futuras.",
+          "duration": 985,
+          "type": "video",
+          "file": "02-autenticacao/002-rota-envio-do-link-de-autenticacao.txt",
+          "chars": 13704,
+          "status": "ok"
+        },
+        {
+          "title": "Setup da Autenticação JWT",
+          "slug": "setup-da-autenticacao-jwt",
+          "video_id": "ee7fed98-c322-4a31-87c6-a09845264a69",
+          "has_transcription": true,
+          "description": "[Commit: Setup da Autenticação JWT](https://github.com/rocketseat-education/api-com-bun/commit/20fa6a036b0b36241f9538664203b872411d4591)\n\nNesta aula, vamos instalar os módulos JWT e Cookie no Elysia para lidar com autenticação. Vamos utilizar a estratégia de salvar o JWT nos cookies do back-end, para que o front-end não precise enviar o token em cada requisição. Configuraremos o JWT com um algoritmo de assinatura, como o HS256, e um segredo aleatório. Também definiremos um esquema para o payload do token, utilizando o TypeBox. Por fim, configuraremos o módulo de cookie, deixando as opções de configuração para a criação do cookie.",
+          "duration": 597,
+          "type": "video",
+          "file": "02-autenticacao/003-setup-da-autenticacao-jwt.txt",
+          "chars": 8823,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Autenticação pelo link",
+          "slug": "rota-autenticacao-pelo-link",
+          "video_id": "e3f1232a-93c2-4b60-bf77-55eb56852eff",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Autenticação pelo link](https://github.com/rocketseat-education/api-com-bun/commit/9cd6c951adcbcbee2d74cbcbbf9bea13716dd436)\n\nObs. 1: Devido a atualizações do ElysiaJS, agora não é mais necessário instalar o pacote `@elysiajs/cookie`, os Cookies fazem parte diretamente do framework. Dessa forma, no arquivo `auth.ts`, não é preciso passar o cookie no `.use`:\n\n```ts\nexport const auth = new Elysia().use(\n  jwt({\n    secret: env.JWT_SECRET_KEY,\n    schema: t.Object({\n      sub: t.String(),\n      restaurantId: t.Optional(t.String()),\n    }),\n  }),\n)\n```\n\nAinda sobre essa atualização, a forma de utilizar os Cookies mudou, seguindo a [documentação](https://elysiajs.com/patterns/cookie.html#cookie), ficaria dessa forma:\n\n```ts\nexport const authenticateFromLink = new Elysia().use(auth).get(\n  '/auth-links/authenticate',\n  async ({ query, jwt, cookie: { auth }, set }) => { // Recuperar o cookie pelo nome 'auth'\n    // ...\n    // Alterar cada propriedade do cookie\n    auth.value = token\n    auth.httpOnly = true\n    auth.maxAge = 60 * 60 * 24 * 7 // 7 days\n    auth.path = '/'\n    // ...\n  },\n  {\n    // ...\n  },\n)\n```\n\nNesta aula, criamos uma nova rota chamada \"AuthenticateFromLink\" que é do tipo GET. Essa rota é acionada quando o usuário clica em um link de autenticação enviado por e-mail. Dentro dessa rota, validamos os parâmetros de consulta (query parameters) recebidos, como o código e o redirecionamento. Em seguida, verificamos se o código é válido e se o link de autenticação não está expirado. Se tudo estiver correto, geramos um token JWT para o usuário e o salvamos nos cookies da aplicação. Por fim, excluímos o link de autenticação do banco de dados e redirecionamos o usuário para a página desejada.",
+          "duration": 904,
+          "type": "video",
+          "file": "02-autenticacao/004-rota-autenticacao-pelo-link.txt",
+          "chars": 11684,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Logout e derivação",
+          "slug": "rota-logout-e-derivacao",
+          "video_id": "2426390e-2637-4793-a157-89923da6a13c",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Logout e derivação](https://github.com/rocketseat-education/api-com-bun/commit/f7c4f4b293895f2d82b820b84f15b35a32af70ae)\n\nObs.1: Como comentado na aula anterior, o ElysiaJS teve atualizações que mudaram a forma de utilizar os Cookies e também a funcionalidade de derive. No arquivo `auth.ts`, precisa ficar dessa forma:\n\n```ts\nexport const auth = new Elysia()\n  .use(\n    jwt({\n      secret: env.JWT_SECRET_KEY,\n      schema: jwtPayload,\n    }),\n  )\n  .derive({ as: 'scoped' }, ({ jwt, cookie: { auth } }) => {\n    return {\n      signUser: async (payload: Static<typeof jwtPayload>) => {\n        const token = await jwt.sign(payload)\n\n        auth.value = token\n        auth.httpOnly = true\n        auth.maxAge = 60 * 60 * 24 * 7 // 7 days\n        auth.path = '/'\n      },\n\n      signOut: async () => {\n        auth.remove()\n      },\n    }\n  })\n```\n\nNesta aula, criamos uma rota de logout para remover o token de autenticação dos cookies. Expliquei que em algumas aplicações, o token é enviado para o front-end e salvo em algum lugar para ser reenviado nas próximas requisições, tornando a rota de logout menos relevante. No entanto, no nosso caso, é importante criar essa rota. Também falei sobre a funcionalidade de derivação dentro de um módulo, onde podemos estender as funções disponíveis em um módulo para serem acessadas em outras rotas. Demonstrei como retornar variáveis e funções dentro dessa derivação. Além disso, movemos a lógica de autenticação e remoção de cookies para o módulo de autenticação, deixando as rotas mais limpas e organizadas.",
+          "duration": 407,
+          "type": "video",
+          "file": "02-autenticacao/005-rota-logout-e-derivacao.txt",
+          "chars": 5612,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Perfil do usuário logado",
+          "slug": "rota-perfil-do-usuario-logado",
+          "video_id": "d335c1ac-49a9-4eef-9a3c-54ba2f7f0e7f",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Perfil do usuário logado](https://github.com/rocketseat-education/api-com-bun/commit/1a020617c68e4b5e66d203a67a5097d313228ae9)\n\nNesta aula, criamos uma rota chamada \"getProfile\" que retorna os dados do usuário logado no momento. Para isso, utilizamos o módulo de autenticação e a função \"getCurrentUser\" para buscar os dados do usuário autenticado nos cookies. Em seguida, utilizamos esses dados para fazer uma consulta no banco de dados e retornar as informações completas do usuário autenticado. Testamos a rota utilizando a ferramenta Hopscotch e verificamos que os dados do usuário foram retornados corretamente.",
+          "duration": 710,
+          "type": "video",
+          "file": "02-autenticacao/006-rota-perfil-do-usuario-logado.txt",
+          "chars": 8283,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Restaurante gerenciado",
+          "slug": "rota-restaurante-gerenciado",
+          "video_id": "a15d2bdd-7590-4c7f-8b9e-6b9aba8810f9",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Restaurante gerenciado](https://github.com/rocketseat-education/api-com-bun/commit/197435dcb8777647128c05aa3c97d6d9c9b42aaa)\n\nNesta aula, aprendemos a criar uma rota que traz os dados do restaurante gerenciado pelo usuário logado. Utilizamos a mesma lógica da rota getProfile, porém, agora utilizamos o restaurantId em vez do userId. Caso o restaurantId seja indefinido, lançamos um erro informando que o usuário não é um gerente. Caso contrário, procuramos o restaurante correspondente e retornamos suas informações. Finalizamos a parte de autenticação do aplicativo, utilizando a estratégia de magic link e salvando o token de autenticação no cookie. Agora, precisamos criar as funcionalidades de produtos, pedidos e métricas para finalizar o aplicativo.",
+          "duration": 208,
+          "type": "video",
+          "file": "02-autenticacao/007-rota-restaurante-gerenciado.txt",
+          "chars": 2718,
+          "status": "ok"
+        },
+        {
+          "title": "Lidando com Erros no Elysia",
+          "slug": "lidando-com-erros-no-elysia",
+          "video_id": "5aac69b6-c5d3-471f-b9ae-86581616d7c2",
+          "has_transcription": true,
+          "description": "[Commit: Lidando com Erros no Elysia](https://github.com/rocketseat-education/api-com-bun/commit/f68d5f3a4a2413fc892e77dcfe186cb67e22f984)\n\nNesta aula, vamos falar sobre tratamento de erros no Elysia. Vou te mostrar como criar novos tipos de exceções e como lidar com erros específicos em cada módulo da aplicação. Em vez de lidar com erros de forma global, é melhor tratá-los dentro de cada módulo para evitar generalizações. Vou te mostrar como criar uma classe de erro para o módulo de autenticação e como lidar com o erro de autorização. Também vou te mostrar como lidar com erros de forma global no servidor, tratando erros de validação e outros erros não previstos.",
+          "duration": 673,
+          "type": "video",
+          "file": "02-autenticacao/008-lidando-com-erros-no-elysia.txt",
+          "chars": 10405,
+          "status": "ok"
+        },
+        {
+          "title": "Envio de E-mail com Nodemailer",
+          "slug": "envio-de-e-mail-com-nodemailer",
+          "video_id": "769f45b1-d985-448f-a30a-94663d9c2494",
+          "has_transcription": true,
+          "description": "[Commit: Envio de E-mail com Nodemailer](https://github.com/rocketseat-education/api-com-bun/commit/c0a1233531ba574447e6ec4bdec46c10eb3f5b38)\n\nNesta aula, vamos aprender a enviar e-mails utilizando o Nodemailer. Vamos utilizar o Nodemailer para criar uma conta de teste e configurar um transporter para enviar os e-mails. Em seguida, vamos utilizar a função `sendMail` para enviar um e-mail com um link de autenticação. Vamos visualizar o e-mail no terminal e obter a URL para acessá-lo. Por fim, vamos ver como o e-mail é exibido no navegador. É importante ressaltar que, em uma aplicação real, é comum criar um template HTML para o e-mail e enviar versões em texto e HTML.",
+          "duration": 341,
+          "type": "video",
+          "file": "02-autenticacao/009-envio-de-e-mail-com-nodemailer.txt",
+          "chars": 5056,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "rotas-de-produtos-e-pedidos",
+      "title": "Rotas de Produtos e Pedidos",
+      "order": 3,
+      "lessons": [
+        {
+          "title": "Schema de Produtos e Pedidos",
+          "slug": "schema-de-produtos-e-pedidos",
+          "video_id": "0b9e6789-e81d-4e30-92d8-4ec49cf42a21",
+          "has_transcription": true,
+          "description": "[Commit: Schema de Produtos e Pedidos](https://github.com/rocketseat-education/api-com-bun/commit/d12f6bf8f6ceb536ace3e67dafad03bae310bb32)\n\nNesta aula, vamos começar a trabalhar com produtos e pedidos em nossa API. Já finalizamos a parte de autenticação e agora vamos para as funcionalidades em si. Vamos criar os esquemas para as tabelas de produtos, pedidos e itens do pedido. O relacionamento entre pedidos e produtos é de muitos para muitos, então teremos uma tabela Pivot chamada Order Items. Vamos definir os campos para cada tabela, como nome, descrição, preço em centavos, ID do restaurante, ID do cliente, status do pedido, entre outros. Também vamos configurar as referências entre as tabelas e definir as ações de cascata para exclusão. É importante salvar o total do pedido em centavos para evitar cálculos pesados no banco de dados. Com as tabelas criadas, podemos gerar as migrations e aplicá-las ao banco de dados.",
+          "duration": 772,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/001-schema-de-produtos-e-pedidos.txt",
+          "chars": 11468,
+          "status": "ok"
+        },
+        {
+          "title": "Configurando relacionamentos no Drizzle",
+          "slug": "configurando-relacionamentos-no-drizzle",
+          "video_id": "f388ee8d-3de4-4bc4-a0fe-5017b38d5350",
+          "has_transcription": true,
+          "description": "[Commit: Configurando relacionamentos no Drizzle](https://github.com/rocketseat-education/api-com-bun/commit/7bbe7c1e96915281b0772c1cad65af42257303f9)\n\nNesta aula, aprendemos a criar relacionamentos entre tabelas no banco de dados usando o Drizzle. Esses relacionamentos são importantes para o Drizzle entender a estrutura do banco de dados e facilitar as consultas. Criamos relacionamentos de \"um para muitos\" entre as tabelas de restaurantes e pedidos, produtos e pedidos, e usuários e pedidos. Também criamos um relacionamento de \"um para um\" entre usuários e restaurantes, onde um usuário pode ser o gerente de um restaurante. Esses relacionamentos são específicos para o Drizzle e não afetam diretamente o banco de dados Postgres.",
+          "duration": 351,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/002-configurando-relacionamentos-no-drizzle.txt",
+          "chars": 4214,
+          "status": "ok"
+        },
+        {
+          "title": "Seed de Produtos e Pedidos",
+          "slug": "seed-de-produtos-e-pedidos",
+          "video_id": "2e792b69-294e-49d9-862e-f006417a2256",
+          "has_transcription": true,
+          "description": "[Commit: Seed de Produtos e Pedidos](https://github.com/rocketseat-education/api-com-bun/commit/fa2d95a34da7946519769bb3362180302a3daff5)\n\nNesta aula, vamos criar um seed para pré-popular o banco de dados com dados fictícios.",
+          "duration": 1147,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/003-seed-de-produtos-e-pedidos.txt",
+          "chars": 14094,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Detalhes do Pedido",
+          "slug": "rota-detalhes-do-pedido",
+          "video_id": "f6b82bf0-868d-4265-97b9-f123dc5dead6",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Detalhes do Pedido](https://github.com/rocketseat-education/api-com-bun/commit/3ca045e5b3371ae1d701d42543c9e92d80f80b10)\n\nNesta aula, começamos a criar as rotas para a parte de pedidos da nossa aplicação. Começamos com uma rota simples, getOrderDetails, que retorna os detalhes de um único pedido. Para acessar essa rota, o usuário precisa estar logado.",
+          "duration": 549,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/004-rota-detalhes-do-pedido.txt",
+          "chars": 6045,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Aprovar Pedido",
+          "slug": "rota-aprovar-pedido",
+          "video_id": "b75e1717-69cc-4a93-84a1-3a841b1e7713",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Aprovar Pedido](https://github.com/rocketseat-education/api-com-bun/commit/bc28bc2b6b92075fb6c2ef9da339b5f2c4b658a5)\n\nNesta aula, criamos uma nova rota na nossa aplicação para aprovar um pedido. Explicamos a importância de ter rotas separadas para cada ação de modificação do status do pedido, pois cada uma delas pode ter regras de negócio diferentes. Utilizamos o método PATCH para criar a rota e validamos os parâmetros necessários. Em seguida, buscamos o pedido no banco de dados e verificamos se ele está pendente. Caso contrário, retornamos um erro. Testamos a rota no Hopscotch e verificamos se o pedido foi aprovado corretamente. Agora, podemos continuar com as demais rotas da aplicação.",
+          "duration": 331,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/005-rota-aprovar-pedido.txt",
+          "chars": 3463,
+          "status": "ok"
+        },
+        {
+          "title": "Rotas: Ações no pedido",
+          "slug": "rotas-acoes-no-pedido",
+          "video_id": "3ea59c23-9bc8-4948-b955-22b282335af7",
+          "has_transcription": true,
+          "description": "[Commit: Rotas: Ações no pedido](https://github.com/rocketseat-education/api-com-bun/commit/a84f34b621a56748fed02835198446f92df91a63)\n\nNesta aula, vamos aprender sobre as ações restantes que podemos realizar em um pedido. Vamos criar as funções Deliver Order, Dispatch Order e Cancel Order. A função Deliver Order é responsável por marcar o pedido como entregue, a função Dispatch Order é responsável por enviar o pedido para entrega e a função Cancel Order é responsável por cancelar o pedido. Vamos copiar a função Approve e fazer as alterações necessárias em cada uma dessas funções. É importante ressaltar que só é possível cancelar um pedido que esteja nos status \"pendente\" ou \"processando\". Além disso, só é possível entregar um pedido que esteja no status \"entregando\" e só é possível enviar um pedido para entrega se ele estiver no status \"processando\". Vamos testar todas essas funcionalidades no Hopscotch para garantir que estão funcionando corretamente.",
+          "duration": 315,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/006-rotas-acoes-no-pedido.txt",
+          "chars": 3718,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Listagem de pedidos",
+          "slug": "rota-listagem-de-pedidos",
+          "video_id": "5c878f62-bae3-43f6-8514-6bcbd3abd98a",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Listagem de pedidos](https://github.com/rocketseat-education/api-com-bun/commit/fd4165324d4261e979a59e932bfcd84be0f2df75)\n\nNesta aula, vamos criar uma rota de listagem de pedidos com paginação e filtros. Começamos criando a rota \"Orders\" e verificando se o usuário possui um ID de restaurante. Em seguida, definimos os parâmetros de filtro, como nome do cliente, ID do pedido e status. Utilizamos o módulo Drizzle Typebox para validar o filtro de status. Em seguida, criamos uma query base para aplicar os filtros e executamos duas queries: uma para contar o total de pedidos e outra para retornar os pedidos paginados. Por fim, retornamos os dados dos pedidos e o total de pedidos na resposta da API.",
+          "duration": 1012,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/007-rota-listagem-de-pedidos.txt",
+          "chars": 15868,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Ordenação dos pedidos",
+          "slug": "rota-ordenacao-dos-pedidos",
+          "video_id": "cab8fa2e-bb9c-484e-84b5-07d5e91cf5ff",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Ordenação dos pedidos](https://github.com/rocketseat-education/api-com-bun/commit/d77260bdf5cf2c6c23611a8728427e68d0c255d3)\n\nNesta aula, vamos abordar a ordenação dos pedidos em nosso sistema. Primeiro, vamos lidar com os erros \"not found\" retornados pelo servidor. Vamos adicionar um novo caso para tratar esses erros e retornar uma resposta vazia com o status 404. Em seguida, vamos adicionar os campos necessários no front-end, como orderId, createdAt, status, total e customerName. Faremos uma requisição para verificar se os campos estão sendo retornados corretamente. \n\nEm seguida, vamos ordenar os pedidos. Vamos usar a função orderBy e passar os campos pelos quais queremos ordenar. No entanto, ao usar a função base query, precisamos fazer algumas alterações. Podemos passar uma função para o orderBy e retornar o filtro desejado, como a ordenação decrescente por createdAt. Também podemos ordenar por outros campos, como customerName. \n\nAlém disso, vamos ordenar os pedidos com base no status. Como o status é uma string, precisamos definir uma ordem específica. Podemos usar a função SQL para escrever uma expressão switch case no campo status. Assim, podemos atribuir um valor numérico a cada status e ordenar os pedidos com base nesses valores. Por exemplo, podemos atribuir 1 para \"pending\", 2 para \"processing\" e assim por diante. \n\nEssas alterações nos permitirão ordenar os pedidos de acordo com nossos critérios, como exibir os pedidos pendentes primeiro. O Drizzle é um ORM que facilita a integração de SQL personalizado com uma sintaxe mais simples para consultas mais básicas.",
+          "duration": 484,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/008-rota-ordenacao-dos-pedidos.txt",
+          "chars": 7284,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica de receita mensal",
+          "slug": "rota-metrica-de-receita-mensal",
+          "video_id": "327e1a7e-c070-4ded-8feb-21fc77353237",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica de receita mensal](https://github.com/rocketseat-education/api-com-bun/commit/39729b31dea0f72d32b2f302cb102c429607a79b)\n\nNesta aula, vamos criar uma rota que retorna a receita mensal de um restaurante. Vamos utilizar a biblioteca DayJS para lidar com datas. A rota precisa retornar a receita do mês atual e a diferença percentual em relação ao mês anterior. Faremos uma query no banco de dados para buscar os pedidos criados a partir do primeiro dia do mês anterior até o momento atual. Em seguida, faremos a soma da receita e agruparemos por mês e ano. Por fim, calcularemos a diferença percentual entre as receitas e retornaremos os resultados.",
+          "duration": 881,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/009-rota-metrica-de-receita-mensal.txt",
+          "chars": 9982,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica de pedidos diários",
+          "slug": "rota-metrica-de-pedidos-diarios",
+          "video_id": "0d81983d-ed9a-4052-8403-c48318dbb7c8",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica de pedidos diários](https://github.com/rocketseat-education/api-com-bun/commit/5158f2e8d2c69a660a7878102821dedd6715f979)\n\nNesta aula, vamos criar uma rota chamada `getDayOrdersAmount ` que retornará o total de pedidos feitos no dia atual. Para isso, faremos uma contagem dos pedidos criados desde a meia-noite de ontem até agora. Em seguida, agruparemos os pedidos por dia e retornaremos o total de pedidos de hoje e de ontem separadamente. Com essas informações, poderemos calcular a diferença percentual entre os dois dias. Ao testar a rota, verificamos que tivemos 4 pedidos hoje, o que representa um aumento de 300% em relação ao pedido único de ontem.",
+          "duration": 547,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/010-rota-metrica-de-pedidos-diarios.txt",
+          "chars": 4565,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica de pedidos mensais",
+          "slug": "rota-metrica-de-pedidos-mensais",
+          "video_id": "0813c1a4-0716-4bad-9544-475f69676fe8",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica de pedidos mensais](https://github.com/rocketseat-education/api-com-bun/commit/d6da6345feb5cfd1f89edb594884f560ea451de1)\n\nNesta aula, vamos criar uma rota de métrica chamada `getMonthOrdersAmount`, que irá retornar o número total de vendas dentro de um mês, comparando com o mês anterior. Essa rota será semelhante à rota `getMonthReceipt`, então vamos copiar o código dessa rota e fazer algumas alterações. Vamos precisar fazer os mesmos cálculos, mas em vez de usar a receita, vamos usar a mesma query que usamos na rota `getDayOrdersAmount`. Vamos substituir algumas variáveis e nomes de campos e, em seguida, testar a rota no servidor. No final, teremos o número de pedidos deste mês e a variação em relação ao mês anterior.",
+          "duration": 207,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/011-rota-metrica-de-pedidos-mensais.txt",
+          "chars": 2023,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica de pedidos cancelados",
+          "slug": "rota-metrica-de-pedidos-cancelados",
+          "video_id": "86184ce0-b931-4f1e-9925-7c8fcb737742",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica de pedidos cancelados](https://github.com/rocketseat-education/api-com-bun/commit/8f4c2473379436853abee4be1ffa2087f700ac17)\n\nNesta aula, vamos criar uma rota chamada `getCanceledMonthOrdersAmount` que retornará o número de pedidos cancelados. Essa rota será semelhante à rota `getMonthOrdersAmount`, mas com um filtro adicional para o status do pedido ser \"cancelado\". No entanto, é importante ressaltar que, ao contrário das outras métricas, um número maior de pedidos cancelados é considerado ruim para o restaurante. Portanto, na interface, devemos exibir essa métrica como algo negativo, talvez em vermelho, quando o valor for maior que zero. Se for menor que zero, significa que houve uma melhora, e isso pode ser exibido como algo positivo.",
+          "duration": 122,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/012-rota-metrica-de-pedidos-cancelados.txt",
+          "chars": 1562,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica produtos populares",
+          "slug": "rota-metrica-produtos-populares",
+          "video_id": "b3695ac2-9f4a-4042-89c4-d70f022d3dc9",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica produtos populares](https://github.com/rocketseat-education/api-com-bun/commit/e18845fc21c7d05abff2003767e211bcab58b9b5)\n\nNesta aula, criamos uma rota que retorna os produtos mais populares da nossa aplicação. Começamos criando um arquivo chamado getPopularProducts.ts e definimos a URL da rota. Em seguida, fizemos uma consulta ao banco de dados para obter os 5 produtos mais vendidos e o total de vendas de cada um. Utilizamos um leftJoin para relacionar as tabelas de pedidos, itens de pedido e produtos. Depois, agrupamos os resultados pelo nome do produto e ordenamos pelo número de vendas. Por fim, limitamos os resultados para mostrar apenas os 5 produtos mais populares.",
+          "duration": 405,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/013-rota-metrica-produtos-populares.txt",
+          "chars": 4262,
+          "status": "ok"
+        },
+        {
+          "title": "Rota: Métrica receita diária no período",
+          "slug": "rota-metrica-receita-diaria-no-periodo",
+          "video_id": "ef52e59c-0dcb-4427-84aa-0eeb84ba763f",
+          "has_transcription": true,
+          "description": "[Commit: Rota: Métrica receita diária no período](https://github.com/rocketseat-education/api-com-bun/commit/e67dd32f2f9b6cb20f2e526a56ce5b68a855acde)\n\nNesta aula, vamos criar a rota getDailyReceiptInPeriod, que receberá um período de datas e retornará a receita diária dentro desse período. Vamos utilizar os parâmetros de consulta typeBox, from e to para definir o período. Faremos a filtragem dos pedidos no banco de dados com base nas datas fornecidas e agruparemos os resultados por dia. Também vamos ordenar os resultados antes de retorná-los para o front-end. Além disso, vamos lidar com a questão do timezone para garantir que as datas sejam corretamente consideradas.",
+          "duration": 1084,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/014-rota-metrica-receita-diaria-no-periodo.txt",
+          "chars": 10343,
+          "status": "ok"
+        },
+        {
+          "title": "Validando restaurante nas rotas",
+          "slug": "validando-restaurante-nas-rotas",
+          "video_id": "2a44a05e-570c-4e8d-9b9d-faf4556fbe42",
+          "has_transcription": true,
+          "description": "[Commit: Validando restaurante nas rotas](https://github.com/rocketseat-education/api-com-bun/commit/ddbc6408a05bf11464bc830962068af34339de5b)\n\nNeste trecho da aula, o instrutor destaca a importância de realizar uma verificação adicional ao buscar os detalhes de um pedido. Ele explica que é necessário verificar se o pedido pertence ao restaurante do usuário. Para fazer isso, ele sugere adicionar uma cláusula \"AND\" na consulta SQL, comparando o ID do restaurante com o ID do pedido. Essa verificação também deve ser feita em outras partes do código, como na aprovação e cancelamento de pedidos. Essa medida visa garantir a segurança e autorização correta das operações realizadas na aplicação.",
+          "duration": 86,
+          "type": "video",
+          "file": "03-rotas-de-produtos-e-pedidos/015-validando-restaurante-nas-rotas.txt",
+          "chars": 1194,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 34,
+    "with_vtt": 34,
+    "without_vtt": 0,
+    "total_chars": 242862
+  }
+}

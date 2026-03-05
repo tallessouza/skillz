@@ -1,0 +1,477 @@
+{
+  "journey_slug": "angular-curso-introdutorio",
+  "modules": [
+    {
+      "slug": "fundamentos-do-angular",
+      "title": "Primeiros Passos com Angular",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Introdução ao curso",
+          "slug": "introducao-ao-curso-1",
+          "video_id": "b7909f4a-bba7-4600-8d8d-0740767b7bac",
+          "has_transcription": true,
+          "description": "Sejam bem-vindos ao curso de Introdução ao Angular na Rocketseat! Sou Vinícius Barbosa e, neste curso, vamos explorar os fundamentos do Angular. Você vai entender a estrutura de um projeto, o papel de cada arquivo e diretório, além de aprender sobre componentes, serviços e navegação entre rotas. Tudo isso será aplicado em um projeto prático: um gerador de certificados. Prepare-se para colocar a mão na massa e dar os primeiros passos no desenvolvimento com Angular!",
+          "duration": 54,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/001-introducao-ao-curso.txt",
+          "chars": 886,
+          "status": "ok"
+        },
+        {
+          "title": "Instalando o Node.js",
+          "slug": "instalando-o-node-js-1",
+          "video_id": "96012ae4-502a-453d-8ffc-ec53576ddc02",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos configurar nosso ambiente de desenvolvimento começando pela instalação do Node.js, essencial para usar o Angular CLI. Mostrei como baixar a versão LTS do Node, instalar e verificar se tudo funcionou corretamente. Depois, instalei o Angular CLI usando o npm e conferi a versão instalada. Se você conseguiu seguir esses passos, significa que está tudo certo! Na próxima aula, vamos instalar o Visual Studio Code. Até lá!",
+          "duration": 174,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/002-instalando-o-node-js.txt",
+          "chars": 2267,
+          "status": "ok"
+        },
+        {
+          "title": "Instalando o Visual Studio Code e Extensões",
+          "slug": "instalando-o-visual-studio-code-e-extensoes",
+          "video_id": "00d4c112-0f02-4c89-9e99-3cf4cd643705",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos instalar o Visual Studio Code, o editor que usaremos para desenvolver em Angular. Após configurar o Node e o Angular, faremos o download do Visual Studio Code e instalaremos algumas extensões essenciais, como o Angular Language Service e o Editor Config. Também menciono uma extensão opcional, o Material Icon Theme, que ajuda na visualização dos arquivos. Com tudo instalado, estaremos prontos para criar um projeto Angular na próxima aula. Te espero lá!",
+          "duration": 240,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/003-instalando-o-visual-studio-code-e-extensoes.txt",
+          "chars": 3312,
+          "status": "ok"
+        },
+        {
+          "title": "Diretórios e Arquivos do Angular",
+          "slug": "diretorios-e-arquivos-do-angular",
+          "video_id": "a82a45ab-fdec-4a96-8e0d-b214b00e9900",
+          "has_transcription": false,
+          "description": "Nesta aula, explorei a estrutura do diretório de um projeto Angular, explicando a função de cada arquivo e pasta. Comecei criando um novo projeto com o Angular CLI e mostrei como ele organiza os arquivos, como a pasta `src`, que contém o código-fonte, e o `app`, onde ficam os componentes principais. Também abordei arquivos importantes como `index.html`, `main.ts`, e `angular.json`. Na próxima aula, vamos nos aprofundar nas configurações do `angular.json`.",
+          "duration": 546,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Configurações no Angular.json",
+          "slug": "configuracoes-no-angular-json",
+          "video_id": "66fb7afd-564e-4d45-9f58-eff668062397",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Componente: Secondary Button](https://github.com/rocketseat-education/curso-entrada-angular/tree/36451fb3812f76e85d8e4d6d69f86d34ccdd98d3)\n\nNesta aula, vou explorar as principais configurações do arquivo `angular.json`, que centraliza as definições do seu projeto Angular. Vamos analisar seções como \"Projects\", onde encontramos detalhes sobre o projeto, e \"architect\", que inclui opções de build e caminhos de saída. Também falaremos sobre como definir estilos e scripts globais, além de configurar orçamentos para controlar o tamanho da build. Prepare-se para aplicar esse conhecimento na criação do seu primeiro componente na próxima aula!",
+          "duration": 346,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Criando o primeiro componente",
+          "slug": "criando-o-primeiro-componente",
+          "video_id": "089f5a8e-fefc-4850-b4e8-8614581f7b1e",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Criando o primeiro componente](https://github.com/rocketseat-education/curso-entrada-angular/tree/ff836106f997fe105580c9742d251e57cf6c31f8)\n\nNesta aula, vamos criar nosso primeiro componente usando o Angular CLI. Vou explicar os três arquivos principais de um componente: HTML, TypeScript e CSS. Criaremos uma pasta chamada \"components\" para organizar nossos componentes. Usaremos o comando `ng g c navbar` para gerar um componente de barra de navegação. Após a criação, vou mostrar como referenciar esse componente no HTML principal da aplicação. Ao final, você terá criado seu primeiro componente e estará pronto para os próximos desafios!",
+          "duration": 511,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/006-criando-o-primeiro-componente.txt",
+          "chars": 7074,
+          "status": "ok"
+        },
+        {
+          "title": "Ciclo de vida de um componente - NgOnInit",
+          "slug": "ciclo-de-vida-de-um-componente-ng-on-init",
+          "video_id": "95c7677d-74f5-46bd-ab42-09dcfd3a9891",
+          "has_transcription": true,
+          "description": "Nesta aula, exploramos os ciclos de vida de um componente no Angular, focando no `ngOnInit`. Utilizamos o componente NavBar como exemplo, onde implementamos o `ngOnInit` para exibir uma mensagem no console ao inicializar. Também discutimos como controlar a exibição do componente usando condicionais, como `*ngIf`, e a diferença entre esconder um componente e não inicializá-lo. Por fim, abordamos a importância de importar o `CommonModule` para usar diretivas como `ngIf`.",
+          "duration": 532,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/007-ciclo-de-vida-de-um-componente-ngoninit.txt",
+          "chars": 7102,
+          "status": "ok"
+        },
+        {
+          "title": "Visão geral do projeto Figma",
+          "slug": "visao-geral-do-projeto-figma",
+          "video_id": "6b913d5c-f637-4f4b-b1d1-33fa5523283e",
+          "has_transcription": true,
+          "description": "🔗 [Link do Figma do projeto](https://www.figma.com/community/file/1508905005736436009)\n\nNesta aula, vou apresentar o projeto que vamos desenvolver ao longo do curso de introdução ao Angular: um gerador de certificados. Vamos explorar o layout no Figma, que inclui uma lista de certificados, um formulário para adicionar atividades e a opção de gerar e baixar o certificado. Também discutiremos a criação de componentes, como a navbar e itens da lista, e como reaproveitar conteúdo. Agora que já identificamos os componentes, é hora de colocar a mão na massa e começar a codar!",
+          "duration": 281,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/008-visao-geral-do-projeto-figma.txt",
+          "chars": 4399,
+          "status": "ok"
+        },
+        {
+          "title": "Componente: Navbar",
+          "slug": "componente-navbar",
+          "video_id": "06e498e8-e2c6-4377-87a7-3d92aad5c299",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Componente: Navbar](https://github.com/rocketseat-education/curso-entrada-angular/tree/0941a66819cdfe31fe5e17b7ed2797c12381bbc8)\n\nNesta aula, vamos criar o componente Navbar, fundamental para a navegação entre páginas. Começamos instalando o Bootstrap, um framework de estilização, e configurando seu CSS no Angular. Em seguida, desenvolvemos a estrutura HTML do Navbar, adicionando uma logo e itens de menu. Utilizamos classes do Bootstrap para garantir responsividade e estilização. Também incluímos ícones do Fosforicon. Ao final, ajustamos a aparência para que fique semelhante ao design proposto. Vamos avançar para os próximos componentes!",
+          "duration": 867,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/009-componente-navbar.txt",
+          "chars": 11782,
+          "status": "ok"
+        },
+        {
+          "title": "Componente: Primary Button",
+          "slug": "componente-primary-button",
+          "video_id": "0434c6e7-f602-43f8-b241-55399e52d391",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Componente: Primary Button](https://github.com/rocketseat-education/curso-entrada-angular/tree/6541607f7aa80934af55f8df5fd085107bad841e)\n\nNesta aula, vamos criar o Primary Button, um componente essencial da nossa aplicação. Após finalizar a Navbar, focamos em desenvolver botões reutilizáveis, utilizando um Style Guide para referência. Abordamos a criação do botão primário e secundário, explorando seus estados: default, hover e disable. Aprendi a aplicar estilos como linear gradient e opacidade, além de como importar corretamente o componente. Ao final, deixei um teaser sobre o desenvolvimento do Secondary Button na próxima aula.",
+          "duration": 649,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/010-componente-primary-button.txt",
+          "chars": 8857,
+          "status": "ok"
+        },
+        {
+          "title": "Componente: Secondary Button",
+          "slug": "componente-secondary-button",
+          "video_id": "efcb4d8e-8760-4276-8251-eeb7c41402ef",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Componente: Secondary Button](https://github.com/rocketseat-education/curso-entrada-angular/tree/36451fb3812f76e85d8e4d6d69f86d34ccdd98d3)\n\nNesta aula, vamos criar o botão secundário da nossa aplicação, que aparece em vários componentes. Começamos desenvolvendo o `Secondary Button`, que tem três estados, semelhantes ao `Primary Button`, mas com cores e tamanhos diferentes. Reaproveitamos o CSS do botão primário, ajustando alguns atributos. Também adicionamos um ícone dinâmico e centralizamos o texto. Finalizamos o botão e, na próxima aula, vamos trabalhar no componente de item de uma lista.",
+          "duration": 356,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/011-componente-secondary-button.txt",
+          "chars": 4736,
+          "status": "ok"
+        },
+        {
+          "title": "Componente: Item da Lista de Certificados",
+          "slug": "componente-item-da-lista-de-certificados",
+          "video_id": "6b91d88e-fc1a-4a1c-8887-eefea850be00",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Componente: Item da Lista de Certificados](https://github.com/rocketseat-education/curso-entrada-angular/tree/ae7a5afe37adf0b92ffb0d4ee25e4345298a8d69)\n\nNesta aula, vamos criar um componente que representa cada certificado na lista de certificados da nossa aplicação. Começamos analisando o design no Figma e, em seguida, desenvolvemos o componente \"item certificado\" utilizando Bootstrap. Aprendemos a estruturar o HTML, aplicar estilos e integrar um botão que redireciona para outra página. Também discutimos a importância de tornar o componente dinâmico, permitindo que informações como nome do aluno e data sejam atualizadas facilmente. Por fim, ajustamos a apresentação visual para se alinhar ao design proposto.",
+          "duration": 587,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/012-componente-item-da-lista-de-certificados.txt",
+          "chars": 7915,
+          "status": "ok"
+        },
+        {
+          "title": "Componente: Interface Base com ng-content",
+          "slug": "componente-interface-base-com-ng-content",
+          "video_id": "20c18435-3339-4b90-9d4c-a02217977a8f",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Componente: Interface Base com ng-content](https://github.com/rocketseat-education/curso-entrada-angular/tree/18da8d95ccd6207c698682f39e7d20df034fa1c8)\n\nNessa aula, vamos criar a Base UI, que servirá como a interface padrão para nossas páginas. Antes, revisamos os componentes que já fizemos, como botões e inputs, e discutimos a aplicação do ngModel. Em seguida, desenvolvemos o componente Base UI, que usará ng-content para injetar conteúdo HTML. Também aplicamos margens padrão usando Bootstrap, garantindo um espaçamento consistente em todas as páginas. Agora, com a Base UI pronta, estamos prontos para começar a desenvolver nossas telas.",
+          "duration": 479,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/013-componente-interface-base-com-ng-content.txt",
+          "chars": 6471,
+          "status": "ok"
+        },
+        {
+          "title": "Aviso da página de lista de certificados",
+          "slug": "aviso-da-pagina-de-lista-de-certificados",
+          "video_id": "be029f0b-7459-4ea6-a63a-35171c3b3255",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Aviso da página de lista de certificados](https://github.com/rocketseat-education/curso-entrada-angular/tree/2a6a8ac72aa22e63bbda43bedcfc7bf7d5af7366)\n\nNessa aula, desenvolvemos a página de lista de certificados, que possui dois estados: um sem certificados gerados e outro com pelo menos um. Começamos criando a estrutura da página, incluindo título e subtítulo, e aplicamos estilizações conforme o design do Figma. Também implementamos um card para exibir informações e um botão para gerar certificados. Por fim, ajustamos a responsividade da página. Na próxima aula, vamos trabalhar na exibição da lista de certificados gerados.",
+          "duration": 877,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Lista de certificados",
+          "slug": "lista-de-certificados",
+          "video_id": "921dd221-ab5f-48d7-a110-ef0466203ee1",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Lista de certificados](https://github.com/rocketseat-education/curso-entrada-angular/tree/fcbfc44d4ae185c63c4b562d0817a77fa9f79836)\n\nNesta aula, vamos criar a lista de certificados utilizando um componente que já desenvolvemos anteriormente. Focamos no layout para exibir um ou mais itens na lista, comentando partes do código que ainda não são dinâmicas. Criei uma nova classe CSS para estilizar a lista e ajustei o layout para que os itens ocupem o espaço corretamente. Ao duplicar o componente, conseguimos simular uma lista funcional e responsiva. Na próxima aula, vamos trabalhar no formulário.",
+          "duration": 179,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/015-lista-de-certificados.txt",
+          "chars": 2419,
+          "status": "ok"
+        },
+        {
+          "title": "Página de formulário do certificado",
+          "slug": "pagina-de-formulario-do-certificado",
+          "video_id": "4637b467-d850-4cbc-a437-ee3151600ddd",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Página de formulário do certificado](https://github.com/rocketseat-education/curso-entrada-angular/tree/1046ced9f09f226425993d2fb21252655b6cef10)\n\nNessa aula, desenvolvemos um formulário para capturar informações do usuário e gerar um certificado. Começamos criando uma nova página e ajustando o HTML e CSS para garantir que o layout estivesse alinhado com o design do Figma. Utilizamos classes do Bootstrap para estilizar os inputs e botões, além de reaproveitar estilos globais. Também discutimos a importância de evitar a duplicação de código. Na próxima aula, vamos focar em finalizar a lista de atividades e fazer ajustes finais no formulário.",
+          "duration": 893,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Lista de atividades do formulário",
+          "slug": "lista-de-atividades-do-formulario",
+          "video_id": "89e530b8-d52c-4c54-aa44-26d5b1f87d51",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Lista de atividades do formulário](https://github.com/rocketseat-education/curso-entrada-angular/tree/e1a91e84ca0fd820b951ed84ad2daabb45b1c279)\n\nNesta aula, vamos finalizar a lista de atividades do nosso formulário. Começamos criando uma nova div para os itens, adicionando classes para estilização no CSS. Utilizamos ícones do Figma e ajustamos o layout com flexbox. Também implementamos um divisor entre os itens e estilizamos o botão de remoção. Ao longo do processo, conferimos as medidas e cores no Figma, garantindo que tudo ficasse alinhado. Por fim, ajustamos os inputs e finalizamos o formulário de certificados.",
+          "duration": 821,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Estilizando o estado focus dos inputs",
+          "slug": "estilizando-o-estado-focus-dos-inputs",
+          "video_id": "81f52f64-a689-4843-acbc-dae6914f23a2",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Estilizando o estado focus dos inputs](https://github.com/rocketseat-education/curso-entrada-angular/tree/d5a29cb086c9ce9b8f8a9437ae6f1790afac7e11)\n\nNesta aula, vamos personalizar os estados do input, como o foco e a exibição de erros. Começamos ajustando a borda do input quando ele está em foco, utilizando CSS e referências do Figma. Abordamos a questão da borda extra do Bootstrap e como removê-la. Também discutimos a estilização do label associado ao input focado, evitando que todos os labels sejam afetados. Por fim, falamos sobre a importância da acessibilidade ao associar labels a inputs. Na próxima aula, criaremos mensagens de erro para os inputs.",
+          "duration": 396,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/018-estilizando-o-estado-focus-dos-inputs.txt",
+          "chars": 5009,
+          "status": "ok"
+        },
+        {
+          "title": "Criando e estilizando a mensagem de erro dos inputs",
+          "slug": "criando-e-estilizando-a-mensagem-de-erro-dos-inputs",
+          "video_id": "03256028-8699-41ea-9ccd-ba47a46a0e17",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula: Criando e estilizando a mensagem de erro dos inputs](https://github.com/rocketseat-education/curso-entrada-angular/tree/c5d39afac387792e78ee09e612af1dfa76f5c89c)\n\nNesta aula, vamos aprender a criar mensagens de erro para inputs. Quando o usuário insere informações incorretas, uma mensagem estilizada aparecerá abaixo do campo. Começamos no HTML, criando uma div para o ícone e a mensagem, utilizando classes do Bootstrap para alinhamento. Ajustamos o espaçamento e a tipografia, aplicando cores e margens adequadas. Também discutimos como tornar a mensagem dinâmica, alterando a cor do label em caso de erro. Na próxima aula, iniciaremos a criação da página do certificado. Te espero lá!",
+          "duration": 350,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/019-criando-e-estilizando-a-mensagem-de-erro-dos-inputs.txt",
+          "chars": 4459,
+          "status": "ok"
+        },
+        {
+          "title": "Página de certificado",
+          "slug": "pagina-de-certificado",
+          "video_id": "3cda27f3-0169-4a9e-a760-1268174f948d",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Página de certificado](https://github.com/rocketseat-education/curso-entrada-angular/tree/e6fdafd05693cf5290759ef449187f1e704b133a)\n\nNesta aula, desenvolvemos a página do certificado, incluindo o botão de download. Começamos baixando os assets necessários do Figma, como a logo em SVG para melhor qualidade. Organizei os arquivos em pastas e criei a estrutura HTML da página, utilizando classes do Bootstrap para centralizar os elementos. Também estilizei o certificado com um background e adicionei um ícone. Na próxima aula, vamos inserir as informações do certificado. Espero você lá!",
+          "duration": 1039,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Adicionando as informações do certificado",
+          "slug": "adicionando-as-informacoes-do-certificado",
+          "video_id": "d92c30f3-2d83-43ef-bf9e-b1b348a4923e",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Adicionando as informações do certificado](https://github.com/rocketseat-education/curso-entrada-angular/tree/889ef14a7859f0377666b56c4ac9ba176284f71c)\n\nNesta aula, vamos finalizar o desenvolvimento do nosso certificado, adicionando informações como título, nome do aluno e lista de atividades. Começamos criando uma nova div para o conteúdo e estilizando com CSS. Trabalhamos com classes para o título, subtítulo e parágrafos, ajustando espaçamentos e alinhamentos. Também incluímos uma imagem de assinatura. Na próxima aula, vamos aplicar fontes em todo o projeto, tornando o visual ainda mais interessante.",
+          "duration": 966,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Aplicando a fonte Inter e Dancing Script no projeto",
+          "slug": "aplicando-a-fonte-inter-e-dancing-script-no-projeto",
+          "video_id": "62865cd1-44c6-431c-9f8a-551e6aa56dc6",
+          "has_transcription": false,
+          "description": "🔗 [Commit da aula: Aplicando a fonte Inter e Dancing Script no projeto](https://github.com/rocketseat-education/curso-entrada-angular/tree/9348fa76d50577e5c926e0b0f3f32fcd28fdedac)\n\nNesta aula, vamos aplicar a fonte \"Inter\" em todo o projeto, utilizando o Google Fonts. Mostro como referenciar a fonte diretamente no HTML e aplicar no CSS, garantindo que ela prevaleça sobre o Bootstrap. Também ajustamos o espaçamento das letras no certificado e aplicamos a fonte \"Dancing Script\" para o nome do aluno. Ao final, conferimos as mudanças em diferentes páginas do projeto. Na próxima aula, faremos ajustes gerais nos componentes já criados.",
+          "duration": 394,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Ajuste Geral em Todos os Componentes",
+          "slug": "ajuste-geral-em-todos-os-componentes",
+          "video_id": "f382467b-5a82-4cc8-87df-f36b170a8196",
+          "has_transcription": true,
+          "description": "🔗 [Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/compare/9348fa7...5e816e3)\n\nNesta aula, fizemos ajustes em todos os componentes que criamos até agora. Começamos revisando a navbar, corrigindo o padding e o font-weight dos links. Também ajustamos o tamanho dos ícones e o espaçamento entre os elementos. No formulário, garantimos que os grupos de input tivessem a margem correta e aplicamos o font-weight nos botões. Por fim, ajustamos a margem do nav-item para garantir que tudo estivesse alinhado com o design. Agora estamos prontos para seguir em frente!",
+          "duration": 397,
+          "type": "video",
+          "file": "01-fundamentos-do-angular/023-ajuste-geral-em-todos-os-componentes.txt",
+          "chars": 5033,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "interatividade-e-renderizacao",
+      "title": "Interatividade e Renderização",
+      "order": 2,
+      "lessons": [
+        {
+          "title": "Criando Rotas da Aplicação",
+          "slug": "criando-rotas-da-aplicacao-1",
+          "video_id": "095564f3-f6ab-433e-93fa-5d796ba865b8",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/72b9ab5e214bacd5e0eb3a93ccbda1d07d249c74)\n\nNesta aula, vamos explorar como definir rotas na nossa aplicação para facilitar a navegação entre páginas. Começamos entendendo o conceito de rotas e como elas permitem acessar diferentes componentes sem modificar o código manualmente. Aprendemos a configurar o arquivo `app.routes.ts`, onde definimos as rotas e os componentes correspondentes. Também abordamos a utilização do `router-outlet` para renderizar dinamicamente as páginas. Na próxima aula, vamos implementar a navegação através de botões.",
+          "duration": 591,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/001-criando-rotas-da-aplicacao.txt",
+          "chars": 7886,
+          "status": "ok"
+        },
+        {
+          "title": "Usando RouterLink para Navegação entre as Páginas",
+          "slug": "usando-router-link-para-navegacao-entre-as-paginas",
+          "video_id": "4a2a545f-cc33-48f3-96d8-7b4c802d50df",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/9f6deef1c79a99109a7a2399a1f2184c58c81d18)\n\nNesta aula, explorei como usar o Router Link para redirecionar usuários entre páginas ao clicar em botões. Demonstrei a configuração do Router Link na Navibar para acessar a lista de certificados e gerar novos certificados. Também abordei como lidar com rotas dinâmicas usando colchetes e variáveis no TypeScript. Por fim, implementei um botão de voltar e discuti a navegação entre as páginas da aplicação. Na próxima aula, apresentarei outra abordagem para redirecionamento.",
+          "duration": 536,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/002-usando-routerlink-para-navegacao-entre-as-paginas.txt",
+          "chars": 7815,
+          "status": "ok"
+        },
+        {
+          "title": "Usando o Router para Navegação via TypeScript",
+          "slug": "usando-o-router-para-navegacao-via-type-script",
+          "video_id": "832e6a54-e985-418a-a6d2-0bb2479c3f03",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/c122a83a629cf12bc3bfa3ccb21983e0b056e5bd)\n\nNesta aula, explorei como usar o Router do Angular para redirecionar usuários entre páginas utilizando TypeScript. Começamos entendendo a diferença entre o construtor e o ngOnInit, e como injetar o Router no componente. Demonstrei como criar uma função para redirecionar, utilizando o método `navigate` e `navigateByUrl`. Também discuti boas práticas ao lidar com rotas dinâmicas. Na próxima aula, vamos iniciar o desenvolvimento do formulário para cadastrar itens.",
+          "duration": 429,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/003-usando-o-router-para-navegacao-via-typescript.txt",
+          "chars": 6154,
+          "status": "ok"
+        },
+        {
+          "title": "Usando o NgModel no Formulário",
+          "slug": "usando-o-ng-model-no-formulario",
+          "video_id": "41f1c2fe-5486-4fc9-af24-d741659a5593",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/efc70780ec93dfb996d1f5cbb13e777282fea94f)\n\nNessa aula, começamos a desenvolver um formulário utilizando o ngModel no Angular. Expliquei o conceito de two-way binding, onde o valor do input se vincula a uma variável, permitindo que alterações em um reflitam no outro em tempo real. Demonstrei como criar variáveis no TypeScript e vinculá-las ao HTML. Também abordamos a criação de uma lista de atividades, utilizando um loop para exibir os itens e uma lógica para evitar a repetição de elementos. Na próxima aula, vamos trabalhar nas mensagens de erro do formulário.",
+          "duration": 582,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/004-usando-o-ngmodel-no-formulario.txt",
+          "chars": 7338,
+          "status": "ok"
+        },
+        {
+          "title": "Validando os Campos do Formulário",
+          "slug": "validando-os-campos-do-formulario",
+          "video_id": "b135b929-4383-413f-bbda-5f84b8cc8b77",
+          "has_transcription": false,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/0285edfdd3601bc93f11edbaa35efc355941b4b4)\n\nNesta aula, vamos focar na validação de campos de um formulário utilizando variáveis de referência de template. Aprendemos a criar essas variáveis no HTML e a vinculá-las ao `ngForm`, permitindo acessar as validações como `form.valid` e `form.invalid`. Implementamos mensagens de erro dinâmicas para campos obrigatórios e de comprimento máximo, além de aplicar estilos condicionais. Por fim, simplificamos o código ao criar uma função para verificar a validade dos campos, tornando tudo mais limpo e eficiente. Te espero na próxima aula!",
+          "duration": 887,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Criando Inputs para os botões",
+          "slug": "criando-inputs-para-os-botoes-1",
+          "video_id": "7e18a25e-6f6b-47ca-9bd6-b11a6fd3f735",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/efdd8a0c65f4eea5beace64ff5ff8210af3b0d5a)\n\nNesta aula, ajustamos a descrição dos botões, tornando o texto dinâmico. Aprendemos a usar inputs para personalizar os botões primário e secundário, permitindo que o texto e ícones sejam passados como parâmetros. Também implementamos a desabilitação dos botões com base na validade do formulário, garantindo que o botão \"Gerar Certificado\" só fique ativo quando as condições forem atendidas. Na próxima aula, vamos adicionar funcionalidades para permitir que o usuário insira atividades na lista.",
+          "duration": 1162,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/006-criando-inputs-para-os-botoes.txt",
+          "chars": 15225,
+          "status": "ok"
+        },
+        {
+          "title": "Adicionando Atividades na Lista do Formulário",
+          "slug": "adicionando-atividades-na-lista-do-formulario",
+          "video_id": "f224ecd2-6f82-455c-815f-52aa178b352a",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/49f955283455f3d45a796a9a47ec57b57cce64b9)\n\nNessa aula, continuamos o desenvolvimento do formulário, permitindo que os usuários adicionem e removam atividades. Utilizamos um botão \"Adicionar\" para incluir novas atividades na lista e implementamos uma função para excluir itens, capturando o índice do item clicado. Também ajustamos o código para limpar o campo de entrada após a adição. Ao final, a lista de atividades está funcionando corretamente, e o botão \"Gerar Certificado\" é habilitado ou desabilitado conforme a lista. Na próxima aula, vamos criar uma interface.",
+          "duration": 281,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/007-adicionando-atividades-na-lista-do-formulario.txt",
+          "chars": 3373,
+          "status": "ok"
+        },
+        {
+          "title": "Criando Uma Interface Para Certificado",
+          "slug": "criando-uma-interface-para-certificado",
+          "video_id": "f826dbbb-ca50-4b12-a875-df414b8d2c94",
+          "has_transcription": false,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/95547b4049b15f7b31ff0c860ff1371c3211c62e)\n\nNesta aula, vamos desenvolver uma interface para gerenciar certificados, facilitando o armazenamento de informações como o nome do aluno e a lista de atividades. Começamos criando a interface `certificado.ts`, definindo um contrato para o objeto. Em seguida, implementamos a função de submit no formulário, vinculando os dados diretamente ao objeto certificado. Também discutimos a importância de validar o formulário antes de prosseguir. Na próxima aula, daremos início à criação do serviço para manipular esses dados.",
+          "duration": 530,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Criando um Serviço para Armazenar as Informações do Certificados",
+          "slug": "criando-um-servico-para-armazenar-as-informacoes-do-certificados",
+          "video_id": "5942b216-a7dd-4a1b-8c96-14d71772c693",
+          "has_transcription": false,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/9282464f0512e15824271f4f36523162b743143d)\n\nNessa aula, vamos criar um serviço para gerenciar certificados no Angular. Primeiro, explico o que é um serviço e como ele pode compartilhar informações em diferentes partes do aplicativo. Em seguida, adicionamos um atributo de data de emissão ao certificado e implementamos a lógica para formatar essa data. Criamos um serviço que armazena os certificados em uma lista e testamos a adição de novos itens. No final, discutimos a necessidade de persistir esses dados, que será abordada na próxima aula.",
+          "duration": 784,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Recuperando informações dos certificados nas páginas",
+          "slug": "recuperando-informacoes-dos-certificados-nas-paginas",
+          "video_id": "3728d108-1060-45d4-bb11-9af85e74d992",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/f97cc8bea30719f80a4c393fb52f914089eec766)\n\nNesta aula, preparei as informações do serviço de certificados para que possamos renderizá-las nas páginas. Trabalhei na lista de certificados e na página de detalhes, utilizando TypeScript para injetar o serviço e gerenciar a persistência dos dados. Abordei a importância de usar um ID único, preferindo UUIDs para evitar problemas de indexação. Também implementei a limpeza de campos após a geração de certificados e a persistência dos dados no local storage. Agora, estamos prontos para avançar para o próximo módulo!",
+          "duration": 1518,
+          "type": "video",
+          "file": "02-interatividade-e-renderizacao/010-recuperando-informac-o-es-dos-certificados-nas-pa-ginas.txt",
+          "chars": 20677,
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "slug": "gerando-certificados-1",
+      "title": "Fluxo de Controle e Geração de certificados",
+      "order": 3,
+      "lessons": [
+        {
+          "title": "Listando o histórico de certificados gerados",
+          "slug": "listando-o-historico-de-certificados-gerados",
+          "video_id": "e13d4af5-e1df-4606-9010-589cba4b3bc5",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/8fe287271353dab991c83e2a6c408fa23ef49050)\n\nNessa aula, vamos aprender a popular os itens de certificados na página. Começamos ajustando o HTML para incluir inputs para o nome do aluno e a data de emissão. Utilizamos um laço de repetição para exibir a lista de certificados e implementamos verificações para garantir que a lista não esteja vazia. Também discutimos a lógica para redirecionar o usuário após gerar um certificado. Na próxima aula, vamos focar em renderizar as informações do certificado na página.",
+          "duration": 413,
+          "type": "video",
+          "file": "03-gerando-certificados-1/001-listando-o-historico-de-certificados-gerados.txt",
+          "chars": 5676,
+          "status": "ok"
+        },
+        {
+          "title": "Exibindo as informações do certificado na página",
+          "slug": "exibindo-as-informacoes-do-certificado-na-pagina",
+          "video_id": "8acc9422-e19b-4a7a-92a1-9d51adeffb5c",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/af7124565d991a6c3ad69a12f38adce9da732d16)\n\nNessa aula, mostrei como exibir as informações do certificado na página após o usuário gerá-lo. Ao clicar em \"gerar certificado\", o usuário é redirecionado para a tela do certificado, onde as informações são carregadas. Também discutimos como verificar se o certificado está definido antes de exibi-lo e como organizar a lista de certificados por ordem de criação. Por fim, deixamos a funcionalidade de download do certificado para a próxima aula.",
+          "duration": 561,
+          "type": "video",
+          "file": "03-gerando-certificados-1/002-exibindo-as-informacoes-do-certificado-na-pagina.txt",
+          "chars": 7776,
+          "status": "ok"
+        },
+        {
+          "title": "Criando a funcionalidade de download do certificado",
+          "slug": "criando-a-funcionalidade-de-download-do-certificado",
+          "video_id": "2bdde35f-936f-4b9e-af18-a4b902768c1b",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/2bbe56756690ee2ba06667a06e8d442da6431b7f)\n\nNesta aula, vamos implementar a funcionalidade de download do certificado em formato de imagem. Usaremos a biblioteca HTML to Canvas, que instalamos via npm. Mostrarei como selecionar a área do certificado e transformá-la em uma imagem. Também abordaremos a criação de um link para simular o download, definindo o nome do arquivo e garantindo que ele não tenha espaços. Ao final, faremos um teste para verificar a qualidade da imagem e ajustaremos a resolução. Na próxima aula, revisaremos a aplicação para o deploy.",
+          "duration": 414,
+          "type": "video",
+          "file": "03-gerando-certificados-1/003-criando-a-funcionalidade-de-download-do-certificado.txt",
+          "chars": 5541,
+          "status": "ok"
+        },
+        {
+          "title": "Revisando a aplicação antes do deploy",
+          "slug": "revisando-a-aplicacao-antes-do-deploy",
+          "video_id": "6389ec16-ca32-4c22-a682-5a0ce431c82a",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/fa7a6c66a5a88e8b3bbb5448f4f0d6ec729f3905)\n\nNesta aula, fizemos uma revisão da aplicação antes do deploy. Verificamos a navegação, o download do certificado e a necessidade de trocar o ícone da aba. Também removemos os `console.log` desnecessários e funções que não estavam sendo utilizadas. Testamos a criação de um novo certificado e confirmamos que tudo estava funcionando corretamente. Por fim, limpamos o código, removendo componentes não utilizados. Na próxima aula, vamos focar na publicação da aplicação.",
+          "duration": 162,
+          "type": "video",
+          "file": "03-gerando-certificados-1/004-revisando-a-aplicacao-antes-do-deploy.txt",
+          "chars": 2187,
+          "status": "ok"
+        },
+        {
+          "title": "Fazendo o deploy da aplicação",
+          "slug": "fazendo-o-deploy-da-aplicacao",
+          "video_id": "a22acd3a-c010-47cc-a7f0-b640b4d0d642",
+          "has_transcription": true,
+          "description": "[Commit da aula](https://github.com/rocketseat-education/curso-entrada-angular/commit/92bdf9f8c880ccb483343500b44c3e49127db820)\n\nNesta aula, mostrei como fazer o deploy da nossa aplicação usando o Netlify. Começamos criando um arquivo `netlify.toml` para configurar o projeto, definindo o comando de build e o caminho de publicação. Depois, fizemos o commit e o push do código para o GitHub. Em seguida, criei uma conta no Netlify, conectei ao GitHub e configurei o deploy. Ao final, testamos a aplicação em produção e confirmei que tudo funcionou direitinho. Parabéns por concluir o curso de introdução ao Angular!",
+          "duration": 363,
+          "type": "video",
+          "file": "03-gerando-certificados-1/005-fazendo-o-deploy-da-aplicacao.txt",
+          "chars": 4962,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 38,
+    "with_vtt": 27,
+    "without_vtt": 11,
+    "total_chars": 176331
+  }
+}

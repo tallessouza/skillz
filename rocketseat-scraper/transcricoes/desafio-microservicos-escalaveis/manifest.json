@@ -1,0 +1,78 @@
+{
+  "journey_slug": "desafio-microservicos-escalaveis",
+  "modules": [
+    {
+      "slug": "desafio-microservicos-escalaveis",
+      "title": "Curso Microsserviços Escaláveis",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Visão geral sobre a arquitetura de Microsserviços",
+          "slug": "visao-geral-sobre-a-arquitetura-de-microsservicos",
+          "video_id": "3aaafab2-80cf-4317-b522-48c6e0c9fee0",
+          "has_transcription": true,
+          "description": "[Repositório](https://github.com/rocketseat-education/desafio-microsservicos-nodejs)\n\nFala, galera! Na nossa primeira aula do Desafio Microsserviços Escaláveis com Node, eu compartilhei minha experiência e como vamos construir dois micro-serviços usando Node, RabbitMQ e AWS com Pulumi. Abordamos conceitos como Distributed Tracing, a importância de separar serviços por domínio e não apenas por módulos, e discutimos desafios como latência, consistência de dados e idempotência. Preparem-se para um conteúdo intermediário e prático que vai transformar sua visão sobre desenvolvimento. Bora codar!",
+          "duration": 4000,
+          "type": "video",
+          "file": "01-desafio-microservicos-escalaveis/001-visao-geral-sobre-a-arquitetura-de-microsservicos.txt",
+          "chars": 60668,
+          "status": "ok"
+        },
+        {
+          "title": "Criando serviços",
+          "slug": "criando-servicos-1",
+          "video_id": "d8997ee4-5a9f-4ed0-b6e6-dd7ca8fbc759",
+          "has_transcription": true,
+          "description": "[Repositório](https://github.com/rocketseat-education/desafio-microsservicos-nodejs)\n\nNessa aula, mergulhamos na construção de um sistema distribuído do zero, focando em microserviços e mensageria. Abordamos a criação de dois projetos: um para pedidos e outro para faturas, utilizando Fastify e Docker. Discutimos a importância de DevOps e como microserviços vão além do código, envolvendo infraestrutura e colaboração. Também falamos sobre a configuração de um banco de dados PostgreSQL e a integração com RabbitMQ para mensageria. Ao final, introduzimos o conceito de observabilidade com Jaeger e OpenTelemetry. Prepare-se para mais conteúdo nas próximas aulas!",
+          "duration": 5892,
+          "type": "video",
+          "file": "01-desafio-microservicos-escalaveis/002-criando-servicos.txt",
+          "chars": 71388,
+          "status": "ok"
+        },
+        {
+          "title": "API Gateway e início do deploy com Pulumi",
+          "slug": "api-gateway-e-inicio-do-deploy-com-pulumi",
+          "video_id": "e7927c92-5839-4369-95da-a088bf969e09",
+          "has_transcription": true,
+          "description": "[Repositório](https://github.com/rocketseat-education/desafio-microsservicos-nodejs)\n\nNa aula de hoje, exploramos a criação de um API Gateway usando o Kong e iniciamos o deploy da nossa aplicação na AWS com Pulumi. Discutimos a importância de entender microserviços e como a infraestrutura como código pode facilitar o gerenciamento de recursos. Abordamos conceitos como load balancer, autenticação e a diferença entre proxy e gateway. Além disso, enfatizei a relevância de ter uma visão ampla como desenvolvedor, integrando práticas de DevOps ao dia a dia. Amanhã, vamos finalizar o deploy e abordar escalabilidade e autenticação.",
+          "duration": 6255,
+          "type": "video",
+          "file": "01-desafio-microservicos-escalaveis/003-api-gateway-e-inicio-do-deploy-com-pulumi.txt",
+          "chars": 78115,
+          "status": "ok"
+        },
+        {
+          "title": "Finalizando Deploy",
+          "slug": "finalizando-deploy",
+          "video_id": "2385b205-b822-4afb-9592-a622e810351b",
+          "has_transcription": true,
+          "description": "[Repositório](https://github.com/rocketseat-education/desafio-microsservicos-nodejs)\n\nHoje, finalizei nossa jornada de deploy com Pulumi, onde configuramos e subimos serviços na AWS. Discutimos a importância de usar infraestrutura como código e como o Pulumi se destaca em relação ao AWS CDK. Revisamos as aulas anteriores, abordamos o setup do RabbitMQ e Grafana, e criamos listeners no Kong para gerenciar o tráfego. Além disso, falamos sobre práticas de CI/CD e a importância de variáveis de ambiente. O código completo ficará disponível no GitHub para vocês explorarem.",
+          "duration": 5954,
+          "type": "video",
+          "file": "01-desafio-microservicos-escalaveis/004-finalizando-deploy.txt",
+          "chars": 75052,
+          "status": "ok"
+        },
+        {
+          "title": "Seu próximo passo",
+          "slug": "vsl-ftr-pos-formacao-16-9-mp-4",
+          "video_id": "f46d74c8-3989-4f19-93ed-dc866b25dc63",
+          "has_transcription": true,
+          "description": "Parabéns por chegar até aqui! Estou animado para compartilhar que a Rocketseat oferece pós-graduação com conteúdos exclusivos que vão além do nosso catálogo. Se você busca um avanço na carreira, essa é a chance de obter um certificado reconhecido pelo MEC e se aprofundar em temas como IA e desenvolvimento completo. Com professores do mercado e foco em prática, essas pós são ideais para quem quer se destacar. Se tiver dúvidas, nosso time está à disposição para ajudar! Vamos juntos nessa jornada!",
+          "duration": 212,
+          "type": "video",
+          "file": "01-desafio-microservicos-escalaveis/005-seu-proximo-passo.txt",
+          "chars": 3111,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 5,
+    "with_vtt": 5,
+    "without_vtt": 0,
+    "total_chars": 288334
+  }
+}

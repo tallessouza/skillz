@@ -1,0 +1,113 @@
+{
+  "journey_slug": "ia-para-dados",
+  "modules": [
+    {
+      "slug": "conteudo-e-pratica",
+      "title": "Conteúdo e Prática de IA para Dados",
+      "order": 1,
+      "lessons": [
+        {
+          "title": "Introdução e Engenharia de Prompt",
+          "slug": "introducao-e-engenharia-de-prompt",
+          "video_id": "c0d77fa3-fdda-4f53-a529-8c857edcffd1",
+          "has_transcription": true,
+          "description": "Neste vídeo, dou as boas-vindas ao curso de inteligência artificial focado em dados, onde vamos além do básico e aprendemos a maximizar o uso de LLMs e IA generativa. Compartilho minha experiência na área e introduzo a importância da engenharia de prompt. Mostro como um bom prompt pode resolver a maior parte dos problemas que enfrentamos com IA. Apresento técnicas como Role Playing e Chain of Thought, que ajudam a criar comandos mais eficazes e específicos. Espero que você aproveite!",
+          "duration": 659,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/001-introducao-e-engenharia-de-prompt.txt",
+          "chars": 8276,
+          "status": "ok"
+        },
+        {
+          "title": "Case de Correção de Dataset Desbalanceado com IA - Parte 01",
+          "slug": "case-de-correcao-de-dataset-desbalanceado-com-ia-parte-01",
+          "video_id": "982e01d9-d46e-4b59-bd18-651eb3df2089",
+          "has_transcription": true,
+          "description": "[Material Auxiliar](https://github.com/rocketseat-education/ia-para-dados/blob/main/colabs_cases/Case1_Datasets_Desbalanceados.ipynb)\n\nNesta aula, vamos explorar como usar IA generativa para lidar com datasets desbalanceados, especificamente na detecção de fraudes. Iniciaremos criando um modelo baseline com regressão logística, enfrentando o desafio de que a maioria das transações é legítima. Vou mostrar como configurar o ambiente no Google Collaboratory, instalar bibliotecas essenciais e realizar a análise exploratória dos dados. Em seguida, utilizaremos IA generativa para criar dados sintéticos, aumentando a quantidade de fraudes no nosso dataset, e avaliaremos o desempenho do novo modelo.",
+          "duration": 3336,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/002-case-de-correcao-de-dataset-desbalanceado-com-ia-parte-01.txt",
+          "chars": 33213,
+          "status": "ok"
+        },
+        {
+          "title": "Case de Correção de Dataset Desbalanceado com IA - Parte 02",
+          "slug": "case-de-correcao-de-dataset-desbalanceado-com-ia-parte-02",
+          "video_id": "43c867bb-20c0-43b7-875e-88024934f28a",
+          "has_transcription": false,
+          "description": "[Material Auxiliar](https://github.com/rocketseat-education/ia-para-dados/blob/main/colabs_cases/Case1_Datasets_Desbalanceados.ipynb)\n\nNa aula, explorei como otimizar um modelo de machine learning usando IA generativa. Começamos com um comando que estava lento, mas após um refresh, conseguimos gerar um JSON com registros de fraudes. Aprendemos a limpar e organizar os dados, transformando strings em dicionários e criando um novo DataFrame. Ao adicionar registros ao nosso conjunto de treino, observei um aumento na precisão e no recall do modelo. Discutimos a matriz de confusão e como pequenos ajustes podem melhorar significativamente os resultados. Até a próxima!",
+          "duration": 585,
+          "type": "video",
+          "file": null,
+          "status": "no_caption"
+        },
+        {
+          "title": "Case Chatbot com RAG e Python - Parte 1",
+          "slug": "case-chatbot-com-rag-e-python-parte-1",
+          "video_id": "babb4bc7-0927-4917-9812-58765c42254d",
+          "has_transcription": true,
+          "description": "[Material Auxiliar](https://github.com/rocketseat-education/ia-para-dados/blob/main/colabs_cases/Case2_Chatbot_RAG.ipynb)\n\nNesta aula, vamos explorar como usar IA e a técnica RAG (Recuperação Aumentada de Geração) para desenvolver um chatbot inteligente voltado para RH. Começamos discutindo a limitação das LLMs, que são treinadas com dados públicos e podem gerar respostas erradas, um fenômeno conhecido como \"alucinação\". Para evitar isso, o RAG consulta uma base de conhecimento antes de responder, garantindo informações precisas. Usaremos Python para implementar essa solução prática.",
+          "duration": 294,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/004-case-chatbot-com-rag-e-python-parte-1.txt",
+          "chars": 3625,
+          "status": "ok"
+        },
+        {
+          "title": "Case Chatbot com RAG e Python - Parte 2",
+          "slug": "case-chatbot-com-rag-e-python-parte-2",
+          "video_id": "56f9a4ba-bd2a-4951-b61c-a57ccfbbc997",
+          "has_transcription": true,
+          "description": "[Material Auxiliar](https://github.com/rocketseat-education/ia-para-dados/blob/main/colabs_cases/Case2_Chatbot_RAG.ipynb)\n\nEstamos no Google Collaboratory e vamos trabalhar com algumas bibliotecas essenciais como Google Generative AI, Pandas e Scikit-learn. A ideia é criar um chatbot que responda perguntas dos funcionários com base nas políticas da empresa, sem inventar respostas. Começamos importando as bibliotecas, configurando a chave de API do Google e criando uma base de conhecimento a partir de um documento com perguntas frequentes. Em seguida, testamos um modelo de linguagem para ver como ele responde sem acessar essa base. Vamos implementar um sistema de recuperação de informações para que o chatbot possa fornecer respostas mais precisas.",
+          "duration": 925,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/005-case-chatbot-com-rag-e-python-parte-2.txt",
+          "chars": 9313,
+          "status": "ok"
+        },
+        {
+          "title": "Case Chatbot com RAG e Python - Parte 3",
+          "slug": "case-chatbot-com-rag-e-python-parte-3",
+          "video_id": "a2107b28-1c7d-493b-81ac-5d37deadcc63",
+          "has_transcription": true,
+          "description": "[Material Auxiliar](https://github.com/rocketseat-education/ia-para-dados/blob/main/colabs_cases/Case2_Chatbot_RAG.ipynb)\n\nNesta aula, explorei como criar um chatbot inteligente para o RH utilizando técnicas de recuperação e geração de respostas. Começamos com a geração de embeddings para perguntas e conteúdos, utilizando modelos específicos para converter texto em vetores numéricos. Em seguida, calculamos a similaridade entre esses vetores e criamos um prompt para gerar respostas relevantes. Por fim, encapsulei todo o processo em uma função reutilizável, tornando a solução prática e escalável para diversas áreas. Espero que tenham gostado!",
+          "duration": 1419,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/006-case-chatbot-com-rag-e-python-parte-3.txt",
+          "chars": 15167,
+          "status": "ok"
+        },
+        {
+          "title": "Case Chatbot com RAG com N8N",
+          "slug": "case-chatbot-com-rag-com-n-8-n",
+          "video_id": "b328d168-28a0-4d9f-aa5f-f0f44b0a35bc",
+          "has_transcription": true,
+          "description": "Nesta aula, vamos criar um chatbot inteligente utilizando IA e RAG, aproveitando o N8n, uma ferramenta no-code que facilita a automação de processos. Mostrarei como integrar a base de conhecimento de um restaurante em um banco de dados vetorial, permitindo que o chatbot responda perguntas específicas. Vamos abordar desde a configuração do N8n até a implementação de um modelo de linguagem da OpenAI, garantindo que o chatbot tenha memória para interações anteriores. É uma aplicação prática e poderosa para otimizar o atendimento ao cliente.",
+          "duration": 2200,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/007-case-chatbot-com-rag-com-n8n.txt",
+          "chars": 25968,
+          "status": "ok"
+        },
+        {
+          "title": "Encerramento",
+          "slug": "encerramento-84",
+          "video_id": "c62aad8a-a603-4b4f-9f1a-2fe6c21970aa",
+          "has_transcription": true,
+          "description": "Parabéns por concluir o curso intensivo de IA generativa para dados! Nesta aula, exploramos desde engenharia de prompt até a resolução de problemas reais com Python, como a classificação de dados desbalanceados usando IA generativa para criar dados sintéticos. Também construímos um agente conversacional com a técnica RAG, tanto em Python quanto no N8n, uma ferramenta no-code. Para os próximos passos, recomendo aprofundar-se nas LLMs e conferir os cursos da Rocketseat. Estou muito orgulhoso do nosso progresso!",
+          "duration": 167,
+          "type": "video",
+          "file": "01-conteudo-e-pratica/008-encerramento.txt",
+          "chars": 2049,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_lessons": 8,
+    "with_vtt": 7,
+    "without_vtt": 1,
+    "total_chars": 97611
+  }
+}
