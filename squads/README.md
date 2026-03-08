@@ -1,6 +1,6 @@
 # Premium Squads
 
-Pre-built agent squads installed during `npx aios-core install` after Pro license activation.
+Pre-built agent squads installed during `npx aiox-core install` after Pro license activation.
 
 ## Available Squads
 
@@ -11,8 +11,8 @@ Pre-built agent squads installed during `npx aios-core install` after Pro licens
 
 ## How It Works
 
-1. User runs `npx aios-core install` and activates Pro license
-2. `@aios-fullstack/pro` npm package is installed
+1. User runs `npx aiox-core install` and activates Pro license
+2. `@aiox-fullstack/pro` npm package is installed
 3. Scaffolder copies all squads from this directory into the user's project `squads/`
 4. Agent commands are auto-installed into active IDEs (Claude Code, Codex, Gemini, Cursor)
 

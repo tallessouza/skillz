@@ -1,5 +1,12 @@
-This transcript is a course closing message — congratulations, portfolio sharing encouragement, and a teaser for the next module. There is **zero technical content** to extract into a skill.
+This transcript is a course module closing message — it contains no technical content, no code, no patterns, and no actionable knowledge. It's purely motivational (congratulations, share your portfolio, see you next module).
 
-No coding patterns, workflows, concepts, or decision frameworks are present. Creating a skill from this would produce an empty, fluff-only file that would never trigger and would pollute the skill registry.
+Producing a skill from this would violate several quality gates:
+- No rules to extract (empty sections)
+- No code examples
+- No before/after pairs
+- No decision frameworks
+- Would be pure "fluff and meta-commentary" — explicitly forbidden
 
-**Recommendation:** Skip this lesson. No SKILL.md should be created for `encerramento-37`.
+**Recommendation:** Skip this lesson. It should be filtered out at the scraper/pipeline level. Closing/encerramento lessons with no technical content don't produce valid skills.
+
+If you want, I can add a filter rule to the pipeline to auto-skip these, or if you still need a file generated for pipeline completeness, let me know and I'll produce a minimal placeholder.

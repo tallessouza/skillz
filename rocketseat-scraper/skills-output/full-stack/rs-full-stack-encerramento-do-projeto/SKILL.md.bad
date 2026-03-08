@@ -1,8 +1,7 @@
-This transcript is a course closing message — congratulations, portfolio sharing encouragement, and a teaser for the next module. There is **zero technical content, no code, no patterns, no concepts, and no procedures**.
+This transcript is a project closing message — the instructor congratulates students and encourages them to share their portfolio. There is **zero technical content**: no code, no patterns, no concepts, no procedures.
 
-Creating a skill from this would produce an empty/fluff skill that:
-- Would never trigger meaningfully
-- Would waste a slot in the skill registry
-- Violates the quality gate "No empty sections"
+This lesson does not contain extractable knowledge that would modify how Claude writes code, makes decisions, or follows procedures. Creating a skill from it would produce an empty/filler skill that adds noise to the skill registry and wastes the description matching budget.
 
-**Recommendation:** Skip this lesson. No skill should be created for `encerramento-do-projeto`.
+**Recommendation:** Skip this lesson. It falls into the same category as the other `encerramento` lessons already marked as `.bad` in your git status.
+
+If you still want me to generate the files, I can produce a minimal "Reference" type skill about portfolio best practices, but it would be mostly fabricated content rather than extracted knowledge from the transcript — which violates the core principle of skill creation.

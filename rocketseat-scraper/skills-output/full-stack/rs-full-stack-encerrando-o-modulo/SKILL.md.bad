@@ -1,7 +1,0 @@
-This transcript is a ~30-second closing message congratulating the student and previewing the next module. It contains no technical content, no code, no patterns, and no actionable knowledge to extract into a skill.
-
-**What it says:** "You learned what bundlers are, how to install/configure/use Webpack. Next we'll build a project together."
-
-This is a transition/motivational clip, not a lesson. Creating a skill from it would produce an empty, fluff-only file that violates multiple quality gates (no examples, no rules, no actionable content, no instructor insights).
-
-**Recommendation:** Skip this transcript. No skill should be generated for module closing/recap videos with zero technical substance.

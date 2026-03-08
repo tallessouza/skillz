@@ -1,0 +1,81 @@
+# Squad: Skillz Extraction Pro
+# Extrai skills de cursos Rocketseat com lentes de elite developers
+
+squad:
+  name: skillz-extraction-pro
+  display_name: "Skillz Extraction Pro"
+  description: "Squad para extração de skills de produção a partir de transcrições Rocketseat, aplicando lentes de elite developers (Akita, Kent Beck, Linus Torvalds, Martin Fowler, Rich Hickey, DHH, Gary Bernhardt, Thomas & Hunt)."
+  version: 1.0.0
+  domain: skill-extraction
+  keywords: [skills, extraction, rocketseat, transcriptions, routers, progressive-disclosure]
+
+agents:
+  - id: skillz-chief
+    file: agents/skillz-chief.md
+    role: orchestrator
+    tier: 0
+  - id: transcript-analyst
+    file: agents/transcript-analyst.md
+    role: analyst
+    tier: 1
+  - id: skill-extractor
+    file: agents/skill-extractor.md
+    role: extractor
+    tier: 1
+  - id: router-architect
+    file: agents/router-architect.md
+    role: architect
+    tier: 1
+
+workflows:
+  - name: transcript-to-router
+    file: workflows/wf-transcript-to-router.yaml
+    phases: 4
+    primary: true
+
+tasks:
+  - analyze-transcript.md
+  - extract-skill.md
+  - build-router.md
+  - audit-quality.md
+
+data:
+  - mind-lenses.yaml
+  - course-coverage.yaml
+
+settings:
+  auto_audit: true
+  parallel_extraction: 3
+  max_router_lines: 200
+  max_skill_lines: 300
+  max_description_chars: 1024
+  extraction_prompt: "rocketseat-scraper/extraction-prompt.md"
+  skills_output: "rocketseat-scraper/skills-output"
+  routers_dir: ".claude/skills"
+  transcriptions_dir: "rocketseat-scraper/transcricoes"
+
+mind_lenses:
+  - name: Fabio Akita
+    id: akita
+    lens: "Pragmatic Production"
+  - name: Kent Beck
+    id: kent_beck
+    lens: "Methodology Meta (3X)"
+  - name: Linus Torvalds
+    id: linus_torvalds
+    lens: "Engineering Taste"
+  - name: Martin Fowler
+    id: martin_fowler
+    lens: "Architecture Quality"
+  - name: Rich Hickey
+    id: rich_hickey
+    lens: "Complexity Radar"
+  - name: DHH
+    id: dhh
+    lens: "Anti-Overengineering"
+  - name: Gary Bernhardt
+    id: gary_bernhardt
+    lens: "Architecture Boundary"
+  - name: Andrew Hunt & David Thomas
+    id: thomas_hunt
+    lens: "Fundamentals Checklist"

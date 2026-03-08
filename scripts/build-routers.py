@@ -60,15 +60,179 @@ def get_skill_summaries(course_dir: Path) -> list[dict]:
     return skills
 
 
-def generate_router_with_claude(course: str, skills: list[dict]) -> dict | None:
-    """Use claude -p to generate a router SKILL.md with grouped index."""
+CHUNK_SIZE = 200
 
-    skill_list = "\n".join([
-        f"- {s['slug']}: {s['title']}"
-        for s in skills
+
+def _call_claude(prompt: str, timeout: int = 300) -> str | None:
+    """Call claude -p and return the text result, or None on failure."""
+    env = os.environ.copy()
+    env.pop("CLAUDECODE", None)
+
+    try:
+        result = subprocess.run(
+            ["claude", "-p", "--output-format", "json", "--max-turns", "1"],
+            input=prompt,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            env=env,
+        )
+    except (subprocess.TimeoutExpired, FileNotFoundError) as e:
+        print(f"  ERROR: claude -p failed: {e}")
+        return None
+
+    output = result.stdout.strip()
+
+    # Unwrap JSON envelope
+    text = output
+    try:
+        envelope = json.loads(output)
+        if isinstance(envelope, dict) and "result" in envelope:
+            text = envelope["result"]
+    except json.JSONDecodeError:
+        pass
+
+    return text
+
+
+def _parse_json_response(text: str) -> dict | None:
+    """Extract JSON with description+groups from Claude's text response."""
+    if not text:
+        return None
+
+    # Try direct parse
+    try:
+        parsed = json.loads(text)
+        if isinstance(parsed, dict) and "groups" in parsed:
+            return parsed
+    except json.JSONDecodeError:
+        pass
+
+    # Try markdown code block
+    if "```" in text:
+        lines = text.split("\n")
+        in_block = False
+        json_lines = []
+        for line in lines:
+            if line.strip().startswith("```"):
+                if in_block:
+                    break
+                in_block = True
+                continue
+            if in_block:
+                json_lines.append(line)
+        if json_lines:
+            try:
+                parsed = json.loads("\n".join(json_lines))
+                if isinstance(parsed, dict) and "groups" in parsed:
+                    return parsed
+            except json.JSONDecodeError:
+                pass
+
+    # Try first { to last }
+    start = text.find("{")
+    end = text.rfind("}") + 1
+    if start >= 0 and end > start:
+        try:
+            parsed = json.loads(text[start:end])
+            if isinstance(parsed, dict) and "groups" in parsed:
+                return parsed
+        except json.JSONDecodeError:
+            pass
+
+    return None
+
+
+def _generate_groups_for_chunk(course: str, skills: list[dict], chunk_idx: int, total_chunks: int) -> list[dict] | None:
+    """Generate groups for a chunk of skills."""
+    skill_list = "\n".join([f"- {s['slug']}: {s['title']}" for s in skills])
+
+    chunk_note = ""
+    if total_chunks > 1:
+        chunk_note = f"\nThis is chunk {chunk_idx + 1}/{total_chunks}. Group ONLY the skills listed below.\n"
+
+    prompt = f"""You are creating semantic groups for a SKILL ROUTER. Organize these {len(skills)} skills from the "{course}" course.
+{chunk_note}
+Skills to organize:
+{skill_list}
+
+Output ONLY valid JSON:
+{{
+  "groups": [
+    {{
+      "name": "Group Name",
+      "skills": ["slug-1", "slug-2"],
+      "context": "When writing/implementing X"
+    }}
+  ]
+}}
+
+Rules:
+- Every skill must appear in exactly one group
+- Groups should have 3-50 skills (merge small groups)
+- Group names should be clear domain concepts
+- 3-8 groups total
+"""
+
+    text = _call_claude(prompt)
+    parsed = _parse_json_response(text)
+
+    if parsed and "groups" in parsed:
+        return parsed["groups"]
+
+    print(f"  ERROR: Could not parse groups for chunk {chunk_idx + 1}")
+    if text:
+        print(f"  Text (first 300): {text[:300]}")
+    return None
+
+
+def _generate_description(course: str, groups: list[dict]) -> str:
+    """Generate the router description from the final groups."""
+    group_summary = "\n".join([
+        f"- {g['name']}: {len(g['skills'])} skills — {g.get('context', '')}"
+        for g in groups
     ])
 
-    prompt = f"""You are creating a SKILL ROUTER for Claude Code. This router organizes {len(skills)} individual skills from the "{course}" Skillz course into semantic groups.
+    prompt = f"""Generate a description for a Claude Code SKILL ROUTER for the "{course}" course.
+
+The router has these groups:
+{group_summary}
+
+Output ONLY valid JSON:
+{{
+  "description": "Enforces {course} best practices when... [your text here]"
+}}
+
+Rules for description:
+- Third person verb: "Enforces...", "Applies...", "Follows..."
+- Include 3-5 trigger phrases users would naturally say
+- Include "Make sure to use this skill whenever..." clause
+- Include "Not for..." boundary
+- Single line, no angle brackets, 200-500 chars
+- Strong behavioral verbs only
+"""
+
+    text = _call_claude(prompt, timeout=120)
+    parsed = _parse_json_response(text)
+
+    if parsed and "description" in parsed:
+        return parsed["description"]
+
+    # Fallback description
+    return f"Enforces {course.replace('-', ' ')} best practices when writing code. Make sure to use this skill whenever working on {course.replace('-', ' ')} related code. Not for unrelated domains."
+
+
+def generate_router_with_claude(course: str, skills: list[dict]) -> dict | None:
+    """Use claude -p to generate a router SKILL.md with grouped index.
+
+    For large courses (>CHUNK_SIZE skills), splits into chunks and merges.
+    """
+
+    if len(skills) <= CHUNK_SIZE:
+        # Small course: single call with description + groups
+        skill_list = "\n".join([f"- {s['slug']}: {s['title']}" for s in skills])
+
+        prompt = f"""You are creating a SKILL ROUTER for Claude Code. This router organizes {len(skills)} individual skills from the "{course}" Skillz course into semantic groups.
 
 Skills to organize:
 {skill_list}
@@ -103,82 +267,39 @@ Rules for groups:
 - Group names should be clear domain concepts
 """
 
-    env = os.environ.copy()
-    env.pop("CLAUDECODE", None)
-
-    try:
-        result = subprocess.run(
-            ["claude", "-p", "--output-format", "json", "--max-turns", "1"],
-            input=prompt,
-            capture_output=True,
-            text=True,
-            timeout=300,
-            env=env,
-        )
-    except (subprocess.TimeoutExpired, FileNotFoundError) as e:
-        print(f"  ERROR: claude -p failed: {e}")
-        return None
-
-    output = result.stdout.strip()
-
-    # Step 1: If --output-format json, unwrap the envelope
-    text = output
-    try:
-        envelope = json.loads(output)
-        if isinstance(envelope, dict) and "result" in envelope:
-            text = envelope["result"]
-    except json.JSONDecodeError:
-        pass
-
-    # Step 2: Try direct JSON parse
-    try:
-        parsed = json.loads(text)
-        if "description" in parsed and "groups" in parsed:
+        text = _call_claude(prompt)
+        parsed = _parse_json_response(text)
+        if parsed and "description" in parsed and "groups" in parsed:
             return parsed
-    except json.JSONDecodeError:
-        pass
 
-    # Step 3: Extract from markdown code block
-    def extract_from_codeblock(s):
-        lines = s.split("\n")
-        in_block = False
-        json_lines = []
-        for line in lines:
-            if line.strip().startswith("```"):
-                if in_block:
-                    break
-                in_block = True
-                continue
-            if in_block:
-                json_lines.append(line)
-        if json_lines:
-            return "\n".join(json_lines)
+        print(f"  ERROR: Could not parse JSON")
+        if text:
+            print(f"  Text (first 300): {text[:300]}")
         return None
 
-    if "```" in text:
-        extracted = extract_from_codeblock(text)
-        if extracted:
-            try:
-                parsed = json.loads(extracted)
-                if "description" in parsed and "groups" in parsed:
-                    return parsed
-            except json.JSONDecodeError:
-                pass
+    # Large course: chunk → merge
+    chunks = [skills[i:i + CHUNK_SIZE] for i in range(0, len(skills), CHUNK_SIZE)]
+    print(f"  Large course ({len(skills)} skills) — splitting into {len(chunks)} chunks of ~{CHUNK_SIZE}")
 
-    # Step 4: Find first { to last } in text
-    start = text.find("{")
-    end = text.rfind("}") + 1
-    if start >= 0 and end > start:
-        try:
-            parsed = json.loads(text[start:end])
-            if "description" in parsed and "groups" in parsed:
-                return parsed
-        except json.JSONDecodeError:
-            pass
+    all_groups = []
+    for i, chunk in enumerate(chunks):
+        print(f"  Chunk {i + 1}/{len(chunks)} ({len(chunk)} skills)...")
+        groups = _generate_groups_for_chunk(course, chunk, i, len(chunks))
+        if groups:
+            all_groups.extend(groups)
+        else:
+            # Fallback: single group for this chunk
+            all_groups.append({
+                "name": f"Group {i + 1}",
+                "skills": [s["slug"] for s in chunk],
+                "context": "When writing code",
+            })
 
-    print(f"  ERROR: Could not parse JSON")
-    print(f"  Text (first 300): {text[:300]}")
-    return None
+    # Generate unified description from merged groups
+    print(f"  Generating description for {len(all_groups)} groups...")
+    description = _generate_description(course, all_groups)
+
+    return {"description": description, "groups": all_groups}
 
 
 def build_router(course: str, skills: list[dict], router_data: dict):

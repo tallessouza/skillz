@@ -3842,5 +3842,965 @@
   "rs-testes-e-arquitetura-no-frontend-o-que-e-ci": {
     "status": "ok",
     "duration": 69
+  },
+  "rs-full-stack-encerramento-do-modulo-2025": {
+    "status": "bad_format",
+    "duration": 47
+  },
+  "rs-full-stack-encerramento-37": {
+    "status": "bad_format",
+    "duration": 49
+  },
+  "rs-full-stack-encerramento-do-projeto": {
+    "status": "bad_format",
+    "duration": 49
+  },
+  "rs-full-stack-encerrando-o-modulo": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-encerramento-42": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-full-stack-encerramento-43": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-full-stack-encerramento-44": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-full-stack-0422-encerramento-mp-4": {
+    "status": "ok",
+    "duration": 93
+  },
+  "rs-full-stack-adicionando-zod": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-full-stack-utilizando-watch": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-instalando-e-configurando-o-jest-2024": {
+    "status": "ok",
+    "duration": 105
+  },
+  "rs-full-stack-validando-teste-e-2-e": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-tipos-de-testes": {
+    "status": "ok",
+    "duration": 116
+  },
+  "rs-full-stack-criando-docker-compose": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-full-stack-cadastra-log": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-configurando-o-jest": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-cadastrando-usuario-no-banco": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-conhecendo-o-projeto-2029": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-full-stack-criando-ensure-authenticated": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-criando-projeto-no-insomnia": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-full-stack-criando-o-projeto-6": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-criando-controller-e-rota-de-autenticacao": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-full-stack-criando-o-modelo-das-tabelas": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-criando-rota-e-controller-de-usuario": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-executando-docker-compose": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-encerramento-50": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-estrutura-do-banco-de-dados-3": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-instalando-a-suite-de-testes": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-finalizando-retorno-do-usuario": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-limpando-containers-e-imagens-1": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-gerando-tabelas-e-abrindo-banco-de-dados": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-informando-token-do-usuario": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-instalando-e-configurando-o-prisma": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-middleware-de-tratamento-de-excecoes": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-removendo-usuario-da-autenticacao": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-recuperando-o-usuario": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-aula-de-abertura-deploy": {
+    "status": "ok",
+    "duration": 38
+  },
+  "rs-full-stack-teste-no-cadastro-do-usuario": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-testando-suite-de-teste": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-validando-dados-do-usuario": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-removendo-usuario-de-teste": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-acessando-banco-de-dados-remoto": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-registrando-no-log-alteracao-do-status": {
+    "status": "ok",
+    "duration": 101
+  },
+  "rs-full-stack-build-da-aplicacao": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-colocando-o-projeto-no-git-hub": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-compreendendo-deploy": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-configuracoes": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-configurando-o-ambiente-de-producao-no-insomnia": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-configurando-a-porta": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-conhecendo-o-render": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-criando-o-banco-de-dados-1": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-encerramento-do-modulo-de-deploy": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-full-stack-deploy-da-aplicacao-1": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-deploy-de-atualizacao-do-projeto": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-o-projeto-que-vamos-utilizar-1": {
+    "status": "ok",
+    "duration": 50
+  },
+  "rs-full-stack-proximos-passos-para-o-deploy": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-testando-a-aplicacao-em-producao": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-atualizacao-baseada-na-minor": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-full-stack-testando-build": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-verificando-as-tabelas-criadas-no-banco": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-atualizando-uma-biblioteca": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-full-stack-atualizando-pacotes": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-atualizacoes-criticas-1": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-calculando-versao": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-atualizando-express-1": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-check-updates": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-criando-o-projeto-7": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-full-stack-exibindo-pacotes-desatualizados": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-full-stack-changelog-1": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-full-stack-finalizando-atualizacao-1": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-grupos-de-atualizacoes-1": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-full-stack-instalando-versoes": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-escaneando-o-projeto-1": {
+    "status": "ok",
+    "duration": 86
+  },
+  "rs-full-stack-introducao-118": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-minor-update-1": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-o-projeto-que-vamos-usar": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-proximo-passo-1": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-patch-update-1": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-subindo-a-versao": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-utilizando-o-modo-interativo": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-0101-abertura-mp-4": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-resolvendo-conflitos-1": {
+    "status": "ok",
+    "duration": 89
+  },
+  "rs-full-stack-versionamento-semantico": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-0103-criando-o-projeto-mkv-mp-4": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-0102-boas-vindas-mkv-mp-4": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-full-stack-visualizando-versoes-no-npm": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-full-stack-0105-criando-projeto-no-insomnia-mkv-mp-4": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-0107-habilitando-cors-mkv-mp-4": {
+    "status": "ok",
+    "duration": 48
+  },
+  "rs-full-stack-0104-executando-o-projeto-mkv-mp-4": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-0106-entendendo-e-instalando-mkv-mp-4": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-0201-instalando-e-configurando-o-prisma-mp-4": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-0202-criando-o-modelo-das-tabelas-mkv-mp-4": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-0301-rota-e-controller-para-criar-usuario-mkv-mp-4": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-0108-tratamento-de-excecoes-mp-4": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-full-stack-0304-criando-controller-e-rota-de-autenticacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-0305-validando-dados-da-sessions-mkv-mp-4": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-0303-cadastrando-usuario-no-banco-mkv-mp-4": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-0302-validando-dados-do-usuario-mp-4": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-full-stack-0306-recuperando-o-usuario-mkv-mp-4": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-0307-token-do-usuario-mp-4": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-0308-controller-e-rota-de-refunds-mkv-mp-4": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-0402-cadastrando-solicitacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-0310-verify-user-authorization-mkv-mp-4": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-0309-ensure-authenticated-mkv-mp-4": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-full-stack-0401-validacao-de-dados-da-solicitacao-mp-4": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-0403-criando-rota-de-listar-mp-4": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-0406-implementando-paginacao-mp-4": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-0404-listando-solicitacoes-mp-4": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-0405-entenda-paginacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-0407-exibindo-uma-solicitacao-especifica-mkv-mp-4": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-0408-criando-o-arquivo-de-configuracao-de-upload-mkv-mp-4": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-0414-encerramento-mp-4": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-full-stack-0409-upload-do-arquivo-mp-4": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-boas-vindas-2037": {
+    "status": "ok",
+    "duration": 44
+  },
+  "rs-full-stack-ambiente-de-desenvolvimento-4": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-full-stack-0413-rota-para-exibir-arquivo-mkv-mp-4": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-0411-validando-arquivo-mp-4": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-0410-entendendo-as-informacoes-do-arquivo-mp-4": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-full-stack-0412-manipulando-arquivo-mkv-mp-4": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-full-stack-criando-o-projeto-8": {
+    "status": "ok",
+    "duration": 48
+  },
+  "rs-full-stack-compreendendo-como-as-coisas-sao": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-full-stack-compreendendo-use-effect-e-use-state": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-compreendendo-componentes": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-full-stack-criando-um-componente": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-convertendo-para-css-module": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-conhecendo-o-react": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-full-stack-criando-seu-proprio-hook-2024": {
+    "status": "ok",
+    "duration": 78
+  },
+  "rs-full-stack-css-modules-2024": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-css-global-1": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-encerramento-53": {
+    "status": "ok",
+    "duration": 49
+  },
+  "rs-full-stack-efeito-colateral": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-estendendo-propriedades-do-botao": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-importando-css-1": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-jsx-4": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-estados-e-renderizacoes": {
+    "status": "ok",
+    "duration": 82
+  },
+  "rs-full-stack-passando-metodos-no-componente": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-introducao-a-hooks": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-passando-propriedades-para-o-componente": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-estrutura-de-pastas-e-arquivos-5": {
+    "status": "ok",
+    "duration": 90
+  },
+  "rs-full-stack-proposta-2027": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-rest-operator": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-retornando-um-elemento-parent": {
+    "status": "ok",
+    "duration": 52
+  },
+  "rs-full-stack-conhecendo-o-react-router": {
+    "status": "ok",
+    "duration": 43
+  },
+  "rs-full-stack-use-effect-em-outros-contextos": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-criando-o-projeto-11": {
+    "status": "ok",
+    "duration": 46
+  },
+  "rs-full-stack-use-state-na-pratica": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-use-effect-na-pratica": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-abertura-44": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-conhecendo-o-react-hook-form": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-adicionando-controller-no-input": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-full-stack-definindo-valor-inicial": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-data-1": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-full-stack-download-do-projeto-2024": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-full-stack-exibindo-erros-de-validacao": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-full-stack-encerramento-61": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-instalando-o-yup": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-full-stack-inputs-nao-controlados-e-controlados": {
+    "status": "ok",
+    "duration": 56
+  },
+  "rs-full-stack-on-change": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-select-e-mais-default-values": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-submit-do-formulario": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-textarea-2": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-full-stack-tipagem-do-formulario": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-abertura-45": {
+    "status": "ok",
+    "duration": 47
+  },
+  "rs-full-stack-utilizando-schema-na-validacao": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-componente-de-loading-2025": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-componente-de-pagination": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-botao-para-visualizar-arquivo": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-componente-de-upload": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-continuando-o-dashboard": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-full-stack-componente-select": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-full-stack-conhecendo-o-tailwind-css": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-confirmacao": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-configurando-o-tailwind-css": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-componente-refund-item": {
+    "status": "ok",
+    "duration": 88
+  },
+  "rs-full-stack-criando-a-rota-de-refund": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-criando-auth-routes": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-criando-not-found": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-full-stack-criando-componente-de-input-1": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-criando-formulario-1": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-criar-o-app-layout": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-criando-on-submit-com-os-estados": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-criando-sign-up": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-criar-o-header": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-criando-o-auth-layout": {
+    "status": "ok",
+    "duration": 84
+  },
+  "rs-full-stack-customizando-scroll": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-extensao-do-tailwind-css": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-format-currency": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-full-stack-finalizando-confirm": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-instalando-o-tailwind-css": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-full-stack-inputs-um-do-lado-do-outro": {
+    "status": "ok",
+    "duration": 53
+  },
+  "rs-full-stack-encerramento-64": {
+    "status": "ok",
+    "duration": 90
+  },
+  "rs-full-stack-link-para-sign-up": {
+    "status": "ok",
+    "duration": 61
+  },
+  "rs-full-stack-handle-pagination": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-organizando-o-projeto-2024": {
+    "status": "ok",
+    "duration": 64
+  },
+  "rs-full-stack-refund-somente-leitura": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-full-stack-role-do-usuario": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-variantes-do-botao": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-0203-overview-de-sign-up-mkv-mp-4": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-0204-action-mkv-mp-4": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-0201-utilizando-zod-mp-4": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-0202-cadastrando-usuario-mkv-mp-4": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-0205-use-action-state-mp-4": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-0207-requisicao-de-sign-in-mkv-mp-4": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-0206-validacao-dos-dados-mkv-mp-4": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-full-stack-0302-contexto-em-detalhes-mkv-mp-4": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-0301-compreendendo-contexto-mkv-mp-4": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-full-stack-0303-criando-tipo-do-usuario-mkv-mp-4": {
+    "status": "ok",
+    "duration": 74
+  },
+  "rs-full-stack-0307-desconectando-usuario-mkv-mp-4": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-0304-criando-save-mkv-mp-4": {
+    "status": "ok",
+    "duration": 72
+  },
+  "rs-full-stack-0305-local-storage-mkv-mp-4": {
+    "status": "ok",
+    "duration": 75
+  },
+  "rs-full-stack-0306-carregando-dados-mkv-mp-4": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-full-stack-0401-validacao-dos-dados-mp-4": {
+    "status": "ok",
+    "duration": 71
+  },
+  "rs-full-stack-0402-cadastra-nova-solicitacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 80
+  },
+  "rs-full-stack-0403-upload-do-arquivo-mp-4": {
+    "status": "ok",
+    "duration": 73
+  },
+  "rs-full-stack-0501-fetch-refunds-mp-4": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-0504-consulta-mkv-mp-4": {
+    "status": "ok",
+    "duration": 59
+  },
+  "rs-full-stack-0503-exibindo-dados-mkv-mp-4": {
+    "status": "ok",
+    "duration": 66
+  },
+  "rs-full-stack-0502-definindo-tipagem-de-refund-mkv-mp-4": {
+    "status": "ok",
+    "duration": 79
+  },
+  "rs-full-stack-0505-paginacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-full-stack-0506-abrindo-solicitacao-mkv-mp-4": {
+    "status": "ok",
+    "duration": 69
+  },
+  "rs-full-stack-0508-visualizando-arquivo-mkv-mp-4": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-0507-carregando-dados-da-solicitacao-mp-4": {
+    "status": "ok",
+    "duration": 77
+  },
+  "rs-full-stack-atualizando-o-projeto-para-react-19": {
+    "status": "ok",
+    "duration": 58
+  },
+  "rs-full-stack-instalando-e-configurando-axios": {
+    "status": "ok",
+    "duration": 55
+  },
+  "rs-full-stack-0509-overview-e-encerramento-mp-4": {
+    "status": "ok",
+    "duration": 83
+  },
+  "rs-full-stack-conhecendo-a-vercel-1": {
+    "status": "ok",
+    "duration": 41
+  },
+  "rs-full-stack-rodando-da-api": {
+    "status": "ok",
+    "duration": 62
+  },
+  "rs-full-stack-o-projeto-que-vamos-trabalhar": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-full-stack-introducao-143": {
+    "status": "ok",
+    "duration": 51
+  },
+  "rs-full-stack-build-de-preview": {
+    "status": "ok",
+    "duration": 68
+  },
+  "rs-full-stack-colocando-o-projeto-no-git-hub-1": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-fazendo-o-deploy": {
+    "status": "ok",
+    "duration": 70
+  },
+  "rs-full-stack-levando-alteracoes-para-producao": {
+    "status": "ok",
+    "duration": 63
+  },
+  "rs-full-stack-o-projeto-2029": {
+    "status": "ok",
+    "duration": 57
+  },
+  "rs-full-stack-testando-build-de-preview": {
+    "status": "ok",
+    "duration": 60
+  },
+  "rs-full-stack-promovendo-para-producao": {
+    "status": "ok",
+    "duration": 67
+  },
+  "rs-full-stack-modificando-o-codigo": {
+    "status": "ok",
+    "duration": 76
+  },
+  "rs-full-stack-testando-projeto-em-producao": {
+    "status": "ok",
+    "duration": 54
+  },
+  "rs-full-stack-update-do-projeto": {
+    "status": "ok",
+    "duration": 65
+  },
+  "rs-full-stack-trabalhar-com-branches-de-dev-e-prod": {
+    "status": "ok",
+    "duration": 74
   }
 }

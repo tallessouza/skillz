@@ -1,0 +1,159 @@
+# Course Coverage Map — Rocketseat Courses vs Skill Routers
+# Generated from analysis of 37 courses, 5,323 lessons
+
+stats:
+  total_courses: 37
+  total_lessons: 5323
+  covered_lessons: 2145
+  uncovered_lessons: 3178
+  coverage_percentage: 40.3
+
+covered:
+  rs-full-stack:
+    courses: [full-stack]
+    skills: 832
+    lessons: ~1145
+  rs-node-js:
+    courses: [node-js-2023]
+    skills: 272
+    lessons: ~272
+  rs-devops:
+    courses: [devops]
+    skills: 223
+    lessons: ~233
+  rs-next-js:
+    courses: [next-js]
+    skills: 174
+    lessons: ~174
+  rs-saa-s:
+    courses: [saa-s-next-js-rbac]
+    skills: 106
+    lessons: ~106
+  rs-testes-e:
+    courses: [testes-e-arquitetura-no-frontend]
+    skills: 74
+    lessons: ~74
+  rs-seguranca-para:
+    courses: [seguranca-para-devs]
+    skills: 54
+    lessons: ~54
+  rs-ia-node:
+    courses: [ia-node-marketplace-inteligente]
+    skills: 50
+    lessons: ~50
+  rs-masterizando:
+    courses: [masterizando-o-tailwind]
+    skills: 37
+    lessons: ~39
+  rs-api-com:
+    courses: [api-com-bun]
+    skills: 34
+    lessons: ~34
+  rs-clean-code:
+    courses: [clean-code]
+    skills: 21
+    lessons: ~21
+  rs-redux-zustand:
+    courses: [redux-zustand]
+    skills: 22
+    lessons: ~22
+
+uncovered:
+  high_priority:
+    - course: react-native-2025
+      lessons: 381
+      domain: mobile
+      proposed_router: rs-react-native
+    - course: machine-learning-em-inteligencia-artificial
+      lessons: 524
+      domain: ai-ml
+      proposed_router: rs-machine-learning
+    - course: angular
+      lessons: 254
+      domain: frontend
+      proposed_router: rs-angular
+    - course: go
+      lessons: 163
+      domain: backend
+      proposed_router: rs-go
+    - course: kotlin
+      lessons: 312
+      domain: mobile-backend
+      proposed_router: rs-kotlin
+
+  medium_priority:
+    - course: c-sharp-avancado-com-dotnet-maui
+      lessons: 233
+      domain: mobile-dotnet
+      proposed_router: rs-csharp
+    - course: swift
+      lessons: 222
+      domain: ios
+      proposed_router: rs-swift
+    - course: data-analytics
+      lessons: 247
+      domain: data
+      proposed_router: rs-data-analytics
+    - course: kubernetes
+      lessons: 180
+      domain: devops
+      proposed_router: merge-into-rs-devops
+    - course: ruby
+      lessons: 130
+      domain: backend
+      proposed_router: rs-ruby
+    - course: introducao-a-aws
+      lessons: 45
+      domain: cloud
+      proposed_router: merge-into-rs-devops
+
+  low_priority:
+    - course: discover
+      lessons: 82
+      domain: fundamentals
+      note: "Overlaps with full-stack, consider merge"
+    - course: redes-neurais
+      lessons: 93
+      domain: deep-learning
+      proposed_router: merge-into-rs-machine-learning
+    - course: vue-js
+      lessons: 30
+      domain: frontend
+      proposed_router: rs-vue
+    - course: next-js-app-router-e-testes
+      lessons: 41
+      domain: frontend
+      note: "Merge into rs-next-js"
+    - course: angular-curso-introdutorio
+      lessons: 38
+      domain: frontend
+      note: "Merge into rs-angular"
+    - course: apps-desktop-com-electron
+      lessons: 32
+      domain: desktop
+      proposed_router: rs-electron
+    - course: agentes-de-ia-com-n-8-n
+      lessons: 25
+      domain: ai-automation
+    - course: make
+      lessons: 29
+      domain: automation
+    - course: engenharia-de-prompt
+      lessons: 19
+      domain: ai
+    - course: acessibilidade-com-react-js
+      lessons: 18
+      domain: accessibility
+      note: "Merge into full-stack or next-js"
+    - course: taskmaster
+      lessons: 18
+      domain: productivity
+    - course: ia-para-dados
+      lessons: 8
+      domain: data-ai
+    - course: tecnologias-emergentes
+      lessons: 9
+      domain: misc
+    - course: desafio-microservicos-escalaveis
+      lessons: 5
+      domain: architecture

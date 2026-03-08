@@ -12,6 +12,13 @@ Claude undertriggers skills **56% of the time** with default descriptions (Verce
 
 Skills use **progressive disclosure** (3 levels): metadata ~100 tokens always loaded → SKILL.md body <5K tokens on trigger → references/scripts unlimited on demand.
 
+**Composability:** Claude can load multiple skills simultaneously. Your skill MUST work well alongside others — never assume it is the only capability available. This means:
+- Descriptions must be differentiated enough to avoid selection confusion
+- Instructions should not contradict common patterns from other skills
+- Use the "Not for..." boundary to explicitly defer to neighboring skills
+
+**Portability:** Skills work identically across Claude.ai, Claude Code, and API. Write instructions that are surface-agnostic — avoid referencing UI-specific elements unless the skill specifically targets one surface.
+
 ## Your task
 
 You receive a lesson transcript from a Rocketseat programming course. You output a complete, production-grade SKILL.md file.
@@ -26,9 +33,9 @@ Before writing, determine the type:
 
 | Type | When | Body structure |
 |------|------|---------------|
-| **Coding lens** | Lesson teaches HOW to write code (naming, patterns, architecture) | Rules → How to write → Example → Heuristics → Anti-patterns |
-| **Workflow** | Lesson teaches a PROCEDURE (setup, deploy, configure) | Decision tree → Steps → Output format → Error handling |
-| **Reference** | Lesson teaches CONCEPTS (theory, mental models, comparisons) | Overview → Key concepts → Decision framework → When to apply → Limitations |
+| **Coding lens** | Lesson teaches HOW to write code (naming, patterns, architecture) | Rules → How to write → Example → Heuristics → Anti-patterns → Troubleshooting |
+| **Workflow** | Lesson teaches a PROCEDURE (setup, deploy, configure) | Decision tree → Steps → Output format → Error handling → Troubleshooting → Verification |
+| **Reference** | Lesson teaches CONCEPTS (theory, mental models, comparisons) | Overview → Key concepts → Decision framework → When to apply → Limitations → Troubleshooting |
 
 Most Rocketseat lessons will be **Coding lens** or **Workflow**. Pure theory lessons become **Reference** skills with decision frameworks.
 
@@ -40,19 +47,21 @@ Most Rocketseat lessons will be **Coding lens** or **Workflow**. Pure theory les
 
 ### Rules:
 1. Third person always ("Enforces...", "Generates...", "Analyzes...")
-2. 200-400 chars (enough for triggers, not bloated)
+2. 200-1024 chars (official max is 1024; aim for 200-400 for simple skills, use up to 1024 for complex skills that need more trigger phrases or capability descriptions)
 3. Include 3-5 trigger phrases users would naturally say
 4. Include "Make sure to use this skill whenever..." clause
-5. Include "Not for..." boundary
+5. Include "Not for..." boundary — explicitly name neighboring skill domains or related skills to defer to
 6. Single line in YAML — multi-line breaks cause **silent ignore** (Prettier bug)
 7. No angle brackets `<>` — XML injection risk in system prompt
-8. Strong behavioral verbs: Enforces, Applies, Follows, Maintains, Ensures, Guards against
+8. Strong behavioral verbs: Enforces, Applies, Follows, Maintains, Ensures, Guards against, Analyzes, Generates, Orchestrates
 9. Weak verbs to AVOID: Helps with, Provides, Assists, Supports (too passive)
+10. Include specific **technical keywords** — particularly for tools, frameworks, and APIs, because these improve triggering accuracy for technical queries
 
 ### Differentiation (CRITICAL for 5000+ skills):
 - Each description mentions the SPECIFIC domain
 - No two descriptions should share >50% trigger phrases
 - The "Not for" boundary explicitly excludes neighboring skill domains
+- When a skill is part of a course with many related skills, include the specific sub-topic to disambiguate
 
 ### Examples:
 
@@ -64,6 +73,11 @@ description: "Helps with naming variables in code."
 **STRONG (reliable activation):**
 ```yaml
 description: "Enforces variable naming conventions when writing TypeScript/JavaScript code. Use when user asks to 'write a function', 'create a component', 'implement a feature', or any code generation task. Applies rules: no abbreviations, no generic names (data/response/list/temp), cause-over-effect booleans, unit-in-name for numbers. Make sure to use this skill whenever generating new code, even if the user doesn't mention naming. Not for documentation, comments, or commit messages."
+```
+
+**STRONG with neighboring skill reference:**
+```yaml
+description: "Enforces Express.js route structure and middleware patterns when building Node.js REST APIs. Use when user asks to 'create a route', 'add middleware', 'set up Express server', or 'handle HTTP requests'. Applies patterns: route separation by domain, middleware chaining, error-first handlers, async wrapper. Make sure to use this skill whenever writing Express route handlers or middleware. Not for Fastify routes (use rs-node-js-fastify), database queries (use rs-full-stack-sql), or frontend React components."
 ```
 
 ---
@@ -80,6 +94,8 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 - **No ALL CAPS directives** — explain reasoning instead of shouting
 - **No fluff** — no "nesta aula aprendemos". Pure actionable content.
 - **Preserve the instructor's insights** — the unique perspective, analogies, and reasoning are the value. Don't generic-ify.
+- **Every skill type gets troubleshooting** — Coding lens: common mistakes and how to recognize them. Workflow: error messages and recovery steps. Reference: misconceptions and corrections.
+- **Be specific and actionable** — `Run python scripts/validate.py --input {filename}` beats "Validate the data before proceeding"
 
 ---
 
@@ -128,6 +144,13 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 |-------------|---------------|
 | {bad} | {good} |
 
+## Troubleshooting
+
+### {Common mistake or confusion from the lesson}
+**Symptom:** {What the developer sees or experiences}
+**Cause:** {Why it happens — instructor's explanation}
+**Fix:** {Specific correction with code if applicable}
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
@@ -159,6 +182,12 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 
 ## Error handling
 - If {situation}, then {recovery}
+
+## Troubleshooting
+
+### {Common error or confusion}
+**Cause:** {Why it happens}
+**Solution:** {How to fix — be specific with commands or code}
 
 ## Verification
 - {How to verify the result is correct}
@@ -208,6 +237,12 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 
 {When this concept doesn't apply or breaks down}
 
+## Troubleshooting
+
+### {Common misapplication or confusion}
+**Symptom:** {What goes wrong when this concept is misunderstood}
+**Correction:** {How to think about it correctly — use the instructor's reasoning}
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
@@ -218,13 +253,27 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 
 ## Phase 5: Quality Gates
 
+### Frontmatter quality:
+- [ ] `name` is kebab-case, no spaces/capitals, max 64 chars
+- [ ] `name` does not contain "claude" or "anthropic" (reserved)
+- [ ] `description` is 200-1024 chars
+- [ ] `metadata` includes at minimum: author, version, course, tags
+- [ ] `allowed-tools` present if skill involves running commands (Workflow type)
+- [ ] `compatibility` present if skill requires specific runtime/tools (Workflow type)
+
 ### Description quality:
-- [ ] 200-400 chars
 - [ ] Third person verb
 - [ ] 3-5 trigger phrases in quotes
 - [ ] "Make sure to use this skill whenever..." clause
-- [ ] "Not for..." boundary
+- [ ] "Not for..." boundary (preferably referencing neighboring skills by name)
 - [ ] Single line, no angle brackets
+- [ ] Includes specific technical keywords for the domain
+
+### Trigger test (mental validation):
+- [ ] Would trigger on 3 obvious task requests (e.g., "create a route", "set up Express")
+- [ ] Would trigger on 2 paraphrased requests (e.g., "build an API endpoint", "add a handler")
+- [ ] Would NOT trigger on 2 unrelated topics (e.g., "style a button", "write a SQL query")
+- [ ] Would NOT trigger on neighboring skill's domain (explicit "Not for" prevents it)
 
 ### Body quality:
 - [ ] Imperative form throughout
@@ -232,9 +281,11 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 - [ ] Every rule has "because" reasoning
 - [ ] At least 1 complete before/after example or I/O pair
 - [ ] Under 300 lines
+- [ ] Under 5,000 words
 - [ ] No empty sections
 - [ ] Anti-patterns are substitution pairs (X → Y)
 - [ ] No "nesta aula", "vamos aprender", or meta-commentary about the lesson
+- [ ] Troubleshooting section present (ALL skill types, not just Workflow)
 - [ ] **MANDATORY: "Deep reference library" section at the end** with links to references/deep-explanation.md and references/code-examples.md — without this, Claude never discovers the reference files
 
 ### Instructor value preservation:
@@ -244,12 +295,41 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 
 ---
 
-## Phase 6: Slug and naming
+## Phase 6: Slug, naming, and frontmatter fields
 
-- Skill name: `rs-{course-slug}-{lesson-slug}` — all lowercase, hyphens
-- Max 64 chars for the name field
-- Folder name must match name field exactly
+### Required fields:
+- `name`: `rs-{course-slug}-{lesson-slug}` — all lowercase, kebab-case, max 64 chars
+- `description`: engineered trigger specification (see Phase 2)
+
+### Optional fields (include when relevant):
+
+- `allowed-tools`: Restrict which tools the skill can use. Include when the skill involves running scripts or specific commands.
+  - Example: `allowed-tools: "Bash(python:*) Bash(node:*)"` for a skill that runs Python/Node scripts
+  - Example: `allowed-tools: "Bash(npm:*) WebFetch"` for a skill that installs packages and fetches docs
+  - Omit for pure coding-lens or reference skills that don't execute anything
+
+- `compatibility`: Environment requirements (1-500 chars). Include when the skill depends on specific tools, runtimes, or platforms.
+  - Example: `compatibility: "Requires Node.js 18+ and npm. Works on Claude Code and API."`
+  - Example: `compatibility: "Requires Python 3.10+ with pip. Browser environment not supported."`
+  - Omit for conceptual/reference skills with no runtime dependencies
+
+- `metadata`: Custom key-value pairs for cataloging and discovery.
+  ```yaml
+  metadata:
+    author: Rocketseat
+    version: 1.0.0
+    course: full-stack
+    module: fundamentos-html-e-css
+    tags: [html, css, frontend, web-fundamentals]
+  ```
+
+- `license`: Only if distributing as open source. Example: `license: MIT`
+
+### Naming rules:
+- Folder name must match `name` field exactly
 - File must be exactly `SKILL.md` (case-sensitive)
+- Names with "claude" or "anthropic" are **reserved** — never use them
+- No spaces, no underscores, no capitals in name
 
 ---
 
@@ -258,13 +338,18 @@ description: "Enforces variable naming conventions when writing TypeScript/JavaS
 1. **Silent naming failure** — wrong case or reserved words → skill silently ignored
 2. **Prettier line-wrap bug** — multi-line description → skill silently ignored
 3. **Undertriggering** — generic description → 56% failure rate
-4. **Monolithic bloat** — >300 lines → generic output
-5. **ALL CAPS directives** — Claude ignores shouting, explain WHY instead
-6. **Wrong POV** — use third person, never "I can" or "Use this to"
-7. **Missing examples** — 25-65% performance loss without I/O pairs
-8. **Negative framing dominance** — "Don't do X" weaker than "Do Y because Z"
-9. **Description overlap** — similar descriptions between skills → unpredictable selection
-10. **Fluff and meta-commentary** — "nesta aula aprendemos" has zero value in a skill
+4. **Overtriggering** — description too broad → skill loads for unrelated queries, confusing the agent. Add "Not for..." boundary and specific technical keywords.
+5. **Monolithic bloat** — >300 lines → generic output
+6. **ALL CAPS directives** — Claude ignores shouting, explain WHY instead
+7. **Wrong POV** — use third person, never "I can" or "Use this to"
+8. **Missing examples** — 25-65% performance loss without I/O pairs
+9. **Negative framing dominance** — "Don't do X" weaker than "Do Y because Z"
+10. **Description overlap** — similar descriptions between skills → unpredictable selection. Differentiate with specific sub-topic and "Not for" referencing neighbors.
+11. **Fluff and meta-commentary** — "nesta aula aprendemos" has zero value in a skill
+12. **Missing metadata** — skills without `metadata.tags` are harder to catalog and discover at scale
+13. **Reserved names** — names containing "claude" or "anthropic" are silently rejected
+14. **Missing troubleshooting** — ALL skill types need troubleshooting, not just Workflow. Coding lens skills need common mistake patterns. Reference skills need misconception corrections.
+15. **No composability awareness** — skill assumes it runs alone. Other skills may be active simultaneously — don't contradict common conventions.
 
 ---
 
@@ -297,6 +382,12 @@ This is the quality bar. Your output must match or exceed this:
 ---
 name: rs-nomenclatura-de-variaveis
 description: "Enforces variable naming conventions when writing TypeScript/JavaScript code. Use when user asks to 'write a function', 'create a component', 'implement a feature', or any code generation task. Applies rules: no abbreviations, no generic names (data/response/list/temp), cause-over-effect booleans, unit-in-name for numbers. Make sure to use this skill whenever generating new code, even if the user doesn't mention naming. Not for documentation, comments, or commit messages."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-javascript
+  tags: [naming, variables, typescript, javascript, clean-code]
 ---
 
 # Nomenclatura de Variáveis
@@ -411,6 +502,18 @@ const hasNoActiveUsers = activeUsers.length === 0
 | `const result = process(...)` | `const validatedOrder = validateOrder(...)` |
 | `const isButtonDisabled = ...` | `const isFormSubmitting = ...` |
 | `const d = new Date()` | `const createdAt = new Date()` |
+
+## Troubleshooting
+
+### Variavel com nome generico passa no review
+**Symptom:** Code review aceita `const data = ...` sem questionar
+**Cause:** O reviewer nao tem contexto do dominio — `data` parece inofensivo
+**Fix:** Renomeie para descrever o conteudo (`const users`, `const invoices`). Se voce nao sabe nomear, voce nao entendeu o dominio — investigue antes de prosseguir.
+
+### Nome do booleano descreve o efeito na UI
+**Symptom:** `isButtonDisabled`, `isModalOpen` — nomes atrelados a um unico componente
+**Cause:** O desenvolvedor nomeou pela consequencia visual em vez da causa logica
+**Fix:** Pergunte "o que CAUSA esse estado?" e nomeie por isso: `isFormSubmitting`, `hasUnsavedChanges`
 ```
 
 ---
@@ -430,12 +533,13 @@ Every skill MUST produce multiple files. SKILL.md is the compact actionable core
 ### What goes WHERE:
 
 **In SKILL.md (compact, actionable):**
-- Frontmatter with engineered description
+- Frontmatter with engineered description + metadata
 - Rules (max 6-8, with brief "because" clause)
 - How to write (2-3 key patterns with minimal code)
 - One before/after example
 - Heuristics table
 - Anti-patterns table
+- Troubleshooting (1-3 common issues)
 
 **In references/deep-explanation.md:**
 - The instructor's full reasoning chains (WHY these rules exist)
@@ -472,6 +576,12 @@ Output ALL files in a single response using this exact delimiter format:
 ---
 name: rs-{course}-{slug}
 description: "..."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: {course}
+  module: {module}
+  tags: [{relevant, topic, tags}]
 ---
 # Title
 (content)
@@ -493,3 +603,14 @@ Rules:
 - Code comments can be in English if the original code was in English
 - SKILL.md MUST start with `---` (YAML frontmatter) immediately after the delimiter
 - Every file must have substantial content — no placeholder files
+
+### Frontmatter field selection by skill type:
+
+| Field | Coding Lens | Workflow | Reference |
+|-------|:-----------:|:--------:|:---------:|
+| `name` | REQUIRED | REQUIRED | REQUIRED |
+| `description` | REQUIRED | REQUIRED | REQUIRED |
+| `metadata` (author, version, course, tags) | REQUIRED | REQUIRED | REQUIRED |
+| `allowed-tools` | omit | INCLUDE if lesson involves CLI commands, package installs, or tool execution | omit |
+| `compatibility` | omit | INCLUDE if lesson requires specific runtime (Node, Python, Docker, etc.) | omit |
+| `license` | omit | omit | omit |

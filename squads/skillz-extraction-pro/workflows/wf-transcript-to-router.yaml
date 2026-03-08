@@ -1,0 +1,161 @@
+# Workflow: Transcript to Router Pipeline
+# Full pipeline from raw course transcriptions to production skill routers
+
+name: transcript-to-router
+description: "Pipeline completo: transcrição → análise → extração → router → audit"
+version: 1.0.0
+
+phases:
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # PHASE 1: TRANSCRIPT ANALYSIS
+  # ─────────────────────────────────────────────────────────────────────────────
+  - phase: 1
+    name: "Transcript Analysis"
+    agent: transcript-analyst
+    task: analyze-transcript.md
+    input:
+      - "rocketseat-scraper/transcricoes/{course}/manifest.json"
+      - "rocketseat-scraper/transcricoes/{course}/**/*.txt"
+      - "data/mind-lenses.yaml"
+      - "data/course-coverage.yaml"
+    output:
+      - "outputs/{course}/analysis.yaml"
+    checkpoints:
+      - "Todas as aulas classificadas (coding_lens / workflow / reference / meta)"
+      - "Conceitos nomeados com nomes canônicos"
+      - "Cross-references com routers existentes identificadas"
+      - "Lenses mapeadas para cada aula"
+    veto_conditions:
+      - ">30% aulas sem classificação → re-analisar"
+      - "Nenhuma cross-reference encontrada → verificar se routers existentes foram consultados"
+    duration: "15-30 min por curso"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # PHASE 2: SKILL EXTRACTION
+  # ─────────────────────────────────────────────────────────────────────────────
+  - phase: 2
+    name: "Skill Extraction"
+    agent: skill-extractor
+    task: extract-skill.md
+    input:
+      - "outputs/{course}/analysis.yaml"
+      - "rocketseat-scraper/transcricoes/{course}/**/*.txt"
+      - "rocketseat-scraper/extraction-prompt.md"
+      - "data/mind-lenses.yaml"
+    output:
+      - "rocketseat-scraper/skills-output/{course}/rs-{course}-{slug}/SKILL.md"
+      - "rocketseat-scraper/skills-output/{course}/rs-{course}-{slug}/references/deep-explanation.md"
+      - "rocketseat-scraper/skills-output/{course}/rs-{course}-{slug}/references/code-examples.md"
+    checkpoints:
+      - "Cada SKILL.md tem frontmatter válido (name, description, metadata)"
+      - "Cada SKILL.md < 300 linhas"
+      - "Description tem trigger phrases e 'Not for' boundary"
+      - "Troubleshooting section presente em todas"
+      - "Mind lenses aplicadas conforme analysis.yaml"
+    veto_conditions:
+      - "SKILL.md sem frontmatter → rejeitar"
+      - "Description genérica (sem trigger phrases) → re-extrair"
+      - "Sem exemplos de código quando aula tem código → re-extrair"
+    duration: "1-3 min por aula (batch com claude -p)"
+    parallelism: "3-5 workers (batch-extract.py)"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # PHASE 3: ROUTER BUILDING
+  # ─────────────────────────────────────────────────────────────────────────────
+  - phase: 3
+    name: "Router Building"
+    agent: router-architect
+    task: build-router.md
+    input:
+      - "rocketseat-scraper/skills-output/{course}/**/SKILL.md"
+      - "outputs/{course}/analysis.yaml"
+      - ".claude/skills/rs-*/SKILL.md (existing routers)"
+      - "data/course-coverage.yaml"
+    output:
+      - ".claude/skills/rs-{domain}/SKILL.md"
+      - ".claude/skills/rs-{domain}/references/*.md"
+    decision_tree:
+      course_has_existing_router:
+        yes: "Update existing router with new skills (merge strategy)"
+        no:
+          course_overlaps_existing:
+            yes: "Merge into existing router as new branch"
+            no: "Create new router"
+    checkpoints:
+      - "Router < 200 linhas"
+      - "Max 12 top-level branches"
+      - "Max 15 skills per branch"
+      - "Description não conflita com routers existentes"
+      - "Deduplicação aplicada"
+    veto_conditions:
+      - "Router > 200 linhas → decompose"
+      - "Description overlap >50% com router existente → merge instead"
+    duration: "30-60 min por router"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # PHASE 4: QUALITY AUDIT
+  # ─────────────────────────────────────────────────────────────────────────────
+  - phase: 4
+    name: "Quality Audit"
+    agent: skillz-chief
+    task: audit-quality.md
+    input:
+      - "rocketseat-scraper/skills-output/{course}/**/SKILL.md"
+      - ".claude/skills/rs-{domain}/SKILL.md"
+      - "data/mind-lenses.yaml"
+    output:
+      - "outputs/{course}/audit-report.yaml"
+    checks:
+      frontmatter:
+        - "name kebab-case, max 64 chars, no 'claude'/'anthropic'"
+        - "description 200-1024 chars"
+        - "metadata present (author, version, course, tags)"
+      description:
+        - "3rd person verb"
+        - "3-5 trigger phrases"
+        - "'Make sure to use' clause"
+        - "'Not for' boundary referencing neighbors"
+      body:
+        - "Imperative form"
+        - "Positive framing"
+        - "'because' reasoning on each rule"
+        - "Before/after example"
+        - "< 300 lines, < 5000 words"
+        - "Troubleshooting section"
+        - "Deep reference library at end"
+      lenses:
+        - "Mind lenses from analysis.yaml were applied"
+        - "Code patterns align with Linus (good taste)"
+        - "Architecture patterns align with Bernhardt (FC/IS)"
+        - "Named patterns per Fowler"
+    scoring:
+      pass: ">= 7/10"
+      needs_work: "5-6/10 — re-extract specific issues"
+      fail: "< 5/10 — full re-extraction"
+    duration: "5-10 min por curso"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXECUTION MODES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+modes:
+  single_course:
+    description: "Processar um curso de ponta a ponta"
+    command: "*extract-course {course}"
+    flow: "Phase 1 → 2 → 3 → 4"
+
+  batch:
+    description: "Processar múltiplos cursos em lote"
+    command: "*extract-batch {course1,course2,...}"
+    flow: "Phase 1 (all) → Phase 2 (all, parallel) → Phase 3 (group by router) → Phase 4 (all)"
+
+  router_only:
+    description: "Reconstruir router a partir de skills já extraídas"
+    command: "*build-router {domain}"
+    flow: "Phase 3 → Phase 4"
+
+  re_extract:
+    description: "Re-extrair curso com lentes atualizadas"
+    command: "*re-extract {course}"
+    flow: "Phase 1 → 2 (overwrite) → 3 (update) → 4"

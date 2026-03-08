@@ -1,0 +1,177 @@
+# Mind Lenses — Elite Developer Heuristics for Skill Extraction
+# These are NOT agent personas. They are decision frameworks EMBEDDED into agents.
+# Each agent loads the lenses relevant to its function.
+
+lenses:
+
+  akita:
+    name: Fabio Akita
+    framework: "XP + AI Pair Programming / Anti-Complexity"
+    sources:
+      - "akitaonrails.com (1000+ posts since 2006)"
+      - "YouTube Akitando (148 episodes)"
+      - "The M.Akita Chronicles (Feb 2026)"
+    heuristics:
+      - id: AK_01
+        name: "CLAUDE.md as Living Spec"
+        rule: "Documentation that AI reads = exponential ROI. If the course teaches a process, extract it as executable specification, not summary."
+      - id: AK_02
+        name: "Pair Programming, Not One-Shot"
+        rule: "Skills should teach iterative refinement, not magic one-shot solutions. If a lesson shows trial-and-error, preserve that process."
+      - id: AK_03
+        name: "Anti-Complexity Bias"
+        rule: "SQLite > PostgreSQL when sufficient. Hugo > React when sufficient. Always ask: is the taught complexity NECESSARY or ACCIDENTAL?"
+      - id: AK_04
+        name: "Testing as Validation"
+        rule: "1,323 tests in 8 days. If the lesson mentions testing, it's a first-class skill, not an afterthought section."
+      - id: AK_05
+        name: "LLMs are Loot Boxes"
+        rule: "AI-generated code requires validation. Skills teaching AI usage must include the verification step, not just the generation."
+      - id: AK_06
+        name: "Start from Desire, Not Architecture"
+        rule: "Validate through running code. If lesson starts with architecture before problem, flag as potential over-engineering."
+    applies_to: ["transcript-analyst", "skill-extractor"]
+
+  kent_beck:
+    name: Kent Beck
+    framework: "TDD / XP / 3X (Explore-Expand-Extract)"
+    sources:
+      - "Extreme Programming Explained (1999, 2nd ed 2004)"
+      - "Test-Driven Development: By Example (2002)"
+      - "Tidy First? (2023)"
+      - "Substack 'Tidy First?'"
+    heuristics:
+      - id: KB_01
+        name: "3X Classification"
+        rule: |
+          Classify every lesson by business phase:
+          - EXPLORE: Learning/prototyping. Skills should emphasize experimentation.
+          - EXPAND: Scaling what works. Skills should emphasize patterns and structure.
+          - EXTRACT: Optimizing. Skills should emphasize performance and efficiency.
+      - id: KB_02
+        name: "Red-Green-Refactor"
+        rule: "If lesson teaches TDD, the skill MUST preserve the cycle order: write failing test → make it pass → refactor. Never skip steps."
+      - id: KB_03
+        name: "Tidy First"
+        rule: "Small structural improvements before behavior changes. If lesson teaches refactoring, extract as prerequisite skill, not optional."
+    applies_to: ["transcript-analyst"]
+
+  linus_torvalds:
+    name: Linus Torvalds
+    framework: "Good Taste / Linux Coding Style / Git Philosophy"
+    sources:
+      - "Linux kernel Documentation/process/coding-style.rst"
+      - "Git design documents"
+      - "TED talk 'The mind behind Linux' (2016)"
+      - "Mailing list posts (decades)"
+    heuristics:
+      - id: LT_01
+        name: "Good Taste"
+        rule: "Good code eliminates special cases through better data structures. When extracting code examples, prefer solutions that handle edge cases through design, not if/else chains."
+      - id: LT_02
+        name: "Talk is Cheap, Show Me the Code"
+        rule: "Skills must have concrete code. Theory without implementation = incomplete skill. Always demand code examples."
+      - id: LT_03
+        name: "Distributed Trust"
+        rule: "Git's philosophy: trust through verified contribution, not centralized authority. Apply to architecture lessons: prefer decoupled over tightly controlled."
+    applies_to: ["skill-extractor"]
+
+  martin_fowler:
+    name: Martin Fowler
+    framework: "Refactoring Catalog / Patterns of EAA / Evolutionary Architecture"
+    sources:
+      - "Refactoring (1999, 2nd ed 2018)"
+      - "Patterns of Enterprise Application Architecture (2002)"
+      - "martinfowler.com bliki (20+ years)"
+    heuristics:
+      - id: MF_01
+        name: "Named Patterns"
+        rule: "If the lesson teaches a pattern, identify it by its canonical name (Repository, Unit of Work, Data Mapper, etc.). Never let patterns go unnamed in skills."
+      - id: MF_02
+        name: "Refactoring as Named Move"
+        rule: "Extract Method, Move Field, Replace Conditional with Polymorphism — if a lesson shows code transformation, name the refactoring move."
+      - id: MF_03
+        name: "Evolutionary Architecture"
+        rule: "Architecture decisions should be reversible. Flag skills that teach irreversible decisions without discussing trade-offs."
+    applies_to: ["skill-extractor"]
+
+  rich_hickey:
+    name: Rich Hickey
+    framework: "Simple Made Easy / Value-Oriented Programming"
+    sources:
+      - "Talk 'Simple Made Easy' (2011)"
+      - "Talk 'Hammock-Driven Development' (2010)"
+      - "Talk 'The Value of Values' (2012)"
+    heuristics:
+      - id: RH_01
+        name: "Simple vs Easy"
+        rule: |
+          Simple = not interleaved/complected (objective).
+          Easy = familiar/nearby (subjective).
+          When grouping skills into routers, organize by SIMPLICITY (conceptual independence), not EASE (what's familiar together).
+      - id: RH_02
+        name: "Complecting Detector"
+        rule: "If a lesson teaches something that mixes concerns (e.g., routing + validation + database in one file), the skill should decompose into separate concerns."
+      - id: RH_03
+        name: "Data Over Objects"
+        rule: "Prefer skills that teach data transformation over object hierarchy. When both approaches are shown, highlight the data-first one."
+    applies_to: ["router-architect"]
+
+  dhh:
+    name: David Heinemeier Hansson
+    framework: "Rails Doctrine / Convention over Configuration / Majestic Monolith"
+    sources:
+      - "The Rails Doctrine (rubyonrails.org/doctrine)"
+      - "dhh.dk blog"
+      - "Getting Real (2006)"
+      - "Shape Up (Basecamp)"
+    heuristics:
+      - id: DHH_01
+        name: "Convention Over Configuration"
+        rule: "Routers should follow CONVENTIONS. Same structure, same decision tree format, predictable naming. Less decision = better activation."
+      - id: DHH_02
+        name: "Anti-Overengineering"
+        rule: "If a course teaches 5 layers of abstraction for a CRUD, flag it. Monolith-first. The router should warn when complexity is not justified."
+      - id: DHH_03
+        name: "Developer Happiness"
+        rule: "Skills should make Claude ENJOY implementing. Ergonomic patterns over theoretically pure ones."
+    applies_to: ["router-architect"]
+
+  gary_bernhardt:
+    name: Gary Bernhardt
+    framework: "Functional Core, Imperative Shell"
+    sources:
+      - "Talk 'Boundaries' (SCNA 2012)"
+      - "Destroy All Software screencasts (2011-2020)"
+    heuristics:
+      - id: GB_01
+        name: "Functional Core / Imperative Shell"
+        rule: |
+          When extracting architecture lessons, identify:
+          - CORE: Pure logic, no side effects, easy to test (many paths, no deps)
+          - SHELL: I/O, side effects, integration (few paths, hard to test)
+          Skills should teach this separation explicitly.
+      - id: GB_02
+        name: "Values as Boundaries"
+        rule: "Between subsystems, pass values (data), not objects. When a lesson shows inter-module communication, extract the boundary pattern."
+    applies_to: ["skill-extractor"]
+
+  thomas_hunt:
+    name: Andrew Hunt & David Thomas
+    framework: "The Pragmatic Programmer"
+    sources:
+      - "The Pragmatic Programmer (1999, 20th Anniversary ed 2019)"
+    heuristics:
+      - id: TH_01
+        name: "DRY (Don't Repeat Yourself)"
+        rule: "If two skills teach the same concept from different courses, they MUST be deduplicated. Cross-reference, don't duplicate."
+      - id: TH_02
+        name: "Orthogonality"
+        rule: "Skills should be orthogonal — changing one should not affect another. Router decision trees must have independent branches."
+      - id: TH_03
+        name: "Tracer Bullets"
+        rule: "End-to-end thin implementation. If a course teaches a full stack feature, extract the tracer bullet pattern (minimal working version) as the primary skill."
+      - id: TH_04
+        name: "Programming by Coincidence"
+        rule: "Flag skills where the lesson teaches something that 'just works' without explaining WHY. The skill must capture the reasoning."
+    applies_to: ["router-architect", "skill-extractor"]

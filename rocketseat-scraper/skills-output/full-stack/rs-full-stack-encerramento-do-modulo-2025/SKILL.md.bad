@@ -1,5 +1,3 @@
-This transcript is a module closing message — it contains no technical content, no code patterns, no procedures, and no conceptual frameworks. It's purely a congratulatory/transitional message ("Parabéns por concluir essa etapa, continuaremos na próxima etapa").
+This transcript contains no actionable technical content — it's purely a module closing message ("Parabéns por concluir essa etapa, continuaremos na próxima etapa"). There are no concepts, patterns, code examples, or procedures to extract.
 
-There is no extractable skill from this lesson. Creating a SKILL.md would produce an empty/filler skill that adds noise to the skill registry and wastes the trigger-matching budget.
-
-**Recommendation:** Skip this lesson and move to the next one with actual technical content.
+**Recommendation:** Skip this lesson. Creating a skill from it would produce an empty/placeholder file that adds noise to the skill library without providing any value. This matches the pattern of other `encerramento` lessons already marked as `.bad` in your git status.
