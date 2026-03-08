@@ -1,0 +1,136 @@
+# Analysis — full-stack course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-full-stack
+
+course: full-stack
+router: rs-full-stack
+total_skills: 1072
+role: "Generalista — unico router que toca todas as 15 decisoes"
+
+decision_paths:
+  - path: [D0.api_backend, D1.node_js, D1.monolith, D2.no_framework_pure_node]
+    skills_count: 77
+    example_skills: [0108-criando-o-primeiro-servidor, 0210-conceito-de-middleware, 0212-separando-as-rotas]
+
+  - path: [D0.api_backend, D1.node_js, D1.monolith, D2.express]
+    skills_count: 35
+    example_skills: [conhecendo-o-express, criando-api-com-express, express-async-erros]
+
+  - path: [D0.fullstack_web, D1.node_js, D1.react_spa, D1.monolith]
+    skills_count: 20
+    example_skills: [conhecendo-o-react, conhecendo-o-react-router, conhecendo-o-react-hook-form]
+
+  - path: [D0.api_backend, D3.sql, D4.raw_sql]
+    skills_count: 30
+    example_skills: [introducao-ao-sql, criando-tabela-de-alunos, inserindo-dados-1]
+
+  - path: [D0.api_backend, D3.sql, D4.knex]
+    skills_count: 18
+    example_skills: [configurando-o-knex-js-1, instalando-o-knex-js, criando-a-migration-de-produtos]
+
+  - path: [D0.api_backend, D3.sql, D4.prisma]
+    skills_count: 15
+    example_skills: [0201-instalando-e-configurando-o-prisma, 0202-criando-o-modelo-das-tabelas]
+
+  - path: [D0.api_backend, D3.in_memory]
+    skills_count: 3
+    example_skills: [0302-salvando-usuarios-em-memoria, 0301-armazenando-dados]
+
+  - path: [D0.api_backend, D3.file_system]
+    skills_count: 12
+    example_skills: [0303-criando-arquivo, 0304-salvando-dados-no-arquivo, 0409-criando-o-banco-de-dados]
+
+  - path: [D0.api_backend, D3.jwt]
+    skills_count: 15
+    example_skills: [0307-token-do-usuario, 0309-ensure-authenticated, json-web-token]
+
+  - path: [D0.api_backend, D3.session]
+    skills_count: 5
+    example_skills: [0305-validando-dados-da-sessions, criando-sessao]
+
+  - path: [D0.api_backend, D3.rbac]
+    skills_count: 3
+    example_skills: [definindo-papel-do-usuario, role-do-usuario]
+
+  - path: [D0.fullstack_web, D3.vercel]
+    skills_count: 3
+    example_skills: [conhecendo-a-vercel-1, fazendo-o-deploy]
+
+  - path: [D0.api_backend, D3.render]
+    skills_count: 4
+    example_skills: [conhecendo-o-render, deploy-da-aplicacao-1]
+
+  - path: [D0.api_backend, D3.vps_docker, D1.docker]
+    skills_count: 22
+    example_skills: [introducao-ao-docker, criando-o-dockerfile, criando-docker-compose]
+
+  - path: [D0.api_backend, D3.unit, D3.e2e]
+    skills_count: 21
+    example_skills: [configurando-o-jest, conhecendo-o-jest, agrupando-testes]
+
+  - path: [D0.fullstack_web, D3.vanilla_css]
+    skills_count: 250
+    example_skills: [adicionando-css-no-html, css-animation-01-1, css-media-queries]
+
+  - path: [D0.fullstack_web, D3.tailwind]
+    skills_count: 4
+    example_skills: [conhecendo-o-tailwind-css, configurando-o-tailwind-css]
+
+  - path: [D0.fullstack_web, D3.react_hooks, D3.context]
+    skills_count: 10
+    example_skills: [compreendendo-use-effect-e-use-state, use-state-na-pratica]
+
+  - path: [DX.input_validation]
+    skills_count: 13
+    example_skills: [0201-utilizando-zod, adicionando-e-configurando-zod]
+
+  - path: [D0.fullstack_web, html_fundamentals]
+    skills_count: 80
+    example_skills: [anatomia-de-um-documento-html, html-forms, semantica-1]
+
+  - path: [D0.fullstack_web, js_fundamentals]
+    skills_count: 200
+    example_skills: [conhecendo-o-javascript, aprendendo-sobre-arrays, conhecendo-async-e-await]
+
+  - path: [D0.fullstack_web, typescript_fundamentals]
+    skills_count: 38
+    example_skills: [adicionando-com-typescript, configurando-o-typescript, generic-1]
+
+  - path: [DX.tooling, git, webpack, babel]
+    skills_count: 55
+    example_skills: [como-funciona-o-git, configurando-o-webpack, como-incluir-o-babel]
+
+  - path: [DX.dependency_audit]
+    skills_count: 28
+    example_skills: [versionamento-semantico, check-updates, atualizando-pacotes]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # fullstack_web, api_backend
+  - D1_RUNTIME            # node_js
+  - D1_FRAMEWORK_WEB      # react_spa, no_framework
+  - D1_ARCHITECTURE       # monolith (partial)
+  - D1_INFRA_PLATFORM     # docker basics (partial)
+  - D2_NODE_FRAMEWORK     # express
+  - D3_DATA_LAYER         # sql, in_memory, file_system
+  - D4_SQL_ORM            # prisma, knex, raw_sql
+  - D3_AUTH               # jwt, session, rbac
+  - D3_DEPLOY             # vercel, render, vps_docker, github_pages
+  - D3_TESTING            # unit, e2e (Jest + SuperTest)
+  - D3_STYLING            # vanilla_css (250), tailwind (4), css_modules (2)
+  - D3_STATE              # react_hooks, context
+  - DX_QUALITY            # input validation (Zod), light refactoring (partial)
+  - DX_SECURITY           # input_validation only (partial)
+
+decisions_not_covered:
+  - D1_RUNTIME: [bun, go, ruby, kotlin, csharp, swift, python]
+  - D1_FRAMEWORK_WEB: [nextjs, angular, vue]
+  - D1_ARCHITECTURE: [microservices, serverless, clean_arch]
+  - D2_NODE_FRAMEWORK: [fastify, nestjs]
+  - D3_STATE: [zustand, redux, server_state]
+  - DX_SECURITY: [xss_csrf, headers, secrets, dependency_audit]
+
+notes:
+  - "~530 skills (~50%) cover HTML/CSS/JS basics"
+  - "SQL taught at 3 levels: raw SQL, Knex, Prisma"
+  - "React coverage is introductory (~20 skills)"
+  - "Versioning/package management has deep coverage (28 skills)"

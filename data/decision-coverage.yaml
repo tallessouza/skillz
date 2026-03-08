@@ -1,0 +1,420 @@
+# Decision Coverage Matrix — All 12 Skill Routers
+# Generated: 2026-03-07
+# Source: transcript-analyst parallel analysis of 14 courses (2,318 skills with routers)
+#
+# Legend:
+#   deep: Primary domain, extensive skill coverage (5+ skills)
+#   partial: Secondary coverage, some skills touch this decision (1-4 skills)
+#   not_covered: No skills address this decision
+#
+# Each router lists: decisions_answered, decisions_not_covered, and cross_references
+# Cross-references point to the router that BEST answers a gap
+
+routers:
+
+  rs-full-stack:
+    courses: [full-stack]
+    total_skills: 1072
+    role: "Generalista — unico router que toca todas as 15 decisoes"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # fullstack_web, api_backend
+      D1_RUNTIME: deep              # node_js
+      D1_FRAMEWORK_WEB: deep        # react_spa, no_framework (vanilla HTML/CSS/JS)
+      D1_ARCHITECTURE: partial      # monolith (implicit, no DDD/Clean Arch)
+      D1_INFRA_PLATFORM: partial    # docker basics only
+      D2_NODE_FRAMEWORK: deep       # express (no fastify/nestjs)
+      D3_DATA_LAYER: deep           # sql, in_memory, file_system
+      D4_SQL_ORM: deep              # prisma, knex, raw_sql
+      D3_AUTH: deep                 # jwt, session, rbac
+      D3_DEPLOY: deep               # vercel, render, vps_docker, github_pages
+      D3_TESTING: deep              # unit, e2e (Jest + SuperTest)
+      D3_STYLING: deep              # vanilla_css (250 skills), tailwind (light), css_modules
+      D3_STATE: deep                # react_hooks, context
+      DX_QUALITY: partial           # input validation (Zod), light refactoring
+      DX_SECURITY: partial          # input_validation only (Zod)
+    cross_references:
+      D1_ARCHITECTURE: rs-clean-code       # DDD, SOLID como premissa
+      D1_INFRA_PLATFORM: rs-devops         # Docker/K8s/Terraform profundo
+      D2_NODE_FRAMEWORK: rs-node-js        # Fastify, NestJS
+      DX_QUALITY: rs-clean-code            # Naming, condicionais, componentes puros
+      DX_SECURITY: rs-seguranca-para       # XSS, CSRF, headers, secrets
+
+  rs-node-js:
+    courses: [node-js-2023]
+    total_skills: 272
+    role: "Backend Node.js profundo — Fastify, NestJS, DDD, Clean Architecture"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # api_backend
+      D1_RUNTIME: deep              # node_js (streams, buffers, HTTP module)
+      D1_FRAMEWORK_WEB: not_covered
+      D1_ARCHITECTURE: deep         # clean_arch, DDD (entities, use cases, aggregates)
+      D1_INFRA_PLATFORM: partial    # docker + docker-compose
+      D2_NODE_FRAMEWORK: deep       # fastify + nestjs
+      D3_DATA_LAYER: deep           # prisma + knex + in-memory repos
+      D4_SQL_ORM: deep              # prisma (schema, migrations, mappers) + knex
+      D3_AUTH: deep                 # JWT (fastify-jwt, nestjs guards, refresh token, RBAC)
+      D3_DEPLOY: partial            # render only
+      D3_TESTING: deep              # vitest (unit + E2E), in-memory repos, factories, TDD, CI
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: deep              # ESLint, Prettier, TypeScript, Zod validation
+      DX_SECURITY: partial          # bcrypt, RBAC guards
+    cross_references:
+      D1_FRAMEWORK_WEB: rs-next-js         # Next.js para fullstack
+      D3_STYLING: rs-masterizando          # Tailwind CSS
+      D3_STATE: rs-redux-zustand           # Redux/Zustand
+      D3_DEPLOY: rs-devops                 # CI/CD, Docker, K8s
+      DX_SECURITY: rs-seguranca-para       # Seguranca profunda
+
+  rs-devops:
+    courses: [devops, kubernetes]
+    total_skills: 402
+    role: "Infraestrutura — Docker, K8s, Terraform, CI/CD, Observabilidade, Istio"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # devops_infra culture
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: not_covered
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: deep       # docker, kubernetes, aws, cicd, terraform
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: not_covered
+      D3_DEPLOY: deep               # CI/CD (GitHub Actions), ECR, AppRunner, GitOps (ArgoCD)
+      D3_TESTING: not_covered
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: not_covered
+      DX_SECURITY: partial          # mTLS (Istio), RBAC K8s, Kyverno, IAM
+    cross_references:
+      D1_RUNTIME: rs-node-js              # Node.js runtime
+      D1_ARCHITECTURE: rs-clean-code       # Clean Architecture
+      D3_DATA_LAYER: rs-node-js            # Prisma, Knex
+      D3_AUTH: rs-seguranca-para           # App-level auth
+      D3_TESTING: rs-testes-e              # Jest, Playwright
+      DX_QUALITY: rs-clean-code            # Clean code premissa
+
+  rs-next-js:
+    courses: [next-js, next-js-app-router-e-testes]
+    total_skills: 174
+    role: "Fullstack SSR — App Router, Server Components, Server Actions, Cypress"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # fullstack SSR web app
+      D1_RUNTIME: partial           # node_js (implicit via Next.js)
+      D1_FRAMEWORK_WEB: deep        # Next.js (App Router + Pages Router)
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: partial    # docker basics
+      D2_NODE_FRAMEWORK: not_covered  # Next.js IS the framework
+      D3_DATA_LAYER: deep           # Server Components fetch, React Query, cache strategies
+      D4_SQL_ORM: deep              # Prisma (primary), Drizzle (secondary)
+      D3_AUTH: deep                 # BetterAuth
+      D3_DEPLOY: deep               # Vercel (primary), Docker
+      D3_TESTING: deep              # Cypress E2E (setup, custom commands, CI)
+      D3_STYLING: deep              # Tailwind CSS + shadcn/ui
+      D3_STATE: deep                # React Context, URL state (nuqs)
+      DX_QUALITY: deep              # ESLint/Prettier/Lefthook, SEO, OpenGraph
+      DX_SECURITY: not_covered
+    cross_references:
+      D1_ARCHITECTURE: rs-clean-code       # DDD, SOLID
+      D2_NODE_FRAMEWORK: rs-node-js        # Fastify/NestJS backend separado
+      DX_SECURITY: rs-seguranca-para       # XSS, CSRF, headers
+
+  rs-saa-s:
+    courses: [saa-s-next-js-rbac]
+    total_skills: 106
+    role: "SaaS multi-tenant — Monorepo, RBAC (CASL), OAuth, Organizations"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # SaaS multi-tenant
+      D1_RUNTIME: deep              # Node.js (Fastify backend)
+      D1_FRAMEWORK_WEB: deep        # Next.js App Router + Server Actions
+      D1_ARCHITECTURE: deep         # Monorepo (TurboRepo)
+      D1_INFRA_PLATFORM: partial    # Render + Vercel
+      D2_NODE_FRAMEWORK: deep       # Fastify
+      D3_DATA_LAYER: deep           # Prisma + PostgreSQL
+      D4_SQL_ORM: deep              # Prisma (schema, relations, cascades, seed)
+      D3_AUTH: deep                 # JWT + OAuth + CASL RBAC
+      D3_DEPLOY: deep               # Render + Vercel + GitHub
+      D3_TESTING: not_covered
+      D3_STYLING: partial           # shadcn/ui + next-themes
+      D3_STATE: partial             # Server Actions + useActionState
+      DX_QUALITY: partial           # ESLint + TypeScript (monorepo)
+      DX_SECURITY: deep             # RBAC (CASL), org-scoped auth, invite flow
+    cross_references:
+      D3_TESTING: rs-testes-e              # Jest, Playwright
+      D3_STYLING: rs-masterizando          # Tailwind profundo
+      DX_QUALITY: rs-clean-code            # Clean code premissa
+
+  rs-testes-e:
+    courses: [testes-e-arquitetura-no-frontend]
+    total_skills: 74
+    role: "Testes + Clean Architecture frontend — Jest, RTL, Playwright, TDD, CI"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # web app (Next.js prompt manager)
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: deep        # Next.js App Router
+      D1_ARCHITECTURE: deep         # Clean Architecture (use cases, dependency inversion)
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: deep           # Prisma (Docker Compose PostgreSQL)
+      D4_SQL_ORM: partial           # Prisma
+      D3_AUTH: not_covered
+      D3_DEPLOY: partial            # 1 skill
+      D3_TESTING: deep              # PRIMARY — Jest, RTL, Playwright, TDD, CI (~45 skills)
+      D3_STYLING: partial           # Design system setup
+      D3_STATE: partial             # URL state (nuqs)
+      DX_QUALITY: deep              # ESLint/Prettier/Lefthook, CI pipeline
+      DX_SECURITY: not_covered
+    cross_references:
+      D1_RUNTIME: rs-node-js              # Node.js runtime
+      D3_AUTH: rs-seguranca-para           # Auth + seguranca
+      D1_INFRA_PLATFORM: rs-devops         # Docker, CI/CD profundo
+      DX_SECURITY: rs-seguranca-para       # Seguranca
+
+  rs-seguranca-para:
+    courses: [seguranca-para-devs]
+    total_skills: 54
+    role: "Seguranca web — XSS, CSRF, SSRF, Injection, MFA, Passkeys, Headers"
+    decisions:
+      D0_SOLUTION_TYPE: not_covered
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: not_covered   # framework-agnostic
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: deep                 # 16 skills (passwords, MFA, passkeys, sessions)
+      D3_DEPLOY: partial            # TLS, WAF, SSH
+      D3_TESTING: partial           # SAST
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: partial           # logging, error reporting
+      DX_SECURITY: deep             # PRIMARY — 35 skills (injection, XSS, CSRF, headers, secrets)
+    cross_references:
+      D0_SOLUTION_TYPE: rs-full-stack      # Contexto de app web
+      D1_RUNTIME: rs-node-js              # Node.js
+      D3_DATA_LAYER: rs-node-js           # ORM/DB
+      D3_TESTING: rs-testes-e             # Testes automatizados
+
+  rs-ia-node:
+    courses: [ia-node-marketplace-inteligente]
+    total_skills: 50
+    role: "AI com Node.js — OpenAI, Gemini, Function Calling, Embeddings, NestJS"
+    decisions:
+      D0_SOLUTION_TYPE: deep        # AI-integrated backend
+      D1_RUNTIME: deep              # Node.js (OpenAI SDK, Gemini SDK)
+      D1_FRAMEWORK_WEB: not_covered
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: deep       # NestJS (chat sessions, TDD)
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: not_covered
+      D3_DEPLOY: not_covered
+      D3_TESTING: not_covered
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: partial           # Zod Structured Outputs
+      DX_SECURITY: not_covered
+    cross_references:
+      D3_DATA_LAYER: rs-node-js           # Prisma, Knex
+      D3_AUTH: rs-seguranca-para           # Auth + seguranca
+      D3_TESTING: rs-testes-e             # Testes
+      D3_DEPLOY: rs-devops                # Deploy
+      DX_SECURITY: rs-seguranca-para      # Seguranca
+
+  rs-masterizando:
+    courses: [masterizando-o-tailwind]
+    total_skills: 37
+    role: "Tailwind CSS profundo — Composicao, Dark Mode, Responsividade, Animacoes"
+    decisions:
+      D0_SOLUTION_TYPE: not_covered
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: partial    # React (composition pattern, Radix UI)
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: not_covered
+      D3_DEPLOY: not_covered
+      D3_TESTING: not_covered
+      D3_STYLING: deep              # PRIMARY — Tailwind (37 skills)
+      D3_STATE: not_covered
+      DX_QUALITY: partial           # ESLint + Prettier (1 skill)
+      DX_SECURITY: not_covered
+    cross_references:
+      D1_FRAMEWORK_WEB: rs-next-js        # Next.js
+      D3_STATE: rs-redux-zustand          # State management
+      D3_TESTING: rs-testes-e             # Testes de componentes
+      D3_AUTH: rs-seguranca-para          # Auth
+
+  rs-api-com:
+    courses: [api-com-bun]
+    total_skills: 34
+    role: "API com Bun — ElysiaJS, Drizzle ORM, JWT Magic Link, Dashboard Metrics"
+    decisions:
+      D0_SOLUTION_TYPE: not_covered   # REST API assumed
+      D1_RUNTIME: deep              # Bun
+      D1_FRAMEWORK_WEB: not_covered
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: deep       # ElysiaJS (Bun framework)
+      D3_DATA_LAYER: deep           # PostgreSQL + Drizzle ORM (9 skills)
+      D4_SQL_ORM: deep              # Drizzle (schema, migrations, relations, seed, aggregations)
+      D3_AUTH: deep                 # JWT + Magic Link (9 skills)
+      D3_DEPLOY: not_covered
+      D3_TESTING: not_covered
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: partial           # ESLint only
+      DX_SECURITY: not_covered
+    cross_references:
+      D3_DEPLOY: rs-devops                # Docker, CI/CD
+      D3_TESTING: rs-testes-e             # Testes
+      DX_SECURITY: rs-seguranca-para      # Seguranca
+      DX_QUALITY: rs-clean-code           # Clean code premissa
+
+  rs-redux-zustand:
+    courses: [redux-zustand]
+    total_skills: 22
+    role: "State Management — Redux Toolkit lifecycle, Zustand, migracao, testes"
+    decisions:
+      D0_SOLUTION_TYPE: not_covered
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: partial    # React SPA (implicit)
+      D1_ARCHITECTURE: not_covered
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: not_covered
+      D3_DEPLOY: not_covered
+      D3_TESTING: partial           # unit tests for stores
+      D3_STYLING: not_covered
+      D3_STATE: deep                # PRIMARY — Redux Toolkit (14 skills) + Zustand (3 skills)
+      DX_QUALITY: partial           # DevTools, unit tests
+      DX_SECURITY: not_covered
+    cross_references:
+      D1_FRAMEWORK_WEB: rs-next-js        # Next.js / React
+      D3_STYLING: rs-masterizando         # Tailwind
+      D3_TESTING: rs-testes-e             # Testes profundos
+      D3_AUTH: rs-seguranca-para          # Auth
+
+  rs-clean-code:
+    courses: [clean-code]
+    total_skills: 21
+    role: "Premissa de escrita — Naming, Condicionais, SOLID, DDD, Componentes Puros"
+    decisions:
+      D0_SOLUTION_TYPE: not_covered
+      D1_RUNTIME: not_covered
+      D1_FRAMEWORK_WEB: not_covered
+      D1_ARCHITECTURE: deep         # DDD + SOLID como premissa de design
+      D1_INFRA_PLATFORM: not_covered
+      D2_NODE_FRAMEWORK: not_covered
+      D3_DATA_LAYER: not_covered
+      D4_SQL_ORM: not_covered
+      D3_AUTH: not_covered
+      D3_DEPLOY: not_covered
+      D3_TESTING: not_covered
+      D3_STYLING: not_covered
+      D3_STATE: not_covered
+      DX_QUALITY: deep              # PRIMARY — clean_code como PREMISSA de escrita (naming, condicionais, componentes)
+      DX_SECURITY: not_covered
+    cross_references:
+      D1_RUNTIME: rs-node-js              # Node.js
+      D1_FRAMEWORK_WEB: rs-next-js        # Next.js / React
+      D3_TESTING: rs-testes-e             # Testes
+      D3_DEPLOY: rs-devops                # Deploy
+
+# ============================================================================
+# COVERAGE SUMMARY
+# ============================================================================
+
+coverage_summary:
+  total_decisions: 15
+  total_routers: 12
+  total_skills: 2318
+  all_decisions_covered: true
+
+  decisions:
+    D0_SOLUTION_TYPE:
+      covered_by: [rs-full-stack, rs-node-js, rs-devops, rs-next-js, rs-saa-s, rs-testes-e, rs-ia-node]
+      primary: rs-full-stack
+      coverage: 7
+
+    D1_RUNTIME:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-saa-s, rs-ia-node, rs-api-com]
+      primary: rs-node-js
+      coverage: 6
+
+    D1_FRAMEWORK_WEB:
+      covered_by: [rs-full-stack, rs-next-js, rs-saa-s, rs-testes-e, rs-masterizando, rs-redux-zustand]
+      primary: rs-next-js
+      coverage: 6
+
+    D1_ARCHITECTURE:
+      covered_by: [rs-full-stack, rs-node-js, rs-saa-s, rs-testes-e, rs-clean-code]
+      primary: rs-clean-code
+      note: "clean-code = premissa de escrita (DDD+SOLID); node-js = implementacao"
+      coverage: 5
+
+    D1_INFRA_PLATFORM:
+      covered_by: [rs-full-stack, rs-node-js, rs-devops, rs-next-js, rs-saa-s]
+      primary: rs-devops
+      coverage: 5
+
+    D2_NODE_FRAMEWORK:
+      covered_by: [rs-full-stack, rs-node-js, rs-saa-s, rs-ia-node, rs-api-com]
+      primary: rs-node-js
+      note: "express (full-stack), fastify+nestjs (node-js), elysia (api-com)"
+      coverage: 5
+
+    D3_DATA_LAYER:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-saa-s, rs-testes-e, rs-api-com]
+      primary: rs-node-js
+      coverage: 6
+
+    D4_SQL_ORM:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-saa-s, rs-api-com]
+      primary: rs-node-js
+      note: "prisma (node-js, full-stack, next-js, saa-s), drizzle (api-com, next-js), knex (full-stack, node-js)"
+      coverage: 5
+
+    D3_AUTH:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-saa-s, rs-seguranca-para, rs-api-com]
+      primary: rs-seguranca-para
+      note: "seguranca = teoria+hardening; node-js/saa-s = implementacao"
+      coverage: 6
+
+    D3_DEPLOY:
+      covered_by: [rs-full-stack, rs-node-js, rs-devops, rs-next-js, rs-saa-s, rs-seguranca-para, rs-testes-e]
+      primary: rs-devops
+      coverage: 7
+
+    D3_TESTING:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-testes-e, rs-seguranca-para, rs-redux-zustand]
+      primary: rs-testes-e
+      coverage: 6
+
+    D3_STYLING:
+      covered_by: [rs-full-stack, rs-next-js, rs-saa-s, rs-testes-e, rs-masterizando]
+      primary: rs-masterizando
+      note: "full-stack = vanilla CSS (250 skills); masterizando = Tailwind profundo"
+      coverage: 5
+
+    D3_STATE:
+      covered_by: [rs-full-stack, rs-next-js, rs-saa-s, rs-testes-e, rs-redux-zustand]
+      primary: rs-redux-zustand
+      coverage: 5
+
+    DX_QUALITY:
+      covered_by: [rs-full-stack, rs-node-js, rs-next-js, rs-saa-s, rs-testes-e, rs-seguranca-para, rs-ia-node, rs-masterizando, rs-api-com, rs-redux-zustand, rs-clean-code]
+      primary: rs-clean-code
+      note: "clean-code = PREMISSA de escrita, nao refactoring"
+      coverage: 11
+
+    DX_SECURITY:
+      covered_by: [rs-full-stack, rs-node-js, rs-devops, rs-saa-s, rs-seguranca-para]
+      primary: rs-seguranca-para
+      coverage: 5

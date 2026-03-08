@@ -1,0 +1,61 @@
+# Analysis — seguranca-para-devs course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-seguranca-para
+
+course: seguranca-para-devs
+router: rs-seguranca-para
+total_skills: 54
+role: "Seguranca web — XSS, CSRF, SSRF, Injection, MFA, Passkeys, Headers"
+
+decision_paths:
+  - path: [D3_AUTH.passwords_reset]
+    skills_count: 7
+    example_skills: [boas-praticas-para-autenticacao, seguranca-no-armazenamento-de-senhas, gerando-token-de-reset]
+
+  - path: [D3_AUTH.mfa_passwordless]
+    skills_count: 5
+    example_skills: [seguranca-em-multiplos-fatores, implementando-otp, gerando-passkey-fido]
+
+  - path: [D3_AUTH.sessions_access_control]
+    skills_count: 4
+    example_skills: [sobre-sessoes, broken-access-control-em-aplicacoes]
+
+  - path: [DX_SECURITY.injection_request_forgery]
+    skills_count: 8
+    example_skills: [cross-site-request-forgery-csrf, nosql-injection, server-side-request-forgery-ssrf]
+
+  - path: [DX_SECURITY.frontend_dom_attacks]
+    skills_count: 10
+    example_skills: [alternativas-a-innerhtml, click-jacking-em-iframe, dom-clobbering-js]
+
+  - path: [DX_SECURITY.http_headers_cors_tls]
+    skills_count: 4
+    example_skills: [headers-http-para-o-cors, headers-http-para-o-content-type, tls-com-lets-encrypt]
+
+  - path: [DX_SECURITY.input_validation_serialization]
+    skills_count: 4
+    example_skills: [input-validation-e-falhas, validacao-de-entrada-e-sanitizacao]
+
+  - path: [DX_SECURITY.secrets_dependencies_tooling]
+    skills_count: 9
+    example_skills: [gerenciamento-de-segredos, ci-com-criptografia-e-segredos, sast]
+
+  - path: [D3_DEPLOY.tls_infra_hardening]
+    skills_count: 3
+    example_skills: [tls-com-lets-encrypt, web-application-firewall, acesso-ssh]
+
+decisions_answered:
+  - D3_AUTH               # 16 skills — passwords, MFA, passkeys, sessions
+  - DX_SECURITY           # PRIMARY — 35 skills (injection, XSS, CSRF, headers, secrets)
+  - DX_QUALITY            # logging, error reporting (partial)
+  - D3_DEPLOY             # TLS, WAF, SSH (partial)
+  - D3_TESTING            # SAST (partial)
+
+decisions_not_covered:
+  - D0_SOLUTION_TYPE
+  - D1_RUNTIME
+  - D1_FRAMEWORK_WEB
+  - D1_ARCHITECTURE
+
+notes:
+  - "Framework-agnostic — focused purely on security hardening patterns"

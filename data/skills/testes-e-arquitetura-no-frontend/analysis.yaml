@@ -1,0 +1,58 @@
+# Analysis — testes-e-arquitetura-no-frontend course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-testes-e
+
+course: testes-e-arquitetura-no-frontend
+router: rs-testes-e
+total_skills: 74
+role: "Testes + Clean Architecture frontend — Jest, RTL, Playwright, TDD, CI"
+
+decision_paths:
+  - path: [D3_TESTING.unit_jest_rtl]
+    skills_count: 20
+    example_skills: [setup-testes, testando-componente-logo, testando-o-prompt-form]
+
+  - path: [D3_TESTING.e2e_playwright]
+    skills_count: 15
+    example_skills: [introducao-playwright, configurando-o-playwright, tdd-com-testes-e-2-e]
+
+  - path: [D3_TESTING.ci_pipeline]
+    skills_count: 5
+    example_skills: [eslint-prettier-e-lefthook, criando-pipeline-de-ci]
+
+  - path: [D1_ARCH.clean_architecture_use_cases]
+    skills_count: 10
+    example_skills: [arquitetura-de-software, separando-as-regras-de-negocio, criando-o-delete-prompt-use-case]
+
+  - path: [D1_FW.nextjs_app_router]
+    skills_count: 8
+    example_skills: [react-client-components-vs-react-server-components, criando-a-create-prompt-action]
+
+  - path: [D3_DATA_LAYER.prisma]
+    skills_count: 5
+    example_skills: [setup-docker-docker-compose-e-prisma, criando-os-testes-do-prisma-prompt-repository]
+
+  - path: [D3_STATE.url_state_nuqs]
+    skills_count: 3
+    example_skills: [adicionando-no-nuqs, salvando-a-busca-na-url]
+
+  - path: [D3_STYLING.design_system]
+    skills_count: 2
+    example_skills: [setup-design-system, estilos-e-fontes-do-design-system]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # web app (Next.js prompt manager)
+  - D1_FRAMEWORK_WEB      # Next.js App Router
+  - D1_ARCHITECTURE       # Clean Architecture (use cases, dependency inversion)
+  - D3_DATA_LAYER         # Prisma (Docker Compose PostgreSQL)
+  - D3_TESTING            # PRIMARY — Jest, RTL, Playwright, TDD, CI (~45 skills)
+  - D3_DEPLOY             # 1 skill (partial)
+  - D3_STYLING            # Design system (partial)
+  - D3_STATE              # URL state nuqs (partial)
+  - DX_QUALITY            # ESLint/Prettier/Lefthook, CI
+
+decisions_not_covered:
+  - D1_RUNTIME
+  - D2_NODE_FRAMEWORK
+  - D3_AUTH
+  - DX_SECURITY

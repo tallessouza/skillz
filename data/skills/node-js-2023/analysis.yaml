@@ -1,0 +1,67 @@
+# Analysis — node-js-2023 course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-node-js
+
+course: node-js-2023
+router: rs-node-js
+total_skills: 272
+role: "Backend Node.js profundo — Fastify, NestJS, DDD, Clean Architecture"
+
+decision_paths:
+  - path: [D0.api_backend, D1.node_js, D2.fastify, D1_ARCH.clean_ddd]
+    skills_count: 85
+    example_skills: [conhecendo-o-fastify, separando-rotas-da-aplicacao, handler-de-erros-global]
+
+  - path: [D0.api_backend, D1.node_js, D2.nestjs, D1_ARCH.clean_ddd]
+    skills_count: 42
+    example_skills: [criando-projeto-com-nest, modulos-servicos-e-controllers, autorizacao-por-cargos-rbac]
+
+  - path: [D0.api_backend, D3.sql, D4.prisma]
+    skills_count: 35
+    example_skills: [setup-do-prisma, criando-schema-do-prisma, relacionamentos-entre-tabelas]
+
+  - path: [D0.api_backend, D3.sql, D4.knex]
+    skills_count: 8
+    example_skills: [configurando-o-knex, realizando-queries-com-knex, tipagem-no-knex]
+
+  - path: [D0.api_backend, D3_AUTH.jwt]
+    skills_count: 18
+    example_skills: [principios-da-autenticacao-jwt, implementando-jwt-no-fastify, estrategia-de-refresh-de-token]
+
+  - path: [D0.api_backend, D3_TESTING.unit_e2e]
+    skills_count: 48
+    example_skills: [configurando-vitest, primeiro-teste-unitario, in-memory-databases, factories-de-testes]
+
+  - path: [D0.api_backend, D1_INFRA.docker]
+    skills_count: 8
+    example_skills: [fundamentos-do-docker, postgre-sql-com-docker, setup-docker-compose]
+
+  - path: [D0.api_backend, D3_DEPLOY.render]
+    skills_count: 3
+    example_skills: [deploy-do-app-no-render, preparando-para-deploy]
+
+  - path: [DX_QUALITY.eslint_typescript]
+    skills_count: 12
+    example_skills: [configuracao-do-es-lint-1, tratando-env-com-zod, criando-pipe-de-validacao-do-zod]
+
+  - path: [D1_RUNTIME.node_fundamentals]
+    skills_count: 13
+    example_skills: [entendendo-streams-no-node, entendendo-buffers-no-node, criando-stream-de-leitura]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # api_backend
+  - D1_RUNTIME            # Node.js (streams, buffers, HTTP module)
+  - D1_ARCHITECTURE       # Clean Architecture + DDD
+  - D1_INFRA_PLATFORM     # Docker + Docker Compose (partial)
+  - D2_NODE_FRAMEWORK     # Fastify + NestJS
+  - D3_DATA_LAYER         # Prisma + Knex + in-memory repos
+  - D4_SQL_ORM            # Prisma + Knex
+  - D3_AUTH               # JWT (fastify-jwt, nestjs guards, refresh token, RBAC)
+  - D3_DEPLOY             # Render (partial)
+  - D3_TESTING            # Vitest (unit + E2E), TDD, factories, CI
+  - DX_QUALITY            # ESLint, Prettier, TypeScript, Zod
+  - DX_SECURITY           # bcrypt, RBAC guards (partial)
+
+decisions_not_covered:
+  - D3_STYLING            # backend-only course
+  - D3_STATE              # no frontend

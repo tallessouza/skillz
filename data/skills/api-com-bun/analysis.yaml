@@ -1,0 +1,44 @@
+# Analysis — api-com-bun course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-api-com
+
+course: api-com-bun
+router: rs-api-com
+total_skills: 34
+role: "API com Bun — ElysiaJS, Drizzle ORM, JWT Magic Link, Dashboard Metrics"
+
+decision_paths:
+  - path: [D1_RUNTIME.bun, D2.elysia]
+    skills_count: 4
+    example_skills: [criando-api-com-bun-e-elysia, variaveis-ambiente-no-bun]
+
+  - path: [D3_DATA_LAYER.postgresql, D4.drizzle]
+    skills_count: 17
+    example_skills: [postgre-sql-no-docker-compose, configurando-drizzle-orm, migrations-no-drizzle]
+
+  - path: [D3_AUTH.jwt_magic_link]
+    skills_count: 9
+    example_skills: [setup-da-autenticacao-jwt, rota-envio-do-link-de-autenticacao, envio-de-e-mail-com-nodemailer]
+
+  - path: [DX_QUALITY.eslint]
+    skills_count: 1
+    example_skills: [configurando-es-lint-no-projeto]
+
+decisions_answered:
+  - D1_RUNTIME            # Bun
+  - D2_NODE_FRAMEWORK     # ElysiaJS (Bun framework)
+  - D3_DATA_LAYER         # PostgreSQL + Drizzle ORM (9 skills)
+  - D4_SQL_ORM            # Drizzle (17 skills touch Drizzle)
+  - D3_AUTH               # JWT + Magic Link (9 skills)
+  - DX_QUALITY            # ESLint only (partial)
+
+decisions_not_covered:
+  - D0_SOLUTION_TYPE
+  - D3_DEPLOY             # zero deployment skills
+  - D3_TESTING            # zero testing
+  - DX_SECURITY
+
+notes:
+  - "50% of course is Drizzle ORM (schema + queries + metrics)"
+  - "Complete passwordless magic-link auth flow"
+  - "Biggest gap: no deploy and no testing"

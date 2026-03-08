@@ -1,0 +1,54 @@
+# Analysis — ia-node-marketplace-inteligente course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-ia-node
+
+course: ia-node-marketplace-inteligente
+router: rs-ia-node
+total_skills: 50
+role: "AI com Node.js — OpenAI, Gemini, Function Calling, Embeddings, NestJS"
+
+decision_paths:
+  - path: [D0.ai_integrated_backend, setup_fundamentals]
+    skills_count: 5
+    example_skills: [openai-sdk-setup, gemini-sdk-integration]
+
+  - path: [D0.ai_integrated_backend, prompt_engineering]
+    skills_count: 5
+    example_skills: [structured-outputs-zod, chain-of-thought]
+
+  - path: [D0.ai_integrated_backend, function_calling]
+    skills_count: 5
+    example_skills: [function-calling-setup, tool-use-pattern]
+
+  - path: [D0.ai_integrated_backend, embeddings_semantic_search]
+    skills_count: 5
+    example_skills: [generating-embeddings, semantic-search]
+
+  - path: [D2.nestjs, chat_sessions]
+    skills_count: 3
+    example_skills: [nestjs-chat-module, tdd-chat-sessions]
+
+  - path: [D0.ai_integrated_backend, ecommerce_cart_ai]
+    skills_count: 4
+    example_skills: [intelligent-cart, ai-suggestions]
+
+  - path: [D0.ai_integrated_backend, multi_provider]
+    skills_count: 3
+    example_skills: [openai-provider, gemini-provider, provider-abstraction]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # AI-integrated Node.js backend
+  - D1_RUNTIME            # Node.js (OpenAI SDK, Gemini SDK)
+  - D2_NODE_FRAMEWORK     # NestJS (chat sessions, TDD)
+  - DX_QUALITY            # Zod Structured Outputs (partial)
+
+decisions_not_covered:
+  - D3_DATA_LAYER
+  - D3_AUTH
+  - D3_TESTING
+  - D3_DEPLOY
+  - DX_SECURITY
+
+notes:
+  - "Heavily concentrated on D0_SOLUTION_TYPE (AI-powered app)"
+  - "NestJS used for module architecture, not full backend patterns"

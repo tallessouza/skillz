@@ -1,0 +1,60 @@
+# Analysis — saa-s-next-js-rbac course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-saa-s
+
+course: saa-s-next-js-rbac
+router: rs-saa-s
+total_skills: 106
+role: "SaaS multi-tenant — Monorepo, RBAC (CASL), OAuth, Organizations"
+
+decision_paths:
+  - path: [D0.saas_multitenant, D1_ARCH.monorepo_turborepo]
+    skills_count: 7
+    example_skills: [intro, multi-tenant-concepts, turborepo-monorepo]
+
+  - path: [D3_AUTH.rbac_casl]
+    skills_count: 6
+    example_skills: [casl-intro, first-permissions, role-based-permissions]
+
+  - path: [D3_AUTH.oauth_jwt]
+    skills_count: 6
+    example_skills: [password-jwt-auth, github-oauth, auth-middleware]
+
+  - path: [D0.saas_multitenant, organizations_crud]
+    skills_count: 6
+    example_skills: [create-org, org-switcher, membership-resolution]
+
+  - path: [D0.saas_multitenant, members_invites]
+    skills_count: 5
+    example_skills: [create-invite, accept-invite, list-members]
+
+  - path: [D0.saas_multitenant, projects_crud]
+    skills_count: 4
+    example_skills: [create-project, list-projects, modal-intercepting-routes]
+
+  - path: [D1_FW.nextjs_server_actions]
+    skills_count: 5
+    example_skills: [server-actions, useActionState, interception-routes]
+
+  - path: [D3_DEPLOY.render_vercel]
+    skills_count: 3
+    example_skills: [backend-render, frontend-vercel, github-db-setup]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # SaaS multi-tenant
+  - D1_RUNTIME            # Node.js (Fastify backend)
+  - D1_FRAMEWORK_WEB      # Next.js App Router + Server Actions
+  - D1_ARCHITECTURE       # Monorepo (TurboRepo)
+  - D1_INFRA_PLATFORM     # Render + Vercel (partial)
+  - D2_NODE_FRAMEWORK     # Fastify
+  - D3_DATA_LAYER         # Prisma + PostgreSQL
+  - D4_SQL_ORM            # Prisma
+  - D3_AUTH               # JWT + OAuth + CASL RBAC
+  - D3_DEPLOY             # Render + Vercel
+  - D3_STYLING            # shadcn/ui + next-themes (partial)
+  - D3_STATE              # Server Actions + useActionState (partial)
+  - DX_QUALITY            # ESLint + TypeScript monorepo (partial)
+  - DX_SECURITY           # RBAC (CASL), org-scoped auth
+
+decisions_not_covered:
+  - D3_TESTING            # zero testing content

@@ -1,0 +1,51 @@
+# Analysis — redux-zustand course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-redux-zustand
+
+course: redux-zustand
+router: rs-redux-zustand
+total_skills: 22
+role: "State Management — Redux Toolkit lifecycle, Zustand, migracao, testes"
+
+decision_paths:
+  - path: [D3_STATE.redux_toolkit]
+    skills_count: 14
+    example_skills:
+      - fundamentos-do-redux
+      - criando-store-do-redux
+      - criando-reducer-do-player
+      - disparando-actions-no-redux
+      - utilizando-async-thunks
+      - utilizando-redux-dev-tools
+
+  - path: [D3_STATE.zustand]
+    skills_count: 3
+    example_skills:
+      - setup-do-zustand
+      - migrando-do-redux-p-zustand
+      - testes-unitarios-no-zustand
+
+  - path: [D1_FW.react_spa_ui]
+    skills_count: 5
+    example_skills:
+      - estrutura-base-da-ui
+      - ui-dos-modulos-e-player
+      - radix-collapsible-nos-modulos
+
+decisions_answered:
+  - D3_STATE              # PRIMARY — Redux Toolkit (14) + Zustand (3)
+  - D1_FRAMEWORK_WEB      # React SPA (implicit, partial)
+  - DX_QUALITY            # Unit tests for stores, DevTools (partial)
+
+decisions_not_covered:
+  - D0_SOLUTION_TYPE
+  - D1_RUNTIME
+  - D3_STYLING
+  - D3_TESTING            # only store unit tests
+  - D3_AUTH
+  - D3_DEPLOY
+  - DX_SECURITY
+
+notes:
+  - "Redux vs Zustand comparison with migration path"
+  - "No server-state (TanStack Query, SWR) coverage"

@@ -1,0 +1,58 @@
+# Analysis — clean-code course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-clean-code
+
+course: clean-code
+router: rs-clean-code
+total_skills: 21
+role: "Premissa de escrita — Naming, Condicionais, SOLID, DDD, Componentes Puros"
+
+decision_paths:
+  - path: [D1_ARCH.ddd_domain_modeling]
+    skills_count: 3
+    example_skills: [principios-de-ddd, exemplo-pratico-de-ddd, unindo-ddd-ao-solid]
+
+  - path: [D1_ARCH.solid_principles]
+    skills_count: 3
+    example_skills: [principios-de-solid, exemplo-pratico-de-solid, unindo-ddd-ao-solid]
+
+  - path: [DX_QUALITY.code_writing_premises]
+    skills_count: 8
+    example_skills:
+      - nomenclatura-de-variaveis
+      - causa-vs-efeito
+      - regras-em-condicionais
+      - parametros-e-desestruturacao
+      - numeros-magicos
+      - evite-syntatic-sugars
+      - codigo-em-ingles
+      - comentarios-vs-documentacao
+
+  - path: [DX_QUALITY.react_component_patterns]
+    skills_count: 5
+    example_skills:
+      - componentes-puros
+      - composicao-vs-customizacao
+      - condicionais-no-render
+      - desacoplando-componentes
+      - funcoes-e-eventos-no-react
+
+  - path: [DX_QUALITY.clean_code_foundations]
+    skills_count: 3
+    example_skills: [o-que-e-ou-nao-e-clean-code, principios-do-codigo-limpo, clean-code-no-back-end]
+
+decisions_answered:
+  - D1_ARCHITECTURE       # DDD + SOLID como premissa de design
+  - DX_QUALITY            # PRIMARY — clean_code como PREMISSA de escrita (naming, condicionais, componentes)
+
+decisions_not_covered:
+  - D1_RUNTIME
+  - D1_FRAMEWORK_WEB
+  - D3_TESTING
+  - D3_DEPLOY
+  - DX_SECURITY
+
+notes:
+  - "Clean code = PREMISSA de escrita, NAO refactoring"
+  - "DDD/SOLID sao principios de design, nao implementacao"
+  - "React patterns sao premissas de componentes puros"

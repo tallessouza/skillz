@@ -1,0 +1,93 @@
+# Analysis — devops + kubernetes courses
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-devops
+# Courses: devops (223 skills) + kubernetes (179 skills)
+
+course: devops + kubernetes
+router: rs-devops
+total_skills: 402
+role: "Infraestrutura — Docker, K8s, Terraform, CI/CD, Observabilidade, Istio"
+
+decision_paths:
+  - path: [D1_INFRA.docker]
+    skills_count: 32
+    example_skills: [containers-docker-e-lxc, estrutura-de-um-dockerfile, criando-multiplos-estagios]
+
+  - path: [D1_INFRA.kubernetes_core]
+    skills_count: 78
+    example_skills: [o-que-e-kubernetes, principais-componentes, criando-um-deployment]
+
+  - path: [D1_INFRA.kubernetes_scaling]
+    skills_count: 38
+    example_skills: [criando-o-hpa-utilizando-a-v-2, estressando-a-nossa-aplicacao, liveness, readiness]
+
+  - path: [D1_INFRA.kubernetes_storage]
+    skills_count: 22
+    example_skills: [entendendo-sobre-volumes, persistent-volume, criando-o-storage-class]
+
+  - path: [D1_INFRA.kubernetes_config_secrets]
+    skills_count: 18
+    example_skills: [entendendo-sobre-o-config-map, explorando-o-objeto-secret]
+
+  - path: [D1_INFRA.kubernetes_rbac_security]
+    skills_count: 30
+    example_skills: [configurando-permissoes, configurando-roles, criando-a-nossa-primeira-cluster-policy]
+
+  - path: [D1_INFRA.kubernetes_cloud_eks]
+    skills_count: 32
+    example_skills: [primeiras-configuracoes-na-criacao-do-cluster-eks, criando-node-group]
+
+  - path: [D1_INFRA.kubernetes_autoscaler_karpenter]
+    skills_count: 12
+    example_skills: [introducao-ao-karpenter, criando-a-node-class]
+
+  - path: [D1_INFRA.kubernetes_gitops_argocd]
+    skills_count: 14
+    example_skills: [conhecendo-o-argo-cd, criando-nosso-primeiro-application-set]
+
+  - path: [D1_INFRA.kubernetes_helm]
+    skills_count: 8
+    example_skills: [explorando-o-helm, criando-o-nosso-primeiro-chart]
+
+  - path: [D1_INFRA.service_mesh_istio]
+    skills_count: 22
+    example_skills: [conhecendo-service-mesh, configurando-o-virtual-service, configurando-circuit-breaker]
+
+  - path: [D1_INFRA.observability]
+    skills_count: 38
+    example_skills: [o-que-e-observabilidade, conhecendo-a-stack-lgtm, configurando-o-prometheus]
+
+  - path: [D1_INFRA.terraform_iac]
+    skills_count: 30
+    example_skills: [cli-do-terraform, conhecendo-e-configurando-provider, criando-nosso-primeiro-recurso]
+
+  - path: [D3_DEPLOY.cicd_pipelines]
+    skills_count: 18
+    example_skills: [git-actions, configurando-nosso-primeiro-workflow, adicionando-step-de-build]
+
+  - path: [D0.devops_culture]
+    skills_count: 10
+    example_skills: [qual-e-a-ideia-do-dev-ops, conhecendo-as-tres-maneiras, continuous-delivery]
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # devops_infra culture
+  - D1_INFRA_PLATFORM     # docker, kubernetes, aws, terraform (PRIMARY)
+  - D3_DEPLOY             # CI/CD GitHub Actions, ECR, GitOps (ArgoCD)
+  - DX_SECURITY           # mTLS (Istio), RBAC K8s, Kyverno, IAM (partial)
+
+decisions_not_covered:
+  - D1_RUNTIME
+  - D1_FRAMEWORK_WEB
+  - D1_ARCHITECTURE
+  - D2_NODE_FRAMEWORK
+  - D3_DATA_LAYER
+  - D4_SQL_ORM
+  - D3_AUTH
+  - D3_TESTING
+  - D3_STYLING
+  - D3_STATE
+  - DX_QUALITY
+
+notes:
+  - "kubernetes course extends devops significantly: EKS, Karpenter, ArgoCD, Helm, Kyverno, RBAC"
+  - "Purely infrastructure/operations — zero application-level skills"

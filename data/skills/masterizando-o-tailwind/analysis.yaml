@@ -1,0 +1,66 @@
+# Analysis — masterizando-o-tailwind course
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-masterizando
+
+course: masterizando-o-tailwind
+router: rs-masterizando
+total_skills: 37
+role: "Tailwind CSS profundo — Composicao, Dark Mode, Responsividade, Animacoes"
+
+decision_paths:
+  - path: [D3_STYLING.tailwind_setup]
+    skills_count: 5
+    example_skills: [criando-projeto-com-tailwind, fundamentos-do-tailwind, theme-first-api]
+
+  - path: [D3_STYLING.tailwind_layout_forms]
+    skills_count: 4
+    example_skills: [estrutura-do-layout, estrutura-do-formulario-1, campos-do-formulario]
+
+  - path: [D3_STYLING.tailwind_sidebar]
+    skills_count: 5
+    example_skills: [menu-de-navegacao, logo-e-input-de-busca, responsividade-da-sidebar]
+
+  - path: [D3_STYLING.tailwind_composition]
+    skills_count: 6
+    example_skills: [pattern-de-composicao, componentizando-file-input, criando-abas-com-radix-tabs]
+
+  - path: [D3_STYLING.tailwind_variants]
+    skills_count: 4
+    example_skills: [variantes-de-botoes, variantes-com-slots, variante-ghost-dos-botoes]
+
+  - path: [D3_STYLING.tailwind_dark_mode]
+    skills_count: 3
+    example_skills: [dark-mode-no-tailwind, tema-dark-da-sidebar, theme-switcher]
+
+  - path: [D3_STYLING.tailwind_responsive]
+    skills_count: 3
+    example_skills: [responsividade-e-breakpoints, responsividade-do-formulario]
+
+  - path: [D3_STYLING.tailwind_animations]
+    skills_count: 3
+    example_skills: [animacao-das-abas, animando-abertura-dos-selects, animando-portfolio]
+
+  - path: [D3_STYLING.tailwind_file_upload]
+    skills_count: 2
+    example_skills: [listagem-de-arquivos, context-e-preview-da-imagem]
+
+  - path: [DX_QUALITY.eslint_prettier]
+    skills_count: 1
+    example_skills: [configurando-es-lint-e-prettier]
+
+decisions_answered:
+  - D3_STYLING            # PRIMARY — Tailwind (37 skills)
+  - D1_FRAMEWORK_WEB      # React composition + Radix UI (partial)
+  - DX_QUALITY            # ESLint + Prettier (partial)
+
+decisions_not_covered:
+  - D0_SOLUTION_TYPE
+  - D1_RUNTIME
+  - D3_STATE
+  - D3_TESTING
+  - D3_AUTH
+  - D3_DEPLOY
+  - DX_SECURITY
+
+notes:
+  - "Purely frontend styling — no backend/routing/state/auth"

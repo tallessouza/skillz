@@ -1,0 +1,59 @@
+# Analysis — next-js + next-js-app-router-e-testes courses
+# Generated: 2026-03-07 by transcript-analyst
+# Router: rs-next-js
+# Courses: next-js (133 skills) + next-js-app-router-e-testes (41 skills)
+
+course: next-js + next-js-app-router-e-testes
+router: rs-next-js
+total_skills: 174
+role: "Fullstack SSR — App Router, Server Components, Server Actions, Cypress"
+
+decision_paths:
+  - path: [D0.fullstack_web, D1_FW.nextjs_app_router]
+    skills_count: 174
+    sub_paths:
+      - domain: "SSR/SSG/ISR rendering strategies"
+        skills_count: 25
+      - domain: "Server Components vs Client Components"
+        skills_count: 20
+      - domain: "Server Actions + forms"
+        skills_count: 15
+      - domain: "Routing, layouts, loading states"
+        skills_count: 20
+      - domain: "Data fetching, cache, memoization"
+        skills_count: 15
+      - domain: "Cypress E2E testing"
+        skills_count: 10
+      - domain: "Prisma + Drizzle ORM"
+        skills_count: 12
+      - domain: "Auth (BetterAuth)"
+        skills_count: 5
+      - domain: "Deploy (Vercel + Docker)"
+        skills_count: 8
+      - domain: "Tailwind + shadcn/ui"
+        skills_count: 10
+      - domain: "SEO, OpenGraph, Core Web Vitals"
+        skills_count: 8
+      - domain: "ESLint/Prettier/Lefthook"
+        skills_count: 5
+      - domain: "URL state (nuqs), React Context"
+        skills_count: 6
+
+decisions_answered:
+  - D0_SOLUTION_TYPE      # fullstack SSR web app
+  - D1_RUNTIME            # Node.js (implicit, partial)
+  - D1_FRAMEWORK_WEB      # Next.js App Router + Pages Router
+  - D3_DATA_LAYER         # Server Components fetch, React Query, cache
+  - D4_SQL_ORM            # Prisma (primary), Drizzle (secondary)
+  - D3_AUTH               # BetterAuth
+  - D3_DEPLOY             # Vercel (primary), Docker
+  - D3_TESTING            # Cypress E2E
+  - D3_STYLING            # Tailwind CSS + shadcn/ui
+  - D3_STATE              # React Context, URL state (nuqs)
+  - DX_QUALITY            # ESLint/Prettier/Lefthook, SEO
+
+decisions_not_covered:
+  - D1_ARCHITECTURE       # no DDD/Clean Arch
+  - D1_INFRA_PLATFORM     # no K8s/Terraform
+  - D2_NODE_FRAMEWORK     # Next.js IS the framework
+  - DX_SECURITY           # no XSS/CSRF/headers
