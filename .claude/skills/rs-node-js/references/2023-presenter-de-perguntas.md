@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-presenter-de-perguntas
 description: "Applies the Presenter pattern when building HTTP API responses in NestJS or Node.js. Use when user asks to 'create an endpoint', 'return data from API', 'format response', 'list resources', or 'map domain to response'. Enforces separation between domain entities and HTTP output, controls which fields are exposed, and handles Result/Either patterns. Make sure to use this skill whenever creating or modifying controller responses that return domain objects. Not for database mappers, GraphQL resolvers, or domain logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: presenter-pattern
+  tags: [presenter, http-response, nestjs, clean-architecture, value-objects, domain-mapping]
 ---
 
 # Presenter Pattern (Camada HTTP)
@@ -90,14 +96,14 @@ return { questions: questions.map(QuestionPresenter.toHTTP) }
 | `question.bestAnswerId.toString()` (sem null check) | `question.bestAnswerId?.toString()` |
 | Converter no proprio controller | Delegar para classe Presenter dedicada |
 
+## Troubleshooting
+
+### Value Object retorna [object Object] na resposta JSON
+**Symptom:** A resposta da API mostra `[object Object]` em vez do valor do Slug ou UniqueEntityId
+**Cause:** O Presenter nao esta extraindo `.value` ou `.toString()` dos Value Objects do dominio
+**Fix:** Use `question.slug.value` para Slug e `question.id.toString()` para UniqueEntityId no metodo `toHTTP`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-presenter-de-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-presenter-de-perguntas/references/code-examples.md)

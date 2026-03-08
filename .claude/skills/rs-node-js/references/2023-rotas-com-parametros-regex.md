@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-rotas-parametros-regex
 description: "Applies RegEx-based route parameter extraction when building Node.js HTTP servers from scratch. Use when user asks to 'create routes', 'parse URL parameters', 'build a router', 'extract route params', or 'match dynamic paths'. Implements named capture groups, path-to-regex conversion, and route matching with .test() and .match(). Make sure to use this skill whenever implementing custom routing without Express or similar frameworks. Not for Express/Fastify route handling, query string parsing, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [regex, route-params, named-groups, routing, http-server]
 ---
 
 # Rotas com Parâmetros (RegEx)
@@ -86,14 +92,14 @@ if (route) {
 | `url.split('/')[2]` para pegar param | `url.match(route.path).groups` |
 | Regex sem `^` de ancoragem | `new RegExp(\`^\${pathWithParams}\`)` |
 
+## Troubleshooting
+
+### Rota com parametro dinamico nao faz match
+**Symptom:** `.test(url)` retorna false mesmo com URL correta
+**Cause:** Regex sem ancoragem `^` no inicio ou caracteres especiais nao escapados no path
+**Fix:** Use `new RegExp(`^${pathWithParams}`)` com `^` no inicio para ancorar o match
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-rotas-com-parametros-regex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-rotas-com-parametros-regex/references/code-examples.md)

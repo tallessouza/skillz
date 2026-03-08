@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-sobre-imutabilidade
 description: "Enforces immutability patterns when writing JavaScript/TypeScript code that manipulates objects or arrays. Use when user asks to 'update an object', 'modify state', 'change a property', 'copy an object', or 'work with React state'. Applies rules: never mutate originals directly, use spread operator for copies, understand reference vs value assignment. Make sure to use this skill whenever generating code that modifies objects, arrays, or state — especially in React contexts. Not for primitive value assignments, database mutations, or API request construction."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [javascript, immutability, spread-operator, react-state, references]
 ---
 
 # Imutabilidade em JavaScript
@@ -82,13 +88,16 @@ const address2 = { ...address1, number: 30 } // copia real
 | `arr[i] = newValue` | `const updated = arr.map((v, idx) => idx === i ? newValue : v)` |
 | `state.name = "novo"` (React) | `setState({ ...state, name: "novo" })` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| React nao re-renderiza apos mudar estado | Estado mutado diretamente em vez de criar novo objeto | Use `setState({ ...prev, prop: newValue })` para criar nova referencia |
+| Objeto copiado ainda afeta o original | `const b = a` cria referencia, nao copia | Use spread: `const b = { ...a }` |
+| Objeto aninhado ainda compartilha dados | Spread so copia o primeiro nivel (shallow) | Faca spread em cada nivel: `{ ...obj, nested: { ...obj.nested, prop: val } }` |
+| Array.push modifica o original | `.push()` muta o array in-place | Use `[...arr, newItem]` para criar novo array |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre referencias em memoria, comparacao rasa vs profunda, e beneficios de performance
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-sobre-imutabilidade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-sobre-imutabilidade/references/code-examples.md)

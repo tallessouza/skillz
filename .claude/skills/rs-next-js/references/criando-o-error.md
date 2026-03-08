@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-o-error
 description: "Applies Next.js error.tsx Error Boundary pattern when handling runtime errors in App Router applications. Use when user asks to 'handle errors', 'create error boundary', 'add error page', 'catch runtime errors', or 'create error.tsx' in Next.js. Enforces client component declaration, reset function usage, and granular error boundary placement. Make sure to use this skill whenever implementing error handling UI in Next.js App Router projects. Not for API error handling, try-catch in server actions, or form validation errors."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: error-boundary
+  tags: [next-js, error-boundary, error-tsx, app-router, use-client, reset, fallback-ui]
 ---
 
 # Error Boundary no Next.js (error.tsx)
@@ -115,14 +121,19 @@ export default function ErrorBoundary({
 | Unico error boundary global para tudo | Use error boundaries granulares por segmento quando necessario |
 | Confundir com try-catch em server components | `error.tsx` e para erros de renderizacao no cliente |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-error/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-error/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-error/references/deep-explanation.md) — O arquivo `error.tsx` do Next.js utiliza a **Error Boundary API do React** por baixo dos panos. Isso
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-error/references/code-examples.md) — // app/error.tsx

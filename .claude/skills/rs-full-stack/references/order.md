@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-order
 description: "Applies CSS order property correctly in flexbox/grid layouts when writing CSS code. Use when user asks to 'reorder elements', 'change element order', 'rearrange layout', 'move element first/last', or any visual reordering task. Enforces visual-only reordering with accessibility awareness: order is visual not structural, default is 0, negative moves left/up, positive moves right/down. Make sure to use this skill whenever reordering flex/grid children visually. Not for changing HTML structure, DOM manipulation, or JavaScript sort operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, order, layout, acessibilidade]
 ---
 
 # CSS Order Property
@@ -82,6 +88,15 @@ description: "Applies CSS order property correctly in flexbox/grid layouts when 
 | Usar `order` em navegacao onde a sequencia importa para acessibilidade | Alterar a estrutura HTML |
 | Aplicar `order` sem `display: flex` ou `display: grid` no pai | Garantir que o container e flex ou grid |
 | Usar valores arbitrarios grandes (`order: 999`) | Usar valores sequenciais simples (-1, 0, 1, 2) |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `order` nao tem efeito visual | Container pai nao e flex ou grid | Adicione `display: flex` ou `display: grid` no elemento pai |
+| Leitor de tela le na ordem errada | `order` so muda visual, nao o DOM | Se a ordem importa para compreensao, altere o HTML diretamente |
+| Elemento nao vai para o inicio | Outros elementos tambem tem `order` negativo | Use valor menor que todos os outros (ex: `order: -2`) |
+| Layout responsivo perde a ordem | `order` nao foi ajustado no media query | Adicione `order` especifico dentro do `@media` para cada breakpoint |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conectando-javascript
 description: "Enforces best practices for connecting JavaScript to HTML files. Use when user asks to 'add a script', 'link JavaScript', 'connect JS to HTML', 'include a script tag', or 'set up an HTML page with JS'. Applies rules: external files over inline, script at end of body, never in head. Make sure to use this skill whenever generating HTML boilerplate or adding script references. Not for Node.js, bundlers, or module import/export syntax."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, javascript, script-tag, dom]
 ---
 
 # Conectando JavaScript ao HTML
@@ -79,13 +85,17 @@ description: "Enforces best practices for connecting JavaScript to HTML files. U
 | Script no meio do body entre elementos | Script depois do ultimo elemento, antes de `</body>` |
 | `<script src="...">` dentro do `<head>` | Mova para o final do `<body>` |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Script nao executa | Tag script no head bloqueia renderizacao | Mova `<script src>` para o final do `<body>` |
+| Erro 'element is null' ao acessar DOM | Script carrega antes dos elementos HTML | Coloque script apos os elementos no body ou use `defer` |
+| Arquivo JS nao encontrado (404) | Caminho do src incorreto | Verifique o caminho relativo do arquivo no atributo `src` |
+| Codigo nao atualiza no navegador | Cache do browser | Faca hard refresh com Ctrl+Shift+R |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre carregamento, analogia do tempo de decisao do usuario
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de posicionamento de script com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conectando-javascript/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conectando-javascript/references/code-examples.md)

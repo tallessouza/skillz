@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-senha-autenticacao-legados
 description: "Applies secure password migration and re-authentication patterns when working with legacy authentication systems. Use when user asks to 'migrate password hashing', 'upgrade bcrypt to argon2', 'improve legacy auth', 'add re-authentication', or 'secure existing login system'. Enforces double-hash migration strategy, re-authentication on sensitive operations, and MFA adoption. Make sure to use this skill whenever modifying authentication code in existing systems. Not for greenfield auth setup, OAuth/SSO flows, or session management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, legacy, migration, password-hashing]
 ---
 
 # Senha e Autenticacao em Sistemas Legados
@@ -118,14 +124,14 @@ def change_password(user_id, current_password, new_password):
 | Remover codigo legado antes de todos migrarem | Manter double-hash ate logs confirmarem 100% |
 | Usar mesmo hash sem salt (hashes identicos = senhas identicas) | Salt aleatorio por usuario |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-senha-e-autenticacao-em-sistemas-legados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-senha-e-autenticacao-em-sistemas-legados/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-senha-e-autenticacao-em-sistemas-legados/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-senha-e-autenticacao-em-sistemas-legados/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

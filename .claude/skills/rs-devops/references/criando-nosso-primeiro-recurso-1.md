@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-primeiro-recurso-gcp
 description: "Applies Terraform workflow for creating first GCP resources, including API activation and gcloud authentication. Use when user asks to 'create GCP instance with Terraform', 'deploy to Google Cloud', 'terraform apply GCP', 'fix GCP 403 error', or 'enable GCP API'. Covers plan/apply cycle, service activation, gcloud auth, and destroy cleanup. Make sure to use this skill whenever provisioning GCP infrastructure with Terraform. Not for AWS, Azure, or non-Terraform GCP provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-gcp
+  tags: [terraform, gcp, google-cloud, compute-engine, gcloud, iac]
 ---
 
 # Criando Primeiro Recurso GCP com Terraform
@@ -103,14 +109,14 @@ resource "google_compute_instance" "vm" {
 | Recurso criado para teste | Destrua imediatamente com `terraform apply -destroy` |
 | Precisa de outputs do recurso | Configure `output` blocks — estrutura identica a AWS/Azure |
 
+## Troubleshooting
+
+### Erro 403 Service Disabled ao rodar terraform apply
+**Symptom:** `terraform apply` falha com erro `403 Service Disabled` ou `googleapi: Error 403: ... has not been used in project`.
+**Cause:** A API do servico GCP (ex: Compute Engine) nao foi ativada no projeto.
+**Fix:** Acesse o GCP Console, busque pelo servico (ex: "Compute Engine"), clique em "Ativar API" e aguarde ~2 minutos antes de rodar o apply novamente.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso-1/references/code-examples.md)

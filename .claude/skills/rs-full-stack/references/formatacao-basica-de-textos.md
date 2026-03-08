@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatacao-basica-de-textos
 description: "Applies correct HTML text formatting tags when writing markup. Use when user asks to 'create HTML', 'write a page', 'format text', 'add emphasis', 'highlight text', or 'strikethrough'. Enforces semantic tag usage: strong for importance, em for emphasis, mark for relevance, s for obsolete content. Make sure to use this skill whenever generating HTML with inline text formatting. Not for CSS styling, typography, or font customization."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, strong, em, mark, semantic, text-formatting]
 ---
 
 # Formatacao Basica de Textos em HTML
@@ -75,13 +81,16 @@ description: "Applies correct HTML text formatting tags when writing markup. Use
 | `<s>` para decoracao visual | CSS `text-decoration: line-through` |
 | `<strong>` em titulos inteiros | `<h1>`-`<h6>` para hierarquia |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `<strong>` nao aparece em negrito | CSS esta sobrescrevendo com `font-weight: normal` | Verifique estilos aplicados no DevTools |
+| Leitor de tela nao enfatiza o texto | Usando `<b>` ou `<i>` em vez de `<strong>` e `<em>` | Substitua por tags semanticas para acessibilidade |
+| `<mark>` nao destaca visualmente | Estilo padrao do `<mark>` foi resetado pelo CSS global | Adicione `mark { background-color: yellow; }` no CSS |
+| `<s>` nao aparece com risco | Reset CSS removeu `text-decoration` | Adicione `s { text-decoration: line-through; }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre semantica vs aparencia visual
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatacao-basica-de-textos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatacao-basica-de-textos/references/code-examples.md)

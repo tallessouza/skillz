@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-resumo-de-transacoes
 description: "Applies Knex.js aggregation patterns when building summary or totaling routes in Node.js REST APIs. Use when user asks to 'sum values', 'create a summary route', 'aggregate data', 'total transactions', or 'get account balance'. Covers sum() with column aliasing via as(), .first() for single-row returns. Make sure to use this skill whenever implementing aggregation endpoints with Knex. Not for complex reporting, multi-table joins, or frontend display logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-com-nodejs
+  tags: [knex, aggregation, sum, first, alias, rest-api]
 ---
 
 # Resumo de Transacoes com Knex.js
@@ -69,14 +75,14 @@ app.get('/transactions/summary', async () => {
 | `knex.raw('SELECT SUM(amount)...')` para somas simples | `knex('t').sum('amount', { as: 'amount' })` |
 | Rota summary sem `.first()` | Sempre `.first()` em agregacoes de resultado unico |
 
+## Troubleshooting
+
+### Resultado da agregacao retorna array em vez de objeto
+**Symptom:** Rota de summary retorna `[{ "sum(amount)": 5000 }]` em vez de `{ amount: 5000 }`
+**Cause:** Knex retorna array por padrao e sem alias o nome da coluna fica ilegivel
+**Fix:** Adicione `.first()` no final e passe `{ as: 'amount' }` como segundo parametro do `.sum()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-resumo-de-transacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-resumo-de-transacoes/references/code-examples.md)

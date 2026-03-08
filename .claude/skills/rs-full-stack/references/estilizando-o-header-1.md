@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estilizando-o-header-1
 description: "Applies CSS header styling patterns using Flexbox layout, gap spacing, and alignment when building page headers or profile sections. Use when user asks to 'style a header', 'create a profile section', 'layout header with flexbox', or 'align header elements'. Enforces flex-based composition with gap instead of margins, proper nesting selectors, and CSS file separation. Make sure to use this skill whenever styling header components with profile info and metadata lists. Not for JavaScript logic, responsive breakpoints, or CSS Grid layouts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-header-styling
+  tags: [css, flexbox, header, profile, gap, padding-block, layout, alignment]
 ---
 
 # Estilizando o Header com CSS Flexbox
@@ -124,13 +130,16 @@ header { padding-block: 32px; font: var(--text-md); }
 | `list-style-type: none` | `list-style: none` (shorthand) |
 | `margin-bottom` em cada `li` | `gap` no `ul` com flex-direction column |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elementos do header empilhados verticalmente | Faltou `display: flex` no container | Adicionar `display: flex` com `align-items: center` |
+| Espacamento inconsistente entre elementos | Usando `margin` individual em cada filho | Substituir por `gap` no container flex |
+| Font-size repetido em varios elementos | Definindo font em cada filho separadamente | Aplicar `font` no container pai e deixar herdar |
+| Lista de info com bullets visiveis | `list-style` nao removido | Adicionar `list-style: none` no `ul`/`.info` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre composição flex, Active Recall, e decisões de layout
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estilizando-o-header-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estilizando-o-header-1/references/code-examples.md)

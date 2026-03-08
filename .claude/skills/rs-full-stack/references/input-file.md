@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-file
 description: "Applies HTML file input patterns when building forms with file upload. Use when user asks to 'create a file upload', 'add image upload', 'build a form with attachments', 'upload files in HTML', or any form with file inputs. Enforces enctype, accept filters, and multiple file handling. Make sure to use this skill whenever generating HTML forms that include file uploads. Not for backend file processing, storage, or JavaScript file handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, file-upload, enctype, multipart, forms]
 ---
 
 # Input File em Formulários HTML
@@ -92,13 +98,16 @@ description: "Applies HTML file input patterns when building forms with file upl
 | Input file sem `accept` quando há tipo específico | `accept="image/*"` ou `accept=".pdf"` |
 | `name="file"` genérico | `name="fotoPerfil"` descritivo do conteúdo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Servidor recebe apenas nome do arquivo | `enctype="multipart/form-data"` ausente no form | Adicionar `enctype="multipart/form-data"` ao `<form>` |
+| Arquivo nao envia ao submeter | Form usando `method="GET"` | Trocar para `method="POST"` |
+| Usuario consegue selecionar qualquer tipo de arquivo | `accept` nao definido | Adicionar `accept="image/*"` ou extensoes especificas |
+| Apenas um arquivo selecionavel | Atributo `multiple` ausente | Adicionar `multiple` ao input |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre enctype, método POST vs GET, e como o backend recebe arquivos
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações de accept e multiple
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-file/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-file/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre enctype, metodo POST vs GET, e como o backend recebe arquivos
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes de accept e multiple

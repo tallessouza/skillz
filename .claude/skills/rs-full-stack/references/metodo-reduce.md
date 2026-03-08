@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-reduce
 description: "Applies correct reduce() patterns when transforming arrays into single values in JavaScript/TypeScript. Use when user asks to 'sum array values', 'aggregate a list', 'calculate total', 'reduce array', or 'accumulate values'. Enforces proper accumulator naming, initial value usage, and return statement. Make sure to use this skill whenever code involves Array.reduce() or aggregation of array elements. Not for map/filter/forEach operations or array transformations that return arrays."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-array-methods
+  tags: [javascript, array, reduce, aggregation, accumulator]
 ---
 
 # Método reduce()
@@ -96,13 +102,16 @@ const totalValue = items.reduce((total, item) => total + item.value, 0)
 | `.reduce()` para filtrar/transformar array | `.filter()` ou `.map()` |
 | Valor inicial `0` quando resultado e objeto | Valor inicial `{}` ou `[]` conforme tipo esperado |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `TypeError: Reduce of empty array with no initial value` | Array vazio sem valor inicial | Sempre passe o segundo argumento (valor inicial) |
+| Resultado e `undefined` | Esqueceu o `return` no callback | Adicione `return` explicito do acumulador |
+| Resultado e `NaN` | Valor inicial incompativel ou propriedade inexistente | Verifique se o valor inicial e do mesmo tipo do resultado esperado |
+| Acumulador perde valores anteriores | Nao retornou o acumulador atualizado | Garanta que o `return` inclui o acumulador modificado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o fluxo do acumulador, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-reduce/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-reduce/references/code-examples.md)

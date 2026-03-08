@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-vs-code
 description: "Applies recommended VSCode extensions setup for Terraform/HCL development. Use when user asks to 'setup VSCode for Terraform', 'configure editor for HCL', 'install Terraform extensions', or 'improve Terraform developer experience'. Ensures correct extension choice with syntax highlighting and basic autocomplete. Make sure to use this skill whenever setting up a Terraform development environment. Not for Terraform CLI installation, cloud provider configuration, or infrastructure provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-tooling
+  tags: [vscode, terraform, hcl, extensions, developer-experience, tooling]
 ---
 
 # Configurando VSCode para Terraform
@@ -56,14 +62,14 @@ resource "aws_instance" "example" {
 | Confiar apenas na extensao para validacao | Usar `terraform validate` e `terraform fmt` no terminal |
 | Instalar multiplas extensoes Terraform | Usar apenas uma para evitar conflitos |
 
+## Troubleshooting
+
+### Arquivo .tf sem syntax highlighting
+**Symptom:** Arquivo Terraform aberto no VSCode sem coloracao de sintaxe
+**Cause:** Extensao Terraform nao instalada ou conflito com outra extensao
+**Fix:** Recarregue o VSCode (Ctrl+Shift+P -> "Reload Window") e verifique se apenas uma extensao Terraform esta ativa
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-vs-code/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-vs-code/references/code-examples.md)

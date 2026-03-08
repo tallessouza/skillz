@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-seo-listagem-posts
 description: "Applies Next.js metadata patterns for listing pages and layout inheritance. Use when user asks to 'add SEO to a page', 'configure metadata', 'set metatags in Next.js', 'improve SEO', or 'add Open Graph tags'. Enforces metadata hierarchy: layout provides defaults, pages override specific fields. Make sure to use this skill whenever creating or editing Next.js pages that need SEO metadata. Not for dynamic per-item metadata, sitemap generation, or robots.txt configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo
+  tags: [seo, metadata, open-graph, layout-inheritance, listing-page, next-js]
 ---
 
 # SEO em Paginas de Listagem (Next.js)
@@ -105,14 +111,19 @@ export default function BlogPage() {
 | `openGraph` sem `images` | Sempre inclua ao menos uma imagem OG |
 | `generateMetadata()` para paginas estaticas | `export const metadata` (mais simples, sem overhead) |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorando-seo-na-pagina-de-listagem-de-posts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorando-seo-na-pagina-de-listagem-de-posts/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorando-seo-na-pagina-de-listagem-de-posts/references/deep-explanation.md) — O Next.js implementa um sistema de merge de metadata ao longo da arvore de componentes. O `layout.ts
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorando-seo-na-pagina-de-listagem-de-posts/references/code-examples.md) — // app/blog/page.tsx

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-cascading
 description: "Enforces CSS cascade order understanding when writing or debugging stylesheets. Use when user asks to 'style an element', 'fix CSS not applying', 'debug CSS specificity', 'why is my style not working', or 'write CSS rules'. Applies cascade hierarchy: last rule wins for equal specificity, later selectors override earlier ones. Make sure to use this skill whenever resolving CSS conflicts or writing multiple rules for the same element. Not for JavaScript logic, HTML structure, or CSS layout techniques like flexbox/grid."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, cascade, specificity, selectors, debugging]
 ---
 
 # Cascading — Hierarquia de Regras no CSS
@@ -94,13 +100,16 @@ p {
 | Repetir seletor `p` em dois lugares distantes | Consolide estilos do mesmo seletor ou use classe especifica |
 | Confiar na ordem do arquivo para controle fino | Use especificidade (classe, id) para controle previsivel |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Estilo nao aplica mesmo sendo o ultimo no arquivo | Seletor com menor especificidade | Use seletor mais especifico (classe > tag) |
+| Cor muda inesperadamente | Duplicata do mesmo seletor em posicao posterior | Busque duplicatas com `Ctrl+F` e consolide |
+| `!important` nao funciona | Outro `!important` com especificidade maior | Remova `!important` e resolva com especificidade correta |
+| Estilo de um arquivo CSS sobrescreve outro | Ordem de import dos CSS | Reordene imports para que estilos base venham primeiro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cascata, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-cascading/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-cascading/references/code-examples.md)

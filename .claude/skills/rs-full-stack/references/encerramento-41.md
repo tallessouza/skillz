@@ -1,11 +1,24 @@
 ---
 name: rs-full-stack-encerramento-41
 description: "Applies SQL fundamentals decision framework when writing database code. Use when user asks to 'create a table', 'write a query', 'design a schema', 'add a relationship', or 'insert/update/delete data'. Covers table creation, filtered queries, CRUD operations, and relationship types (one-to-one, one-to-many, many-to-many). Make sure to use this skill whenever working with relational databases or SQL in full-stack projects. Not for NoSQL databases, ORMs without raw SQL, or database administration/DevOps tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, banco-de-dados, crud, relacionamentos, queries]
 ---
 
 # SQL Fundamentals — Decision Framework
 
 > Ao trabalhar com banco de dados relacional, escolha a operacao e o tipo de relacionamento corretos antes de escrever qualquer SQL.
+
+## Key concepts
+
+- SQL e a linguagem padrao para interagir com bancos de dados relacionais
+- CRUD (Create, Read, Update, Delete) forma a base de todas as operacoes
+- Relacionamentos (1:1, 1:N, N:N) definem como as tabelas se conectam
+- Constraints (NOT NULL, UNIQUE, FK) garantem integridade dos dados
 
 ## Decision framework
 
@@ -24,6 +37,23 @@ description: "Applies SQL fundamentals decision framework when writing database 
 | **Um para um** (1:1) | Cada registro A tem exatamente um registro B (ex: usuario ↔ perfil) | FK com `UNIQUE` na tabela dependente |
 | **Um para muitos** (1:N) | Um registro A tem varios B (ex: usuario → pedidos) | FK simples na tabela "muitos" |
 | **Muitos para muitos** (N:N) | Registros A e B se relacionam livremente (ex: alunos ↔ cursos) | Tabela intermediaria (junction table) com duas FKs |
+
+## Example
+
+```sql
+-- Criar tabela com constraints
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
+);
+
+-- Inserir registro
+INSERT INTO users (name, email) VALUES ('Diego', 'diego@example.com');
+
+-- Buscar com filtro
+SELECT * FROM users WHERE email LIKE '%@example.com';
+```
 
 ## Heuristics
 
@@ -45,13 +75,16 @@ description: "Applies SQL fundamentals decision framework when writing database 
 | Ignorar constraints (`NOT NULL`, `UNIQUE`, `FK`) | Definir constraints na criacao da tabela, porque o banco valida por voce |
 | Criar uma tabela gigante com tudo junto | Normalizar em tabelas separadas com relacionamentos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| DELETE sem WHERE apagou todos os registros | Faltou filtro na query DELETE | SEMPRE use WHERE em DELETE e UPDATE — faca backup antes |
+| Foreign key constraint violation | Tentou inserir FK que nao existe na tabela pai | Insira primeiro na tabela pai, depois na tabela filha |
+| JOIN retorna linhas duplicadas | Relacionamento N:N sem tabela intermediaria | Crie junction table com FKs e use JOIN corretamente |
+| Coluna ambigua em query com JOIN | Mesmo nome de coluna em tabelas diferentes | Qualifique com alias: tabela.coluna |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar cada operacao e tipo de relacionamento
 - [code-examples.md](references/code-examples.md) — Exemplos de SQL para cada operacao e tipo de relacionamento
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encerramento-41/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encerramento-41/references/code-examples.md)

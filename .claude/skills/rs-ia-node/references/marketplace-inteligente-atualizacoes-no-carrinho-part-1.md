@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-atualizacoes-carrinho-1
 description: "Applies cart update patterns when building e-commerce cart APIs with Drizzle ORM and Node.js. Use when user asks to 'update cart item', 'remove from cart', 'change quantity', 'build cart API', or 'implement shopping cart routes'. Enforces ownership verification, item existence checks, type coercion for route params, and query reuse over duplication. Make sure to use this skill whenever implementing cart mutation endpoints or similar resource-update APIs. Not for cart UI, checkout flow, or payment processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [drizzle-orm, e-commerce, ia-node, node-js]
 ---
 
 # Atualizacoes no Carrinho — Patterns para Mutacao de Itens
@@ -128,14 +134,14 @@ async updateCartItem({ productId, quantity, userId }) {
 | Mesma mensagem de erro em 3 guards diferentes | Mensagens distintas ou pelo menos distintas em dev |
 | Confiar na tipagem TS para valores de runtime | Converter explicitamente no boundary (controller/route) |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-atualizacoes-no-carrinho-part-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-atualizacoes-no-carrinho-part-1/references/code-examples.md)

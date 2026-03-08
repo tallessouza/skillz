@@ -1,6 +1,12 @@
 ---
 name: rs-devops-entendendo-sobre-volumes
-description: "Applies Docker volume concepts when creating persistent storage for containers. Use when user asks to 'create a volume', 'persist data in docker', 'mount volume', 'docker run with volume', or 'keep data between restarts'. Covers volume creation, inspection, association with containers via -v flag, and mount points. Make sure to use this skill whenever working with Docker data persistence or container storage. Not for Kubernetes persistent volumes, docker-compose volume definitions, or cloud storage drivers."
+description: "Applies Docker volume creation, mounting, and lifecycle management patterns. Use when user asks to 'create Docker volume', 'persist data in containers', 'mount volume to container', or 'manage Docker volumes'. Enforces volume usage for persistence, name-based identification, mounting at workdir, and local driver defaults. Make sure to use this skill whenever creating or managing Docker volumes for data persistence. Not for Kubernetes PersistentVolumes (use persistent-volume) or Docker Compose volume declarations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-volumes
+  tags: [docker, volumes, persistence, mount, containers, stateful, data]
 ---
 
 # Docker Volumes — Persistencia de Dados em Containers
@@ -9,106 +15,57 @@ description: "Applies Docker volume concepts when creating persistent storage fo
 
 ## Rules
 
-1. **Containers sao efemeros por padrao** — dados criados dentro do container desaparecem ao restartar, porque o comportamento padrao e de efemeridade
-2. **Volume nao e obrigatorio** — so use quando precisa persistir dados: uploads, logs, arquivos de banco de dados
-3. **Volume nao tem ID** — a unicidade e pelo nome, diferente de containers, images e networks que possuem IDs
-4. **Monte o volume no workdir do container** — o destino do `-v` deve apontar para o diretorio de trabalho definido no Dockerfile, porque e ali que o container opera
-5. **Driver local por padrao** — armazena em `/var/lib/docker/volumes/{nome}/_data`; drivers remotos (cloud/bucket) sao configuracao adicional
-6. **`-v` nao tem equivalente `-n`** — `--volume` ou `-v` funciona, mas `--network` nao tem abreviacao `-n`
+1. **Containers sao efemeros por padrao** — dados criados dentro desaparecem ao restartar
+2. **Volume nao e obrigatorio** — so use quando precisa persistir dados
+3. **Volume nao tem ID** — a unicidade e pelo nome
+4. **Monte o volume no workdir do container** — apontar para o diretorio de trabalho do Dockerfile
+5. **Driver local por padrao** — armazena em `/var/lib/docker/volumes/{nome}/_data`
 
 ## How to write
 
-### Criar e inspecionar volume
-
 ```bash
-# Criar volume nomeado
+# Criar volume
 docker volume create primeiro-volume
 
-# Inspecionar (mostra driver, mountpoint)
-docker volume inspect primeiro-volume
-
-# Listar todos
-docker volume ls
-
-# Remover volumes nao utilizados
-docker volume prune
-```
-
-### Associar volume ao container
-
-```bash
+# Associar ao container
 docker run \
   -v primeiro-volume:/src/app \
   --network primeira-network \
   -p 3001:3001 \
   -d \
   api-skillz:v3
-```
 
-### Verificar bind no container
+# Inspecionar
+docker volume inspect primeiro-volume
 
-```bash
-# Inspect do container mostra Mounts com source e destination
-docker container inspect <container_id>
-```
-
-## Example
-
-**Before (sem volume — dados perdidos ao restartar):**
-
-```bash
-docker run -d --network minha-rede -p 3001:3001 api-skillz:v3
-# Cria arquivo dentro do container
-docker exec <id> touch /src/app/upload.txt
-# Restarta container
-docker restart <id>
-# upload.txt desapareceu!
-```
-
-**After (com volume — dados persistentes):**
-
-```bash
-docker volume create app-data
-docker run -d \
-  -v app-data:/src/app \
-  --network minha-rede \
-  -p 3001:3001 \
-  api-skillz:v3
-# Cria arquivo
-docker exec <id> touch /src/app/upload.txt
-# Restarta container
-docker restart <id>
-# upload.txt continua la!
+# Limpar orfaos
+docker volume prune
 ```
 
 ## Heuristics
 
 | Situacao | Faca |
 |----------|------|
-| Container precisa salvar uploads/assets | Crie volume e monte no diretorio de uploads |
+| Container precisa salvar uploads | Crie volume e monte no diretorio de uploads |
 | Banco de dados em container | Volume obrigatorio no datadir do banco |
 | Container stateless (API pura) | Nao precisa de volume |
-| Precisa inspecionar volume | `docker volume inspect` ou `docker inspect` direto |
-| Comando `docker run` ficando grande | Anote que docker-compose resolve isso (proximo passo) |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Salvar dados importantes sem volume | Sempre associar volume para dados persistentes |
-| Montar volume em diretorio arbitrario | Montar no WORKDIR definido no Dockerfile |
-| Referenciar volume por ID | Referenciar pelo nome (volumes nao tem ID) |
-| Usar `-n` como abreviacao de `--network` | Usar `--network` por extenso |
-| Ignorar `docker volume prune` | Limpar volumes orfaos periodicamente |
+| Salvar dados importantes sem volume | Sempre associar volume |
+| Montar volume em diretorio arbitrario | Montar no WORKDIR do Dockerfile |
+| Referenciar volume por ID | Referenciar pelo nome |
+
+## Troubleshooting
+
+### Dados desaparecem ao restartar o container
+**Symptom:** Container reinicia e todos os dados salvos anteriormente sumiram
+**Cause:** Dados foram salvos dentro do filesystem do container sem volume montado
+**Fix:** Criar volume com `docker volume create meu-volume` e montar no container com `-v meu-volume:/path/dados`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-entendendo-sobre-volumes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-entendendo-sobre-volumes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

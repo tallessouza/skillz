@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-dados-no-corpo-da-requisicao
 description: "Applies Express.js request body parsing patterns when building POST endpoints. Use when user asks to 'create a POST route', 'handle request body', 'parse JSON in Express', 'send data via POST', or 'setup Express middleware'. Ensures express.json() middleware is configured and req.body is properly destructured. Make sure to use this skill whenever creating Express POST endpoints or handling incoming JSON data. Not for frontend fetch/axios calls, file uploads, or multipart form data."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-api
+  tags: [express, request-body, middleware, POST, JSON, req.body]
 ---
 
 # Dados no Corpo da Requisição (Express)
@@ -79,13 +85,16 @@ app.post("/products", (req, res) => {
 | `req.body.nome` quando o JSON envia `name` | Use exatamente as mesmas chaves do JSON |
 | Parsing manual de chunks como no Node puro | Use `express.json()` — o Express já resolve isso |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `req.body` retorna `undefined` | Middleware `express.json()` nao registrado | Adicione `app.use(express.json())` antes das rotas |
+| `Cannot destructure property 'name' of undefined` | Body nao esta sendo parseado | Verifique se `express.json()` esta antes da rota POST |
+| Campos do body retornam `undefined` | Nomes das chaves nao batem | Compare as chaves do JSON enviado com a desestruturacao |
+| POST retorna 404 | Rota nao registrada ou metodo errado | Confirme que a rota usa `app.post()` e o path esta correto |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Por que o Express não assume JSON por padrão, comparação JSON vs XML
 - [code-examples.md](references/code-examples.md) — Exemplos completos de rotas POST com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-dados-no-corpo-da-requisicao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-dados-no-corpo-da-requisicao/references/code-examples.md)

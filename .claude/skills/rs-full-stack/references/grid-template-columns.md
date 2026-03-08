@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-template-columns
 description: "Applies CSS Grid grid-template-columns patterns when writing layout code. Use when user asks to 'create a grid layout', 'make columns', 'CSS grid', 'responsive columns', or 'split into columns'. Enforces correct use of fr units, repeat(), and mixed units. Make sure to use this skill whenever generating CSS Grid column layouts. Not for Flexbox, grid-template-rows, or grid-template-areas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, grid-template-columns, fr, repeat, layout]
 ---
 
 # Grid Template Columns
@@ -90,13 +96,16 @@ description: "Applies CSS Grid grid-template-columns patterns when writing layou
 | `grid-template-columns` no filho | `grid-template-columns` no container pai |
 | `50% 50%` para duas colunas iguais | `repeat(2, 1fr)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Colunas nao aparecem | `grid-template-columns` aplicado nos filhos | Aplique no container pai com `display: grid` |
+| Conteudo transborda o container | Usando `%` em vez de `fr` | Troque `50% 50%` por `repeat(2, 1fr)` — `fr` preenche sem overflow |
+| Coluna com `fr` nao ocupa espaco esperado | Mistura com unidades fixas — `fr` pega o restante | Comportamento correto: `250px 1fr` significa sidebar fixa + conteudo flexivel |
+| `1fr 1fr 1fr` repetitivo | Falta uso de `repeat()` | Use `repeat(3, 1fr)` para evitar repeticao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fr vs outras unidades, overflow, e linhas automaticas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-template-columns/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-template-columns/references/code-examples.md)

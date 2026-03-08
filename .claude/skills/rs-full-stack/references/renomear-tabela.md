@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renomear-tabela
 description: "Applies correct SQL syntax for renaming tables using ALTER TABLE RENAME TO. Use when user asks to 'rename a table', 'change table name', 'alter table name', or 'fix table name in SQL'. Make sure to use this skill whenever generating SQL that modifies table names. Not for renaming columns, indexes, or other database objects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, alter-table, rename, ddl, schema]
 ---
 
 # Renomear Tabela SQL
@@ -50,6 +56,15 @@ ALTER TABLE products RENAME TO items;
 |---------------|---------|
 | `CREATE TABLE new AS SELECT * FROM old; DROP TABLE old;` | `ALTER TABLE old RENAME TO new;` |
 | `DROP TABLE` + `CREATE TABLE` para renomear | `ALTER TABLE ... RENAME TO` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Foreign keys quebradas apos rename | Banco nao atualizou FKs automaticamente | Verifique e atualize FKs manualmente (depende do SGBD) |
+| Queries retornam "table not found" | Queries ainda referenciam o nome antigo | Atualize todas as queries, views e stored procedures |
+| Dados perdidos ao "renomear" | Usou CREATE + DROP em vez de RENAME TO | Use `ALTER TABLE old RENAME TO new` que preserva dados |
+| Erro de permissao ao renomear | Usuario sem privilegio ALTER na tabela | Conceda privilegio ALTER ou use usuario admin |
 
 ## Deep reference library
 

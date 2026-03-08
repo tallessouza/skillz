@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-total-item-pedido
 description: "Applies computed columns and aliases in Knex.js queries when building order/invoice listings. Use when user asks to 'calculate total', 'multiply columns', 'add computed field', 'show order total', or 'knex raw expression'. Enforces knex.raw() for arithmetic between columns, proper aliasing with .as(), and orderBy with desc for recent-first listings. Make sure to use this skill whenever generating Knex queries that combine columns arithmetically. Not for raw SQL without Knex, nor for aggregation functions like SUM/COUNT across rows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-queries
+  tags: [knex, sql, computed-column, raw, alias, orderBy]
 ---
 
 # Exibindo Total do Item do Pedido
@@ -90,13 +96,16 @@ const items = await knex("orders")
 | Calcular total no `.map()` apos buscar | Calcular direto no SQL com `knex.raw()` |
 | `.orderBy("created_at")` sem direcao | `.orderBy("orders.created_at", "desc")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Coluna `total` nao aparece no resultado | Falta alias no `knex.raw()` | Adicionar `as total` dentro da expressao raw |
+| `ambiguous column name: created_at` | Coluna existe em multiplas tabelas do JOIN | Prefixar com nome da tabela: `orders.created_at` |
+| Resultado do calculo retorna `null` | Uma das colunas (price ou quantity) e `null` | Usar `COALESCE(orders.price, 0)` no raw |
+| Ordenacao nao funciona como esperado | `orderBy` sem direcao explicita | Sempre passar `'desc'` como segundo argumento |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre calculos no SQL vs JS e aliasing
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-total-do-item-do-pedido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-total-do-item-do-pedido/references/code-examples.md)

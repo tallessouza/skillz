@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0104-ambiente-dev
-description: "Guides Node.js development environment setup when user asks to 'setup node', 'install node', 'prepare dev environment', 'configure node project', or 'start node from scratch'. Ensures correct Node.js and npm installation with version management. Make sure to use this skill whenever setting up a new Node.js project or onboarding a developer. Not for runtime configuration, deployment, or Docker setups."
+description: "Configures Node.js development environment setup when user asks to 'setup node', 'install node', 'prepare dev environment', 'configure node project', or 'start node from scratch'. Ensures correct Node.js and npm installation with version management. Make sure to use this skill whenever setting up a new Node.js project or onboarding a developer. Not for runtime configuration, deployment, or Docker setups."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, npm, nvm, environment, setup, vscode]
 ---
 
 # Ambiente de Desenvolvimento Node.js
@@ -60,13 +66,13 @@ Ambiente pronto quando todos os comandos retornam versoes validas sem erros.
 node -e "console.log('Node funcionando na versao', process.version)"
 ```
 
+## Troubleshooting
+
+### Problem: `node` command not found after installation
+- **Cause**: Terminal session not refreshed after Node.js installation, PATH not updated
+- **Fix**: Close and reopen the terminal, or run `source ~/.bashrc` (Linux/macOS) to reload the PATH environment variable
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio sobre escolha de versoes e version managers
 - [code-examples.md](references/code-examples.md) — Passo a passo completo por sistema operacional
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0104-ambiente-de-desenvolvimento-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0104-ambiente-de-desenvolvimento-mkv-mp-4/references/code-examples.md)

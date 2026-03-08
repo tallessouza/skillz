@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renomeando-as-exportacoes
 description: "Applies JavaScript export renaming patterns using 'as' keyword when writing ES modules. Use when user asks to 'rename export', 'export with different name', 'alias export', 'change export name', or restructures module exports. Ensures correct 'as' syntax in export statements and matching imports. Make sure to use this skill whenever refactoring module exports or reorganizing named exports. Not for import renaming, default exports, or CommonJS require/module.exports."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: es-modules
+  tags: [javascript, es-modules, export, renaming, modules]
 ---
 
 # Renomeando Exportações em JavaScript
@@ -85,6 +91,15 @@ import { sumTwoNumbers } from './calc.js'
 | Renomear no export E no import (dupla renomeacao) | Renomeie em um lugar so — preferencia no export |
 | Esquecer de atualizar imports apos renomear export | Atualize todos os arquivos que importam |
 | `export { sum }` com `export function sum` ao mesmo tempo | Remova o `export` inline ao usar `export { }` no final |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "is not exported" ao importar com nome antigo | Export foi renomeado mas import nao foi atualizado | Atualize todos os imports para usar o novo nome |
+| "Duplicate export" erro | Export inline e `export { }` no final exportam a mesma funcao | Remova o `export` inline ao usar `export { }` centralizado |
+| Funcao nao acessivel no modulo importador | Esqueceu de incluir no `export { }` | Adicione a funcao na lista de exports no final do arquivo |
+| Confusao entre nome interno e externo | Dupla renomeacao (export + import) | Renomeie em apenas um lugar, preferencia no export |
 
 ## Deep reference library
 

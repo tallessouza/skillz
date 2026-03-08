@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-o-que-e-seo
 description: "Applies SEO fundamentals when building Next.js pages or any web application. Use when user asks to 'improve SEO', 'add meta tags', 'optimize for search engines', 'increase organic traffic', or 'make page rankable'. Classifies SEO actions into On-Page, Off-Page, and Technical SEO and guides implementation priorities. Make sure to use this skill whenever creating landing pages, blogs, or e-commerce pages in Next.js. Not for paid advertising, Google Ads configuration, or social media content creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo-fundamentals
+  tags: [seo, meta-tags, open-graph, search-engines, next-js, organic-traffic, on-page-seo, technical-seo]
 ---
 
 # SEO — Search Engine Optimization
@@ -75,14 +81,19 @@ Beneficios diretos: aumento de trafego organico, taxa de conversao, visibilidade
 - Resultados de SEO sao de medio/longo prazo
 - Este skill cobre fundamentos; implementacao pratica de meta tags e sitemap estao em skills separados
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-o-que-e-seo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-o-que-e-seo/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-o-que-e-seo/references/deep-explanation.md) — O instrutor explica SEO usando a analogia de um sistema de pontuacao (score). Os motores de busca — 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-o-que-e-seo/references/code-examples.md) — Esta aula e conceitual/teorica — nao contem exemplos de codigo diretos. O instrutor menciona que a i

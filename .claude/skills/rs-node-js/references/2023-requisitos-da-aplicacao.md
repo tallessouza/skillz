@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-requisitos-da-aplicacao
 description: "Enforces requirements-first planning before implementing any backend API. Use when user asks to 'create an API', 'build a REST API', 'start a new backend project', 'plan an application', or 'define routes'. Applies the RF/RN/RNF framework: functional requirements, business rules, and non-functional requirements must be defined before writing code. Make sure to use this skill whenever starting a new backend project or adding a major feature set. Not for frontend-only tasks, UI design, or individual bug fixes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-com-nodejs
+  tags: [requirements, planning, RF, RN, RNF, api-design, backend]
 ---
 
 # Requisitos da Aplicacao
@@ -118,14 +124,14 @@ Resultado: escopo claro, nenhuma feature esquecida, regras de isolamento definid
 | Ignorar regras de isolamento entre usuarios | Sempre perguntar: "dados de um usuario vazam para outro?" |
 | Definir todos os RNF no inicio | RNF podem ser incrementais, definidos conforme features surgem |
 
+## Troubleshooting
+
+### Requisitos funcionais misturados com regras de negocio
+**Symptom:** Lista de requisitos fica confusa, com acoes e restricoes misturadas no mesmo item
+**Cause:** Falta de separacao clara entre RF (o que o usuario faz) e RN (condicoes sobre a acao)
+**Fix:** RF sempre comeca com "O usuario deve poder..." — se descreve uma condicao ou restricao, mova para RN
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-requisitos-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-requisitos-da-aplicacao/references/code-examples.md)

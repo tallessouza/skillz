@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-design-de-software-e-ddd
-description: "Applies Domain-Driven Design fundamentals when modeling software domains and defining entities. Use when user asks to 'model a domain', 'design entities', 'name entities', 'start a new project from scratch', or 'understand business requirements'. Enforces domain expert consultation, ubiquitous language, and separation of design from architecture. Make sure to use this skill whenever starting greenfield projects or discussing how to translate business problems into software. Not for Clean Architecture patterns, folder structure, dependency injection, or code-level architecture decisions."
+name: 2023-design-de-software-e-ddd
+description: "Introduces Domain-Driven Design methodology: domain understanding before code, ubiquitous language from domain experts, and separation of design from architecture. Use when user asks to 'apply DDD', 'model the domain', 'use ubiquitous language', or 'start a greenfield project with proper design'. Make sure to use this skill whenever beginning domain modeling, naming entities, or deciding whether to apply DDD patterns to a project. Not for code architecture patterns (Clean Architecture, MVC), database design, or framework selection."
+category: coding-lens
+tags: [ddd, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: design-de-software
+  tags: [ddd, domain-driven-design, linguagem-ubiqua, domain-experts, typescript]
 ---
 
 # Design de Software e DDD
@@ -96,14 +105,14 @@ function listarClientesDodia(barbeiro: Barbeiro) { ... }
 | Quer usar DDD + Clean Architecture juntos | Pode! Sao complementares, nao excludentes |
 | Projeto simples com dominio obvio | DDD ainda ajuda — ao menos defina entidades com nomes do negocio |
 
+## Troubleshooting
+
+### Entidades nao refletem a linguagem do negocio
+**Symptom:** Entidades chamadas `User`, `Item`, `Data` sem contexto de dominio
+**Cause:** Modelagem feita sem conversar com domain experts, usando termos genericos de programador
+**Fix:** Converse com domain experts e renomeie entidades usando a linguagem ubiqua do negocio (ex: `Cliente`, `Barbeiro`, `Fornecedor`)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-design-de-software-e-ddd/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-design-de-software-e-ddd/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

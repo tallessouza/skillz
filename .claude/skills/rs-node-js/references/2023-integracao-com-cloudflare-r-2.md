@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-integracao-cloudflare-r2
 description: "Applies Cloudflare R2 storage integration patterns when building file upload features in NestJS applications. Use when user asks to 'upload files', 'integrate S3', 'setup Cloudflare R2', 'configure object storage', or 'store files in the cloud'. Enforces AWS SDK S3 client usage, unique filename generation, dependency inversion for storage, and saving file references instead of full URLs. Make sure to use this skill whenever implementing file storage or upload infrastructure in Node.js/NestJS. Not for frontend file upload UI, image processing, or video transcoding."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: cloudflare-r2-integration
+  tags: [cloudflare-r2, s3, file-upload, object-storage, nestjs, aws-sdk, dependency-inversion]
 ---
 
 # Integração com Cloudflare R2
@@ -129,14 +135,14 @@ class UploadAndCreateAttachment {
 | `const filename = originalName` | `const filename = \`${randomUUID()}-${originalName}\`` |
 | Salvar Base64/blob no banco de dados | Usar sistema de object storage (R2/S3) e salvar referência |
 
+## Troubleshooting
+
+### NestJS nao injeta EnvService no R2Storage
+**Symptom:** Erro de dependencia nao encontrada ao inicializar o modulo de storage
+**Cause:** O `EnvModule` nao foi importado no `StorageModule`, entao o container de DI nao encontra `EnvService`
+**Fix:** Adicione `imports: [EnvModule]` no `@Module()` do `StorageModule`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-integracao-com-cloudflare-r-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-integracao-com-cloudflare-r-2/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tipos-de-relacionamentos
 description: "Applies correct database relationship modeling (1:1, 1:N, N:M) when designing schemas or writing migrations. Use when user asks to 'create a table', 'design a schema', 'model relationships', 'add a foreign key', or 'create a migration'. Ensures correct relationship type selection and junction table usage for many-to-many. Make sure to use this skill whenever designing database structures. Not for query optimization, indexing, or application-level ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: banco-de-dados-relacional
+  tags: [database, relacionamentos, foreign-key, 1-1, 1-n, n-m, schema]
 ---
 
 # Tipos de Relacionamentos em Banco de Dados
@@ -94,6 +100,15 @@ CREATE TABLE book_authors (
 | FK sem constraint no banco (so no app) | `REFERENCES` explicito com constraint |
 | Tabela intermediaria sem PK | Chave composta ou id + unique constraint |
 | Mesmo nome para tabela e coluna FK (`author` e `author`) | `authors` (tabela) e `author_id` (coluna) |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de foreign key constraint ao inserir | Registro pai nao existe na tabela referenciada | Insira o registro na tabela pai antes do filho |
+| Relacionamento 1:1 permite duplicatas | Faltando `UNIQUE` na foreign key | Adicione `UNIQUE` na coluna FK para garantir 1:1 |
+| N:M impossivel de representar com FK direta | Tentando armazenar multiplos IDs em uma coluna | Crie tabela intermediaria com duas FKs e chave composta |
+| Tabela intermediaria sem integridade | Faltando constraints de FK e PK | Adicione `REFERENCES` nas FKs e `PRIMARY KEY` composta |
 
 ## Deep reference library
 

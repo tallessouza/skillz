@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listando-produtos-2
 description: "Applies Knex.js query patterns for listing resources with optional search filters. Use when user asks to 'list items', 'search products', 'filter by name', 'query with like', 'add search parameter', or build GET endpoints that return filtered/sorted data. Enforces orderBy for consistent sorting, whereLike with nullish coalescing for optional filters, and typed select queries. Make sure to use this skill whenever building list/index endpoints with Knex. Not for create/update/delete operations, raw SQL, or ORM-based queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express
+  tags: [knex, query-builder, filter, search, whereLike, typescript]
 ---
 
 # Listando Produtos com Knex.js
@@ -88,13 +94,16 @@ async index(request: Request, response: Response) {
 | Retornar sem ordenacao | Sempre incluir `.orderBy("name")` |
 | Exigir parametro de busca obrigatorio | Tornar filtro opcional com fallback para string vazia |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Filtro nao encontra resultados parciais | Falta `%` ao redor do valor no whereLike | Use `%${name ?? ""}%` com percentuais |
+| TypeScript nao oferece autocomplete | Falta tipagem generica no Knex | Use `knex<ProductRepository>("products")` |
+| Filtro vazio retorna zero resultados | Usando `\|\|` em vez de `??` | Troque para nullish coalescing `??` |
+| Resultados em ordem diferente a cada request | Falta orderBy na query | Adicione `.orderBy("name")` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre whereLike, nullish coalescing e tipagem Knex
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listando-produtos-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listando-produtos-2/references/code-examples.md)

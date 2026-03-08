@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-fetch-dados-componentes
 description: "Applies Server Component data fetching patterns when writing Next.js App Router code. Use when user asks to 'fetch data', 'load API data', 'create a page with data', 'server component', 'SSR data loading', or builds any Next.js page that needs initial data. Enforces async component patterns, server-side fetch, and SEO-aware data loading. Make sure to use this skill whenever generating Next.js App Router components that need data. Not for client-side interactions, event handlers, or useEffect-based fetching."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, server-components, data-fetching, async-components, seo, ssr]
 ---
 
 # Fetch de Dados nos Server Components
@@ -108,14 +114,19 @@ export default async function UserProfile() {
 | Fetch no client para dados que SEO precisa indexar | Fetch no servidor — HTML ja chega pronto |
 | Varios `await` sequenciais independentes | `Promise.all([fetch1, fetch2])` para paralelizar |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-dados-nos-componentes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-dados-nos-componentes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-dados-nos-componentes/references/deep-explanation.md) — A analogia fundamental e a seguinte: quando o usuario acessa uma pagina Next.js com Server Component
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-dados-nos-componentes/references/code-examples.md) — // app/page.tsx

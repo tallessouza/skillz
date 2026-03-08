@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-rotas-e-layouts
 description: "Enforces Next.js App Router file-based routing and layout conventions when creating routes, pages, or layouts. Use when user asks to 'create a route', 'add a page', 'create a layout', 'setup Next.js routing', or 'add a new section to the app'. Applies conventions: page.tsx for routes, folder nesting for URL segments, layout.tsx for shared wrappers, root layout never deleted. Make sure to use this skill whenever scaffolding Next.js App Router pages or layouts. Not for API routes, middleware, or Pages Router projects."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, routing, layouts, file-based-routing, app-router, children]
 ---
 
 # Rotas e Layouts no Next.js App Router
@@ -114,14 +121,19 @@ app/
 | Layout sem renderizar `children` | Sempre usar `{children}` no JSX do layout |
 | Colocar layout dentro de `page.tsx` | Separar em `layout.tsx` na mesma pasta |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-rotas-e-layouts-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-rotas-e-layouts-mkv-mp-4/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-rotas-e-layouts-mkv-mp-4/references/deep-explanation.md) — O Next.js App Router usa o sistema de arquivos como API de roteamento. Isso significa que a estrutur
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-rotas-e-layouts-mkv-mp-4/references/code-examples.md) — // app/page.tsx

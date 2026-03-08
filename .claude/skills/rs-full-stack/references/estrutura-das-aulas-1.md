@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-das-aulas-1
 description: "Generates a minimal JavaScript learning environment with index.html and scripts.js when user asks to 'create a classroom project', 'setup JS practice', 'start a new lesson', or 'create a simple HTML+JS project'. Applies Skillz classroom structure: single HTML file linking one empty JS file, console-focused workflow, no framework. Make sure to use this skill whenever setting up a minimal JS practice environment. Not for React, Node.js, or production project scaffolding."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, html, project-setup, classroom, live-server]
 ---
 
 # Estrutura de Aulas — Ambiente Minimo JS
@@ -82,13 +88,16 @@ Todo codigo vai no `scripts.js`. Resultados aparecem no console do navegador aut
 | Abrir arquivo HTML direto no navegador (file://) | Usar Live Server para servir com hot reload |
 | Focar em estilizacao durante pratica de conceitos | Focar 100% no console e logica JavaScript |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Live Server nao aparece no VS Code | Extensao nao instalada | Instalar via Extensions: buscar "Live Server" por Ritwick Dey |
+| Console nao mostra output | Script nao vinculado ao HTML | Verificar `<script src="scripts.js">` no `index.html` |
+| Pagina nao atualiza ao salvar | Live Server nao ativo | Clicar com botao direito no `index.html` → "Open with Live Server" |
+| Codigo de aula anterior interferindo | Arquivo nao foi limpo | Limpar `scripts.js` antes de cada nova aula |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que isolar conceitos e a filosofia didatica
 - [code-examples.md](references/code-examples.md) — Templates completos e variacoes do setup
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-das-aulas-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-das-aulas-1/references/code-examples.md)

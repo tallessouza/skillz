@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-continuando-a-home
 description: "Applies period-based component grouping pattern when building schedule or appointment UIs in Next.js. Use when user asks to 'create a schedule component', 'group items by time period', 'build appointment list', 'separate morning afternoon evening', or 'create period section component'. Enforces icon-mapping-by-object pattern, typed period props, and correct Tailwind spacing for card-based layouts. Make sure to use this skill whenever building time-grouped UI sections. Not for date picker logic, calendar grid layouts, or backend scheduling APIs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-agendamento
+  tags: [period-section, icon-mapping, schedule, component-pattern, next-js, tailwind]
 ---
 
 # Period Section Component Pattern
@@ -106,14 +112,19 @@ const periodIcons = {
 | Componente sem tipagem de props | `interface PeriodSectionProps` com union type |
 | Tudo num arquivo so | Pasta `PeriodSection/` com index.ts + componente |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-continuando-a-home/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-continuando-a-home/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-continuando-a-home/references/deep-explanation.md) — O instrutor identifica que a tela de agendamentos tem tres blocos visuais distintos — manha, tarde e
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-continuando-a-home/references/code-examples.md) — const appointments = [

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-efemeridade-na-pratica
 description: "Enforces correct Docker container data persistence patterns when working with containers. Use when user asks to 'create a container', 'run docker', 'store data in container', 'persist database', or any Docker workflow. Applies ephemeral container principle: never store state inside containers, always use volumes. Make sure to use this skill whenever generating Docker commands or docker-compose files. Not for Dockerfile syntax, image building, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [ docker, containers, volumes, persistencia, docker-compose]
 ---
 
 # Efemeridade de Containers na Prática
@@ -88,13 +94,16 @@ docker run -d --name mydb \
 | Backup copiando arquivos de dentro do container | Backup do volume: `docker run --rm -v vol:/data -v .:/backup alpine tar czf /backup/bkp.tar.gz /data` |
 | Recriar container e perder banco de producao | Volumes nomeados + backup strategy |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Container recriado perde dados do banco | Sem volume montado no diretorio de dados | Use docker run -v pgdata:/var/lib/postgresql/data |
+| docker-compose up recria containers limpos | Comportamento padrao — containers sao efemeros | Declare volumes: no docker-compose.yml |
+| docker stop vs docker rm confusao | stop preserva filesystem, rm destroi | Use volumes para dados que devem sobreviver a rm |
+| Backup de dados impossivel apos docker rm | Dados estavam apenas no filesystem do container | Faca backup do volume antes de remover o container |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre efemeridade, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-efemeridade-na-pratica/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-efemeridade-na-pratica/references/code-examples.md)

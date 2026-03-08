@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-query-builder-setup
 description: "Follows the base project setup for the Skillz Query Builder module when user asks to 'setup query builder project', 'start query builder', 'configure express API base', or 'prepare project for knex/query builder'. Applies steps: clone template, npm install, verify Express server, configure Insomnia. Make sure to use this skill whenever starting the Query Builder module from scratch. Not for query builder syntax, SQL queries, or Knex configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [express, project-setup, query-builder, insomnia, typescript]
 ---
 
 # Setup do Projeto Base — Query Builder
@@ -99,8 +105,11 @@ Servidor Express rodando na porta 3333 com uma rota GET `/` retornando `"hello w
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que o projeto base e entregue pronto
 - [code-examples.md](references/code-examples.md) — Codigo do server.ts com anotacoes detalhadas
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-a-aplicacao-que-vamos-utilizar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-a-aplicacao-que-vamos-utilizar/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm run dev` falha | `npm install` nao foi executado | Execute `npm install` antes de iniciar o servidor |
+| Porta 3333 ocupada | Outro processo usando a mesma porta | Mate o processo com `lsof -i :3333` ou troque a porta |
+| Importacoes mostram erro no editor | `node_modules/` nao existe | Confirme que `npm install` completou com sucesso |
+| Insomnia retorna Connection Refused | Servidor nao esta rodando | Verifique se `npm run dev` esta ativo no terminal |

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-parenteses
 description: "Enforces correct use of parentheses for operator precedence in SQL queries combining AND and OR. Use when user asks to 'write a SQL query', 'filter with multiple conditions', 'combine AND and OR', or 'fix SQL WHERE clause'. Applies grouping rules to prevent logic bugs from missing parentheses. Make sure to use this skill whenever generating SQL with mixed AND/OR conditions. Not for single-condition queries, JOINs, or aggregation logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, where, and-or, precedencia, parenteses]
 ---
 
 # Parênteses e Precedência em SQL
@@ -69,6 +75,15 @@ WHERE (price > 45 AND price < 1000)
 | `WHERE a OR b AND c AND d` | `WHERE a OR (b AND c AND d)` |
 | `WHERE a AND b OR c AND d` | `WHERE (a AND b) OR (c AND d)` |
 | `WHERE a AND b AND c OR d` | `WHERE (a AND b AND c) OR d` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Query retorna mais registros que o esperado | OR sem parenteses ignora filtros anteriores | Agrupe condicoes com parenteses: `(a AND b) OR (c AND d)` |
+| Filtro parece nao funcionar | AND tem precedencia sobre OR, mudando a logica | Adicione parenteses explicitos em todas as combinacoes AND/OR |
+| Resultado diferente entre bancos de dados | Precedencia pode variar sutilmente | Sempre use parenteses — elimina ambiguidade em qualquer banco |
+| Query complexa dificil de ler | Muitos operadores sem agrupamento | Quebre em CTEs ou subqueries com parenteses claros |
 
 ## Deep reference library
 

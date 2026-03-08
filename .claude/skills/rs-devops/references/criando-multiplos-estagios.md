@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-multiplos-estagios
 description: "Enforces Docker multi-stage build patterns when writing Dockerfiles. Use when user asks to 'create a Dockerfile', 'optimize Docker image', 'reduce image size', 'build container', or 'multi-stage build'. Applies rules: separate build and runtime stages, use AS aliases, COPY --from between stages, only copy runtime artifacts (dist + node_modules). Make sure to use this skill whenever generating or reviewing Dockerfiles. Not for docker-compose, Kubernetes manifests, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-multi-stage
+  tags: [docker, dockerfile, multi-stage, build, optimization, alpine, image-size]
 ---
 
 # Multi-Stage Build em Dockerfiles
@@ -105,14 +111,14 @@ CMD ["node", "dist/main.js"]
 | Deixar source code na imagem final | Source fica apenas no estagio de build |
 | FROM sem AS em multi-stage | Sempre nomear: `FROM image AS nome` |
 
+## Troubleshooting
+
+### COPY --from=build falha com "file not found"
+**Symptom:** O build do estagio de runtime falha com erro indicando que o arquivo ou diretorio nao existe no estagio anterior.
+**Cause:** O WORKDIR do estagio de build e diferente do path usado no COPY --from. O path no --from e absoluto relativo ao estagio de origem.
+**Fix:** Use o path absoluto completo do estagio de origem no COPY --from. Se o build usa `WORKDIR /build`, use `COPY --from=build /build/dist ./dist`, nao `COPY --from=build /app/dist ./dist`.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-multiplos-estagios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-multiplos-estagios/references/code-examples.md)

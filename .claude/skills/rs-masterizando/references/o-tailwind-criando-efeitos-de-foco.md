@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-criando-efeitos-de-foco
 description: "Applies correct focus styling patterns when writing Tailwind CSS for interactive elements. Use when user asks to 'style focus states', 'add focus ring', 'fix outline on inputs', 'accessible focus', 'keyboard navigation styling', or any Tailwind form/input styling task. Enforces focus-within for parent containers, focus-visible for clickable elements, group-focus for child styling, and ring utilities over raw outlines. Make sure to use this skill whenever styling focus states in Tailwind. Not for hover effects, animations, or non-Tailwind CSS."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: interatividade
+  tags: [tailwind, flexbox]
 ---
 
 # Efeitos de Foco no Tailwind
@@ -86,15 +92,19 @@ description: "Applies correct focus styling patterns when writing Tailwind CSS f
 | `focus` num span filho de button | `group` no button + `group-focus-visible` no span |
 | Ring sem cor definida | `ring-violet-100` ou cor do design system |
 | Border de foco sem ring externo | Combine `border-violet-300` + `ring-4 ring-violet-100` |
+## Troubleshooting
+
+### Focus ring aparece no clique do botao
+**Symptom:** Ao clicar num botao, o ring de foco aparece desnecessariamente.
+**Cause:** Usando `focus:` em vez de `focus-visible:` no botao.
+**Fix:** Use `focus-visible:ring` para botoes e tabs (so ativa via teclado). Reserve `focus:` para inputs.
+
+### Focus ring nao aparece no input com wrapper
+**Symptom:** Ao focar o input dentro de uma div wrapper, nenhum estilo muda na div.
+**Cause:** `focus:` na div nao funciona porque divs nao recebem foco diretamente.
+**Fix:** Use `focus-within:` na div wrapper para detectar foco em qualquer filho.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-efeitos-de-foco/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-efeitos-de-foco/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-efeitos-de-foco/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-efeitos-de-foco/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-variaveis-css
 description: "Enforces CSS custom properties (variables) best practices when writing stylesheets. Use when user asks to 'style a component', 'create CSS variables', 'theme a page', 'use custom properties', or any CSS authoring task involving reusable values. Applies rules: double-dash prefix, no spaces in names, :root for globals, scoped overrides for local changes, var() function usage. Make sure to use this skill whenever generating CSS that repeats values or needs theming support. Not for JavaScript variables, Sass/LESS variables, or CSS-in-JS solutions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, custom-properties, variables, theming, root-scope]
 ---
 
 # Variáveis no CSS (Custom Properties)
@@ -95,6 +101,15 @@ body {
 | `background: --bg-color` | `background: var(--bg-color)` |
 | Repetir `#3b82f6` em 10 seletores | `--primary: #3b82f6` em `:root` + `var(--primary)` |
 | Variavel global para valor usado 1 vez | Valor inline direto no seletor |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Variavel CSS nao aplica valor | Faltou `var()` ao referenciar | Use `background: var(--bg-color)`, nao `background: --bg-color` |
+| Variavel retorna valor inicial em vez do esperado | Escopo errado — variavel redeclarada em seletor que nao e ancestral | Verifique a hierarquia DOM e declare no seletor correto |
+| Nome da variavel nao reconhecido | Espaco ou caractere especial no nome | Use apenas letras, numeros e tracos: `--minha-var` |
+| Tema escuro nao sobrescreve variavel | Classe `.dark` nao esta no ancestral do elemento | Aplique a classe no `body` ou no seletor pai correto |
 
 ## Deep reference library
 

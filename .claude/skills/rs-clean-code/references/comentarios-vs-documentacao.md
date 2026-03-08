@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-comentarios-vs-documentacao
-description: "Enforces correct use of comments vs documentation in code. Use when user asks to 'add comments', 'document code', 'explain this code', 'add JSDoc', or any code annotation task. Applies rules: comments explain WHY (limitations, workarounds), never WHAT; documentation belongs in dedicated tools, not inline. Make sure to use this skill whenever generating code with comments or reviewing existing comments. Not for writing actual documentation files, READMEs, or API docs."
+description: "Enforces correct use of comments vs documentation in code. Use when user asks to 'add comments', 'document code', 'explain this code', 'add JSDoc', or any code annotation task. Applies the WHY-Only Comment Pattern: comments explain WHY (workarounds, limitations, bugs), never WHAT the code does. Make sure to use this skill whenever generating code with comments or reviewing existing comments. Not for writing documentation files, READMEs, or API reference docs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: premissas-de-escrita
+  tags: [comments, documentation, readability, clean-code]
 ---
 
 # Comentarios vs Documentacao
@@ -9,15 +15,15 @@ description: "Enforces correct use of comments vs documentation in code. Use whe
 
 ## Rules
 
-1. **Comentario != Documentacao** — comentarios inline servem como avisos para o proximo dev, documentacao pertence a ferramentas dedicadas (diagramas, docs separados), porque documentacao em comentarios fica desatualizada e ninguem mantem
-2. **Nunca explique O QUE o codigo faz** — se precisa de comentario explicando o que faz, o codigo deveria ser reescrito com nomes melhores, porque o codigo deve ser autoexplicativo
-3. **Explique POR QUE algo eh diferente** — comente quando ha workaround, limitacao de biblioteca, bug conhecido ou padrao seguido de forma nao-convencional, porque o proximo dev vai achar que eh erro
-4. **Inclua links de referencia** — quando o comentario menciona bug/limitacao, adicione link para issue, PR ou documentacao externa, porque permite ao proximo dev verificar se o problema ja foi resolvido
-5. **Nao seja extremista** — nem zero comentarios nem comentario em tudo, porque ambos os extremos prejudicam a manutencao
+1. **Comentario != Documentacao** — comentarios inline sao avisos para o proximo dev, documentacao pertence a ferramentas dedicadas, porque documentacao em comentarios fica desatualizada
+2. **Nunca explique O QUE o codigo faz** — reescreva com nomes melhores, porque o codigo deve ser autoexplicativo
+3. **Explique POR QUE algo e diferente** — workaround, limitacao, bug conhecido, porque o proximo dev vai achar que e erro
+4. **Inclua links de referencia** — link para issue/PR/doc externa, porque permite verificar se o problema ja foi resolvido
+5. **Nao seja extremista** — nem zero comentarios nem comentario em tudo, porque ambos os extremos prejudicam
 
 ## How to write
 
-### Comentario valido (workaround documentado)
+### WHY-Only Comment Pattern
 
 ```typescript
 // Using manual date parsing because date-fns v2.x doesn't support
@@ -25,22 +31,11 @@ description: "Enforces correct use of comments vs documentation in code. Use whe
 const parsedDate = new Date(dateString.replace(' ', 'T') + 'Z')
 ```
 
-### Comentario valido (limitacao tecnica)
-
-```typescript
-// Batching requests in groups of 50 because Supabase PostgREST
-// returns 413 for payloads > 1MB. Track: internal#2847
-const batches = chunk(records, 50)
-```
-
 ## Example
 
-**Before (comentario como documentacao — errado):**
-
+**Before (comentario como documentacao):**
 ```typescript
 // This function gets the user from the database
-// It receives an ID and returns the user object
-// If the user is not found, it returns null
 async function getUser(id: string) {
   // Query the database for the user
   const user = await db.users.findUnique({ where: { id } })
@@ -49,8 +44,7 @@ async function getUser(id: string) {
 }
 ```
 
-**After (codigo autoexplicativo + comentario so quando necessario):**
-
+**After:**
 ```typescript
 async function getUserById(id: string) {
   // findUnique returns null when not found — no need for try/catch
@@ -64,10 +58,9 @@ async function getUserById(id: string) {
 | Situation | Do |
 |-----------|-----|
 | Workaround por bug de biblioteca | Comentario com link para issue |
-| Padrao implementado de forma nao-convencional | Comentario explicando a razao |
 | Codigo complexo dificil de ler | Reescreva o codigo, nao comente |
-| Regra de negocio complexa | Documente em ferramenta dedicada (diagrama, wiki), nao em comentario |
-| TODO ou FIXME temporario | OK, mas com referencia (ticket/issue) |
+| Regra de negocio complexa | Documente em ferramenta dedicada |
+| TODO temporario | `// TODO(PROJ-123): workaround for X` |
 
 ## Anti-patterns
 
@@ -75,19 +68,21 @@ async function getUserById(id: string) {
 |-------------|---------------|
 | `// Get user from database` | Nada — o nome da funcao ja diz |
 | `// Loop through items` | Nada — o `for` ja diz |
-| `// Returns true if valid` | Nada — nomeie a funcao `isValid()` |
 | `// TODO: fix this later` | `// TODO(PROJ-123): workaround for X` |
-| Blocos de JSDoc explicando o obvio | JSDoc so em APIs publicas/bibliotecas |
-| Comentario de 10 linhas sobre regra de negocio | Diagrama de sequencia + link no comentario |
+
+## Troubleshooting
+
+### Comentarios ficam desatualizados
+**Symptom:** Comentario diz uma coisa, codigo faz outra
+**Cause:** Devs alteram codigo sem atualizar comentario
+**Fix:** Use comentarios apenas para POR QUE. Codigo autoexplicativo nunca fica desatualizado.
+
+### Dev remove todos os comentarios "por Clean Code"
+**Symptom:** Workarounds perdem contexto
+**Cause:** Interpretacao extremista
+**Fix:** Comentarios de POR QUE sao valiosos. Nao comente O QUE, comente POR QUE.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/clean-code/rs-clean-code-comentarios-vs-documentacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/clean-code/rs-clean-code-comentarios-vs-documentacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/clean-code/rs-clean-code-comentarios-vs-documentacao/references/deep-explanation.md) — Ciclo de morte dos comentarios, posicao equilibrada
+- [code-examples.md](../../../data/skills/clean-code/rs-clean-code-comentarios-vs-documentacao/references/code-examples.md) — Validos vs invalidos, refatorando comentarios-documentacao

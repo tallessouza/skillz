@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-objetos-k8s
 description: "Applies Kubernetes deployment workflow when pushing Docker images to registries and creating K8s manifests. Use when user asks to 'deploy to kubernetes', 'create deployment yaml', 'push docker image', 'setup k8s manifests', or 'deploy container to cluster'. Covers docker login, tag, push flow and deployment.yaml structure with replicas, labels, resources, and port-forward testing. Make sure to use this skill whenever creating Kubernetes deployment manifests or pushing images to container registries. Not for Helm charts, Kustomize, CI/CD pipelines, or Ingress configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-deployments
+  tags: [kubernetes, deployment, docker-push, registry, manifests, port-forward, labels]
 ---
 
 # Criando Objetos do Kubernetes
@@ -110,14 +116,14 @@ kubectl port-forward -n minha-aplicacao pod/NOME_DO_POD 3000:3000
 | Aplicar direto no namespace default | Criar namespace dedicado |
 | Referenciar imagem local no manifesto | Enviar para registry remoto primeiro |
 
+## Troubleshooting
+
+### Pod fica em ImagePullBackOff apos deploy
+**Symptom:** `kubectl get pods` mostra status `ImagePullBackOff` ou `ErrImagePull`.
+**Cause:** A imagem nao foi encontrada no registry remoto — pode ser tag errada, imagem nao enviada, ou registry privado sem imagePullSecrets.
+**Fix:** Verifique se a imagem foi enviada com `docker push`. Confirme que a tag no manifesto corresponde exatamente a tag enviada. Para registries privados, configure `imagePullSecrets` no deployment.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-os-objetos-do-kubernetes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-os-objetos-do-kubernetes/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-arquivos-e-containers
 description: "Enforces Docker container ephemeral storage awareness and volume best practices when writing Dockerfiles, docker-compose files, or container orchestration code. Use when user asks to 'create a Dockerfile', 'setup Docker', 'persist data in containers', 'handle file uploads in Docker', or 'configure container storage'. Applies rules: never store persistent data inside containers without volumes, separate storage responsibility from application, use external services for uploads/logs. Make sure to use this skill whenever designing containerized applications that handle files, logs, or uploads. Not for Kubernetes-specific storage classes, cloud-native object storage configuration, or non-Docker container runtimes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-ephemeral-storage
+  tags: [docker]
 ---
 
 # Arquivos e Containers — Efemeridade Docker
@@ -97,14 +103,14 @@ app.post('/upload', async (req, res) => {
 | Confiar que `docker stop` + `docker start` preserva dados para sempre | Usar volumes para qualquer dado que precisa sobreviver |
 | Copiar arquivos desnecessarios na imagem | Configurar `.dockerignore` adequadamente |
 
+## Troubleshooting
+
+### Uploads de usuarios desaparecem apos redeploy do container
+**Symptom:** Arquivos enviados por usuarios somem quando o container e recriado
+**Cause:** Arquivos criados em runtime dentro do container sao efemeros e nao sobrevivem a recriacao
+**Fix:** Use storage externo (S3, Blob Storage) para uploads ou declare volumes Docker para dados que precisam persistir
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-arquivos-e-containers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-arquivos-e-containers/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-arquivos-e-containers/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-arquivos-e-containers/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-introducao-ambiente-dev
-description: "Guides development environment setup for web development courses. Use when user asks to 'setup dev environment', 'configure workspace', 'install tools for web dev', 'start a web course', or 'what tools do I need for frontend'. Recommends browser, code editor, design, and annotation tools with rationale. Make sure to use this skill whenever setting up a new learning or development environment. Not for CI/CD pipelines, Docker, or production infrastructure setup."
+description: "Configures development environment setup for web development courses. Use when user asks to 'setup dev environment', 'configure workspace', 'install tools for web dev', 'start a web course', or 'what tools do I need for frontend'. Recommends browser, code editor, design, and annotation tools with rationale. Make sure to use this skill whenever setting up a new learning or development environment. Not for CI/CD pipelines, Docker, or production infrastructure setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: dev-environment
+  tags: [setup, vscode, browser, figma, tools, environment]
 ---
 
 # Ambiente de Desenvolvimento Web
 
 > Configure o ambiente de trabalho com navegador, editor de codigo, ferramenta de design e ferramenta de anotacao.
 
-## Key concept
+## Key concepts
 
 Um ambiente de desenvolvimento web completo tem 4 categorias de ferramentas: navegador para visualizar e debugar, editor de codigo para escrever, ferramenta de design para consultar layouts, e ferramenta de anotacao para organizar ideias. Algumas rodam localmente, outras online — o importante e ter todas disponiveis antes de comecar.
 
@@ -42,6 +48,20 @@ Todos os layouts de cursos Skillz sao feitos em Figma. O mercado adotou Figma co
 
 Pode ser papel, caderno, Whimsical, Notion. O importante e ter um sistema para mapear conceitos e criar mapas mentais durante o aprendizado.
 
+### Verificacao rapida do ambiente
+
+```bash
+# Verificar Node.js e npm
+node --version
+npm --version
+
+# Verificar VS Code
+code --version
+
+# Abrir projeto no VS Code
+code .
+```
+
 ## Common misconceptions
 
 | Pensam que | Realidade |
@@ -65,13 +85,15 @@ Pode ser papel, caderno, Whimsical, Notion. O importante e ter um sistema para m
 - Nao cobre ferramentas de backend (Docker, databases, etc)
 - Nao cobre configuracao de Git/GitHub
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| VS Code não reconhece extensão de arquivo | Extensão da linguagem não instalada | Instale a extensão correspondente (ex: ESLint, Prettier, HTML CSS Support) |
+| Live Server não abre no navegador | Porta padrão (5500) em uso por outro processo | Altere a porta nas configurações do Live Server ou encerre o processo conflitante |
+| Figma não carrega o layout do projeto | Permissão de acesso ao arquivo não concedida | Solicite acesso de visualização ao proprietário do arquivo no Figma |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha de ferramentas e contexto de mercado
 - [code-examples.md](references/code-examples.md) — Links e configuracoes iniciais de cada ferramenta
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-ambiente-dev/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-ambiente-dev/references/code-examples.md)

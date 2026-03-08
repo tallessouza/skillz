@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-rest-client-vscode
 description: "Applies REST Client extension patterns when creating or organizing HTTP test files in VS Code projects. Use when user asks to 'test an API route', 'create http file', 'test endpoint', 'setup REST Client', or 'add request file to project'. Ensures proper .http file structure with variables, named requests, and separator syntax. Make sure to use this skill whenever creating .http files or setting up API testing in VS Code. Not for Postman, Insomnia, or automated test suites."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ferramentas
+  tags: [rest-client, vscode, http-file, api-testing, variables, requests]
 ---
 
 # REST Client no VS Code
@@ -109,14 +115,14 @@ Content-Type: application/json
 | Requests sem nome | `# @name descricao_da_request` |
 | Body sem Content-Type | `Content-Type: application/json` antes do body |
 
+## Troubleshooting
+
+### REST Client envia todas as requests de uma vez ao clicar Send
+**Symptom:** Ao clicar "Send Request", multiplas requests sao enviadas simultaneamente
+**Cause:** Faltam os separadores `###` entre as requests no arquivo `.http`
+**Fix:** Adicione `###` (tres cerquilhas em linha separada) entre cada request para que o REST Client identifique onde uma termina e outra comeca
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-extensao-rest-client-no-vs-code/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-extensao-rest-client-no-vs-code/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

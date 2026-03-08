@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-refinando-abertura-da-mesa
 description: "Enforces validation-before-mutation pattern when writing API endpoints that create or open resources. Use when user asks to 'create an endpoint', 'open a table', 'start a session', 'prevent duplicates', or any resource creation with uniqueness constraints. Applies rules: always check existing state before insert, use short syntax for Knex where clauses, order+first for latest record, throw AppError for business rule violations. Make sure to use this skill whenever building endpoints that must prevent duplicate active records. Not for read-only endpoints, authentication, or frontend validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-validation
+  tags:
+    - api
+    - validation
+    - knex
+    - business-rules
+    - guard-clause
 ---
 
 # Validacao Pre-Mutacao em Endpoints de Criacao
@@ -113,6 +124,14 @@ async function openTable(request: Request, response: Response) {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre validacao pre-mutacao, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Duplicatas criadas mesmo com validacao | Validacao nao busca o registro mais recente | Adicione `.orderBy('opened_at', 'desc').first()` para pegar o ultimo |
+| AppError nao retorna status correto ao cliente | Error handler global nao trata AppError | Configure middleware de erro que capture AppError e retorne o status adequado |
+| `.first()` retorna undefined mas registro existe | Filtro `where` com valor errado ou coluna inexistente | Verifique o nome exato da coluna e o valor passado |
 
 ---
 

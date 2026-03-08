@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-listagem-transacoes
 description: "Enforces E2E test patterns for API listing endpoints using Supertest cookie forwarding and partial matching. Use when user asks to 'write e2e tests', 'test a listing route', 'pass cookies between requests in tests', 'validate response body in vitest', or 'test authenticated endpoints'. Applies rules: test isolation (no shared state), cookie extraction via getSetCookie, objectContaining for partial matching. Make sure to use this skill whenever writing integration or e2e tests for REST APIs with session-based auth. Not for unit tests, frontend component tests, or mock-based testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-com-nodejs
+  tags: [e2e-testing, supertest, cookies, objectContaining, test-isolation]
 ---
 
 # Testando Listagem de Transacoes (E2E)
@@ -114,14 +120,14 @@ it('should be able to list all transactions', async () => {
 | `.expect(201)` no setup de um teste de listagem | Omitir o expect do setup — voce nao esta testando a criacao |
 | `response.headers['set-cookie']` | `response.getSetCookie()` — metodo dedicado do Supertest |
 
+## Troubleshooting
+
+### Teste de listagem falha quando executado isoladamente
+**Symptom:** Lista retorna vazia porque o teste depende de estado criado por outro teste
+**Cause:** Variavel de cookies compartilhada entre testes — teste de listagem depende do teste de criacao
+**Fix:** Crie a transacao dentro do proprio teste de listagem e extraia cookies com `response.getSetCookie()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-listagem-de-transacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-listagem-de-transacoes/references/code-examples.md)

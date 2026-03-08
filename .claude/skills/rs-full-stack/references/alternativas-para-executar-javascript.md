@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-alternativas-executar-js
-description: "Guides setup of JavaScript execution environments when user asks to 'run JavaScript', 'execute JS', 'setup JS playground', 'where to write JavaScript', or 'configure VS Code for JS'. Covers browser console, JS Playground, CodePen, and VS Code workflow. Make sure to use this skill whenever a beginner asks how or where to run JavaScript code. Not for Node.js server-side execution, bundlers, or build tool configuration."
+description: "Navigates setup of JavaScript execution environments when user asks to 'run JavaScript', 'execute JS', 'setup JS playground', 'where to write JavaScript', or 'configure VS Code for JS'. Covers browser console, JS Playground, CodePen, and VS Code workflow. Make sure to use this skill whenever a beginner asks how or where to run JavaScript code. Not for Node.js server-side execution, bundlers, or build tool configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, environment, console, vscode, beginner]
 ---
 
 # Alternativas para Executar JavaScript
 
 > Conheca os ambientes de execucao de JavaScript para escolher o mais adequado ao contexto.
 
-## Decision framework
+## Key concepts
 
 | Situacao | Ambiente recomendado |
 |----------|---------------------|
@@ -67,13 +73,16 @@ console.log("Hello World")
 | Diminuir zoom | Ctrl - (ou Cmd -) |
 | Abrir DevTools | F12 ou Botao direito → Inspecionar |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Console do navegador não aparece | DevTools não está aberto | Pressione F12 ou clique direito e selecione "Inspecionar" |
+| `console.log` não mostra saída | Código não foi executado (erro de sintaxe) | Verifique erros na aba Console antes da sua mensagem |
+| JS Playground não executa | Navegador bloqueando scripts | Tente outro navegador ou desabilite extensões de bloqueio |
+| VS Code não executa JavaScript | VS Code é um editor, não um runtime | Execute o arquivo no navegador ou instale Node.js |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada ambiente e quando usar
 - [code-examples.md](references/code-examples.md) — Exemplos de console.log e primeiros passos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alternativas-para-executar-javascript/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alternativas-para-executar-javascript/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-separando-rotas
 description: "Enforces route separation pattern when building Node.js HTTP servers without frameworks. Use when user asks to 'create routes', 'add an endpoint', 'organize server routes', 'refactor routes', or 'build a REST API from scratch'. Applies route-table pattern: array of {method, path, handler} objects with find-based matching. Make sure to use this skill whenever creating raw Node.js HTTP servers or adding routes to existing ones. Not for Express/Fastify/Hapi routing, frontend routing, or framework-based APIs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [routing, route-table, separation-of-concerns, http-server, refactoring]
 ---
 
 # Separando Rotas da Aplicacao
@@ -114,14 +120,14 @@ return res.writeHead(404).end()
 | Switch/case gigante para rotas | Array + find |
 | Handler inline no servidor | Handler nomeado no objeto de rota |
 
+## Troubleshooting
+
+### Nova rota adicionada mas servidor retorna 404
+**Symptom:** Rota existe no routes.js mas o servidor nao a encontra
+**Cause:** O despacho usa comparacao exata de string e a URL pode ter query params ou trailing slash
+**Fix:** Verifique se o path no objeto de rota corresponde exatamente a URL sem query string — use regex matching para paths dinamicos
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-separando-rotas-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-separando-rotas-da-aplicacao/references/code-examples.md)

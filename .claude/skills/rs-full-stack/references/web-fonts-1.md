@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-web-fonts-1
 description: "Applies web font integration patterns when adding custom fonts to HTML/CSS projects. Use when user asks to 'add a font', 'change typography', 'use Google Fonts', 'import a font', or 'customize fonts'. Covers Google Fonts link method, @import method, @font-face for local fonts, and performance best practices. Make sure to use this skill whenever the user is setting up typography or importing external fonts. Not for icon fonts, font-awesome, or SVG icon systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-typography
+  tags: [css, fonts, google-fonts, font-face, web-fonts, performance]
 ---
 
 # Web Fonts
@@ -100,6 +106,15 @@ body {
 | Importar todos os pesos (100-900) | Importar apenas os pesos usados (ex: 300, 700) |
 | Preconnect depois do link da fonte | Preconnect antes de tudo no head |
 | Assumir que o usuario tem a fonte instalada | Sempre importar a fonte explicitamente |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Fonte nao carrega, mostra fallback | URL do Google Fonts incorreta ou rede bloqueada | Verifique a URL e teste abrindo-a diretamente no navegador |
+| FOUT (Flash of Unstyled Text) | Fonte demora a carregar | Adicione `font-display: swap` na URL do Google Fonts |
+| Peso especifico nao funciona (ex: bold) | Peso nao importado na URL | Adicione o peso na URL: `?family=Roboto:wght@300;700` |
+| `@font-face` nao encontra arquivo | Caminho relativo incorreto para o arquivo .woff2 | Verifique o caminho relativo ao CSS, nao ao HTML |
 
 ## Deep reference library
 

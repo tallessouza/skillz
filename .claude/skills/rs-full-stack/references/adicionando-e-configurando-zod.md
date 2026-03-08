@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-e-configurando-zod
 description: "Enforces Zod validation patterns in Express/Fastify error handlers when building Node.js APIs. Use when user asks to 'add validation', 'configure zod', 'handle validation errors', 'create error middleware', or 'validate request data'. Applies ZodError instance checking, error.format() for structured responses, and proper 400 status codes. Make sure to use this skill whenever setting up Zod in an API or writing error-handling middleware that includes validation. Not for frontend form validation, database schema validation, or non-Zod validation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [zod, validation, error-handling, express, api, middleware]
 ---
 
 # Configurando Zod para Validacao em APIs
@@ -91,13 +97,16 @@ function errorHandler(error, request, response, next) {
 | `import Zod from "zod"` | `import { z, ZodError } from "zod"` |
 | Tratar ZodError depois do catch generico | ZodError ANTES do fallback 500 |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| ZodError retorna 500 em vez de 400 | Bloco `instanceof ZodError` ausente ou apos o catch generico | Adicione o check de ZodError ANTES do fallback 500 |
+| `error.format is not a function` | Objeto nao e uma instancia de ZodError | Verifique o `instanceof ZodError` antes de chamar `format()` |
+| Import falha: `ZodError` nao encontrado | Import incorreto | Use `import { z, ZodError } from "zod"` |
+| Erro de validacao nao mostra campos | Usando `error.message` em vez de `error.format()` | Troque para `error.format()` para resposta estruturada por campo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ordem de instanceof e format vs flatten
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-e-configurando-zod/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-e-configurando-zod/references/code-examples.md)

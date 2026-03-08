@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-regras-em-condicionais
 description: "Enforces clean conditional patterns when writing JavaScript/TypeScript code. Use when user asks to 'write a function', 'add validation', 'implement logic', 'refactor conditionals', or any code with if/else blocks. Applies rules: avoid negations in conditions, prefer early return over else, never nest conditionals. Make sure to use this skill whenever generating code with conditional logic. Not for CSS, database queries, or markup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: regras-em-condicionais
+  tags: [conditionals, early-return, guard-clauses, negation, clean-code, typescript, javascript]
 ---
 
 # Regras em Condicionais
@@ -116,6 +122,13 @@ function processUser(user: User) {
 | `if (x) { ... } else { return }` | `if (!x) { return } ...` |
 | `if (a) { if (b) { ... } }` | `if (a && b) { ... }` |
 | `condition ? (nested ? a : b) : c` | if/else com early return |
+
+## Troubleshooting
+
+### Condicional com dupla negacao dificulta leitura
+**Symptom:** Codigo como `if (!isNotActive && !isNotValid)` requer multiplos "switches mentais" para entender
+**Cause:** Variaveis booleanas foram criadas com negacao no nome (`isNotX`) e depois negadas novamente no if
+**Fix:** Crie variaveis afirmativas: `const isActive = ...` e `const isValid = ...`, depois use `if (isActive && isValid)` — leia como frase natural
 
 ## Deep reference library
 

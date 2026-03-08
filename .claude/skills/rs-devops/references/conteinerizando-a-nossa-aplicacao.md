@@ -1,6 +1,12 @@
 ---
 name: rs-devops-conteinerizando-aplicacao
 description: "Applies multi-stage Docker build patterns when containerizing Node.js/NestJS applications for Kubernetes deployment. Use when user asks to 'dockerize', 'containerize', 'create Dockerfile', 'build Docker image', 'prepare app for Kubernetes', or 'optimize Docker image size'. Enforces Alpine final stage, production-only dependencies, proper COPY ordering, and .dockerignore hygiene. Make sure to use this skill whenever creating Dockerfiles for Node/NestJS apps targeting K8s clusters. Not for docker-compose setup, CI/CD pipelines, or Kubernetes manifest writing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-builds
+  tags: [docker, dockerfile, multi-stage, alpine, nestjs, nodejs, containerization, kubernetes]
 ---
 
 # Conteinerizando Aplicacoes Node.js para Kubernetes
@@ -120,14 +126,14 @@ CMD ["yarn", "run", "start:prod"]
 | Esquecer `.dockerignore` | Excluir `node_modules`, `test`, config files |
 | Mesmo `FROM` para build e execucao | Debian para build, Alpine para execucao |
 
+## Troubleshooting
+
+### Imagem Docker muito grande (500MB+)
+**Symptom:** Docker image final tem centenas de MB, pulls lentos no cluster K8s
+**Cause:** Usando imagem Debian no estagio final e/ou devDependencies incluidas na imagem
+**Fix:** Use multi-stage build com Alpine no estagio final e remova devDependencies com `yarn workspaces focus --production`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conteinerizando-a-nossa-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conteinerizando-a-nossa-aplicacao/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-desestruturacao-de-objetos
 description: "Applies JavaScript/TypeScript object destructuring patterns when writing functions, accessing object properties, or refactoring code. Use when user asks to 'create a function', 'extract properties', 'refactor parameters', 'destructure', or works with objects. Enforces destructured parameters in functions to avoid positional bugs, clean property extraction, and named arguments. Make sure to use this skill whenever generating functions that receive objects or accessing multiple object properties. Not for array destructuring, spread operator, or rest parameters."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [JavaScript, destructuring, objects, ES6, named-parameters, functions]
 ---
 
 # Desestruturação de Objetos
@@ -87,13 +93,16 @@ createProduct({ price: 70, description: "Mouse" }) // Descrição: Mouse, Preço
 | `create("Mouse", "Periférico", 70, 5)` | `create({ name: "Mouse", desc: "Periférico", price: 70, qty: 5 })` |
 | `let { x } = obj` (sem reatribuição) | `const { x } = obj` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Propriedade retorna `undefined` apos desestruturar | Nome da variavel nao bate com a chave do objeto | Use exatamente o mesmo nome da propriedade |
+| Bug silencioso com parametros posicionais | Ordem dos argumentos trocada | Refatore para receber objeto desestruturado |
+| TypeScript reclama tipo do parametro | Falta tipagem no objeto desestruturado | Adicione tipo inline: `{ name, price }: { name: string; price: number }` |
+| `Cannot destructure property of undefined` | Objeto passado e `undefined` ou `null` | Adicione valor padrao: `function fn({ name } = {})` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-desestruturacao-de-objetos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-desestruturacao-de-objetos/references/code-examples.md)

@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-disparando-eventos-dominio
-description: "Applies domain event dispatching patterns in NestJS Clean Architecture repositories and controls event execution in E2E tests. Use when user asks to 'dispatch domain events', 'trigger events from repository', 'control events in tests', 'setup E2E test environment', or 'isolate domain events in testing'. Ensures events fire from Prisma repositories and provides shouldRun toggle for test isolation. Make sure to use this skill whenever implementing domain events in NestJS repositories or configuring E2E test environments that involve domain events. Not for unit test setup, CQRS event buses, or message queue configuration."
+name: 2023-disparando-eventos-de-dominio
+description: "Triggers domain events from Prisma repositories and controls their execution in E2E tests using a static shouldRun toggle. Use when user asks to 'dispatch domain events', 'trigger events from repository', 'control events in tests', or 'prevent side effects in E2E tests'. Make sure to use this skill whenever integrating domain events with Prisma repositories or writing E2E tests that need to control event dispatching. Not for in-memory repository events, frontend event handling, or message queue integration."
+category: coding-lens
+tags: [domain-events, entities, nestjs, prisma, repository, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [domain-events, nestjs, prisma, repository, testing, shouldRun, e2e]
 ---
 
 # Disparando Eventos de Domínio
@@ -130,14 +139,14 @@ DomainEvents.shouldRun = true
 | Testar notificação dentro do teste de controller | Criar teste E2E separado para o evento |
 | `if (process.env.NODE_ENV !== 'test')` para controlar eventos | `DomainEvents.shouldRun` toggle estático |
 
+## Troubleshooting
+
+### Eventos disparam em todos os testes E2E causando side effects
+**Symptom:** Testes de controller falham ou produzem efeitos colaterais inesperados (notificacoes, emails)
+**Cause:** `DomainEvents.shouldRun` nao foi desativado no setup global E2E
+**Fix:** Adicione `DomainEvents.shouldRun = false` no `beforeAll` do `setup-e2e.ts` e reative apenas nos testes de evento especificos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-disparando-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-disparando-eventos-de-dominio/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

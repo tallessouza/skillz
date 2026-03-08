@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-virtual-service
 description: "Applies Istio Virtual Service configuration patterns when writing Kubernetes manifests for service mesh routing. Use when user asks to 'configure virtual service', 'split traffic', 'canary deployment with istio', 'route traffic between versions', or 'service mesh routing'. Enforces correct apiVersion, host resolution, subset references, and weight-based traffic shaping. Make sure to use this skill whenever generating Istio VirtualService manifests or configuring traffic splitting in Kubernetes. Not for Kubernetes Service objects, Ingress, or Gateway API resources."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-virtual-service
+  tags: [istio, service-mesh, virtual-service, traffic-splitting, canary, kubernetes]
 ---
 
 # Configurando o Virtual Service (Istio)
@@ -137,14 +143,14 @@ spec:
 | Remover o Service K8s ao criar VirtualService | Manter ambos — VirtualService opera acima do Service |
 | Colocar logica de retry/timeout na aplicacao | Abstrair para o VirtualService (camada de infra) |
 
+## Troubleshooting
+
+### Subset not found no Kiali
+**Symptom:** Kiali exibe alerta "subset not found" apos aplicar VirtualService
+**Cause:** O VirtualService referencia subsets que nao existem em nenhum DestinationRule
+**Fix:** Crie o DestinationRule com os subsets correspondentes antes de aplicar o VirtualService
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-virtual-service/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-virtual-service/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-virtual-service/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-virtual-service/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

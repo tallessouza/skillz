@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listando-pedidos-por-mesa
 description: "Enforces patterns for querying related database tables with joins and column disambiguation in Node.js APIs. Use when user asks to 'list orders', 'query with joins', 'select from multiple tables', 'connect tables', or 'avoid ambiguous columns'. Applies rules: always prefix columns with table name in joins, use join before where, return order-time price not current price. Make sure to use this skill whenever writing SELECT queries that involve multiple tables. Not for single-table queries, migrations, or schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express
+  tags: [knex, sql, joins, disambiguation, express, query]
 ---
 
 # Listando Pedidos com Joins e Desambiguação de Colunas
@@ -89,13 +95,16 @@ const order = await knex("orders")
 | `products.price` no pedido | `orders.price` (preço registrado no pedido) |
 | `.where(...)` antes de `.join(...)` | `.join(...)` antes de `.where(...)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro "ambiguous column name" | Coluna existe em ambas tabelas do join | Qualifique com `tabela.coluna` em todas as colunas do select |
+| Join retorna registros duplicados | Relacionamento many-to-many sem tratamento | Verifique a cardinalidade do join e use DISTINCT se necessario |
+| Preco retornado diferente do esperado | Usando `products.price` em vez de `orders.price` | Use `orders.price` para trazer o preco do momento do pedido |
+| Query lenta com join | Falta indice na coluna de join | Adicione indice na coluna de foreign key |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre ambiguidade de colunas e preço temporal
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listando-pedidos-por-mesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listando-pedidos-por-mesa/references/code-examples.md)

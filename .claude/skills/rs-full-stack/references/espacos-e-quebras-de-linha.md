@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-espacos-e-quebras-de-linha
 description: "Enforces correct HTML whitespace and line break handling when writing HTML markup. Use when user asks to 'create HTML', 'add spacing', 'break lines in HTML', 'fix whitespace', or 'write a paragraph'. Applies rules: use br for line breaks, use &amp;nbsp; for extra spaces, prefer semantic elements like p over br chains. Make sure to use this skill whenever generating HTML text content with spacing needs. Not for CSS spacing, margins, padding, or layout."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, whitespace, line-break, br, nbsp, paragraphs, semantics]
 ---
 
 # Espaços e Quebras de Linha no HTML
@@ -75,13 +81,15 @@ Resultado: três linhas separadas, espaços preservados.
 | Quebras de linha no source esperando renderizar | `<br>` explícito ou `<p>` |
 | Espaços repetidos no source para indentar texto | CSS `text-indent` ou `padding-left` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Texto aparece tudo em uma linha so | Quebras de linha no source code sem `<br>` | Adicionar `<br>` ou separar em `<p>` |
+| Espacos extras nao aparecem | Browser colapsa whitespace consecutivo | Usar `&nbsp;` para espacos forcados |
+| Layout desalinhado com muitos `&nbsp;` | Usando entidades HTML para layout | Substituir por CSS `display: flex` ou `grid` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre whitespace collapsing e estratégias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-espacos-e-quebras-de-linha/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-espacos-e-quebras-de-linha/references/code-examples.md)

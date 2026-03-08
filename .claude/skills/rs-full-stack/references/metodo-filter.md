@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-filter
 description: "Applies Array.filter() patterns when writing JavaScript/TypeScript code that filters arrays. Use when user asks to 'filter an array', 'select items from a list', 'get only matching elements', 'remove items that dont match', or any array filtering task. Enforces: always return condition from callback, use singular naming for callback parameter, prefer explicit comparisons. Make sure to use this skill whenever filtering arrays of primitives or objects. Not for array transformation (use map), aggregation (use reduce), or searching single items (use find)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-metodos-array
+  tags: [javascript, array, filter, immutability, callback]
 ---
 
 # Método filter()
@@ -76,13 +82,16 @@ const expensiveProducts = products.filter(product => product.price > 50)
 | `arr.filter(...)[0]` | `arr.find(...)` — método correto para busca única |
 | Mutar array original com splice | `filter()` para criar novo array filtrado |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| filter() retorna array vazio | Nenhum elemento satisfaz a condicao | Verifique a condicao do callback e os dados de entrada |
+| filter() retorna todos os elementos | Condicao sempre verdadeira (ex: truthy implicito) | Use comparacao explicita: `item.flag === true` |
+| Preciso do primeiro match apenas | Usando filter()[0] desnecessariamente | Use `find()` em vez de `filter()[0]` |
+| Array original foi modificado | Confusao com splice que muta | filter() nunca modifica o original — verifique se nao ha splice no codigo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-filter/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-filter/references/code-examples.md)

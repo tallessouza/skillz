@@ -1,15 +1,23 @@
 ---
 name: rs-full-stack-api-client-insomnia
-description: "Guides setup and usage of Insomnia as API client for testing HTTP endpoints. Use when user asks to 'test an API', 'send a POST request', 'setup Insomnia', 'configure API client', or 'test endpoints beyond GET'. Make sure to use this skill whenever setting up API testing tools or choosing between Postman, Thunder Client, and Insomnia. Not for writing API code, implementing routes, or frontend HTTP calls."
+description: "Demonstrates setup and usage of Insomnia as API client for testing HTTP endpoints. Use when user asks to 'test an API', 'send a POST request', 'setup Insomnia', 'configure API client', or 'test endpoints beyond GET'. Make sure to use this skill whenever setting up API testing tools or choosing between Postman, Thunder Client, and Insomnia. Not for writing API code, implementing routes, or frontend HTTP calls."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [insomnia, api-client, http, testing, postman, tools]
 ---
 
 # API Client — Insomnia
 
 > Use Insomnia como ferramenta padrao para testar APIs com qualquer metodo HTTP alem do GET disponivel no navegador.
 
-## Contexto
+## Key concepts
 
-O navegador so faz requisicoes GET por padrao. Para testar POST, PUT, DELETE e outros metodos HTTP, um API client dedicado e necessario.
+- O navegador so faz requisicoes GET por padrao
+- Para testar POST, PUT, DELETE e outros metodos HTTP, um API client dedicado e necessario
+- Insomnia permite organizar requests em colecoes reutilizaveis
 
 ## Ferramentas disponiveis
 
@@ -35,6 +43,15 @@ O navegador so faz requisicoes GET por padrao. Para testar POST, PUT, DELETE e o
 - O Insomnia abre com a interface principal
 - Conta gratuita atende todas as necessidades de teste
 
+## Teste rapido via terminal
+
+```bash
+# Alternativa ao Insomnia para testes rapidos via CLI
+curl -X POST http://localhost:3333/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John", "email": "john@example.com"}'
+```
+
 ## Plano gratuito vs pago
 
 | Recurso | Free | Pago |
@@ -53,13 +70,13 @@ O navegador so faz requisicoes GET por padrao. Para testar POST, PUT, DELETE e o
 | Time compartilha colecao de requests | Considere plano pago do Insomnia |
 | Prefere nao sair do VS Code | Use Thunder Client como alternativa |
 
+## Troubleshooting
+
+### Problem: Cannot test POST/PUT/DELETE methods from the browser
+- **Cause**: Browsers only send GET requests by default when typing URLs in the address bar
+- **Fix**: Use an API client like Insomnia or Postman that supports all HTTP methods with request body configuration
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha de API clients e metodos HTTP
 - [code-examples.md](references/code-examples.md) — Exemplos de configuracao e uso do Insomnia
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0202-api-client-insomnia-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0202-api-client-insomnia-mkv-mp-4/references/code-examples.md)

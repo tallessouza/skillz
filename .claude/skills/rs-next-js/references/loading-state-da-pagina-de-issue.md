@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-loading-state-da-pagina-de-issue
 description: "Applies Next.js loading state patterns with skeleton screens when building page loading states. Use when user asks to 'create a loading state', 'add skeleton screen', 'implement loading.tsx', 'show loading feedback', or 'create placeholder UI'. Enforces colocated loading.tsx convention, reusable Skeleton component with twMerge, and animate-pulse patterns. Make sure to use this skill whenever creating loading states in Next.js App Router projects. Not for API loading indicators, suspense boundaries configuration, or client-side spinner components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: loading-states
+  tags: [loading, skeleton, animate-pulse, loading-tsx, suspense, app-router, next-js, tailwind-merge]
 ---
 
 # Loading State com Skeleton Screen no Next.js
@@ -105,14 +111,19 @@ components/
 | Spinner centralizado generico | Skeleton que espelha o layout real da pagina |
 | Skeleton para elementos ja disponiveis (links, nav) | Renderizar elementos estaticos normalmente |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-loading-state-da-pagina-de-issue/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-loading-state-da-pagina-de-issue/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-loading-state-da-pagina-de-issue/references/deep-explanation.md) — O instrutor demonstra o problema simulando delay com `setTimeout` de 2 segundos na requisicao `getIs
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-loading-state-da-pagina-de-issue/references/code-examples.md) — // app/issues/[id]/page.tsx

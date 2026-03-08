@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-evolucao-dos-media-queries
-description: "Guides CSS Media Queries Level 5 adoption and feature research workflow. Use when user asks to 'check browser support', 'use media queries', 'range syntax CSS', 'prefers-color-scheme', or 'is this CSS feature supported'. Applies W3C spec research and caniuse.com validation before adopting new CSS features. Make sure to use this skill whenever adopting modern CSS media query syntax or researching CSS feature compatibility. Not for general CSS layout, flexbox, grid, or non-media-query CSS features."
+description: "Validates CSS Media Queries Level 5 adoption and feature research workflow. Use when user asks to 'check browser support', 'use media queries', 'range syntax CSS', 'prefers-color-scheme', or 'is this CSS feature supported'. Applies W3C spec research and caniuse.com validation before adopting new CSS features. Make sure to use this skill whenever adopting modern CSS media query syntax or researching CSS feature compatibility. Not for general CSS layout, flexbox, grid, or non-media-query CSS features."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-responsive
+  tags: [css, media-queries, responsive, browser-support, caniuse]
 ---
 
 # Evolucao dos Media Queries
 
 > Antes de usar qualquer feature moderna de CSS, valide no W3C spec o nivel de maturidade e no caniuse.com o suporte real dos browsers.
 
-## Key concept
+## Key concepts
 
 CSS Media Queries evolui em niveis (Levels) no W3C. O Level 5 esta em desenvolvimento desde 2021 e introduz sintaxes modernas como Range Syntax e `prefers-color-scheme`. Features podem existir na spec mas nao ter suporte universal — por isso a validacao em duas fontes e obrigatoria.
 
@@ -73,13 +79,16 @@ caniuse.com → buscar feature → verificar:
 - Dados do caniuse sao globais — seu publico especifico pode ter distribuicao diferente de browsers
 - Suporte de browser nao garante comportamento identico entre implementacoes
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Range syntax `(width >= 768px)` nao funciona | Browser muito antigo (pre-2022) | Usar fallback classico `(min-width: 768px)` |
+| `prefers-color-scheme` nao detecta tema | Browser nao suporta ou SO sem tema escuro ativo | Verificar suporte no caniuse e configuracao do SO |
+| Media query nao aplica estilos | Sintaxe com erro ou falta viewport meta tag | Verificar `<meta name="viewport">` no HTML e sintaxe da query |
+| Comportamento diferente entre browsers | Implementacoes variam em features novas | Consultar caniuse.com para confirmar suporte especifico |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre niveis do W3C, analogias e pesquisa de features
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de Range Syntax e prefers-color-scheme com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-evolucao-dos-media-queries/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-evolucao-dos-media-queries/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-cache
 description: "Applies cache testing patterns when writing NestJS e2e tests for Redis cache layers. Use when user asks to 'test cache', 'write cache tests', 'test Redis persistence', 'e2e test repository', or 'verify cache invalidation'. Covers cache hit verification, cached response on subsequent calls, and cache reset on save. Make sure to use this skill whenever creating tests for any caching layer in NestJS repositories. Not for unit tests, controller-only tests, or Redis configuration setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [cache, redis, e2e-testing, cache-invalidation, repository-testing]
 ---
 
 # Testando Persistencia em Cache
@@ -143,14 +149,14 @@ beforeAll(async () => {
 | Validar cache comparando objetos | Comparar com `JSON.stringify(questionDetails)` |
 | Verificar cache hit com dados reais | Usar dados falsos (`{ empty: true }`) para provar leitura do cache |
 
+## Troubleshooting
+
+### Teste de cache interfere em dados de desenvolvimento
+**Symptom:** Dados de desenvolvimento somem apos rodar os testes
+**Cause:** Testes e desenvolvimento compartilham o mesmo REDIS_DB
+**Fix:** Configure `REDIS_DB=1` no .env.test e use `redis.flushDB()` (nao `flushAll`) no beforeAll
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-persistencia-em-cache/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-persistencia-em-cache/references/code-examples.md)

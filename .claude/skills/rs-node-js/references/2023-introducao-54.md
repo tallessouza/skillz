@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-introducao-nestjs
-description: "Guides NestJS project setup integrating DDD, SOLID, and Clean Architecture patterns. Use when user asks to 'start a NestJS project', 'migrate to NestJS', 'integrate DDD with Nest', or 'setup Nest with Prisma and caching'. Provides the learning roadmap and architectural strategy for building NestJS apps that respect domain boundaries. Make sure to use this skill whenever starting a new NestJS project that needs clean architecture. Not for React, frontend frameworks, or NestJS microservices deployment."
+description: "Structures NestJS project setup integrating DDD, SOLID, and Clean Architecture patterns. Use when user asks to 'start a NestJS project', 'migrate to NestJS', 'integrate DDD with Nest', or 'setup Nest with Prisma and caching'. Provides the learning roadmap and architectural strategy for building NestJS apps that respect domain boundaries. Make sure to use this skill whenever starting a new NestJS project that needs clean architecture. Not for React, frontend frameworks, or NestJS microservices deployment."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-introduction
+  tags: [nestjs, ddd, solid, clean-architecture, prisma, caching, domain-driven-design]
 ---
 
 # NestJS com DDD, SOLID e Clean Architecture
@@ -51,6 +57,25 @@ Não tente integrar DDD com Nest antes de entender como o Nest funciona isoladam
 | Preciso reescrever tudo para usar Nest | Código desacoplado de framework migra naturalmente — Nest se adapta ao domínio |
 | Devo começar pelo DDD dentro do Nest | Aprenda os fundamentos do Nest isoladamente primeiro, depois integre |
 
+```typescript
+// Exemplo: Controller NestJS como adapter para use case de dominio
+import { Controller, Post, Body } from '@nestjs/common'
+import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
+
+@Controller('/questions')
+export class CreateQuestionController {
+  constructor(private createQuestion: CreateQuestionUseCase) {}
+
+  @Post()
+  async handle(@Body() body: { title: string; content: string }) {
+    await this.createQuestion.execute({
+      title: body.title,
+      content: body.content,
+    })
+  }
+}
+```
+
 ## When to apply
 
 - Iniciando projeto NestJS que precisa de arquitetura limpa
@@ -63,14 +88,14 @@ Não tente integrar DDD com Nest antes de entender como o Nest funciona isoladam
 - Projetos muito simples (CRUD básico) podem não precisar dessa separação de camadas
 - A migração exige que o código original esteja genuinamente desacoplado de framework
 
+## Troubleshooting
+
+### Codigo de dominio acoplado ao NestJS
+**Symptom:** Entidades e use cases importam decorators do NestJS como `@Injectable()` sem necessidade
+**Cause:** O dominio foi construido dentro do Nest em vez de ser construido independente e depois migrado
+**Fix:** Construa o dominio (entidades, value objects, use cases) sem imports do Nest. Use `@Injectable()` apenas quando necessario para injecao de dependencia na camada de infra
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-introducao-54/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-introducao-54/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-parametros-nomeados
 description: "Enforces correct query parameter extraction patterns in Node.js APIs without frameworks. Use when user asks to 'parse query strings', 'extract query parameters', 'handle URL parameters', 'build a router', or 'create API routes with filters'. Applies regex named groups to capture query strings, distinguishes route params from query params. Make sure to use this skill whenever building raw Node.js HTTP servers that need query parameter handling. Not for Express/Fastify/framework-based routing or frontend URL parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [query-params, regex, named-groups, nodejs, url-parsing]
 ---
 
 # Obtendo Parâmetros Nomeados (Query Parameters)
@@ -81,13 +87,13 @@ const match = '/products/123?page=3&category=computer'.match(regex)
 | Concatenar strings para montar regex | Template literals com `${}` para composição |
 | Tratar route params e query params igual | Separar em grupos distintos na regex |
 
+## Troubleshooting
+
+### Problem: Regex fails to match URLs that contain query parameters
+- **Cause**: The route regex uses `$` anchor without accounting for the optional `?query` portion of the URL
+- **Fix**: Append `(?<query>\\?(.*))?$` to the regex to optionally capture everything after `?`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre regex, escape de caracteres e composição de expressões
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0216-obtendo-parametros-nomeados-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0216-obtendo-parametros-nomeados-mkv-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-valores-unidades-medida
 description: "Applies correct CSS values and units when writing stylesheets. Use when user asks to 'style a component', 'write CSS', 'add styles', 'change font size', 'set colors', or any CSS property assignment. Ensures proper data types (color, length, percentage, keyword) for each property and guides consulting MDN documentation. Make sure to use this skill whenever generating CSS code that assigns values to properties. Not for JavaScript logic, HTML structure, or CSS selectors."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, values, units, length, color, percentage, keywords]
 ---
 
 # Valores e Unidades de Medida no CSS
@@ -89,6 +95,15 @@ h1 {
 | Usar keyword de uma propriedade em outra | Verifique keywords aceitas por cada propriedade |
 | Tentar memorizar todos os valores | Consulte a documentacao constantemente |
 | Ignorar a tooltip do editor | Use-a como primeiro recurso rapido |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `font-size: 24` nao funciona | Faltou a unidade de medida | Use `font-size: 24px` ou `1.5rem` |
+| Cor nao aparece no elemento | Valor de cor invalido ou propriedade errada | Verifique se a propriedade aceita `<color>` na MDN |
+| Keyword nao reconhecida pelo editor | Keyword pertence a outra propriedade | Consulte MDN para ver keywords aceitas pela propriedade |
+| Valor percentual nao tem efeito | Propriedade nao aceita `<percentage>` | Verifique na MDN se a propriedade suporta valores percentuais |
 
 ## Deep reference library
 

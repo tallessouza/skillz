@@ -1,6 +1,12 @@
 ---
 name: rs-devops-armazenamento-de-volumes
 description: "Applies Docker volume configuration patterns when writing Docker Compose files or managing container storage. Use when user asks to 'create a docker compose', 'persist database data', 'add volumes to container', 'configure MySQL with Docker', or any container storage task. Ensures data persistence for stateful services like databases. Make sure to use this skill whenever configuring stateful containers in Docker Compose. Not for Kubernetes persistent volumes, host bind mounts for development, or application code changes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-storage
+  tags: [docker, storage]
 ---
 
 # Armazenamento de Volumes no Docker
@@ -90,14 +96,14 @@ volumes:
 | Declarar volume inline sem top-level | Declarar na secao `volumes:` top-level do Compose |
 | Associar volume a container stateless | Reservar volumes para servicos com dados persistentes |
 
+## Troubleshooting
+
+### Dados do banco desaparecem ao reiniciar docker-compose
+**Symptom:** Apos `docker-compose down` e `docker-compose up`, banco esta vazio
+**Cause:** Volume nao foi declarado na secao top-level `volumes:` do docker-compose.yml
+**Fix:** Declare o volume na secao top-level `volumes:` e associe ao container com `volumes: - db:/var/lib/mysql`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-armazenamento-de-volumes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-armazenamento-de-volumes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-armazenamento-de-volumes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-armazenamento-de-volumes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

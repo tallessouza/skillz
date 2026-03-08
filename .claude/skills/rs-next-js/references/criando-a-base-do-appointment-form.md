@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-base-appointment-form
 description: "Generates appointment form scaffolding using shadcn/ui Dialog, React Hook Form, and Zod in Next.js. Use when user asks to 'create a form', 'build a booking form', 'make an appointment component', 'add a modal form', or 'scaffold a dialog with form'. Applies patterns: 'use client' directive for form components, Dialog wrapping form trigger, shadcn/ui component composition, React Hook Form + Zod setup. Make sure to use this skill whenever building modal-based forms in Next.js App Router projects. Not for API routes, server actions implementation, or non-modal inline forms."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: appointment-form
+  tags: [next-js, shadcn-ui, dialog, react-hook-form, zod, modal, form-scaffolding]
 ---
 
 # Criando a Base do Appointment Form
@@ -143,14 +149,19 @@ export const BookingForm = () => {
 | Instalar UI libs genericas (Material UI, etc) quando ja usa shadcn | `npx shadcn@latest add dialog` |
 | Validacao manual com if/else | Zod schema + @hookform/resolvers |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-base-do-appointment-form/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-base-do-appointment-form/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-base-do-appointment-form/references/deep-explanation.md) — No Next.js App Router, todos os componentes sao Server Components por padrao. O React Hook Form usa 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-base-do-appointment-form/references/code-examples.md) — O instrutor comeca com o minimo absoluto antes de adicionar o Dialog:

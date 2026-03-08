@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conectando-beekeeper
-description: "Guides connecting Beekeeper Studio to a Dockerized Postgres database. Use when user asks to 'connect to database', 'setup Beekeeper', 'connect GUI to Postgres container', 'test database connection', or 'use Beekeeper with Docker'. Covers connection config, port mapping verification, and container state troubleshooting. Make sure to use this skill whenever setting up a database GUI client with a containerized Postgres. Not for CLI-only psql usage, database schema design, or ORM configuration."
+description: "Configures connecting Beekeeper Studio to a Dockerized Postgres database. Use when user asks to 'connect to database', 'setup Beekeeper', 'connect GUI to Postgres container', 'test database connection', or 'use Beekeeper with Docker'. Covers connection config, port mapping verification, and container state troubleshooting. Make sure to use this skill whenever setting up a database GUI client with a containerized Postgres. Not for CLI-only psql usage, database schema design, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [database, beekeeper, postgres, docker, gui]
 ---
 
 # Conectando Beekeeper ao Postgres em Container
@@ -89,13 +95,17 @@ SELECT * FROM product;
 | Mudou a porta no docker run | Atualizar Port no Beekeeper para a nova porta do host |
 | Precisa persistir dados entre restarts | Usar volume Docker: `-v pgdata:/var/lib/postgresql/data` |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Conexao recusada ou timeout | Container Docker parado ou pausado | Execute `docker ps` e verifique status — use `docker unpause` se pausado |
+| Credenciais invalidas | User/password diferem das env vars do container | Verifique POSTGRES_USER e POSTGRES_PASSWORD usados no `docker run` |
+| Porta 5432 em uso | Outro processo ocupando a porta | Use `lsof -i :5432` para identificar e liberar a porta |
+| Beekeeper trava ao conectar | Container pausado durante conexao ativa | Feche Beekeeper, despause o container, reabra e reconecte |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre mapeamento de portas e ciclo de vida do container
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de SQL e comandos Docker expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conectando-com-o-beekeeper/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conectando-com-o-beekeeper/references/code-examples.md)

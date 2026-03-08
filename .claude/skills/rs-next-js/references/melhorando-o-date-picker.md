@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-melhorando-o-date-picker
 description: "Applies URL-driven state management pattern for DatePicker components in Next.js App Router. Use when user asks to 'create a date picker', 'filter by date', 'sync state with URL', 'use search params', or 'navigate between dates'. Enforces useRouter/useSearchParams from next/navigation, date formatting with date-fns, and URL as single source of truth. Make sure to use this skill whenever building date filtering or URL state sync in Next.js. Not for server-side date logic, static calendars, or form-only date inputs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-ui
+  tags: [date-picker, url-state, search-params, date-fns, useRouter, app-router, next-js]
 ---
 
 # DatePicker Dinamico com URL State no Next.js
@@ -120,14 +126,19 @@ const [date, setDate] = useState<Date | undefined>()
 | `getInitialDate` sem useCallback dentro de useEffect | Wrap em useCallback com dependencias corretas |
 | Formatar data sem locale | `format(date, 'PPP', { locale: ptBR })` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorando-o-date-picker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorando-o-date-picker/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorando-o-date-picker/references/deep-explanation.md) — O instrutor enfatiza um insight fundamental: a URL funciona como um "estado global" usando apenas fe
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorando-o-date-picker/references/code-examples.md) — "use client"

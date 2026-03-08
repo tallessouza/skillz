@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-classe-base-de-comentarios
 description: "Enforces abstract base class extraction pattern when writing TypeScript/Node.js domain entities with shared properties. Use when user asks to 'create entities', 'reduce duplication between classes', 'refactor domain models', 'implement inheritance', or 'apply DDD patterns'. Applies generic props extension, abstract classes, and inheritance over naive polymorphism. Make sure to use this skill whenever creating domain entities that share common fields. Not for database schema design, REST APIs, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-entities
+  tags: [abstract-class, inheritance, generics, ddd, base-class, comments, typescript]
 ---
 
 # Classe Base com Heranca em Entidades de Dominio
@@ -132,14 +138,19 @@ export class QuestionComment extends Comment<QuestionCommentProps> {
 | `class Comment extends Entity<CommentProps>` (sem generic) | `class Comment<Props extends CommentProps> extends Entity<Props>` |
 | `Comment.create(...)` na classe abstrata | Apenas `AnswerComment.create()` e `QuestionComment.create()` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-comentarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-comentarios/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-comentarios/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-comentarios/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-avatar-2024
 description: "Applies the React compound component pattern when building reusable UI components in Next.js. Use when user asks to 'create a component', 'build an avatar', 'avoid code duplication', 'compound pattern', or 'reusable component with subcomponents'. Enforces splitting components into composable pieces (Container, Image, Content, Title, Description) exported as a single namespace object. Make sure to use this skill whenever creating components that appear in multiple places with slight variations. Not for simple single-use components, API routes, or state management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-reutilizaveis
+  tags: [compound-component, avatar, composition, namespace-export, next-js, react]
 ---
 
 # Compound Component Pattern — Avatar
@@ -135,14 +141,19 @@ export function AvatarImage({ src, alt, width = 40, height = 40, ...rest }: Imag
 | Um componente gigante com muitas props condicionais | Compound pattern com subcomponentes composiveis |
 | `export default function Avatar()` com tudo dentro | Namespace object `export const Avatar = { Container, Image, ... }` |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-avatar-2024/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-avatar-2024/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-avatar-2024/references/deep-explanation.md) — O instrutor identifica um problema classico: o avatar aparece tanto na listagem de posts (PostCard) 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-avatar-2024/references/code-examples.md) — import { ReactNode } from "react"

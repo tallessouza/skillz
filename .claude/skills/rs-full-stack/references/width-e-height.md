@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-width-e-height
 description: "Applies CSS width and height best practices when styling HTML elements. Use when user asks to 'set element size', 'define width', 'define height', 'style a box', 'fix overflow', or any CSS sizing task. Enforces rules: avoid fixed height on text containers, use min/max constraints, understand block vs inline sizing limits, handle overflow. Make sure to use this skill whenever sizing elements with CSS. Not for Flexbox/Grid layout, responsive units, or media queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, width, height, min-max, overflow, box-model, sizing]
 ---
 
 # Width e Height no CSS
@@ -89,6 +95,15 @@ description: "Applies CSS width and height best practices when styling HTML elem
 | `width: 200px` em `<span>` | `display: inline-block; width: 200px` |
 | Adivinhar altura para caber texto | Deixar altura automatica ou usar `min-height` |
 | Ignorar overflow apos sizing | Verificar se conteudo cabe na caixa definida |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Texto transborda do container | `height` fixo com conteudo dinamico | Use `min-height` em vez de `height` |
+| `width` nao funciona no `<span>` | Elementos inline ignoram width/height | Mude para `display: inline-block` ou `display: block` |
+| `max-width` nao limita o elemento | Elemento pai nao tem largura definida | Verifique se o container pai tem largura ou e block-level |
+| Conteudo sobrepoe outros elementos | Overflow nao tratado apos sizing fixo | Adicione `overflow: auto` ou `overflow: hidden` conforme o caso |
 
 ## Deep reference library
 

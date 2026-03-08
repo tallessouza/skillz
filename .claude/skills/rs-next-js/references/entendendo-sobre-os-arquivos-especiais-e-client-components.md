@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-special-files-client-components
 description: "Applies Next.js App Router special files and client component isolation patterns when writing Next.js code. Use when user asks to 'create a layout', 'add loading state', 'fix hydration error', 'add interactivity', 'use onClick in Next.js', or 'migrate to app router'. Enforces rules: root layout is mandatory, nested layouts for route groups, use-client only on interactive leaves, server components by default, composition pattern to minimize client boundaries. Make sure to use this skill whenever generating Next.js App Router components or debugging client/server component errors. Not for API routes, data fetching strategies, or React Server Components theory without Next.js context."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-fundamentos
+  tags: [app-router, layout, loading, error, use-client, special-files, composition-pattern, next-js]
 ---
 
 # Arquivos Especiais e Client Components no App Router
@@ -135,14 +141,19 @@ export function MenuButton() {
 | Importar server component dentro de client component | Passe como children via composition |
 | Ignorar special files (loading, error) | Use-os para UX granular por rota |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-sobre-os-arquivos-especiais-e-client-components/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-sobre-os-arquivos-especiais-e-client-components/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-sobre-os-arquivos-especiais-e-client-components/references/deep-explanation.md) — O instrutor enfatiza que o `layout.tsx` na raiz da pasta `app` e o unico arquivo de layout que e **o
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-sobre-os-arquivos-especiais-e-client-components/references/code-examples.md) — O layout que o instrutor mostrou na raiz da pasta app:

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-style-guide-css-variables
 description: "Enforces CSS custom properties (variables) architecture using :root for global theming and style guides. Use when user asks to 'create a style guide', 'define CSS variables', 'set up colors', 'theme a project', 'use CSS custom properties', or any global styling setup. Applies rules: variables in :root, semantic naming, var() function usage, hex transparency trick. Make sure to use this skill whenever setting up project-wide CSS colors or theming. Not for CSS animations, layouts, or component-specific styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, css-variables, custom-properties, theming, style-guide, figma]
 ---
 
 # Style Guide com Variáveis CSS
@@ -91,13 +97,16 @@ body { color: var(--text-color-secondary); background-color: var(--bg-color-prim
 | `opacity: 0.56` separado da cor | Sufixo hex na própria cor: `#FFFFFF8F` |
 | Copiar hex do Figma sem checar opacidade | Verificar campo de opacidade antes de copiar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `var(--nome)` nao aplica a cor | Variavel nao definida no `:root` ou nome errado | Verificar que a variavel existe com `--` prefixo no `:root` |
+| Transparencia hex nao funciona | Sufixo de opacidade incorreto | Usar color picker do Figma para converter opacidade para hex (ex: 56% = `8F`) |
+| Autocomplete nao sugere variaveis | Editor nao reconhece arquivo CSS | Verificar extensao `.css` e que o arquivo esta salvo |
+| Cor do Figma nao bate com o CSS | Opacidade aplicada no Figma nao copiada | Verificar campo de opacidade no Figma antes de copiar o hex |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre :root vs html, estratégia de transparência hex, e fluxo de exportação de assets
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações de temas e técnicas de organização
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-style-guide-do-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-style-guide-do-projeto/references/code-examples.md)

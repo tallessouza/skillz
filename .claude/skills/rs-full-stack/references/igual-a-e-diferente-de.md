@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-igual-a-e-diferente-de
 description: "Enforces correct usage of loose equality (==) and inequality (!=) operators in JavaScript. Use when user asks to 'compare values', 'check equality', 'write conditions', 'implement if statements', or any comparison logic. Clarifies that == and != compare content only, not type. Make sure to use this skill whenever writing JavaScript comparisons or reviewing conditional logic. Not for strict equality (===) which is covered separately."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, equality, comparison, operators, coercion]
 ---
 
 # Igual a (==) e Diferente de (!=)
@@ -77,13 +83,16 @@ if (userId == selectedId) {
 | `x != y` assumindo tipos iguais | `x !== y` para comparacao estrita |
 | `typeof x == "string"` | `typeof x === "string"` (typeof ja retorna string) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Comparacao retorna true quando deveria ser false | Coercao de tipo implicita com `==` (ex: `0 == ""` e true) | Use `===` para comparacao estrita de tipo e valor |
+| `null == undefined` retorna true | Comportamento especial do `==` com null/undefined | Use esse pattern intencionalmente ou troque para `===` e verifique ambos |
+| Input de formulario nao compara corretamente com numero | Input retorna string, `"5" == 5` e true mas pode esconder bug | Converta explicitamente com `Number()` e use `===` |
+| Linter reclama de `==` | Regras de lint preferem `===` por seguranca | Troque para `===` ou adicione comentario justificando o uso intencional |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre coercao de tipos e quando usar cada operador
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-igual-a-e-diferente-de/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-igual-a-e-diferente-de/references/code-examples.md)

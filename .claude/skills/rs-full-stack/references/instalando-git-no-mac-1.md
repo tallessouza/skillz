@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-git-no-mac-1
-description: "Guides Git installation on macOS using Homebrew, Xcode, or git-scm.com. Use when user asks to 'install git on mac', 'setup git macos', 'configure git mac', or 'homebrew git install'. Covers installation, version check, and global user/email config. Make sure to use this skill whenever helping with Git setup on macOS. Not for Git usage, branching, commits, or Linux/Windows installation."
+description: "Configures Git installation on macOS using Homebrew, Xcode, or git-scm.com with global identity setup. Use when user asks to 'install git on mac', 'setup git macos', 'configure git mac', or 'homebrew git install'. Covers installation, version check, and global user/email config. Make sure to use this skill whenever helping with Git setup on macOS. Not for Git usage, branching, commits, or Linux/Windows installation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-macos
+  tags: [git, macos, homebrew, configuration, terminal]
 ---
 
 # Instalando Git no Mac
@@ -87,13 +93,16 @@ Todos os tres comandos devem retornar valores corretos.
 | Configurar email diferente do GitHub | Usar o mesmo email do GitHub |
 | Pular configuracao de user.name/email | Sempre configurar antes do primeiro commit |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `git` abre prompt do Xcode automaticamente | macOS tenta instalar Xcode Command Line Tools | Cancelar e usar Homebrew (`brew install git`) |
+| `brew` nao encontrado apos instalacao | Terminal nao atualizado | Reiniciar o Terminal ou adicionar Homebrew ao PATH |
+| `git version` nao retorna nada | Instalacao falhou ou incompleta | Reinstalar com `brew reinstall git` |
+| Email configurado difere do GitHub | Config global com email errado | Corrigir com `git config --global user.email "email@github.com"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha de metodo e vinculo email/GitHub
 - [code-examples.md](references/code-examples.md) — Todos os comandos expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-mac-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-mac-1/references/code-examples.md)

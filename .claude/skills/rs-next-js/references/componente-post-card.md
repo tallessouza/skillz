@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-post-card
 description: "Generates PostCard components for blog layouts using Next.js Link, Image, and Tailwind CSS. Use when user asks to 'create a card component', 'build a blog post card', 'make a post listing', or 'create a blog grid layout'. Applies patterns: image container with absolute-positioned metadata overlay, hover border transitions, author footer section with avatar, line-clamp for text truncation. Make sure to use this skill whenever building card-based blog UI components in Next.js. Not for API data fetching, content management setup, or backend logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-blog
+  tags: [post-card, blog, Link, Image, tailwind, line-clamp, next-js]
 ---
 
 # Componente PostCard
@@ -158,14 +164,19 @@ function PostCard({ slug, title, description, coverImage, date, author }: PostCa
 | Avatar quadrado para autores | `rounded-full` com dimensoes fixas |
 | Dados hardcoded no componente | Props tipadas via interface |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-post-card/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-post-card/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-post-card/references/deep-explanation.md) — O instrutor cria uma pasta `components/` dentro do template do blog, seguindo o padrao de colocaliza
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-post-card/references/code-examples.md) — O instrutor comeca criando a estrutura minima:

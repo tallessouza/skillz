@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-mkt-chunking
 description: "Applies prompt chunking technique when processing large datasets through LLM APIs. Use when user asks to 'process many items with AI', 'split prompt into chunks', 'handle large product lists', 'improve LLM response quality', or 'avoid context window limits'. Splits large inputs into smaller prompts, processes in parallel with Promise.all, then merges results with filter and flatMap. Make sure to use this skill whenever sending large arrays of data to an LLM and quality degrades. Not for text splitting for embeddings/RAG, nor for streaming or pagination."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: prompt-engineering
+  tags: [chunking, ia-node, node-js]
 ---
 
 # Técnicas de Divisão (Chunking) para Prompts
@@ -115,14 +121,14 @@ const products = results
 | Hardcodar chunk size sem considerar o modelo | Definir chunk size baseado no modelo e volume |
 | Retornar arrays aninhados `[[a,b],[c,d]]` | Usar `flatMap` para resultado plano `[a,b,c,d]` |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-tecnicas-de-divisao-chunking/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-tecnicas-de-divisao-chunking/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-listagem-das-transacoes
 description: "Enforces API response patterns and route parameter validation when building REST API endpoints with Knex and Fastify. Use when user asks to 'create a route', 'list records', 'get by id', 'fetch details', or 'build an endpoint'. Applies rules: always return objects (never raw arrays), validate route params with Zod, use .first() for single-record queries. Make sure to use this skill whenever creating GET endpoints or query routes. Not for database schema design, authentication, or frontend code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-routes
+  tags: [rest-api, fastify, knex, zod, route-params, validation, get-endpoint]
 ---
 
 # Listagem e Detalhes em API REST
@@ -98,14 +104,14 @@ app.get('/:id', async (request) => {
 | `select('*')` explicitamente | `.select()` (Knex ja busca tudo) |
 | `/:id` sem validacao de formato | Zod schema com `.uuid()` |
 
+## Troubleshooting
+
+### Busca por ID retorna array com um elemento ao inves de objeto unico
+**Symptom:** `GET /transactions/:id` retorna `[{ id: "..." }]` em vez de `{ id: "..." }`
+**Cause:** Query com `.where({ id })` sem `.first()` retorna array por padrao no Knex
+**Fix:** Adicione `.first()` apos `.where({ id })`: `knex('transactions').where({ id }).first()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-listagem-das-transacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-listagem-das-transacoes/references/code-examples.md)

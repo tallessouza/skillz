@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-animation-02-1
 description: "Applies advanced CSS animation properties when writing stylesheets or component styles. Use when user asks to 'animate an element', 'create CSS animation', 'loop animation', 'pause animation on hover', or 'combine multiple animations'. Covers animation-direction, fill-mode, iteration-count, play-state, timing-function, shorthand syntax, and multiple animations. Make sure to use this skill whenever generating CSS animations beyond simple keyframes. Not for JavaScript animations, SVG animations, or CSS transitions without @keyframes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animacoes
+  tags: [css, animation, shorthand, direction, fill-mode, play-state, timing-function]
 ---
 
 # CSS Animation — Propriedades Avançadas
@@ -105,13 +111,16 @@ animation: move 200ms both infinite 1s alternate ease; /* + timing */
 | 8 propriedades separadas para animação simples | Shorthand: `animation: name duration fill count direction timing` |
 | `iteration-count: 999` para "infinito" | `iteration-count: infinite` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `alternate` nao tem efeito visivel | `iteration-count` e 1 (padrao) | Defina `iteration-count: infinite` ou >= 2 para alternate funcionar |
+| Animacao nao comeca — ja esta pausada | `play-state: paused` no elemento base | Mova `paused` para um trigger como `:hover` ou classe JS |
+| Shorthand nao funciona como esperado | Ordem dos valores confusa | Construa incrementalmente: nome, duracao, fill-mode, count, delay, direction, timing |
+| Multiplas animacoes nao funcionam independentes | Separacao incorreta | Separe por virgula com controles individuais: `move 200ms, fade 100ms 10` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre fill-mode vs direction, analogias de timeline
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-animation-02-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-animation-02-1/references/code-examples.md)

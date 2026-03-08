@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-em-background
 description: "Applies Docker background execution patterns when user asks to 'run docker', 'start container', 'execute in background', 'free terminal', or 'docker run'. Enforces -d flag usage, docker ps monitoring, and container identification by name or ID. Make sure to use this skill whenever running Docker containers or troubleshooting blocked terminals. Not for Dockerfile creation, docker-compose, or image building."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-fundamentals
+  tags: [docker, containers, background, detached, terminal]
 ---
 
 # Docker: Executando Containers em Background
@@ -81,13 +87,16 @@ docker ps
 | Tentar lembrar o hash completo | Use o hash abreviado do `docker ps` |
 | Esquecer o `-p` no mapeamento de porta | Sempre inclua `-p host:container` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Terminal travado apos `docker run` | Falta flag `-d` | Parar com Ctrl+C e re-executar com `docker run -d` |
+| Container nao aparece no `docker ps` | Container parou logo apos iniciar | Verificar logs com `docker logs <id>` para diagnosticar |
+| Porta ja em uso | Outro container ou processo usando a mesma porta | `docker ps -a` para encontrar conflito, `docker stop <id>` para liberar |
+| Aplicacao nao acessivel no browser | Falta mapeamento de porta `-p` | Re-executar com `-p host:container` (ex: `-p 3333:3333`) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre modos de execucao Docker e gerenciamento de terminal
 - [code-examples.md](references/code-examples.md) — Todos os comandos Docker expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-executando-em-background/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-executando-em-background/references/code-examples.md)

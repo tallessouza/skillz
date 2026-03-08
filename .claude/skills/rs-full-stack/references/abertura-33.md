@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-abertura-33
-description: "Guides TypeScript learning environment setup using TypeScript Playground for isolated practice. Use when user asks to 'learn TypeScript', 'practice TypeScript online', 'setup TypeScript playground', or 'start TypeScript basics'. Ensures TypeScript is studied in isolation before applying to React or Node. Make sure to use this skill whenever introducing TypeScript concepts without a project context. Not for React with TypeScript, Node with TypeScript, or production TypeScript configuration."
+description: "Introduces TypeScript learning environment setup using TypeScript Playground for isolated practice. Use when user asks to 'learn TypeScript', 'practice TypeScript online', 'setup TypeScript playground', or 'start TypeScript basics'. Ensures TypeScript is studied in isolation before applying to React or Node. Make sure to use this skill whenever introducing TypeScript concepts without a project context. Not for React with TypeScript, Node with TypeScript, or production TypeScript configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, playground, learning, setup, fundamentals]
 ---
 
 # Introdução ao TypeScript
 
 > Estude TypeScript isoladamente antes de aplicar em frameworks — domine a tipagem primeiro, integre depois.
 
-## Key concept
+## Key concepts
 
 TypeScript adiciona tipagem ao JavaScript. Antes de usar TypeScript com React ou Node, estude-o separadamente para construir uma base sólida. O TypeScript Playground é o ambiente ideal para isso — zero instalação, feedback instantâneo no navegador.
 
@@ -40,6 +46,17 @@ O Playground (`typescriptlang.org/play`) oferece:
 - Compartilhamento de snippets via URL
 - Versões do TypeScript selecionáveis
 
+## Exemplo no Playground
+
+```typescript
+// Tipagem basica no TypeScript Playground
+function greet(name: string): string {
+  return `Hello, ${name}`
+}
+
+const message: string = greet('World')
+```
+
 ## Common misconceptions
 
 | Pensam que | Realidade |
@@ -66,8 +83,11 @@ O Playground (`typescriptlang.org/play`) oferece:
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre a abordagem de aprendizado em camadas
 - [code-examples.md](references/code-examples.md) — Exemplos práticos de uso do TypeScript Playground
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abertura-33/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abertura-33/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Playground nao carrega | Bloqueio de rede ou navegador antigo | Tente outro navegador ou verifique conexao com internet |
+| Erros de tipo nao aparecem | Versao do TypeScript muito antiga selecionada | Selecione a versao mais recente no dropdown do Playground |
+| Confusao entre erros de TS e do framework | Estudando TS junto com React/Node | Isole o aprendizado — domine TS puro antes de integrar |
+| Playground nao simula imports | Limitacao do ambiente online | Use projeto local para testar modulos e imports complexos |

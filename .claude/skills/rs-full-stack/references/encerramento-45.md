@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-encerramento-45
 description: "Applies Prisma ORM fundamentals when setting up database access in Node.js/TypeScript projects. Use when user asks to 'setup prisma', 'connect to database', 'create a model', 'use an ORM', or 'query database with typescript'. Covers what an ORM is, why Prisma over raw SQL, and basic Prisma workflow. Make sure to use this skill whenever initializing a new Prisma project or explaining ORM concepts. Not for advanced Prisma features like migrations strategy, raw SQL optimization, or database administration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma
+  tags: [prisma, orm, typescript, banco-de-dados, node-js]
 ---
 
 # Prisma ORM — Fundamentos
 
 > Utilize um ORM para abstrair queries SQL em operacoes tipadas, mantendo produtividade e seguranca de tipos.
 
-## Conceito central
+## Key concepts
 
 Um ORM (Object-Relational Mapping) mapeia tabelas do banco de dados para objetos/modelos na linguagem de programacao, porque isso elimina SQL manual, previne SQL injection, e oferece autocomplete via tipos.
 
@@ -62,13 +68,16 @@ const user = await prisma.user.create({
 | Ignorar tipos gerados pelo Prisma | Usar os tipos de `@prisma/client` para inputs e outputs |
 | Escrever SQL manual para CRUD simples | Usar os metodos tipados do Prisma (`findMany`, `create`, etc.) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| PrismaClient nao encontra os tipos gerados | Faltou rodar prisma generate apos mudar schema | Execute npx prisma generate apos cada alteracao no schema.prisma |
+| Migration falha com erro de schema | Mudanca incompativel com dados existentes | Use npx prisma migrate dev --create-only para revisar antes de aplicar |
+| Multiplas instancias de PrismaClient em dev | Hot reload cria nova instancia a cada mudanca | Use singleton pattern com global para evitar multiplas conexoes |
+| Tipos do Prisma desatualizados no editor | Cache do TypeScript desatualizado | Reinicie o TS server no VSCode: Ctrl+Shift+P > Restart TS Server |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — O que e um ORM, por que Prisma, e como ele se compara a alternativas
 - [code-examples.md](references/code-examples.md) — Exemplos completos de setup e operacoes CRUD com Prisma
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encerramento-45/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encerramento-45/references/code-examples.md)

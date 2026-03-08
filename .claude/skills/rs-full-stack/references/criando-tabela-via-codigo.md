@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela-via-codigo
 description: "Generates SQL CREATE TABLE statements when writing database schemas or setting up tables. Use when user asks to 'create a table', 'define a schema', 'setup database', 'add columns', or 'write DDL'. Applies rules: plural lowercase table names, underscore for compound names, PRIMARY KEY with AUTOINCREMENT for IDs, NOT NULL for required fields, DEFAULT for optional columns. Make sure to use this skill whenever generating SQL table creation code. Not for queries, inserts, updates, or ORM model definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, create-table, ddl, autoincrement, not-null, default-values]
 ---
 
 # Criando Tabela via Código SQL
@@ -88,13 +94,16 @@ CREATE TABLE products (
 | Campo obrigatorio sem NOT NULL | Sempre declare `NOT NULL` explicitamente |
 | Tabela sem coluna ID | Toda tabela deve ter identificador unico |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `near "product category": syntax error` | Espaco no nome da coluna | Use underscore: `product_category` |
+| Dados inseridos sem categoria | Coluna sem `DEFAULT` e valor nao fornecido | Adicione `DEFAULT 'general'` na definicao |
+| Preco armazenado como texto | Tipo `TEXT` usado em vez de `REAL` | Use `REAL` para valores com decimais |
+| `CREATE TABLE products` falha se tabela ja existe | Tabela duplicada | Use `CREATE TABLE IF NOT EXISTS products` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre PRIMARY KEY, AUTOINCREMENT e valor DEFAULT
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela-via-codigo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela-via-codigo/references/code-examples.md)

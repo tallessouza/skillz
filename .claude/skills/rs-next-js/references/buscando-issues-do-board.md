@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-buscando-issues-do-board
 description: "Enforces patterns for fetching and displaying API data in Next.js App Router server components. Use when user asks to 'fetch data', 'call API from server component', 'list items from backend', 'create HTTP request layer', or 'validate API response with schema'. Applies rules: dedicated HTTP folder, schema-parsed responses, async server components, no async in client components. Make sure to use this skill whenever building data fetching in Next.js App Router. Not for client-side fetching with useEffect, React Query, or SWR."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: data-fetching
+  tags: [fetch, server-components, zod, schema-validation, http-layer, next-js, app-router]
 ---
 
 # Buscando Dados em Server Components (Next.js App Router)
@@ -108,14 +114,19 @@ export default async function BoardPage() {
 | `"use client"` + `async function Page()` | Remover `"use client"` ou mover fetch para Server Component pai |
 | `data.backlog.length` com `data: any` | `issues.backlog.length` com schema validado |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-buscando-issues-do-board/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-buscando-issues-do-board/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-buscando-issues-do-board/references/deep-explanation.md) — O instrutor explica que gosta de criar uma pasta `src/http/` onde tudo relacionado a requisicoes HTT
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-buscando-issues-do-board/references/code-examples.md) — src/

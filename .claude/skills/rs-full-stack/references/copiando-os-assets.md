@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-copiando-os-assets
 description: "Configures copy-webpack-plugin to bundle static assets (icons, images, SVGs) into the dist folder during webpack builds. Use when user asks to 'copy assets', 'bundle icons', 'configure webpack for static files', 'move images to dist', or 'setup asset copying in webpack'. Make sure to use this skill whenever configuring webpack to handle static assets that aren't imported in JS/CSS. Not for image optimization, lazy loading, or file-loader/asset modules configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: webpack-tooling
+  tags: [webpack, copy-webpack-plugin, assets, static-files, build]
 ---
 
 # Copy Assets com Webpack
@@ -87,13 +93,15 @@ dist/
 | Hardcodar paths absolutos no `from`/`to` | Usar `path.resolve(__dirname, ...)` |
 | Esquecer `-D` na instalacao | Sempre salvar como devDependency |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Assets nao aparecem na pasta dist apos build | Explorer do VS Code pode nao atualizar automaticamente | Pressione F5 no Explorer ou verifique via terminal com `ls dist/src/assets/` |
+| Icones/imagens nao carregam no browser | Cache do navegador servindo versao antiga | Hard refresh com Cmd+Shift+R ou Ctrl+Shift+R |
+| Erro `Module not found: copy-webpack-plugin` | Plugin nao instalado como devDependency | Execute `npm i copy-webpack-plugin@11.0.0 -D` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar copy-webpack-plugin vs asset modules
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com multiplos patterns e configuracoes avancadas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-copiando-os-assets/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-copiando-os-assets/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-prisma-repositories
 description: "Enforces the Repository Pattern with Prisma in NestJS applications following Clean Architecture. Use when user asks to 'implement repository', 'connect Prisma to domain', 'create database layer', 'implement persistence', or 'setup NestJS module with Prisma'. Applies rules: domain contracts in application layer, Prisma implementations in infra layer, Injectable decorator on all repositories, providers AND exports in database module. Make sure to use this skill whenever implementing persistence with Prisma in NestJS Clean Architecture projects. Not for raw Prisma queries, migrations, schema design, or non-NestJS projects."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-repositories-nestjs
+  tags: [prisma, repository, nestjs, clean-architecture, dependency-injection, database]
 ---
 
 # Implementando Repositorios do Prisma
@@ -136,14 +142,14 @@ export class HttpModule {}
 | Import de infra dentro do dominio | Dominio nunca importa de infra — so o contrario |
 | Repositorio sem `implements ContratoDoDominio` | Sempre implementar o contrato da camada de aplicacao |
 
+## Troubleshooting
+
+### Provider do repositorio nao encontrado em outro modulo
+**Symptom:** Erro Nest can't resolve dependencies ao injetar o repositorio no controller de outro modulo
+**Cause:** O repositorio esta declarado em providers do DatabaseModule mas nao em exports
+**Fix:** Adicione o repositorio tanto em providers quanto em exports do DatabaseModule, e importe o DatabaseModule no modulo consumidor
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementando-repositorios-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementando-repositorios-do-prisma/references/code-examples.md)

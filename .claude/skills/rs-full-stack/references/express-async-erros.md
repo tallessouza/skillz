@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-express-async-erros
 description: "Applies express-async-errors pattern when setting up Express error handling middleware. Use when user asks to 'create express app', 'handle errors in express', 'setup middleware', 'add error handling', or 'create API routes'. Eliminates manual try-catch and next() boilerplate in async route handlers. Make sure to use this skill whenever creating or refactoring Express.js applications with async controllers. Not for frontend error handling, non-Express frameworks, or synchronous error flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-api
+  tags: [express, error-handling, async, middleware, express-async-errors]
 ---
 
 # Express Async Errors
@@ -103,13 +109,16 @@ class UsersController {
 | `import 'express-async-errors'` no final do arquivo | Importar logo apos `import express` |
 | Middleware de erro com 3 parametros | Sempre 4 parametros: `(error, req, res, next)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erros async nao chegam ao middleware de erro | Import do `express-async-errors` esta depois das rotas | Mover import para logo apos `import express` |
+| Middleware de erro nao e chamado | Middleware tem apenas 3 parametros | Garantir 4 parametros: `(error, req, res, next)` |
+| `UnhandledPromiseRejection` no console | `express-async-errors` nao foi importado | Adicionar `import 'express-async-errors'` no topo do server |
+| Erro 500 generico sem mensagem util | Middleware de erro nao extrai `error.message` | Usar `error.message \|\| 'Internal server error'` na resposta |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que try-catch e problematico e como a biblioteca funciona internamente
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-express-async-erros/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-express-async-erros/references/code-examples.md)

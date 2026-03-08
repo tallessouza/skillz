@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-consumindo-stream-completa
+name: rs-node-js-2023-consumindo-uma-stream-completa
 description: "Applies the for-await pattern to consume complete streams before processing data in Node.js. Use when user asks to 'read request body', 'parse JSON from request', 'consume stream', 'buffer stream data', 'read HTTP body', or 'handle POST request body'. Ensures correct async iteration over readable streams using Buffer.concat. Make sure to use this skill whenever implementing HTTP request body parsing or stream consumption in Node.js. Not for partial stream processing, file streaming, or piping between streams."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [streams, buffers, for-await, http-body, nodejs]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Consumindo uma Stream Completa
@@ -98,14 +105,14 @@ server.on('request', async (req, res) => {
 | `for await` sem `async` na funcao pai | Adicione `async` na funcao que contem o `for await` |
 | `buffers.join('')` para unir | `Buffer.concat(buffers).toString()` — correto para binario |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-consumindo-uma-stream-completa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-consumindo-uma-stream-completa/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-consumindo-uma-stream-completa/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-consumindo-uma-stream-completa/references/code-examples.md) — Todos os exemplos de código expandidos com variações

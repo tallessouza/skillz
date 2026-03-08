@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-uma-api-2025
 description: "Applies foundational API concepts when building client-server applications in JavaScript. Use when user asks to 'consume an API', 'make HTTP requests', 'connect to a server', 'fetch data', or 'integrate with external service'. Covers client-server model, HTTP methods (GET/POST/PUT/DELETE/PATCH), routes, JSON format, and API communication patterns. Make sure to use this skill whenever the user is working with APIs for the first time or needs guidance on request structure. Not for advanced API design, GraphQL, WebSockets, or backend API creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest
+  tags: [api, http, fetch, json, cliente-servidor]
 ---
 
 # O que é uma API
@@ -86,6 +92,15 @@ JSON é o "idioma" padrão entre cliente e servidor — assim como português é
 | Usar GET para criar recursos | Usar POST para criação |
 | Usar POST para buscar dados | Usar GET para leitura |
 | Ignorar documentação da API | Sempre consultar docs antes de consumir |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `fetch` retorna erro de CORS | Servidor nao permite requisicoes do seu dominio | Configure CORS no backend ou use proxy em desenvolvimento |
+| Resposta da API vem como `undefined` | Esqueceu `await` no `response.json()` | Adicione `await` antes de `response.json()` |
+| Status 404 na requisicao | Rota incorreta ou recurso nao existe | Verifique a URL e consulte a documentacao da API |
+| Status 405 Method Not Allowed | Metodo HTTP errado para a rota | Verifique se esta usando GET, POST, PUT ou DELETE correto |
 
 ## Deep reference library
 

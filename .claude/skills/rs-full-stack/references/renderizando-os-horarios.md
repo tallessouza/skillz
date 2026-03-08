@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renderizando-horarios
 description: "Applies dynamic list rendering with conditional CSS classes when building time slots, schedules, or availability UIs. Use when user asks to 'render a list', 'show available times', 'create a schedule view', 'add conditional classes', or 'build a booking interface'. Enforces forEach for side-effect rendering, destructuring in callbacks, conditional classList logic, and DOM append patterns. Make sure to use this skill whenever generating UI code that displays items with available/unavailable states. Not for React/Vue component rendering, backend logic, or API design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, classList, forEach, rendering, conditional-styling]
 ---
 
 # Renderizando Listas com Estado Condicional
@@ -91,6 +97,15 @@ opening.forEach(({ hour, available }) => {
 | `li.className = "hour hour-available"` | `li.classList.add("hour")` separado |
 | `opening.map(...)` sem usar retorno | `opening.forEach(...)` para side-effects |
 | `if (available) { li.classList.add(...) } else { li.classList.add(...) }` | Ternário inline no classList.add |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Todos os itens com mesma classe de estado | Ternario invertido ou propriedade `available` indefinida | Verifique se a propriedade existe e o ternario esta correto |
+| Performance lenta com lista grande | Muitos appendChild individuais | Use `DocumentFragment` para acumular itens antes de inserir |
+| `getElementById` retorna null | Container selecionado dentro do loop ou antes do DOM carregar | Selecione o container UMA vez, fora do loop, apos DOMContentLoaded |
+| Estilo condicional nao aplica | Usando `className` em vez de `classList.add` | Use `classList.add()` para adicionar classes sem sobrescrever |
 
 ## Deep reference library
 

@@ -1,13 +1,24 @@
 ---
 name: rs-full-stack-sq-lite
 description: "Applies SQLite as the recommended lightweight database for learning SQL and relational databases. Use when user asks to 'setup a database for learning', 'choose a database for study', 'use SQLite', or 'start learning SQL'. Guides selection of SQLite for educational and embedded contexts. Make sure to use this skill whenever recommending databases for learning or prototyping. Not for production database architecture, PostgreSQL/MySQL setup, or database migration strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-fundamentals
+  tags:
+    - sqlite
+    - database
+    - sql
+    - prototyping
+    - learning
 ---
 
 # SQLite — Banco de Dados para Estudo e Prototipagem
 
 > Escolha SQLite quando o objetivo for aprender SQL e bancos relacionais com zero fricção de setup.
 
-## Key concept
+## Key concepts
 
 SQLite é um banco de dados relacional completo armazenado em um único arquivo no disco. Não requer instalação de servidor, configuração externa, nem processos rodando em background. Pode ser incorporado diretamente na aplicação, tornando-o ideal para estudo, prototipagem e aplicações embarcadas.
 
@@ -44,6 +55,23 @@ Apesar de simples, SQLite suporta SQL padrão: CREATE TABLE, INSERT, SELECT, UPD
 | Precisa instalar um servidor | Não precisa — é um arquivo + biblioteca |
 | Não serve para aplicações reais | Serve para mobile, embarcado, e apps com baixa concorrência de escrita |
 
+## Example
+
+```sql
+-- Criar tabela no SQLite
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL
+);
+
+-- Inserir registro
+INSERT INTO users (name, email) VALUES ('Rodrigo', 'rodrigo@email.com');
+
+-- Consultar registros
+SELECT * FROM users;
+```
+
 ## When to apply
 
 - Início de estudos de SQL e bancos relacionais
@@ -59,6 +87,15 @@ Apesar de simples, SQLite suporta SQL padrão: CREATE TABLE, INSERT, SELECT, UPD
 - Sem sistema de permissões/usuários (qualquer processo com acesso ao arquivo lê tudo)
 - Tipos de dados mais flexíveis que PostgreSQL (pode causar surpresas ao migrar)
 - Para visualizar os dados, precisa de um SGBD (Sistema Gerenciador de Banco de Dados) como DB Browser for SQLite ou extensão do VS Code
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo `.db` nao encontrado | Caminho relativo incorreto ou arquivo nao criado | Verifique o caminho absoluto e crie o banco se necessario |
+| Nao consegue visualizar dados | Falta de SGBD para SQLite | Instale DB Browser for SQLite ou extensao SQLite no VS Code |
+| Erro de "database is locked" | Multiplos processos escrevendo simultaneamente | SQLite nao e ideal para alta concorrencia de escrita |
+| Tipos de dados se comportam diferente do PostgreSQL | SQLite tem tipagem flexivel (type affinity) | Teste schemas no banco de producao antes de migrar |
 
 ## Deep reference library
 

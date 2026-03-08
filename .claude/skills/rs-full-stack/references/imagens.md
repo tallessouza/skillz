@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-imagens
 description: "Enforces correct HTML image element usage when writing img tags in HTML. Use when user asks to 'add an image', 'insert a photo', 'create an img tag', or any HTML task involving images. Applies rules: always include alt text for accessibility and SEO, use width OR height (not both unless exact dimensions known), use royalty-free sources. Make sure to use this skill whenever generating HTML with images. Not for CSS image styling, background images, or SVG manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, images, img, alt, accessibility]
 ---
 
 # Imagens no HTML
@@ -73,13 +79,16 @@ description: "Enforces correct HTML image element usage when writing img tags in
 | `width="300" height="300"` em foto retangular | `width="300"` (deixe a altura proporcional) |
 | `<img src="foto.bmp">` | `<img src="foto.webp">` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Imagem aparece distorcida | Usando `width` e `height` com proporcoes erradas | Use apenas `width` OU apenas `height` para manter proporcao |
+| Imagem nao carrega (icone quebrado) | Caminho `src` incorreto ou arquivo inexistente | Verifique o caminho relativo/absoluto e a extensao do arquivo |
+| Layout shift ao carregar imagem | Dimensoes nao declaradas no HTML | Adicione `width` e `height` quando conhecidos para reservar espaco |
+| Leitor de tela ignora a imagem | Atributo `alt` ausente | Adicione `alt` descritivo ou `alt=""` para imagens decorativas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre acessibilidade, SEO e performance de imagens
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-imagens/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-imagens/references/code-examples.md)

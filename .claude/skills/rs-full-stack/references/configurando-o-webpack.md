@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-o-webpack
 description: "Applies Webpack configuration best practices when setting up or modifying webpack.config.js. Use when user asks to 'configure webpack', 'setup bundler', 'create webpack config', 'add entry/output to webpack', or 'fix webpack build'. Enforces entry/output/mode separation, path.resolve for cross-OS compatibility, and proper project structure. Make sure to use this skill whenever creating or editing webpack.config.js files. Not for Vite, Rollup, esbuild, or other bundler configurations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [webpack, bundler, webpack-config, path-resolve, build-tools]
 ---
 
 # Configurando o Webpack
@@ -95,13 +101,16 @@ module.exports = {
 | Omitir `mode` | `mode: 'development'` explicitamente |
 | `webpack.conf.js` ou outro nome | `webpack.config.js` (nome exato obrigatorio) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Warning "mode option has not been set" | `mode` nao definido no config | Adicionar `mode: 'development'` ou `'production'` |
+| Webpack nao encontra o config | Arquivo com nome incorreto | Renomear para exatamente `webpack.config.js` na raiz |
+| Build falha com caminhos em Windows | Barras hardcoded no config | Usar `path.resolve(__dirname, ...)` para todos os caminhos |
+| Output gerado em local inesperado | `output.path` relativo em vez de absoluto | Usar `path.resolve(__dirname, 'dist')` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre path.resolve, __dirname e compatibilidade cross-OS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-o-webpack/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-o-webpack/references/code-examples.md)

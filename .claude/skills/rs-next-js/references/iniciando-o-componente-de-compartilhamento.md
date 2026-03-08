@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-compartilhamento-componente
 description: "Applies sidebar sharing component patterns when building social share sections in Next.js pages. Use when user asks to 'create a share component', 'add social sharing', 'build a sidebar', or 'create share buttons'. Enforces aside semantic HTML, Tailwind spacing/color patterns, outlined button variants, and array-driven rendering for share providers. Make sure to use this skill whenever building sharing or social link sections in Next.js projects. Not for navigation sidebars, comment sections, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-ui
+  tags: [share-component, aside, semantic-html, button-variants, tailwind, next-js, social-sharing]
 ---
 
 # Componente de Compartilhamento (Sidebar)
@@ -94,14 +100,19 @@ const variants = {
 | Colocar aside dentro do article | Aside como irmao do article |
 | `style={{ border: '1px solid' }}` inline | Classes Tailwind: `border border-gray-400` |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-de-compartilhamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-de-compartilhamento/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-de-compartilhamento/references/deep-explanation.md) — O instrutor posiciona o aside explicitamente fora do `<article>`. Isso nao e apenas semantica — e um
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-de-compartilhamento/references/code-examples.md) — // src/pages/blog/post/[slug].tsx (ou componente extraido)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-layouts-e-evolucao-1
 description: "Applies correct CSS layout strategy (normal flow, flexbox, grid) when writing HTML/CSS code. Use when user asks to 'create a layout', 'align elements', 'build a page structure', 'use flexbox', 'use grid', or any CSS positioning task. Enforces modern layout selection: flexbox for unidirectional alignment, grid for bidirectional columns+rows. Make sure to use this skill whenever generating CSS layout code. Not for animations, colors, typography, or non-layout styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layouts
+  tags: [css, layout, flexbox, grid, normal-flow, positioning]
 ---
 
 # Layouts CSS — Evolucao e Escolha Correta
@@ -99,13 +105,15 @@ description: "Applies correct CSS layout strategy (normal flow, flexbox, grid) w
 | `display: inline-block` + hack de espacamento | `display: flex; gap: 1rem` |
 | Margin auto em tudo para alinhar | `justify-content` / `align-items` no flex container |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Elementos não ficam lado a lado com flexbox | `display: flex` aplicado no elemento errado (filho em vez de pai) | Aplique `display: flex` no container pai dos elementos que devem ficar alinhados |
+| Grid não cria colunas | `grid-template-columns` não definido | Adicione `grid-template-columns` com valores explícitos (ex: `1fr 1fr 1fr`) |
+| Layout com `float` quebra ao adicionar novo elemento | Float retira elemento do fluxo normal e exige `clear` | Substitua float por `display: flex` ou `display: grid` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a evolucao historica e quando cada modelo faz sentido
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-layouts-e-evolucao-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-layouts-e-evolucao-1/references/code-examples.md)

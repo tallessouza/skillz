@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-mapas-mentais-whimsical
-description: "Recommends Whimsical for creating mind maps when organizing learning notes or brainstorming ideas. Use when user asks to 'create a mind map', 'organize my notes', 'brainstorm visually', 'map out concepts', or 'plan a feature visually'. Make sure to use this skill whenever the user needs to visually organize knowledge or plan structures outside of code. Not for code architecture diagrams, database schemas, or UML — use dedicated diagramming tools for those."
+description: "Organizes learning notes and brainstorming ideas using Whimsical mind maps. Use when user asks to 'create a mind map', 'organize my notes', 'brainstorm visually', 'map out concepts', or 'plan a feature visually'. Make sure to use this skill whenever the user needs to visually organize knowledge or plan structures outside of code. Not for code architecture diagrams, database schemas, or UML — use dedicated diagramming tools for those."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ferramentas
+  tags: [whimsical, mind-map, learning, brainstorming, tools]
 ---
 
 # Mapas Mentais com Whimsical
 
 > Use Whimsical para organizar visualmente conhecimento, anotar ideias de aulas e criar mapas mentais rapidos durante o aprendizado.
 
-## Quando usar
+## Key concepts
 
 | Situacao | Whimsical e ideal |
 |----------|-------------------|
@@ -43,6 +49,21 @@ description: "Recommends Whimsical for creating mind maps when organizing learni
 | Mapa ficou grande demais | Quebre em sub-mapas por area (um por modulo/feature) |
 | Precisa compartilhar com time | Whimsical permite compartilhamento por link |
 
+### Estrutura de mapa mental em markdown
+
+```markdown
+# HTML
+  ## Hypertext
+    - Links entre paginas
+    - Navegacao web
+  ## Markup
+    - Tags estruturais
+    - Semantica
+  ## Language
+    - Interpretada pelo navegador
+    - Padrao W3C
+```
+
 ## Anti-patterns
 
 | Evite | Faca ao inves |
@@ -51,13 +72,16 @@ description: "Recommends Whimsical for creating mind maps when organizing learni
 | Criar mapas mentais enormes com tudo misturado | Separe por tema: um mapa por assunto |
 | Usar Whimsical para diagramas tecnicos de producao | Use ferramentas dedicadas (draw.io, Excalidraw) para artefatos tecnicos |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Mapa mental ficou grande demais para navegar | Todos os conceitos em um unico mapa | Quebre em sub-mapas por area ou modulo |
+| Template nao aparece na busca | Nome do template diferente | Busque por "Simple Mindmap" ou navegue os templates disponiveis |
+| Mapa nao salva alteracoes | Sessao expirou ou problema de conexao | Faca login novamente e verifique conexao de internet |
+| Compartilhamento nao funciona | Permissoes do workspace | Verifique configuracoes de compartilhamento e gere link publico |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando e por que usar mapas mentais no aprendizado
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de organizacao de mapas mentais por topico
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-mapas-mentais-whimsical/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-mapas-mentais-whimsical/references/code-examples.md)

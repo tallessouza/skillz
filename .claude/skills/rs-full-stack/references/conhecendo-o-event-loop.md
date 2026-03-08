@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-event-loop
 description: "Applies JavaScript Event Loop mental model when writing or debugging async code. Use when user asks to 'debug async code', 'understand execution order', 'fix race condition', 'explain why callback runs after', or questions about Promise vs setTimeout ordering. Make sure to use this skill whenever execution order of async JavaScript is relevant. Not for general JavaScript syntax, DOM manipulation, or framework-specific state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [event-loop, call-stack, microtask, macrotask, async-execution, promises]
 ---
 
 # Event Loop do JavaScript
@@ -98,13 +104,16 @@ console.log('4 - sincrono')           // 2o: call stack
 - Node.js tem filas adicionais (nextTick, I/O, check) com prioridades proprias
 - Web Workers fogem deste modelo — sao threads separadas com seu proprio Event Loop
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `console.log` aparece em ordem inesperada | Mistura de codigo sincrono, microtasks e macrotasks | Aplicar regra: sincrono > microtasks (Promises) > macrotasks (setTimeout) |
+| UI trava durante operacao | Call stack bloqueada por codigo sincrono pesado | Mover operacao pesada para Web Worker ou quebrar em chunks com `setTimeout` |
+| `setTimeout(fn, 0)` executa depois de Promise | setTimeout e macrotask, Promise e microtask | Usar Promise se precisa de prioridade maior |
+| Race condition em codigo async | Ordem de execucao nao garantida | Usar `await` sequencial ou `Promise.all` conforme dependencia |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-event-loop/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-event-loop/references/code-examples.md)

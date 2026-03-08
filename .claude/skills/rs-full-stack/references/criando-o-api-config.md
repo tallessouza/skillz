@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-api-config
 description: "Enforces centralized API configuration pattern when setting up HTTP clients or API integrations in JavaScript/React projects. Use when user asks to 'connect to an API', 'configure axios', 'setup fetch', 'create API service', or 'integrate with backend'. Applies baseURL extraction, services folder structure, and config reuse. Make sure to use this skill whenever creating API integration layers. Not for authentication logic, error handling middleware, or state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-integration
+  tags: [api, fetch, axios, baseURL, services]
 ---
 
 # Configuração Centralizada de API
@@ -98,8 +104,12 @@ const res = await fetch(`${apiConfig.baseURL}/users`)
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre centralização de config e manutenibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-api-config/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-api-config/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `fetch` retorna Network Error | URL base incorreta ou servidor nao iniciado | Verifique se a API esta rodando e a porta esta correta em `apiConfig.baseURL` |
+| CORS bloqueando requisicoes | Backend sem configuracao de CORS | Adicione middleware CORS no servidor (ex: `cors()` no Express) |
+| URL duplicada no fetch | Recurso incluido na baseURL | Remova o path de recurso da baseURL, deixe apenas `host:porta` |
+| Import do apiConfig falha | Caminho relativo incorreto | Verifique o caminho: `import { apiConfig } from "./api"` |
+| Porta mudou e varias telas quebraram | URLs hardcoded espalhadas pelo projeto | Centralize em `api.js` e importe em todos os servicos |

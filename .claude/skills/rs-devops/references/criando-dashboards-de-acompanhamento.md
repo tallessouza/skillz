@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-dashboards-grafana
-description: "Guides Grafana dashboard creation and organization when setting up observability. Use when user asks to 'create a dashboard', 'set up Grafana panels', 'organize monitoring views', 'add Grafana variables', or 'configure observability dashboards'. Covers folder structure, panel types, data source selection (Loki/Prometheus/Tempo), query building, dashboard variables, and versioning. Make sure to use this skill whenever building or organizing Grafana dashboards for monitoring. Not for alerting rules, Prometheus query language (PromQL), or infrastructure provisioning."
+description: "Configures Grafana dashboard structure, panel types, and variables for organized observability views. Use when user asks to 'create a dashboard', 'set up Grafana panels', 'organize monitoring views', 'add Grafana variables', or 'configure observability dashboards'. Enforces folder-based organization, correct visualization per data source (Table for Loki, Time Series for Prometheus), and dynamic variables for multi-environment dashboards. Make sure to use this skill whenever building or organizing Grafana dashboards for monitoring. Not for alerting rules, Prometheus query language (PromQL), or infrastructure provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-grafana
+  tags: [grafana, dashboard, observability, loki, prometheus, tempo, monitoring]
 ---
 
 # Criando Dashboards de Acompanhamento no Grafana
@@ -98,14 +104,14 @@ Row Nome: "Metricas"
 | Duplicar dashboard para importar | Export/Import via JSON |
 | Editar dash sem verificar versao | Confie no versionamento, faca rollback se necessario |
 
+## Troubleshooting
+
+### Painel de logs aparece vazio com visualizacao Time Series
+**Symptom:** O painel nao exibe nenhum dado, mesmo com logs chegando no Loki.
+**Cause:** Time Series espera dados numericos ao longo do tempo, mas logs sao textuais e nao se encaixam nessa visualizacao.
+**Fix:** Troque a visualizacao do painel para Table view quando o data source for Loki (logs).
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-dashboards-de-acompanhamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-dashboards-de-acompanhamento/references/code-examples.md)

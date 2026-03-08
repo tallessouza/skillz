@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-find
 description: "Applies Array.find() patterns when searching for elements in arrays. Use when user asks to 'find an item', 'search in array', 'get first match', 'lookup by property', or 'find element by condition'. Enforces find() for first-match retrieval, findIndex() for position retrieval, and proper undefined handling. Make sure to use this skill whenever user needs to locate a single element in an array or collection. Not for filtering multiple elements (use filter), transforming arrays (use map), or aggregating values (use reduce)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-array-methods
+  tags: [javascript, array, find, search, iteration]
 ---
 
 # Método find()
@@ -82,13 +88,16 @@ const found = users.find(user => user.email === targetEmail)
 | `find()` sem tratar `undefined` em acesso encadeado | `find()` + optional chaining ou verificação |
 | `arr.find(x => x)` para pegar primeiro truthy | `arr.find(Boolean)` ou reavalie a lógica |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `find()` retorna `undefined` | Nenhum elemento satisfaz a condicao | Verifique os valores do array e a logica de comparacao |
+| `TypeError: Cannot read property of undefined` | Acessou propriedade do resultado sem verificar | Use optional chaining (`result?.prop`) ou verifique antes de acessar |
+| Comparacao de strings nao encontra | Case-sensitive: `"Banana" !== "banana"` | Normalize com `.toLowerCase()` antes de comparar |
+| Encontrou o elemento errado | `find()` retorna o PRIMEIRO match | Revise a condicao ou use `filter()` para todos os matches |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-find/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-find/references/code-examples.md)

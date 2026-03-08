@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refactor-auth-controller
 description: "Enforces clean architecture controller refactoring pattern in NestJS when user asks to 'refactor controller', 'use use case in controller', 'remove prisma from controller', 'clean architecture NestJS', or 'dependency injection NestJS'. Applies rules: controllers call use cases not repositories, register providers in module, create repository implementations with mappers, import required modules. Make sure to use this skill whenever refactoring NestJS controllers to clean architecture. Not for creating use cases from scratch, domain entity design, or testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: controller-refactoring-auth
+  tags: [nestjs, controller, clean-architecture, use-case, dependency-injection, mapper, module]
 ---
 
 # Refatorando Controllers para Use Cases (NestJS Clean Architecture)
@@ -158,14 +164,14 @@ async handle(@Body() body) {
 | Exportar apenas `PrismaService` no DatabaseModule | Exporte tambem os repositories abstratos |
 | Mapear 1:1 nome da tabela para entidade | Use mapper — nomes podem diferir entre camadas |
 
+## Troubleshooting
+
+### NestJS erro "Nest can't resolve dependencies of UseCase"
+**Symptom:** Ao iniciar a aplicacao, NestJS lanca erro dizendo que nao consegue resolver dependencias do use case
+**Cause:** O modulo que registra o use case nao importa os modulos que exportam as dependencias (DatabaseModule, CryptographicModule)
+**Fix:** Adicione os modulos necessarios no array `imports` do `HttpModule`: `imports: [DatabaseModule, CryptographicModule]`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-controller-de-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-controller-de-autenticacao/references/code-examples.md)

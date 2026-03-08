@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-query-params-2
 description: "Applies Express.js query parameter patterns when building REST API routes. Use when user asks to 'add pagination', 'filter results', 'parse query string', 'get query params', or 'create a GET endpoint with parameters'. Enforces req.query destructuring, optional parameter handling, and pagination patterns. Make sure to use this skill whenever implementing list endpoints or search routes in Express. Not for route params (req.params), request body parsing, or non-Express frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-api
+  tags:
+    - express
+    - query-params
+    - pagination
+    - api
+    - rest
 ---
 
 # Query Parameters no Express
@@ -86,6 +97,14 @@ const { page, limit } = req.query
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre query params vs route params e parsing automatico do Express
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Query param retorna `undefined` | Nome do parametro na URL diferente do destructuring | Verifique que `?page=1` corresponde a `req.query.page` (case-sensitive) |
+| Calculo com query param retorna NaN | Query params sempre chegam como string | Converta com `Number(req.query.page)` antes de calcular |
+| Rota funciona sem params mas falha com params | Middleware de parsing nao configurado | Verifique que `express.urlencoded()` ou `express.json()` esta ativo |
 
 ---
 

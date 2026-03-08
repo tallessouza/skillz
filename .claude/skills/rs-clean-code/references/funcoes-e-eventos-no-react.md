@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-funcoes-eventos-react
 description: "Enforces handle/on naming convention for React functions and event props. Use when user asks to 'create a component', 'add event handler', 'write onClick', 'implement callback prop', or any React component with user interactions. Applies rules: prefix internal event functions with 'handle', prefix callback props with 'on', matching HTML event naming patterns. Make sure to use this skill whenever generating React components with events or callbacks. Not for utility functions, API calls, or non-React code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: componentes-react
+  tags: [react, event-handlers, naming-convention, handle, on-prefix, callbacks, props]
 ---
 
 # Funcoes e Eventos no React
@@ -106,10 +112,17 @@ function App() {
 | `onCalculateTotal` (nao e evento do usuario) | `calculateTotal` (funcao auxiliar) |
 | `handleFetchUsers` (nao e disparada por evento) | `fetchUsers` (chamada API) |
 
+## Troubleshooting
+
+### Confusao entre handle e on ao propagar eventos por multiplos niveis
+**Symptom:** Em componentes com 3+ niveis de profundidade, nao fica claro quando usar `handle` vs `on`, resultando em nomes inconsistentes como `onHandleClick`.
+**Cause:** Mistura de convencoes entre niveis. Cada componente deve ter sua propria perspectiva: o que ele recebe como prop e `on` (evento vindo de fora), o que ele define internamente e `handle` (reacao local).
+**Fix:** Nunca combine os prefixos. No componente filho, a prop e `onAction`. Dentro dele, a funcao local que chama essa prop e `handleAction`. O pai define `handleAction` e passa como `onAction` ao filho.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

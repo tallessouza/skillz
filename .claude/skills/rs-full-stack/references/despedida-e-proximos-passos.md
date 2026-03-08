@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-despedida-e-proximos-passos
-description: "Guides exploration of CSS value functions by category when user asks to 'use CSS functions', 'explore CSS features', 'check CSS compatibility', or 'what CSS functions exist'. Provides a categorized reference of CSS function families (transform, math, filter, color, gradient, grid, animation, counter) with browser compatibility guidance. Make sure to use this skill whenever the user needs to discover or choose between CSS functions. Not for implementing specific CSS functions or writing CSS code."
+description: "Configures exploration of CSS value functions by category when user asks to 'use CSS functions', 'explore CSS features', 'check CSS compatibility', or 'what CSS functions exist'. Provides a categorized reference of CSS function families (transform, math, filter, color, gradient, grid, animation, counter) with browser compatibility guidance. Make sure to use this skill whenever the user needs to discover or choose between CSS functions. Not for implementing specific CSS functions or writing CSS code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [CSS, functions, calc, transform, filter, gradient, compatibility]
 ---
 
 # Referência de Funções CSS por Categoria
 
 > Conhecer as famílias de funções CSS e verificar compatibilidade antes de usar é tão importante quanto saber a sintaxe.
 
-## Key concept
+## Key concepts
 
 Funções CSS são valores aplicados a propriedades. A sintaxe segue o padrão `propriedade: funcao(argumento1, argumento2)`. Existem dezenas de funções organizadas por categoria, e nem todas funcionam em todos os navegadores — verificar compatibilidade é obrigatório antes de adotar qualquer função.
 
@@ -57,18 +63,33 @@ Funções CSS são valores aplicados a propriedades. A sintaxe segue o padrão `
 | Conhecer `calc()` e `rgb()` é suficiente | Existem dezenas de funções organizadas em 10+ famílias |
 | Funções experimentais são inutilizáveis | Podem ser testadas localmente, mas não devem ir para produção |
 
+## Exemplo basico
+
+```css
+/* Funcao calc() — calculo dinamico */
+.container {
+  width: calc(100% - 40px);
+  font-size: clamp(1rem, 2vw, 2rem);
+  background: linear-gradient(to right, #3490dc, #6574cd);
+  filter: blur(2px);
+}
+```
+
 ## Limitations
 
 - Este é um mapa de navegação, não um guia de implementação — para usar cada função, consulte a documentação específica
 - Compatibilidade muda com o tempo — sempre verifique a versão mais recente no DevDocs ou MDN
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao CSS nao funciona no navegador | Funcao experimental ou sem suporte | Verifique compatibilidade no MDN ou DevDocs antes de usar |
+| `calc()` retorna valor errado | Unidades incompativeis ou sintaxe incorreta | Verifique espacos ao redor dos operadores: `calc(100% - 20px)` |
+| Gradiente nao aparece | Aplicado em `color` em vez de `background` | Use `background: linear-gradient(...)` nao `color:` |
+| `clamp()` nao funciona no IE | Funcao nao suportada em navegadores antigos | Use fallback com `min()` e `max()` ou valor fixo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre estudo progressivo de CSS functions
 - [code-examples.md](references/code-examples.md) — Exemplos de cada família de funções com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-despedida-e-proximos-passos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-despedida-e-proximos-passos/references/code-examples.md)

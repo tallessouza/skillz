@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-markdown
 description: "Applies React Markdown rendering patterns when building blog posts or content pages in Next.js. Use when user asks to 'render markdown', 'create a blog post', 'display markdown content', 'style markdown elements', or 'use react-markdown'. Enforces component-based markdown element customization with Tailwind styling, remark plugins setup, and progressive element styling. Make sure to use this skill whenever rendering markdown content in React/Next.js projects. Not for markdown parsing without rendering, static site generators, or MDX component authoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-conteudo
+  tags: [react-markdown, remark-gfm, blog, markdown-rendering, next-js, tailwind]
 ---
 
 # Componente Markdown com React Markdown
@@ -130,14 +136,19 @@ import { Markdown } from "@/components/markdown";
 | Passar className direto no ReactMarkdown | Envolver em div com className para layout |
 | Criar componente sem repassar children | Sempre desestruturar e repassar `{ children }` |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-markdown/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-markdown/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-markdown/references/deep-explanation.md) — O react-markdown converte Markdown em componentes React nativos, nao em HTML cru. Isso significa que
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-markdown/references/code-examples.md) — pnpm add react-markdown

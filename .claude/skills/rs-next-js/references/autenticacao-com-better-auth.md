@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-autenticacao-com-better-auth
 description: "Applies BetterAuth authentication patterns when building Next.js apps with social login, session management, and auth state UI. Use when user asks to 'add authentication', 'implement login', 'add social login', 'setup BetterAuth', or 'handle user session' in Next.js projects. Covers auth client setup, sign-in/sign-out flows, session hooks, and conditional UI rendering. Make sure to use this skill whenever implementing auth in Next.js with BetterAuth. Not for backend BetterAuth configuration, database schema design, or non-BetterAuth auth libraries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: autenticacao
+  tags: [better-auth, authentication, social-login, session, next-js, github-oauth, useSession]
 ---
 
 # Autenticacao com BetterAuth no Next.js
@@ -155,14 +161,19 @@ export function Header() {
 | Env client-side sem `NEXT_PUBLIC_` | `NEXT_PUBLIC_API_URL` com prefixo |
 | Auth client e server config no mesmo arquivo | Separar `auth-client.ts` (client) de `auth.ts` (server) |
 
+## Troubleshooting
+
+### Session undefined em Server Component
+**Symptom:** `getServerSession()` retorna null mesmo com usuario logado
+**Cause:** AuthOptions nao esta configurado corretamente ou cookies nao estao sendo passados
+**Fix:** Verificar que `authOptions` esta exportado e importado corretamente. Em App Router, usar `cookies()` do next/headers para acessar session
+
+### Redirect loop apos login
+**Symptom:** Apos fazer login, pagina redireciona infinitamente
+**Cause:** Middleware de autenticacao redireciona para login, e login redireciona de volta
+**Fix:** Adicionar excecao no middleware para a rota de login/callback. Verificar a logica de redirect apos autenticacao bem-sucedida
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-autenticacao-com-better-auth/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-autenticacao-com-better-auth/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-autenticacao-com-better-auth/references/deep-explanation.md) — O BetterAuth integra com o Drizzle ORM e o banco de dados da aplicacao. Ele cria automaticamente uma
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-autenticacao-com-better-auth/references/code-examples.md) — // src/lib/auth-client.ts

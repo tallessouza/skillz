@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-7
 description: "Enforces TypeScript function typing conventions when writing or reviewing functions. Use when user asks to 'create a function', 'write a method', 'type a function', 'add return type', or any TypeScript function creation task. Applies rules: explicit parameter types, explicit return types, never rely on inference for returns, void for no-return functions. Make sure to use this skill whenever generating TypeScript functions, even simple ones. Not for variable typing, interface definitions, or generic type parameters."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentos
+  tags: [typescript, functions, typing, return-type, void]
 ---
 
 # Tipagem em Funções TypeScript
@@ -90,13 +96,16 @@ const showMessage = (name: string): string => {
 | `const fn = (name) => {...}` | `const fn = (name: string): string => {...}` |
 | Confiar na inferência de retorno | Declarar tipo de retorno explicitamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Parameter 'x' implicitly has an 'any' type` | Parametro sem tipo explicito | Adicione tipo: `(x: number)` |
+| Funcao retorna tipo errado silenciosamente | Retorno nao foi tipado explicitamente | Adicione tipo de retorno: `: number` apos os parenteses |
+| `Type 'string' is not assignable to type 'number'` | `.toString()` mudou o tipo do retorno | Remova a conversao ou ajuste o tipo de retorno para `string` |
+| Arrow function nao compila | Sintaxe de tipagem incorreta | Use `const fn = (param: Type): ReturnType => { }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre riscos da inferência de retorno e analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-7/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-7/references/code-examples.md)

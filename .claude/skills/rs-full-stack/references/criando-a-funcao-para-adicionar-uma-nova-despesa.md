@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcao-adicionar-despesa
 description: "Enforces try-catch error handling pattern when creating functions that modify DOM lists or collections. Use when user asks to 'add item to list', 'create add function', 'insert element', 'append to DOM', or any function that manipulates a list/collection. Applies rules: always wrap list mutations in try-catch, show user-friendly alert on error, log technical error to console, separate object creation from list insertion. Make sure to use this skill whenever generating functions that add/remove/update items in a list or DOM. Not for API calls, async operations, or form validation logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, try-catch, error-handling, list-manipulation]
 ---
 
 # Funções de Manipulação de Lista com Try-Catch
@@ -87,13 +93,15 @@ function itemAdd(newItem) {
 | Criar objeto E inserir na mesma função | Separar: criar objeto fora, passar como parâmetro |
 | `catch (e) { console.log("erro") }` sem alert | Sempre feedback duplo: console + alert |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Item adicionado mas nao aparece na tela | Funcao de render nao foi chamada apos inserir | Chame a funcao de renderizacao dentro do try, apos a insercao |
+| Alert nao aparece quando ocorre erro | Catch vazio ou sem alert | Adicione `alert("Mensagem amigavel")` no bloco catch |
+| Erro silencioso sem log no console | Catch sem `console.log(error)` | Sempre inclua `console.log(error)` para debug |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação de responsabilidades e fluxo try-catch
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-funcao-para-adicionar-uma-nova-despesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-funcao-para-adicionar-uma-nova-despesa/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e fluxo try-catch
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

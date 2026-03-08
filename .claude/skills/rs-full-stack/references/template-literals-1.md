@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-template-literals-1
 description: "Enforces template literal usage over string concatenation when writing JavaScript/TypeScript code. Use when user asks to 'build a string', 'format a message', 'concatenate variables', 'create dynamic text', or any string interpolation task. Applies backtick syntax with ${} placeholders instead of + concatenation. Make sure to use this skill whenever generating code that combines strings with variables. Not for regex patterns, tagged templates, or SQL query building."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-moderno
+  tags: [javascript, template-literals, string, interpolation, es6]
 ---
 
 # Template Literals
@@ -65,6 +71,15 @@ console.log(message)
 | `"Total: " + price + " reais"` | `` `Total: ${price} reais` `` |
 | `"Linha1\nLinha2"` | `` `Linha1\nLinha2` `` ou backtick multilinha |
 | `name + " - " + email + " - " + role` | `` `${name} - ${email} - ${role}` `` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `${variable}` aparece como texto literal | Usando aspas simples ou duplas em vez de backticks | Troque `'...'` ou `"..."` por `` `...` `` (backticks) |
+| Expressao dentro de `${}` nao avalia | Erro de sintaxe na expressao | Verifique se a expressao e JavaScript valido dentro de `${}` |
+| String multilinha nao quebra linha | Usando `\n` desnecessariamente com backticks | Com backticks, basta usar quebra de linha real no codigo |
+| Resultado inesperado como `[object Object]` | Interpolando objeto em vez de propriedade | Use `${obj.prop}` em vez de `${obj}` |
 
 ## Deep reference library
 

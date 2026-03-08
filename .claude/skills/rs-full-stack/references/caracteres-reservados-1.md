@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caracteres-reservados-1
-description: "Enforces correct usage of HTML entity references for reserved characters when writing HTML code. Use when user asks to 'display HTML tags as text', 'show code snippets in HTML', 'escape HTML characters', or 'print angle brackets'. Applies rules: use &lt; &gt; &amp; entities, wrap code display in <code> tag. Make sure to use this skill whenever generating HTML that must display reserved characters literally. Not for CSS, JavaScript escaping, or URL encoding."
+description: "Enforces correct usage of HTML entity references for reserved characters when writing HTML code. Use when user asks to 'display HTML tags as text', 'show code snippets in HTML', 'escape HTML characters', or 'print angle brackets'. Applies rules: use ampersand-lt, ampersand-gt, ampersand-amp entities, wrap code display in code tag. Make sure to use this skill whenever generating HTML that must display reserved characters literally. Not for CSS, JavaScript escaping, or URL encoding."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, entities, escaping, reserved-characters, code-display]
 ---
 
 # Caracteres Reservados no HTML
@@ -74,13 +80,16 @@ description: "Enforces correct usage of HTML entity references for reserved char
 | Tag de codigo sem `<code>` | Envolva em `<code>&lt;p&gt;</code>` |
 | `&amp;amp;` (escape duplo acidental) | Escape apenas uma vez: `&amp;` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Tag HTML aparece como elemento em vez de texto | Caracteres `<>` nao escapados | Use `&lt;` e `&gt;` no lugar de `<` e `>` |
+| Entidade aparece como texto literal (`&lt;`) | Duplo escape: `&amp;lt;` no codigo | Escape apenas uma vez |
+| `&` quebra o texto | `&` inicia uma entidade HTML | Use `&amp;` para exibir `&` literal |
+| Codigo exibido sem fonte monospacada | Falta tag `<code>` envolvendo o trecho | Envolva com `<code>&lt;tag&gt;</code>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando e por que escapar, edge cases com formato de tag vs caractere isolado
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caracteres-reservados-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caracteres-reservados-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-uma-api-de-exemplo
 description: "Generates json-server mock API setup with sample data and endpoints. Use when user asks to 'create a mock API', 'simulate an API', 'setup json-server', 'fake REST API', or 'test API locally'. Applies correct json structure with resources, IDs, and typed fields. Make sure to use this skill whenever setting up local API simulation for frontend development. Not for real backend development, Express/Fastify servers, or database setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-api-integration
+  tags: [json-server, mock-api, rest-api, frontend-development]
 ---
 
 # Criando uma API com json-server
@@ -78,13 +84,16 @@ O json-server gera uma REST API completa:
 | `"price": "150.25"` (string) | `"price": 150.25` (numero, permite ordenacao) |
 | Criar rotas manualmente | Deixe o json-server gerar a partir do JSON |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `json-server: command not found` | Pacote nao instalado | `npm i json-server -D` e use via script no package.json |
+| Porta 3303 em uso | Outro processo na mesma porta | Mude a porta no script: `--port 3304` |
+| Endpoint retorna array vazio | Propriedade no JSON nao tem itens | Adicione objetos com `id` numerico no array |
+| GET /products/1 retorna 404 | ID nao existe no db.json | Verifique se existe objeto com `"id": 1` no array |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre recursos, endpoints e comportamento da API simulada
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com multiplos recursos e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-uma-api-de-exemplo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-uma-api-de-exemplo/references/code-examples.md)

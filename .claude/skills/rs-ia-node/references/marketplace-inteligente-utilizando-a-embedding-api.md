@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-embedding-api
 description: "Applies OpenAI Embedding API patterns when building semantic search or similarity features in Node.js. Use when user asks to 'create embeddings', 'implement semantic search', 'compare text similarity', 'embed products', or 'pre-process vectors'. Covers embedding generation, storage, and pre-processing workflow. Make sure to use this skill whenever integrating OpenAI embeddings into a Node.js backend. Not for chat completions, image generation, or front-end search UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: embeddings
+  tags: [embeddings, openai, ia-node, node-js]
 ---
 
 # Utilizando a Embedding API
@@ -117,14 +123,14 @@ app.post("/search", async (req, res) => {
 | Ignorar o campo `model` | Sempre especificar `text-embedding-3-small` explicitamente |
 | Mutar o array original do banco | Trabalhar com copia ou usar funcao setter |
 
+## Troubleshooting
+
+### Busca por similaridade retorna produtos irrelevantes
+**Symptom:** Produtos retornados nao tem relacao semantica com o input
+**Cause:** Embeddings gerados com pouco contexto (so nome, sem descricao) ou modelo de embedding diferente entre geracao e busca
+**Fix:** Concatene nome + descricao ao gerar embeddings. Garanta que o mesmo modelo de embedding e usado na geracao e na busca
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-utilizando-a-embedding-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-utilizando-a-embedding-api/references/code-examples.md)

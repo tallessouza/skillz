@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-adicionando-imagens
 description: "Applies background image patterns in Next.js pages using Tailwind CSS utility classes. Use when user asks to 'add background image', 'add section background', 'responsive background', 'bg image tailwind', or 'image overlay section'. Enforces absolute-positioned div overlay pattern with mobile-first visibility, proper stacking context with relative parent, and opacity control. Make sure to use this skill whenever adding decorative background images to page sections in Next.js or Tailwind projects. Not for content images, Next.js Image component optimization, or icon/logo placement."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: styling-images
+  tags: [background-image, tailwind, responsive, overlay, opacity, next-js]
 ---
 
 # Adicionando Imagens de Fundo com Tailwind CSS
@@ -73,14 +79,19 @@ description: "Applies background image patterns in Next.js pages using Tailwind 
 | Conteudo sem `relative` sobre bg absoluto | `<div className="relative">` envolvendo conteudo |
 | Imagem em `src/assets/` para bg CSS | Imagem em `public/` para acesso via URL |
 
+## Troubleshooting
+
+### Imagem nao carrega com next/image
+**Symptom:** Componente Image mostra placeholder ou erro 404
+**Cause:** Dominio externo nao configurado em next.config ou path incorreto
+**Fix:** Para imagens externas, adicionar o dominio em `images.remotePatterns` no next.config.js. Para imagens locais, verificar que o arquivo esta em `public/` e o path comeca com `/`
+
+### Imagem distorcida ou cortada
+**Symptom:** Imagem aparece com proporcoes erradas
+**Cause:** Width e height nao correspondem ao aspect ratio original
+**Fix:** Usar `fill` prop com `objectFit="cover"` para responsividade, ou calcular width/height corretos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-imagens/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-imagens/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-imagens/references/deep-explanation.md) — O instrutor demonstra um pattern essencial: quando voce aplica `opacity` diretamente numa section qu
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-imagens/references/code-examples.md) — // Suporte section — section de Features

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-margin-1
 description: "Enforces correct CSS margin usage including shorthand syntax, auto centering, and margin collapsing awareness. Use when user asks to 'add spacing', 'center a div', 'add margin', 'space elements', or any CSS layout task involving element spacing. Applies shorthand order (top right bottom left), auto margin centering, and warns about margin collapsing between block elements. Make sure to use this skill whenever writing CSS that involves spacing between elements. Not for padding, border-spacing, or gap in flexbox/grid contexts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-styling
+  tags: [css, margin, spacing, box-model, centering, collapsing]
 ---
 
 # CSS Margin
@@ -97,13 +103,16 @@ description: "Enforces correct CSS margin usage including shorthand syntax, auto
 | Assumir que margins somam entre blocos verticais | Considere margin collapsing — prevalece o maior |
 | 4 propriedades separadas quando shorthand resolve | `margin: 30px 10px 80px 4rem` em uma linha |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Margin entre blocos menor que a soma das margins | Margin collapsing — prevalece o maior valor | Use padding no container pai ou `overflow: hidden` para evitar collapsing |
+| `margin: auto` nao centraliza | Elemento sem `width` definida | Defina `width` antes de usar `margin: auto` |
+| Margin-top nao funciona em span | Elementos inline ignoram margin vertical | Mude para `display: inline-block` ou `block` |
+| Shorthand aplica margin em lados indesejados | Ordem dos valores incorreta | Lembre: top right bottom left (sentido relogio) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre margin collapsing, auto, e comportamento inline vs block
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-margin-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-margin-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fundamentos-do-grid-no-codigo
 description: "Applies CSS Grid fundamentals when writing layout code. Use when user asks to 'create a layout', 'use grid', 'style a container', 'arrange elements', or any CSS layout task. Enforces container/items mental model, display grid vs inline-grid selection, and understanding of how grid changes child behavior. Make sure to use this skill whenever generating CSS Grid code. Not for Flexbox-only layouts, animations, or JavaScript logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, layout, display-grid, container, items]
 ---
 
 # Fundamentos do Grid no Código
@@ -93,13 +99,16 @@ description: "Applies CSS Grid fundamentals when writing layout code. Use when u
 | Usar `inline-grid` por padrao | Usar `display: grid` — inline-grid e para casos muito especificos |
 | Esquecer a relacao container/items | Sempre pensar: pai = container com grid, filhos = items controlados |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Filhos nao se alinham em grid | `display: grid` aplicado nos filhos em vez do pai | Aplique `display: grid` no container (elemento pai) |
+| Span dentro do grid nao se comporta como inline | Grid transforma todos os filhos em blocos | Comportamento esperado — aceite que filhos viram blocos no grid |
+| Container ocupa 100% da largura indesejadamente | Usando `display: grid` (block-level) | Use `display: inline-grid` se precisa largura do conteudo |
+| Itens ficam empilhados verticalmente | Sem `grid-template-columns` definido | Adicione `grid-template-columns` para criar colunas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre display grid vs inline-grid e comportamento dos filhos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fundamentos-do-grid-no-codigo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fundamentos-do-grid-no-codigo/references/code-examples.md)

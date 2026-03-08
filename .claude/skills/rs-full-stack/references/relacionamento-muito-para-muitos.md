@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-relacionamento-muito-para-muitos
 description: "Enforces many-to-many relationship patterns when designing SQL schemas. Use when user asks to 'create a table', 'model a relationship', 'connect two entities', 'many-to-many', or 'pivot table'. Applies rules: always create a pivot table for N:M, name it tableA_tableB, store only foreign keys, use NOT NULL on FKs. Make sure to use this skill whenever creating database schemas with N:M relationships. Not for one-to-one, one-to-many relationships, or application-level ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-relationships
+  tags: [sql, many-to-many, pivot-table, foreign-key, database-design]
 ---
 
 # Relacionamento Muitos para Muitos (N:M)
@@ -75,6 +81,15 @@ CREATE TABLE students_courses (
 | Nome generico (`relations`, `links`) | Nome descritivo (`students_courses`) |
 | Tipos diferentes entre FK e PK original | Mesma tipagem exata (`INTEGER` ↔ `INTEGER`) |
 | Pivot sem chave primaria propria | Sempre inclua `id PRIMARY KEY AUTOINCREMENT` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro de FK ao inserir na pivot | Registro referenciado nao existe na tabela pai | Verifique se o ID existe na tabela referenciada antes do INSERT |
+| Duplicatas na pivot table | Falta constraint UNIQUE no par de FKs | Adicione `UNIQUE(student_id, course_id)` na pivot |
+| JOIN retorna resultados duplicados | Pivot tem registros repetidos ou JOIN incorreto | Verifique a pivot e use DISTINCT se necessario |
+| Erro de tipo na FK | Tipo da FK diferente do tipo da PK referenciada | Use o mesmo tipo (INTEGER, UUID, etc.) em ambas |
 
 ## Deep reference library
 

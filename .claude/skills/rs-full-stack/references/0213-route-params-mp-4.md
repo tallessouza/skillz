@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0213-route-params
 description: "Applies route params patterns when building Node.js HTTP APIs from scratch. Use when user asks to 'create a route', 'add delete endpoint', 'handle route parameters', 'parse URL params', or 'build REST API with Node'. Enforces unnamed params convention with :param syntax, regex-based route matching, and proper param extraction. Make sure to use this skill whenever implementing raw Node.js routing without frameworks. Not for Express/Fastify route handling, query string parameters, or request body parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [route-params, nodejs, regex, url-parsing, rest-api]
 ---
 
 # Route Params em Node.js Puro
@@ -95,13 +101,13 @@ const route = routes.find((route) => {
 | `url.split('/')[2]` (posição fixa) | `extractParams(route.path, url)` |
 | Hardcoded: `if (url === '/products/7')` | Dinâmico: `/products/:id` com regex |
 
+## Troubleshooting
+
+### Problem: Route with `:id` param never matches the request URL
+- **Cause**: Using strict equality (`===`) to compare `/products/:id` with `/products/7`, which will never match
+- **Fix**: Convert the route path to a regex with `buildRouteRegex()` and use `.test(url)` instead of `===`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre parâmetros não nomeados, por que regex é necessário, e como o Node processa URLs
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e implementação completa do router
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0213-route-params-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0213-route-params-mp-4/references/code-examples.md)

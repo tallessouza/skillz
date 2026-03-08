@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-animando-imagem-hero
 description: "Applies CSS keyframe animation patterns for hero section image entries with coordinated delays, translateX slides, opacity fades, and overshoot effects. Use when user asks to 'animate hero section', 'create entry animation', 'slide-in animation', 'coordinate multiple animations', or 'animate landing page elements'. Make sure to use this skill whenever building hero sections with multiple animated elements entering sequentially. Not for scroll-triggered animations, JavaScript animations, or CSS hover/focus transitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, animation, keyframes, hero-section, translateX]
 ---
 
 # Animacao de Entrada da Hero Section
@@ -186,13 +192,16 @@ description: "Applies CSS keyframe animation patterns for hero section image ent
 | Mesma duracao para todos os elementos | Varie duracao (2s, 2.2s, 3s) para naturalidade |
 | `display: none` para esconder antes da animacao | Use `opacity: 0` + `translateX` para esconder mantendo espaco |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Elemento visível antes da animação começar | Faltou `overflow: hidden` no container | Adicione `overflow: hidden` no elemento pai |
+| Elemento volta à posição inicial após animar | Faltou `animation-fill-mode: forwards` | Adicione `forwards` na shorthand da animação |
+| Todas as imagens entram ao mesmo tempo | Mesmo delay em todos os elementos | Use delays crescentes: 0ms, 200ms, 800ms |
+| Imagens sobrepostas incorretamente | Faltou `z-index` para controlar ordem | Defina `z-index: 1` no elemento principal |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre overflow hidden, fill-mode, overshoot e sequenciamento
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-animando-a-imagem-da-hero-section/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-animando-a-imagem-da-hero-section/references/code-examples.md)

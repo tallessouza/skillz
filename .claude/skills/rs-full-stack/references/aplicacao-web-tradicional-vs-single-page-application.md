@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tradicional-vs-spa
 description: "Applies Traditional Web Application vs Single Page Application architectural knowledge when making frontend decisions. Use when user asks to 'choose between SPA and traditional', 'build a web app', 'should I use React or WordPress', 'full page reload vs partial update', or 'MPA vs SPA'. Make sure to use this skill whenever architectural decisions about rendering strategy arise. Not for backend API design, database choices, or CSS styling decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [spa, mpa, architecture, frontend, rendering-strategy]
 ---
 
 # Aplicacao Web Tradicional vs Single Page Application
@@ -68,13 +74,16 @@ Primeira carga = HTML+CSS+JS completo. Depois = apenas dados (JSON).
 - Frameworks modernos (Next.js, Nuxt, Remix) borram a linha entre SPA e tradicional com SSR/SSG
 - Performance real depende de implementacao, nao apenas do modelo escolhido
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SPA demora para carregar inicialmente | Bundle JavaScript muito grande | Implemente code splitting e lazy loading |
+| SPA nao indexa no Google | Conteudo renderizado apenas no cliente | Use SSR (Next.js, Nuxt) ou pre-rendering |
+| Pagina tradicional pisca ao salvar dados | Reload completo da pagina e esperado no modelo tradicional | Migre para SPA ou use fetch parcial (AJAX) para atualizacoes |
+| Botao voltar nao funciona na SPA | Historico de navegacao nao configurado | Implemente router com pushState (React Router, Vue Router) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aplicacao-web-tradicional-vs-single-page-application/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aplicacao-web-tradicional-vs-single-page-application/references/code-examples.md)

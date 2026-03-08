@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-zod
 description: "Applies Zod schema validation setup when creating or configuring a Node.js/TypeScript API project. Use when user asks to 'add validation', 'install zod', 'setup schema validation', 'validate request body', or 'create API with validation'. Ensures correct Zod installation and integration with TypeScript. Make sure to use this skill whenever setting up input validation in a Node.js REST API. Not for frontend form validation, Joi, Yup, or other validation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: zod-setup
+  tags: [zod, validation, schema, typescript, api]
 ---
 
 # Instalando o Zod
@@ -68,13 +74,16 @@ const validatedData = createUserSchema.parse(requestBody)
 | Validar manualmente com `if/else` | Criar schema Zod declarativo |
 | Instalar com servidor rodando | Parar servidor, instalar, reiniciar |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro ao importar `z` do Zod | Pacote nao instalado | Executar `npm i zod@3.23.8` |
+| Hot-reload quebra apos instalar | Dependencia instalada com servidor rodando | Parar servidor, instalar, reiniciar |
+| `.parse()` lanca erro em dados invalidos | Comportamento esperado do Zod | Usar `.safeParse()` para validacao sem throw |
+| Tipos nao inferidos corretamente | Falta usar `z.infer` | Extrair tipo com `z.infer<typeof schema>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre validacao baseada em schemas e vantagens do Zod
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de schemas Zod para APIs REST
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-zod/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-zod/references/code-examples.md)

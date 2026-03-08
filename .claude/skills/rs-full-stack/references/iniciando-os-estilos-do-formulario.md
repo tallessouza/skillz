@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-estilos-formulario
 description: "Applies CSS form styling patterns when building HTML forms with fieldset, legend, inputs, selects, and textareas. Use when user asks to 'style a form', 'add CSS to form fields', 'create form layout', or 'fix form focus styles'. Covers appearance reset, grid layout for fieldsets, focus states with outline-offset hack for Safari, and label block display. Make sure to use this skill whenever styling form elements in CSS. Not for form validation, JavaScript form handling, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-forms
+  tags: [css, forms, fieldset, focus, appearance, grid, cross-browser]
 ---
 
 # Estilizacao de Formularios com CSS
@@ -139,13 +145,16 @@ label {
 | Focus sem outline-offset | Inclua `outline-offset: 1px` para Safari |
 | `appearance: auto` em campos customizados | `appearance: none` para reset consistente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Outline de foco nao aparece no Safari | Safari ignora outline sem offset | Adicionar `outline-offset: 1px` nos estilos de foco |
+| Label nao aceita margin-bottom | Labels sao inline por padrao | Adicionar `display: block` ao label |
+| Seta do select nao desaparece | `appearance: none` nao aplicado | Adicionar `appearance: none` ao select |
+| Campos de formulario colados | Fieldset sem grid ou gap | Adicionar `display: grid; gap: 1.5rem` ao fieldset |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cross-browser, organizacao de arquivos CSS e decisoes de unidades
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-os-estilos-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-os-estilos-do-formulario/references/code-examples.md)

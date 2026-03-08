@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-shorhand-flex
 description: "Applies correct CSS flex shorthand syntax when writing flexbox layouts. Use when user asks to 'style with flexbox', 'add flex properties', 'create a flex layout', 'set flex-grow/shrink/basis', or any CSS layout task involving flex items. Enforces correct value interpretation: 1-value numeric = grow, 1-value unit = basis, 2-value rules, 3-value order (grow, shrink, basis). Make sure to use this skill whenever writing flex shorthand in CSS. Not for grid layouts, flex container properties (justify-content, align-items), or non-CSS tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags:
+    - css
+    - flexbox
+    - flex-shorthand
+    - layout
+    - flex-grow
 ---
 
 # Shorthand Flex
@@ -99,6 +110,15 @@ description: "Applies correct CSS flex shorthand syntax when writing flexbox lay
 | `flex-grow: 1; flex-shrink: 1; flex-basis: 0;` | `flex: 1` |
 | `flex: 1 1 auto` quando quer distribuicao igual | `flex: 1` (basis=0 distribui igual) |
 | `flex-basis: 200px` sem definir grow/shrink | `flex: 0 1 200px` ou `flex: 200px` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Item nao cresce para preencher espaco | `flex: initial` (padrao) tem grow=0 | Use `flex: 1` para permitir crescimento |
+| Itens com tamanhos desiguais apesar de `flex: 1` | Conteudo interno afeta tamanho quando basis=auto | Use `flex: 1` (basis=0) para distribuicao igual |
+| Item nao respeita tamanho minimo | `flex-shrink` encolhe alem do desejado | Use `flex: 1 0 200px` para impedir encolhimento |
+| Layout quebra em telas menores | Itens com basis fixa sem shrink | Permita shrink: `flex: 1 1 200px` ou use media queries |
 
 ## Deep reference library
 

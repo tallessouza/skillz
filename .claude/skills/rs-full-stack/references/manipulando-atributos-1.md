@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-manipulando-atributos-1
 description: "Applies DOM attribute manipulation patterns when writing JavaScript that interacts with HTML elements. Use when user asks to 'disable an input', 'change element attributes', 'manipulate the DOM', 'work with forms', or 'modify HTML elements with JS'. Covers setAttribute, removeAttribute, and dynamic form control. Make sure to use this skill whenever generating frontend JS that modifies element properties. Not for CSS styling, event handling, or React/framework component props."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, setAttribute, removeAttribute, forms]
 ---
 
 # Manipulando Atributos do DOM
@@ -78,13 +84,16 @@ input.removeAttribute('id')
 | `const el = querySelector(...)` | `const input = querySelector('input')` |
 | Manipular atributo sem selecionar elemento | Sempre `querySelector` primeiro |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| setAttribute nao funciona | Elemento nao foi selecionado antes | Use `querySelector` para obter referencia antes de manipular |
+| removeAttribute nao remove o atributo | Nome do atributo esta errado ou com typo | Verifique o nome exato do atributo (case-sensitive) |
+| Input continua desabilitado apos "limpar" | Usou `setAttribute('disabled', '')` | Use `removeAttribute('disabled')` para reabilitar |
+| querySelector retorna null | Seletor nao corresponde a nenhum elemento | Verifique se o seletor esta correto e o elemento existe no DOM |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-manipulando-atributos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-manipulando-atributos-1/references/code-examples.md)

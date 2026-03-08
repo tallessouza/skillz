@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-arrow-function-2
 description: "Enforces arrow function syntax when writing JavaScript/TypeScript functions. Use when user asks to 'write a function', 'create a callback', 'refactor to arrow function', or 'convert function expression'. Applies concise arrow syntax, stores in const, uses template literals over concatenation. Make sure to use this skill whenever generating anonymous functions or function expressions. Not for function declarations, class methods, or generator functions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, arrow-functions, es6, callbacks, template-literals]
 ---
 
 # Arrow Function
@@ -74,13 +80,16 @@ const showMessage = (username, email) => {
 | `` `Ola, ` + name `` | `` `Ola, ${name}` `` |
 | `"Ola, " + name + ". Email: " + email` | `` `Ola, ${name}. Email: ${email}` `` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `this` retorna `undefined` na arrow function | Arrow functions nao possuem `this` proprio, herdam do escopo lexico | Use arrow function quando quiser herdar `this`, method shorthand quando precisar do `this` do objeto |
+| `arguments` nao existe na arrow function | Arrow functions nao tem objeto `arguments` | Use rest parameters `(...args)` em vez de `arguments` |
+| Retorno implicito retorna `undefined` | Corpo com chaves `{}` requer `return` explicito | Remova as chaves para retorno implicito ou adicione `return` |
+| Arrow function como metodo de objeto nao acessa propriedades | `this` na arrow aponta para o escopo externo, nao para o objeto | Use method shorthand `metodo() {}` para metodos de objeto |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-arrow-function-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-arrow-function-2/references/code-examples.md)

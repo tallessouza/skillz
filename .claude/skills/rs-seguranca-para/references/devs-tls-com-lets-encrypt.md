@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-tls-lets-encrypt
 description: "Applies TLS certificate setup with Let's Encrypt and Certbot when configuring HTTPS on web servers. Use when user asks to 'setup SSL', 'configure HTTPS', 'install TLS certificate', 'secure my server', or 'setup Let''s Encrypt'. Covers DNS verification, firewall rules, Certbot installation via snap, certificate auto-renewal via cron. Make sure to use this skill whenever deploying a web server to production or enabling encrypted connections. Not for application-level encryption, JWT tokens, or API authentication."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: http-security
+  tags: [security, tls, https, letsencrypt, certificates]
 ---
 
 # TLS com Let's Encrypt
@@ -108,14 +114,14 @@ Todo dia as 2:12 da manha o Certbot verifica e renova se necessario.
 | Reiniciar servidor de producao sem agendar | Planejar janela de manutencao |
 | Comprar certificado TLS pago sem necessidade | Usar Let's Encrypt (gratuito, 700M+ sites) |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-tls-com-lets-encrypt/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-tls-com-lets-encrypt/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-tls-com-lets-encrypt/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-tls-com-lets-encrypt/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

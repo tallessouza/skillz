@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-boas-vindas-2036
 description: "Applies automated testing strategy with Jest and SuperTest in Node.js projects. Use when user asks to 'write tests', 'add test coverage', 'create e2e tests', 'setup Jest', or 'test my API'. Guides test type selection (unit vs e2e), Jest assertions, and SuperTest HTTP simulation. Make sure to use this skill whenever setting up or writing tests in Node.js backends. Not for frontend component testing, browser testing, or Cypress/Playwright."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing
+  tags: [testing, jest, supertest, e2e, unit-tests, node-js]
 ---
 
 # Testes Automatizados em Node.js
@@ -117,13 +123,16 @@ describe('POST /users', () => {
 | Escrever teste sem criterio claro | Definir expectativa antes de implementar |
 | Misturar teste unitario com chamada HTTP | Separar por tipo: Jest puro vs SuperTest |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Jest test not running** | Check that the test file ends with `.test.ts` or `.spec.ts` and that Jest is configured in `package.json` or `jest.config.ts`. |
+| **SuperTest returns connection refused** | Ensure the app is exported without calling `listen()` — SuperTest manages its own server instance. |
+| **Test passes but should fail** | Intentionally break the assertion value to verify the test actually validates the expected behavior. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tipos de teste, quando usar cada um, e a filosofia por tras de testes automatizados
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e setup completo
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2036/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2036/references/code-examples.md)

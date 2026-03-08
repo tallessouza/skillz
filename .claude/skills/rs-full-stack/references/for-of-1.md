@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-for-of-1
 description: "Applies correct for...of loop usage when iterating over values in JavaScript/TypeScript. Use when user asks to 'loop through array', 'iterate values', 'use for of', 'traverse a list', or writes iteration code. Enforces for...of for values vs for...in for properties, singular/plural naming convention, and iterable-only constraint. Make sure to use this skill whenever generating loops over array values. Not for object property enumeration (use for...in), nor for index-based loops (use traditional for)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-loops
+  tags: [javascript, for-of, loops, iteration, arrays]
 ---
 
 # For...of — Iteracao sobre Valores
@@ -79,13 +85,16 @@ for (const fruit of fruits) {
 | `for (let item of items) { item = ... }` | `for (const item of items)` — nao reatribua |
 | `for (const s of students)` com nome generico | `for (const student of students)` — singular descritivo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `for...of` retorna indices em vez de valores | Usando `for...in` por engano | Troque `in` por `of`: `for (const item of array)` |
+| `TypeError: obj is not iterable` | Tentando iterar sobre objeto literal com `for...of` | Converta primeiro: `Object.values(obj)` ou `Object.entries(obj)` |
+| Variavel do loop e reatribuida acidentalmente | Declarou com `let` em vez de `const` | Use `const` na declaracao: `for (const item of items)` |
+| Loop nao itera sobre Map ou Set | Sintaxe incorreta para destructuring | Para Map use `for (const [key, value] of map)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-for-of-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-for-of-1/references/code-examples.md)

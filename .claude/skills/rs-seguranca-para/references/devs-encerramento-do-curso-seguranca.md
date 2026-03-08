@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-encerramento
 description: "Enforces incremental security adoption strategy when planning or prioritizing security improvements in applications. Use when user asks to 'secure my app', 'implement security', 'add security features', 'make my app safer', or plans a security roadmap. Applies progressive implementation over perfection, team knowledge sharing, and continuous learning principles. Make sure to use this skill whenever the user wants to improve application security holistically. Not for implementing specific security techniques like XSS prevention, CSRF tokens, or encryption."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: strategy
+  tags: [security, strategy, adoption, roadmap]
 ---
 
 # Estrategia de Adocao Incremental de Seguranca
@@ -51,14 +57,14 @@ Aplicar, testar, documentar, ensinar ao time. Depois passar para a proxima.
 | Ignorar atualizacoes do campo | Reservar tempo regular para estudar novidades |
 | Esperar ficar "pronto" para liderar | Assumir lideranca enquanto aprende |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-encerramento-do-curso-seguranca/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-encerramento-do-curso-seguranca/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-encerramento-do-curso-seguranca/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-encerramento-do-curso-seguranca/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-seo-e-core-web-vitals
 description: "Enforces SEO best practices and Core Web Vitals optimization when building Next.js applications. Use when user asks to 'optimize SEO', 'improve performance', 'configure metadata', 'check Core Web Vitals', 'deploy Next.js app', or 'improve page speed'. Applies rules for Open Graph, metadata configuration, LCP/FCP/CLS optimization, and PageSpeed testing. Make sure to use this skill whenever deploying or optimizing Next.js projects for production. Not for general CSS styling, business logic, or backend API design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo-performance
+  tags: [seo, core-web-vitals, open-graph, metadata, lcp, cls, pagespeed, next-js]
 ---
 
 # SEO e Core Web Vitals no Next.js
@@ -128,14 +134,19 @@ export default function RootLayout({ children }) {
 | Ignorar score mobile | Priorizar mobile — Google usa mobile-first indexing |
 | `<html>` sem atributo `lang` | Sempre definir `<html lang="pt-BR">` |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-seo-e-core-web-vitals/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-seo-e-core-web-vitals/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-seo-e-core-web-vitals/references/deep-explanation.md) — Core Web Vitals e um conjunto de metricas especificas introduzidas pelo Google para quantificar e me
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-seo-e-core-web-vitals/references/code-examples.md) — // app/layout.tsx

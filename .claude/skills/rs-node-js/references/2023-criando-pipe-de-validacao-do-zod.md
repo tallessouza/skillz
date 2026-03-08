@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-zod-validation-pipe
-description: "Applies NestJS Zod validation pipe pattern when creating controllers with input validation. Use when user asks to 'create a pipe', 'validate request body', 'add Zod validation to NestJS', 'create a controller with validation', or 'handle validation errors'. Enforces schema-first approach with z.infer for type inference, custom ZodValidationPipe class, and structured error responses using zod-validation-error. Make sure to use this skill whenever building NestJS endpoints that receive data. Not for frontend validation, class-validator/class-transformer approaches, or non-NestJS frameworks."
+name: 2023-criando-pipe-de-validacao-do-zod
+description: "Creates a reusable Zod validation pipe for NestJS controllers with automatic type inference and structured error responses. Use when user asks to 'validate request body in NestJS', 'create validation pipe', 'use Zod with NestJS', 'validate input with schema', or 'infer types from Zod schema'. Enforces: schema-first with z.infer for types, ZodValidationPipe via @UsePipes decorator, ZodSchema in constructor, structured error responses with fromZodError. Make sure to use this skill whenever adding input validation to NestJS controllers using Zod. Not for Fastify validation, frontend form validation, or class-validator based NestJS projects."
+category: coding-lens
+tags: [decorators, error-handling, nestjs, typescript, zod]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-validation
+  tags: [zod, nestjs, validation, pipe, typescript, schema-validation]
 ---
 
 # NestJS Zod Validation Pipe
@@ -116,14 +125,14 @@ async create(@Body() body: CreateAccountBodySchema) {
 | Retornar apenas string no erro | Retornar objeto com `message`, `statusCode`, `errors` |
 | safeParse com if manual em cada rota | Pipe reutilizavel com parse + throw |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-pipe-de-validacao-do-zod/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-pipe-de-validacao-do-zod/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

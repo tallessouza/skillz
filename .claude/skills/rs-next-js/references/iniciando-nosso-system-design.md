@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-iniciando-nosso-system-design
 description: "Applies shadcn/ui setup and design system foundation patterns when configuring a Next.js project with component libraries. Use when user asks to 'setup shadcn', 'configure design system', 'install component library', 'setup ui components in next.js', or 'create style guide'. Ensures correct initialization, global styles extraction from Figma, and project structure with styles folder. Make sure to use this skill whenever setting up shadcn/ui or establishing a design system foundation in Next.js projects. Not for individual component customization, Tailwind config from scratch, or non-Next.js projects."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: design-system-setup
+  tags: [shadcn-ui, design-system, next-js, tailwind, figma, css-variables, component-library]
 ---
 
 # Design System com shadcn/ui no Next.js
@@ -94,14 +100,19 @@ Testar aplicando uma classe do design system (ex: `text-accent-blue`) para confi
 | Recriar botoes/inputs do zero | Usar shadcn como base e customizar |
 | Hardcodar cores diretamente nos componentes | Usar CSS variables do design system |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-iniciando-nosso-system-design/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-iniciando-nosso-system-design/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-iniciando-nosso-system-design/references/deep-explanation.md) — O instrutor posiciona shadcn/ui nao como uma biblioteca de componentes comum, mas como a **fundacao 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-iniciando-nosso-system-design/references/code-examples.md) — pnpx shadcn@latest init

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-adicionando-step-de-build
 description: "Applies Docker build step patterns in GitHub Actions CI pipelines. Use when user asks to 'add build step', 'build docker in CI', 'configure CI pipeline', 'github actions docker build', or 'generate commit tag'. Enforces commit SHA tagging, GITHUB_OUTPUT usage, and step output references. Make sure to use this skill whenever configuring Docker builds in GitHub Actions workflows. Not for local Docker builds, deployment, or pushing images to registries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: github-actions-ci
+  tags: [github-actions, ci-cd]
 ---
 
 # Adicionando Step de Build no CI
@@ -90,14 +96,14 @@ steps:
 | Step com output sem `id` | Sempre adicionar `id` quando o step produz outputs |
 | `echo "::set-output name=sha::$SHA"` (deprecated) | `echo "sha=$SHA" >> $GITHUB_OUTPUT` |
 
+## Troubleshooting
+
+### Step posterior nao consegue acessar output do step de geracao de tag
+**Symptom:** Variavel SHA retorna vazio em steps posteriores ao generate_tag
+**Cause:** O step produtor nao tem `id` definido ou usa sintaxe deprecated `::set-output`
+**Fix:** Adicione `id: generate_tag` no step e use `echo "sha=$SHA" >> $GITHUB_OUTPUT` em vez de `::set-output`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adicionando-step-de-build/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adicionando-step-de-build/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adicionando-step-de-build/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adicionando-step-de-build/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

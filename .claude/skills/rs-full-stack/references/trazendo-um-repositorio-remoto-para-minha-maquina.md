@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-git-clone-remoto
 description: "Applies git clone workflow when bringing remote repositories to local machine. Use when user asks to 'clone a repo', 'download from GitHub', 'bring project to my machine', 'start working on existing project', or 'setup project locally'. Covers git clone, folder naming, and verifying the cloned repo. Make sure to use this skill whenever user needs to work with a remote repository locally for the first time. Not for git pull, git fetch, pushing changes, or SSH key configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags: [git, clone, github, repositorio, remoto, setup]
 ---
 
 # Trazendo Repositório Remoto para Máquina Local
@@ -78,6 +84,15 @@ Repositório completo clonado localmente, com histórico de commits intacto e re
 | Download do ZIP pelo GitHub | `git clone` — mantém histórico e remote |
 | Criar pasta manualmente e copiar arquivos | `git clone` — traz tudo automaticamente |
 | Evitar renomear pasta com medo de quebrar | Renomeie tranquilamente — Git olha o conteúdo interno |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `git clone` falha com erro de autenticacao | Credenciais invalidas ou token expirado | Verifique credenciais ou gere um novo token de acesso pessoal |
+| Diretorio ja existe com mesmo nome | Pasta com nome do repo ja presente | Clone com nome diferente: `git clone <url> nome-diferente` |
+| Repositorio clonado sem historico | Usou download ZIP em vez de clone | Use `git clone` para manter historico e remote origin |
+| `git status` mostra "not a git repository" | Nao entrou na pasta clonada | Execute `cd nome-do-repo` antes de rodar comandos git |
 
 ## Deep reference library
 

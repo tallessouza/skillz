@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-responsividade-sidebar
 description: "Applies Tailwind mobile-first responsive sidebar patterns when building navigation sidebars, layouts, or responsive menus. Use when user asks to 'create a sidebar', 'make sidebar responsive', 'add mobile menu', 'fix sidebar on mobile', or 'implement responsive navigation'. Enforces mobile-first approach: base styles for mobile, lg: prefix for desktop. Make sure to use this skill whenever building sidebars or responsive layouts with Tailwind. Not for server-side rendering, JavaScript toggle logic, or non-Tailwind CSS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: responsividade
+  tags: [tailwind, react, responsive, flexbox]
 ---
 
 # Responsividade de Sidebar com Tailwind
@@ -80,15 +86,19 @@ description: "Applies Tailwind mobile-first responsive sidebar patterns when bui
 | `h-screen` para altura total no fixed | `top-0 bottom-0` (mais robusto com fixed) |
 | `md:` para sidebar (muito cedo) | `lg:` (sidebar precisa de espaco, 1024px+) |
 | Estilos desktop sem prefixo + mobile com hack | Base = mobile, prefixo = desktop (mobile-first) |
+## Troubleshooting
+
+### Sidebar cobre o conteudo principal no mobile
+**Symptom:** Ao abrir a sidebar no mobile, o conteudo atras fica visivel e interativo.
+**Cause:** Sidebar nao tem z-index suficiente ou falta overlay.
+**Fix:** Adicione `z-20` na sidebar e considere um overlay semitransparente atras dela.
+
+### Conteudo da sidebar cortado
+**Symptom:** Items do menu ou widgets ficam cortados na parte inferior.
+**Cause:** Sidebar sem altura total ou overflow escondido.
+**Fix:** Use `h-screen` ou `bottom-0 top-0` (com fixed) e `overflow-y-auto` para scroll interno.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-da-sidebar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-da-sidebar/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-da-sidebar/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-da-sidebar/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

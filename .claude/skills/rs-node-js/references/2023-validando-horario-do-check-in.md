@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-validando-horario-check-in
 description: "Enforces TDD workflow for time-based business rule validation in Node.js applications. Use when user asks to 'add a time constraint', 'validate expiration', 'implement time-based rule', 'add TDD test for dates', or 'check-in validation'. Applies red-green-refactor with Vitest date mocking and Day.js diff calculations. Make sure to use this skill whenever adding time-based validation rules to existing features using TDD. Not for cron jobs, scheduling systems, or timezone conversion logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: validacao-temporal-tdd
+  tags: [tdd, dayjs, fake-timers, vitest, time-validation, business-rules, mocking]
 ---
 
 # Validacao de Regras de Negocio Temporais com TDD
@@ -118,14 +124,14 @@ async execute({ checkInId }: ValidateCheckInRequest) {
 | `dayjs(createdAt).diff(new Date())` (retorna negativo) | `dayjs(new Date()).diff(createdAt, 'minutes')` (retorna positivo) |
 | Testar datas sem mock | `vi.useFakeTimers()` + `vi.setSystemTime()` |
 
+## Troubleshooting
+
+### Teste de validacao temporal passa mesmo quando nao deveria
+**Symptom:** Teste com `advanceTimersByTime(21min)` nao lanca `LateCheckInValidationError`
+**Cause:** `vi.useFakeTimers()` nao foi chamado no `beforeEach`, entao `advanceTimersByTime` nao afeta `new Date()` dentro do use case
+**Fix:** Adicione `vi.useFakeTimers()` no `beforeEach` e `vi.useRealTimers()` no `afterEach` para garantir que o mock de tempo esta ativo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-validando-horario-do-check-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-validando-horario-do-check-in/references/code-examples.md)

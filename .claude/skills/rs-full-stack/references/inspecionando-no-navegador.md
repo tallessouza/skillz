@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inspecionando-no-navegador
 description: "Applies DOM inspection and browser DevTools knowledge when working with HTML, CSS, and JavaScript. Use when user asks to 'inspect element', 'debug DOM', 'find element in page', 'manipulate DOM', or 'understand DOM structure'. Guides correct mental model of DOM as a tree hierarchy for element selection and manipulation. Make sure to use this skill whenever explaining DOM concepts or writing DOM manipulation code. Not for CSS styling, network debugging, or performance profiling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [dom, devtools, inspect, querySelector, browser, debugging]
 ---
 
 # Inspecionando no Navegador — DOM como Árvore
@@ -85,13 +91,16 @@ const items = list.querySelectorAll('li')
 - Elementos criados dinamicamente só aparecem após execução do JS
 - Esta skill cobre inspeção e conceito — manipulação avançada é outro tópico
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `querySelector` retorna `null` | Elemento nao existe no DOM ou seletor incorreto | Verificar na aba Elements do DevTools se o elemento existe |
+| Elemento nao aparece no DevTools | Criado dinamicamente por JS que ainda nao executou | Aguardar execucao do JS ou verificar console para erros |
+| Hover no DevTools nao destaca nada | Elemento com `display: none` ou `visibility: hidden` | Verificar estilos aplicados ao elemento |
+| DOM diferente do HTML original | JavaScript ja modificou a pagina | Lembrar que DevTools mostra o DOM atual, nao o HTML fonte |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre DOM como árvore, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inspecionando-no-navegador/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inspecionando-no-navegador/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre DOM como arvore, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

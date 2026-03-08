@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-cores-e-fundos
 description: "Applies CSS color and background conventions when styling HTML elements. Use when user asks to 'add a background', 'change colors', 'style a component', 'set background image', or any CSS styling task involving colors or backgrounds. Enforces named colors, hex notation, background-color, background-image, background-repeat, background-position, and background-size. Make sure to use this skill whenever writing CSS that involves color values or element backgrounds. Not for JavaScript logic, layout systems like Flexbox/Grid, or typography."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, colors, background, hex, background-image, background-size]
 ---
 
 # Cores e Fundos no CSS
@@ -79,13 +85,15 @@ background-color: #FF0000; /* vermelho */
 | Hex sem `#`: `color: FF0000` | `color: #FF0000` |
 | Imagem de fundo sem fallback de cor | `background-color` antes de `background-image` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Cor nao aparece no elemento | Valor hex sem `#` ou com caractere invalido | Verifique que o hex comeca com `#` e tem 3 ou 6 digitos validos |
+| Imagem de fundo repete em mosaico | `background-repeat` nao foi definido (padrao e `repeat`) | Adicione `background-repeat: no-repeat` |
+| Imagem de fundo nao cobre o elemento inteiro | `background-size` nao definido ou com valor incorreto | Use `background-size: cover` para preenchimento completo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tipos de cor, hex RGB, e decisoes de background
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-cores-e-fundos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-cores-e-fundos/references/code-examples.md)

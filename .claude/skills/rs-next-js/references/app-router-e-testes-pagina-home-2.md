@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-testes-pagina-home
 description: "Applies Next.js e-commerce homepage layout patterns using CSS Grid, Next Image optimization, and Tailwind group-hover effects. Use when user asks to 'create a product grid', 'build an e-commerce homepage', 'layout products with grid', 'add hover zoom effect', or 'position price tags on product cards'. Make sure to use this skill whenever building product listing pages with Next.js and Tailwind. Not for API routes, data fetching, checkout flows, or backend logic."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, homepage, css-grid, next-image, tailwind, group-hover, e-commerce]
 ---
 
 # Pagina Home — Layout de E-commerce com Next.js
@@ -138,14 +145,19 @@ export default function Home() {
 | Preco como texto abaixo da imagem | Preco com `absolute` sobreposto na imagem |
 | `transition: all` | `transition-transform` (mais performatico, so anima o necessario) |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-home-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-home-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-home-2/references/deep-explanation.md) — O instrutor escolheu 9 colunas porque a divisao necessaria era 6+3 (proporção 2:1). Com 12 colunas (
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-home-2/references/code-examples.md) — Este e o codigo final da pagina Home conforme construido na aula:

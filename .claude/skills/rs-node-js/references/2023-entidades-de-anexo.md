@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entidades-de-anexo
-description: "Enforces the bridge/pivot entity pattern when connecting a shared entity to multiple parent entities in DDD. Use when user asks to 'create an attachment entity', 'connect entity to multiple parents', 'share entity across aggregates', 'link child to different parent types', or designs polymorphic relationships. Applies rules: separate bridge entities per parent type instead of polymorphic parent_id+type, shared base entity for reusable data, bridge holds only foreign IDs. Make sure to use this skill whenever modeling N:N or shared-child relationships in domain-driven design. Not for database schema design, ORM configuration, or REST API endpoints."
+name: 2023-entidades-de-anexo
+description: "Implements the Bridge Entity Pattern for attachments that belong to multiple parent types, creating separate bridge entities (QuestionAttachment, AnswerAttachment) instead of polymorphic parentId+parentType. Use when user asks to 'model attachments for multiple parents', 'avoid polymorphic relationships', 'create bridge entity', or 'connect entity to multiple parent types'. Make sure to use this skill whenever an entity needs to belong to two or more different parent types in a DDD context. Not for simple one-to-many relationships, database pivot tables, or frontend file upload components."
+category: coding-lens
+tags: [attachments, ddd, entities, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: entidades-dominio
+  tags: [attachments, bridge-entity, ddd, entities, polymorphism, typescript]
 ---
 
 # Entidades de Anexo — Bridge Entity Pattern
@@ -96,14 +105,14 @@ class AnswerAttachment extends Entity<{ answerId: UniqueEntityID; attachmentId: 
 | Uma unica classe `AttachmentRelation` generica | Classes explicitas: `QuestionAttachment`, `AnswerAttachment` |
 | Props opcionais `questionId?: ...` `answerId?: ...` na mesma classe | Uma bridge por pai, todas props obrigatorias |
 
+## Troubleshooting
+
+### Logica condicional para resolver tipo de pai ao buscar anexos
+**Symptom:** Codigo com `if (parentType === 'question')` espalhado para saber de qual tabela buscar
+**Cause:** Uso de polimorfismo com `parentId` + `parentType` ao inves de bridge entities separadas
+**Fix:** Crie bridge entities explicitas (`QuestionAttachment`, `AnswerAttachment`) — cada uma conecta ao tipo de pai sem ambiguidade
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entidades-de-anexo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entidades-de-anexo/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

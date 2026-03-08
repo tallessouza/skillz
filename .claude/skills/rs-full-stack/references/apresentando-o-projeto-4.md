@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-apresentando-o-projeto-4
-description: "Guides initial setup for the Travel Profile project using Figma, VS Code with Live Server, and Zen Mode. Use when user asks to 'start the travel profile project', 'setup figma for skillz project', 'configure vscode for frontend project', or 'begin CSS layout project'. Make sure to use this skill whenever starting the Perfil de Viagens project or configuring the dev environment for it. Not for actual CSS coding, Flexbox implementation, or CSS variables usage."
+description: "Configures initial setup for the Travel Profile project using Figma, VS Code with Live Server, and Zen Mode. Use when user asks to 'start the travel profile project', 'setup figma for skillz project', 'configure vscode for frontend project', or 'begin CSS layout project'. Make sure to use this skill whenever starting the Perfil de Viagens project or configuring the dev environment for it. Not for actual CSS coding, Flexbox implementation, or CSS variables usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [project-setup, figma, vscode, live-server, css, flexbox]
 ---
 
 # Perfil de Viagens — Setup do Projeto
@@ -64,13 +70,16 @@ Clicar em **Go Live** na barra inferior do VS Code para abrir o servidor local.
 - Live Server abre o navegador com a pagina do projeto
 - Figma mostra a aba Properties nos elementos do design
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Aba Properties nao aparece no Figma | Projeto nao e o original da Skillz, e uma copia duplicada | Use o link oficial da Skillz para acessar o projeto original |
+| Botao Go Live nao aparece no VS Code | Plugin Live Server nao esta instalado | Instale via Extensions (`Ctrl+Shift+X`) e reinicie o VS Code |
+| Live Server abre pagina em branco | Arquivo `index.html` nao existe na raiz do projeto | Crie o `index.html` na pasta raiz antes de iniciar o Live Server |
+| Zen Mode esconde a barra de terminal | Comportamento esperado do Zen Mode | Use `Ctrl+`` para abrir o terminal integrado mesmo no Zen Mode |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Detalhes sobre Figma Properties vs Duplicate e configuracao completa do VS Code
 - [code-examples.md](references/code-examples.md) — Settings.json completo e atalhos por sistema operacional
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-apresentando-o-projeto-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-apresentando-o-projeto-4/references/code-examples.md)

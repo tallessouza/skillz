@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-docker-image-tags
 description: "Applies Docker image tagging conventions when building and running containers. Use when user asks to 'build a docker image', 'version a container', 'tag an image', 'run a specific version', or 'manage docker images'. Enforces semantic tag naming, explicit version references in docker run, and proper cleanup of tagged images. Make sure to use this skill whenever working with Dockerfiles or docker-compose builds. Not for Dockerfile syntax, multi-stage builds, or container orchestration (Kubernetes/Swarm)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-basics
+  tags: [docker, image-tags, versioning, docker-build, containers]
 ---
 
 # Versionamento de Imagens Docker com Tags
@@ -91,6 +97,14 @@ docker run -d -p 3000:3000 api:v2
 | `docker run api` | `docker run api:v2` |
 | `docker rm <id>` (container rodando) | `docker rm -f <id>` |
 | Deletar tags individualmente com mesmo ID | `docker rmi -f <id>` (remove todas) |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `docker run api` executa versão errada | Sem tag explícita, Docker usa `latest` que pode estar desatualizada | Sempre especifique a tag: `docker run api:v2` |
+| `docker rmi` falha com "image is referenced" | Container usando a imagem ainda existe | Remova o container primeiro com `docker rm -f <id>` |
+| Tags diferentes apontam para mesma imagem | Dockerfile não mudou entre builds | Isso é esperado — tags são rótulos, o conteúdo determina o ID |
 
 ## Deep reference library
 

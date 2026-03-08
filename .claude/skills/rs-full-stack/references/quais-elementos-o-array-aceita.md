@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-array-elementos
 description: "Enforces correct usage of mixed-type JavaScript arrays when writing or reviewing code. Use when user asks to 'create an array', 'store different types', 'mix data in array', or 'access array elements'. Applies rules: arrays accept any JS type (string, number, boolean, function, object), access functions with invocation syntax, access nested object properties via dot notation. Make sure to use this skill whenever generating arrays with heterogeneous data. Not for TypeScript tuple typing, array methods like map/filter, or array iteration patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags:
+    - javascript
+    - arrays
+    - data-types
+    - fundamentals
 ---
 
 # Elementos que um Array Aceita em JavaScript
@@ -88,6 +98,14 @@ console.log(items[2].id)     // 1
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Console mostra `[Function]` em vez do resultado | Funcao no array acessada sem parenteses de invocacao | Use `array[i]()` para executar a funcao |
+| `undefined` ao acessar propriedade de objeto no array | Indice errado ou propriedade inexistente | Verifique o indice e o nome da propriedade com `console.log(array[i])` |
+| Erro `Cannot read property of undefined` | Acessando indice que nao existe no array | Verifique `array.length` antes de acessar indices altos |
 
 ---
 

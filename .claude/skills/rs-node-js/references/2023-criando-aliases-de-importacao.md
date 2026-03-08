@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-aliases-de-importacao
+name: rs-node-js-2023-criando-aliases-de-importacao
 description: "Configures TypeScript path aliases with @ prefix for cleaner imports in Node.js projects. Use when user asks to 'setup path aliases', 'configure tsconfig paths', 'fix import paths', 'organize imports', or starts a new TypeScript/Node.js project. Applies baseUrl and paths in tsconfig.json, maps @/ to src/. Make sure to use this skill whenever setting up a new TypeScript project or when imports have deep relative paths. Not for JavaScript-only projects without TypeScript, nor for module bundler alias config (webpack/vite)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [typescript, path-aliases, tsconfig, imports]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Aliases de Importação com TypeScript
@@ -82,14 +89,14 @@ import { logger } from '@/utils/logger'
 | Esquecer baseUrl no tsconfig | Sempre definir `"baseUrl": "."` |
 | Configurar paths sem testar no runner de testes | Configurar alias tambem no Vitest/Jest |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-aliases-de-importacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-aliases-de-importacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-criando-aliases-de-importacao/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-criando-aliases-de-importacao/references/code-examples.md) — Todos os exemplos de código expandidos com variações

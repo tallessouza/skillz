@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-eventos-de-formulario
 description: "Applies correct form event handling patterns when writing JavaScript/TypeScript form code. Use when user asks to 'handle form submit', 'add form listener', 'create a form', 'submit event', or any form interaction code. Enforces addEventListener over onsubmit for multiple listeners, preventDefault usage, and submit vs click distinctions. Make sure to use this skill whenever generating form handling code. Not for CSS styling, form validation libraries, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, forms, events, submit, addEventListener]
 ---
 
 # Eventos de Formulário
@@ -90,13 +96,16 @@ form.addEventListener('submit', (event) => {
 | Handler de submit sem preventDefault | `event.preventDefault()` como primeira linha |
 | `form.onclick = handler` | `form.addEventListener('submit', handler)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pagina recarrega ao submeter formulario | Falta `event.preventDefault()` | Adicionar como primeira linha do handler |
+| Segundo listener nao executa | Usando `form.onsubmit` que sobrescreve | Trocar para `form.addEventListener('submit', handler)` |
+| Enter no input nao dispara handler | Listener no botao via `click` em vez de `submit` no form | Usar `form.addEventListener('submit', ...)` |
+| Handler dispara duas vezes | Listener registrado mais de uma vez | Verificar se nao ha chamada duplicada de `addEventListener` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre onsubmit vs addEventListener e comportamento de acumulação
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-eventos-de-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-eventos-de-formulario/references/code-examples.md)

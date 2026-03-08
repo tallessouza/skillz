@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-encontrando-conteudo-texto
 description: "Applies JavaScript string search methods (indexOf, includes) when writing code that searches, filters, or validates text content. Use when user asks to 'find text in string', 'check if string contains', 'search in text', 'verify content exists', or 'get position of word'. Ensures case-insensitive comparisons use toLowerCase/toUpperCase. Make sure to use this skill whenever generating code that checks for substrings or searches within strings. Not for regex patterns, array searching, or DOM text manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-strings
+  tags: [javascript, strings, indexOf, includes, search, case-insensitive]
 ---
 
 # Encontrando Conteudo no Texto
@@ -82,13 +88,15 @@ if (message.toLowerCase().includes(searchTerm.toLowerCase())) {
 | `str.includes("Java")` sem normalizar case | `str.toLowerCase().includes("java")` |
 | Comparar lowercase de um lado so | Normalizar ambos os lados |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `includes()` retorna false mas texto existe | Diferenca de case entre busca e conteudo | Normalizar ambos com `toLowerCase()` antes de comparar |
+| `indexOf()` retorna 0 mas condicao falha | Comparacao com `> 0` ignora posicao 0 | Usar `!== -1` ou `includes()` para verificacao booleana |
+| Busca por frase nao encontra match | Espacos extras ou caracteres especiais invisíveis | Usar `trim()` antes de comparar e verificar caracteres |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encontrando-um-conteudo-no-texto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encontrando-um-conteudo-no-texto/references/code-examples.md)

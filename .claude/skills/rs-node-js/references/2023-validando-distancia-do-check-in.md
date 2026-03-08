@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-validando-distancia-check-in
 description: "Enforces geolocation distance validation patterns when implementing check-in, proximity, or location-based features in Node.js/TypeScript. Use when user asks to 'validate distance', 'check proximity', 'implement check-in', 'geofencing', or 'calculate distance between coordinates'. Applies Haversine formula, named constants for magic numbers, and TDD approach for geo-validation. Make sure to use this skill whenever building location-based business rules. Not for map rendering, GPS tracking, or frontend geolocation APIs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: validacao-distancia
+  tags: [geolocation, haversine, distance, check-in, coordinates, tdd, prisma-decimal]
 ---
 
 # Validando Distancia em Check-ins
@@ -122,14 +128,14 @@ if (distance > MAX_DISTANCE_IN_KILOMETERS) {
 | Coordenadas `{ latitude: 0, longitude: 0 }` em todos os testes | Coordenadas reais consistentes entre usuario e academia |
 | `throw new Error()` generico | `throw new MaxDistanceError()` especifico |
 
+## Troubleshooting
+
+### Calculo de distancia retorna NaN ou erro de tipo
+**Symptom:** `getDistanceBetweenCoordinates` retorna `NaN` ou `TypeError: latitude.toFixed is not a function`
+**Cause:** Os campos latitude/longitude do Prisma sao do tipo `Decimal`, nao `number`, e funcoes matematicas nao aceitam Decimal
+**Fix:** Converta com `.toNumber()` antes de passar para a funcao: `gym.latitude.toNumber()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-validando-distancia-do-check-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-validando-distancia-do-check-in/references/code-examples.md)

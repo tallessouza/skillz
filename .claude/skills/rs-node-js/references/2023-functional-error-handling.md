@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-functional-error-handling
 description: "Applies the Either pattern (Left/Right) for functional error handling in TypeScript/Node.js. Use when user asks to 'handle errors', 'create use case', 'return errors from functions', 'implement Either pattern', or 'avoid throw in domain layer'. Enforces returning typed Either tuples instead of throwing exceptions in use cases and domain code. Make sure to use this skill whenever implementing use cases, domain services, or any function that can fail in a DDD/Clean Architecture context. Not for HTTP error responses, middleware error handling, or infrastructure-level try/catch."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling
+  tags: [either, left, right, error-handling, typescript, ddd, use-case, functional]
 ---
 
 # Functional Error Handling (Either Pattern)
@@ -148,14 +154,14 @@ async execute({ commentId, authorId }: Request): Promise<Response> {
 | `{ success: boolean, data?: T, error?: string }` | `Either<L, R>` com classes Left e Right |
 | `new Left(value)` direto | `left(value)` via funcao helper |
 
+## Troubleshooting
+
+### TypeScript nao infere o tipo do Either corretamente
+**Symptom:** O tipo de retorno aparece como Either<unknown, unknown> em vez dos tipos especificos
+**Cause:** O type alias Either nao foi definido no retorno do use case ou as funcoes helper left/right nao estao tipadas corretamente
+**Fix:** Defina o type alias explicito: type Response = Either<ErrorType, SuccessType> e use-o como retorno do execute()
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-functional-error-handling/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-functional-error-handling/references/code-examples.md)

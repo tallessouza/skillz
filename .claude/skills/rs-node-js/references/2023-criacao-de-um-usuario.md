@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-criacao-de-um-usuario
 description: "Generates user registration routes with Fastify, Prisma, and Zod validation. Use when user asks to 'create a user route', 'register endpoint', 'signup API', 'user CRUD', or 'Fastify POST route with validation'. Applies patterns: Zod body parsing with z.parse() for auto-throw, Prisma client isolation in lib/, conditional query logging, 201 empty response for creation endpoints. Make sure to use this skill whenever building registration or creation endpoints with Fastify and Prisma. Not for authentication flows, JWT tokens, session management, or frontend forms."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [fastify, prisma, zod, registration, bcrypt]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Criacao de Usuario — Rota de Registro
@@ -118,14 +125,14 @@ app.post('/users', async (request, reply) => {
 | `safeParse` + if manual no handler | `parse()` com throw automatico |
 | `log: ['query']` em producao | `log: env.NODE_ENV === 'dev' ? ['query'] : []` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criacao-de-um-usuario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criacao-de-um-usuario/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-criacao-de-um-usuario/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-criacao-de-um-usuario/references/code-examples.md) — Todos os exemplos de código expandidos com variações

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcao-construtora
 description: "Enforces correct constructor function patterns when writing JavaScript/TypeScript code. Use when user asks to 'create a constructor', 'instantiate objects', 'use new keyword', 'create factory functions', or 'build object templates'. Applies rules: explicit object construction with return, this-based property assignment, proper use of new operator for instantiation. Make sure to use this skill whenever generating constructor functions or object factories. Not for ES6 class syntax, prototype chain manipulation, or design patterns like Singleton."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: poo-javascript
+  tags: [javascript, constructor, new, funcao-construtora, oop]
 ---
 
 # Funções Construtoras em JavaScript
@@ -92,6 +98,15 @@ const product3 = new createProduct("Monitor")
 | Retornar objeto na abordagem `this` | Nao retorne nada — `new` cuida disso |
 | Esquecer `return` na abordagem classica | Sempre retorne o objeto criado |
 | Usar `this` sem entender o contexto | `this` referencia o objeto onde o metodo esta |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao retorna `undefined` ao inves do objeto | Esqueceu `return` na abordagem classica | Adicione `return product` no final da funcao |
+| `this.name` retorna `undefined` | Esqueceu `new` ao chamar a construtora | Sempre use `new NomeFuncao()` para instanciar |
+| Duas instancias compartilham dados | Variavel declarada fora da funcao construtora | Mova a variavel para dentro da funcao com `this.prop` |
+| Console sugere converter para `class` | JavaScript moderno recomenda class syntax | Migre para `class` se possivel |
 
 ## Deep reference library
 

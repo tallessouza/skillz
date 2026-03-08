@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-condicionais-no-render
 description: "Enforces extracting conditional logic out of JSX render blocks in React components. Use when user asks to 'create a component', 'write JSX', 'add conditional rendering', 'show/hide elements', or any React render task. Moves JavaScript operations above the return statement into named boolean variables. Make sure to use this skill whenever writing React components with conditionals. Not for non-React code, CSS conditional styles, or server-side rendering logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: componentes-react
+  tags: [react, jsx, conditional-rendering, boolean-variables, readability, clean-code]
 ---
 
 # Condicionais no Render
@@ -78,10 +84,17 @@ return (
 | `{data.filter(x => x.active).length > 0 && ...}` | `{hasActiveItems && ...}` |
 | `{a && b && c ? <X /> : <Y />}` | `const shouldShowX = a && b && c` |
 
+## Troubleshooting
+
+### Componente renderiza `0` em vez de nada quando a lista esta vazia
+**Symptom:** A tela mostra o numero `0` onde deveria estar vazio quando `items.length` e zero.
+**Cause:** Em JSX, `{0 && <Component />}` renderiza `0` porque zero e um valor falsy mas renderizavel. O `&&` retorna o lado esquerdo quando falsy.
+**Fix:** Use booleano explicito: `const isEmpty = items.length === 0` e entao `{isEmpty && <EmptyState />}`, ou use ternario: `{items.length > 0 ? <List /> : null}`.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

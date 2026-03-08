@@ -1,6 +1,12 @@
 ---
 name: rs-devops-automatizando-tudo
 description: "Applies DevOps automation principles from CALMS framework when designing CI/CD pipelines, infrastructure as code, or evaluating manual processes. Use when user asks to 'automate deployment', 'setup CI/CD', 'create infrastructure', 'implement GitOps', or 'reduce manual tasks'. Enforces continuous delivery automation and single source of truth via GitOps/IaC. Make sure to use this skill whenever evaluating operational processes or cloud resource management. Not for application code patterns, testing strategies, or monitoring setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: devops-automation
+  tags: [devops]
 ---
 
 # Automacao no CALMS — Pilar A
@@ -95,14 +101,14 @@ Console Cloud ←── read-only (visualizacao apenas)
 | Manter processo repetitivo "porque leva so 10 min" | Automatizar — nao escala no longo prazo |
 | Permitir alteracao de infra sem code review | GitOps: toda mudanca passa pelo Git |
 
+## Troubleshooting
+
+### Pipeline de CI/CD falha em etapa de deploy automatizado
+**Symptom:** Build e testes passam mas deploy falha com erro de permissao ou credencial
+**Cause:** Credenciais de acesso a cloud nao estao configuradas como secrets no CI/CD
+**Fix:** Configure secrets (AWS_ACCESS_KEY, tokens) no provedor de CI/CD e referencie como variaveis de ambiente no pipeline
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-automatizando-tudo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-automatizando-tudo/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-automatizando-tudo/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-automatizando-tudo/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

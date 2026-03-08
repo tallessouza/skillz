@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-gerenciamento-segredos
 description: "Enforces secrets management practices when writing application code that connects to databases, APIs, or external services. Use when user asks to 'connect to database', 'add API key', 'configure credentials', 'deploy application', or 'setup environment variables'. Applies rules: no hardcoded credentials, config-sample pattern, least-privilege database access, dedicated application users. Make sure to use this skill whenever generating code with connection strings, API keys, or any sensitive configuration. Not for encryption algorithms, authentication flows, or frontend security."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, secrets, credentials, environment-variables]
 ---
 
 # Gerenciamento de Segredos
@@ -138,14 +144,14 @@ db = mysql.connector.connect(**config["db"])
 | Conectar ao banco como root na aplicacao | Criar usuario do banco com permissoes minimas |
 | Deixar arquivo de dump SQL no servidor | Remover dumps apos importacao |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerenciamento-de-segredos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerenciamento-de-segredos/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerenciamento-de-segredos/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerenciamento-de-segredos/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-capturando-evento-input
 description: "Applies input event handling patterns when writing JavaScript form validation code. Use when user asks to 'validate input', 'capture input changes', 'listen to form input', 'filter input characters', or 'restrict input to numbers only'. Enforces onInput event usage for character-by-character validation, proper element selection by ID, and organized code with section comments. Make sure to use this skill whenever building form input validation or filtering user input in real-time. Not for form submission handling, backend validation, or React/framework-specific form patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, events, oninput, validation, forms]
 ---
 
 # Capturando o Evento de Input
@@ -79,13 +85,17 @@ amount.oninput = () => {
 | `addEventListener("keydown", ...)` para filtrar conteudo | `element.oninput` (captura tudo: digitacao, colagem, apagar) |
 | Selecoes de elementos espalhadas pelo codigo | Agrupadas no topo com comentario de secao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Evento nao dispara ao digitar | Usou `onchange` em vez de `oninput` | Substitua por `element.oninput` para captura em tempo real |
+| `getElementById` retorna `null` | ID no HTML nao bate com o JavaScript | Verifique o atributo `id` no HTML |
+| Validacao nao funciona ao colar texto | `onkeydown` nao captura paste | Use `oninput` que captura digitacao, colagem e apagar |
+| Regex nao remove todos os caracteres | Regex sem flag `g` (global) | Use `/\D/g` com flag `g` para substituir todas as ocorrencias |
+| Input fica vazio apos digitar | Regex muito restritiva removendo tudo | Revise o padrao regex para manter caracteres desejados |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre oninput vs onchange, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-capturando-o-evento-de-input/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-capturando-o-evento-de-input/references/code-examples.md)

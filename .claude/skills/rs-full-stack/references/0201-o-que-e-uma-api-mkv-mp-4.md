@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-uma-api
 description: "Applies API architecture mental models when designing or explaining client-server systems. Use when user asks to 'create an API', 'build a REST endpoint', 'explain API concepts', 'design client-server architecture', or 'setup routes'. Ensures correct understanding of request-response cycle, route structure, and HTTP protocol. Make sure to use this skill whenever building or discussing APIs in Node.js projects. Not for frontend-only components, database schema design, or deployment configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [api, rest, http, client-server, routes, architecture]
 ---
 
 # O que é uma API
@@ -75,13 +81,13 @@ Cliente (front-end)
 - Este modelo cobre APIs REST sobre HTTP — nao se aplica diretamente a WebSockets, GraphQL ou gRPC sem adaptacoes
 - A analogia do restaurante simplifica: APIs reais lidam com autenticacao, rate limiting, versionamento e outros concerns
 
+## Troubleshooting
+
+### Problem: API endpoint returns no response, client hangs until timeout
+- **Cause**: The route handler does not send a response back (missing `res.json()`, `res.send()`, or `res.end()`)
+- **Fix**: Ensure every route handler returns a response in all code paths, including error cases — the API must always respond, even with an error status
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias expandidas e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos de codigo com variacoes de rotas e requisicoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0201-o-que-e-uma-api-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0201-o-que-e-uma-api-mkv-mp-4/references/code-examples.md)

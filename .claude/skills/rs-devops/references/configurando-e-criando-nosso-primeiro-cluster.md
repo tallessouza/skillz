@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-criando-primeiro-cluster
-description: "Guides Kubernetes cluster creation with Kind when user asks to 'create a cluster', 'setup kubernetes locally', 'configure kind', 'run kubernetes with docker', or 'setup k8s dev environment'. Enforces separation of control plane from worker nodes, declarative over imperative approach, and namespace scoping. Make sure to use this skill whenever setting up local Kubernetes clusters or discussing Kind configuration. Not for cloud-managed Kubernetes (EKS, GKE, AKS), Helm charts, or application deployment."
+description: "Configures Kubernetes cluster creation with Kind enforcing control plane and worker node separation. Use when user asks to 'create a cluster', 'setup kubernetes locally', 'configure kind', 'run kubernetes with docker', or 'setup k8s dev environment'. Enforces declarative configuration over imperative commands, namespace scoping for applications, and context verification after creation. Make sure to use this skill whenever setting up local Kubernetes clusters or discussing Kind configuration. Not for cloud-managed Kubernetes (EKS, GKE, AKS), Helm charts, or application deployment."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-kind
+  tags: [kubernetes, kind, cluster, control-plane, kubectl, namespaces]
 ---
 
 # Criando Cluster Kubernetes com Kind
@@ -86,14 +92,14 @@ Pods esperados: CoreDNS, etcd, kube-apiserver, kube-controller-manager, kube-sch
 | Ignore o contexto do kubectl | Sempre set context apos criar cluster |
 | Assuma que `kind create cluster` cria workers | Verifique com `kubectl get nodes` — so cria control plane |
 
+## Troubleshooting
+
+### Pods nao aparecem ao rodar kubectl get pods
+**Symptom:** `kubectl get pods` retorna 'No resources found in default namespace'
+**Cause:** Nenhuma aplicacao foi deployada no namespace default — os pods do sistema ficam em kube-system
+**Fix:** Use `kubectl get pods -n kube-system` para ver pods do control plane, ou faca deploy da sua aplicacao primeiro
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-e-criando-nosso-primeiro-cluster/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-e-criando-nosso-primeiro-cluster/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-e-criando-nosso-primeiro-cluster/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-e-criando-nosso-primeiro-cluster/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

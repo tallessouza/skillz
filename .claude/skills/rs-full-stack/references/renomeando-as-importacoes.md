@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renomeando-as-importacoes
 description: "Applies JavaScript import renaming with 'as' keyword when writing ES module imports. Use when user asks to 'import a module', 'fix naming conflict', 'rename import', 'organize imports', or 'resolve duplicate names'. Ensures correct use of 'import { x as y }' syntax to avoid identifier conflicts. Make sure to use this skill whenever generating code with ES module imports that could conflict with local names. Not for export renaming, CommonJS require, or TypeScript type imports."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: es-modules
+  tags: [javascript, es-modules, import, renaming, naming-conflict]
 ---
 
 # Renomeando Importações em JavaScript
@@ -77,6 +83,15 @@ function multiply(a, b) {
 | `import { x } from './m'; const y = x` | `import { x as y } from './m'` |
 | Dois `import` do mesmo nome sem `as` | Renomear um deles com `as` |
 | `const multiply = require('./math').multiply` quando ja tem `multiply` local | `const externalMultiply = require('./math').multiply` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "Identifier has already been declared" | Import com mesmo nome de variavel/funcao local | Renomeie o import com `as`: `import { x as aliasX }` |
+| Import renomeado nao funciona | Nome original usado em vez do alias | Use o nome do alias (apos `as`) no codigo |
+| Dois modulos exportam mesmo nome | Conflito de nomes entre modulos | Renomeie um ou ambos com `as` no import |
+| Autocomplete mostra nome original | Editor usa o nome exportado, nao o alias | O alias so vale no arquivo que importa; isso e comportamento esperado |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-projeto-2027
 description: "Applies Q&A API project structure conventions when scaffolding Node.js/Express APIs with ORM integration. Use when user asks to 'create an API', 'scaffold a project', 'setup express routes', 'organize controllers', or 'start a CRUD project'. Enforces separation of routes, controllers, and centralized route index. Make sure to use this skill whenever generating a new REST API project structure with CRUD operations. Not for frontend, database schema design, or ORM configuration itself."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-structure
+  tags: [express, api, routes, controllers, CRUD, project-structure]
 ---
 
 # Estrutura de Projeto API REST com CRUD
@@ -103,13 +109,15 @@ export { router }
 | Commitar `node_modules` | Adicione ao `.gitignore` e rode `npm install` |
 | Um unico controller gigante para todos os recursos | Um controller por recurso/entidade |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `Cannot find module '../controllers/...'` | Caminho de importacao incorreto | Verifique o caminho relativo entre routes/ e controllers/ |
+| `npm install` falha ao clonar | `node_modules` nao existe no repo | Rode `npm install` — `node_modules` esta no `.gitignore` |
+| Rotas nao respondem | Router nao registrado no index | Importe e use o router no `routes/index.ts` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a separacao de responsabilidades e o uso de templates
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-projeto-2027/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-projeto-2027/references/code-examples.md)

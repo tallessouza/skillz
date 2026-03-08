@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-pastas
 description: "Enforces Clean Architecture folder structure with DDD subdomains in Node.js/TypeScript projects. Use when user asks to 'organize folders', 'refactor project structure', 'apply clean architecture', 'setup DDD structure', or 'create domain layers'. Applies domain/subdomain separation with application and enterprise layers. Make sure to use this skill whenever structuring a new Node.js project or reorganizing existing folder hierarchy. Not for file naming conventions, variable naming, or code-level patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: clean-architecture-folders
+  tags: [clean-architecture, ddd, folder-structure, subdomain, application-layer, enterprise-layer]
 ---
 
 # Estrutura de Pastas: Clean Architecture + DDD
@@ -107,14 +113,14 @@ src/
 | Um unico subdomain chamado `core` ou `main` | Nomeie pelo contexto de negocio: `forum`, `billing`, `notification` |
 | Misturar entidades e use-cases na mesma pasta | Separe em `enterprise/` e `application/` |
 
+## Troubleshooting
+
+### Imports quebrados apos mover pastas
+**Symptom:** TypeScript ou testes falham com "Cannot find module" apos reorganizar a estrutura de pastas
+**Cause:** Importacoes relativas (`../../../`) nao foram atualizadas automaticamente pela IDE
+**Fix:** Configure path aliases no `tsconfig.json` (ex: `@domain/*`, `@core/*`) e rode os testes para verificar. Use busca global para encontrar imports quebrados
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-as-pastas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-as-pastas/references/code-examples.md)

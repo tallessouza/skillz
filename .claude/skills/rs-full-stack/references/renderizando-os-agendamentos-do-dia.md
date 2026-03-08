@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renderizando-agendamentos-dia
 description: "Applies dynamic DOM rendering patterns when building schedule/appointment displays grouped by time periods. Use when user asks to 'render a list', 'display appointments', 'show schedules by period', 'create dynamic HTML elements', or 'group items by time'. Enforces createElement workflow, innerHTML clearing, conditional period assignment, and dayjs formatting. Make sure to use this skill whenever dynamically rendering API data into categorized DOM lists. Not for static HTML, React/Vue components, or CSS styling tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, rendering, dayjs, scheduling]
 ---
 
 # Renderizando Agendamentos por Período
@@ -134,6 +140,15 @@ export function scheduleShow(dailySchedules) {
 | Render sem try/catch | Sempre envolva renderização em try/catch |
 | `item.id = schedule.id` | `item.setAttribute("data-id", schedule.id)` |
 | Horário cru da API na tela | `dayjs(schedule.when).format("HH:mm")` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Lista duplica itens ao recarregar | Falta `innerHTML = ""` antes de popular | Limpe todos os containers antes do forEach |
+| Horario aparece em formato errado | Falta formatacao com dayjs | Use `dayjs(schedule.when).format("HH:mm")` |
+| Itens aparecem no periodo errado | Logica de hora incorreta no if/else | Verifique os limites: `<= 12` manha, `<= 18` tarde, else noite |
+| Erro "Cannot read property of null" | Elemento do DOM nao encontrado pelo ID | Verifique se o ID no HTML corresponde ao `getElementById` |
 
 ## Deep reference library
 

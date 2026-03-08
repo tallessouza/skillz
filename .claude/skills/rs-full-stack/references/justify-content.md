@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-justify-content
 description: "Applies Flexbox justify-content distribution patterns when writing CSS layouts. Use when user asks to 'align items', 'distribute elements', 'space elements', 'center content', or 'create a flex layout'. Covers flex-start, flex-end, center, space-evenly, space-around, space-between along main axis. Make sure to use this skill whenever generating Flexbox layouts that need element distribution. Not for align-items, align-content, or Grid layout alignment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, justify-content, alignment, layout, spacing]
 ---
 
 # Justify Content — Distribuicao no Eixo Principal
@@ -75,13 +81,15 @@ description: "Applies Flexbox justify-content distribution patterns when writing
 | Confundir space-around com space-evenly | Around = espacos dobram entre items; Evenly = todos iguais |
 | Usar justify-content para alinhar no eixo cruzado | Use `align-items` para eixo cruzado |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `justify-content` não faz efeito | Container não tem espaço sobrando (filhos ocupam 100%) | Verifique que os filhos não preenchem toda a largura do container |
+| `justify-content: center` em column não centraliza | Container não tem `height` definido | Adicione `height: 100vh` ou outro valor explícito ao container |
+| `space-around` e `space-evenly` parecem iguais | Diferença sutil nos espaçamentos nas bordas | `space-around` dobra o espaço entre items; `space-evenly` distribui igualmente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-justify-content/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-justify-content/references/code-examples.md)

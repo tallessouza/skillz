@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exportando-requisicoes
 description: "Applies Insomnia export/import workflow when user asks to 'export requests', 'save Insomnia collection', 'import API requests', 'share Insomnia workspace', or 'backup API routes'. Guides through exporting collections as JSON and importing them back. Make sure to use this skill whenever working with Insomnia request management or API collection sharing. Not for creating new requests, configuring environments, or writing API code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-tooling
+  tags: [insomnia, api, export, import, json, requests]
 ---
 
 # Exportando e Importando Requisicoes no Insomnia
@@ -59,13 +65,16 @@ Arquivo `requests_insomnia.json` na raiz do projeto contendo todas as requisicoe
 | Compartilhar com colega | Enviar o JSON exportado |
 | Esqueceu como fez uma requisicao | Consultar o JSON exportado ou reimportar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Importacao nao mostra requisicoes | Formato JSON incompativel com versao do Insomnia | Verificar versao do Insomnia e re-exportar se necessario |
+| Arquivo JSON corrompido | Edicao manual do arquivo ou merge conflict | Re-exportar a partir do Insomnia original |
+| Opcao "Export" nao aparece no menu | Versao antiga do Insomnia | Atualizar o Insomnia para versao mais recente |
+| URLs das requisicoes apontam para localhost errado | Ambiente diferente do original | Ajustar base URL nas variaveis de ambiente do Insomnia |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que versionar requisicoes
-- [code-examples.md](references/code-examples.md) — Exemplo do JSON exportado e variações de uso
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exportando-requisicoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exportando-requisicoes/references/code-examples.md)
+- [code-examples.md](references/code-examples.md) — Exemplo do JSON exportado e variacoes de uso

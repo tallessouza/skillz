@@ -1,6 +1,12 @@
 ---
 name: rs-devops-continuous-delivery
 description: "Applies Continuous Delivery and Continuous Deployment practices when designing CI/CD pipelines, configuring deployment workflows, or setting up staging/production environments. Use when user asks to 'create a pipeline', 'deploy to production', 'setup CD', 'configure deployment', 'rollback strategy', or 'canary deployment'. Ensures CD always extends CI, environments are mirrored, and gradual release strategies are considered. Make sure to use this skill whenever designing deployment automation or discussing release strategies. Not for application code, unit testing, or CI-only configurations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-pipelines
+  tags: [continuous-delivery, continuous-deployment, ci-cd, canary, rollback, staging, pipeline]
 ---
 
 # Continuous Delivery / Continuous Deployment
@@ -114,14 +120,14 @@ terraform apply tfplan
 | Deploy 100% imediato de feature arriscada | Canary deployment gradual |
 | Pipeline sem smoke test pos-deploy | Smoke test que triga rollback automatico |
 
+## Troubleshooting
+
+### Deploy em producao quebrou e rollback manual e lento
+**Symptom:** Deploy com bug em producao e equipe precisa fazer SSH para reverter manualmente
+**Cause:** Pipeline sem mecanismo de rollback automatizado
+**Fix:** Adicione smoke test pos-deploy com rollback automatico: `run-smoke-tests || rollback --to-previous-version`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-continuous-delivery/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-continuous-delivery/references/code-examples.md)

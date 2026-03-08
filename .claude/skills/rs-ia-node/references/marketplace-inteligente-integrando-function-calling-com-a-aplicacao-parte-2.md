@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-function-calling-loop
 description: "Enforces correct OpenAI function calling message flow when implementing tool use in Node.js applications. Use when user asks to 'implement function calling', 'add tool use to chat', 'integrate OpenAI tools', 'handle tool_calls response', or 'build AI agent with functions'. Applies rules: maintain full message history, use role 'tool' (not 'function'), push assistant tool_call message before result, extract completion logic to avoid repetition. Make sure to use this skill whenever building OpenAI function calling flows in Node.js. Not for prompt engineering, embeddings, or non-tool chat completions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: function-calling
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Function Calling — Loop de Mensagens
@@ -133,14 +139,14 @@ const completion2 = await generateCompletion(messages, responseFormat)
 | Retornar objeto completo do banco | Retornar so campos necessarios (ex: `.name`) |
 | Criar completion2, completion3, completion4... | Usar loop/recursao (resolvido na proxima aula) |
 
+## Troubleshooting
+
+### Modelo nao chama a funcao esperada
+**Symptom:** completion retorna content direto em vez de tool_calls
+**Cause:** Description da tool muito vaga, ou prompt do usuario nao indica necessidade de dados reais
+**Fix:** Melhore a description da tool com casos de uso claros. Adicione no prompt instrucoes explicitas como "considere apenas produtos em estoque" 
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-function-calling-com-a-aplicacao-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-function-calling-com-a-aplicacao-parte-2/references/code-examples.md)

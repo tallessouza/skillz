@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-features
 description: "Applies Azure provider features configuration and safe resource deletion patterns in Terraform. Use when user asks to 'configure Azure provider', 'delete resource group', 'prevent accidental deletion', 'create virtual network', or 'link resources to resource group'. Enforces prevent_deletion_if_contains_resources feature, cascaded deletion order, and dynamic resource referencing. Make sure to use this skill whenever writing Terraform code for Azure resource groups or configuring Azure provider features. Not for AWS, GCP, or non-Terraform infrastructure code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-azure
+  tags: [terraform, iac, azure, resource-group, features, virtual-network]
 ---
 
 # Configurando Features — Azure Provider no Terraform
@@ -115,14 +121,14 @@ resource "azurerm_virtual_network" "vnet" {
 | `features {}` em producao sem protecoes | `features { resource_group { prevent_deletion_if_contains_resources = true } }` |
 | Deletar resource group direto | Deletar recursos filhos primeiro com `--target` |
 
+## Troubleshooting
+
+### Terraform deleta resource group com todos os recursos dentro
+**Symptom:** Ao rodar terraform destroy, todos os recursos dentro do resource group sao deletados inesperadamente
+**Cause:** A feature `prevent_deletion_if_contains_resources` nao esta ativa no provider azurerm
+**Fix:** Adicione `features { resource_group { prevent_deletion_if_contains_resources = true } }` no provider e delete recursos filhos com `--target` primeiro
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-features/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-features/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-features/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-features/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

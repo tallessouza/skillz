@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-display
 description: "Applies CSS display property concepts (block vs inline) when writing HTML/CSS layouts. Use when user asks to 'create a layout', 'style elements', 'fix element positioning', 'make elements side by side', or 'stack elements vertically'. Enforces correct understanding of HTML flow, block vs inline behavior, and display context (outer vs inner). Make sure to use this skill whenever generating HTML structure or CSS layout code. Not for flexbox, grid, or advanced layout techniques."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentos
+  tags: [css, display, block, inline, layout, html-flow]
 ---
 
 # Display CSS — Block vs Inline
@@ -87,13 +93,16 @@ li {
 | Ignorar o display padrao da tag | Consulte se a tag e block ou inline antes de estilizar |
 | Confundir display externo com interno | Block/inline = ao redor; flex/grid = dentro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elementos inline nao aceitam width/height | Inline ignora dimensoes — e o comportamento padrao | Mude para `display: inline-block` ou `display: block` |
+| `<div>` aparece lado a lado inesperadamente | Algum CSS esta sobrescrevendo o display padrao | Inspecione com DevTools e verifique se ha `display: inline` ou `display: flex` no pai |
+| `<span>` nao aceita margin-top/bottom | Elementos inline ignoram margin vertical | Use `display: inline-block` para permitir margin vertical |
+| Elementos empilham quando deveriam ficar lado a lado | Sao block por padrao — ocupam a linha inteira | Mude para `display: inline-block` ou use flexbox no container pai |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre flow, analogias e contexto de display
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-display/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-display/references/code-examples.md)

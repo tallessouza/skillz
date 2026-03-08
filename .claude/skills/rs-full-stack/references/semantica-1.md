@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-semantica-1
 description: "Enforces semantic HTML element usage when writing HTML markup. Use when user asks to 'create a page', 'write HTML', 'build a layout', 'add a section', or any HTML structure task. Applies rules: use semantic tags over generic divs, match element to content purpose, never use divs for titles/paragraphs/navigation/sections. Make sure to use this skill whenever generating HTML, even if the user doesn't mention semantics. Not for CSS styling, JavaScript logic, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags:
+    - html
+    - semantics
+    - accessibility
+    - seo
+    - structure
 ---
 
 # HTML Semântico
@@ -107,6 +118,15 @@ description: "Enforces semantic HTML element usage when writing HTML markup. Use
 | `<div class="footer">` | `<footer>` |
 | `<span class="link">` | `<a href="...">` |
 | `<div class="image">` com background-image | `<img src="..." alt="...">` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Leitor de tela nao identifica regioes da pagina | Uso exclusivo de divs sem elementos semanticos | Substitua divs por `<header>`, `<nav>`, `<main>`, `<footer>` |
+| SEO fraco apesar de conteudo bom | Titulos em divs em vez de tags `<h1>`-`<h6>` | Use heading tags na hierarquia correta |
+| Botao nao acessivel via teclado | Usando `<div onclick>` em vez de `<button>` | Substitua por `<button>` que tem acessibilidade nativa |
+| Formulario nao submete com Enter | Elementos interativos em divs genericas | Use `<form>`, `<button type="submit">` e `<input>` semanticos |
 
 ## Deep reference library
 

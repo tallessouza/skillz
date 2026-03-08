@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-agent-mode-gerar-entao-explicar
 description: "Enforces the 'generate then explain' learning methodology when using AI to write code. Use when user says 'I don't understand this code', 'explain what the AI generated', 'should I accept this code', 'help me learn from AI output', or 'I'm stuck on a challenge'. Ensures learners understand every line AI produces before moving forward, using first principles, analogies, and micro victories. Make sure to use this skill whenever a learner is working with AI-generated code or expressing frustration with understanding. Not for code generation itself, debugging, or project architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [ai, learning, methodology, first-principles, prompting]
 ---
 
 # Gerar Então Explicar
@@ -88,13 +94,16 @@ e explique os first principles."
 | Pular entendimento por pressa | Investir tempo agora para julgar melhor depois |
 | Depender so da IA sem tentar primeiro | Esforcar-se antes, usar IA como destravamento |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Explicação da IA ficou muito técnica | Não pediu "como se eu fosse da quinta série" | Reformule pedindo analogias simples e first principles |
+| Não consegue avaliar se o código está bom | Pulou a etapa de entendimento | Volte e peça explicação trecho por trecho em contexto separado |
+| Frustração com progresso lento | Tentando entender tudo de uma vez | Foque em micro vitórias — entenda um trecho pequeno por vez |
+| Esqueceu o que aprendeu ontem | Não usou active recall | Antes de pedir novo código, relembre ativamente o que aprendeu |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre micro vitorias, active recall e o ciclo gerar-explicar
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de prompts e fluxos de aprendizado
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-agent-mode-gerar-entao-explicar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-agent-mode-gerar-entao-explicar/references/code-examples.md)

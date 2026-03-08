@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-componentes-faltantes
 description: "Applies Mimir time-series database configuration with Docker Compose and Grafana datasource provisioning. Use when user asks to 'configure Mimir', 'add metrics backend', 'setup LGTM stack', 'provision Grafana datasource', or 'configure remote write for Tempo'. Follows patterns: Mimir docker-compose service, YAML config with ring replication, Grafana datasource provisioning, Tempo metrics_generator with remote_write to Mimir. Make sure to use this skill whenever setting up observability infrastructure with Grafana Mimir. Not for Prometheus scraping config, Loki log pipelines, or application-level instrumentation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-mimir
+  tags: [mimir, grafana, lgtm-stack, docker-compose, tempo, metrics]
 ---
 
 # Configurando Mimir — Banco de Métricas da Stack LGTM
@@ -181,14 +187,14 @@ metrics_generator:
 | Esquecer ring config em componentes | Configurar `kvstore.store: inmemory` em todos (ingester, distributor, compactor, store_gateway) |
 | Mapear porta `8080:9090` sem saber | Porta interna sempre `9090`, externa pode variar |
 
+## Troubleshooting
+
+### Datasource Mimir nao aparece no Grafana
+**Symptom:** Mimir esta rodando mas o Grafana nao mostra o datasource ou mostra como undefined
+**Cause:** O type do datasource esta como 'mimir' em vez de 'prometheus', ou a URL nao termina em /prometheus
+**Fix:** Use `type: prometheus` e `url: http://mimir:9090/prometheus` no arquivo de provisioning do Grafana
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-componentes-faltantes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-componentes-faltantes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-componentes-faltantes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-componentes-faltantes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

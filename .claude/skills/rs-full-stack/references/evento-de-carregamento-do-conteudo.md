@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-evento-carregamento-conteudo
 description: "Applies DOMContentLoaded event pattern for dynamic HTML content loading in vanilla JavaScript projects. Use when user asks to 'load content dynamically', 'render elements on page load', 'replace static HTML with JavaScript', 'listen for DOM ready', or 'initialize page content'. Ensures proper event binding, module separation, and dynamic rendering instead of hardcoded HTML. Make sure to use this skill whenever generating vanilla JS that needs to run after DOM is ready. Not for framework-based apps (React, Vue, Angular) that handle lifecycle internally."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, events, DOMContentLoaded, modules]
 ---
 
 # Evento de Carregamento do Conteudo
@@ -105,13 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
 | `import "./modules/load"` (sem extensao) | `import "./modules/load.js"` |
 | Deletar todo HTML estatico sem referencia | Comentar mantendo 1 exemplo por secao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Evento nao dispara | Grafia errada: `DOMContentLoad` sem "ed" | Corrigir para `DOMContentLoaded` |
+| Modulo nao executa | Import sem extensao `.js` | Usar `import "./modules/load.js"` com extensao |
+| Elementos nao encontrados no DOM | Script executando antes do DOM carregar | Envolver logica dentro do callback de `DOMContentLoaded` |
+| Conteudo duplicado na pagina | HTML estatico e dinamico coexistindo | Comentar HTML estatico antes de renderizar via JS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de modulos e evento DOMContentLoaded
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-evento-de-carregamento-do-conteudo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-evento-de-carregamento-do-conteudo/references/code-examples.md)

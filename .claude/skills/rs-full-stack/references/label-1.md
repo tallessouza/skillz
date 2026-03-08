@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-label-1
 description: "Enforces proper HTML label-input association for accessibility in forms. Use when user asks to 'create a form', 'add an input', 'build a login page', 'make a form accessible', or any HTML form generation task. Applies rules: every input must have an associated label, use for/id pairing or wrap input inside label, never rely on placeholder for accessibility, hide labels via CSS not by removing them. Make sure to use this skill whenever generating HTML forms, even if the user doesn't mention accessibility. Not for CSS styling, JavaScript validation, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, forms, label, accessibility, a11y, input]
 ---
 
 # Label e Acessibilidade em Formulários HTML
@@ -87,13 +93,15 @@ description: "Enforces proper HTML label-input association for accessibility in 
 | Confiar que placeholder basta para acessibilidade | Sempre ter label associado ao input |
 | `<label>Nome</label><input>` sem for/id | `<label for="nome">Nome</label><input id="nome">` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Clicar no label não foca o input | Atributo `for` do label não bate com o `id` do input | Confira que `<label for="x">` e `<input id="x">` usam o mesmo valor |
+| Leitor de tela não anuncia o nome do campo | Input sem label associado (só placeholder) | Adicione `<label>` com `for`/`id` ou envolva o input dentro do label |
+| Label visível indesejado no design | Design não prevê label visível mas acessibilidade requer | Use classe `visually-hidden` no label para ocultar visualmente mantendo acessibilidade |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre acessibilidade de labels e leitores de tela
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-label-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-label-1/references/code-examples.md)

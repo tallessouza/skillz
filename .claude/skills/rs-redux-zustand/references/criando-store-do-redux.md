@@ -1,125 +1,65 @@
 ---
-name: rs-redux-zustand-criando-store-redux
-description: "Applies Redux Toolkit store setup pattern when creating or configuring global state in React applications. Use when user asks to 'setup Redux', 'create a store', 'configure Redux Toolkit', 'add global state', or 'share state between components'. Covers configureStore, createSlice, Provider setup, and useSelector usage. Make sure to use this skill whenever scaffolding Redux in a React project. Not for Zustand, Context API alone, or server-side state management."
+name: rs-redux-zustand-criando-store-do-redux
+description: "Applies Redux Toolkit store setup patterns when creating or configuring global state in React applications. Use when user asks to 'setup Redux', 'create a store', 'configure Redux Toolkit', 'add global state with Redux', or 'install reduxjs toolkit'. Covers configureStore, createSlice, Provider wrapping, and useSelector usage. Make sure to use this skill whenever scaffolding Redux in a React project or adding new slices to an existing store. Not for Zustand setup (use setup-do-zustand), Context API alone, or server-side state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: redux-zustand
+  module: criando-store
+  tags: [redux-toolkit, configureStore, createSlice, provider, useSelector, react]
 ---
 
 # Criando Store do Redux com Redux Toolkit
 
-> Configurar estado global com Redux Toolkit usando configureStore, createSlice, Provider e useSelector.
+> Configure estado global com Redux Toolkit usando configureStore, createSlice, Provider e useSelector.
 
 ## Rules
 
-1. **Use Redux Toolkit, nunca Redux puro** — `@reduxjs/toolkit` substitui o antigo `react-redux` standalone, porque simplifica drasticamente boilerplate e é a recomendacao oficial
-2. **Organize estado em Slices** — cada dominio (cart, auth, todos) vira um slice separado via `createSlice`, porque evita um reducer monolitico impossivel de manter
-3. **Store fica em `src/store/index.ts`** — ponto unico de configuracao com `configureStore`, porque centraliza todos os reducers
-4. **Provider no main.tsx** — envolva `<App />` com o Provider do `react-redux` passando a store, porque sem isso nenhum componente acessa o estado
-5. **useSelector para leitura** — selecione apenas o slice necessario (`state.todo`), nunca retorne o store inteiro, porque causa re-renders desnecessarios
-6. **Instale ambos os pacotes** — `@reduxjs/toolkit` + `react-redux`, porque o Toolkit e agnostico de UI e precisa do binding React separado
+1. **Use Redux Toolkit, nunca Redux puro** — `@reduxjs/toolkit` substitui o setup manual, porque simplifica boilerplate e e a recomendacao oficial
+2. **Organize estado em Slices** — cada dominio vira um slice via `createSlice`, porque evita reducer monolitico
+3. **Store em `src/store/index.ts`** — ponto unico com `configureStore`, porque centraliza todos os reducers
+4. **Provider no main.tsx** — envolva `<App />` com Provider do `react-redux`, porque sem isso nenhum componente acessa o estado
+5. **useSelector para leitura seletiva** — selecione apenas o slice necessario (`state.todo`), nunca o store inteiro, porque causa re-renders desnecessarios
+6. **Instale ambos os pacotes** — `@reduxjs/toolkit` + `react-redux`, porque o Toolkit e agnostico de UI
 
 ## How to write
 
-### Store com configureStore
+### Store + Slice + Provider
 
 ```typescript
 // src/store/index.ts
-import { configureStore } from '@reduxjs/toolkit'
-import { todoSlice } from './slices/todo'
+import { configureStore, createSlice } from '@reduxjs/toolkit'
+const todoSlice = createSlice({ name: 'todo', initialState: ['Fazer cafe'], reducers: {} })
+export const store = configureStore({ reducer: { todo: todoSlice.reducer } })
+export type RootState = ReturnType<typeof store.getState>
 
-export const store = configureStore({
-  reducer: {
-    todo: todoSlice.reducer,
-  },
-})
-```
-
-### Slice com createSlice
-
-```typescript
-// src/store/slices/todo.ts
-import { createSlice } from '@reduxjs/toolkit'
-
-export const todoSlice = createSlice({
-  name: 'todo',
-  initialState: ['Fazer cafe', 'Estudar Redux'],
-  reducers: {
-    // actions serao definidas aqui
-  },
-})
-```
-
-### Provider no main.tsx
-
-```typescript
+// main.tsx
 import { Provider as ReduxProvider } from 'react-redux'
-import { store } from './store'
+<ReduxProvider store={store}><App /></ReduxProvider>
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ReduxProvider store={store}>
-    <App />
-  </ReduxProvider>
-)
-```
-
-### useSelector no componente
-
-```typescript
-import { useSelector } from 'react-redux'
-
-export function TodoList() {
-  const todos = useSelector((store: any) => store.todo)
-
-  return (
-    <ul>
-      {todos.map((todo: string) => (
-        <li key={todo}>{todo}</li>
-      ))}
-    </ul>
-  )
-}
+// Component
+const todos = useSelector((state: RootState) => state.todo)
 ```
 
 ## Example
 
-**Before (sem Redux, componentes isolados):**
+**Before (componentes isolados):**
 ```typescript
-// TodoList.tsx — dados hardcoded, sem compartilhamento
-export function TodoList() {
-  return <ul><li>Fazer cafe</li></ul>
-}
-
-// AddTodo.tsx — formulario que nao se comunica com a lista
-export function AddTodo() {
-  const [value, setValue] = useState('')
-  return <form><input value={value} onChange={e => setValue(e.target.value)} /></form>
-}
+export function TodoList() { return <ul><li>Fazer cafe</li></ul> }
 ```
 
-**After (com Redux Toolkit, estado compartilhado):**
+**After (com Redux Toolkit):**
 ```typescript
-// store/index.ts
-export const store = configureStore({
-  reducer: { todo: todoSlice.reducer },
-})
-
-// TodoList.tsx — le do estado global
-export function TodoList() {
-  const todos = useSelector((store: any) => store.todo)
-  return <ul>{todos.map(t => <li key={t}>{t}</li>)}</ul>
-}
-
-// AddTodo.tsx — pode despachar actions para o mesmo estado
-export function AddTodo() { /* dispatch para adicionar */ }
+const todos = useSelector((state: RootState) => state.todo)
+return <ul>{todos.map(t => <li key={t}>{t}</li>)}</ul>
 ```
 
 ## Heuristics
 
 | Situacao | Faca |
 |----------|------|
-| Dois+ componentes precisam do mesmo estado | Crie um slice no Redux |
-| Estado e local a um componente | Use useState, nao Redux |
 | Projeto novo com estado global | `npm i @reduxjs/toolkit react-redux` |
-| Multiplos dominios (cart, auth, favorites) | Um slice por dominio, todos no configureStore |
-| Provider nao configurado | Componentes nao conseguem useSelector — envolva App com Provider |
+| Multiplos dominios | Um slice por dominio, todos no configureStore |
 
 ## Anti-patterns
 
@@ -127,18 +67,21 @@ export function AddTodo() { /* dispatch para adicionar */ }
 |------------|---------------|
 | `import { createStore } from 'redux'` | `import { configureStore } from '@reduxjs/toolkit'` |
 | Retornar store inteiro no useSelector | Selecionar apenas o slice: `state.todo` |
-| Colocar tudo num reducer gigante | Separar em slices com createSlice |
-| Esquecer de instalar react-redux | Instalar ambos: `@reduxjs/toolkit` e `react-redux` |
-| Provider sem prop store | `<ReduxProvider store={store}>` |
+| Esquecer de instalar react-redux | Instalar ambos |
+
+## Troubleshooting
+
+### useSelector retorna undefined
+**Symptom:** Componente renderiza sem dados apesar do slice ter initialState.
+**Cause:** Provider nao esta envolvendo a aplicacao, ou a chave no configureStore nao bate.
+**Fix:** Verifique `<ReduxProvider store={store}>` envolvendo `<App />` e que `state.todo` corresponde a chave `todo` em `reducer: { todo }`.
+
+### TypeScript reclama de tipo unknown
+**Symptom:** `state` no selector e `unknown`.
+**Cause:** `useSelector` padrao nao conhece o formato do store.
+**Fix:** Crie `type RootState = ReturnType<typeof store.getState>` e use como type annotation.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/redux-zustand/rs-redux-zustand-criando-store-do-redux/references/deep-explanation.md)
-- [Code examples](../../../data/skills/redux-zustand/rs-redux-zustand-criando-store-do-redux/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-store-do-redux/references/deep-explanation.md) — Por que Redux Toolkit, conceito de Slices, Redux e agnostico de UI
+- [code-examples.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-store-do-redux/references/code-examples.md) — Instalacao, store, Provider, useSelector, multiplos slices

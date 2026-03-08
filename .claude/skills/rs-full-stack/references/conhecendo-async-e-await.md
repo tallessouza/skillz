@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-async-e-await
 description: "Applies async/await patterns when writing asynchronous JavaScript/TypeScript code. Use when user asks to 'fetch data', 'call an API', 'handle promises', 'write async function', or any asynchronous operation. Enforces async keyword placement, await usage, and try/catch/finally error handling over .then() chains. Make sure to use this skill whenever generating code that deals with promises or asynchronous operations. Not for synchronous code, event listeners setup, or promise constructor implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [async-await, promises, try-catch, error-handling, asynchronous, arrow-function]
 ---
 
 # Async e Await
@@ -93,13 +99,16 @@ async function fetchData() {
 | `.then().catch()` dentro de funcao async | Use try/catch com await |
 | `async` na arrow function no lugar errado | `const fn = async () =>` (antes dos parenteses) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel retorna `Promise { <pending> }` | `await` ausente antes da chamada async | Adicionar `await` antes da funcao assincrona |
+| `SyntaxError: await is only valid in async` | `await` usado fora de funcao `async` | Declarar a funcao como `async` |
+| Erro nao tratado causa crash | `await` sem `try/catch` | Envolver em `try/catch/finally` |
+| `async` na posicao errada em arrow function | `async` apos os parenteses | Usar `const fn = async () =>` (async antes dos parenteses) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar async/await vs .then(), como o JavaScript lida com promises internamente
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-async-e-await/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-async-e-await/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-de-transformacao
 description: "Applies CSS transform functions correctly when writing styles for movement, rotation, and scaling. Use when user asks to 'move an element', 'rotate', 'scale', 'animate', 'transform CSS', or any layout/visual effect task. Enforces correct transform order, proper axis usage, and combined transforms. Make sure to use this skill whenever generating CSS transforms or animations. Not for JavaScript animations, SVG transforms, or 3D transform functions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, transform, translate, rotate, scale, animation]
 ---
 
 # Funções de Transformação CSS
@@ -87,13 +93,16 @@ description: "Applies CSS transform functions correctly when writing styles for 
 | `scale(2px)` com unidade | `scale(2)` sem unidade |
 | `translate(100px)` para mover só no X | `translateX(100px)` explicitando o eixo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Transform nao funciona ou e ignorado | Duas declaracoes `transform` separadas — a segunda sobrescreve | Combine tudo numa unica propriedade: `transform: translateX(100px) rotate(45deg)` |
+| Elemento se move para direcao errada | Eixo Y no CSS cresce para baixo | Use valores negativos para mover para cima: `translateY(-10px)` |
+| `scale` nao funciona | Unidade adicionada ao valor | `scale` nao aceita unidade: use `scale(2)` e nao `scale(2px)` |
+| Rotacao parece errada apos translate | Ordem das funcoes altera o resultado | Coloque `translate` antes de `rotate` para mover na posicao original |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre ordem de transforms e sistema de coordenadas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-de-transformacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-de-transformacao/references/code-examples.md)

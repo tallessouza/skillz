@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-revisao-ia-aprendizado
 description: "Enforces active learning practices when using AI for programming education. Use when user asks to 'learn with AI', 'study programming', 'explain this code', 'use AI to learn', or discusses learning strategies with LLMs. Applies rules: disable autocomplete for learning, use active recall, explain each line aloud, rewrite generated code, use Tree of Thought for decisions, follow PARE methodology. Make sure to use this skill whenever the user is in a learning context or asks AI to explain code. Not for production code generation, deployment, or project architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "AI-Assisted Learning"
+  tags: ['learning', 'ai', 'methodology', 'active-recall']
 ---
 
 # IA no Aprendizado — Práticas de Aprendizado Ativo com IA
 
 > Use a IA como parceira de pensamento, nunca como substituta do seu raciocínio.
 
-## Key concept
+## Key concepts
 
 IA é probabilística, não determinística. O mesmo input pode gerar outputs diferentes dependendo do contexto. Isso significa que você precisa de pensamento crítico para avaliar cada resposta — a IA não é um compilador que sempre retorna o mesmo resultado.
 
@@ -51,6 +57,20 @@ Peça opções A, B, C. Para cada opção, peça sub-pontos 1, 2, 3. Resultado: 
 | Todos os modelos respondem igual | Modelos diferentes se destacam em domínios diferentes — experimente e anote |
 | Reescrever código gerado é perda de tempo | Reescrever treina memória muscular e consolida entendimento |
 
+## Example
+
+```text
+# Prompt para modo pergunta (aprendizado)
+"Explique o que este codigo faz linha por linha, como se fosse para quinta serie:"
+
+# Prompt para Tree of Thought
+"Me de 3 opcoes (A, B, C) para resolver este problema.
+Para cada opcao, liste 3 sub-pontos com pros e contras."
+
+# Prompt para modo plano (quando esta muito dificil)
+"Gere o codigo para [tarefa], mas explique cada decisao tomada."
+```
+
 ## When to apply
 
 - Durante qualquer sessão de estudo com IA
@@ -64,6 +84,15 @@ Peça opções A, B, C. Para cada opção, peça sub-pontos 1, 2, 3. Resultado: 
 - Estas práticas são para contexto de aprendizado — em produção, usar modo agente é válido
 - Estudos sobre aprendizado com IA são recentes e podem evoluir
 - O equilíbrio entre "fazer sozinho" e "delegar para IA" muda conforme seu nível avança
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| IA gerando codigo incorreto ou alucinando | Confianca excessiva no output da IA | Sempre valide a resposta — IA e probabilistica, nao deterministica |
+| Sensacao de nao estar aprendendo com IA | Usando modo agente em vez de modo pergunta | Mude para modo pergunta: peca explicacoes, nao codigo pronto |
+| Autocomplete atrapalhando aprendizado | Sugestoes interrompem o raciocinio ativo | Desabilite autocomplete durante sessoes de estudo |
+| Nao consegue explicar o codigo gerado | Pulou a etapa de reescrever manualmente | Reescreva o codigo gerado pela IA para consolidar entendimento |
 
 ## Deep reference library
 

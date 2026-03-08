@@ -1,6 +1,12 @@
 ---
 name: rs-devops-config-por-namespace
 description: "Applies Istio mTLS PeerAuthentication configuration per Kubernetes namespace. Use when user asks to 'configure mTLS', 'secure namespace communication', 'enable mutual TLS in Kubernetes', 'setup Istio security', or 'protect inter-service traffic'. Enforces strict mode PeerAuthentication with namespace-scoped deployment strategy. Make sure to use this skill whenever configuring service mesh security or namespace isolation. Not for application-level TLS, ingress gateway TLS termination, or certificate management outside Istio."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-mtls-security
+  tags: [kubernetes, istio, mtls, service-mesh, security]
 ---
 
 # Configuracao mTLS por Namespace com Istio
@@ -91,14 +97,19 @@ kubectl run test --image=fortio/fortio -n default -- load http://app-service-mes
 | Ignorar chamadas cross-namespace ao ativar mTLS | Mapear todas as dependencias inter-namespace antes |
 | Usar mode PERMISSIVE em producao permanentemente | PERMISSIVE so para migracao gradual, depois STRICT |
 
+## Troubleshooting
+
+### Chamada intra-namespace falha com timeout apos ativar mTLS STRICT
+**Symptom:** Servicos no mesmo namespace retornam timeout apos aplicar PeerAuthentication STRICT
+**Cause:** O namespace nao esta na malha do Istio (falta sidecar ou ambient mode label)
+**Fix:** Verifique se o namespace tem o label correto e se os pods possuem sidecar Istio injetado ou estao em ambient mode
+
+### mTLS PERMISSIVE nao bloqueia chamadas sem certificado
+**Symptom:** Chamadas sem mTLS continuam funcionando mesmo com PeerAuthentication configurado
+**Cause:** O mode esta como PERMISSIVE, que aceita trafego com e sem mTLS
+**Fix:** Altere para mode STRICT apos validar que todas as dependencias estao na malha
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adicionando-configuracao-por-namespace/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adicionando-configuracao-por-namespace/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adicionando-configuracao-por-namespace/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adicionando-configuracao-por-namespace/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

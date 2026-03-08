@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-visualizando-dados
 description: "Applies SQL SELECT best practices when writing queries to retrieve data. Use when user asks to 'query a table', 'select data', 'fetch records', 'write a SELECT', or 'view database rows'. Enforces explicit column selection over asterisk, correct column ordering, and proper SQL commenting. Make sure to use this skill whenever generating SELECT statements or database queries. Not for INSERT, UPDATE, DELETE, or schema migration tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-database
+  tags: [sql, select, query, columns, database]
 ---
 
 # Visualizando Dados com SELECT
@@ -66,6 +72,15 @@ SELECT name, price, category FROM products;
 | `SELECT * FROM users` (em producao) | `SELECT id, name, email FROM users` |
 | `SELECT *` sem LIMIT em tabela grande | `SELECT * FROM products LIMIT 10` |
 | Comentario com `//` ou `#` em SQL | Comentario com `--` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `no such column: nome` | Nome da coluna errado ou inexistente | Execute `PRAGMA table_info(tabela)` ou `\d tabela` para ver colunas reais |
+| SELECT retorna zero linhas | Tabela vazia ou filtro WHERE muito restritivo | Execute `SELECT COUNT(*) FROM tabela` para verificar se ha dados |
+| Resultado demora muito | `SELECT *` em tabela grande sem LIMIT | Adicione `LIMIT 10` para paginacao ou selecione colunas especificas |
+| Colunas aparecem em ordem errada | Ordem no SELECT define exibicao | Reordene as colunas no SELECT conforme desejado |
 
 ## Deep reference library
 

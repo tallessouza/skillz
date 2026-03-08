@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-unindo-ddd-ao-solid
 description: "Enforces dependency inversion between domain and infrastructure layers when writing TypeScript/Node.js applications. Use when user asks to 'create a repository', 'connect to database', 'implement use case', 'add persistence', or 'decouple infrastructure'. Applies repository interface pattern, constructor injection, and infrastructure isolation. Make sure to use this skill whenever generating code that touches database, external APIs, or any infrastructure concern. Not for UI components, styling, or frontend-only code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: unindo-ddd-ao-solid
+  tags: [ddd, solid, dependency-inversion, repository-pattern, use-cases, typescript, clean-architecture]
 ---
 
 # Unindo DDD ao SOLID — Inversao de Dependencias na Pratica
@@ -108,6 +114,13 @@ export class SubmitOrder {
 | `this.ordersRepo = new PostgresOrdersRepository()` dentro do use case | Receba via construtor, instancie no bootstrap |
 | Repositorio como classe concreta sem interface | Interface primeiro, implementacao depois |
 | Regra de negocio que so funciona com banco rodando | Regra de negocio que funciona sem nenhuma infra |
+
+## Troubleshooting
+
+### Use case importa ORM diretamente e nao pode ser testado sem banco
+**Symptom:** `import { prisma } from './lib/prisma'` dentro do use case impede testes unitarios sem banco rodando
+**Cause:** O use case depende diretamente da implementacao concreta (Prisma) em vez de depender de uma interface abstrata
+**Fix:** Crie `interface OrdersRepository { create(order: Order): Promise<void> }`, receba via construtor `constructor(private repo: OrdersRepository)`, e nos testes use `InMemoryOrdersRepository`
 
 ## Deep reference library
 

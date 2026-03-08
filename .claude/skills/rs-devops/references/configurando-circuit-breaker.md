@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-circuit-breaker
 description: "Applies Circuit Breaker configuration patterns using Istio DestinationRule when setting up service mesh resilience. Use when user asks to 'configure circuit breaker', 'protect against cascading failures', 'setup outlier detection', 'isolate failing service', or 'configure Istio destination rule'. Covers outlier detection, ejection policies, and circuit states (closed/open/half-open). Make sure to use this skill whenever configuring service-to-service resilience in Kubernetes with Istio. Not for application-level circuit breaker libraries, retry policies, or timeout configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-resiliencia
+  tags: [istio, service-mesh, resilience, kubernetes, circuit-breaker, destination-rule]
 ---
 
 # Circuit Breaker com Istio
@@ -111,14 +117,14 @@ spec:
 | Implementar Circuit Breaker na aplicacao quando ja usa Istio | Aproveitar o Istio que ja esta no cluster |
 | Testar Circuit Breaker apenas com teste de carga | Testar com chamadas reais entre servicos |
 
+## Troubleshooting
+
+### Circuit Breaker nao isola servico com falha
+**Symptom:** Servico continua recebendo trafego mesmo com erros 502/503 consecutivos
+**Cause:** outlierDetection nao esta configurado no DestinationRule ou esta usando consecutive5xxErrors em vez de consecutiveGatewayErrors
+**Fix:** Configure `outlierDetection` com `consecutiveGatewayErrors` no DestinationRule do servico destino
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-circuit-breaker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-circuit-breaker/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-circuit-breaker/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-circuit-breaker/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

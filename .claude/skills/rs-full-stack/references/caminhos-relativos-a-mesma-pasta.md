@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caminhos-relativos-mesma-pasta
 description: "Enforces correct relative path usage in HTML when linking files in the same directory. Use when user asks to 'link pages', 'reference files', 'create navigation', 'add href', or any HTML file linking task. Applies rules: prefer direct filename over ./ prefix for same-folder files, understand file:// protocol for local development, distinguish relative vs absolute paths. Make sure to use this skill whenever generating HTML links between local files. Not for server routing, API endpoints, or URL rewriting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, paths, relative-path, navigation, href]
 ---
 
 # Caminhos Relativos na Mesma Pasta
@@ -69,13 +75,16 @@ description: "Enforces correct relative path usage in HTML when linking files in
 | `C:\Users\nome\projeto\page.html` | `page.html` |
 | `http://localhost/page.html` (sem servidor) | `page.html` (aberto via file://) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Link retorna 404 mesmo com arquivo na mesma pasta | Nome do arquivo com case diferente | Verifique maiusculas/minusculas no nome do arquivo |
+| Caminho funciona local mas nao no servidor | Servidor case-sensitive (Linux) vs local case-insensitive (Windows) | Use exatamente o case correto no href |
+| `./` nao funciona em alguns contextos | Alguns servidores tratam `./` diferente | Use nome direto sem `./` |
+| Arquivo HTML abre em branco | Arquivo referenciado esta vazio ou corrompido | Verifique conteudo do arquivo alvo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre protocolos e caminhos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caminhos-relativos-a-mesma-pasta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caminhos-relativos-a-mesma-pasta/references/code-examples.md)

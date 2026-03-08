@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-melhorias-componente-avatar
 description: "Enforces size-variant pattern for reusable UI components when writing React/Next.js code. Use when user asks to 'create a component', 'add size variants', 'make component flexible', 'reusable avatar', or 'component with different sizes'. Applies rules: use typed size unions, map sizes to style objects, omit raw width/height from props, provide sensible defaults, wrap images in styled containers. Make sure to use this skill whenever creating components that need multiple size variations. Not for layout components, page routing, or data fetching logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-ui
+  tags: [avatar, size-variants, union-type, component-patterns, next-image, react, next-js]
 ---
 
 # Componente com Variantes de Tamanho
@@ -87,14 +93,19 @@ export function Avatar({ src, alt, size = 'xs', ...props }: AvatarProps) {
 | Estilos de borda/arredondamento na Image diretamente | Container div com os estilos, Image com fill |
 | Sem default no size | `size = 'xs'` na desestruturacao |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorias-no-componente-avatar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorias-no-componente-avatar/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorias-no-componente-avatar/references/deep-explanation.md) — O instrutor mostra um problema real: o avatar aparece em dois contextos com tamanhos diferentes — 20
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorias-no-componente-avatar/references/code-examples.md) — import Image, { type ImageProps } from 'next/image'

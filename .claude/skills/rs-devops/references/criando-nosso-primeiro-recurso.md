@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-primeiro-recurso
 description: "Follows Terraform resource lifecycle (create, edit, destroy) when provisioning AWS infrastructure. Use when user asks to 'create a terraform resource', 'provision AWS bucket', 'terraform plan', 'terraform apply', 'destroy infrastructure', or any IaC task with Terraform and AWS. Covers validate/plan/apply/destroy cycle, tags best practice, and auto-approve workflow. Make sure to use this skill whenever writing Terraform HCL for AWS resources. Not for Ansible, Pulumi, CloudFormation, or non-AWS providers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-aws-lifecycle
+  tags: [terraform, aws, s3, plan, apply, destroy, iac, tags]
 ---
 
 # Ciclo de Vida de Recursos Terraform na AWS
@@ -141,14 +147,14 @@ resource "aws_s3_bucket" "s3_bucket" {
 | `region` hardcoded em cada recurso | `region` no bloco `provider` |
 | `aws configure sso` toda vez que logar | `aws sso login` apos primeira configuracao |
 
+## Troubleshooting
+
+### terraform apply falha com erro de credenciais AWS
+**Symptom:** `terraform apply` retorna erro de autenticacao como `NoCredentialProviders` ou `ExpiredToken`.
+**Cause:** A sessao SSO expirou ou o perfil AWS nao esta configurado corretamente.
+**Fix:** Execute `aws sso login` para renovar a sessao (nao `aws configure sso`, que recria a configuracao inteira). Verifique o profile no bloco `provider`.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso/references/code-examples.md)

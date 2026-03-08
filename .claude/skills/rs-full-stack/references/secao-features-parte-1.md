@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-secao-features-parte-1
 description: "Applies CSS Grid layout patterns for responsive feature card sections when building landing pages or product pages. Use when user asks to 'create a features section', 'build card grid layout', 'make responsive cards', 'layout with grid columns and rows', or 'desktop-only responsive design'. Enforces mobile-first approach with conditional CSS imports, grid-template-columns/rows with fixed and flexible tracks, and nth-child grid placement. Make sure to use this skill whenever creating multi-card sections with different mobile/desktop layouts. Not for flexbox-only layouts, JavaScript interactivity, or backend API work."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Grid Layout"
+  tags: ['css', 'grid', 'responsive', 'landing-page', 'cards']
 ---
 
 # Secao Features — Grid Layout Responsivo
@@ -118,6 +124,15 @@ description: "Applies CSS Grid layout patterns for responsive feature card secti
 | `grid-template-columns: 1fr 1fr 1fr 1fr` quando extremos sao fixos | `17.5rem 1fr 1fr 17.5rem` — fixo nas pontas, flexivel no centro |
 | Esconder imagem com JS no mobile | Classe `desktop-only` com `display: none` no mobile |
 | Posicionar cards com `order` | `grid-column: 2 / 4` com nth-child — explicito e previsivel |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| CSS de desktop carregando no mobile | Import condicional com sintaxe incorreta | Use `@import url("features.css") (width >= 80rem)` no index.css |
+| Cards nao posicionam corretamente no grid | `grid-column` com valores errados | Verifique as grid lines: coluna 1 inicia na linha 1, termina na 2 |
+| Elemento desktop-only visivel no mobile | Classe `desktop-only` sem `display: none` no CSS base | Adicione `.desktop-only { display: none }` no CSS mobile |
+| Gap entre cards inconsistente | Usando `gap` quando precisa de valores diferentes | Use `row-gap` e `column-gap` separadamente |
 
 ## Deep reference library
 

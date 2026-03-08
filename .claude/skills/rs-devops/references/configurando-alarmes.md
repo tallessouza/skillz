@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-alarmes
 description: "Applies Grafana alerting configuration patterns when setting up monitoring alerts, contact points, and notification policies. Use when user asks to 'configure alerts', 'set up Grafana notifications', 'create alert rules', 'configure contact points', or 'set up monitoring alarms'. Covers contact points, notification policies with label routing, alert rules from metrics/logs, and evaluation intervals. Make sure to use this skill whenever configuring Grafana alerting or designing alert architectures. Not for Prometheus Alert Manager plugin setup, dashboard creation, or data source configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-alertas
+  tags: [grafana, alerting, contact-points, notification-policies, observability]
 ---
 
 # Configurando Alarmes no Grafana
@@ -98,14 +104,14 @@ Normal → Pending → Firing → (resolvido) → Normal
 | Todos os alertas no default policy | Segregue por labels e notification policies por time |
 | Ignorar estado Pending | Entenda que Pending e a confirmacao antes do Firing |
 
+## Troubleshooting
+
+### Alerta criado mas ninguem recebe notificacao
+**Symptom:** Alert rule esta em estado Firing mas nenhum canal recebe a notificacao
+**Cause:** Contact point nao foi configurado ou notification policy nao roteia para o contact point correto
+**Fix:** Configure o contact point primeiro, depois crie uma notification policy com label matching que aponte para ele
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-alarmes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-alarmes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-alarmes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-alarmes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

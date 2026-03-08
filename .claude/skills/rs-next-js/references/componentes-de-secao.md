@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componentes-de-secao
 description: "Enforces the compound component (composition) pattern when building React/Next.js UI components. Use when user asks to 'create a component', 'build a section', 'make a card', 'split into subcomponents', or any component creation task. Applies rules: composition over props, always extend ComponentProps, use twMerge for className merging, export as object with dot notation. Make sure to use this skill whenever creating reusable React components with multiple slots or sections. Not for single-purpose utility functions, hooks, or server-side logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-reutilizaveis
+  tags: [compound-component, composition, ComponentProps, twMerge, dot-notation, next-js, react]
 ---
 
 # Compound Components (Composition Pattern)
@@ -119,14 +125,19 @@ import { Section } from '@/components/section'
 | `export function SectionRoot` (individual) | `export const Section = { root: SectionRoot }` (agrupado) |
 | `interface Props { children: ReactNode }` | `interface Props extends ComponentProps<'div'> {}` (herda tudo) |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componentes-de-secao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componentes-de-secao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componentes-de-secao/references/deep-explanation.md) — O instrutor explica o problema central: quando voce cria um componente grande como uma "section" de 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componentes-de-secao/references/code-examples.md) — Este e o componente construido durante a aula, representando uma coluna de um board/kanban:

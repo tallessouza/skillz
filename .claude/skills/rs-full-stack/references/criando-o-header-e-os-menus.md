@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-header-menus
 description: "Applies CSS utility-first patterns and modern nesting when building headers, navbars, or navigation menus. Use when user asks to 'create a header', 'build a navbar', 'style navigation', 'add menu layout', or 'implement utility classes in CSS'. Enforces utility-first class strategy, CSS nesting, logical properties (block/inline), and container pattern. Make sure to use this skill whenever generating header/nav HTML+CSS structures. Not for JavaScript interactivity, responsive breakpoints, or CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-utility-first
+  tags: [css, header, navbar, utility-classes, nesting, logical-properties]
 ---
 
 # Header e Menus com CSS Utility-First
@@ -156,8 +162,12 @@ description: "Applies CSS utility-first patterns and modern nesting when buildin
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre utility-first, CSS nesting e propriedades lógicas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-header-e-os-menus/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-header-e-os-menus/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS Nesting nao funciona | Browser sem suporte a nesting nativo | Use seletores tradicionais como fallback: `#primary div:nth-child(2) {}` |
+| `margin-inline: auto` nao centraliza | Elemento nao tem largura definida ou container nao e flex/grid | Verifique se o container pai tem `display: grid` ou `flex` |
+| `border-inline: none` nao remove bordas laterais | Propriedade nao suportada no browser | Use `border-left: none; border-right: none` como fallback |
+| Classe utilitaria `.grid` nao funciona | CSS do utility nao esta carregado | Verifique se o `global.css` esta importado antes do `header.css` |
+| Container nao centraliza na pagina | Faltou `margin-inline: auto` no `.container` | Adicione `margin-inline: auto` junto com `max-width` e `padding-inline` |

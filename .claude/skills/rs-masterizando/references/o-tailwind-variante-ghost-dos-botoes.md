@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-variante-ghost-botoes
 description: "Applies ghost button variant pattern when building button components with Tailwind CSS. Use when user asks to 'create a button variant', 'add ghost button', 'make a minimal button', 'style icon buttons', or 'create subtle buttons'. Enforces reduced padding, less rounding, no background, no shadow, hover with subtle bg. Make sure to use this skill whenever creating minimal or tertiary button styles in Tailwind. Not for primary/outline button variants, form inputs, or link styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, react, tailwind-variants]
 ---
 
 # Variante Ghost dos Botoes
@@ -80,15 +86,19 @@ ghost: [
 | Ghost com `bg-zinc-100` no default | Background transparente, so bg no hover |
 | Repetir classes ghost inline em cada botao | Criar variante no componente e usar `variant="ghost"` |
 | Ghost com padding grande (`px-6 py-3`) | Padding compacto e proporcional (`px-2 py-2`) |
+## Troubleshooting
+
+### Focus ring aparece no clique do botao
+**Symptom:** Ao clicar num botao, o ring de foco aparece desnecessariamente.
+**Cause:** Usando `focus:` em vez de `focus-visible:` no botao.
+**Fix:** Use `focus-visible:ring` para botoes e tabs (so ativa via teclado). Reserve `focus:` para inputs.
+
+### Focus ring nao aparece no input com wrapper
+**Symptom:** Ao focar o input dentro de uma div wrapper, nenhum estilo muda na div.
+**Cause:** `focus:` na div nao funciona porque divs nao recebem foco diretamente.
+**Fix:** Use `focus-within:` na div wrapper para detectar foco em qualquer filho.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variante-ghost-dos-botoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variante-ghost-dos-botoes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variante-ghost-dos-botoes/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variante-ghost-dos-botoes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

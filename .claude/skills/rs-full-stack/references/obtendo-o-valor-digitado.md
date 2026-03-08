@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-o-valor-digitado
 description: "Applies DOM input value capture patterns when writing JavaScript that reads user input. Use when user asks to 'get input value', 'capture form input', 'read what user typed', 'listen to input changes', or 'handle input events'. Enforces getElementById selection, addEventListener with 'input' event, and .value access. Make sure to use this skill whenever capturing user input from HTML elements. Not for form submission, validation logic, or backend data processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, input, addEventListener, value]
 ---
 
 # Capturando Valor de Input com JavaScript
@@ -72,13 +78,15 @@ amount.addEventListener("input", () => {
 | `element.getAttribute("value")` | `element.value` |
 | Variável com nome genérico `el`, `input1` | Nome igual ao id: `amount`, `username` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `getElementById` retorna `null` | Script roda antes do DOM carregar | Mova script para final do `<body>` ou use atributo `defer` |
+| Evento nao dispara a cada tecla | Usou `change` em vez de `input` | Troque para `addEventListener("input", ...)` |
+| `.value` retorna atributo HTML, nao valor atual | Usou `getAttribute("value")` | Use `.value` diretamente no elemento |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre eventos de input, métodos de seleção DOM e boas práticas
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-obtendo-o-valor-digitado/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-obtendo-o-valor-digitado/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eventos de input, metodos de selecao DOM e boas praticas
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

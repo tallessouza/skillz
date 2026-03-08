@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-comunicacao-entre-camadas
-description: "Enforces NestJS dependency injection patterns between Clean Architecture layers. Use when user asks to 'inject use case', 'wire controller to domain', 'configure providers', 'use abstract class instead of interface', or 'setup DI in NestJS'. Applies rules: @Injectable on use cases (trade-off), abstract classes over interfaces, provide/useClass pattern for repositories, register use cases in providers. Make sure to use this skill whenever wiring NestJS controllers to domain use cases. Not for general TypeScript patterns, testing, or non-NestJS DI frameworks."
+description: "Enforces NestJS dependency injection patterns between Clean Architecture layers when wiring controllers to domain use cases. Use when user asks to 'inject use case', 'wire controller to domain', 'configure providers', 'use abstract class instead of interface', or 'setup DI in NestJS'. Applies rules: @Injectable on use cases (trade-off), abstract classes over interfaces for DI tokens, provide/useClass pattern for repositories, register use cases in providers array. Make sure to use this skill whenever wiring NestJS controllers to domain use cases or configuring module providers. Not for general TypeScript patterns (use rs-clean-code), testing (use rs-testes-e), or non-NestJS DI frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, dependency-injection, clean-architecture, providers, abstract-class, injectable]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Comunicacao entre Camadas no NestJS
@@ -108,7 +115,7 @@ export class CreateQuestionController {
 
 **After (fluxo completo Clean Architecture):**
 ```typescript
-// Controller → UseCase → Repository(abstract) → PrismaRepository(concreto)
+// Controller -> UseCase -> Repository(abstract) -> PrismaRepository(concreto)
 @Controller('/questions')
 export class CreateQuestionController {
   constructor(private createQuestion: CreateQuestionUseCase) {}
@@ -137,17 +144,27 @@ export class CreateQuestionController {
 | `export interface QuestionsRepository` | `export abstract class QuestionsRepository` |
 | `exports: [PrismaQuestionsRepository]` | `exports: [QuestionsRepository]` |
 | `constructor(private prisma: PrismaService)` no controller | `constructor(private createQuestion: CreateQuestionUseCase)` |
-| Criar `NestCreateQuestionUseCase extends CreateQuestionUseCase` wrapper para cada use case | Colocar `@Injectable()` direto no use case (trade-off aceitavel) |
-| Esquecer de registrar use case nos providers | Sempre adicionar use case em `providers: [CreateQuestionUseCase]` no HTTP module |
+| Criar `NestCreateQuestionUseCase extends CreateQuestionUseCase` wrapper | Colocar `@Injectable()` direto no use case (trade-off aceitavel) |
+| Esquecer de registrar use case nos providers | Sempre adicionar use case em `providers: [CreateQuestionUseCase]` |
+
+## Troubleshooting
+
+### Erro "Nest can't resolve dependencies of CreateQuestionUseCase"
+**Symptom:** Aplicacao nao inicia, erro de injecao de dependencia no console
+**Cause:** O repositorio que o use case depende nao esta disponivel no modulo — pode faltar o DatabaseModule no imports ou o provide/useClass
+**Fix:** Verificar que o DatabaseModule esta importado no HttpModule e usa `provide/useClass` para mapear a classe abstrata
+
+### Interface desaparece no runtime
+**Symptom:** Erro de tipo ou undefined ao tentar injetar repositorio declarado como interface
+**Cause:** Interfaces TypeScript nao existem em JavaScript — sao eliminadas na compilacao
+**Fix:** Trocar `interface` por `abstract class` em todos os repositorios usados como tokens de DI
+
+### Provider nao encontrado apos mudar para provide/useClass
+**Symptom:** Erro ao importar modulo — o export nao encontra o provider
+**Cause:** O `exports` ainda referencia a classe concreta em vez da abstrata
+**Fix:** Mudar exports para a classe abstrata: `exports: [QuestionsRepository]`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-comunicacao-entre-camadas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-comunicacao-entre-camadas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-comunicacao-entre-camadas/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-comunicacao-entre-camadas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

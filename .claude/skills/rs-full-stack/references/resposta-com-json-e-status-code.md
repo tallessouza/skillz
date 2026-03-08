@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-resposta-json-status-code
 description: "Enforces correct Express.js JSON response and status code patterns when building REST APIs. Use when user asks to 'create an endpoint', 'return JSON', 'set status code', 'build a route', or 'send a response' in Express. Applies rules: use res.json() instead of res.send() for objects, always chain .status() before .json() for non-200 responses, never manually stringify JSON. Make sure to use this skill whenever writing Express route handlers. Not for frontend fetch calls, database queries, or middleware error handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest-express
+  tags: [express, json, status-code, rest-api, http]
 ---
 
 # Resposta com JSON e Status Code no Express
@@ -75,6 +81,15 @@ app.post("/products", (req, res) => {
 | `res.setHeader('Content-Type', 'application/json')` | `res.json(data)` (automatico) |
 | `res.json(data).status(201)` | `res.status(201).json(data)` (status primeiro) |
 | `res.status(200).json(data)` | `res.json(data)` (200 e padrao, omita) |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Resposta chega como text/html no cliente | Usando `res.send()` em vez de `res.json()` | Troque para `res.json(data)` que define Content-Type automaticamente |
+| Status code 200 em vez de 201 para criacao | Falta `.status(201)` antes de `.json()` | Encadeie `res.status(201).json(data)` |
+| JSON retorna como string escaped | Usando `JSON.stringify()` manualmente | Remova stringify, use `res.json(obj)` direto |
+| Status code ignorado | `.status()` chamado APOS `.json()` | Chame `.status()` ANTES de `.json()`: `res.status(201).json(data)` |
 
 ## Deep reference library
 

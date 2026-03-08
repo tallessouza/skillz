@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comentarios-5
 description: "Applies JavaScript comment conventions when writing or reviewing code. Use when user asks to 'add comments', 'document code', 'explain this code', or 'annotate'. Enforces single-line (//) for inline notes and multi-line (/* */) for block explanations. Guides when comments add value vs when code should be self-explanatory. Make sure to use this skill whenever adding comments to JavaScript/TypeScript files. Not for JSDoc generation, README files, or markdown documentation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, comments, documentation, best-practices, code-quality]
 ---
 
 # Comentarios em JavaScript
@@ -80,13 +86,16 @@ const sessionTimeoutInMs = 1800000
 | Comentario desatualizado que contradiz o codigo | Atualize ou remova o comentario |
 | `/* ... */` para uma unica linha curta | `// comentario curto` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Comentario desatualizado causa confusao | Codigo mudou mas comentario nao | Atualize ou remova comentarios que nao refletem o codigo atual |
+| `/* */` nao funciona dentro de template literal | Template literals sao strings, nao codigo | Use `//` fora da template literal para anotar |
+| Codigo comentado com `//` esquecido no commit | Falta de revisao antes do commit | Use `git diff` para revisar antes de commitar |
+| ESLint reclama de comentarios | Regras de lint para comentarios ativadas | Ajuste regras ou melhore os comentarios conforme o lint sugere |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comentarios-5/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comentarios-5/references/code-examples.md)

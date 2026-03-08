@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-entendendo-o-docker-compose
 description: "Applies Docker Compose best practices when creating multi-container applications. Use when user asks to 'create docker-compose', 'setup containers', 'run multiple services', 'configure docker', or 'add a database container'. Enforces one-responsibility-per-container, proper service dependencies, and YAML configuration patterns. Make sure to use this skill whenever setting up Docker environments with more than one container. Not for single Dockerfile builds, Kubernetes, or cloud deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, docker-compose, containers, multi-container, yaml]
 ---
 
 # Docker Compose — Aplicacoes Multi-Container
@@ -114,8 +120,12 @@ docker compose up
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e motivacao do Docker Compose
 - [code-examples.md](references/code-examples.md) — Exemplos de configuracao expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-entendendo-o-docker-compose/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-entendendo-o-docker-compose/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| API e banco no mesmo container | Violacao de responsabilidade unica | Separe em servicos distintos no docker-compose.yml |
+| `docker compose up` nao inicia na ordem certa | Falta `depends_on` entre servicos | Declare dependencias explicitas entre servicos |
+| Container do banco reinicia e perde dados | Sem volume persistente configurado | Adicione volume nomeado ao servico de banco |
+| Erro ao buildar servico com `image:` | Usando `image:` para servico que precisa de Dockerfile | Troque para `build:` apontando para diretorio com Dockerfile |
+| Variavel de ambiente nao reconhecida pelo banco | Chave da variavel incorreta para a imagem usada | Consulte documentacao da imagem Docker (ex: `POSTGRES_PASSWORD` vs `POSTGRESQL_PASSWORD`) |

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-renomeando-coluna
 description: "Applies SQL ALTER TABLE RENAME COLUMN syntax when renaming database columns. Use when user asks to 'rename a column', 'change column name', 'alter table rename', or 'modify field name' in SQL. Ensures correct RENAME COLUMN ... TO syntax. Make sure to use this skill whenever generating SQL that changes column names. Not for adding, dropping, or changing column types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, alter-table, rename-column, ddl, schema]
 ---
 
 # Renomear Coluna com SQL
@@ -61,6 +67,15 @@ RENAME COLUMN name TO description;
 | Drop + Add column (perde dados) | `RENAME COLUMN old TO new` |
 | Criar coluna nova e copiar dados | `RENAME COLUMN old TO new` |
 | Usar UPDATE para "renomear" | `RENAME COLUMN old TO new` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro de sintaxe no RENAME COLUMN | Falta keyword `TO` entre os nomes | Use `RENAME COLUMN old_name TO new_name` com `TO` |
+| Queries antigas param de funcionar | Queries ainda referenciam o nome antigo da coluna | Atualize todas as queries, views e procedures que usam o nome antigo |
+| Dados sumiram apos "renomear" | Usou DROP + ADD em vez de RENAME | Use `RENAME COLUMN` que preserva dados |
+| RENAME COLUMN nao suportado | Versao antiga do banco (ex: MySQL < 8.0) | Atualize o banco ou use workaround especifico da versao |
 
 ## Deep reference library
 

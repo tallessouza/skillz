@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-principios-autenticacao-jwt
 description: "Applies JWT authentication concepts when designing or implementing auth flows in Node.js APIs. Use when user asks to 'implement authentication', 'add JWT', 'create login route', 'protect routes', 'add auth middleware', or 'validate tokens'. Covers Basic Auth vs JWT trade-offs, token anatomy (header/payload/signature), stateless strategy, and bearer token usage. Make sure to use this skill whenever building authentication in web APIs. Not for OAuth flows, session-based auth, or frontend auth state management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: jwt-authentication
+  tags: [jwt, authentication, bearer-token, hs256, rs256, stateless, authorization]
 ---
 
 # Principios da Autenticacao JWT
@@ -97,14 +103,14 @@ app.get('/me', profileController)
 | Usar `Authorization: Basic` para tokens | Usar `Authorization: Bearer <token>` |
 | Confiar no payload sem validar assinatura | Sempre validar assinatura antes de usar dados do payload |
 
+## Troubleshooting
+
+### Token JWT retorna "invalid signature" na validacao
+**Symptom:** O backend rejeita tokens com erro "invalid signature" mesmo que o token pareca correto
+**Cause:** A chave secreta usada para gerar o token e diferente da usada para validar, ou o algoritmo (HS256 vs RS256) nao bate
+**Fix:** Verifique que a mesma chave secreta esta configurada tanto na geracao quanto na validacao. Confirme que o algoritmo no header do token corresponde ao configurado no backend
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-principios-da-autenticacao-jwt/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-principios-da-autenticacao-jwt/references/code-examples.md)

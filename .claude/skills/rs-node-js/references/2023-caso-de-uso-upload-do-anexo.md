@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-upload-use-case
 description: "Enforces clean architecture patterns for file upload use cases in NestJS/Node.js applications. Use when user asks to 'implement file upload', 'create upload endpoint', 'handle attachments', 'upload to S3 or R2', or 'create storage abstraction'. Applies rules: domain-layer file type validation, abstract uploader contract via dependency inversion, buffer for small files and stream for large, stateless application design. Make sure to use this skill whenever building upload features in layered architectures. Not for frontend upload UI, drag-and-drop components, or Multer configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [upload, attachment, s3, r2, storage, dependency-inversion, clean-architecture]
 ---
 
 # Caso de Uso: Upload e Criacao de Attachment
@@ -125,14 +131,19 @@ async execute({ fileName, fileType, body }: Request) {
 | Receber Buffer para arquivos de 100MB | Usar Stream para arquivos grandes |
 | Importar SDK do S3 direto no use case | Injetar `Uploader` abstrato via construtor |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-upload-do-anexo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-upload-do-anexo/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-upload-do-anexo/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-upload-do-anexo/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

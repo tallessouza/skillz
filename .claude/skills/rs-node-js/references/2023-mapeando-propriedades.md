@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-mapeando-propriedades
 description: "Enforces correct property mapping in DDD entities when designing domain models in TypeScript/Node.js. Use when user asks to 'create an entity', 'map properties', 'design a domain model', 'add fields to entity', or 'model a class with DDD'. Applies rules: IDs use value objects not strings, createdAt is required, updatedAt is optional for edit-tracking, relationships use typed IDs. Make sure to use this skill whenever creating or modifying domain entities. Not for database schemas, DTOs, or API response types."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-entities
+  tags: [ddd, entity, value-objects, unique-entity-id, domain-model, typescript, property-mapping]
 ---
 
 # Mapeando Propriedades de Entidades DDD
@@ -88,14 +94,14 @@ interface AnswerProps {
 | Todos os campos de uma vez | Mapeie incrementalmente por conceito |
 | Campo opcional sem justificativa de dominio | Documente por que o campo pode ser ausente |
 
+## Troubleshooting
+
+### ID de relacionamento definido como string ao inves de UniqueEntityId
+**Symptom:** Comparacoes de ID falham silenciosamente ou retornam false inesperadamente
+**Cause:** `authorId: string` perde a semantica e metodos de comparacao do Value Object
+**Fix:** Use `authorId: UniqueEntityId` e compare com `.equals()` em vez de `===`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-mapeando-propriedades/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-mapeando-propriedades/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-criando-abas-radix-tabs
 description: "Applies Radix UI Tabs patterns with Tailwind CSS styling when building tabbed interfaces in React/Next.js. Use when user asks to 'create tabs', 'build tab navigation', 'implement tabbed interface', 'use radix tabs', or 'style tabs with tailwind'. Enforces data-attribute styling, negative margin tricks for border overlap, anti-aliased fonts, and proper client component separation. Make sure to use this skill whenever implementing tab components with Radix primitives. Not for accordion, dropdown, or non-tab navigation patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, radix-ui, nextjs, flexbox]
 ---
 
 # Criando Abas com Radix Tabs + Tailwind
@@ -138,15 +144,19 @@ export function SettingsTabs() {
 | `bottom-0` para indicador sobre borda | `-bottom-px` para sobreposicao precisa |
 | Tabs implementadas com botoes manuais | `@radix-ui/react-tabs` com composicao |
 | `'use client'` no page.tsx inteiro | Extrair apenas o componente interativo |
+## Troubleshooting
+
+### Componente Radix nao funciona no Next.js App Router
+**Symptom:** Erro de hydration ou componente nao interativo.
+**Cause:** Componentes Radix usam hooks client-side mas estao em Server Component.
+**Fix:** Adicione `'use client'` no topo do arquivo que usa componentes Radix.
+
+### Dropdown aparece atras de outros elementos
+**Symptom:** O conteudo do select fica escondido atras de outros componentes.
+**Cause:** Falta de Portal ou z-index insuficiente.
+**Fix:** Use `SelectPrimitive.Portal` para renderizar no body e adicione `z-10` ou superior no Content.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-abas-com-radix-tabs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-abas-com-radix-tabs/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-abas-com-radix-tabs/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-abas-com-radix-tabs/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

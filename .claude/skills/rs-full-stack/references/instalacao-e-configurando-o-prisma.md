@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalacao-configurando-prisma
-description: "Guides Prisma ORM installation and configuration with PostgreSQL in Node.js projects. Use when user asks to 'setup Prisma', 'install Prisma', 'configure ORM', 'connect to Postgres', or 'initialize database with Prisma'. Covers prisma init, schema.prisma setup, .env database URL configuration. Make sure to use this skill whenever setting up Prisma from scratch in a new project. Not for Prisma migrations, model creation, or query writing."
+description: "Configures Prisma ORM installation with PostgreSQL in Node.js projects including schema and env setup. Use when user asks to 'setup Prisma', 'install Prisma', 'configure ORM', 'connect to Postgres', or 'initialize database with Prisma'. Covers prisma init, schema.prisma setup, .env database URL configuration. Make sure to use this skill whenever setting up Prisma from scratch in a new project. Not for Prisma migrations, model creation, or query writing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-setup
+  tags: [prisma, orm, postgresql, database, nodejs]
 ---
 
 # Instalacao e Configuracao do Prisma
@@ -117,13 +123,16 @@ npx prisma db pull
 | Instalar sem fixar versao | `prisma@5.19.1` com versao explicita |
 | Usar porta errada e tentar debug no Prisma | Verificar `pg_isready` primeiro |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `npx prisma init` falha com "prisma not found" | Pacote nao instalado corretamente | Verificar `npm install prisma` e tentar novamente |
+| Conexao com banco falha | PostgreSQL nao esta rodando ou porta incorreta | Verificar com `pg_isready -p PORT` |
+| `DATABASE_URL` nao reconhecida | Variavel de ambiente nao carregada | Verificar se `.env` existe na raiz e contem a URL |
+| Erro de autenticacao no banco | Usuario ou senha incorretos na URL | Conferir credenciais no segmento USER:PASSWORD da DATABASE_URL |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre .env, variaveis de ambiente e separacao de configuracao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de configuracao com variacoes de ambiente
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalacao-e-configurando-o-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalacao-e-configurando-o-prisma/references/code-examples.md)

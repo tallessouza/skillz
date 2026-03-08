@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-busca-listagem
 description: "Applies search filtering and empty state patterns when building list pages in Next.js or React. Use when user asks to 'add search', 'filter a list', 'create a search bar', 'handle empty state', or 'show no results message'. Enforces lowercase includes filtering, hasItems guard pattern, and dashed-border empty state feedback. Make sure to use this skill whenever implementing search or empty states in listing pages. Not for backend search, full-text search engines, or database query optimization."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: search-and-listing
+  tags: [next-js, search, filter, empty-state, listing, client-side-filter, react]
 ---
 
 # Busca e Empty State em Paginas de Listagem
@@ -110,14 +116,19 @@ export default function BlogList({ allPosts, query }) {
 | `{posts.map(...)}` sem guard | `{hasPosts ? <Grid/> : <EmptyState/>}` |
 | `<img alt="" />` ou `<img alt="image" />` | `<img alt={post.title} />` |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-busca/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-busca/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-busca/references/deep-explanation.md) — O instrutor enfatiza: coloque `toLowerCase()` tanto no titulo quanto no query. Isso garante que a bu
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-busca/references/code-examples.md) — // Em templates/blog/blog-list.tsx (ou equivalente)

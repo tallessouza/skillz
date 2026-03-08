@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-classe-base-de-entidades
 description: "Enforces the base Entity class pattern when building domain entities in TypeScript DDD applications. Use when user asks to 'create an entity', 'implement DDD', 'build a domain model', 'add a new entity class', or 'setup domain layer'. Applies rules: generic base Entity class, private ID with getter, protected props object, no public properties, getters for external access. Make sure to use this skill whenever creating or refactoring domain entities in Node.js/TypeScript projects. Not for DTOs, value objects, or database models."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-entities
+  tags: [entity, base-class, ddd, generics, encapsulation, private-id, typescript]
 ---
 
 # Classe Base de Entidades (DDD)
@@ -143,14 +149,19 @@ export class Question extends Entity<QuestionProps> {
 | Construtor repetido em cada entidade | Herdar construtor da base |
 | `public content: string` | `get content() { return this.props.content }` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-entidades/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-entidades/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-entidades/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-entidades/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

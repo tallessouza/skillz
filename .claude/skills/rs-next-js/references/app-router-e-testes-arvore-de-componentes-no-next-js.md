@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-arvore-de-componentes
 description: "Enforces correct Server Component and Client Component nesting patterns when building Next.js App Router applications. Use when user asks to 'create a page', 'add a component', 'build a layout', 'wrap with context', or any Next.js component architecture task. Applies rules: default to Server Components, use Client Components only for interactivity, pass Server Components as children through Client Components to preserve SSR. Make sure to use this skill whenever structuring Next.js App Router component trees. Not for React without Next.js, Pages Router, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [component-tree, server-component, client-component, children-pattern, context-provider]
 ---
 
 # Arvore de Componentes no Next.js
@@ -130,14 +136,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 | Criar Context Provider sem `children` | Sempre aceite e renderize `{children}` |
 | Marcar Header como Client so porque tem um Cart Client dentro | Header fica Server, Cart e uma ilha Client dentro dele |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-arvore-de-componentes-no-next-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-arvore-de-componentes-no-next-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-arvore-de-componentes-no-next-js/references/deep-explanation.md) — O instrutor usa uma analogia visual poderosa: imagine a aplicacao como uma arvore onde cada componen
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-arvore-de-componentes-no-next-js/references/code-examples.md) — // components/cart-context.tsx

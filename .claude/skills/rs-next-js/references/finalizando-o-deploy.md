@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-finalizando-o-deploy
 description: "Enforces correct date/time handling in Next.js production deployments. Use when user asks to 'fix dates in production', 'deploy Next.js app', 'format dates with timezone', 'toLocaleTimeString', or encounters timezone bugs after deploying to Vercel. Applies rules: never use raw getHours/getMinutes in server code, always specify timezone in toLocaleTimeString, extract repeated date formatting into utils. Make sure to use this skill whenever working with dates in Next.js server actions or SSR code. Not for client-only date display, date-fns library configuration, or general JavaScript date tutorials."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: deploy
+  tags: [timezone, date-formatting, production, vercel, toLocaleTimeString, server-actions, next-js]
 ---
 
 # Datas em Producao (Next.js)
@@ -95,14 +101,19 @@ const period = parseInt(formatDateTime(apt.scheduledAt)) < 12 ? 'morning' : 'aft
 | `hour12: true` para app brasileiro | `hour12: false` |
 | Confiar que local == producao para datas | Sempre testar no ambiente de deploy |
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-finalizando-o-deploy/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-finalizando-o-deploy/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-finalizando-o-deploy/references/deep-explanation.md) — O instrutor explica o problema central: **todo lugar que usa a API nativa de Date corre risco em pro
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-finalizando-o-deploy/references/code-examples.md) — // utils/appointment-utils.ts (ou similar)

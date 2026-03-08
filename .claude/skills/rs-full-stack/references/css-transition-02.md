@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-transition-02
 description: "Applies CSS transition-timing-function and cubic-bezier curves when writing CSS transitions or animations. Use when user asks to 'add a transition', 'animate an element', 'make it smooth', 'add hover effect', or 'create CSS animation'. Enforces correct use of linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier(), and steps(). Make sure to use this skill whenever generating CSS transitions, even for simple hover effects. Not for JavaScript animations, SVG animations, or keyframe-based CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animacoes
+  tags: [css, transition, timing-function, cubic-bezier, ease, steps]
 ---
 
 # CSS Transition Timing Function
@@ -100,13 +106,16 @@ description: "Applies CSS transition-timing-function and cubic-bezier curves whe
 | `steps(1)` | Sem transicao (mesmo efeito) |
 | `steps()` sem considerar acessibilidade | `steps()` com `prefers-reduced-motion` check |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Transicao parece mecanica/robotica | Usando `linear` para elementos de UI | Troque para `ease-out` (hover) ou `ease-in-out` (modais) |
+| `cubic-bezier` produz efeito estranho | Valores de controle fora do esperado | Use cubicbezier.com para visualizar e ajustar a curva |
+| `steps(1)` nao mostra nenhuma transicao | Um unico step e equivalente a sem transicao | Use `steps(n)` com n >= 2 ou remova a transicao |
+| Usuarios reportam desconforto visual | `steps()` causa mudancas abruptas | Adicione `@media (prefers-reduced-motion: reduce) { transition: none }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cubic-bezier, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-transition-02/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-transition-02/references/code-examples.md)

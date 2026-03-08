@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-download-template-html-css
-description: "Guides project setup from GitHub template repositories when user asks to 'clone a template', 'download starter project', 'setup from GitHub repo', or 'start from a template'. Covers GitHub template usage, zip download, folder organization, and VSCode with Live Server. Make sure to use this skill whenever setting up a new project from a Skillz or similar GitHub template. Not for git workflows, branching strategies, or CI/CD setup."
+description: "Scaffolds project setup from GitHub template repositories with folder organization and Live Server. Use when user asks to 'clone a template', 'download starter project', 'setup from GitHub repo', or 'start from a template'. Covers GitHub template usage, zip download, folder organization, and VSCode with Live Server. Make sure to use this skill whenever setting up a new project from a Skillz or similar GitHub template. Not for git workflows, branching strategies, or CI/CD setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: project-setup
+  tags: [github, template, vscode, live-server, setup, download]
 ---
 
 # Setup de Projeto a partir de Template GitHub
@@ -91,13 +97,16 @@ projeto/
 | Projeto na pasta Downloads | Mova para pasta dedicada de projetos |
 | Live Server nao aparece | Verifique extensoes do VSCode |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Live Server nao aparece no menu de contexto | Extensao nao instalada ou desabilitada no VSCode | Acessar Extensions, buscar "Live Server", instalar e habilitar |
+| Hot-reload nao funciona | Arquivo aberto diretamente no browser em vez do Live Server | Usar "Open with Live Server" no menu de contexto do index.html |
+| Assets SVG nao carregam | Caminhos relativos quebrados apos mover pasta | Verificar que a estrutura de pastas permanece intacta apos descompactar |
+| Erros no console do browser | Arquivo JavaScript referenciado no HTML nao existe ainda | Normal para templates — JS sera implementado nas proximas etapas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao de projetos e workflow com Live Server
 - [code-examples.md](references/code-examples.md) — Estrutura do template refund e detalhes do projeto
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fazendo-o-download-do-template-html-e-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fazendo-o-download-do-template-html-e-css/references/code-examples.md)

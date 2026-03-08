@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-funciona-o-git
 description: "Applies Git mental models and workflow knowledge when user asks to 'explain git', 'how does git work', 'what is a commit', 'what is a branch', 'git workflow', or 'version control'. Enforces correct understanding of commit, branch, stage area, local/remote repository concepts. Make sure to use this skill whenever explaining Git fundamentals or onboarding someone to version control. Not for advanced Git operations, rebasing strategies, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, version-control, commit, branch, fundamentals, workflow]
 ---
 
 # Como Funciona o Git
@@ -89,13 +95,17 @@ A branch principal e o Instagram que os usuarios veem. Para criar o Reels, abra 
 - Nao cobre: merge conflicts, rebase, cherry-pick, git flow, trunk-based development
 - Comandos especificos sao ensinados em aulas praticas separadas
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Confusao entre Git e GitHub | Conceitos diferentes misturados | Git = ferramenta local de versionamento; GitHub = servico de nuvem |
+| Arquivo modificado mas nao aparece no commit | Arquivo nao passou pelo Stage Area | Execute `git add <arquivo>` antes de `git commit` |
+| Branch errada ativa | Nao verificou a branch antes de trabalhar | Use `git branch` para ver branches e `git checkout <branch>` para trocar |
+| Commit feito com mensagem errada | Mensagem nao pode ser editada apos commit simples | Use `git commit --amend -m "nova mensagem"` para o ultimo commit |
+| Perda de trabalho ao trocar de branch | Mudancas nao commitadas foram perdidas | Sempre commite ou use `git stash` antes de trocar de branch |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-funciona-o-git/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-funciona-o-git/references/code-examples.md)

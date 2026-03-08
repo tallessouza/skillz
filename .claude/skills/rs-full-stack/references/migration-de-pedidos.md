@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-migration-de-pedidos
 description: "Enforces correct order table migration patterns when designing database schemas for e-commerce or restaurant systems. Use when user asks to 'create orders table', 'migration for orders', 'design order schema', 'store order history', or 'track purchases'. Applies rules: separate price column for historical preservation, foreign keys to sessions/products, decimal for prices, integer for quantities, no computed total columns. Make sure to use this skill whenever creating order/purchase tables or migrations involving price history. Not for product catalog tables, authentication, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-migrations
+  tags: [knex, migration, orders, database, foreign-keys]
 ---
 
 # Migration de Pedidos
@@ -85,13 +91,16 @@ await knex.schema.createTable("orders", (table) => {
 | `table.integer("price")` | `table.decimal("price")` para suportar centavos |
 | Esquecer `down()` na migration | Sempre implementar rollback com `dropTable` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `SQLITE_CONSTRAINT: FOREIGN KEY constraint failed` | Referencia a registro inexistente na tabela pai | Garanta que a tabela referenciada ja existe e o ID e valido |
+| Preco do pedido muda quando produto e atualizado | Preco armazenado apenas na tabela de produtos via FK | Duplique o preco na tabela de pedidos com coluna `price` propria |
+| `integer` nao suporta centavos | Tipo `integer` trunca casas decimais | Use `decimal` para colunas de preco |
+| Migration `down()` falha com FK | Tabela referenciada por outra tabela | Remova as tabelas dependentes primeiro ou desabilite FK checks |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre preservacao de historico de precos e design de tabelas de pedidos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-migration-de-pedidos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-migration-de-pedidos/references/code-examples.md)

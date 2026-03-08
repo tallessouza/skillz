@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-revisao-1
 description: "Enforces HTML Forms best practices when building forms in HTML. Use when user asks to 'create a form', 'add input fields', 'build a login form', 'make a contact form', or any HTML form task. Applies rules: form action/method attributes, proper label usage for accessibility, correct input types, fieldset for grouping, textarea for multiline, select for options. Make sure to use this skill whenever generating HTML forms or form elements. Not for JavaScript validation logic, CSS styling, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "HTML Forms"
+  tags: ['html', 'forms', 'accessibility', 'semantics']
 ---
 
 # HTML Forms — Boas Práticas
@@ -111,6 +117,15 @@ description: "Enforces HTML Forms best practices when building forms in HTML. Us
 | `<input type="text">` para senha | `<input type="password">` |
 | `<div>` para agrupar campos | `<fieldset><legend>...</legend>...</fieldset>` |
 | `<input type="submit">` | `<button type="submit">Enviar</button>` |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Dados do formulario nao enviados | `<input>` sem atributo `name` | Adicione `name` em cada campo: `<input name="email">` |
+| Formulario recarrega a pagina sem acao | `<form>` sem `action` definido | Adicione `action="/endpoint"` e `method="POST"` |
+| Leitor de tela nao identifica campos | Labels nao associados aos inputs | Use `<label for="id-do-input">` ou envolva o input no label |
+| Teclado mobile mostra teclado generico | `type="text"` para email ou numero | Use `type="email"`, `type="number"`, `type="tel"` conforme o campo |
 
 ## Deep reference library
 

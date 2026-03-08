@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-rota-controller-sessao-mesa
 description: "Generates Express controller and route files following the restaurant API pattern. Use when user asks to 'create a controller', 'add a route', 'create an endpoint', 'setup express route', or 'create CRUD for a resource'. Applies class-based controllers with try/catch/next, separated route files, and index.ts route registration. Make sure to use this skill whenever scaffolding new Express endpoints or adding resources to an existing Express API. Not for frontend components, database migrations, or middleware creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Express Controllers"
+  tags: ['express', 'controllers', 'routes', 'rest-api', 'typescript']
 ---
 
 # Rota e Controller — Padrao Express Class-Based
@@ -91,6 +97,15 @@ Tres arquivos criados/modificados:
 | Controller como funcao avulsa | Classe controller com metodos |
 | Prefixo duplicado (index + arquivo de rotas) | Prefixo so no index, raiz no arquivo |
 | Tudo num arquivo so | Controller, routes e index separados |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Rota retorna 404 | Rota nao registrada no index.ts | Adicione `routes.use("/prefixo", recursoRoutes)` no index |
+| Erro 500 sem mensagem clara | `catch` sem `next(error)` | Substitua `res.status(500)` por `next(error)` no catch |
+| Metodo do controller nao encontrado | Controller nao instanciado no arquivo de rotas | Crie instancia: `const controller = new Controller()` |
+| Prefixo de rota duplicado | Prefixo definido tanto no index quanto no arquivo de rotas | Defina prefixo apenas no index, use `/` no arquivo de rotas |
 
 ## Deep reference library
 

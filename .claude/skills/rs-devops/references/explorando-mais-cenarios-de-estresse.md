@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-cenarios-estresse
 description: "Applies Kubernetes HPA tuning and stress testing patterns when configuring autoscaling, resource limits, or load testing containerized applications. Use when user asks to 'configure HPA', 'set resource limits', 'stress test', 'load test', 'tune replicas', or 'optimize pod scaling'. Guides replica count, CPU/memory requests/limits, and HPA min/max based on observed load patterns. Make sure to use this skill whenever adjusting Kubernetes scaling parameters or analyzing application performance under load. Not for application code architecture, CI/CD pipelines, or Helm chart templating."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, hpa, stress-test, resource-limits, tuning, autoscaling, cpu, memory]
 ---
 
 # Kubernetes HPA Tuning e Testes de Estresse
@@ -112,14 +118,14 @@ resources:
 | Escalar memoria quando o gargalo e CPU | Verificar `kubectl top pods` antes de ajustar |
 | Assumir que HPA resolve tudo | HPA e para picos — trafego normal precisa de baseline adequado |
 
+## Troubleshooting
+
+### CPU bate o limite imediatamente sob carga leve
+**Symptom:** Com poucos requests, `kubectl top pods` mostra CPU no limite (ex: 200m/200m)
+**Cause:** Resource requests e limits estao muito baixos para o tipo de workload — definidos sem dados de teste
+**Fix:** Aumente cpu request e limit (ex: 400m/700m) baseado nos dados do teste de estresse e re-aplique o deployment
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-mais-cenarios-de-estresse/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-mais-cenarios-de-estresse/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

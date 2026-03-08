@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controller-criacao-academia
+name: rs-node-js-2023-controller-de-criacao-de-academia
 description: "Enforces route separation by resource and controller creation patterns in Fastify with Zod validation. Use when user asks to 'create a controller', 'add routes', 'organize routes by resource', 'validate latitude longitude', or 'apply auth middleware to route group'. Applies patterns: route files per resource, group-level auth hooks, Zod refine for custom validation, factory use-case injection. Make sure to use this skill whenever creating new Fastify controllers or reorganizing route files. Not for database schema design, use-case implementation, or test writing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller por Recurso com Validacao Zod
@@ -146,14 +153,14 @@ export async function gymsRoutes(app: FastifyInstance) {
 | `new CreateGymUseCase(new GymRepo())` no controller | `makeCreateGymUseCase()` via factory |
 | try/catch generico sem erros customizados | Deixar o global error handler atuar |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-academia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-academia/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-academia/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-academia/references/code-examples.md) — Todos os exemplos de código expandidos com variações

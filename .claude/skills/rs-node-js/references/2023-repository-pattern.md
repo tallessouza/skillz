@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-repository-pattern
 description: "Applies the Repository Pattern to abstract database operations into dedicated classes when writing Node.js/TypeScript backend code. Use when user asks to 'create a repository', 'abstract database logic', 'separate database code', 'implement SOLID', or 'organize backend architecture'. Enforces: all DB operations go through repository classes, use ORM-generated types for method parameters, return created entities from mutation methods. Make sure to use this skill whenever generating backend code that interacts with a database. Not for frontend code, API route handlers, or business logic in use cases."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: repository-pattern
+  tags: [repository-pattern, prisma, solid, abstraction, orm, dependency-inversion, typescript]
 ---
 
 # Repository Pattern
@@ -106,14 +112,14 @@ export async function registerUseCase({ name, email, password }: RegisterInput) 
 | Funcoes exportadas soltas para cada operacao | Classe com metodos agrupados |
 | Repositorio que nao retorna a entidade criada | `return await prisma.user.create({ data })` |
 
+## Troubleshooting
+
+### Use case acessa Prisma diretamente em vez de usar repositorio
+**Symptom:** O codigo do use case importa `prisma` e chama `prisma.user.create()` diretamente
+**Cause:** O Repository Pattern nao foi aplicado — a camada de persistencia esta acoplada ao caso de uso
+**Fix:** Crie uma classe `PrismaUsersRepository` com os metodos necessarios e instancie-a no use case. O use case deve chamar `usersRepository.create()` em vez de `prisma.user.create()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-repository-pattern/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-repository-pattern/references/code-examples.md)

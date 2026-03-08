@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-validando-cookie
 description: "Applies Fastify preHandler middleware pattern for cookie/session validation when writing Node.js API routes. Use when user asks to 'protect routes', 'validate session', 'check authentication cookie', 'add middleware to Fastify', or 'reuse route validation'. Implements preHandler array pattern, cookie existence check, and 401 unauthorized responses. Make sure to use this skill whenever creating authenticated Fastify routes or sharing validation logic across multiple routes. Not for JWT token validation, OAuth flows, or Express.js middleware."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: middleware-e-cookies
+  tags: [fastify, preHandler, middleware, cookies, session, authentication, 401]
 ---
 
 # Validando Existencia do Cookie com PreHandler
@@ -139,14 +145,14 @@ app.get('/summary', { preHandler: [checkSessionIdExists] }, async (request) => {
 | Retornar 403 para usuario sem cookie | Retornar 401 (nao autenticado, nao nao autorizado) |
 | Listar todas as transacoes sem filtro de sessao | Sempre filtrar por `session_id` do cookie |
 
+## Troubleshooting
+
+### preHandler nao esta sendo executado na rota
+**Symptom:** Rota retorna dados normalmente sem validar o cookie, middleware parece ignorado
+**Cause:** O preHandler foi passado como funcao direta em vez de array, ou foi colocado no lugar errado da assinatura da rota
+**Fix:** Use a sintaxe correta: `app.get('/', { preHandler: [checkSessionIdExists] }, handler)` com array no segundo parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-validando-existencia-do-cookie/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-validando-existencia-do-cookie/references/code-examples.md)

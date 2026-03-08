@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-selecionando-agendamento-remover
 description: "Applies event delegation pattern to identify clicked elements inside lists for deletion. Use when user asks to 'add delete button', 'remove item from list', 'cancel appointment', 'handle click on icon inside list', or 'implement item selection for removal'. Covers querySelectorAll, event.target.classList.contains, closest(), and dataset extraction. Make sure to use this skill whenever implementing click-to-delete in lists with multiple periods/groups. Not for HTTP DELETE requests, modal components, or drag-to-delete interactions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "DOM Event Delegation"
+  tags: ['javascript', 'dom', 'events', 'event-delegation', 'closest']
 ---
 
 # Selecionando Elemento para Remover via Event Delegation
@@ -103,6 +109,15 @@ periods.forEach((period) => {
 | Listener em cada `<li>` individualmente | Delegation no `<ul>` container |
 | `deleteItem()` sem confirmacao | `if (confirm(...)) deleteItem()` |
 | `item.getAttribute('data-id')` | `item.dataset.id` (API moderna) |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Click no icone nao dispara acao | `classList.contains` com nome de classe errado | Verifique o nome exato da classe no HTML: `cancel-icon` vs `cancelIcon` |
+| `closest()` retorna null | Estrutura HTML diferente da esperada | Verifique que o icone esta dentro de um `<li>` com `data-id` |
+| `dataset.id` retorna undefined | Atributo `data-id` ausente no elemento pai | Adicione `data-id="valor"` no `<li>` correspondente |
+| Listener nao funciona em itens adicionados dinamicamente | Listener adicionado antes dos itens existirem | Use event delegation no container pai que ja existe no DOM |
 
 ## Deep reference library
 

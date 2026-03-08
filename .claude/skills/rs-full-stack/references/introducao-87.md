@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-87
 description: "Applies CSS animation and transition fundamentals when styling UI elements. Use when user asks to 'animate an element', 'add a transition', 'create a CSS animation', 'make it move', or 'add hover effect'. Distinguishes between CSS transitions (state A to B on trigger) and CSS animations (multi-keyframe timelines). Make sure to use this skill whenever adding motion to UI elements with CSS. Not for JavaScript-driven animations, canvas/WebGL, or SVG animation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animation, transition, keyframes, hover, motion]
 ---
 
 # CSS Animations & Transitions — Fundamentos
@@ -100,13 +106,15 @@ element.onmouseover = () => {
 | Animar `width`/`height`/`top`/`left` | Animar `transform: translate/scale` |
 | `transition: all` | Especifique a propriedade: `transition: opacity 0.3s` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Transição não funciona no hover | Propriedade animada não está na declaração `transition` | Especifique a propriedade exata: `transition: background-color 0.3s ease` |
+| Animação com `@keyframes` não roda | Nome do keyframe diferente do referenciado em `animation` | Confira que o nome em `animation:` bate exatamente com `@keyframes nome` |
+| Animação trava ou fica lenta | Animando propriedades que causam reflow (`width`, `height`, `top`) | Anime apenas `transform` e `opacity` para melhor performance |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre evolucao do CSS, diferenca historica Flash vs JS vs CSS
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de transitions e animations com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-87/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-87/references/code-examples.md)

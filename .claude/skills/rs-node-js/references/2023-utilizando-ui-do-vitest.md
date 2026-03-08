@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-vitest-ui
 description: "Configures and uses Vitest UI for visual test monitoring in Node.js projects. Use when user asks to 'setup vitest ui', 'visualize tests', 'test dashboard', 'vitest interface', or 'monitor tests visually'. Applies installation, script configuration, and UI navigation patterns. Make sure to use this skill whenever setting up visual test tooling with Vitest. Not for writing test logic, test assertions, or configuring test runners without UI."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: vitest-ui
+  tags: [vitest, ui, testing, dashboard, visual, live-reload]
 ---
 
 # Utilizando UI do Vitest
@@ -72,14 +78,14 @@ Ao configurar, o resultado esperado e:
 - Todos os testes executam e mostram status (verde/vermelho)
 - Alterar um teste para falhar → UI atualiza em tempo real mostrando a falha
 
+## Troubleshooting
+
+### Erro "Cannot find module @vitest/ui" ao rodar npm run test:ui
+**Symptom:** Terminal mostra `Error: Cannot find module '@vitest/ui'` ao executar o script
+**Cause:** O pacote `@vitest/ui` nao foi instalado como devDependency
+**Fix:** Rode `npm install -D @vitest/ui` e tente novamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-utilizando-ui-do-vitest/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-utilizando-ui-do-vitest/references/code-examples.md)

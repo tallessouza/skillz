@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-nosql-injection
 description: "Guards against NoSQL Injection vulnerabilities when writing MongoDB or NoSQL database queries. Use when user asks to 'query MongoDB', 'authenticate users', 'build login', 'connect to NoSQL database', or any code that passes user input to NoSQL operations. Enforces input type validation before database queries to prevent operator injection ($regex, $gt, $ne). Make sure to use this skill whenever writing NoSQL query code that receives external input. Not for SQL databases, ORM configuration, or general input sanitization unrelated to database queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, nosql, mongodb, injection]
 ---
 
 # NoSQL Injection Prevention
@@ -98,14 +104,14 @@ login("alice@example.com", { $regex: "." })
 | Validar so na camada de API | Validar na API E na camada de dados (seguranca em camadas) |
 | `users.findOne({ email: req.body.email })` direto | `users.findOne({ email: String(req.body.email) })` |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-nosql-injection/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-nosql-injection/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-nosql-injection/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-nosql-injection/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

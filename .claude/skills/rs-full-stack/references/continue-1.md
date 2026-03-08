@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-continue-1
 description: "Applies the continue keyword correctly in JavaScript/TypeScript loops to skip iterations. Use when user asks to 'skip iteration', 'filter inside loop', 'continue to next', 'ignore certain values in loop', or writes for/while loops with conditional skipping. Make sure to use this skill whenever generating loop code that needs to bypass specific iterations without breaking the entire loop. Not for break statements, loop termination, or array filter/map operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, continue, loops, control-flow, guard-clause]
 ---
 
 # Continue em Estruturas de Repetição
@@ -81,13 +87,16 @@ for (const order of orders) {
 | `continue` fora de loop | Erro de sintaxe — só funciona dentro de for/while/do-while |
 | `continue` quando deveria usar `.filter()` | `items.filter(item => item.isValid)` para transformações funcionais |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SyntaxError: Illegal continue statement | `continue` usado fora de um loop | `continue` so funciona dentro de `for`, `while` ou `do-while` |
+| Loop para completamente em vez de pular | Usando `break` em vez de `continue` | Troque `break` por `continue` para pular apenas a iteracao atual |
+| Logica apos `continue` nao executa | `continue` pula todo o codigo restante da iteracao | Mova a logica importante para antes do `continue` |
+| Funcao `.forEach` nao aceita continue | `.forEach` nao e um loop nativo | Use `return` dentro de `.forEach` para pular, ou troque por `for...of` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-continue-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-continue-1/references/code-examples.md)

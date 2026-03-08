@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-encerramento-47
 description: "Applies automated testing strategy using Jest and SuperTest for Node.js APIs. Use when user asks to 'add tests', 'write unit tests', 'test my API', 'setup Jest', or 'create e2e tests'. Guides test separation between unit and end-to-end, enforces correct tool selection per test type. Make sure to use this skill whenever setting up a testing strategy for Node.js backend projects. Not for frontend component testing, browser testing, or non-JavaScript projects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testes
+  tags: [jest, supertest, testes, unitario, e2e, node-js]
 ---
 
 # Estrategia de Testes Automatizados com Jest e SuperTest
@@ -93,13 +99,16 @@ describe('POST /users', () => {
 | Pular testes unitarios e so fazer e2e | Unitarios dao feedback rapido e especifico |
 | Testar implementacao interna | Teste comportamento e resultado |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Jest nao encontra os arquivos de teste | testMatch pattern nao corresponde ao path dos testes | Ajuste testMatch no jest.config para incluir o diretorio correto |
+| SuperTest retorna 404 para rota existente | App exportado incorretamente ou rotas nao registradas | Verifique que app e exportado sem listen() e rotas estao registradas |
+| Testes e2e interferem entre si | Banco compartilhado entre testes sem cleanup | Use beforeEach para limpar dados ou banco in-memory por suite |
+| Teste passa isolado mas falha no CI | Ordem de execucao diferente ou timeout curto | Aumente timeout e garanta independencia entre testes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de testes e estrategia de testing
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de Jest e SuperTest com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encerramento-47/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encerramento-47/references/code-examples.md)

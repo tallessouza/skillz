@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-plan-mode-criando-desafios
 description: "Enforces the Ask-Plan-Agent workflow when using AI coding assistants like Copilot Chat. Use when user asks to 'use copilot', 'plan a feature', 'create with AI', 'use agent mode', or 'ask copilot to build'. Applies the principle: Ask first to understand, Plan to structure tasks, Agent to generate code. Make sure to use this skill whenever the user jumps straight to agent/generation mode without planning first. Not for manual coding without AI assistants, or for configuring IDE settings."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ai-assisted-development
+  tags:
+    - ai
+    - copilot
+    - workflow
+    - planning
 ---
 
 # Plan Mode: Fluxo Ask → Plan → Agent
@@ -76,6 +86,14 @@ Plan (estruturar) → Agent (gerar) → Ask (explicar o que foi gerado)
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre os modos Ask, Plan e Agent
 - [code-examples.md](references/code-examples.md) — Exemplo completo do fluxo de historico de pesquisas
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Agent mode gera codigo que nao funciona | Pulou a fase de planejamento, prompt vago | Volte ao modo Plan, estruture os passos antes de gerar |
+| Copilot nao entende o que voce quer | Falta de contexto no prompt | Use modo Ask para explicar o problema, depois Plan para detalhar |
+| Codigo gerado mas voce nao entende | Aceitou sem revisar | Use modo Ask para pedir explicacao do codigo gerado |
 
 ---
 

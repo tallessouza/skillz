@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caminhos-absolutos-relativos-servidor
 description: "Enforces correct absolute and relative path usage when working with HTML files served via HTTP. Use when user asks to 'link pages', 'reference files in HTML', 'setup live server', 'fix broken links', or 'configure paths in a web project'. Applies rules: slash behaves differently under file:// vs http://, index.html is implicit at root, prefer relative paths. Make sure to use this skill whenever generating HTML with href/src attributes in server-hosted projects. Not for Node.js module resolution, API routing, or filesystem scripts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, paths, http, server, live-server, href]
 ---
 
 # Caminhos Absolutos e Relativos em Servidor
@@ -81,13 +87,16 @@ description: "Enforces correct absolute and relative path usage when working wit
 | Esquecer que `/` muda de significado por protocolo | Verificar qual protocolo esta ativo |
 | `href="/index.html"` quando relativo basta | `href="index.html"` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Link funciona no servidor mas quebra ao abrir com duplo clique | `/` aponta para raiz do SO em `file://` | Use caminhos relativos para compatibilidade |
+| `404 Not Found` no servidor | Caminho absoluto aponta para local errado | Verifique a raiz do servidor e ajuste o path |
+| `index.html` nao carrega ao acessar `/` | Servidor nao configurado para servir index implicito | Verifique configuracao do Live Server ou servidor usado |
+| Recursos (CSS/JS) nao carregam | Caminho muda de comportamento entre protocolos | Prefira caminhos relativos: `style.css` em vez de `/style.css` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre protocolos, analogia da casa/porta, e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos-e-relativos-em-um-servidor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos-e-relativos-em-um-servidor/references/code-examples.md)

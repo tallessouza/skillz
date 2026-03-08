@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-clean-architecture
 description: "Enforces Clean Architecture layer separation and dependency rules when structuring Node.js/TypeScript projects. Use when user asks to 'create a project structure', 'organize folders', 'separate concerns', 'implement use cases', or 'decouple infrastructure'. Applies dependency direction rules, layer protection via interface adapters, and infrastructure isolation. Make sure to use this skill whenever designing or reviewing application architecture with multiple layers. Not for UI component design, database queries, or specific framework configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: clean-architecture
+  tags: [clean-architecture, layers, dependency-inversion, use-cases, entities, solid]
 ---
 
 # Fundamentos de Clean Architecture
@@ -128,14 +134,14 @@ export class AnswerQuestionUseCase {
 | Use case retornando Response HTTP | Use case retorna dados puros, presenter formata |
 | Criar pastas fixas achando que isso e Clean Architecture | Respeitar direcao de dependencias entre camadas |
 
+## Troubleshooting
+
+### Use case importa diretamente do Prisma ou framework
+**Symptom:** O use case funciona mas esta acoplado a infraestrutura, dificultando testes e troca de tecnologia
+**Cause:** O use case importa a implementacao concreta em vez do contrato abstrato (interface/abstract class)
+**Fix:** Crie um contrato (interface ou abstract class) na camada de dominio e injete-o via construtor no use case
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fundamentos-de-clean-architecture/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fundamentos-de-clean-architecture/references/code-examples.md)

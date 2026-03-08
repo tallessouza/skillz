@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-some
 description: "Applies Array.some() method correctly when checking if at least one element meets a condition. Use when user asks to 'check if any element', 'verify if at least one', 'test array condition', 'validate any item', or uses some() in code. Ensures proper boolean return handling and callback structure. Make sure to use this skill whenever generating code that needs to test partial array conditions. Not for filtering arrays, transforming data, or checking ALL elements (use every() instead)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-array-methods
+  tags: [javascript, array, some, boolean, validation]
 ---
 
 # Método some()
@@ -73,13 +79,16 @@ console.log(hasMinor)
 | `some()` quando precisa de todos | `every()` |
 | `some()` quando precisa do elemento | `find()` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `some()` retorna `false` quando deveria ser `true` | Condicao do callback esta incorreta | Teste o callback isoladamente com um elemento que deveria passar |
+| Confusao entre `some()` e `every()` | `some()` = pelo menos um, `every()` = todos | Releia a intencao: "algum" → `some()`, "todos" → `every()` |
+| Usou `some()` mas precisa do elemento | `some()` retorna boolean, nao o elemento | Use `find()` para obter o elemento ou `filter()` para multiplos |
+| Performance ruim em arrays grandes | `some()` ja faz short-circuit no primeiro match | Verifique se nao esta encadeando com `filter().length > 0` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-some/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-some/references/code-examples.md)

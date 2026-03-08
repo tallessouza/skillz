@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-variantes-de-botoes
 description: "Enforces Tailwind Variants pattern for component styling when creating buttons, UI components, or variant-based designs in React/Next.js. Use when user asks to 'create a button component', 'add variants to a component', 'style different button types', 'use tailwind-variants', or 'create reusable UI components'. Applies tv() pattern with base styles, named variants, defaultVariants, and VariantProps typing. Make sure to use this skill whenever building components with multiple visual states. Not for utility-first inline Tailwind classes without variants, CSS modules, or styled-components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, react, tailwind-variants]
 ---
 
 # Tailwind Variants — Variantes de Componentes
@@ -99,15 +105,19 @@ export function Button({ variant, className, ...props }: ButtonProps) {
 | Classes base repetidas em cada variante | Array no `base` com estilos compartilhados |
 | `className={condition ? 'bg-violet-600' : 'border'}` | `variant={condition ? 'primary' : 'outline'}` |
 | String unica gigante no base | Array separando layout, estados, tipografia |
+## Troubleshooting
+
+### Focus ring aparece no clique do botao
+**Symptom:** Ao clicar num botao, o ring de foco aparece desnecessariamente.
+**Cause:** Usando `focus:` em vez de `focus-visible:` no botao.
+**Fix:** Use `focus-visible:ring` para botoes e tabs (so ativa via teclado). Reserve `focus:` para inputs.
+
+### Focus ring nao aparece no input com wrapper
+**Symptom:** Ao focar o input dentro de uma div wrapper, nenhum estilo muda na div.
+**Cause:** `focus:` na div nao funciona porque divs nao recebem foco diretamente.
+**Fix:** Use `focus-within:` na div wrapper para detectar foco em qualquer filho.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variantes-de-botoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variantes-de-botoes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variantes-de-botoes/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variantes-de-botoes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

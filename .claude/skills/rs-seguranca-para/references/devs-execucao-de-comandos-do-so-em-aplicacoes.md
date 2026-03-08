@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-execucao-comandos-so
 description: "Guards against OS command injection when application code calls system commands (os.system, subprocess, shell_exec, exec). Use when user asks to 'run a shell command', 'call a CLI tool', 'execute a process', 'optimize files with CLI', or any code that spawns OS processes. Ensures user input never reaches command strings unsanitized. Make sure to use this skill whenever generating code that invokes system commands, even for seemingly harmless utilities. Not for SQL injection, XSS, or general input validation unrelated to shell execution."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, command-injection, subprocess, shell]
 ---
 
 # Execucao de Comandos do SO
@@ -85,14 +91,14 @@ subprocess.run(["svgo", f"original/{filename}", "-o", f"optimized/{filename}"])
 | Validar apenas `;` e `&` | Whitelist `\w+` — bloquear TUDO exceto alfanumerico |
 | `shell_exec($userInput)` (PHP) | `escapeshellarg()` + whitelist estrita |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-execucao-de-comandos-do-so-em-aplicacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-execucao-de-comandos-do-so-em-aplicacoes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-execucao-de-comandos-do-so-em-aplicacoes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-execucao-de-comandos-do-so-em-aplicacoes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

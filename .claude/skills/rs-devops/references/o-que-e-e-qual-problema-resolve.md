@@ -1,6 +1,12 @@
 ---
 name: rs-devops-mtls-service-mesh
 description: "Applies mTLS (Mutual TLS) and zero-trust networking concepts when designing Kubernetes service-to-service communication. Use when user asks to 'secure service communication', 'implement mTLS', 'configure zero trust', 'setup Istio security', or 'encrypt inter-service traffic'. Make sure to use this skill whenever designing service mesh security or evaluating whether Istio is appropriate for a cluster. Not for application-level HTTPS/TLS certificates, ingress TLS termination, or frontend SSL setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh-mtls
+  tags: [mtls, zero-trust, istio, tls, security, service-mesh, kubernetes]
 ---
 
 # mTLS e Zero Trust em Service Mesh
@@ -73,14 +79,14 @@ A mesma logica se aplica ao circuit breaker: se voce so precisa de circuit break
 - Istio como solucao de mTLS so faz sentido se ja usado para outros fins
 - Nao substitui autenticacao/autorizacao a nivel de aplicacao (OAuth, JWT)
 
+## Troubleshooting
+
+### Comunicacao entre servicos falha apos habilitar mTLS
+**Symptom:** Servicos retornam erro 503 ao tentar se comunicar apos ativar mTLS no Istio
+**Cause:** Nem todos os servicos tem sidecar Istio injetado — servicos sem proxy nao conseguem participar do handshake mTLS
+**Fix:** Verifique que todos os namespaces com servicos que se comunicam tem `istio-injection=enabled` e que os pods mostram 2/2 containers
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-e-e-qual-problema-resolve/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-e-e-qual-problema-resolve/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

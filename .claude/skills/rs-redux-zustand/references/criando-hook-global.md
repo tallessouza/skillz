@@ -1,27 +1,30 @@
 ---
 name: rs-redux-zustand-criando-hook-global
-description: "Enforces extraction of reusable selector hooks from Redux/Zustand stores when state selection logic is repeated across components. Use when user asks to 'create a selector', 'reuse store state', 'avoid repeated useSelector', 'create a custom hook for store', or 'share state logic between components'. Make sure to use this skill whenever detecting duplicated store selection patterns across multiple components. Not for creating stores, reducers, slices, or actions."
+description: "Enforces extraction of reusable selector hooks from Redux/Zustand stores when state selection logic is repeated across components. Use when user asks to 'create a selector hook', 'reuse store state logic', 'avoid repeated useSelector', 'create custom hook for store', 'share derived state between components', or 'extract selector hook'. Make sure to use this skill whenever detecting duplicated store selection patterns across multiple components. Not for creating stores, reducers, slices, actions, or side effects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: redux-zustand
+  module: criando-hook-global
+  tags: [custom-hook, selector, reuse, derived-state, redux, zustand]
 ---
 
 # Criando Hook Global de Seletor
 
-> Extraia logica de selecao de estado repetida em um hook customizado exportado do proprio slice, eliminando duplicacao e centralizando acesso a dados derivados.
+> Extraia logica de selecao repetida em um hook customizado exportado do slice, eliminando duplicacao.
 
 ## Rules
 
-1. **Identifique selecoes repetidas** — quando dois ou mais componentes fazem o mesmo `useSelector`/`useAppSelector` com a mesma logica de derivacao, extraia para um hook, porque codigo duplicado diverge silenciosamente com o tempo
-2. **Exporte o hook do slice** — o hook customizado vive no mesmo arquivo do slice, nao em pasta separada de hooks, porque o hook depende da estrutura do estado daquele slice
-3. **Nomeie pelo dado retornado, nao pela origem** — `useCurrentLesson` nao `usePlayerSliceData`, porque o consumidor se importa com o que recebe, nao de onde vem
-4. **Retorne objeto nomeado** — retorne `{ currentModule, currentLesson }` nao valores posicionais, porque permite destructuring seletivo nos componentes
-5. **Componentes consomem apenas o que precisam** — destructure somente os campos necessarios (`const { currentLesson } = useCurrentLesson()`), porque evita re-renders desnecessarios
-6. **Mantenha o hook puro** — sem side effects dentro do hook, apenas selecao e derivacao de estado, porque side effects como `document.title` pertencem ao componente consumidor
+1. **Identifique selecoes repetidas** — 2+ componentes com mesma logica de derivacao, extraia para hook
+2. **Exporte do slice** — hook vive no arquivo do slice, porque depende da estrutura do estado
+3. **Nomeie pelo dado retornado** — `useCurrentLesson` nao `usePlayerSliceData`
+4. **Retorne objeto nomeado** — `return { currentModule, currentLesson }` para destructuring seletivo
+5. **Hook puro** — sem side effects; useEffect pertence ao componente consumidor
 
 ## How to write
 
-### Hook global no slice
-
 ```typescript
-// player.ts (slice file)
+// player.ts (arquivo do slice)
 export const useCurrentLesson = () => {
   return useAppSelector((state) => {
     const { currentModuleIndex, currentLessonIndex } = state.player
@@ -30,87 +33,35 @@ export const useCurrentLesson = () => {
     return { currentModule, currentLesson }
   })
 }
-```
 
-### Componente consumindo o hook
-
-```typescript
-// Header.tsx — usa ambos
+// Header.tsx
 const { currentModule, currentLesson } = useCurrentLesson()
 
 // Video.tsx — usa apenas lesson
 const { currentLesson } = useCurrentLesson()
 ```
 
-### Side effect no componente (nao no hook)
-
-```typescript
-// Player.tsx
-const { currentLesson } = useCurrentLesson()
-
-useEffect(() => {
-  document.title = `Assistindo ${currentLesson?.title}`
-}, [currentLesson])
-```
-
 ## Example
 
-**Before (selecao duplicada em cada componente):**
-
-```typescript
-// Header.tsx
-const { currentModuleIndex, currentLessonIndex, course } = useAppSelector(
-  (state) => state.player
-)
-const currentModule = course?.modules[currentModuleIndex]
-const currentLesson = currentModule?.lessons[currentLessonIndex]
-
-// Video.tsx (mesma logica copiada)
-const { currentModuleIndex, currentLessonIndex, course } = useAppSelector(
-  (state) => state.player
-)
-const currentModule = course?.modules[currentModuleIndex]
-const currentLesson = currentModule?.lessons[currentLessonIndex]
-```
-
-**After (hook global extraido):**
-
-```typescript
-// Header.tsx
-const { currentModule, currentLesson } = useCurrentLesson()
-
-// Video.tsx
-const { currentLesson } = useCurrentLesson()
-```
-
-## Heuristics
-
-| Situation | Do |
-|-----------|-----|
-| Mesma selecao em 2+ componentes | Extrair para hook no slice |
-| Selecao usada em apenas 1 componente | Manter inline, nao extrair prematuramente |
-| Hook precisa de parametro externo | Criar hook com argumento: `useLesson(lessonId)` |
-| Dado derivado complexo (joins, filtros) | Hook e o lugar certo para centralizar |
-| Side effect baseado no dado | Manter no componente com useEffect, nao no hook |
+**Before (duplicado):** Mesma logica de selector em Header.tsx e Video.tsx
+**After (hook):** `useCurrentLesson()` em ambos, logica centralizada no slice
 
 ## Anti-patterns
 
 | Never write | Write instead |
 |-------------|---------------|
-| Hook de seletor em `hooks/useCurrentLesson.ts` separado do slice | Exportar do proprio arquivo do slice |
-| `return [currentModule, currentLesson]` (array) | `return { currentModule, currentLesson }` (objeto) |
-| `useEffect` dentro do hook de seletor | `useEffect` no componente consumidor |
-| Copiar logica de selecao em cada componente | Chamar o hook compartilhado |
-| `usePlayerData()` (nome generico) | `useCurrentLesson()` (nome pelo dado retornado) |
+| Hook em `hooks/useCurrentLesson.ts` | Exportar do arquivo do slice |
+| `return [a, b]` (array) | `return { a, b }` (objeto) |
+| `useEffect` dentro do hook | `useEffect` no componente |
+
+## Troubleshooting
+
+### Hook re-renderiza componentes que nao usam todos os campos
+**Symptom:** Video re-renderiza quando currentModule muda, mesmo usando so currentLesson.
+**Cause:** O selector retorna novo objeto a cada mudanca de qualquer campo.
+**Fix:** Para otimizacao extrema, crie selectors separados. Para a maioria dos casos, o overhead e negligivel.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/redux-zustand/rs-redux-zustand-criando-hook-global/references/deep-explanation.md)
-- [Code examples](../../../data/skills/redux-zustand/rs-redux-zustand-criando-hook-global/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-hook-global/references/deep-explanation.md) — Seletores como API publica, co-localizacao, destructuring seletivo
+- [code-examples.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-hook-global/references/code-examples.md) — Slice com hook, Header, Video, Player com side effect

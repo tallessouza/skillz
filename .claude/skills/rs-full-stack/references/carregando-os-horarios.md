@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-carregando-os-horarios
 description: "Applies schedule loading patterns when building appointment or booking systems in JavaScript. Use when user asks to 'load available hours', 'filter past times', 'build scheduling UI', 'create booking form', or 'organize appointment code'. Enforces file organization by domain, date destructuring, past-hour filtering with dayjs, and availability mapping. Make sure to use this skill whenever generating code that deals with time slots, appointment loading, or schedule availability. Not for database schema design, API endpoint creation, or calendar UI styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dayjs, scheduling, modules, destructuring, date-time]
 ---
 
 # Carregando Horários Disponíveis
@@ -125,13 +131,17 @@ export function hoursLoad({ date }) {
 | `if (hour < new Date().getHours())` | `dayjs(date).add(hour, "hour").isAfter(dayjs())` |
 | Retornar apenas `hour` do map | Retornar `{ hour, available }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Todos os horarios aparecem como indisponiveis | Data passada sendo usada na comparacao | Verifique se `dayjs(date)` recebe a data correta do input |
+| `dayjs is not defined` | Modulo dayjs nao importado | Adicione `import dayjs from "dayjs"` no topo do arquivo |
+| Horarios do dia anterior persistem | Funcao de load nao limpa lista antes de popular | Adicione `innerHTML = ""` antes do render |
+| Desestruturacao retorna `undefined` | `split(":")` nao encontra o separador na string | Verifique o formato dos horarios em `openingHours` |
+| Funcao nao exportada para outros modulos | Falta `export` na declaracao | Use `export function hoursLoad(...)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre organização por domínio, centralização de loads e estratégia de filtro temporal
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e walkthrough passo a passo
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-carregando-os-horarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-carregando-os-horarios/references/code-examples.md)

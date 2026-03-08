@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-do-while-1
 description: "Applies do-while loop pattern when writing JavaScript/TypeScript repetition logic. Use when user asks to 'create a loop', 'repeat until', 'execute at least once', 'iterate with condition check at end', or needs guaranteed first execution. Ensures correct do-while structure with condition at end. Make sure to use this skill whenever a loop must run at least once before checking its condition. Not for for-loops, while-loops, or array iteration methods like map/filter/forEach."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, loops, do-while, repeticao, controle-de-fluxo]
 ---
 
 # Loop Do While
@@ -83,13 +89,16 @@ do {
 | Flag artificial para forcar entrada no while | `do-while` que naturalmente executa 1 vez |
 | Duplicar codigo antes do while para simular 1a execucao | `do-while` que elimina a duplicacao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Loop infinito com do-while | Condicao nunca se torna falsa | Verifique se a variavel da condicao e atualizada dentro do bloco |
+| Loop executa uma vez a mais do que esperado | Incremento acontece antes da verificacao | Ajuste a ordem: verifique o valor APOS o incremento na condicao |
+| `value` tem valor inesperado apos o loop | Variavel foi incrementada antes da checagem | Lembre que no do-while a condicao avalia DEPOIS da execucao do bloco |
+| Erro de sintaxe no do-while | Faltou ponto-e-virgula apos `while(cond)` | Adicione `;` apos o parentese: `} while (cond);` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-do-while-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-do-while-1/references/code-examples.md)

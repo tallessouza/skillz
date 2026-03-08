@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-insomnia
 description: "Applies Insomnia API client configuration patterns when setting up API testing environments. Use when user asks to 'configure Insomnia', 'setup API client', 'organize API requests', 'create request collection', or 'setup environment variables in Insomnia'. Ensures proper use of environments, folder-scoped variables, and base URLs. Make sure to use this skill whenever configuring Insomnia for API development projects. Not for Postman, cURL, or other API clients."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-tooling
+  tags: [insomnia, api-client, environment-variables, request-collection, api-testing]
 ---
 
 # Configurando o Insomnia para APIs
@@ -86,13 +92,16 @@ API Restaurant (Collection)
 - Clicar **Send** em uma request e verificar resposta da API
 - Alterar valor de `base_url` no environment e confirmar que todas as requests refletem a mudança
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel `base_url` nao renderiza na URL | Ambiente nao selecionado | Selecionar o ambiente (Dev) no dropdown do Insomnia |
+| Variavel `resource` nao aparece no autocompletar | Variavel definida no Base Environment em vez do folder | Mover para o Environment da pasta especifica |
+| Request retorna "Could not send request" | API nao esta rodando ou porta incorreta | Verificar se o servidor esta ativo em `localhost:3333` |
+| Ambiente sem cor identificadora | Cor nao foi configurada ao criar | Editar o ambiente e selecionar uma cor |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre escopo de variáveis e organização
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de configuração para diferentes APIs
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-o-insomnia-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-o-insomnia-1/references/code-examples.md)

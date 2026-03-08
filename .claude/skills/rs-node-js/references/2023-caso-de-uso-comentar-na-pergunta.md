@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-comentar-na-pergunta
 description: "Applies the use case pattern for creating comments on entities in DDD with Clean Architecture. Use when user asks to 'create a comment use case', 'add commenting feature', 'implement comment on question', or 'create a new use case in DDD'. Follows: validate parent exists, create child entity, repository per aggregate. Make sure to use this skill whenever implementing comment/reply features in domain-driven Node.js apps. Not for UI components, API controllers, or database migrations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-use-cases
+  tags: [ddd, use-case, comment, entity, repository, clean-architecture, domain]
 ---
 
 # Caso de Uso: Comentar na Pergunta
@@ -146,14 +152,19 @@ class CommentOnQuestion {
 | Criar comment sem verificar question | `findById` + throw se nao existir |
 | Retornar void do caso de uso | Retornar `{ questionComment }` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-comentar-na-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-comentar-na-pergunta/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-comentar-na-pergunta/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-comentar-na-pergunta/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

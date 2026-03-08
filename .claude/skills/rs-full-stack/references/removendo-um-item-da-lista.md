@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-item-da-lista
 description: "Applies DOM item removal pattern using closest() and remove() when writing JavaScript list manipulation code. Use when user asks to 'remove item from list', 'delete list element', 'remove DOM element', or 'handle delete click'. Enforces parent traversal with closest() instead of parentElement chains, and total recalculation after removal. Make sure to use this skill whenever implementing delete/remove functionality in vanilla JS lists. Not for React/Vue component unmounting or array-only operations without DOM."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, closest, remove, event-delegation]
 ---
 
 # Removendo um Item da Lista
@@ -79,6 +85,15 @@ removeIcon.addEventListener("click", (event) => {
 | Remover sem atualizar totais | `item.remove(); updateTotals()` |
 | Listener individual em cada botao de remover | Event delegation no container da lista |
 | `item.innerHTML = ""` para "remover" | `item.remove()` para remover do DOM |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `closest()` retorna null | Seletor CSS nao corresponde a nenhum ancestral | Verifique se a classe no seletor bate com o HTML |
+| Totais nao atualizam apos remocao | Falta chamada de `updateTotals()` apos `remove()` | Adicione `updateTotals()` logo apos `item.remove()` |
+| Clique no icone nao funciona | Listener adicionado antes do elemento existir no DOM | Use event delegation no container pai |
+| Remove apenas o icone, nao o item inteiro | Usando `event.target.remove()` em vez de `closest()` | Use `event.target.closest(".expense").remove()` |
 
 ## Deep reference library
 

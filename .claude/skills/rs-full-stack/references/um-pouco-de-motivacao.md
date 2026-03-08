@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-um-pouco-de-motivacao
 description: "Applies the principle of understanding tools before frameworks when setting up JavaScript projects. Use when user asks to 'setup a project from scratch', 'configure webpack', 'configure babel', 'setup bundler', or 'why do I need this config'. Reinforces learning compilers and bundlers before relying on framework magic. Make sure to use this skill whenever a user is confused about framework configuration files or wants to understand build tooling. Not for React-specific component development, deployment, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: build-tooling
+  tags: [javascript, webpack, babel, bundler, build-tools]
 ---
 
 # Entenda Antes de Automatizar
 
 > Antes de usar o que o framework traz pronto, entenda o que cada configuracao faz e por que existe.
 
-## Key concept
+## Key concepts
 
 Frameworks como React + Vite trazem configuracoes prontas (compiladores, bundlers, etc.) para dar velocidade ao desenvolvimento. Isso e otimo para produtividade, mas cria uma camada magica: arquivos e configs que existem sem voce saber por que estao ali. Entender os bastidores — instalar e configurar do zero — da clareza para diagnosticar problemas, customizar comportamentos e tomar decisoes informadas.
 
@@ -38,6 +44,26 @@ Cada arquivo tem um proposito. O problema nao e a automacao — e nao saber o qu
 
 Nao e contraditorio. O conhecimento dos bastidores torna voce mais eficiente com o framework.
 
+## Example
+
+```javascript
+// webpack.config.js — configuracao manual para entender o que o framework faz
+const path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+    ],
+  },
+}
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -59,6 +85,14 @@ Nao e contraditorio. O conhecimento dos bastidores torna voce mais eficiente com
 - Este principio e sobre mentalidade de aprendizado, nao sobre workflow de producao
 - Nao significa rejeitar frameworks — significa usar com consciencia
 - Configuracao manual repetida em projetos reais e desperdicio de tempo
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Erro de build sem mensagem clara | Não sabe qual ferramenta (compilador vs bundler) está falhando | Leia o stack trace — identifique se é Babel (compilação) ou Webpack (empacotamento) |
+| Arquivo de config não reconhecido pelo framework | Versão do framework incompatível com o formato de config | Consulte a documentação da versão específica do framework |
+| HMR não funciona após alterar config | Mudanças em arquivos de configuração exigem restart | Pare e reinicie o dev server após alterar configs |
 
 ## Deep reference library
 

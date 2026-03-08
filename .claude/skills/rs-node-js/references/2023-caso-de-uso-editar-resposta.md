@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-editar-resposta
 description: "Applies DDD use case pattern for editing entities with author-based authorization in Node.js. Use when user asks to 'edit an entity', 'create update use case', 'implement edit feature', or 'add authorization to updates'. Enforces pattern: validate author ownership, fetch by ID, mutate allowed fields only, save via repository, return updated entity. Make sure to use this skill whenever implementing edit/update use cases in DDD or Clean Architecture projects. Not for creating new entities, deleting, or read-only queries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [edit, answer, authorization, ddd, clean-architecture, save, repository-pattern]
 ---
 
 # Caso de Uso: Editar Entidade (Padrao DDD)
@@ -112,14 +118,19 @@ async execute({ authorId, answerId, content }) {
 | Implementar save() como create() | save() faz update por index no array |
 | Criar use case do zero quando similar existe | Copie, find-replace nome da entidade, ajuste campos |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-editar-resposta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-editar-resposta/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-editar-resposta/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-editar-resposta/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

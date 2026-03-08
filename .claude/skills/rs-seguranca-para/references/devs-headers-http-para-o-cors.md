@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-headers-http-cors
 description: "Enforces secure CORS implementation when writing API endpoints or configuring HTTP headers. Use when user asks to 'enable CORS', 'fix CORS error', 'add Access-Control headers', 'protect API', or 'configure allowed origins'. Applies rules: never use wildcard origin, always validate against known hosts list, return specific origin not asterisk, limit HTTP methods per route, handle OPTIONS preflight. Make sure to use this skill whenever implementing cross-origin access control in any backend framework. Not for Content-Security-Policy, X-Frame-Options, or frontend click-jacking headers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: http-security
+  tags: [security, cors, headers, cross-origin]
 ---
 
 # CORS — Implementacao Segura
@@ -112,14 +118,14 @@ app.options('/api/*', (req, res) => res.status(204).send(''))
 | Copiar config do enablecors.org direto | Entenda o risco e implemente validacao propria |
 | Setar headers so no GET/POST sem OPTIONS | O navegador faz OPTIONS primeiro — sem resposta, nada funciona |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-headers-http-para-o-cors/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-headers-http-para-o-cors/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-headers-http-para-o-cors/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-headers-http-para-o-cors/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

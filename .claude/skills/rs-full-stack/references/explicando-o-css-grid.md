@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-explicando-o-css-grid
 description: "Applies CSS Grid mental model when structuring page layouts with rows and columns. Use when user asks to 'create a layout', 'build a page structure', 'position elements', 'make a grid', or 'design a header/sidebar/footer layout'. Enforces grid thinking: container as sliced box with columns and rows where child elements occupy specific cells or spans. Make sure to use this skill whenever building multi-section page layouts. Not for Flexbox one-dimensional alignment, animations, or typography."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, grid, layout, grid-template, grid-areas, two-dimensional]
 ---
 
 # CSS Grid — Modelo Mental
@@ -80,13 +86,16 @@ As linhas que dividem a grade nao aparecem visualmente — elas existem apenas c
 - Grid nao substitui a necessidade de responsividade — combine com media queries ou `auto-fit`/`auto-fill`
 - Browser support e excelente hoje, mas layouts muito complexos podem ser dificeis de debugar sem DevTools
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elementos empilhados em vez de em grade | Falta `display: grid` no container pai | Adicionar `display: grid` ao elemento container |
+| Colunas nao respeitam tamanho definido | `grid-template-columns` nao declarado | Definir colunas: `grid-template-columns: 200px 1fr` |
+| Elemento nao ocupa a area esperada | Nome da area nao bate com `grid-template-areas` | Verificar que o nome no `grid-area` do filho bate com o template |
+| Layout quebra em telas pequenas | Grid sem responsividade | Usar `auto-fit`/`auto-fill` com `minmax()` ou media queries |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-explicando-o-css-grid/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-explicando-o-css-grid/references/code-examples.md)

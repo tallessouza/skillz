@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-fetch-api-wrapper
 description: "Applies Next.js Fetch API wrapper pattern when creating data fetching layers in Next.js applications. Use when user asks to 'create an API client', 'fetch data in Next.js', 'setup data fetching', 'create API wrapper', or 'configure base URL for requests'. Enforces native Fetch API over Axios to preserve Next.js caching extensions, env validation with Zod, and URL constructor pattern. Make sure to use this skill whenever building data fetching infrastructure in Next.js App Router projects. Not for generic React data fetching, REST API design, or backend route handler creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, fetch-api, api-wrapper, zod, env-validation, caching, data-fetching]
 ---
 
 # Fetch API Wrapper no Next.js App Router
@@ -103,14 +109,19 @@ const products = await response.json()
 | Variavel client sem prefixo `NEXT_PUBLIC_` | `NEXT_PUBLIC_API_BASE_URL` |
 | `throw` sem `console.error` antes | Log do erro formatado + throw |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-fetch-api-wrapper/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-fetch-api-wrapper/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-fetch-api-wrapper/references/deep-explanation.md) — O instrutor explica que o Axios e um wrapper sobre a **XMLHttpRequest**, que e a API antiga dos nave
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-fetch-api-wrapper/references/code-examples.md) — NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api

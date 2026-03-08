@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-route-query-parameters
 description: "Enforces correct usage of Query Parameters, Route Parameters, and Request Body when designing or implementing HTTP API routes in Node.js. Use when user asks to 'create an endpoint', 'add a route', 'build an API', 'handle request parameters', or 'design REST routes'. Applies rules: query params for filters/pagination, route params for resource identification, request body for sensitive/form data. Make sure to use this skill whenever designing API routes or handling HTTP parameters. Not for frontend routing, URL parsing libraries, or WebSocket protocols."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [query-params, route-params, request-body, http, rest-api, url-parameters]
 ---
 
 # Route e Query Parameters
@@ -90,14 +96,14 @@ description: "Enforces correct usage of Query Parameters, Route Parameters, and 
 | 20 campos como query params | Request body com JSON |
 | Route param para filtro opcional | Query param para filtro |
 
+## Troubleshooting
+
+### Dados sensiveis expostos na URL da requisicao
+**Symptom:** Senha ou token aparece nos logs do servidor ou historico do navegador
+**Cause:** Informacoes sensiveis enviadas via query parameters em vez de request body
+**Fix:** Mova dados sensiveis para o request body — query params e route params sao visiveis na URL mesmo com HTTPS
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-route-e-query-parameters/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-route-e-query-parameters/references/code-examples.md)

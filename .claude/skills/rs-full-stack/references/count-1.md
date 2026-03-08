@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-count-1
 description: "Applies SQL COUNT function patterns when writing queries that need record totals. Use when user asks to 'count records', 'get total rows', 'how many entries', 'count items in table', or any query needing row counts. Enforces COUNT with filters, proper column references, and dynamic counting over manual inspection. Make sure to use this skill whenever generating SQL that needs record quantities. Not for SUM, AVG, or other aggregate functions beyond counting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, COUNT, aggregate, query, filtering]
 ---
 
 # SQL COUNT
@@ -79,13 +85,15 @@ SELECT COUNT(*) AS total FROM products WHERE price >= 600;
 | `SELECT COUNT(name) FROM tabela` sem motivo para excluir NULLs | `SELECT COUNT(*) FROM tabela` |
 | COUNT sem alias em queries complexas | `SELECT COUNT(*) AS total FROM tabela` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| COUNT retorna valor menor que esperado | Usando `COUNT(coluna)` que ignora NULLs | Use `COUNT(*)` para contar todas as linhas incluindo NULLs |
+| Coluna de resultado sem nome legivel | COUNT sem alias retorna nome como `count(*)` | Adicione `AS total` ou alias descritivo |
+| COUNT retorna 0 quando tabela tem dados | WHERE filtra todos os registros | Verifique a condicao do WHERE ou remova para testar |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre COUNT, diferenças entre COUNT(*) e COUNT(coluna), e quando usar cada forma
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-count-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-count-1/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre COUNT, diferencas entre COUNT(*) e COUNT(coluna), e quando usar cada forma
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes

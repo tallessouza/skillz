@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-letter-spacing-word-spacing
 description: "Applies CSS letter-spacing and word-spacing properties when styling text. Use when user asks to 'style text', 'adjust spacing', 'improve typography', 'add letter spacing', or 'change word spacing'. Enforces subtle units, accessibility considerations, and design-driven usage. Make sure to use this skill whenever generating CSS that involves text spacing adjustments. Not for font-size, line-height, or text-align properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-styling
+  tags: [css, typography, letter-spacing, word-spacing, text-styling]
 ---
 
 # Letter Spacing e Word Spacing
@@ -75,13 +81,16 @@ description: "Applies CSS letter-spacing and word-spacing properties when stylin
 | Spacing arbitrário sem design | Só aplique com referência de design |
 | `letter-spacing: 10px` em body text | Mantenha o padrão do navegador |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Letter-spacing nao aparece visualmente | Valor muito pequeno ou font ja tem spacing natural | Aumente para `0.1em` e compare lado a lado |
+| Texto fica ilegivel com spacing aplicado | Valor muito alto ou negativo | Use valores entre `0.02em` e `0.15em` |
+| Word-spacing nao funciona em elemento inline | Elemento nao tem espacos entre palavras | Verifique se o conteudo tem multiplas palavras |
+| Spacing inconsistente entre breakpoints | Usando `px` que nao escala | Troque para `em` que escala com font-size |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre acessibilidade e impacto na leitura
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-letter-spacing-word-spacing/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-letter-spacing-word-spacing/references/code-examples.md)

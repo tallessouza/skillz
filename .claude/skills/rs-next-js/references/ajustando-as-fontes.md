@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-ajustando-as-fontes
 description: "Enforces centralized font configuration in Next.js Pages Router projects. Use when user asks to 'configure fonts', 'organize typography', 'refactor fonts in Next.js', 'set up Google Fonts', or 'fix font imports in layout'. Applies pattern: declare all fonts in layout file, use CSS variables with Tailwind, set default font on container, override explicitly where needed. Make sure to use this skill whenever setting up or refactoring fonts in Next.js Pages Router. Not for App Router font configuration, CSS-in-JS theming, or font file hosting."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: fonts-typography
+  tags: [fonts, next-font, google-fonts, css-variables, tailwind, pages-router]
 ---
 
 # Centralizacao de Fontes no Next.js Pages Router
@@ -131,14 +137,19 @@ export function SupportSection() {
 | Esquecer de definir fonte padrao | Adicionar classe da fonte principal no container raiz |
 | Template literal desnecessario `` `${ptSans.className}` `` | String simples quando so ha uma classe |
 
+## Troubleshooting
+
+### Estilos Tailwind nao aplicam
+**Symptom:** Classes Tailwind no JSX nao geram CSS correspondente
+**Cause:** Arquivo/pasta nao esta mapeado no array `content` do tailwind.config
+**Fix:** Adicionar o path da pasta no `content` do tailwind.config: `'./src/{nova-pasta}/**/*.{js,ts,jsx,tsx}'`. Reiniciar o servidor de desenvolvimento
+
+### Fontes customizadas nao carregam
+**Symptom:** Fonte do Google Fonts/local nao aparece, fallback e usado
+**Cause:** Configuracao incorreta do next/font ou CSS variable nao aplicada
+**Fix:** Usar `next/font/google` ou `next/font/local` e aplicar a className no elemento raiz do layout. Verificar que a variavel CSS esta sendo referenciada no Tailwind config
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-ajustando-as-fontes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-ajustando-as-fontes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-ajustando-as-fontes/references/deep-explanation.md) — O instrutor explica um ponto crucial da arquitetura Next.js Pages Router: o `_document` so executa n
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-ajustando-as-fontes/references/code-examples.md) — // src/components/layout.tsx

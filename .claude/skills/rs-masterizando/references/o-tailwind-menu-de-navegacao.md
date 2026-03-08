@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-menu-de-navegacao
 description: "Applies Tailwind group hover patterns and sidebar navigation structure when building navigation menus or sidebars. Use when user asks to 'create a sidebar', 'build a navigation menu', 'style nav items', 'group hover effect', or 'component extraction for menu items'. Enforces group modifier for parent-state-based styling, proper spacing with space-y, and ml-auto alignment tricks. Make sure to use this skill whenever generating sidebar navigation with Tailwind. Not for routing logic, authentication guards, or non-Tailwind CSS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, flexbox]
 ---
 
 # Menu de Navegacao com Tailwind
@@ -100,15 +106,19 @@ Problema: texto so fica roxo quando mouse esta sobre o span, nao sobre toda a an
 | Replicar ancora inteira para cada item | Extrair componente NavItem |
 | `justify-between` para um unico elemento na direita | `ml-auto` no elemento |
 | `padding` na sidebar para largura do hover | `mx-1` nos elementos vizinhos (logo, input) |
+## Troubleshooting
+
+### Sidebar cobre o conteudo principal no mobile
+**Symptom:** Ao abrir a sidebar no mobile, o conteudo atras fica visivel e interativo.
+**Cause:** Sidebar nao tem z-index suficiente ou falta overlay.
+**Fix:** Adicione `z-20` na sidebar e considere um overlay semitransparente atras dela.
+
+### Conteudo da sidebar cortado
+**Symptom:** Items do menu ou widgets ficam cortados na parte inferior.
+**Cause:** Sidebar sem altura total ou overflow escondido.
+**Fix:** Use `h-screen` ou `bottom-0 top-0` (com fixed) e `overflow-y-auto` para scroll interno.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-menu-de-navegacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-menu-de-navegacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-menu-de-navegacao/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-menu-de-navegacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-testes-unitarios
 description: "Enforces Either pattern test assertions when writing unit tests for use cases that return Result/Either types. Use when user asks to 'write a test', 'test a use case', 'refactor tests', 'add test for error case', or 'validate either result'. Applies isLeft/isRight assertions, optional chaining on value access, and proper error type checking. Make sure to use this skill whenever testing use cases that return Either/Result types. Not for testing pure functions, UI components, or integration tests without Either returns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: either-test-assertions
+  tags: [either, testing, isLeft, isRight, vitest, optional-chaining, result-pattern, assertions]
 ---
 
 # Testando Use Cases com Either/Result
@@ -107,14 +113,14 @@ it('should not allow', async () => {
 | `result.value.answer` (sem `?`) | `result.value?.answer` |
 | Testar so o valor sem validar o lado | Sempre validar `isRight`/`isLeft` primeiro |
 
+## Troubleshooting
+
+### TypeScript erro ao acessar `result.value.answer` sem optional chaining
+**Symptom:** TypeScript reclama que `result.value` pode ser `Left` ou `Right` e nao permite acesso direto a propriedades
+**Cause:** O Either nao foi narrowed — TypeScript nao sabe se e Left ou Right sem verificacao explicita
+**Fix:** Use optional chaining `result.value?.answer` ou faca narrowing com `if (result.isRight()) { result.value.answer }`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-testes-unitarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-testes-unitarios/references/code-examples.md)

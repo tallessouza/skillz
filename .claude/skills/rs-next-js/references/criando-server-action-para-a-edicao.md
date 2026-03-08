@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-server-action-edicao
 description: "Applies Next.js Server Action update patterns when implementing edit/update functionality. Use when user asks to 'create an update action', 'edit server action', 'implement update endpoint', 'add edit functionality', or 'update with validation'. Enforces duplicate-check before update, Zod parsing, revalidation, and create-vs-update branching in forms. Make sure to use this skill whenever building CRUD update operations in Next.js App Router. Not for delete operations, client-side state management, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: server-actions
+  tags: [server-action, update, crud, zod, revalidatePath, prisma, next-js]
 ---
 
 # Server Action para Edicao (Update)
@@ -113,14 +119,19 @@ export async function updateAppointment(id: string, data: AppointmentData) {
 | Duplicar toda logica create/update no form | Branch com `isEdit` ternario |
 | Ignorar erro de parse silenciosamente | try/catch com retorno de erro |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-server-action-para-a-edicao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-server-action-para-a-edicao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-server-action-para-a-edicao/references/deep-explanation.md) — No create, voce simplesmente busca se existe um registro com aquele valor unico (ex: horario). No up
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-server-action-para-a-edicao/references/code-examples.md) — // app/actions/appointments.ts

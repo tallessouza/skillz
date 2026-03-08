@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conversao-coercao-tipos
 description: "Enforces correct type conversion and coercion patterns when writing JavaScript code. Use when user asks to 'convert types', 'cast values', 'compare types', 'fix type errors', or any JS code involving mixed types. Applies rules: explicit conversion with Number/String/Boolean, understanding coercion with + operator, typeof checks, truthy/falsy awareness. Make sure to use this skill whenever generating JavaScript that mixes types or converts values. Not for TypeScript type system, generics, or type declarations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, type-conversion, coercion, typeof, truthy-falsy]
 ---
 
 # Conversão e Coerção de Tipos em JavaScript
@@ -79,13 +85,16 @@ const total = Number(price) + discount  // 15 (soma numérica)
 | `!!value` para converter para boolean | `Boolean(value)` |
 | Operar sem saber o tipo | `typeof value` antes de operar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Soma retorna string concatenada em vez de numero | Operador `+` com string converte tudo para string | Converta antes: `Number(value) + otherNumber` |
+| `Number("abc")` retorna NaN | String nao e um numero valido | Verifique com `isNaN()` antes de usar o resultado |
+| `Boolean("")` retorna false inesperadamente | String vazia e falsy em JavaScript | Isso e comportamento correto — valide se a string tem conteudo |
+| `typeof null` retorna "object" | Bug historico do JavaScript, nunca corrigido | Use `value === null` para verificar null especificamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre coerção vs conversão, regras de truthy/falsy e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conversao-e-coercao-de-tipos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conversao-e-coercao-de-tipos/references/code-examples.md)

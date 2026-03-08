@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-o-header
 description: "Applies CSS header layout patterns with hover animations and transitions when building navigation components. Use when user asks to 'create a header', 'add navigation', 'animate on hover', 'rotate icon on hover', or 'build a nav bar'. Enforces flexbox layout, CSS attribute selectors for targeting images, transform transitions, and absolute-positioned badges. Make sure to use this skill whenever creating header/nav components with icons and hover effects. Not for complex JavaScript animations, page routing logic, or backend API work."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, header, navigation, flexbox, hover, transition, animation]
 ---
 
 # Header com Animações CSS
@@ -121,13 +127,16 @@ header span {
 | `.logo-img` classe extra para selecionar | `img[src*="logo"]` seletor de atributo |
 | Badge sem container `position: relative` | Pai com `relative`, badge com `absolute` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Transicao nao funciona no hover | `transition` declarada no `:hover` em vez do estado base | Mova `transition` para o seletor do elemento, nao do `:hover` |
+| Badge posicionado no canto da pagina | Pai do badge sem `position: relative` | Adicione `position: relative` no elemento pai do badge |
+| Seletor de atributo nao seleciona imagem | String no `src*=` nao corresponde ao arquivo | Verifique se o keyword corresponde ao nome do arquivo |
+| Icones com tamanhos diferentes | SVGs sem `width` e `height` forcados | Force dimensoes iguais via CSS: `width: 2rem; height: 2rem` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre semântica, acessibilidade e seletores de atributo
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-o-header/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-o-header/references/code-examples.md)

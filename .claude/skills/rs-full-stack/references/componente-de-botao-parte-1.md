@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-componente-de-botao-parte-1
 description: "Enforces reusable button component patterns with CSS custom properties and utility classes. Use when user asks to 'create a button component', 'style buttons', 'make reusable button styles', 'add hover effects', or 'build a component library'. Applies tag-agnostic reset, size variants via modifier classes, CSS custom properties for hover state swaps, and linear-gradient hover effects. Make sure to use this skill whenever creating button components or styling interactive elements with variants. Not for JavaScript button logic, form validation, or accessibility/ARIA patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, button, component, custom-properties, variants, hover]
 ---
 
 # Componente de Botao com CSS
@@ -156,13 +162,17 @@ button:hover {
 | Cores hardcoded no componente | `var(--text-color-primary)` do design system |
 | Um unico `.btn` com todos os estilos | `.btn` (reset) + `.btn-primary` (cor) + `.btn-md` (tamanho) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Botao estica para largura total | Faltou `width: fit-content` na classe base | Adicione `width: fit-content` ao `.btn` |
+| Hover nao muda as cores | Custom properties nao redefinidas no `:hover` | Redefina `--btn-bgcolor` e `--btn-color` no seletor `:hover` |
+| Gradiente no hover nao aparece | `background` nao referencia a custom property | Use `background: var(--btn-bgcolor)` no seletor base e hover |
+| Botao `<a>` nao aplica estilos de botao | Tag `<a>` tem estilos padrao diferentes | Use a classe `.btn` que faz reset completo de border, background e color |
+| Variavel CSS `var(--*)` mostra valor raw | Variavel nao definida no `:root` ou escopo errado | Defina as variaveis no design system global (`:root`) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tag-agnosticismo, custom properties para hover e decisoes de design
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-componente-de-botao-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-componente-de-botao-parte-1/references/code-examples.md)

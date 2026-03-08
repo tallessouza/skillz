@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-storage
 description: "Applies MinIO MC client configuration patterns when setting up object storage in Docker Compose. Use when user asks to 'configure MinIO', 'create buckets', 'setup object storage', 'MC client docker', or 'MinIO Docker Compose'. Covers alias setup, bucket creation with MB/RB commands, ephemeral containers, and permission configuration. Make sure to use this skill whenever configuring MinIO or S3-compatible storage in containerized environments. Not for AWS S3 direct configuration, application-level file uploads, or database storage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-minio-storage
+  tags: [minio, mc-client, docker-compose, object-storage, buckets]
 ---
 
 # Configurando Storage com MinIO MC Client
@@ -115,14 +121,14 @@ bucket:
 | Ignorar logs quando bucket nao aparece | `docker logs mc` para diagnosticar |
 | `mc mb` sem `|| true` no `mc rm` anterior | Adicione `|| true` no rm para primeira execucao |
 
+## Troubleshooting
+
+### Container MC reinicia em loop infinito
+**Symptom:** O container minio/mc fica reiniciando sem parar, consumindo recursos
+**Cause:** O container tem `restart: always` configurado, mas o entrypoint termina com `exit 0` que e interpretado como falha
+**Fix:** Remova `restart: always` do container MC — ele deve executar uma vez e morrer. Adicione `|| true` no comando `mc rm` para a primeira execucao
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-storage/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-storage/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-storage/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-storage/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

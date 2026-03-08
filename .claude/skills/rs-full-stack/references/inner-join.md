@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inner-join
 description: "Applies SQL INNER JOIN patterns when writing queries that connect multiple tables. Use when user asks to 'join tables', 'query related data', 'fetch from multiple tables', 'connect tables', or 'get data with foreign key'. Enforces table aliasing, explicit column selection, and ON clause with matching foreign keys. Make sure to use this skill whenever writing SQL that involves more than one table. Not for single-table queries, subqueries, or LEFT/RIGHT/FULL joins."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, inner-join, join, foreign-key, alias, select]
 ---
 
 # Inner Join — Consultas em Múltiplas Tabelas
@@ -86,13 +92,16 @@ INNER JOIN students AS s ON s.id = a.student_id;
 | `SELECT id FROM ...` (ambíguo em join) | `SELECT a.id FROM ...` |
 | `WHERE a.student_id = s.id` (join implícito) | `INNER JOIN students AS s ON s.id = a.student_id` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `column is ambiguous` | Coluna existe em ambas tabelas sem qualificacao | Prefixar com alias: `a.id` em vez de `id` |
+| Join retorna zero resultados | Nenhuma correspondencia entre as tabelas | Verificar se existem dados com FK valida nas duas tabelas |
+| Resultado duplicado inesperado | Relacao 1:N retorna multiplas linhas por registro pai | Esperado — usar GROUP BY ou DISTINCT se necessario |
+| Erro de sintaxe no ON | Ordem invertida ou coluna errada | Confirmar `ON tabela_pai.id = tabela_filha.foreign_key` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre chaves estrangeiras, pivôs de conexão e quando usar INNER vs outros joins
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inner-join/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inner-join/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre chaves estrangeiras, pivos de conexao e quando usar INNER vs outros joins
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes

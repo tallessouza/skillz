@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-criptografia
 description: "Applies NestJS provider pattern for cryptography implementations (bcrypt, JWT) using abstract class binding with provide/useClass. Use when user asks to 'implement encryption', 'add bcrypt', 'create JWT service', 'implement hasher', 'bind interface to implementation in NestJS', or 'create cryptography module'. Make sure to use this skill whenever implementing authentication crypto or abstract-to-concrete bindings in NestJS. Not for generic encryption theory, frontend auth, or non-NestJS dependency injection."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-crypto-implementation
+  tags: [nestjs, bcrypt, jwt, provider, dependency-injection, cryptography, clean-architecture]
 ---
 
 # Implementacao da Criptografia no NestJS
@@ -127,14 +133,14 @@ export class AuthenticateController {
 | `hash(plain, 8)` com magic number | `hash(plain, this.HASH_SALT_LENGTH)` |
 | `async encrypt() { return this.jwt.signAsync() }` | `encrypt() { return this.jwt.signAsync() }` — sem async desnecessario |
 
+## Troubleshooting
+
+### NestJS nao encontra o provider de criptografia em outro modulo
+**Symptom:** Erro Nest can't resolve dependencies ao usar Encrypter ou HashComparer fora do CryptographyModule
+**Cause:** O CryptographyModule exporta as classes concretas em vez dos contratos abstratos
+**Fix:** Exporte os contratos abstratos: exports: [Encryptor, HashComparer, HashGenerator] no CryptographyModule
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementacao-da-criptografia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementacao-da-criptografia/references/code-examples.md)

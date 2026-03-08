@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-informacoes-da-aplicacao
 description: "Enforces proper package.json metadata configuration when setting up Node.js projects. Use when user asks to 'create a project', 'init package.json', 'setup node app', or 'configure project metadata'. Applies rules: always include name, description, and author fields before scripts. Make sure to use this skill whenever initializing or reviewing package.json files. Not for dependency management, scripts configuration, or versioning strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: node-project-setup
+  tags: [nodejs, package-json, metadata, project-setup, npm]
 ---
 
 # Metadados do package.json
@@ -79,13 +85,16 @@ description: "Enforces proper package.json metadata configuration when setting u
 | package.json sem author | `"author": "Seu Nome"` |
 | Metadados depois de dependencies | Metadados no topo, antes de scripts |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Nome do pacote invalido no npm publish | Nome com maiusculas ou espacos | Use kebab-case: `"name": "meu-projeto"` |
+| GitHub nao mostra descricao do repositorio | Campo `description` ausente no package.json | Adicione `"description": "..."` descrevendo o proposito do projeto |
+| `npm init -y` gera package.json incompleto | Valores padrao genericos do npm | Edite manualmente name, description e author apos gerar |
+| Conflito de nome ao publicar no npm | Nome ja existe no registro npm | Verifique disponibilidade com `npm search` e use nome unico ou escopo `@org/nome` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que metadados importam e como plataformas os utilizam
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de package.json para diferentes tipos de projeto
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-informacoes-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-informacoes-da-aplicacao/references/code-examples.md)

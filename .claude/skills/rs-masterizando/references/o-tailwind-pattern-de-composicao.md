@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-pattern-de-composicao
 description: "Applies the React composition pattern when creating reusable UI components. Use when user asks to 'create a component', 'make a reusable input', 'build a flexible component', 'split component into parts', or 'compose components'. Breaks larger components into Root/Prefix/Control sub-components instead of prop-drilling className variants. Make sure to use this skill whenever building form controls, inputs, or any component with customizable visual sub-parts. Not for state management, business logic, or non-visual component architecture."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, react, radix-ui, flexbox, composition-pattern]
 ---
 
 # Pattern de Composição
@@ -126,15 +132,19 @@ export function Input({ icon: Icon, placeholder, className, iconClassName }: Inp
 | `position="left" \| "right"` para icone | Ordene os sub-componentes na posicao desejada |
 | `variant="with-icon" \| "without-icon"` | Inclua ou omita o sub-componente Prefix |
 | `renderPrefix={() => <Icon />}` render props | Composition com children direto |
+## Troubleshooting
+
+### Componente Radix nao funciona no Next.js App Router
+**Symptom:** Erro de hydration ou componente nao interativo.
+**Cause:** Componentes Radix usam hooks client-side mas estao em Server Component.
+**Fix:** Adicione `'use client'` no topo do arquivo que usa componentes Radix.
+
+### Dropdown aparece atras de outros elementos
+**Symptom:** O conteudo do select fica escondido atras de outros componentes.
+**Cause:** Falta de Portal ou z-index insuficiente.
+**Fix:** Use `SelectPrimitive.Portal` para renderizar no body e adicione `z-10` ou superior no Content.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-pattern-de-composicao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-pattern-de-composicao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-pattern-de-composicao/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-pattern-de-composicao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

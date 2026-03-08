@@ -1,13 +1,19 @@
 ---
 name: rs-devops-o-que-sao-modulos
 description: "Applies Terraform module architecture principles when writing or reviewing Infrastructure as Code. Use when user asks to 'create terraform config', 'organize IaC', 'avoid duplicate infrastructure code', 'use terraform modules', or 'structure terraform project'. Enforces module-first thinking: encapsulation, reuse, and consistency over inline resource duplication. Make sure to use this skill whenever generating Terraform code that could benefit from modularization. Not for application code, CI/CD pipelines, or non-Terraform IaC tools like Pulumi or CloudFormation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modules
+  tags: [terraform, modules, iac, infrastructure-as-code, reuse, encapsulation]
 ---
 
 # Terraform Modules
 
 > Organize infraestrutura como codigo em modulos reutilizaveis — nunca duplique configuracao de recursos.
 
-## Conceito central
+## Key concepts
 
 Um modulo Terraform e um conjunto de arquivos `.tf` agrupados que resolvem um problema configurativo especifico. Funciona como um pacote (similar a uma lib Node/Java): e uma abstracao generica que voce adapta via variaveis.
 
@@ -81,14 +87,14 @@ modules/
 | Time/org tem padrao de criacao de recurso | Modulo interno com defaults da org |
 | Modulo externo tem >80% do que precisa | Usar externo + override via variaveis |
 
+## Troubleshooting
+
+### Modulo externo do Registry nao funciona apos terraform init
+**Symptom:** `terraform init` falha com erro de download ou versao incompativel do modulo
+**Cause:** Versao do modulo no Registry requer provider version diferente ou constraint de versao muito restritiva
+**Fix:** Verificar compatibilidade de versao no Registry, usar constraint flexivel (`~> 3.0` em vez de `= 3.0.0`) e rodar `terraform init -upgrade`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-sao-modulos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-sao-modulos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

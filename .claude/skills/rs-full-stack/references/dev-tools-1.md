@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-dev-tools-1
-description: "Guides browser DevTools usage when user asks to 'inspect element', 'debug CSS', 'check styles', 'open DevTools', 'view box model', or 'test JavaScript in console'. Covers Elements tab (DOM, styles, computed/Box Model), Console tab (JS testing), and responsive mode. Make sure to use this skill whenever user needs to inspect, debug, or understand webpage structure in the browser. Not for Node.js debugging, backend logging, or build tool configuration."
+description: "Configures browser DevTools usage when user asks to 'inspect element', 'debug CSS', 'check styles', 'open DevTools', 'view box model', or 'test JavaScript in console'. Covers Elements tab (DOM, styles, computed/Box Model), Console tab (JS testing), and responsive mode. Make sure to use this skill whenever user needs to inspect, debug, or understand webpage structure in the browser. Not for Node.js debugging, backend logging, or build tool configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: developer-tools
+  tags: [DevTools, browser, inspect, DOM, CSS, box-model, Console, responsive]
 ---
 
 # Browser DevTools
 
 > Usar DevTools para inspecionar HTML compilado (DOM), estilos aplicados e computados, Box Model, e testar JavaScript no Console.
 
-## Key concept
+## Key concepts
 
 DevTools e a ferramenta de desenvolvedor embutida em todo navegador moderno (Chrome, Edge, Firefox, Safari). Cada navegador tem sua interface propria, mas os conceitos fundamentais sao os mesmos. Nao e necessario dominar tudo — aprender o suficiente para fazer boas entregas e expandir gradualmente.
 
@@ -79,13 +85,16 @@ document.querySelector('h1')
 - Alteracoes feitas no DevTools sao temporarias — recarregar a pagina perde tudo
 - DevTools do navegador nao substitui ferramentas de debug server-side
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| DevTools nao abre com F12 | Site bloqueou atalho ou extensao interferindo | Tente Ctrl+Shift+I ou menu do navegador > More Tools > Developer Tools |
+| Elemento selecionado nao corresponde ao visual | DOM foi alterado por JavaScript apos render | Verifique na aba Elements se scripts modificaram o DOM |
+| Estilos no Computed estao vazios | Elemento nao tem estilos aplicados | Verifique se o CSS esta carregado e o seletor esta correto |
+| Alteracoes no DevTools sumiram | Mudancas no DevTools sao temporarias | Copie as alteracoes para o codigo-fonte e salve |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-dev-tools-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-dev-tools-1/references/code-examples.md)

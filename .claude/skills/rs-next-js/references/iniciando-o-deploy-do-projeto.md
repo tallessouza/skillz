@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-iniciando-o-deploy-do-projeto
 description: "Applies Vercel deployment workflow for Next.js projects with Postgres database. Use when user asks to 'deploy to Vercel', 'setup production database', 'fix Prisma build error', 'configure Vercel postgres', or 'deploy Next.js app'. Covers Vercel storage setup, Prisma generate in build script, and timezone awareness. Make sure to use this skill whenever deploying Next.js to Vercel or debugging Prisma-related build failures. Not for local development setup, Docker deployments, or non-Vercel hosting platforms."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: deploy
+  tags: [vercel, deploy, prisma, postgres, build-script, timezone, next-js]
 ---
 
 # Deploy Next.js na Vercel
@@ -72,14 +78,19 @@ O servidor Vercel roda em UTC. Horarios enviados pelo usuario serao interpretado
 | Push direto na main em producao | Criar branch e abrir PR |
 | Configurar banco manualmente no servidor | Usar `prisma migrate deploy` no build |
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-iniciando-o-deploy-do-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-iniciando-o-deploy-do-projeto/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-iniciando-o-deploy-do-projeto/references/deep-explanation.md) — O Prisma gera um client TypeScript dentro da pasta `/generated` (ou `node_modules/.prisma/client`). 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-iniciando-o-deploy-do-projeto/references/code-examples.md) — {

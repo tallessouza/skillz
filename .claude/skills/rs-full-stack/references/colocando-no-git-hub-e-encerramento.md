@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-layout-shift-fix
-description: "Fixes CSS layout shift caused by border changes on focus/hover states. Use when user reports 'layout jumping', 'elements moving on click', 'border causing shift', 'layout shift', or 'content jumping when focused'. Applies outline-as-border technique: set border at final size with transparent color, swap color on state change. Make sure to use this skill whenever fixing interactive element borders that change size on focus or hover. Not for animations, transitions, scroll-based layout shifts, or CLS performance metrics."
+description: "Resolves CSS layout shift caused by border changes on focus/hover states. Use when user reports 'layout jumping', 'elements moving on click', 'border causing shift', 'layout shift', or 'content jumping when focused'. Applies outline-as-border technique: set border at final size with transparent color, swap color on state change. Make sure to use this skill whenever fixing interactive element borders that change size on focus or hover. Not for animations, transitions, scroll-based layout shifts, or CLS performance metrics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, layout-shift, border, outline, focus, hover]
 ---
 
 # Corrigir Layout Shift por Bordas
@@ -87,13 +93,16 @@ input:focus {
 | `outline: none` sem compensação | `outline-width: 0` + border transparente pré-definida |
 | Trocar `border-width` no `:hover` | Trocar apenas `border-color` no `:hover` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elementos saltam ao focar no input | Borda muda de tamanho entre estados | Defina borda no tamanho final com `transparent` e troque so a cor |
+| Layout shift acumula em listas verticais | Cada item ganha pixels extras que empurram os abaixo | Aplique `border: 2px solid transparent` no estado base |
+| Outline padrao do browser aparece junto com borda | Outline nao removido | Adicione `outline-width: 0` no estado interativo |
+| Borda dashed some ao tirar o hover | Cor volta para `transparent` | Comportamento esperado — a borda some visualmente mas o espaco permanece |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre box model, outline vs border, e por que layout shift acontece
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-colocando-no-git-hub-e-encerramento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-colocando-no-git-hub-e-encerramento/references/code-examples.md)

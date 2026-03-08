@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-loading-streaming-ssr
 description: "Applies Next.js loading states and Streaming SSR patterns when building App Router pages with async data fetching. Use when user asks to 'create a loading state', 'add a spinner', 'show skeleton while loading', 'fetch data in page', or 'stream server content'. Ensures correct loading.tsx placement, inheritance rules, and Streaming SSR understanding. Make sure to use this skill whenever creating Next.js App Router pages that fetch data asynchronously. Not for client-side loading states with useEffect, React Query, or SWR."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, loading, streaming-ssr, suspense, server-rendering, progressive-loading]
 ---
 
 # Loading e Streaming SSR no Next.js App Router
@@ -97,14 +104,19 @@ Resultado: layout aparece instantaneamente + loading visivel + dados substituem 
 | Fazer fetch no cliente para evitar tela branca | Fazer fetch no servidor + loading.tsx para Streaming SSR |
 | Criar loading.tsx vazio ou sem conteudo util | Colocar skeleton screen ou spinner significativo |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-loading-e-streaming-ssr/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-loading-e-streaming-ssr/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-loading-e-streaming-ssr/references/deep-explanation.md) — Quando uma page.tsx no Next.js App Router faz qualquer operacao assincrona (fetch de API, consulta a
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-loading-e-streaming-ssr/references/code-examples.md) — O instrutor adicionou uma funcao de delay para tornar o carregamento visivel:

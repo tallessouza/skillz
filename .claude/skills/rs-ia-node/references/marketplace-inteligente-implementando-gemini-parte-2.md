@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-implementando-gemini-2
 description: "Applies Gemini API integration patterns for cart suggestion generation and batch embeddings in Node.js/NestJS. Use when user asks to 'integrate Gemini', 'switch LLM provider', 'generate embeddings with Gemini', 'implement multi-provider AI', or 'adapt OpenAI code to Gemini'. Covers generateContent, embedContent, structured output extraction, and prompt adaptation between models. Make sure to use this skill whenever implementing Gemini as alternative provider or migrating from OpenAI. Not for OpenAI-specific implementation, frontend components, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: multi-provider
+  tags: [google-ai, embeddings, gemini, node-js, nestjs, openai, ia-node]
 ---
 
 # Implementando Gemini — Geracao de Carrinhos e Embeddings
@@ -123,14 +129,14 @@ const data = JSON.parse(jsonContent);
 | Deixar webhook obrigatorio na interface | Torne opcional — Gemini retorna sincrono |
 | Assumir mesmo formato de resposta entre providers | Teste e adapte parsing por provider |
 
+## Troubleshooting
+
+### JSON.parse falha na resposta do Gemini
+**Symptom:** `SyntaxError: Unexpected token` ao parsear resposta do Gemini
+**Cause:** Gemini retorna JSON wrapped em markdown (triple backticks), nao JSON puro
+**Fix:** Extraia com regex `text.match(/```json\s*([\s\S]*?)```/)` antes de parsear
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-implementando-gemini-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-implementando-gemini-parte-2/references/code-examples.md)

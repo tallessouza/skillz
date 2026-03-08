@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-keyof-1
 description: "Applies TypeScript keyof operator patterns when extracting object keys as union types. Use when user asks to 'restrict values to object keys', 'create type from object', 'type icon names', 'extract keys as type', or 'limit string values to known keys'. Make sure to use this skill whenever generating TypeScript code that needs to constrain values to known object keys. Not for generic TypeScript basics, interface design, or mapped types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-advanced
+  tags: [typescript, keyof, typeof, union-types, type-safety]
 ---
 
 # KeyOf — Extrair Chaves de Objeto como Tipo
@@ -70,13 +76,15 @@ const selected: IconName = "x" // ERRO: '"x"' is not assignable to type '"home" 
 | `type IconName = "home" \| "add" \| "remove"` (manual) | `type IconName = keyof typeof icons` (derivado) |
 | `keyof icons` (objeto direto) | `keyof typeof icons` (tipo do objeto) |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `keyof obj` retorna erro em vez de union type | Usando `keyof` em valor runtime em vez de tipo | Use `keyof typeof obj` — `keyof` opera sobre tipos, não valores |
+| Union type não atualiza ao adicionar nova chave ao objeto | Objeto declarado com `let` permite inferência ampla | Declare o objeto com `as const` ou `const` para chaves literais |
+| Autocomplete não sugere as chaves | IDE não resolveu o tipo derivado | Extraia para um `type` alias explícito: `type Keys = keyof typeof obj` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-keyof-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-keyof-1/references/code-examples.md)

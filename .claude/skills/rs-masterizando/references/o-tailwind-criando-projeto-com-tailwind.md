@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-criando-projeto
 description: "Guides Tailwind CSS project setup with Next.js and initial configuration. Use when user asks to 'create a Tailwind project', 'setup Next.js with Tailwind', 'configure tailwind.config', or 'start a new frontend project with Tailwind'. Covers content array optimization, theme extension, CSS reset behavior, and VS Code extensions. Make sure to use this skill whenever setting up a new Tailwind + Next.js project from scratch. Not for Tailwind utility class deep-dives, responsive design, or animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: setup
+  tags: [tailwind, react, nextjs]
 ---
 
 # Criando Projeto com Tailwind
@@ -109,15 +115,19 @@ content: [
 | Escolher h1/h2 pelo tamanho visual | Escolher pela semantica, estilizar com classes |
 | Usar `h-full` para ocupar tela toda | Usar `h-screen` (100vh) |
 | Esquecer extensoes do VS Code | Instalar PostCSS Language Support + Tailwind CSS IntelliSense |
+## Troubleshooting
+
+### Classes Tailwind nao aplicam
+**Symptom:** Classe adicionada mas sem efeito visual.
+**Cause:** O arquivo nao esta incluido no `content` do tailwind.config, ou a classe esta sendo sobrescrita por especificidade.
+**Fix:** Verifique que o path do arquivo esta em `content: ['./src/**/*.tsx']` no tailwind.config. Use DevTools para inspecionar se outra classe sobrescreve.
+
+### Autocomplete do Tailwind nao funciona
+**Symptom:** VS Code nao sugere classes Tailwind.
+**Cause:** Extensao Tailwind CSS IntelliSense nao instalada ou configurada.
+**Fix:** Instale a extensao "Tailwind CSS IntelliSense" no VS Code e recarregue a janela.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-projeto-com-tailwind/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-projeto-com-tailwind/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-projeto-com-tailwind/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-projeto-com-tailwind/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

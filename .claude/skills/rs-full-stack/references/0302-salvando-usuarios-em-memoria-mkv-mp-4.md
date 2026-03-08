@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-salvando-usuarios-em-memoria
 description: "Applies in-memory database pattern when building Node.js APIs with class-based data storage. Use when user asks to 'create a database class', 'store data in memory', 'build an in-memory store', 'share state between routes', or 'prototype an API without a real database'. Enforces single-instance sharing, proper insert/select methods, and object-based table structure. Make sure to use this skill whenever prototyping Node.js APIs that need temporary data persistence. Not for production database setup, SQL queries, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [in-memory-database, nodejs, class, prototype, data-storage]
 ---
 
 # Banco de Dados em Memória com Classes
@@ -115,13 +121,13 @@ function listRoute({ request, response, database }) {
 | Assumir que dados sobrevivem ao reinício | Documentar que memória é temporária |
 | `this.database = {}` (público) | `this.#database = {}` (campo privado) |
 
+## Troubleshooting
+
+### Problem: `database.select('products')` always returns empty array even after inserting data
+- **Cause**: Each route is creating a new `Database` instance instead of sharing one, so data is stored in different memory locations
+- **Fix**: Create a single `const database = new Database()` instance and pass it to all route handlers
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre instância única, alocação em memória e ciclo de vida dos dados
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0302-salvando-usuarios-em-memoria-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0302-salvando-usuarios-em-memoria-mkv-mp-4/references/code-examples.md)

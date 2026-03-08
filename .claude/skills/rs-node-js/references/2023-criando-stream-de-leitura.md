@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-stream-de-leitura
-description: "Enforces correct Readable stream creation patterns in Node.js. Use when user asks to 'create a stream', 'read file stream', 'process data incrementally', 'implement readable', or any streaming data task. Applies rules: always use Buffer format for chunks, implement _read method, use push(null) to signal end, pipe for connecting streams. Make sure to use this skill whenever generating Node.js code that processes data incrementally or creates custom streams. Not for HTTP response handling, database queries, or frontend code."
+name: 2023-criando-stream-de-leitura
+description: "Creates custom ReadableStream classes in Node.js that emit data incrementally using Buffer chunks and pipe for stream composition. Use when user asks to 'create a readable stream', 'implement custom stream', 'process data incrementally', 'use pipe in Node.js', or 'work with streams and buffers'. Enforces: chunks must be Buffer or string never primitives, implement _read method, signal end with this.push(null), connect streams with .pipe(). Make sure to use this skill whenever implementing custom data sources as readable streams in Node.js. Not for HTTP request/response handling, file system reads with fs.createReadStream, or browser streams API."
+category: coding-lens
+tags: [buffers, streams, testing, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: streams
+  tags: [streams, readable-stream, buffers, pipe, node-js, io]
 ---
 
 # Criando Stream de Leitura no Node.js
@@ -116,14 +125,14 @@ class CorrectStream extends Readable {
 | Ler stream inteira de uma vez com await | Usar `.pipe()` para processar incrementalmente |
 | Esquecer `this.push(null)` | Sempre sinalizar fim da stream |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-stream-de-leitura/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-stream-de-leitura/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

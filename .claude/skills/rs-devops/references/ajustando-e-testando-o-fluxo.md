@@ -1,6 +1,12 @@
 ---
 name: rs-devops-ajustando-testando-fluxo
 description: "Applies debugging workflow for containerized observability pipelines when troubleshooting log ingestion issues with Loki, MinIO, and Docker. Use when user asks to 'debug logs not arriving', 'fix Loki connection', 'troubleshoot log pipeline', 'logs not showing in MinIO', or 'container logging not working'. Guides through protocol mismatch fixes, container restarts, and log verification. Make sure to use this skill whenever diagnosing observability stack issues in Docker or Kubernetes. Not for application-level logging libraries, log format design, or Kubernetes deployment configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-debugging
+  tags: [devops]
 ---
 
 # Debugging de Pipeline de Observabilidade em Containers
@@ -72,14 +78,14 @@ Acesse o endpoint, observe logs chegando, confirme no MinIO.
 | Ignorar logs intermediarios do container | Acompanhar `docker logs` apos cada mudanca |
 | Debugar a aplicacao quando o problema e infra | Isolar: log local funciona? Conexao funciona? Destino recebe? |
 
+## Troubleshooting
+
+### Logs nao chegam ao destino (MinIO/Loki) mesmo com container rodando
+**Symptom:** Container de log esta Running mas nenhum objeto aparece no MinIO
+**Cause:** Flag `insecure` esta como false quando o servidor aceita apenas HTTP (sem TLS)
+**Fix:** Altere `insecure: true` na configuracao, reinicie o container com `docker restart` e acompanhe com `docker logs`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-ajustando-e-testando-o-fluxo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-ajustando-e-testando-o-fluxo/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-ajustando-e-testando-o-fluxo/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-ajustando-e-testando-o-fluxo/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

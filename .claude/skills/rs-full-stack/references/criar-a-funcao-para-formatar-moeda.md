@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatar-moeda
 description: "Applies Brazilian currency formatting (BRL) using toLocaleString when writing JavaScript/TypeScript code. Use when user asks to 'format currency', 'format money', 'display price', 'show BRL value', or any monetary display task. Enforces Number() conversion before toLocaleString, reusable formatter functions, and pt-BR locale with currency style. Make sure to use this skill whenever code involves displaying monetary values in Brazilian Real. Not for date formatting, number formatting without currency, or i18n setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, formatting, currency, BRL, toLocaleString, intl]
 ---
 
 # Formatar Moeda em Real Brasileiro (BRL)
@@ -79,13 +85,16 @@ element.textContent = formatCurrencyBRL(price) // "R$ 183,45" — formato corret
 | Formatacao inline repetida em varios lugares | Funcao reutilizavel `formatCurrencyBRL` |
 | `parseFloat(value).toFixed(2)` para moeda | `Number(value).toLocaleString("pt-BR", {...})` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `toLocaleString` nao aparece no IntelliSense | Valor e string, nao number | Envolva com `Number(value)` antes de chamar `toLocaleString` |
+| Formatacao mostra `NaN` | Valor passado nao e conversivel para numero | Valide com `isNaN(Number(value))` antes de formatar |
+| `R$ 1234.56` sem separador de milhar | Locale incorreto ou ausente | Use `"pt-BR"` como primeiro argumento |
+| Valor formatado com mais de 2 casas decimais | Padrao do locale pode variar | Adicione `minimumFractionDigits: 2, maximumFractionDigits: 2` nas opcoes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tipagem dinamica, casting e IntelliSense
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criar-a-funcao-para-formatar-moeda/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criar-a-funcao-para-formatar-moeda/references/code-examples.md)

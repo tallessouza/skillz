@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-null-e-undefined
 description: "Enforces correct usage of null and undefined in TypeScript code. Use when user asks to 'declare variables', 'handle null checks', 'initialize values', 'check if value exists', or 'create objects with optional properties'. Applies rules: undefined means unassigned, null means intentional absence, always use null for explicit emptiness. Make sure to use this skill whenever generating TypeScript code that deals with absent or optional values. Not for error handling, exception throwing, or type narrowing with discriminated unions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, null, undefined, type-safety, optional]
 ---
 
 # Null e Undefined no TypeScript
@@ -92,13 +98,16 @@ if (!email) {
 | `if (x === undefined && x === null)` | `if (!x)` |
 | `user.email` (sem propriedade) | Declare a propriedade como opcional na tipagem |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `TypeError: Cannot read properties of null` | Acessou propriedade de valor `null` | Verifique com `if (value)` ou use optional chaining (`value?.prop`) |
+| `TypeError: Cannot read properties of undefined` | Propriedade nao existe no objeto | Declare a propriedade na tipagem ou verifique antes de acessar |
+| TypeScript permite uso de variavel nao atribuida | `strictNullChecks` desabilitado no tsconfig | Ative `strict: true` no `tsconfig.json` |
+| Confusao entre `null` e `undefined` na logica | Tratamento diferente para cada um | Use `if (!value)` para capturar ambos ou `===` para distinguir |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-null-e-undefined/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-null-e-undefined/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-definindo-data-hora
 description: "Enforces correct Date instantiation patterns in JavaScript when creating specific dates and times. Use when user asks to 'create a date', 'set a date', 'define date and time', 'new Date', or 'work with dates in JS'. Applies rules: month is 0-indexed with numeric constructor, string format uses 1-indexed months, T separator for ISO strings. Make sure to use this skill whenever generating code that creates Date objects with specific values. Not for date formatting, date arithmetic, or timezone manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [JavaScript, Date, ISO-8601, date-constructor, month-indexing]
 ---
 
 # Definindo Data e Hora Específica em JavaScript
@@ -73,13 +79,16 @@ const date = new Date(2024, 6, 3)
 | `new Date("2024-6-03T14:30:00")` | `new Date("2024-06-03T14:30:00")` // zero-pad |
 | Misturar indexação entre formatos | Comentar qual formato está usando |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Data mostra mes errado (off by one) | Mes 0-indexado no construtor numerico | Subtraia 1 do mes desejado: julho = 6 |
+| `new Date(2024, 12, 1)` retorna janeiro 2025 | Overflow de mes | Dezembro = 11, nao 12 |
+| String ISO retorna data errada | Mes 1-indexado na string, nao 0-indexado | Use `"2024-07-03"` para julho (07, nao 06) |
+| Hora nao aparece na data | Faltou separador `T` na string ISO | Use `"2024-07-03T14:30:00"` com T entre data e hora |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre indexação de meses, overflow behavior e diferenças entre construtores
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-definindo-uma-data-e-uma-hora-especifica/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-definindo-uma-data-e-uma-hora-especifica/references/code-examples.md)

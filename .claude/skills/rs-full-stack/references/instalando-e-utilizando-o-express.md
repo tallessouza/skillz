@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-express
-description: "Guides Express.js setup with TypeScript including type declarations. Use when user asks to 'install express', 'setup express', 'create an API with express', 'start a node server', or 'add express to project'. Covers production vs dev dependencies, @types packages, and import verification. Make sure to use this skill whenever setting up Express in a TypeScript project. Not for Express routing, middleware configuration, or API endpoint implementation."
+description: "Configures Express.js setup with TypeScript including type declarations and dependency separation. Use when user asks to 'install express', 'setup express', 'create an API with express', 'start a node server', or 'add express to project'. Covers production vs dev dependencies, @types packages, and import verification. Make sure to use this skill whenever setting up Express in a TypeScript project. Not for Express routing, middleware configuration, or API endpoint implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-setup
+  tags: [express, nodejs, typescript, api, server]
 ---
 
 # Instalando e Utilizando o Express
@@ -70,13 +76,16 @@ Apos a instalacao, o `package.json` deve conter:
 | Dependencia usada em runtime | `npm i` (producao) |
 | Dependencia so para build/dev | `npm i -D` (desenvolvimento) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "Could not find a declaration file for module 'express'" | Tipagens nao instaladas | Instalar `@types/express` com `npm i -D @types/express` |
+| Sublinhado vermelho nao some apos instalar types | TS Language Server desatualizado | Reiniciar VS Code ou executar "TypeScript: Restart TS Server" |
+| `npm run dev` falha apos instalacao | tsconfig.json mal configurado | Verificar configuracao do TypeScript |
+| Express aparece em devDependencies | Instalado com flag -D por engano | Reinstalar sem -D: `npm i express` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre dependencias de producao vs desenvolvimento e tipagens separadas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-e-utilizando-o-express/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-e-utilizando-o-express/references/code-examples.md)

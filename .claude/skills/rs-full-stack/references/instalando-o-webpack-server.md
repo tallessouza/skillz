@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-webpack-server
 description: "Applies webpack-dev-server setup and configuration when creating frontend development environments. Use when user asks to 'setup webpack', 'configure dev server', 'add hot reload', 'create webpack config', or 'setup frontend tooling'. Follows exact version pinning, devServer config structure, and npm script conventions. Make sure to use this skill whenever setting up webpack-based development servers. Not for production builds, deployment, or non-webpack bundlers like Vite or Parcel."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: webpack-dev-server
+  tags: [webpack, dev-server, hot-reload, frontend, development]
 ---
 
 # Configuracao do Webpack Dev Server
@@ -103,13 +109,16 @@ O navegador abre automaticamente em `http://localhost:3000`.
 | `devServer: { contentBase: './dist' }` (depreciado) | `devServer: { static: { directory: path.join(__dirname, 'dist') } }` |
 | Instalar sem fixar versao | Fixar versao: `@4.15.1` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Porta 3000 ocupada | Outro processo usando a porta | Alterar `port` no devServer para outra (ex: 3001) |
+| `webpack serve` nao reconhecido | webpack-cli nao instalado | Instalar `webpack-cli` como devDependency |
+| Pasta `dist/` vazia | Build nao executado ainda | Rodar `npm run build` primeiro para gerar os arquivos |
+| `contentBase` gera erro | Propriedade depreciada no webpack 5 | Usar `static: { directory: path.join(__dirname, 'dist') }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada propriedade do devServer
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-webpack-server/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-webpack-server/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-nodejs
 description: "Applies foundational Node.js mental model when discussing Node architecture, runtime choices, or JavaScript execution environments. Use when user asks 'what is Node', 'how Node works', 'Node vs browser', 'why use Node', or 'JavaScript runtime'. Ensures correct framing: Node is a platform not a language, based on V8 engine extracted from Chrome. Make sure to use this skill whenever explaining Node.js fundamentals or choosing JavaScript runtimes. Not for Node.js API usage, package management, or specific framework implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, v8, runtime, javascript, fundamentals]
 ---
 
 # Conhecendo o Node.js
@@ -68,13 +74,13 @@ A extracao do V8 permitiu que JavaScript fosse usado para propositos muito alem 
 - Nao aborda APIs especificas do Node nem patterns de codigo
 - A comparacao V8-only e simplificada: Node tambem usa libuv para I/O assincrono, nao apenas o V8
 
+## Troubleshooting
+
+### Problem: Confusing Node.js as a programming language
+- **Cause**: Lack of understanding that Node.js is a runtime/platform, not a language
+- **Fix**: Remember that JavaScript is the language; Node.js is the V8 engine extracted from Chrome to run JavaScript outside the browser
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do Ryan Dahl, analogias e contexto historico
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de Node em diferentes cenarios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0102-conhecendo-o-node-js-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0102-conhecendo-o-node-js-mkv-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-comparando-imagens
 description: "Applies Docker image optimization techniques to reduce image size using multi-stage builds, production-only dependencies, and cache cleaning. Use when user asks to 'optimize Docker image', 'reduce image size', 'slim down container', 'multi-stage build', or 'production Dockerfile'. Covers yarn workspaces focus --production, npm ci --omit=dev, cache cleaning, and Alpine-based images. Make sure to use this skill whenever writing or reviewing Dockerfiles for Node.js applications. Not for Docker Compose, orchestration, networking, or runtime configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-otimizacao
+  tags: [docker, multi-stage-build, alpine, image-optimization]
 ---
 
 # Otimizacao de Imagens Docker
@@ -106,14 +112,14 @@ CMD ["node", "dist/main.js"]
 | Esquecer `yarn cache clean` | Sempre limpar cache apos instalar deps de producao |
 | `docker exec -it <id> bash` em Alpine | `docker exec -it <id> sh` |
 
+## Troubleshooting
+
+### Build falha com CLI not found apos instalar apenas dependencias de producao
+**Symptom:** Erro 'command not found' ao executar yarn run build apos yarn workspaces focus --production
+**Cause:** O build precisa de devDependencies (ex: NestJS CLI) que foram removidas antes do build
+**Fix:** Mova o `yarn run build` para ANTES do `yarn workspaces focus --production` no Dockerfile
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-comparando-imagens/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-comparando-imagens/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-comparando-imagens/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-comparando-imagens/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

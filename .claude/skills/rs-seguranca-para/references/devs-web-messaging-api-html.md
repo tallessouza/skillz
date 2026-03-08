@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-web-messaging-api
 description: "Enforces secure postMessage usage when writing code with iframes, window communication, or Web Messaging API. Use when user asks to 'send messages between iframes', 'communicate between windows', 'use postMessage', 'embed iframe', or 'cross-origin messaging'. Applies rules: always specify target origin, validate message origin with whitelist, never use eval with received messages. Make sure to use this skill whenever generating code involving window.postMessage, iframe communication, or cross-window messaging. Not for WebSocket, Server-Sent Events, or HTTP request security."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, postmessage, iframe, cross-origin]
 ---
 
 # Web Messaging API — Seguranca
@@ -117,14 +123,14 @@ window.addEventListener('message', (event) => {
 | Aceitar qualquer mensagem sem filtro | Switch/if com mensagens conhecidas |
 | Confiar em `event.data` como codigo | Tratar `event.data` como dado, nunca como codigo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-web-messaging-api-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-web-messaging-api-html/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-web-messaging-api-html/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-web-messaging-api-html/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-seed
 description: "Generates Prisma seed files and configuration when user asks to 'seed the database', 'populate tables', 'create test data', 'insert initial data', or 'setup seed script'. Applies Prisma createMany pattern with proper async/disconnect flow and package.json configuration. Make sure to use this skill whenever setting up database seeding with Prisma ORM. Not for migrations, schema changes, or non-Prisma ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Prisma Database Seed"
+  tags: ['prisma', 'orm', 'database', 'seeds', 'typescript']
 ---
 
 # Prisma Database Seed
@@ -94,6 +100,15 @@ Database seeded
 
 - Abrir Prisma Studio (`npx prisma studio`) e verificar os registros inseridos
 - Ou executar `npx prisma db seed` e confirmar o console.log "Database seeded"
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Seed nao executa com `npx prisma db seed` | Configuracao `prisma.seed` no lugar errado | Coloque `"prisma": { "seed": "tsx prisma/seed.ts" }` no nivel raiz do package.json, nao dentro de `scripts` |
+| Erro de unique constraint ao rodar seed | Registros duplicados | Adicione `skipDuplicates: true` no `createMany` |
+| `tsx` nao encontrado | Dependencia nao instalada | Instale com `npm i -D tsx` |
+| Conexao nao fechada apos seed | Falta `$disconnect()` | Adicione `await prisma.$disconnect()` no `.finally()` |
 
 ## Deep reference library
 

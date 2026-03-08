@@ -1,13 +1,19 @@
 ---
 name: rs-devops-metrics-server-k8s
-description: "Explains Kubernetes Metrics Server architecture and its relationship with HPA (Horizontal Pod Autoscaler). Use when user asks about 'metrics server', 'HPA setup', 'horizontal pod autoscaler', 'kubernetes autoscaling', 'pod metrics', or 'auto scaling kubernetes'. Make sure to use this skill whenever configuring autoscaling in Kubernetes or troubleshooting missing CPU/Memory metrics. Not for application-level monitoring (Prometheus, Grafana, Datadog) or vertical pod autoscaling."
+description: "Applies Kubernetes Metrics Server architecture knowledge when configuring HPA or diagnosing missing CPU/Memory metrics. Use when user asks about 'metrics server', 'HPA setup', 'horizontal pod autoscaler', 'kubernetes autoscaling', 'pod metrics', or 'auto scaling kubernetes'. Enforces Metrics Server as HPA prerequisite and distinguishes near-real-time cluster metrics from observability tools. Make sure to use this skill whenever configuring autoscaling in Kubernetes or troubleshooting missing CPU/Memory metrics. Not for application-level monitoring (Prometheus, Grafana, Datadog) or vertical pod autoscaling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-autoscaling
+  tags: [kubernetes, metrics-server, hpa, autoscaling, horizontal-pod-autoscaler]
 ---
 
 # Metrics Server no Kubernetes
 
 > O Metrics Server e o prerequisito obrigatorio para autoscaling horizontal no Kubernetes — sem ele, o HPA nao funciona.
 
-## Key concept
+## Key concepts
 
 O Metrics Server e um componente open-source do ecossistema Kubernetes SIGs (nao e built-in). Ele coleta metricas de CPU e memoria em near real-time (a cada ~10 segundos) de todos os pods e nodes do cluster. O HPA (Horizontal Pod Autoscaler) depende dessas metricas para tomar decisoes de escala.
 
@@ -68,14 +74,14 @@ O Metrics Server coleta metricas em intervalos de ~10 segundos. Isso e suficient
 - Nao monitora metricas customizadas (use Custom Metrics API para isso)
 - Near real-time (~10s) pode ser lento demais para cenarios criticos
 
+## Troubleshooting
+
+### kubectl top nodes/pods retorna erro "Metrics API not available"
+**Symptom:** `kubectl top nodes` ou `kubectl top pods` retorna erro de metricas indisponiveis
+**Cause:** Metrics Server nao esta instalado no cluster
+**Fix:** Instale o Metrics Server com `kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml` e aguarde alguns segundos para coleta inicial
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-como-o-metrics-server-funciona/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-como-o-metrics-server-funciona/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-como-o-metrics-server-funciona/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-como-o-metrics-server-funciona/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

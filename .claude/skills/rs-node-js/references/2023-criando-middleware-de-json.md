@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-middleware-json
-description: "Applies Node.js middleware pattern for JSON request/response handling when building HTTP servers from scratch. Use when user asks to 'create a middleware', 'parse request body', 'handle JSON in Node', 'build HTTP server', or 'organize server code'. Enforces interceptor pattern: async function receiving req/res, consuming request body via streams, setting response headers. Make sure to use this skill whenever writing raw Node.js HTTP servers without frameworks. Not for Express/Fastify middleware, frontend code, or framework-based servers."
+name: 2023-criando-middleware-de-json
+description: "Creates a JSON parsing middleware for raw Node.js HTTP servers that consumes request body via streams and sets Content-Type headers. Use when user asks to 'parse JSON body', 'create middleware', 'handle request body in Node.js', or 'separate JSON parsing logic'. Enforces: middleware as async function consuming stream buffers, separate middleware file, await on middleware calls, .js extension in ES Module imports. Make sure to use this skill whenever building HTTP servers with native Node.js http module that need JSON body parsing. Not for Express/Fastify projects with built-in body parsing, or frontend code."
+category: coding-lens
+tags: [buffers, fastify, middleware, modules, streams]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-http
+  tags: [middleware, json, http, streams, buffers, node-js, es-modules]
 ---
 
 # Middleware de JSON no Node.js
@@ -107,14 +116,14 @@ const server = http.createServer(async (req, res) => {
 | `res.setHeader` repetido em cada rota | Uma vez no middleware de JSON |
 | Middleware sincrono para leitura de stream | Middleware async com `for await` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-middleware-de-json/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-middleware-de-json/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-masterizando-tailwind-theme-first-api
 description: "Enforces Tailwind CSS Theme First API patterns when writing utility classes for spacing, colors, typography, and layout. Use when user asks to 'style a component', 'add padding', 'set font size', 'pick a color', 'create a layout', or any Tailwind CSS task. Applies spacing multiplication rule (value x 4 = pixels), default color palette usage, and consistent typography scales. Make sure to use this skill whenever generating Tailwind CSS classes, even for simple styling tasks. Not for custom CSS, CSS-in-JS, or non-Tailwind styling approaches."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: dark-mode
+  tags: [tailwind]
 ---
 
 # Theme First API do Tailwind
@@ -89,15 +95,19 @@ description: "Enforces Tailwind CSS Theme First API patterns when writing utilit
 | `text-[32px] font-[700]` | `text-3xl font-bold` |
 | `w-[100px]` | `w-24` (96px) ou `w-28` (112px) |
 | `mt-[7px]` | `mt-2` (8px) — snap para o multiplo mais proximo |
+## Troubleshooting
+
+### Dark mode nao ativa
+**Symptom:** Classes `dark:` nao tem efeito mesmo com tema escuro no SO.
+**Cause:** Se `darkMode: 'class'` esta configurado, o Tailwind ignora `prefers-color-scheme` e espera a classe `dark` no `<html>`.
+**Fix:** Se quer resposta automatica ao SO, use `darkMode: 'media'` (padrao). Se quer toggle manual, adicione classe `dark` no `<html>`.
+
+### Contraste insuficiente no dark mode
+**Symptom:** Texto dificil de ler em fundo escuro.
+**Cause:** Texto claro demais (`dark:text-zinc-600`) ou fundo muito proximo do texto.
+**Fix:** Use `dark:text-zinc-100` para texto primario e `dark:text-zinc-400` para secundario em fundo `dark:bg-zinc-900`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-theme-first-api-do-tailwind/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-theme-first-api-do-tailwind/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-theme-first-api-do-tailwind/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-theme-first-api-do-tailwind/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

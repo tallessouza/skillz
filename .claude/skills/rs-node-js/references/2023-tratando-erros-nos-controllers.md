@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-erros-controllers
 description: "Enforces proper error handling in NestJS controllers using typed errors from use cases. Use when user asks to 'handle errors in controller', 'return proper status codes', 'map domain errors to HTTP', or 'treat errors in NestJS'. Applies switch on error.constructor pattern, maps domain errors to specific HTTP exceptions (ConflictException, UnauthorizedException, BadRequestException). Make sure to use this skill whenever creating or modifying NestJS controllers that consume use cases returning Either/Result types. Not for domain layer error creation, middleware error handling, or global exception filters."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling-controllers
+  tags: [nestjs, error-handling, controllers, either, http-exceptions, status-codes]
 ---
 
 # Tratando Erros nos Controllers NestJS
@@ -110,14 +116,14 @@ if (result.isLeft()) {
 | `try/catch` generico no controller | `result.isLeft()` + switch pattern |
 | Status code hardcoded no response | Excecoes do `@nestjs/common` |
 
+## Troubleshooting
+
+### Controller retorna 500 em vez do status code esperado
+**Symptom:** Erro de dominio retorna Internal Server Error (500) em vez de 409, 401 ou 400
+**Cause:** O controller nao esta verificando `result.isLeft()` e mapeando o erro para a excecao HTTP correta
+**Fix:** Adicione `if (result.isLeft()) { switch (error.constructor) { ... } }` com mapeamento para as excecoes do `@nestjs/common`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-tratando-erros-nos-controllers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-tratando-erros-nos-controllers/references/code-examples.md)

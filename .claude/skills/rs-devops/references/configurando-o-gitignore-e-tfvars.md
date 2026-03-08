@@ -1,6 +1,12 @@
 ---
 name: rs-devops-gitignore-tfvars
 description: "Enforces correct .gitignore and .tfvars configuration for Terraform projects. Use when user asks to 'setup terraform project', 'configure gitignore for terraform', 'create tfvars', 'manage terraform variables', or 'initialize terraform repo'. Ensures state files, backups, and sensitive variables never reach version control. Make sure to use this skill whenever setting up or reviewing Terraform project structure. Not for general gitignore templates, non-Terraform projects, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-projeto-setup
+  tags: [terraform, iac, gitignore, tfvars, security, state-management]
 ---
 
 # Configurando .gitignore e .tfvars no Terraform
@@ -93,14 +99,14 @@ Dois arquivos na raiz do projeto Terraform:
 - `terraform plan` executa sem erros usando valores do `.tfvars`
 - `.terraform.lock.hcl` aparece no `git status` como tracked
 
+## Troubleshooting
+
+### Terraform plan mostra destruicao inesperada apos criar tfvars
+**Symptom:** Apos criar o arquivo terraform.tfvars, `terraform plan` mostra que recursos serao destruidos e recriados
+**Cause:** O valor em .tfvars sobrescreveu o default de uma variavel que afeta um atributo imutavel do recurso (ex: nome)
+**Fix:** Verifique se o valor no .tfvars esta correto antes de apply. Se o recurso tem `prevent_destroy = true`, o Terraform bloqueara a destruicao
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-gitignore-e-tfvars/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-gitignore-e-tfvars/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-gitignore-e-tfvars/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-gitignore-e-tfvars/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

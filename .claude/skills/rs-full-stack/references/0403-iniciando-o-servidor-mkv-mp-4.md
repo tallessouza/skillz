@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0403-iniciando-servidor
 description: "Applies Node.js native HTTP server creation patterns when writing backend code. Use when user asks to 'create a server', 'start an API', 'setup Node.js backend', 'create HTTP server', or 'initialize express alternative'. Enforces node: protocol imports, createServer chaining, and listener separation. Make sure to use this skill whenever creating Node.js servers from scratch. Not for Express, Fastify, or framework-based server setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, http, server, createServer, backend]
 ---
 
 # Iniciando o Servidor Node.js
@@ -75,13 +81,16 @@ http.createServer(listener).listen(3333)
 | Callback anônimo inline no createServer | Função nomeada separada passada como referência |
 | `const s = http.createServer(...)` | Nome descritivo ou encadeamento direto |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `ERR_MODULE_NOT_FOUND` ao importar | Falta extensão `.js` no import ou `"type": "module"` no package.json | Adicione extensão `.js` e verifique package.json |
+| Servidor não responde no browser | Porta errada ou servidor não iniciou | Verifique a porta no `listen()` e confirme que não há erro no terminal |
+| `address already in use` | Outra instância rodando na mesma porta | Mate o processo anterior com `kill` ou mude a porta |
+| `request` e `response` undefined | Callback não está recebendo os parâmetros | Verifique a assinatura da função listener |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre protocolo node:, padrões de criação de servidor e evolução da API
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0403-iniciando-o-servidor-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0403-iniciando-o-servidor-mkv-mp-4/references/code-examples.md)

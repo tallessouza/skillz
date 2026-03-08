@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-calculando-o-valor-total
 description: "Enforces safe string-to-number conversion and accumulation patterns when writing JavaScript calculation logic. Use when user asks to 'calculate total', 'sum values', 'parse currency', 'convert string to number', or 'clean input values'. Applies rules: regex cleanup of non-numeric chars, comma-to-dot replacement, parseFloat with isNaN guard, accumulator with += operator. Make sure to use this skill whenever handling user-input numbers or summing displayed values from the DOM. Not for CSS formatting, number display formatting, or Intl.NumberFormat usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, parseFloat, regex, number-conversion, validation]
 ---
 
 # Calculando o Valor Total
@@ -115,13 +121,17 @@ expensesTotal.textContent = total
 | `total = total + value` | `total += value` |
 | `let total` dentro do for | `let total = 0` antes do for |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Total resulta em concatenacao de strings | Valor do DOM nao foi convertido para numero | Aplique `parseFloat()` apos limpeza com regex |
+| `NaN` aparece como resultado | Caracteres nao numericos restantes apos replace | Verifique se regex `/[^\d.,]/g` cobre todos os casos |
+| Virgula decimal nao reconhecida | Formato pt-BR usa `,` mas JS espera `.` | Adicione `.replace(",", ".")` antes de `parseFloat` |
+| Total sempre retorna `0` | Variavel `total` declarada dentro do loop | Declare `let total = 0` antes do `for` |
+| `querySelector` retorna `null` | Seletor CSS nao encontra o elemento | Verifique o seletor `.amount` contra o HTML real |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre regex, parseFloat vs parseInt, e o padrao de acumulador
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-calculando-o-valor-total/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-calculando-o-valor-total/references/code-examples.md)

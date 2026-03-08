@@ -1,6 +1,12 @@
 ---
 name: rs-devops-camada-de-abstracao
 description: "Applies Docker network architecture patterns when creating containers, configuring networking, or setting up multi-container projects. Use when user asks to 'create a docker network', 'connect containers', 'setup docker compose networking', 'isolate a container', or 'organize container communication'. Enforces project-scoped networks with bridge driver, correct use of null/host drivers, and network-per-project organization. Make sure to use this skill whenever working with Docker networking or multi-container setups. Not for Kubernetes networking, cloud VPCs, or non-Docker container runtimes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-networking
+  tags: [networking]
 ---
 
 # Docker Network — Camada de Abstracao
@@ -94,14 +100,14 @@ docker run --network projeto-b-network --name outro-api outro:v2.0
 | Misturar containers de projetos diferentes na mesma rede | Uma rede por dominio/projeto |
 | `docker run --name api api:latest` sem rede | `docker run --network projeto-net --name api api:v1.0` |
 
+## Troubleshooting
+
+### Containers nao conseguem se comunicar entre si
+**Symptom:** Requisicao de um container para outro retorna connection refused
+**Cause:** Os containers estao em redes Docker diferentes ou na bridge default sem resolucao DNS
+**Fix:** Crie uma rede nomeada com `docker network create projeto-net` e conecte ambos containers a ela
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-camada-de-abstracao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-camada-de-abstracao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-camada-de-abstracao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-camada-de-abstracao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-alinhamentos-self
 description: "Applies CSS Grid self-alignment properties (align-self, justify-self, place-self) when positioning individual grid items. Use when user asks to 'align a single item', 'position one element in grid', 'center a specific child', or 'move just this element'. Ensures correct axis mapping and place-self shorthand usage. Make sure to use this skill whenever aligning individual grid items differently from siblings. Not for container-level alignment (align-content/items), Flexbox, or non-grid layouts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, grid, align-self, justify-self, place-self]
 ---
 
 # Alinhamentos Self no CSS Grid
@@ -78,13 +84,16 @@ description: "Applies CSS Grid self-alignment properties (align-self, justify-se
 | Mudar align-items so por causa de 1 item | Usar align-self naquele item especifico |
 | `place-self: center` sem saber os eixos | Pensar: primeiro valor = Y, segundo = X |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `align-self` não move o item | Propriedade colocada no container em vez do item | Mova `align-self` para o elemento filho |
+| Item vai para posição errada | Confusão de eixos no `place-self` | Lembre: primeiro valor = Y (bloco), segundo = X (inline) |
+| Todos os itens mudaram | Usou `align-items` no container em vez de `align-self` no item | Use `align-self` apenas no item específico |
+| Self não sobrescreve o padrão | Item com dimensão fixa que impede reposicionamento | Verifique se width/height fixos não estão impedindo o alinhamento |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre content vs items vs self e modelo mental dos eixos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de posicionamento com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alinhamentos-self/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alinhamentos-self/references/code-examples.md)

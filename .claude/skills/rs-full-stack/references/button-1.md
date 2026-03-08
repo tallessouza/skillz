@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-button-1
 description: "Enforces correct HTML button usage when writing forms. Use when user asks to 'create a form', 'add a button', 'build a submit button', 'make a reset button', or any HTML form task. Applies rules: explicit type attribute, correct type selection (submit/reset/button), name+value pairing for form data, autofocus and disabled usage. Make sure to use this skill whenever generating HTML forms with buttons. Not for JavaScript event handlers, CSS button styling, or React/component button abstractions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html
+  tags: [html, button, forms, submit, reset, accessibility]
 ---
 
 # HTML Button — Tag `<button>`
@@ -90,13 +96,16 @@ description: "Enforces correct HTML button usage when writing forms. Use when us
 | `<input type="submit">` quando precisa de conteudo rico | `<button type="submit">Enviar</button>` |
 | `<button type="button" name="x" value="y">` | Remova name/value — botao type=button nao envia dados |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Form submits when clicking Cancel** | The Cancel button likely has no `type` attribute — add `type='button'` to prevent implicit form submission. |
+| **Button does nothing on click** | If `type='button'`, it requires a JavaScript event listener — it does not submit forms by default. |
+| **Disabled button still clickable** | Ensure the `disabled` attribute is set as a boolean attribute, not as `disabled='false'` which still disables in HTML. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tipos de botao, autofocus e disabled
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-button-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-button-1/references/code-examples.md)

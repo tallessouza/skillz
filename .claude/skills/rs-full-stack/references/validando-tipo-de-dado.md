@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-validando-tipo-de-dado
 description: "Applies Zod schema validation patterns when writing Node.js/Express request handlers. Use when user asks to 'validate request body', 'add input validation', 'use Zod', 'parse request data', or 'create API endpoint with validation'. Enforces z.object schemas with parse, destructuring validated data, and proper error propagation. Make sure to use this skill whenever creating or modifying API route handlers that receive body data. Not for frontend form validation, database schema validation, or environment variable validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-backend
+  tags: [zod, validation, request-body, express, fastify, typescript]
 ---
 
 # Validacao de Dados com Zod
@@ -107,6 +113,15 @@ app.post("/products", (request, reply) => {
 | `if (!price \|\| !name)` encadeado | `z.object({ name: z.string(), price: z.number() })` |
 | `request.body as { name: string }` (type assertion) | `bodySchema.parse(request.body)` (validacao real) |
 | Try/catch custom por campo | Error handler global que captura ZodError |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `ZodError: Expected number, received string` | Body envia `"10"` como string em vez de number | Use `z.coerce.number()` ou configure JSON parsing no servidor |
+| `request.body` e `undefined` | Middleware de JSON body parser nao configurado | Adicione `express.json()` ou `fastify.register(formbody)` |
+| Erro 500 em vez de 400 para body invalido | Nao existe error handler global para ZodError | Configure middleware que captura ZodError e retorna 400 com detalhes |
+| Schema aceita campos extras | `z.object` permite campos adicionais por padrao | Use `.strict()` para rejeitar campos nao declarados |
 
 ## Deep reference library
 

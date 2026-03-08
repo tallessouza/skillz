@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-melhorias-no-layout
 description: "Enforces Next.js Pages Router layout optimization patterns when structuring shared components, refactoring templates, and implementing responsive Tailwind CSS. Use when user asks to 'improve layout', 'move component to layout', 'refactor template', 'make responsive', or 'fix mobile styles' in Next.js Pages Router. Make sure to use this skill whenever restructuring shared UI elements or adjusting responsive behavior in Pages Router projects. Not for App Router, API routes, or data fetching logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: layout
+  tags: [layout, responsive, tailwind, mobile-first, templates, pages-router, next-js]
 ---
 
 # Melhorias no Layout — Next.js Pages Router
@@ -124,14 +130,19 @@ export { PostPage } from './PostPage'
 | `mt-32` para espacar do header | `py-20` para padding vertical equilibrado |
 | Componente inline em `pages/[slug].tsx` | Extraido em `templates/post/PostPage.tsx` |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorias-no-layout/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorias-no-layout/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorias-no-layout/references/deep-explanation.md) — O instrutor identificou um padrao claro: o CallToAction aparecia em todas as telas — landing page, l
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorias-no-layout/references/code-examples.md) — // Antes: layout sem CallToAction

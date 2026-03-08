@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-elementos
 description: "Enforces correct DOM element creation and insertion patterns when writing vanilla JavaScript. Use when user asks to 'create elements', 'add to DOM', 'manipulate DOM', 'insert HTML elements', 'build list items dynamically', or 'generate elements with JavaScript'. Applies createElement, append/prepend, classList.add, and proper element nesting. Make sure to use this skill whenever generating code that dynamically creates and inserts DOM elements. Not for React/Vue components, innerHTML manipulation, or template literals for HTML."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, append, prepend, classList]
 ---
 
 # Criando Elementos na DOM
@@ -92,13 +98,15 @@ list.append(newGuest)
 | `parent.appendChild(a); parent.appendChild(b)` | `parent.append(a, b)` |
 | Inserir no DOM antes de montar a arvore | Montar arvore completa, depois inserir no DOM |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Elemento criado nao aparece na pagina | `append` ou `prepend` nao foi chamado no pai | Verifique que o elemento foi inserido no DOM com `parent.append(child)` |
+| `append is not a function` | Tentando chamar append em elemento que nao existe | Verifique que `querySelector` retorna o elemento correto (nao null) |
+| Ordem dos elementos errada | Usando `append` quando deveria usar `prepend` | Use `prepend` para inserir no inicio, `append` para o final |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre append vs prepend vs appendChild e ordem de montagem
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-elementos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-elementos/references/code-examples.md)

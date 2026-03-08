@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-roteamento-pages-router
 description: "Applies Next.js Pages Router file-based routing patterns when creating routes, pages, or navigation. Use when user asks to 'create a page', 'add a route', 'setup routing', 'dynamic route', 'catch-all route', or any Next.js Pages Router task. Enforces file-based routing conventions: index.tsx as route entry, bracket syntax for dynamic segments, spread syntax for catch-all. Make sure to use this skill whenever working with Next.js Pages Router routing. Not for App Router, API routes, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: pages-router-fundamentos
+  tags: [pages-router, routing, file-based-routing, dynamic-routes, catch-all, next-js]
 ---
 
 # Roteamento do Next.js (Pages Router)
@@ -135,14 +141,19 @@ Sem configuracao. Criar o arquivo = criar a rota.
 | Hardcodar IDs em nomes de arquivo | `[id].tsx` para rotas dinamicas |
 | Tentar capturar multiplos segmentos com `[slug].tsx` | `[...slug].tsx` para catch-all |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-o-roteamento-do-next-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-o-roteamento-do-next-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-o-roteamento-do-next-js/references/deep-explanation.md) — O instrutor enfatiza que entender o Pages Router e fundamental antes de migrar para o App Router. A 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-o-roteamento-do-next-js/references/code-examples.md) — // pages/index.tsx

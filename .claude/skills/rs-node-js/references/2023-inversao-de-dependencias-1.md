@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-inversao-de-dependencias
 description: "Enforces Dependency Inversion Principle (DIP) when structuring use cases and repositories in Node.js/TypeScript. Use when user asks to 'create a use case', 'implement a service', 'refactor dependencies', 'apply SOLID', or 'decouple from database'. Applies constructor injection, removes direct instantiation of dependencies inside use cases, and ensures classes receive dependencies as parameters. Make sure to use this skill whenever creating use cases or service classes. Not for UI components, route definitions, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: solid-patterns
+  tags: [dependency-inversion, solid, constructor-injection, use-case, typescript, decoupling]
 ---
 
 # Inversao de Dependencias (DIP)
@@ -110,14 +116,14 @@ export class RegisterUseCase {
 | `this.usersRepository = usersRepository` manual no construtor | `constructor(private usersRepository)` com keyword |
 | Use case com multiplos metodos publicos | Um unico `execute()` ou `handle()` |
 
+## Troubleshooting
+
+### Use case instancia repositorio concreto internamente
+**Symptom:** Nao e possivel trocar o repositorio para testes ou outro provider sem editar o use case
+**Cause:** `new PrismaUsersRepository()` esta dentro do metodo `execute()` do use case
+**Fix:** Mova a instanciacao para o controller/factory e passe via construtor: `constructor(private usersRepository: UsersRepository)`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-inversao-de-dependencias-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-inversao-de-dependencias-1/references/code-examples.md)

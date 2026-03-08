@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-deletar-resposta
 description: "Applies NestJS delete controller pattern when building REST endpoints for deleting resources. Use when user asks to 'create a delete endpoint', 'add delete controller', 'implement resource deletion in NestJS', or 'create CRUD delete'. Follows pattern: copy similar controller, swap entity, wire use case, create e2e test with factories. Make sure to use this skill whenever creating delete endpoints in NestJS Clean Architecture projects. Not for database layer, use case logic, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Deletar Recurso (NestJS Clean Architecture)
@@ -103,14 +110,14 @@ beforeAll(async () => {
 | Copiar repositorio sem revisar imports | Verificar que todos os imports apontam para a entidade correta |
 | Ignorar erro 500 no teste | Adicionar try-catch temporario para debugar |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-resposta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-resposta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-resposta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-resposta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

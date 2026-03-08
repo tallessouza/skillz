@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-populando-tabela-de-cursos
 description: "Applies correct INSERT INTO syntax when populating SQLite tables with multiple records. Use when user asks to 'insert data', 'populate table', 'add records', 'seed database', or 'INSERT INTO'. Enforces semicolon separation for batch inserts, string quoting, and verification with SELECT. Make sure to use this skill whenever writing SQL INSERT statements for SQLite. Not for CREATE TABLE, ALTER TABLE, or non-SQLite databases."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags:
+    - sql
+    - sqlite
+    - insert
+    - database
+    - seed
 ---
 
 # Populando Tabelas com INSERT INTO (SQLite)
@@ -88,6 +99,14 @@ SELECT * FROM cursos;
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separadores, aspas e verificação
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "near INSERT: syntax error" ao rodar multiplos INSERTs | Faltou ponto e virgula entre statements | Cada INSERT deve terminar com `;` |
+| Aspas duplas causam erro ou comportamento inesperado | SQLite interpreta aspas duplas como identificador de coluna | Use aspas simples para valores: `'texto'` |
+| SELECT retorna menos registros que o esperado | Executou apenas parte dos INSERTs (selecao parcial no editor) | Selecione todos os statements antes de executar |
 
 ---
 

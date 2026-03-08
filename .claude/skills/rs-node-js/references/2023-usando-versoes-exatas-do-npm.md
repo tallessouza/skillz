@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-versoes-exatas-npm
 description: "Enforces exact NPM dependency versions by configuring .npmrc with save-exact=true in JavaScript/TypeScript projects. Use when user asks to 'create a project', 'setup npm', 'configure dependencies', 'init node project', or 'add .npmrc'. Ensures all package.json versions are pinned without caret/tilde, enabling automated dependency updates via Renovate bot. Make sure to use this skill whenever initializing a new JS/TS project or reviewing dependency management. Not for yarn/pnpm-specific config, lockfile issues, or dependency resolution conflicts."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: setup-projeto
+  tags: [npm, npmrc, save-exact, dependencies, versioning, renovate]
 ---
 
 # Versoes Exatas do NPM
@@ -93,14 +99,14 @@ Confirme que nenhuma versao tem `^` ou `~`:
 - Rode `npm install <qualquer-pacote>` e confira no `package.json` que a versao nao tem `^` ou `~`
 - O arquivo `.npmrc` esta commitado no repositorio (nao no `.gitignore`)
 
+## Troubleshooting
+
+### npm install ainda adiciona caret (^) nas versoes
+**Symptom:** Apos criar `.npmrc`, novas dependencias ainda aparecem com `^` no package.json
+**Cause:** O `.npmrc` foi criado depois do `npm install`, ou foi criado no diretorio errado (nao na raiz do projeto)
+**Fix:** Verifique que `.npmrc` esta na mesma pasta do `package.json`, delete `node_modules` e `package-lock.json`, e rode `npm install` novamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-usando-versoes-exatas-do-npm/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-usando-versoes-exatas-do-npm/references/code-examples.md)

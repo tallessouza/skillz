@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-cluster-kubernetes
 description: "Generates Kind cluster configurations for local Kubernetes environments. Use when user asks to 'create a kubernetes cluster', 'setup kind', 'configure local k8s', 'multi-node cluster', or 'service mesh cluster'. Produces kind.yaml with control plane and worker nodes, runs kind create cluster with config. Make sure to use this skill whenever setting up local Kubernetes clusters for development or testing. Not for production cluster provisioning, cloud-managed Kubernetes (EKS/GKE/AKS), or Helm chart authoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-kind-service-mesh
+  tags: [kubernetes, kind, cluster, service-mesh, istio]
 ---
 
 # Configurando Cluster Kubernetes com Kind
@@ -118,14 +124,14 @@ kubectl config current-context
 | Criar cluster sem nome definido | Definir `name` no YAML ou `--name` na CLI |
 | Ignorar `NotReady` e deployar imediatamente | Esperar todos os nodes ficarem `Ready` |
 
+## Troubleshooting
+
+### Nodes ficam em estado NotReady apos criar cluster
+**Symptom:** `kubectl get nodes` mostra status NotReady para um ou mais nodes
+**Cause:** CNI (Container Network Interface) ainda esta inicializando ou Docker nao tem recursos suficientes
+**Fix:** Aguarde 30-60 segundos e verifique novamente. Se persistir, verifique logs com `kubectl describe node <nome>` e recursos do Docker
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-nosso-cluster-kubernetes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-nosso-cluster-kubernetes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-nosso-cluster-kubernetes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-nosso-cluster-kubernetes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

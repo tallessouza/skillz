@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-populando-tabela-alunos
 description: "Generates SQL INSERT INTO statements to populate database tables with sample data. Use when user asks to 'insert data', 'populate table', 'add sample records', 'seed database', or 'create test data' in SQL. Applies correct INSERT INTO syntax with VALUES, semicolon-separated multiple inserts, and SELECT verification. Make sure to use this skill whenever generating SQL insert statements or seeding tables. Not for CREATE TABLE, ALTER TABLE, or schema design tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags:
+    - sql
+    - insert
+    - database
+    - seed
 ---
 
 # Populando Tabelas com INSERT INTO
@@ -82,6 +92,14 @@ SELECT * FROM students;
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre INSERT INTO e boas práticas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "table has N columns but M values were supplied" | INSERT sem colunas explicitas e quantidade de valores diferente | Sempre especifique as colunas: `INSERT INTO t (col) VALUES (...)` |
+| Registros duplicados apos rodar script novamente | Script de seed sem verificacao de existencia | Adicione `DELETE FROM tabela` antes dos INSERTs ou use `INSERT OR IGNORE` |
+| Erro de tipo no valor inserido | String sem aspas simples ou numero com aspas | Strings usam aspas simples `'texto'`, numeros sem aspas |
 
 ---
 

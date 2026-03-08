@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-sessao
 description: "Applies JWT session creation patterns when building authentication login endpoints in Node.js/Express. Use when user asks to 'create login', 'implement authentication', 'generate JWT token', 'create session endpoint', or 'build sign-in route'. Enforces proper credential validation, secure error messages, JWT signing with config-based secrets, and token response structure. Make sure to use this skill whenever implementing login or session creation logic. Not for registration, password reset, middleware guards, or token refresh flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: node-authentication
+  tags: [jwt, authentication, login, session, express, security]
 ---
 
 # Criando Sessão com JWT
@@ -102,13 +108,16 @@ async create(req, res) {
 | `res.status(400)` para login | `throw new AppError("...", 401)` |
 | Retornar dados do usuário no login | Retornar apenas `{ token }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `JsonWebTokenError: secret or public key must be provided` | Secret nao configurado no authConfig | Verifique `authConfig.jwt.secret` e o arquivo de configuracao |
+| Token gerado mas invalido na verificacao | Secret diferente entre sign e verify | Use o mesmo secret centralizado em ambos |
+| `subject` retorna numero em vez de string | ID nao convertido para string | Use `String(user.id)` no campo subject |
+| Login retorna 500 em vez de 401 | Erro nao tratado no controller | Use `throw new AppError("mensagem", 401)` com handler global |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre segurança de mensagens de erro e arquitetura JWT
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-sessao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-sessao/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-faixa-rotativa
 description: "Applies infinite CSS scroll banner and animated gradient background techniques when building landing pages or marketing sections. Use when user asks to 'create a rotating banner', 'infinite scroll text', 'marquee effect', 'animated background gradient', or 'CSS-only infinite loop animation'. Enforces the duplication-based infinite scroll pattern with translateX keyframes and background-size trick for gradient animation. Make sure to use this skill whenever creating decorative scrolling banners or animated gradients without JavaScript. Not for JavaScript-based carousels, sliders with navigation, or scroll-triggered animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animation, keyframes, translateX, gradient, infinite-scroll, banner]
 ---
 
 # Faixa Rotativa CSS — Banner Infinito + Gradiente Animado
@@ -143,13 +149,16 @@ description: "Applies infinite CSS scroll banner and animated gradient backgroun
 | `overflow: visible` no banner | `overflow: hidden` — conteúdo duplicado nunca pode transbordar |
 | Usar JS pra este efeito simples em LP | CSS puro com keyframes — zero dependências |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Scroll "pula" visivelmente no reset da animacao | Valor de `translateX` nao bate com largura do bloco + gap | Ajustar translateX em +/-1-2px ate ficar suave |
+| Gaps visiveis entre elementos | Poucas copias do elemento na rolling div | Duplicar mais copias ate preencher viewport sem espacos |
+| Gradiente nao anima | `background-size` igual a 100% | Aumentar para `background-size: 400%` |
+| Conteudo transborda do banner | `overflow: hidden` ausente no container | Adicionar `overflow: hidden` no `.banner` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cálculo do translateX, por que 400% no background-size, e trade-offs CSS vs JS
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e anotações passo a passo
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-faixa-rotativa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-faixa-rotativa/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre calculo do translateX, por que 400% no background-size, e trade-offs CSS vs JS
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e anotacoes passo a passo

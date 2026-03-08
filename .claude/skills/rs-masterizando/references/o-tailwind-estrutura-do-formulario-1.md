@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-estrutura-formulario
 description: "Applies Tailwind CSS form structure patterns when building settings pages, admin panels, or form layouts. Use when user asks to 'create a form', 'build a settings page', 'structure a form layout', or 'add form header with buttons'. Enforces flex layout hierarchy, HTML form attribute for detached submit buttons, consistent border patterns, and button styling separation. Make sure to use this skill whenever creating form-based layouts with Tailwind. Not for form validation, state management, or form libraries like React Hook Form."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: layout
+  tags: [tailwind, react, flexbox, forms]
 ---
 
 # Estrutura de Formulario com Tailwind
@@ -94,15 +100,19 @@ description: "Applies Tailwind CSS form structure patterns when building setting
 | `<form>` without width class | `<form className="w-full">` |
 | Bordas com cores diferentes entre secoes | Mesma combinacao `border-zinc-200` em todo o layout |
 | Conteudo direto antes de `border-b` sem padding | `pb-5 border-b border-zinc-200` |
+## Troubleshooting
+
+### Input nao ocupa largura total
+**Symptom:** Input aparece com largura menor que o container.
+**Cause:** Input HTML tem largura intrinseca menor que o container.
+**Fix:** Adicione `w-full` no input ou `flex-1` se estiver dentro de flex container.
+
+### Estilos do input aparecem duplicados
+**Symptom:** Borda dupla ou sombra duplicada no input com wrapper.
+**Cause:** Tanto o wrapper quanto o input tem estilos de borda.
+**Fix:** Estilize apenas o wrapper (div fake input) e use `border-0 bg-transparent p-0 outline-none` no input real.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-estrutura-do-formulario-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-estrutura-do-formulario-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-estrutura-do-formulario-1/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-estrutura-do-formulario-1/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

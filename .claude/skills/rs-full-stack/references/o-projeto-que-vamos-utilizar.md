@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-projeto-que-vamos-utilizar
 description: "Applies Express.js project structure for authentication and authorization modules. Use when user asks to 'setup auth project', 'create express auth structure', 'scaffold login routes', or 'setup session routes with Express'. Follows pattern: server.ts + routes (sessions, products) + controllers separation. Make sure to use this skill whenever scaffolding a Node.js/Express project that needs auth. Not for frontend auth, OAuth providers, or database setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: authentication
+  tags: [express, auth, sessions, controllers, routes]
 ---
 
 # Estrutura de Projeto Express para Autenticação
@@ -142,13 +148,15 @@ routes.post("/products", productsController.create)
 | Um arquivo gigante com server + rotas + controllers | Separar em 3 camadas distintas |
 | Testar rotas sem servidor rodando | `npm run dev` antes de testar no Insomnia |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Body da requisicao vem undefined | `express.json()` registrado depois das rotas | Mova `app.use(express.json())` para antes de `app.use(routes)` |
+| Endpoint retorna 404 | Rota nao registrada no index | Importe e registre a rota no `routes/index.ts` |
+| Error handler nao captura erros | Registrado antes das rotas | Mova error handler para depois de todas as rotas |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação de responsabilidades e padrão sessions
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-projeto-que-vamos-utilizar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-projeto-que-vamos-utilizar/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e padrao sessions
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

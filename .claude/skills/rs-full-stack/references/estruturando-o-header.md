@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estruturando-o-header
 description: "Applies semantic HTML structuring patterns when building page headers and profile sections. Use when user asks to 'create a header', 'build a profile section', 'structure HTML layout', or 'create an about section'. Enforces container patterns, semantic list usage for metadata, and progressive layout thinking. Make sure to use this skill whenever generating HTML for headers or profile-based layouts. Not for CSS styling, JavaScript logic, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-layout
+  tags: [html, semantic-html, header, profile, container]
 ---
 
 # Estruturando o Header
@@ -111,13 +117,16 @@ description: "Applies semantic HTML structuring patterns when building page head
 | Div nova de background quando ja existe uma | Estenda a div existente |
 | Tudo flat sem agrupamento | Divs nomeadas: `.profile`, `.info` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Conteudo do header ocupa toda largura da tela | Falta div `.container` para limitar largura | Envolver conteudo em `<div class="container">` |
+| Itens de metadados nao alinham horizontalmente | Usando divs em vez de lista | Usar `<ul><li>` e estilizar com flexbox |
+| Imagem de perfil sem alt | Alt vazio ou ausente | Adicionar `alt="Descricao da pessoa"` |
+| Background nao cobre toda largura | Background aplicado dentro do container | Aplicar background na div wrapper fora do container |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre pensar o layout antes de codar e aceitar iteracao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-o-header/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-o-header/references/code-examples.md)

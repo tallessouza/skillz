@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-getters-setters-entidades
 description: "Enforces DDD getter/setter patterns when writing TypeScript entity classes. Use when user asks to 'create an entity', 'add getters', 'implement domain model', 'write a class with properties', or 'design an aggregate'. Applies rules: getters for all readable props, setters only when needed, private touch() for updatedAt, computed properties via getters, validation inside setters. Make sure to use this skill whenever generating DDD entities or domain classes. Not for DTOs, database models, or simple data objects without behavior."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: entity-accessors
+  tags: [ddd, entities, getters, setters, typescript, encapsulation, domain-model]
 ---
 
 # Getters & Setters em Entidades DDD
@@ -132,14 +138,14 @@ class Answer extends Entity<AnswerProps> {
 | Criar todos os setters de uma vez | Adicionar setters sob demanda, conforme casos de uso |
 | Validacao de content fora da entidade | Validar dentro do setter: `if (content.length > 2400) throw` |
 
+## Troubleshooting
+
+### Propriedade da entidade e modificada externamente sem controle
+**Symptom:** Codigo externo altera diretamente uma propriedade que deveria ser imutavel (ex: authorId)
+**Cause:** A propriedade esta declarada como public em vez de acessada via getter sem setter
+**Fix:** Declare todas as props como private via this.props e exponha apenas getters; crie setters somente quando um caso de uso exigir modificacao
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-getters-and-setters-das-entidades/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-getters-and-setters-das-entidades/references/code-examples.md)

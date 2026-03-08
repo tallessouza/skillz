@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-o-fetch
 description: "Applies fetch API patterns when writing JavaScript HTTP requests. Use when user asks to 'consume an API', 'fetch data', 'make HTTP request', 'call an endpoint', or 'get data from server'. Enforces promise chaining with .then(), proper response.json() conversion, and async data handling. Make sure to use this skill whenever generating code that calls external APIs with vanilla JavaScript. Not for Axios, React Query, SWR, or framework-specific data fetching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, fetch, http-request, promises, api]
 ---
 
 # Utilizando o Fetch
@@ -72,6 +78,14 @@ fetch("http://localhost:3333/products")
 | `const data = fetch(url)` | `fetch(url).then(res => res.json()).then(data => ...)` |
 | `fetch(url).then(res => console.log(res))` sem .json() | `fetch(url).then(res => res.json()).then(data => console.log(data))` |
 | Um unico .then() tentando acessar dados diretamente | Dois .then() encadeados: converter depois consumir |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `Promise { <pending> }` ao logar o resultado do fetch | Fetch retorna Promise, não dados síncronos | Use `.then()` ou `async/await` para acessar os dados |
+| Primeiro `.then()` retorna objeto Response, não dados | `response` contém metadados HTTP, não o body | Chame `response.json()` no primeiro `.then()` e consuma dados no segundo |
+| `TypeError: Failed to fetch` | Servidor não está rodando ou URL incorreta | Verifique se o servidor está ativo e a URL está correta |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-problemas-error-handling
-description: "Identifies and avoids problematic error handling patterns in TypeScript/Node.js applications. Use when user asks to 'handle errors', 'throw an error', 'return null on error', 'create error handling', or writes try/catch blocks. Enforces rules: never return null/undefined for errors, avoid raw throw new Error without context, ensure errors carry enough data for HTTP status mapping, maintain consistent error format across all layers. Make sure to use this skill whenever reviewing or writing error handling code. Not for frontend error display, logging configuration, or monitoring setup."
+description: "Prevents problematic error handling patterns in TypeScript/Node.js applications. Use when user asks to 'handle errors', 'throw an error', 'return null on error', 'create error handling', or writes try/catch blocks. Enforces rules: never return null/undefined for errors, avoid raw throw new Error without context, ensure errors carry enough data for HTTP status mapping, maintain consistent error format across all layers. Make sure to use this skill whenever reviewing or writing error handling code. Not for frontend error display, logging configuration, or monitoring setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling-problems
+  tags: [error-handling, throw, null-return, http-status, anti-patterns, typescript]
 ---
 
 # Problemas com Error Handling
@@ -83,14 +89,14 @@ export class Slug {
 
 Este skill identifica os PROBLEMAS. A solucao (Either pattern, Result type, custom error classes) e tratada em aulas subsequentes. Ao identificar estes anti-patterns, sinalize ao usuario que o formato atual e problematico e sugira adotar um padrao funcional de error handling.
 
+## Troubleshooting
+
+### Todos os erros retornam 500 Internal Server Error
+**Symptom:** Erros de negocio como "usuario nao encontrado" ou "nao autorizado" retornam status 500 em vez de 404 ou 401
+**Cause:** Os use cases usam `throw new Error(string)` generico, e o framework nao consegue diferenciar tipos de erro para mapear status codes
+**Fix:** Adote um padrao estruturado de erro (Either pattern, custom error classes) que carregue informacao suficiente para o controller mapear para o HTTP status correto
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-problemas-com-error-handling/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-problemas-com-error-handling/references/code-examples.md)

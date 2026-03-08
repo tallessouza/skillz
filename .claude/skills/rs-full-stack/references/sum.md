@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-sum
 description: "Applies SQL SUM aggregate function when writing queries that total numeric columns. Use when user asks to 'sum values', 'total a column', 'calculate sum', 'aggregate prices', or 'sum query'. Ensures correct SUM syntax with numeric columns, WHERE filtering, and proper column selection. Make sure to use this skill whenever generating SQL that requires summing or totaling values. Not for COUNT, AVG, or other aggregate functions, nor for application-level arithmetic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-queries
+  tags:
+    - sql
+    - sum
+    - aggregate
+    - queries
+    - numeric
 ---
 
 # SQL SUM — Soma de Valores
@@ -64,6 +75,15 @@ SELECT SUM(price) FROM products;
 | `SUM(name)` (coluna texto) | `SUM(price)` (coluna numerica) |
 | `SELECT SUM(price)` sem FROM | `SELECT SUM(price) FROM products` |
 | `SUM(*)` | `SUM(coluna_especifica)` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SUM retorna 0 inesperadamente | Coluna e do tipo texto, nao numerico | Use SUM apenas em colunas numericas (INTEGER, REAL, DECIMAL) |
+| SUM retorna NULL | Nenhum registro corresponde ao WHERE | Use `COALESCE(SUM(price), 0)` para fallback |
+| Resultado sem nome de coluna | SUM sem alias | Adicione `AS total_price` apos SUM |
+| Erro de sintaxe com SUM(*) | Asterisco nao e valido com SUM | Especifique a coluna: `SUM(price)` |
 
 ## Deep reference library
 

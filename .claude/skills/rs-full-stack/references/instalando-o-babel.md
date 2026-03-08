@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-babel
-description: "Guides Babel installation and configuration in JavaScript projects using NPM. Use when user asks to 'install babel', 'setup babel', 'configure javascript compiler', 'add babel to project', or 'transpile javascript'. Covers NPM dev dependencies, node_modules management, and package.json structure. Make sure to use this skill whenever setting up Babel or explaining NPM dependency types. Not for Webpack, Vite, or other bundler configuration."
+description: "Configures Babel installation and setup in JavaScript projects using NPM. Use when user asks to 'install babel', 'setup babel', 'configure javascript compiler', 'add babel to project', or 'transpile javascript'. Covers NPM dev dependencies, node_modules management, and package.json structure. Make sure to use this skill whenever setting up Babel or explaining NPM dependency types. Not for Webpack, Vite, or other bundler configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: babel-setup
+  tags: [babel, npm, javascript, compiler, devdependencies]
 ---
 
 # Instalando o Babel
@@ -77,13 +83,16 @@ Confirme que `package.json` contem em `devDependencies`:
 - `package.json` lista os 3 pacotes em `devDependencies`
 - `package-lock.json` foi gerado automaticamente
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Terminal nao reconhece `npm` | Node.js nao instalado ou terminal nao recarregado | Instalar Node.js e reabrir terminal/VSCode |
+| Pacotes nao aparecem em devDependencies | Instalacao sem `--save-dev` | Reinstalar com `npm install --save-dev @babel/core @babel/cli @babel/preset-env` |
+| `node_modules/` sumiu | Pasta deletada ou mudanca de maquina | Executar `npm install` para regenerar |
+| `package-lock.json` nao gerado | Nenhuma dependencia instalada ainda | Instalar pelo menos um pacote para gerar o lock file |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre dependencias, node_modules e package.json
 - [code-examples.md](references/code-examples.md) — Todos os exemplos e variacoes de instalacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-babel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-babel/references/code-examples.md)

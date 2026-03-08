@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-loki
 description: "Applies Loki log aggregator setup with Grafana via Docker Compose when user asks to 'configure Loki', 'setup log aggregation', 'add Loki to docker-compose', 'configure Grafana data source', or 'setup observability stack'. Enforces correct Docker Compose declaration, declarative data source provisioning, and type naming conventions. Make sure to use this skill whenever setting up Loki or Grafana log data sources. Not for Prometheus metrics, Tempo traces, or application-level logging code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-loki
+  tags: [loki, grafana, docker-compose, datasource, log-aggregation, observability]
 ---
 
 # Configurando o Loki
@@ -107,14 +113,14 @@ datasources:
 | `editable: true` em producao | `editable: false` para forcar IaC |
 | Subir Grafana sem `depends_on: [loki]` | Declarar dependencia para subida serial |
 
+## Troubleshooting
+
+### Datasource Loki aparece sem logo ou como undefined no Grafana
+**Symptom:** Ao acessar Explore no Grafana, o datasource Loki nao aparece ou mostra tipo desconhecido
+**Cause:** O campo `type` no arquivo de provisioning esta com letra maiuscula (`Loki` em vez de `loki`)
+**Fix:** Corrija para `type: loki` (lowercase) no arquivo de provisioning e recrie os containers com `docker compose down && docker compose up -d`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-loki/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-loki/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-loki/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-loki/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

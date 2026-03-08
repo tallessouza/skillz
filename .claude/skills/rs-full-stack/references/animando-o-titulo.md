@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-animando-o-titulo
 description: "Applies CSS keyframe animation patterns for cycling text with bounce effects. Use when user asks to 'animate text', 'create text rotation', 'sliding title animation', 'cycle words in CSS', or 'bounce animation'. Covers keyframe timeline design, overflow hidden windowing, min-content sizing, infinite loop trick with duplicated element, and bounce micro-interactions using calc offsets. Make sure to use this skill whenever building hero section text animations or cycling word effects. Not for JS-based animations, scroll-triggered animations, or SVG animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, animation, keyframes, text-cycling, bounce]
 ---
 
 # Animando Título com CSS Keyframes — Slide Up + Bounce
@@ -140,13 +146,16 @@ description: "Applies CSS keyframe animation patterns for cycling text with boun
 | Bounce com `animation-timing-function: bounce` (não existe) | Keyframes manuais com calc offsets em px |
 | Reset visível de 100% → 0% | Último keyframe = posição do elemento duplicado |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Pulo visível quando animação reinicia | Faltou duplicar o primeiro elemento no final | Adicione o primeiro `<span>` novamente como último filho |
+| Bounce parece artificial | Offsets em px muito grandes | Diminua progressivamente: 15px, 10px, 5px, 3px |
+| Container muito largo ou estreito | Largura fixa hardcoded | Use `width: min-content` para ajustar ao conteúdo |
+| Duas palavras aparecem ao mesmo tempo | Altura do container não bate com o translateY | Use a mesma medida de height e translateY por step (ex: 5rem) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre timeline, estratégia do loop infinito e processo de tentativa e erro
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e anotações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-animando-o-titulo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-animando-o-titulo/references/code-examples.md)

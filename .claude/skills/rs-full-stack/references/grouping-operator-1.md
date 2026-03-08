@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grouping-operator-1
 description: "Applies correct operator precedence using parentheses (grouping operator) when writing JavaScript arithmetic expressions. Use when user asks to 'calculate average', 'write math expression', 'fix calculation', 'compute total', or any arithmetic operation in JS/TS. Ensures parentheses enforce intended evaluation order. Make sure to use this skill whenever generating code with multiple arithmetic operators. Not for string concatenation, logical operators, or non-arithmetic expressions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, operators, precedence, parentheses, arithmetic]
 ---
 
 # Grouping Operator (Parênteses)
@@ -62,13 +68,16 @@ const average = (9.5 + 7 + 5) / 3
 | `price + tax * qty` (se quer somar antes) | `(price + tax) * qty` |
 | `a * b + c * d / e` (ambiguo) | `(a * b) + ((c * d) / e)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Media retorna valor inesperado | Divisao aplicada apenas ao ultimo termo sem parenteses | Envolva a soma com parenteses: `(a + b + c) / n` |
+| Resultado e `NaN` | Um dos operandos nao e numero (ex: string de input) | Converta com `Number()` ou `parseFloat()` antes de calcular |
+| Expressao retorna `Infinity` | Divisao por zero | Verifique se o divisor e diferente de zero antes de dividir |
+| Resultado com muitas casas decimais | Aritmetica de ponto flutuante do JavaScript | Use `.toFixed(2)` para formatar ou `Math.round()` para arredondar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre precedencia de operadores e como o JS avalia expressoes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grouping-operator-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grouping-operator-1/references/code-examples.md)

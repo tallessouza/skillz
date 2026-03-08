@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-instalando-configurando-prisma
 description: "Applies Prisma ORM setup and configuration patterns in Next.js projects with PostgreSQL. Use when user asks to 'setup prisma', 'configure database', 'create prisma schema', 'model a table', 'connect to postgres', or 'initialize ORM'. Covers installation, schema modeling, naming conventions (@@map), environment variables, and migrations. Make sure to use this skill whenever setting up Prisma in a Next.js or TypeScript project. Not for advanced Prisma queries, relations, or production deployment configurations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: prisma-setup
+  tags: [prisma, postgresql, orm, schema, migrations, database, next-js, typescript]
 ---
 
 # Instalando e Configurando o Prisma
@@ -122,14 +128,19 @@ const appointments = await prisma.appointment.findMany({
 | Commitar `.env` com credenciais | Commitar `.env.example` sem valores reais |
 | Escrever SQL puro em projeto TypeScript | Usar Prisma para queries type-safe |
 
+## Troubleshooting
+
+### Prisma schema nao sincroniza com banco
+**Symptom:** Tabelas nao existem ou colunas estao desatualizadas
+**Cause:** Migration nao foi executada apos alteracao do schema.prisma
+**Fix:** Executar `npx prisma migrate dev` para desenvolvimento ou `npx prisma db push` para sincronizacao rapida. Verificar a URL de conexao no `.env`
+
+### Erro de conexao com banco de dados
+**Symptom:** "Can't reach database server" ou timeout de conexao
+**Cause:** Banco nao esta rodando, URL de conexao incorreta, ou firewall bloqueando
+**Fix:** Verificar se o container Docker esta rodando (`docker ps`). Validar DATABASE_URL no .env. Testar conexao com `npx prisma studio`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-instalando-e-configurando-o-prisma-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-instalando-e-configurando-o-prisma-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-instalando-e-configurando-o-prisma-2/references/deep-explanation.md) — O instrutor apresenta o Prisma como um **intermediario** entre o codigo TypeScript e o PostgreSQL. O
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-instalando-e-configurando-o-prisma-2/references/code-examples.md) — pgdata

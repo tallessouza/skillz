@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-alinhamentos-items
 description: "Enforces correct usage of CSS Grid item alignment properties when writing grid layouts. Use when user asks to 'align grid items', 'center items in grid', 'create a grid layout', 'place items', or any CSS Grid task. Applies align-items (Y axis), justify-items (X axis), and place-items shorthand. Make sure to use this skill whenever generating CSS Grid code that needs item positioning within their cells. Not for Flexbox alignment, grid-template definitions, or align-content/justify-content (container-level)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, grid, align-items, justify-items, place-items]
 ---
 
 # Alinhamento de Items no CSS Grid
@@ -93,13 +99,16 @@ description: "Enforces correct usage of CSS Grid item alignment properties when 
 | `place-items: center; align-items: center; justify-items: center;` | Apenas `place-items: center` (shorthand ja faz tudo) |
 | Confundir eixos: `align-items` para horizontal | `align-items` e SEMPRE vertical (Y), use `justify-items` para horizontal (X) |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `place-items: center` não centraliza | Itens preenchem toda a célula com `1fr` e não há espaço sobrando | Use tamanhos fixos ou `auto` nas colunas/rows para criar espaço |
+| Confusão entre items e content | Usou `justify-content` para alinhar itens dentro de células | Use `justify-items` para dentro da célula, `justify-content` para tracks |
+| `align-items: space-between` dá erro | Valor `space-between` não existe em align-items | Use `align-content: space-between` para distribuir tracks |
+| Item não respeita `place-items` do pai | Item tem `place-self` que sobrescreve | Remova `place-self` do item ou ajuste o valor |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre stretch vs auto, diferencas entre content e items, e quando cada propriedade faz sentido
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes de layout
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alinhamentos-items/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alinhamentos-items/references/code-examples.md)

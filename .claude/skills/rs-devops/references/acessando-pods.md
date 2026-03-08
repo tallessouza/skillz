@@ -1,6 +1,12 @@
 ---
 name: rs-devops-acessando-pods
 description: "Applies Kubernetes Service creation patterns when writing Service manifests, configuring cluster networking, or exposing deployments. Use when user asks to 'create a service', 'expose a deployment', 'configure cluster IP', 'access pods', or 'write service yaml'. Enforces selector matching, port mapping, and declarative-first principles. Make sure to use this skill whenever generating Kubernetes Service manifests or configuring intra-cluster networking. Not for Ingress, LoadBalancer, NodePort configuration, or external cluster access."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-services
+  tags: [kubernetes, service, cluster-ip, networking]
 ---
 
 # Acessando Pods com Services
@@ -106,14 +112,19 @@ kubectl port-forward svc/nginx-svc 8080:80 -n primeiro-app
 | Mesmo nome para Service e Deployment | Use sufixo `-svc` no Service: `nginx-svc` |
 | Alterar cluster sem atualizar declarativo | Declarativo e fonte da verdade — sempre atualize o YAML |
 
+## Troubleshooting
+
+### Service nao roteia trafego para os pods
+**Symptom:** Port-forward no Service funciona mas nenhum pod recebe requisicoes
+**Cause:** O selector do Service nao corresponde as labels do template do Deployment
+**Fix:** Compare `spec.selector` do Service com `spec.template.metadata.labels` do Deployment — devem ser identicos
+
+### Erro "no endpoints available" ao acessar Service
+**Symptom:** `kubectl port-forward svc/app-svc 8080:80` retorna erro de endpoints
+**Cause:** Nenhum pod com as labels corretas esta rodando no namespace
+**Fix:** Verifique com `kubectl get pods -n <ns> --show-labels` se os pods existem e tem as labels esperadas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-acessando-pods/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-acessando-pods/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-acessando-pods/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-acessando-pods/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

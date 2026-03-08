@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-type-3
 description: "Enforces correct usage of TypeScript type aliases and union types when defining custom types. Use when user asks to 'create a type', 'define a custom type', 'type alias', 'union type', or 'type for API response'. Applies rules: PascalCase naming, prefer type for unions and computed types, use union with null for nullable responses. Make sure to use this skill whenever creating TypeScript type aliases or union types. Not for interface usage, class definitions, or enum declarations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-tipos-avancados
+  tags: [typescript, type, alias, union, nullable, PascalCase]
 ---
 
 # Usando Type (Type Alias) em TypeScript
@@ -97,6 +103,15 @@ function selectProducts(): SelectResponse {
 | Tipo inline repetido em 3+ funções | Extraia para `type` nomeado |
 | `any` para retorno de consulta | `Product[] \| null` com union explícita |
 | `Product[] \| undefined \| null` sem necessidade | `Product[] \| null` (escolha um para nullable) |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Tipo inline repetido em multiplas funcoes | Nao extraiu para type alias | Crie `type NomeDoTipo = { ... }` e reutilize |
+| Erro ao usar `extends` com type | Type nao suporta extends diretamente | Use `interface` para extensao ou `&` (intersection) com type |
+| Retorno de consulta causa erro de null | Tipo nao inclui `null` na union | Use `Type[] \| null` para retornos que podem ser vazios |
+| Nome do type em camelCase causa confusao | Convencao incorreta | Use PascalCase: `Product` nao `product` |
 
 ## Deep reference library
 

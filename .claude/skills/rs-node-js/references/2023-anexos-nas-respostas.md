@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-anexos-nas-respostas
 description: "Applies the Watched List and Aggregate pattern to replicate attachment handling across sibling entities in DDD projects. Use when user asks to 'add attachments to answers', 'replicate question pattern for answers', 'create answer attachments', or 'mirror entity structure for a new aggregate'. Ensures consistent repository, factory, use case, and test patterns when duplicating domain features. Make sure to use this skill whenever duplicating a domain pattern from one aggregate to a sibling aggregate. Not for creating attachments from scratch, file upload logic, or storage infrastructure."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-aggregates
+  tags: [ddd, aggregate, watched-list, attachments, replication, sibling-entity, repository]
 ---
 
 # Anexos nas Respostas — Replicar Padrões de Agregado entre Entidades Irmãs
@@ -91,14 +97,14 @@ export interface AnswerAttachmentsRepository {
 | Setter sem touch | Sempre chame `this.touch()` no setter de attachments |
 | Testar só o happy path | Teste create, edit e delete com attachments |
 
+## Troubleshooting
+
+### TypeScript reclama de parametro faltando no construtor
+**Symptom:** `Expected 2 arguments, but got 1` ao instanciar InMemoryAnswersRepository
+**Cause:** O construtor agora exige InMemoryAnswerAttachmentsRepository como dependencia
+**Fix:** Atualize TODOS os arquivos de teste que instanciam o repositorio
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-anexos-nas-respostas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-anexos-nas-respostas/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-anexos-nas-respostas/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-anexos-nas-respostas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

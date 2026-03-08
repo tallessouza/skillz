@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-schema-prisma
-description: "Enforces Prisma schema design patterns when creating or modifying database models. Use when user asks to 'create a model', 'add a table', 'design schema', 'prisma schema', 'add field', or 'create migration'. Applies rules: boolean-to-date trick for audit fields, unit/intent in field names (passwordHash not password), only add createdAt/updatedAt when needed, optional fields with ?, latitude/longitude as required Decimal. Make sure to use this skill whenever generating Prisma schema code or designing database models. Not for query optimization, Prisma Client usage, or application-level code."
+name: 2023-criando-schema-do-prisma
+description: "Designs intentional Prisma schemas derived from functional requirements, using DateTime instead of Boolean for status fields and meaningful field names like password_hash. Use when user asks to 'design Prisma schema', 'model database entities', 'create database tables with Prisma', 'use DateTime trick for booleans', or 'name fields by content'. Enforces: derive entities from requirements, DateTime? over Boolean for status, name fields by actual content, optional fields with explicit ?, @@map for snake_case table names. Make sure to use this skill whenever creating initial Prisma schema models from project requirements. Not for migration operations, Knex schemas, or schema modifications on existing models."
+category: coding-lens
+tags: [deploy, migrations, prisma, uuid]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-schema
+  tags: [prisma, schema-design, datetime, boolean-trick, password-hash, postgresql]
 ---
 
 # Prisma Schema Design
@@ -119,14 +128,14 @@ model User {
 | Model sem `@@map()` | `@@map("snake_case_plural")` |
 | `npx prisma migrate deploy` em dev | `npx prisma migrate dev` (compara e cria) |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-schema-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-schema-do-prisma/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

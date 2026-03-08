@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-desacoplando-componentes
 description: "Enforces React component decoupling by isolating JavaScript logic (variables, functions, hooks) that serves only a specific part of the UI. Use when user asks to 'refactor a component', 'split components', 'clean up React code', 'reduce component size', or reviews large React files. Guides when to extract subcomponents based on logic isolation, not HTML size. Make sure to use this skill whenever reviewing or writing React components with mixed concerns. Not for CSS architecture, file/folder structure, or non-React code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: componentes-react
+  tags: [react, decoupling, component-extraction, refactoring, separation-of-concerns, hooks]
 ---
 
 # Desacoplando Componentes React
@@ -79,10 +85,17 @@ function HomePage() {
 | Manter useState de um subcomponente no pai | Mover o estado para o componente que realmente o usa |
 | Componentizar por "parecer grande" | Componentizar quando logica pode ser isolada sem quebrar comportamento |
 
+## Troubleshooting
+
+### Componente re-renderiza excessivamente apos a extracao
+**Symptom:** Apos extrair um subcomponente, a performance piora ou o componente re-renderiza mais do que antes.
+**Cause:** O estado que foi movido para o subcomponente ainda esta sendo gerenciado no pai (prop drilling), ou o pai recria funcoes/objetos a cada render que sao passados como props.
+**Fix:** Mova o estado para o componente que realmente o usa. Se precisar passar callbacks, use `useCallback` no pai para estabilizar a referencia da funcao.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-produtos
 description: "Applies REST API update endpoint patterns when building PUT/PATCH routes with Node.js, Express, Knex, and Zod. Use when user asks to 'create update route', 'update endpoint', 'edit product', 'PUT route', or 'validate route params'. Enforces param ID validation with Zod transform, body schema reuse, updated_at field management, and where clause in Knex updates. Make sure to use this skill whenever implementing update operations in Express+Knex APIs. Not for GET/POST/DELETE endpoints, frontend forms, or ORM-based updates (Prisma, TypeORM)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api
+  tags: [express, knex, zod, rest-api, update-endpoint]
 ---
 
 # Atualizando Produtos — Update Endpoint Pattern
@@ -127,13 +133,16 @@ async update(request: Request, response: Response, next: NextFunction) {
 | `new Date()` para updated_at | `knex.fn.now()` (usa timestamp do banco) |
 | Body schema duplicado entre create e update | Schema compartilhado ou copiado do create |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "id must be a number" | Param da URL nao e numerico | Verifique a URL da requisicao, o `:id` deve ser numero |
+| Zod parse error no body | Campos `name` ou `price` fora do schema | Confira que o body envia `name` (string min 6) e `price` (number > 0) |
+| Update nao persiste | Faltou `where({ id })` no Knex | Adicione clausula where com o ID validado |
+| `updated_at` nao muda | Usando `new Date()` no JS em vez de `knex.fn.now()` | Substitua por `knex.fn.now()` para usar timestamp do banco |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre validacao de params, transform vs coerce, e gestao de timestamps
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-produtos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-produtos/references/code-examples.md)

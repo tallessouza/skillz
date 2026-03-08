@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-data
 description: "Applies HTML data-* attribute conventions when writing HTML markup. Use when user asks to 'create an element', 'add custom data', 'store data in HTML', 'use data attributes', or any HTML generation involving custom metadata. Enforces naming rules: no spaces, no numbers, no special characters, use hyphens. Make sure to use this skill whenever generating HTML elements that need custom data storage for CSS or JavaScript access. Not for ARIA attributes, standard HTML attributes, or JavaScript dataset API implementation details."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [HTML, data-attributes, custom-data, dataset, CSS-selectors]
 ---
 
 # Atributos data-* no HTML
@@ -83,13 +89,16 @@ const userId = element.dataset.userId; // "42"
 | `data-x="42"` | `data-user-id="42"` |
 | `userId="42"` (atributo inventado) | `data-user-id="42"` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Atributo `data-` nao aparece no `dataset` | Nome com hifen no HTML vira camelCase no JS | `data-user-id` vira `element.dataset.userId` |
+| CSS seletor `[data-x]` nao funciona | Nome do atributo esta errado ou com espaco | Verifique que o nome usa hifens sem espacos |
+| `data-2col` nao e valido | Nome comeca com numero | Renomeie para `data-col-count` ou similar |
+| Caractere especial no nome causa erro | Apenas letras minusculas e hifens sao validos | Remova `@`, `#`, `_` e outros caracteres especiais |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre data attributes, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-data/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-data/references/code-examples.md)

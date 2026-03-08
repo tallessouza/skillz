@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-cart-removal
 description: "Applies cart item removal patterns and left join fixes when building e-commerce cart APIs with Drizzle ORM and Node.js. Use when user asks to 'remove item from cart', 'delete cart item', 'fix empty cart query', 'handle left join null results', or 'build cart API routes'. Ensures proper existence checks, left join for empty carts, and null-safe result mapping. Make sure to use this skill whenever implementing cart deletion or fixing join queries that break on empty relations. Not for frontend cart UI, payment processing, or order management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [drizzle-orm, e-commerce, ia-node, node-js]
 ---
 
 # Remocao de Itens do Carrinho e Left Join Safety
@@ -114,14 +120,14 @@ const items = cart[0]?.items[0]?.id !== null ? cart[0].items : []
 | Retornar body na rota DELETE | `reply.status(204).send()` |
 | Criar carrinho duplicado quando loja muda | Inativar o atual antes de criar novo |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-atualizacoes-no-carrinho-part-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-atualizacoes-no-carrinho-part-2/references/code-examples.md)

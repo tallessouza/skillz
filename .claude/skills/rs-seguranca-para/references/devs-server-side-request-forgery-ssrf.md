@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-ssrf
 description: "Guards against Server-Side Request Forgery (SSRF) vulnerabilities when writing backend code that makes HTTP requests. Use when user asks to 'fetch a URL', 'call an API', 'make a request from user input', 'consume a webhook', or builds any server-side HTTP request with dynamic parameters. Applies validation hierarchy: avoid dynamic requests, use dictionaries, use whitelists, validate format with slash delimiter. Make sure to use this skill whenever generating code that constructs HTTP requests from user-controlled data. Not for client-side fetch calls, static API integrations, or frontend security."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, ssrf, request-forgery]
 ---
 
 # Server-Side Request Forgery (SSRF)
@@ -92,14 +98,14 @@ def analyze():
 | `file_get_contents($url)` para incluir HTML local | `include($filepath)` com path validado |
 | Confiar que validar dominio sem barra e seguro | Validar ate a primeira barra para bloquear subdominio malicioso |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-server-side-request-forgery-ssrf/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-server-side-request-forgery-ssrf/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-server-side-request-forgery-ssrf/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-server-side-request-forgery-ssrf/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

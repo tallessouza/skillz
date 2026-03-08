@@ -1,6 +1,12 @@
 ---
 name: rs-devops-corrigindo-problemas-integracao
 description: "Applies correct GitHub Actions permissions for Semantic Release when fixing CI/CD integration issues. Use when user asks to 'fix semantic release', 'fix CI permissions', 'configure github actions permissions', 'semantic release not working', or 'fix release pipeline'. Ensures token scopes, workflow permissions, and CI permissions are correctly set for issues and pull requests. Make sure to use this skill whenever debugging Semantic Release failures in GitHub Actions. Not for setting up Semantic Release from scratch, Docker configuration, or AppRunner deployment."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-semantic-release
+  tags: [semantic-release, github-actions, permissions, ci-cd, token, workflow]
 ---
 
 # Corrigindo Problemas de Integracao com Semantic Release
@@ -81,14 +87,14 @@ permissions:
 | Testar re-executando job sem commits novos e achar que quebrou | Criar commit real, abrir PR, fazer merge, e verificar release |
 | Ignorar o `.releaserc` ao debugar | Verificar plugins configurados — eles definem o comportamento |
 
+## Troubleshooting
+
+### Semantic Release nao gera release apos rerun do job
+**Symptom:** O job roda com sucesso mas nenhuma release, tag ou changelog e gerado.
+**Cause:** Semantic Release so gera release quando ha commits novos desde a ultima tag. Rerun reutiliza o mesmo commit.
+**Fix:** Crie um commit real (mesmo que seja `chore: trigger release`), abra PR, faca merge, e verifique se a release foi gerada.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-corrigindo-problemas-da-integracao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-corrigindo-problemas-da-integracao/references/code-examples.md)

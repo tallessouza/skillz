@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatando-a-moeda
 description: "Applies Brazilian Real (BRL) currency formatting to input fields using toLocaleString. Use when user asks to 'format currency', 'format money input', 'mask input as BRL', 'Brazilian Real formatting', or 'format price field'. Converts raw digits to centavos then formats with pt-BR locale and BRL currency style. Make sure to use this skill whenever formatting monetary values in Brazilian Portuguese applications. Not for date formatting, number formatting without currency, or international currency beyond BRL."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, currency, brl, toLocaleString, formatting, input-mask]
 ---
 
 # Formatando Moeda BRL em Inputs
@@ -84,13 +90,16 @@ inputAmount.addEventListener("input", (event) => {
 | Formatar sem converter centavos primeiro | `Number(value) / 100` antes de formatar |
 | Criar regex custom para separar milhares | Usar toLocaleString que faz isso nativamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Input mostra `NaN` apos digitar | Valor nao-numerico nao foi limpo antes de converter | Aplique `.replace(/\D/g, "")` antes de `Number(value)` |
+| Valor formatado mostra `R$ 0,00` ao digitar | Evento errado ou value vazio | Verifique que o evento `input` esta correto e value nao e string vazia |
+| Centavos nao aparecem corretamente | Divisao por 100 nao aplicada | Garanta `Number(value) / 100` antes de `toLocaleString` |
+| Cursor pula para o final do input | Formatacao reescreve o valor inteiro | Isso e esperado com mascaras simples; use biblioteca de mask para cursor control |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre conversao de centavos, toLocaleString e fluxo de dados no input
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatando-a-moeda/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatando-a-moeda/references/code-examples.md)

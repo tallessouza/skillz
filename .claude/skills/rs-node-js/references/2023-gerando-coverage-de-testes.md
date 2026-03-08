@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-gerando-coverage-de-testes
 description: "Applies test coverage configuration and analysis patterns when working with Vitest projects. Use when user asks to 'add test coverage', 'check coverage', 'configure vitest coverage', 'see untested code', or 'generate coverage report'. Ensures correct script setup, await on async expects, and coverage interpretation. Make sure to use this skill whenever setting up or analyzing test coverage in Vitest/Node.js projects. Not for Jest, Mocha, or non-Vitest test runners."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: test-coverage
+  tags: [vitest, coverage, testing, c8, nodejs, typescript]
 ---
 
 # Gerando Coverage de Testes
@@ -87,14 +93,14 @@ O relatorio mostra:
 - Abrir `coverage/index.html` e verificar arquivos de use cases
 - Confirmar que caminhos criticos (error handling) estao cobertos
 
+## Troubleshooting
+
+### Coverage mostra porcentagem maior que a real
+**Symptom:** O relatorio indica 100% de cobertura mas existem caminhos de erro nao testados
+**Cause:** Expects com promises nao usam await, fazendo o Vitest pular a execucao real do codigo assincrono
+**Fix:** Adicione await antes de todo expect que envolve promises: await expect(asyncFn()).rejects.toBeInstanceOf(Error)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-gerando-coverage-de-testes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-gerando-coverage-de-testes/references/code-examples.md)

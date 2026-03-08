@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-responder-pergunta
 description: "Enforces NestJS nested resource controller patterns when creating endpoints for child resources like answers, comments, or replies. Use when user asks to 'create a controller', 'add an endpoint', 'nested route', 'child resource', or 'answer/reply endpoint'. Applies rules: prefix param names in nested routes, separate validation schemas per resource, register controller and use case in module. Make sure to use this skill whenever generating NestJS controllers for related/nested resources. Not for standalone CRUD controllers, service logic, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Recurso Aninhado no NestJS
@@ -119,14 +126,14 @@ export class AnswerQuestionController {
 | Controller sem registrar no module | Sempre adicionar ao `controllers[]` do module |
 | `instructorId` quando qualquer um pode responder | `authorId` refletindo o dominio real |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-responder-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-responder-pergunta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-responder-pergunta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-responder-pergunta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

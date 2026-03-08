@@ -1,15 +1,29 @@
 ---
 name: rs-devops-alternativas-camada-aplicacao
 description: "Applies application-layer resilience patterns (Circuit Breaker, Fault Injection, Blast Radius mitigation) when designing or reviewing Kubernetes microservices. Use when user asks to 'handle failing containers', 'prevent cascading failures', 'add circuit breaker', 'test resilience', or 'reduce blast radius'. Make sure to use this skill whenever designing inter-service communication or reviewing microservice fault tolerance. Not for Kubernetes probe configuration, networking/ingress setup, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: resilience-patterns
+  tags: [devops]
 ---
 
 # Resiliencia na Camada da Aplicacao
 
 > Construa aplicacoes que desconfiem de tudo — proteja o ecossistema contra falhas em cascata com Circuit Breaker e Fault Injection.
 
-## Key concept
+## Key concepts
 
 Quando um container defeituoso sobe, o impacto acontece em dois niveis: **local** (a aplicacao nao responde) e **global** (servicos que dependem dela ficam lentos, causando o **blast radius** — o raio de explosao de um problema localizado). Probes resolvem a deteccao, mas a aplicacao precisa de mecanismos proprios para mitigar o impacto global.
+
+```yaml
+# Circuit Breaker states — conceptual flow
+# CLOSED → normal traffic → errors exceed threshold → OPEN
+# OPEN → no traffic → timeout expires → HALF-OPEN
+# HALF-OPEN → test with 10% traffic → success → CLOSED
+#                                    → failure → OPEN
+```
 
 ## Decision framework
 
@@ -82,14 +96,14 @@ Nao e bala de prata — e um mecanismo evolutivo que voce revisita para encontra
 - Adiciona complexidade — nao implemente prematuramente em sistemas simples
 - Half-open mal calibrado pode causar flapping (abre/fecha repetidamente)
 
+## Troubleshooting
+
+### Circuit Breaker fica em flapping (abre e fecha repetidamente)
+**Symptom:** Circuito alterna entre open e closed rapidamente sem estabilizar
+**Cause:** Threshold do half-open esta mal calibrado, permitindo trafego demais antes de validar recuperacao
+**Fix:** Configure porcentagem progressiva no half-open (10% -> 20% -> 40%) e aumente o intervalo entre tentativas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-alternativas-na-camada-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-alternativas-na-camada-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-alternativas-na-camada-da-aplicacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-alternativas-na-camada-da-aplicacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

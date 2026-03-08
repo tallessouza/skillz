@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-order-by-1
 description: "Applies SQL ORDER BY clause patterns when writing SELECT queries that need sorting. Use when user asks to 'sort results', 'order by column', 'organize query output', 'list alphabetically', or 'combine WHERE with ORDER BY'. Enforces correct clause order (SELECT → WHERE → ORDER BY), ASC/DESC usage, and sorting for both numeric and text columns. Make sure to use this skill whenever generating SQL queries that return ordered results. Not for INSERT, UPDATE, DELETE operations or index optimization."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, order-by, select, ordenacao, asc-desc]
 ---
 
 # ORDER BY — Ordenacao de Registros no SELECT
@@ -94,6 +100,15 @@ ORDER BY name;
 | `SELECT * FROM products WHERE price ORDER BY category = 'x'` | `SELECT * FROM products WHERE category = 'x' ORDER BY price` |
 | `ORDER BY price DESK` (typo) | `ORDER BY price DESC` |
 | `WHERE category = 'x' ORDER BY price WHERE active = true` | `WHERE category = 'x' AND active = true ORDER BY price` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de sintaxe na query com ORDER BY | ORDER BY antes de WHERE | Corrija a ordem: `SELECT → FROM → WHERE → ORDER BY` |
+| Ordenacao nao funciona como esperado | Coluna contem texto com numeros (ex: "10" antes de "2") | Converta para tipo numerico ou use `CAST` na ordenacao |
+| `ORDER BY price DESK` da erro | Typo no DESC | Corrija para `DESC` (sem K) |
+| Resultado nao esta ordenado | ORDER BY omitido da query | Adicione `ORDER BY coluna` ao final do SELECT |
 
 ## Deep reference library
 

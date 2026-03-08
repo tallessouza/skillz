@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-uuid-x-incremental
 description: "Enforces correct ID strategy selection when designing database schemas or API routes. Use when user asks to 'create a table', 'design a schema', 'add an id column', 'build an API endpoint', or 'expose resource ids'. Applies UUID for public-facing IDs and incremental for internal-only IDs. Make sure to use this skill whenever creating entities with IDs, even if the user doesn't mention ID strategy. Not for authentication tokens, session management, or API key generation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-design
+  tags: [uuid, incremental-id, database, schema-design, security]
 ---
 
 # UUID x Incremental — Estrategia de IDs
@@ -93,6 +99,14 @@ app.get('/users/:id', async (req) => {
 | UUID e sempre melhor | Incremental e mais eficiente para operacoes internas do banco (indexacao, joins) |
 | Incremental e inseguro | So e inseguro quando exposto publicamente; internamente e perfeitamente adequado |
 | UUID garante seguranca total | UUID dificulta enumeracao, mas nao substitui autorizacao — sempre valide permissoes |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| UUID gerado é inválido ou previsível | Usou `Math.random()` em vez de gerador criptográfico | Use `crypto.randomUUID()` no Node.js ou `gen_random_uuid()` no PostgreSQL |
+| Performance degradada em JOINs com UUID | UUIDs como PK causam fragmentação de índice | Considere dual-ID: incremental como PK interna + UUID como identificador público |
+| Usuário consegue enumerar recursos via API | IDs incrementais expostos nas rotas | Substitua por UUID em todos os endpoints públicos |
 
 ## Deep reference library
 

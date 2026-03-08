@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-servico-do-prisma
-description: "Generates NestJS Prisma service setup when user asks to 'setup Prisma with NestJS', 'create database service', 'configure Prisma in Nest', 'connect database in NestJS', or 'create Prisma provider'. Enforces class extension pattern over client property, lifecycle hooks for connect/disconnect, and proper DI registration. Make sure to use this skill whenever integrating Prisma ORM into a NestJS application. Not for standalone Prisma usage outside NestJS, raw SQL connections, or TypeORM/Sequelize setups."
+name: 2023-criando-servico-do-prisma
+description: "Creates a PrismaService for NestJS by extending PrismaClient directly as an injectable service with lifecycle hooks for connection management. Use when user asks to 'setup Prisma in NestJS', 'create Prisma service', 'integrate Prisma with dependency injection', 'configure database connection in NestJS', or 'extend PrismaClient'. Enforces: extend PrismaClient not wrap it, @Injectable decorator, implement OnModuleInit and OnModuleDestroy, register as provider in module, configure nest-cli.json for generated assets. Make sure to use this skill whenever integrating Prisma ORM into a NestJS application. Not for standalone Prisma usage, Knex integration, or non-NestJS frameworks."
+category: coding-lens
+tags: [decorators, error-handling, modules, nestjs, prisma, redis]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-prisma
+  tags: [prisma, nestjs, prisma-service, dependency-injection, lifecycle-hooks, prisma-client]
 ---
 
 # Criando Servico do Prisma no NestJS
@@ -141,14 +150,14 @@ export class PrismaService extends PrismaClient
 | Apenas `OnModuleInit` sem `OnModuleDestroy` | Implemente ambos, porque crash sem disconnect vaza conexoes |
 | `new PrismaClient()` direto no controller | Injete PrismaService via construtor |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-servico-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-servico-do-prisma/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

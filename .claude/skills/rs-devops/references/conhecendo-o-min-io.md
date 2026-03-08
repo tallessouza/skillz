@@ -1,6 +1,12 @@
 ---
 name: rs-devops-conhecendo-o-min-io
 description: "Configures MinIO object storage containers using Docker Compose for local development. Use when user asks to 'setup MinIO', 'configure object storage', 'add MinIO to docker-compose', 'local S3 alternative', or 'persist logs with MinIO'. Applies correct port mapping, environment variables, and server command patterns. Make sure to use this skill whenever setting up MinIO or S3-compatible storage in Docker. Not for AWS S3 configuration, Kubernetes MinIO operators, or production MinIO clusters."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-storage
+  tags: [minio, docker-compose, object-storage, s3, loki, volumes, docker]
 ---
 
 # Configurando MinIO com Docker Compose
@@ -102,14 +108,14 @@ minio:
 | Usar `minio/minio` sem tag | Usar `minio/minio:latest` para boa pratica |
 | Criar bucket pela UI sem volume | Configurar volume primeiro, senao perde bucket ao restartar |
 
+## Troubleshooting
+
+### MinIO container inicia mas console nao abre na porta 9001
+**Symptom:** Porta 9000 responde mas 9001 retorna connection refused
+**Cause:** Falta o parametro `--console-address :9001` no command do container
+**Fix:** Adicione `command: server /data --address :9000 --console-address :9001` no docker-compose
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-o-min-io/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-o-min-io/references/code-examples.md)

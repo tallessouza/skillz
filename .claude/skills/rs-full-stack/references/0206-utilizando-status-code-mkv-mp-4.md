@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-status-code
 description: "Applies correct HTTP status codes when writing Node.js server responses. Use when user asks to 'create an endpoint', 'return a response', 'handle HTTP request', 'write an API route', or 'set status code'. Enforces semantic status codes (201 for creation, 404 for not found, 500 for server error) and proper use of res.writeHead(). Make sure to use this skill whenever generating HTTP response code in Node.js. Not for frontend code, database queries, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [status-codes, http, nodejs, writeHead, rest-api]
 ---
 
 # Utilizando Status Code no Node.js
@@ -96,13 +102,13 @@ const server = http.createServer((req, res) => {
 | `res.writeHead(200)` quando recurso nao existe | `res.writeHead(404)` |
 | Status code generico 200 para tudo | Status code semantico por operacao |
 
+## Troubleshooting
+
+### Problem: Client receives status 200 even when resource is not found
+- **Cause**: The handler does not call `res.writeHead(404)` before `res.end()` in the not-found branch
+- **Fix**: Always set the status code explicitly with `res.writeHead(404)` before ending the response for missing resources
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre faixas de status code e semantica HTTP
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0206-utilizando-status-code-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0206-utilizando-status-code-mkv-mp-4/references/code-examples.md)

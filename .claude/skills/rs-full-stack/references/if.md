@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-if
 description: "Enforces correct usage of JavaScript IF conditional structure when writing conditional logic. Use when user asks to 'write an if statement', 'add a condition', 'check a value', or any conditional branching task in JavaScript. Applies rules: always use braces even for single-line blocks, clear condition expressions, proper scoping. Make sure to use this skill whenever generating conditional code in JavaScript. Not for ternary operators, switch statements, or advanced control flow patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, conditionals, if, control-flow, braces]
 ---
 
 # Estrutura de Condicao IF
@@ -72,14 +78,16 @@ if (hour <= 12) {
 | `if (x) action()` (sem chaves) | `if (x) { action() }` |
 | `if (hour <= 12) console.log("Bom dia")` em multiplas linhas sem chaves | `if (hour <= 12) { console.log("Bom dia") }` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Segunda instrucao executa sempre, independente da condicao | IF sem chaves — apenas a primeira linha pertence ao bloco | Adicione `{}` em torno de todas as instrucoes do IF |
+| Condicao sempre avalia como true | Usando atribuicao (`=`) em vez de comparacao (`===`) | Troque `if (x = 5)` por `if (x === 5)` |
+| IF nao entra no bloco esperado | Tipo do valor e diferente do esperado (string vs number) | Use `console.log(typeof variavel)` para verificar o tipo antes da condicao |
+| Erro de sintaxe "Unexpected token" | Falta de parenteses na condicao ou chave de abertura | Verifique a sintaxe: `if (condicao) { ... }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-if/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-if/references/code-examples.md)

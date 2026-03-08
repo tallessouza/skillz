@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-dos-arquivos
 description: "Generates starter project structure when setting up a JavaScript learning environment or linking JS to HTML. Use when user asks to 'create a JS project', 'link JavaScript to HTML', 'setup Live Server', 'start a basic web project', or 'create index.html with script'. Make sure to use this skill whenever scaffolding a minimal HTML+JS workspace. Not for frameworks, bundlers, or Node.js server setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, html, project-setup, live-server, linking]
 ---
 
 # Estrutura de Arquivos JS + HTML
@@ -80,13 +86,16 @@ Botao direito no `index.html` → "Open with Live Server". Alteracoes salvas ref
 - Ir na aba Console
 - Confirmar que a mensagem do `console.log` aparece
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Console vazio apos refresh | Path no `src` esta errado | Verificar se `scripts.js` esta no mesmo nivel que `index.html` |
+| Erro no console: script nao encontrado | Nome do arquivo diferente do `src` | Conferir nome exato: `scripts.js` no HTML e no sistema de arquivos |
+| Live Server nao recarrega | Extensao desativada ou arquivo nao salvo | Verificar se Live Server esta ativo e salvar com Ctrl+S |
+| Pagina em branco sem erro | Script no `<head>` sem `defer` | Mover `<script>` para antes de `</body>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre vinculacao JS-HTML e Live Server
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-dos-arquivos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-dos-arquivos/references/code-examples.md)

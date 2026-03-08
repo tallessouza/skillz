@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-personalizando-espacos
 description: "Applies CSS spacing patterns when styling page layouts with margins, padding, and line-height. Use when user asks to 'style a page', 'fix spacing', 'adjust margins', 'reset CSS', 'add padding between sections', or any layout spacing task. Enforces universal reset, sibling-based margin strategy, and systematic spacing workflow. Make sure to use this skill whenever writing CSS that involves element spacing or layout adjustments. Not for Flexbox/Grid alignment, animations, or color theming."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags:
+    - css
+    - spacing
+    - margin
+    - padding
+    - layout
 ---
 
 # Personalizando Espacos CSS
@@ -133,6 +144,14 @@ ul {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cascata de line-height, estrategia de spacing iterativo e workflow Git
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e contexto HTML
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Margem entre elementos nao aparece | Reset universal removeu margens mas nao aplicou novas | Adicione `margin-top` com seletor adjacente (`+`) entre irmaos |
+| Line-height definido no body nao afeta h1/h2 | Navegador tem estilos mais especificos para headings | Aplique `line-height` diretamente nos elementos h1, h2 |
+| Espacamento inconsistente entre navegadores | Margens e paddings default variam por browser | Verifique se o reset universal `* { margin: 0; padding: 0; }` esta no topo do CSS |
 
 ---
 

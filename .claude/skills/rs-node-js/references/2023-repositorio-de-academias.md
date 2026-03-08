@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-repositorio-de-academias
 description: "Applies Prisma raw SQL patterns and ORM-to-SQL fallback strategies when implementing geospatial queries or complex database operations. Use when user asks to 'find nearby locations', 'implement geospatial search', 'use Prisma raw query', 'Haversine formula', or 'repository with Prisma'. Enforces typed queryRaw with generics, pagination patterns, and contains-based search. Make sure to use this skill whenever implementing Prisma repositories that need raw SQL or proximity searches. Not for in-memory repositories, unit test mocks, or frontend geolocation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-raw-sql
+  tags: [prisma, raw-sql, queryRaw, haversine, geospatial, pagination, contains, proximity-search]
 ---
 
 # Repositorio Prisma com Raw SQL
@@ -114,14 +120,14 @@ async findManyNearby({ latitude, longitude }: FindManyNearbyParams) {
 | Parenteses no `$queryRaw()` | Template literal colado: `$queryRaw\`...\`` |
 | Ignorar SQL porque "uso ORM" | Aprender SQL — 20% dos casos exigem raw |
 
+## Troubleshooting
+
+### `$queryRaw` retorna tipo `unknown` e TypeScript reclama
+**Symptom:** O retorno de `prisma.$queryRaw` e tipado como `unknown`, impedindo acesso a propriedades
+**Cause:** O generic nao foi passado no `$queryRaw` — sem tipar, o Prisma retorna `unknown` por seguranca
+**Fix:** Adicione o generic com o tipo esperado: `prisma.$queryRaw<Gym[]>` com a crase colada direto no metodo, sem parenteses
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-repositorio-de-academias/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-repositorio-de-academias/references/code-examples.md)

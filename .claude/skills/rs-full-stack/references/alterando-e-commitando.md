@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-alterando-e-commitando
 description: "Enforces correct Git modify-stage-commit workflow when writing or teaching Git commands. Use when user asks to 'commit changes', 'save changes in git', 'update a file and commit', 'git workflow', or 'stage and commit'. Applies rules: always check git status before staging, stage specific files not all, write descriptive commit messages, understand tracked vs untracked. Make sure to use this skill whenever the user is working with basic Git operations on modified files. Not for branching, merging, rebasing, or remote operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, commit, staging, workflow, version-control]
 ---
 
 # Alterando e Commitando
@@ -83,13 +89,16 @@ git commit -m "Adicionei novas frases"  # Commit com mensagem clara
 | Ignorar a saida do commit | Leia: quantos arquivos, insercoes, delecoes |
 | Tentar adivinhar o que mudou | `git status` sempre mostra exatamente o que mudou |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| "nothing to commit" após `git commit` | Arquivo não foi adicionado ao staged | Execute `git add arquivo` antes do commit |
+| Arquivo indesejado entrou no commit | Usou `git add .` sem verificar | Use `git add arquivo_especifico` e verifique com `git status` |
+| Mudanças não aparecem no `git status` | Arquivo não está sendo rastreado | Faça o primeiro `git add` para iniciar o rastreamento |
+| Quer desfazer mudanças locais | Modificou arquivo mas quer voltar ao último commit | Use `git restore arquivo` para descartar alterações |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o fluxo modify-stage-commit e como o Git rastreia arquivos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de comandos Git expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alterando-e-commitando/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alterando-e-commitando/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-layout-css
 description: "Applies split-panel layout patterns with fixed and scrollable sides using CSS Grid. Use when user asks to 'create a layout', 'split screen layout', 'fixed sidebar with scrollable content', 'two-column layout', or 'dashboard layout'. Enforces viewport height, overflow control, max-width with auto margins, and CSS nesting. Make sure to use this skill whenever building layouts with a fixed panel and a scrollable content area. Not for responsive mobile layouts, flexbox-only layouts, or CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, grid, layout, overflow, viewport, nesting]
 ---
 
 # Layout CSS: Painel Fixo + Conteudo com Rolagem
@@ -146,8 +152,12 @@ aside {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre viewport, overflow e regra de 3 para colunas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-layout-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-layout-css/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Barra de rolagem aparece no body inteiro | Faltou `overflow: hidden` em html e body | Adicione `html, body { overflow: hidden }` |
+| Conteudo esticado em telas largas | Faltou `max-width` no container de conteudo | Adicione `max-width` + `margin: 0 auto` ou `margin-left: auto` |
+| Layout nao ocupa a tela inteira | Faltou `height: 100vh` no container | Adicione `height: 100vh` no body ou container principal |
+| CSS Nesting nao funciona | Browser antigo sem suporte a nesting nativo | Use seletores tradicionais como fallback |
+| Scrollbar sempre visivel mesmo sem overflow | Usando `overflow: scroll` em vez de `auto` | Troque para `overflow: auto` no painel de conteudo |

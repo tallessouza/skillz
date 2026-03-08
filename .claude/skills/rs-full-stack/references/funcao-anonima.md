@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcao-anonima
 description: "Applies anonymous function patterns when writing JavaScript/TypeScript code. Use when user asks to 'create a function', 'store function in variable', 'pass a callback', or 'write an anonymous function'. Enforces correct syntax for function expressions, parameter passing, and invocation. Make sure to use this skill whenever generating function expressions or callbacks. Not for arrow functions, named function declarations, or class methods."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-funcoes
+  tags: [javascript, functions, anonymous-function, function-expression, callback]
 ---
 
 # Função Anônima
@@ -85,13 +91,16 @@ console.log(mensagem()) // "Olá" — parênteses invocam a função
 | `let fn = function() {}` sem reatribuir | `const fn = function() {}` |
 | `function(a; b)` | `function(a, b)` com vírgula |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `console.log(fn)` mostra `[Function]` em vez do retorno | Faltam parenteses para invocar a funcao | Use `console.log(fn())` com parenteses |
+| `TypeError: fn is not a function` | Variavel foi sobrescrita com outro valor | Use `const` em vez de `let` para proteger a referencia |
+| Funcao retorna `undefined` | Falta `return` dentro do corpo da funcao | Adicione `return` com o valor desejado |
+| Parametros chegam como `undefined` | Argumentos nao foram passados na invocacao | Verifique que `fn(arg1, arg2)` corresponde a `function(param1, param2)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando usar funções anônimas vs nomeadas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcao-anonima/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcao-anonima/references/code-examples.md)

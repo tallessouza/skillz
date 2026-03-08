@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aplicativos-web
 description: "Applies the distinction between websites, webpages, and web applications when discussing or architecting web projects. Use when user asks to 'create a web app', 'build an application', 'what type of project is this', or discusses project architecture scope. Ensures correct terminology and sets proper expectations for complexity (server, database, programming language). Make sure to use this skill whenever classifying or scoping a new web project. Not for mobile apps, desktop apps, or static site generation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [web-apps, architecture, project-scope, terminology, web-development]
 ---
 
 # Aplicativos Web
@@ -58,13 +64,16 @@ Cada nivel adiciona camadas: um aplicativo web nao e "um site mais complexo" —
 - SPAs (Single Page Applications) podem parecer sites mas funcionam como aplicativos web
 - JAMstack e frameworks modernos misturam as categorias com SSG + funcoes serverless
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Stakeholder pede "site" mas descreve funcionalidades de app web | Confusao de terminologia | Clarifique os requisitos: login, banco de dados e logica de servidor indicam aplicativo web |
+| Projeto classificado como site mas precisa de autenticacao | Escopo subestimado no inicio | Reclassifique como aplicativo web e ajuste a stack tecnologica |
+| Performance ruim em app web comparada a site simples | Aplicativos web exigem mais infraestrutura | Otimize backend, adicione cache, considere CDN para assets estaticos |
+| SEO fraco em aplicativo web SPA | Conteudo renderizado no cliente nao e indexado | Use SSR/SSG (Next.js) ou pre-rendering para paginas publicas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre classificacao de projetos web
 - [code-examples.md](references/code-examples.md) — Exemplos de arquitetura para cada tipo de projeto
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aplicativos-web/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aplicativos-web/references/code-examples.md)

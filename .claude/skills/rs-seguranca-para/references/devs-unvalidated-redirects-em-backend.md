@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-unvalidated-redirects
 description: "Guards against unvalidated redirect vulnerabilities when implementing login flows, authentication redirects, or any dynamic URL redirection in backend code. Use when user asks to 'implement login redirect', 'redirect after authentication', 'add return URL', 'redirect user back', or builds any dynamic redirect logic. Applies 4-tier mitigation hierarchy: avoid dynamic redirects, use destination dictionary, implement whitelist, validate URL format. Make sure to use this skill whenever code contains header redirects or response redirects based on user input, even in frameworks. Not for frontend-only navigation, SPA routing, or static redirects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, open-redirect, url-validation]
 ---
 
 # Unvalidated Redirects
@@ -121,14 +127,14 @@ exit;
 | `window.location = params.get('next')` | Valide no backend, nao confie no frontend |
 | `if (str_starts_with($next, '/'))` sozinho | Adicione `&& !str_starts_with($next, '//')` |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-unvalidated-redirects-em-backend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-unvalidated-redirects-em-backend/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-unvalidated-redirects-em-backend/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-unvalidated-redirects-em-backend/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

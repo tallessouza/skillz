@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-e2e-eventos-dominio
 description: "Enforces patterns for writing E2E tests of domain events in NestJS with Prisma. Use when user asks to 'test domain events', 'test notifications', 'write e2e tests for events', 'validate event dispatching', or 'test async side effects'. Applies rules: use waitFor for async assertions, verify Prisma repositories dispatch events, test side effects not just HTTP status, keep event tests separate from controller tests. Make sure to use this skill whenever writing integration or E2E tests that involve domain events or async side effects. Not for unit testing domain events, testing controllers, or testing synchronous operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: eventos-de-dominio-e2e
+  tags: [domain-events, e2e, testing, waitFor, async, nestjs, prisma, notifications]
 ---
 
 # Testes E2E de Eventos de Domínio
@@ -144,14 +150,14 @@ it('should send notification', async () => {
 | Rodar todos os testes E2E durante dev | Filtrar: `--testPathPattern nome-do-teste` |
 | waitFor que só aceita `() => void` | Aceitar `() => void | Promise<void>` para queries no banco |
 
+## Troubleshooting
+
+### Assertion de notificacao falha mesmo com evento configurado
+**Symptom:** `expect(notificationOnDatabase).not.toBeNull()` falha, notificacao nunca aparece no banco
+**Cause:** O repositorio Prisma nao esta chamando `DomainEvents.dispatchEventsForAggregate(entity.id)` apos persistir a entidade
+**Fix:** Adicione `DomainEvents.dispatchEventsForAggregate(answer.id)` no metodo `create()` do repositorio Prisma
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-eventos-de-dominio/references/code-examples.md)

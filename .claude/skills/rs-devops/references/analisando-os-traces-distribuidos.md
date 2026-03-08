@@ -1,6 +1,12 @@
 ---
 name: rs-devops-traces-distribuidos
 description: "Applies distributed tracing analysis patterns when working with OpenTelemetry, Grafana Tempo, or multi-service architectures. Use when user asks to 'debug latency', 'trace requests across services', 'instrument application', 'analyze spans', or 'set up distributed tracing'. Ensures proper span correlation, log placement, and trace visualization. Make sure to use this skill whenever implementing observability in microservices. Not for metrics collection, alerting rules, or dashboard creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: distributed-tracing
+  tags: [observability]
 ---
 
 # Traces Distribuídos com OpenTelemetry
@@ -104,14 +110,14 @@ func handleUsers(w http.ResponseWriter, r *http.Request) {
 | Criar spans sem nome descritivo | Use nomes como `fetch-users-from-app2`, nao `span1` |
 | Assumir que tracing funciona sem testar | Verifique no Grafana Tempo se os spans aparecem correlacionados |
 
+## Troubleshooting
+
+### Traces aparecem sem spans de servicos downstream
+**Symptom:** Trace mostra apenas o span do servico de entrada, sem spans dos servicos chamados
+**Cause:** O servico downstream nao esta instrumentado com OpenTelemetry ou nao propaga o trace context nos headers
+**Fix:** Instrumente todos os servicos com SDK OpenTelemetry e use `otel.GetTextMapPropagator().Inject(ctx, headers)` para propagar o trace ID
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-analisando-os-traces-distribuidos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-analisando-os-traces-distribuidos/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-analisando-os-traces-distribuidos/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-analisando-os-traces-distribuidos/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

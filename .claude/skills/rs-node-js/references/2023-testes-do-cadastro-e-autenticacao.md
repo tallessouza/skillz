@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-cadastro-auth
 description: "Enforces unit testing patterns for registration and authentication use cases in clean architecture NestJS apps. Use when user asks to 'test authentication', 'test registration', 'write use case tests', 'test signup login', or 'create specs for auth'. Applies patterns: in-memory repositories, fake hashers/encryptors, factory functions, password hashing verification. Make sure to use this skill whenever writing tests for user registration or authentication use cases. Not for E2E tests, controller tests, or integration tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-unitarios-auth
+  tags: [testing, unit-test, authentication, registration, in-memory, fake, factory, nestjs]
 ---
 
 # Testes de Cadastro e Autenticacao
@@ -152,14 +158,14 @@ it('should authenticate', async () => {
 | Instanciar dependencias fora do `beforeEach` | Sempre resetar no `beforeEach` para isolamento |
 | Usar `repository.create()` e `items.push()` intercambiavelmente sem pensar | `create()` dispara side effects do repo, `items.push()` e direto — escolha conforme intencao |
 
+## Troubleshooting
+
+### Teste de autenticacao falha com credenciais corretas
+**Symptom:** `result.isLeft()` retorna true mesmo com email e senha corretos
+**Cause:** O student no repositorio foi salvo com senha plain text em vez de hash
+**Fix:** Use `await fakeHasher.hash('123456')` ao criar o student no repositorio antes de autenticar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-do-cadastro-e-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-do-cadastro-e-autenticacao/references/code-examples.md)

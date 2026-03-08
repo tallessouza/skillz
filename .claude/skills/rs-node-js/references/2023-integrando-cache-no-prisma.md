@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-integrando-cache-prisma
 description: "Applies Redis caching patterns when implementing cache in Prisma repositories with NestJS. Use when user asks to 'add cache to repository', 'integrate Redis', 'cache database queries', 'optimize with cache', or 'implement caching layer'. Enforces colon-separated cache keys, slug/id identifiers in keys, JSON serialization, cache-hit-early-return pattern, and cache invalidation on writes. Make sure to use this skill whenever adding caching to any database repository. Not for HTTP caching, CDN configuration, or browser cache headers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: caching
+  tags: [redis, cache, prisma, nestjs, cache-invalidation, json-serialization, performance]
 ---
 
 # Integrando Cache no Prisma
@@ -134,14 +140,14 @@ async findDetailsBySlug(slug: string) {
 | Salvar no banco sem invalidar cache | Invalidar cache dentro do mesmo Promise.all |
 | `cache.set(key, questionDetails)` | `cache.set(key, JSON.stringify(questionDetails))` |
 
+## Troubleshooting
+
+### Dados stale retornados apos atualizar entidade
+**Symptom:** Apos salvar/atualizar uma entidade, a leitura seguinte retorna dados antigos
+**Cause:** O cache nao foi invalidado no metodo de escrita (save/update), entao o cache hit retorna dados desatualizados
+**Fix:** Adicione `this.cache.delete(\`entity:\${id}:details\`)` dentro do `Promise.all` do metodo `save`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-integrando-cache-no-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-integrando-cache-no-prisma/references/code-examples.md)

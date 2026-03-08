@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-modulos
 description: "Enforces JavaScript ES module patterns when structuring code into separate files. Use when user asks to 'create a module', 'split code into files', 'import/export functions', 'organize project structure', or any JS file separation task. Applies rules: one responsibility per module, explicit exports, type=module in HTML, relative paths with extension. Make sure to use this skill whenever organizing JavaScript code across multiple files. Not for Node.js CommonJS require/module.exports, bundler config, or TypeScript-only module syntax."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-es-modules
+  tags: [javascript, es-modules, import, export, modules]
 ---
 
 # Modulos JavaScript (ES Modules)
@@ -110,8 +116,12 @@ console.log(multiply(4, 6))
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre modulos, privacidade e dois estilos de export
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-modulos-na-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-modulos-na-aplicacao/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| "Cannot use import statement outside a module" | Faltou `type="module"` na tag script | Adicione `<script type="module" src="./main.js">` |
+| "Failed to resolve module specifier" | Caminho relativo sem `./` ou sem extensao | Use `import { fn } from "./arquivo.js"` com `./` e `.js` |
+| Funcao importada retorna undefined | Funcao nao foi exportada no modulo | Adicione `export` antes da declaracao da funcao |
+| CORS error ao abrir HTML direto | Browser bloqueia modules em `file://` | Use um servidor local (Live Server, `npx serve`) |
+| Import funciona mas funcao nao executa | Importou mas nao chamou a funcao | Verifique se a funcao esta sendo invocada apos o import |

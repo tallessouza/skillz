@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-definindo-papel-do-usuario
 description: "Enforces JWT role-based access control patterns when implementing authentication in Node.js/Express APIs. Use when user asks to 'add user roles', 'restrict access', 'define permissions', 'create middleware', or 'implement authorization'. Applies rules: role in JWT payload, typed token payload interface, role injected into request, Express type augmentation. Make sure to use this skill whenever implementing role-based authorization in Express/Node APIs. Not for frontend auth, OAuth flows, or database-level RLS."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: authentication
+  tags: [JWT, RBAC, authorization, middleware, Express, TypeScript, roles]
 ---
 
 # Definindo Papel do Usuário (JWT Role-Based Access)
@@ -113,13 +119,16 @@ console.log(request.user.role) // "customer"
 | Reusar token antigo após mudar estrutura do payload | Gere novo token (novo login) |
 | Hardcodar verificação de role em cada controller | Crie middleware de autorização reutilizável |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `request.user.role` retorna `undefined` | Token antigo nao contem campo `role` | Faca logout e login novamente para gerar token atualizado |
+| TypeScript bloqueia acesso a `role` | Falta augmentation no `express.d.ts` | Adicione `role: string` na interface `Request.user` |
+| `jwt.verify` retorna tipo generico | Falta interface `TokenPayload` | Crie interface e use `as TokenPayload` no verify |
+| Middleware nao propaga o role | `request.user` nao recebe o campo `role` | Adicione `role` ao objeto atribuido a `request.user` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre roles em JWT, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-definindo-papel-do-usuario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-definindo-papel-do-usuario/references/code-examples.md)

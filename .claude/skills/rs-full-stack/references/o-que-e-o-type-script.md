@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-o-que-e-o-type-script
 description: "Applies TypeScript mental models when deciding whether to add types, migrate from JavaScript, or explain TypeScript fundamentals. Use when user asks 'what is TypeScript', 'why use TypeScript', 'should I add types', 'migrate JS to TS', or 'TypeScript vs JavaScript'. Guides gradual adoption strategy and explains the compilation pipeline. Make sure to use this skill whenever TypeScript adoption decisions arise. Not for specific TypeScript syntax, generics, or advanced type patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript
+  tags: [typescript, tipagem, compilacao, javascript, beginner]
 ---
 
 # O Que é o TypeScript
 
 > TypeScript adiciona tipagem ao JavaScript como ferramenta de desenvolvimento — no build final, tudo vira JavaScript puro.
 
-## Key concept
+## Key concepts
 
 JavaScript é uma linguagem não tipada: variáveis aceitam qualquer valor, parâmetros não exigem tipos específicos. Essa flexibilidade popularizou o JavaScript, mas dificulta o crescimento consistente de aplicações. TypeScript resolve isso adicionando tipagem estática que existe apenas em tempo de desenvolvimento — o código final é sempre JavaScript.
 
@@ -40,6 +46,21 @@ O navegador e o Node.js não executam TypeScript. O compilador remove toda tipag
 
 Um projeto 100% JavaScript pode receber TypeScript arquivo por arquivo. Não existe obrigação de migrar tudo de uma vez para que funcione.
 
+### Exemplo: JavaScript vs TypeScript
+
+```typescript
+// JavaScript — sem tipagem, erro so em runtime
+function register(name, age) {
+  console.log(name.toUpperCase()) // E se name for number?
+}
+
+// TypeScript — erro capturado no editor
+function register(name: string, age: number): void {
+  console.log(name.toUpperCase()) // Seguro: name e string
+}
+register(42, "abc") // Erro no editor antes de executar
+```
+
 ## Vantagens concretas
 
 | Vantagem | Exemplo prático |
@@ -67,13 +88,16 @@ Um projeto 100% JavaScript pode receber TypeScript arquivo por arquivo. Não exi
 - Bibliotecas sem tipos (@types) podem exigir declarações manuais
 - O overhead inicial de configuração (tsconfig, build pipeline) existe
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro `Cannot find module` ao importar .ts | Compilacao nao executada ou tsconfig incorreto | Execute `tsc` e verifique `outDir` no tsconfig.json |
+| Editor nao mostra erros de tipo | TypeScript nao configurado no projeto | Crie `tsconfig.json` com `npx tsc --init` |
+| Biblioteca sem tipos disponíveis | Pacote nao inclui tipos nativos | Instale `@types/nome-do-pacote` como devDependency |
+| `any` aparece em todo lugar | Tipagem nao esta sendo definida explicitamente | Defina interfaces e tipos para parametros e retornos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre tipagem vs não-tipagem, analogias e contexto histórico
 - [code-examples.md](references/code-examples.md) — Exemplos do pipeline de compilação e comparações JS vs TS
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-que-e-o-type-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-que-e-o-type-script/references/code-examples.md)

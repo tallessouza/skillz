@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-futuro-das-animacoes-02
 description: "Applies CSS scroll-driven animation view() function when writing scroll-based animations tied to element visibility in the viewport. Use when user asks to 'animate on scroll', 'fade in on scroll', 'trigger animation when visible', 'scroll-driven animation', or 'viewport animation'. Enforces correct view() syntax with top/bottom offsets, animation-fill-mode, and animation-range alternatives. Make sure to use this skill whenever implementing scroll-based reveal animations in CSS. Not for JavaScript intersection observer, scroll-timeline, or non-scroll animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animation, scroll, view, viewport, animation-timeline]
 ---
 
 # CSS Scroll-Driven Animations: view()
@@ -100,13 +106,16 @@ document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 | JavaScript IntersectionObserver para fade-in simples | CSS `animation-timeline: view()` |
 | `animation-timeline: scroll()` para visibilidade | `animation-timeline: view()` — scroll() e para progresso da pagina |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elemento pisca antes da animacao | Falta `animation-fill-mode: both` | Adicione `both` na shorthand: `animation: fade-in linear both` |
+| Offsets do view() confusos | Ordem contraintuitiva (top, bottom) | Use `animation-range` separadamente para controle mais legivel |
+| `view(90%)` aplica para ambos os lados | Um argumento = mesmo offset para top e bottom | Explicite ambos: `view(90% 10%)` |
+| Animacao nao funciona em Safari | Suporte limitado a animation-timeline | Use Intersection Observer como fallback |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre offsets, ordem dos argumentos e mental model da viewport
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo com variacoes de unidades e combinacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-02/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-02/references/code-examples.md)

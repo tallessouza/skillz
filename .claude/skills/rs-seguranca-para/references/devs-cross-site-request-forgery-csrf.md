@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-csrf
 description: "Applies Cross-Site Request Forgery (CSRF) protection patterns when writing backend code that handles forms, POST routes, or state-changing requests. Use when user asks to 'create a form', 'handle POST request', 'implement transfer', 'build checkout', 'add payment endpoint', or any state-changing server action. Enforces SameSite cookie config and nonce/anti-CSRF token implementation. Make sure to use this skill whenever generating form-handling or session-based endpoints. Not for XSS prevention, SQL injection, or frontend-only components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, csrf, form-protection]
 ---
 
 # Cross-Site Request Forgery (CSRF) Protection
@@ -105,14 +111,14 @@ def saque():
 | Confiar so em SameSite sem nonce | SameSite + nonce juntos |
 | Reimplementar CSRF em Django/Rails | Usar `{% csrf_token %}` / `authenticity_token` nativo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-cross-site-request-forgery-csrf/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-cross-site-request-forgery-csrf/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-cross-site-request-forgery-csrf/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-cross-site-request-forgery-csrf/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

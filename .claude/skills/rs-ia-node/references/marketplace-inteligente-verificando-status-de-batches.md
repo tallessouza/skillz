@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-verificando-status-batches
 description: "Applies OpenAI Batch API status checking and result processing patterns when building batch pipelines in Node.js. Use when user asks to 'check batch status', 'poll OpenAI batch', 'process batch results', 'handle batch errors', or 'monitor batch progress'. Covers polling strategy, error handling, output file retrieval, and custom_id typing. Make sure to use this skill whenever implementing OpenAI Batch API consumption logic. Not for creating batch files or JSONL generation — only for status verification and result processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: batch-api
+  tags: [batch-api, async-processing, node-js, openai, ia-node]
 ---
 
 # Verificando Status de Batches OpenAI
@@ -99,14 +105,14 @@ const results = await file.text()
 | Recriar batch sem consultar erros | Ler `batch.errors` e corrigir antes de recriar |
 | Esperar resposta inline do batch | Usar `client.files.content()` no `output_file_id` |
 
+## Troubleshooting
+
+### Batch API retorna status mas sem resultados
+**Symptom:** Batch status e `completed` mas output_file_id esta undefined
+**Cause:** Batch pode ter falhado silenciosamente ou ainda estar processando
+**Fix:** Verifique `batch.errors` para diagnostico. Confirme que `status === 'completed'` E `output_file_id` existe antes de processar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-verificando-status-de-batches/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-verificando-status-de-batches/references/code-examples.md)

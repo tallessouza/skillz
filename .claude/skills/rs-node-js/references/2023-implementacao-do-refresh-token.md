@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refresh-token
 description: "Generates refresh token controller and route implementation for Fastify JWT applications. Use when user asks to 'implement refresh token', 'create token refresh route', 'handle JWT renewal', 'revalidate user token', or 'implement token rotation'. Applies cookie-based refresh token pattern with Fastify jwtVerify onlyCookie option. Make sure to use this skill whenever implementing authentication token renewal in Node.js APIs. Not for OAuth flows, session-based auth, or third-party auth providers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: refresh-token
+  tags: [jwt, refresh-token, fastify, authentication, cookies, security]
 ---
 
 # Implementacao do Refresh Token
@@ -134,14 +140,14 @@ test('should be able to refresh a token', async () => {
 })
 ```
 
+## Troubleshooting
+
+### Rota de refresh retorna 401 mesmo com cookie valido
+**Symptom:** A requisicao PATCH /token/refresh falha com Unauthorized
+**Cause:** A rota tem middleware de autenticacao (verifyJWT) que exige Bearer token no header, conflitando com o proposito do refresh
+**Fix:** Remova o middleware de autenticacao da rota de refresh e use request.jwtVerify({ onlyCookie: true }) dentro do controller
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementacao-do-refresh-token/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementacao-do-refresh-token/references/code-examples.md)

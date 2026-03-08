@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-inicial-formulario
 description: "Enforces proper HTML form structure with fieldset, label-input pairing, and semantic wrappers when writing forms. Use when user asks to 'create a form', 'build a registration form', 'add form fields', 'write HTML form', or 'structure a form'. Applies rules: wrapper divs per field, label-for linked to input-id, name attribute on every field, enctype for file uploads, semantic fieldset+legend grouping. Make sure to use this skill whenever generating HTML forms. Not for form validation, form submission logic, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, forms, fieldset, label, accessibility]
 ---
 
 # Estrutura Inicial de Formulários HTML
@@ -156,13 +162,16 @@ description: "Enforces proper HTML form structure with fieldset, label-input pai
 | Campos sem agrupamento semântico | `<fieldset><legend>Grupo</legend>...</fieldset>` |
 | `<input type="text">` para datas | `<input type="date" lang="pt-BR">` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dados nao chegam ao servidor | Campo sem atributo `name` | Adicionar `name` em todo input/select/textarea |
+| Clicar no label nao foca o input | `for` do label nao bate com `id` do input | Verificar que `for="fieldId"` e `id="fieldId"` sao identicos |
+| Arquivo nao e enviado no submit | Falta `enctype="multipart/form-data"` no form | Adicionar enctype e `method="post"` |
+| Data aparece em formato errado | Falta `lang="pt-BR"` no input date | Adicionar atributo `lang="pt-BR"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre wrappers, ligação label-input, e enctype
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-inicial-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-inicial-do-formulario/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-icone-categoria
 description: "Applies dynamic DOM element creation with setAttribute for image icons mapped to data IDs. Use when user asks to 'create icons dynamically', 'add images based on selection', 'map category to icon', 'render list items with images', or 'build expense list UI'. Enforces pattern of matching data IDs to filenames for dynamic asset loading. Make sure to use this skill whenever generating code that maps data values to image assets or builds list items with icons. Not for CSS styling, SVG manipulation, or icon library integration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, setAttribute, dynamic-icons]
 ---
 
 # Criando Icones Dinamicos por Categoria
@@ -95,8 +101,12 @@ expenseItem.append(expenseIcon)
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a estrategia de naming de assets e fluxo de construcao do DOM
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-icone-da-categoria/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-icone-da-categoria/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Icone nao aparece na lista | Caminho no `src` esta errado ou arquivo nao existe | Verifique se `img/${category_id}.svg` corresponde ao arquivo real |
+| Imagem aparece quebrada (icone de erro) | Nome do arquivo nao bate com o `category_id` | Confirme que o value do select e identico ao nome do arquivo SVG |
+| Alt vazio na imagem | `category_name` esta undefined | Verifique se o objeto de despesa tem a propriedade `category_name` preenchida |
+| Item aparece na lista sem icone | `append` chamado antes do `setAttribute` | Configure todos os atributos do icone antes de chamar `append` |
+| Lista duplica itens ao adicionar | Lista nao e limpa antes de re-renderizar | Limpe a lista com `expenseList.innerHTML = ""` antes de popular |

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-restricoes-chave-unica-estrangeira
 description: "Enforces foreign key and unique key constraint patterns when designing or querying relational databases. Use when user asks to 'create a table', 'add a relationship', 'insert data', 'design schema', or 'fix constraint error'. Applies rules: always define foreign keys for relationships, use UNIQUE for 1:1 enforcement, test constraints before production. Make sure to use this skill whenever writing INSERT statements or designing table relationships. Not for NoSQL databases, application-level validation, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-constraints
+  tags: [sql, foreign-key, unique, constraints, database-design]
 ---
 
 # Restricoes de Chave Unica e Estrangeira
@@ -89,6 +95,15 @@ VALUES (1, 'Rua Dom Pedro', 'Rio de Janeiro');
 | Validar relacionamento so na aplicacao | Definir constraint no banco (dupla protecao) |
 | Ignorar mensagem de erro de constraint | Ler `tabela.coluna` na mensagem para identificar a causa |
 | Inserir sem verificar se pai existe | SELECT antes do INSERT em tabelas com FK |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "foreign key constraint violation" no INSERT | Registro pai referenciado nao existe | Verifique com SELECT se o ID pai existe antes do INSERT |
+| "unique constraint violation" no INSERT | Valor duplicado em coluna com UNIQUE | Verifique se ja existe registro com aquele valor |
+| Constraint nao impede dados invalidos | FK definida apenas na aplicacao, nao no banco | Adicione `FOREIGN KEY ... REFERENCES` no CREATE TABLE |
+| Relacao 1:1 aceitando multiplos registros | Falta UNIQUE na coluna de FK | Adicione `UNIQUE` na coluna de foreign key |
 
 ## Deep reference library
 

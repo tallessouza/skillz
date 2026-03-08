@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-o-projeto-8
 description: "Applies initial project setup workflow for CSS animation landing pages. Use when user asks to 'start a new project', 'setup HTML CSS project', 'configure a landing page', 'initialize frontend project', or 'create project structure'. Follows folder organization, font imports, CSS variables, and Git init patterns from Skillz methodology. Make sure to use this skill whenever creating a new vanilla HTML/CSS project from scratch. Not for React/Next.js projects, backend setup, or existing project modifications."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: project-setup
+  tags: [html, css, google-fonts, css-variables, assets, git, scaffolding]
 ---
 
 # Setup Inicial de Projeto HTML/CSS
@@ -170,13 +176,16 @@ Projeto pronto para desenvolvimento com:
 | Comecar a codar sem commit inicial | `git init` + commit antes de qualquer feature |
 | Usar valores magicos de font-size | Converter px para rem (dividir por 16) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fontes do Google Fonts nao carregam | Links `preconnect` ausentes ou ordem errada no `<head>` | Colocar `preconnect` antes do link da fonte, e ambos antes do CSS |
+| Variaveis CSS nao funcionam | Definidas fora do `:root` ou erro de sintaxe | Verificar que estao dentro de `:root {}` com `--` prefixo |
+| Assets com nomes quebrados | Espacos ou caracteres especiais no nome | Renomear para minusculo com hifens: `star-1.png` |
+| `@import` do global.css nao funciona | Path relativo incorreto | Usar `@import url("global.css")` dentro de `styles/index.css` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao de projeto e workflow do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-8/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-8/references/code-examples.md)

@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-page-metadata-seo
 description: "Applies Next.js App Router metadata patterns for SEO when building pages. Use when user asks to 'add SEO', 'set page title', 'add metadata', 'configure open graph', 'generate dynamic metadata', or creates new Next.js pages. Enforces generateMetadata for dynamic routes, title templates in layouts, and leverages React memoization for deduplicated fetches. Make sure to use this skill whenever creating or editing Next.js App Router pages that need titles or meta tags. Not for Pages Router, static HTML, or non-Next.js frameworks."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, metadata, seo, generateMetadata, title-template, open-graph]
 ---
 
 # Page Metadata no Next.js (SEO)
@@ -119,14 +126,19 @@ export default async function ProductPage({ params }: Props) {
 | Ignorar metadata em paginas internas | Cada pagina deve exportar pelo menos `title` |
 | `title: string` no layout raiz | `title: { template, default }` para flexibilidade |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-page-metadata-no-next-seo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-page-metadata-no-next-seo/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-page-metadata-no-next-seo/references/deep-explanation.md) — No Next.js App Router, metadados sao a forma declarativa de compor as meta tags do `<head>` HTML. Di
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-page-metadata-no-next-seo/references/code-examples.md) — // app/layout.tsx — versao simples

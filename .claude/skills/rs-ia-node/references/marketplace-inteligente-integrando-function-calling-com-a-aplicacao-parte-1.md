@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-function-calling-pt1
 description: "Applies OpenAI function calling integration pattern when building AI-powered Node.js applications. Use when user asks to 'add tools to OpenAI', 'implement function calling', 'let AI call my functions', 'connect OpenAI to database', or 'make AI use real data'. Covers tool definition schema, tool_calls response handling, and dynamic function dispatch. Make sure to use this skill whenever integrating OpenAI chat completions with application-specific functions. Not for streaming, embeddings, or image generation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: function-calling
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Integrando Function Calling com OpenAI
@@ -138,14 +144,14 @@ const completion = await client.chat.completions.create({
 | Deixar todo codigo no route handler | Separe modulo OpenAI do handler HTTP |
 | Passar dados de estoque hardcoded no prompt | Use function calling para buscar dados dinamicamente |
 
+## Troubleshooting
+
+### Modelo nao chama a funcao esperada
+**Symptom:** completion retorna content direto em vez de tool_calls
+**Cause:** Description da tool muito vaga, ou prompt do usuario nao indica necessidade de dados reais
+**Fix:** Melhore a description da tool com casos de uso claros. Adicione no prompt instrucoes explicitas como "considere apenas produtos em estoque" 
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-function-calling-com-a-aplicacao-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-function-calling-com-a-aplicacao-parte-1/references/code-examples.md)

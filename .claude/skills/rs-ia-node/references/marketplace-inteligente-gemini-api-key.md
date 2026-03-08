@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-gemini-api-key
 description: "Guides through obtaining a Gemini API Key from Google AI Studio. Use when user asks to 'setup gemini', 'get gemini api key', 'configure gemini', or 'integrate with gemini api'. Walks through Google AI Studio, Google Cloud project creation, and key generation. Make sure to use this skill whenever setting up Gemini-based projects or configuring AI features that use Google Gemini. Not for OpenAI, Anthropic, or other LLM provider API key setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: multi-provider
+  tags: [google-ai, gemini, node-js, openai, ia-node]
 ---
 
 # Gemini API Key Setup
@@ -72,14 +78,14 @@ curl "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KE
 
 Se retornar uma lista de modelos, a chave esta funcionando.
 
+## Troubleshooting
+
+### JSON.parse falha na resposta do Gemini
+**Symptom:** `SyntaxError: Unexpected token` ao parsear resposta do Gemini
+**Cause:** Gemini retorna JSON wrapped em markdown (triple backticks), nao JSON puro
+**Fix:** Extraia com regex `text.match(/```json\s*([\s\S]*?)```/)` antes de parsear
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gemini-api-key/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gemini-api-key/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-color
 description: "Applies HTML input color and DataList patterns when building color pickers or form color selection. Use when user asks to 'add a color picker', 'create color input', 'build color selector', or 'use datalist with input'. Covers input type=color, RGB values, and DataList for predefined options. Make sure to use this skill whenever generating HTML forms with color selection. Not for CSS color styling, color theory, or JavaScript color manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, color, datalist, forms]
 ---
 
 # Input Color e DataList
@@ -79,13 +85,16 @@ description: "Applies HTML input color and DataList patterns when building color
 | DataList sem id | `<datalist id="meu-id">` conectado via `list="meu-id"` |
 | `list="id"` sem DataList correspondente | Sempre criar o DataList com o mesmo id |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Color picker nao mostra cor padrao | Valor no `value` invalido ou formato errado | Usar formato hex RGB: `value="#0FACAA"` |
+| DataList nao aparece no color picker | Atributo `list` nao corresponde ao `id` do DataList | Verificar que `list="id"` bate com `<datalist id="id">` |
+| Opcoes predefinidas nao aparecem | DataList posicionado incorretamente ou sem options | Confirmar que `<datalist>` tem `<option value="#hex" />` dentro |
+| Cor selecionada nao envia no form | Input sem atributo `name` | Adicionar `name="campo"` ao input |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-color/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-color/references/code-examples.md)

@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-shallow-e-deep-copy
 description: "Enforces correct shallow and deep copy patterns when cloning or spreading objects in JavaScript/TypeScript. Use when user asks to 'copy an object', 'clone an array', 'spread operator', 'duplicate state', or works with nested objects/arrays. Prevents reference-sharing bugs by applying deep copy for nested structures. Make sure to use this skill whenever code spreads objects containing arrays or nested objects. Not for immutable library usage (Immer, Immutable.js) or structuredClone API patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-objects
+  tags:
+    - javascript
+    - shallow-copy
+    - deep-copy
+    - spread
+    - immutability
 ---
 
 # Shallow e Deep Copy
@@ -103,6 +114,15 @@ const jsCourse = {
 | `copy.list.push(item)` apos shallow copy | Crie novo array: `copy.list = [...copy.list, item]` |
 | `Object.assign({}, obj)` para objetos complexos | Spread aninhado ou `structuredClone(obj)` |
 | Mutar array de objeto copiado com spread | Sempre recriar arrays aninhados com spread |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Mutacao inesperada no objeto original | Shallow copy compartilha referencia de arrays/objetos aninhados | Use deep copy: `{ ...obj, items: [...obj.items] }` |
+| Estado do React nao re-renderiza | Array mutado in-place em vez de criar novo | Crie novo array: `setItems([...items, newItem])` |
+| Push no array da copia afeta o original | Spread so copia primeiro nivel | Crie novo array antes do push: `copy.list = [...copy.list]` |
+| Objetos profundamente aninhados (3+ niveis) ainda mutam | Spread manual nao alcanca todos os niveis | Use `structuredClone(obj)` para deep copy completo |
 
 ## Deep reference library
 

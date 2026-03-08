@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-fetch-question-answers
 description: "Applies DDD use case pattern for listing related entities with pagination when writing Node.js backend code. Use when user asks to 'list answers', 'fetch related items', 'create a use case with pagination', 'list child entities', or 'implement findManyBy repository method'. Enforces repository method signature conventions: first param is the foreign key, second is a config object for pagination/filters. Make sure to use this skill whenever creating use cases that list related entities with pagination in Clean Architecture. Not for creating entities, editing, deleting, or authentication use cases."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [fetch, list, pagination, answers, findManyBy, foreign-key, ddd]
 ---
 
 # Caso de Uso: Listar Entidades Relacionadas com Paginacao
@@ -101,14 +107,19 @@ findManyByQuestionId(questionId, { page })
 | Teste sem cenario de paginacao | Sempre teste pagina 1 (basico) e pagina 2 (paginado) |
 | Factory de teste com dados desnecessarios | Passe apenas o que o teste exige (ex: `questionId`) |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-listar-respostas-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-listar-respostas-da-pergunta/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-listar-respostas-da-pergunta/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-listar-respostas-da-pergunta/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

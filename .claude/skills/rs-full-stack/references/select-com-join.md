@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-select-com-join
 description: "Applies SQL JOIN patterns when writing queries with Knex.js query builder. Use when user asks to 'join tables', 'connect tables', 'list related data', 'query with relationships', or 'select from multiple tables'. Covers join syntax, column selection, aliasing with .as() to avoid ambiguity, and foreign key connections. Make sure to use this skill whenever generating Knex queries that involve more than one table. Not for raw SQL, ORM relations like Prisma includes, or database schema creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-queries
+  tags:
+    - sql
+    - knex
+    - join
+    - query-builder
+    - relational-data
 ---
 
 # Select com Join (Query Builder)
@@ -96,6 +107,15 @@ app.get("/courses/:id/modules", async (req, res) => {
 | `.join("modules", "id", "course_id")` (sem prefixo de tabela) | `.join("modules", "courses.id", "modules.course_id")` |
 | Dois campos "name" sem alias num join | `"courses.name as course"`, `"modules.name as module"` |
 | Query em tabela filha sem join quando precisa dados da pai | Join a partir da tabela pai conectando com a filha |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "table not found" ao fazer join | Nome da tabela escrito incorretamente (singular/plural) | Verifique os nomes exatos das tabelas no schema |
+| Resultado com colunas duplicadas "name" | Colunas ambiguas sem alias em queries com join | Use `.as()` ou `"tabela.coluna as alias"` para renomear |
+| Join retorna 0 resultados mesmo com dados | FK e PK nao correspondem ou estao invertidas | Confirme que `tabela.id = tabela_relacionada.tabela_id` esta na ordem correta |
+| Dados repetidos no resultado do join | Join sem filtro WHERE em relacao 1:N | Adicione `.where()` para filtrar pelo registro desejado |
 
 ## Deep reference library
 

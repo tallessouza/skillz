@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-nomenclatura-variaveis
 description: "Enforces variable naming conventions when writing TypeScript/JavaScript code. Use when user asks to 'write a function', 'create a component', 'implement a feature', or any code generation task. Applies rules: no abbreviations, no generic names (data/response/list/temp), cause-over-effect booleans, unit-in-name for numbers. Make sure to use this skill whenever generating new code, even if the user doesn't mention naming. Not for documentation, comments, or commit messages."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: nomenclatura-de-variaveis
+  tags: [naming, variables, typescript, javascript, clean-code, booleans, descriptive-names]
 ---
 
 # Nomenclatura de Variáveis
@@ -119,6 +125,13 @@ return { blockedDates, blockedWeekdays }
 | `const u = users[0]` | `const firstUser = users[0]` |
 | `const date = new Date(y, m)` | `const compareYearAndMonth = new Date(year, month)` |
 | `const interval = getIntervals()` | `const availableWeekdays = getIntervals()` |
+
+## Troubleshooting
+
+### Variavel com nome generico passa no code review
+**Symptom:** Variaveis como `data`, `response`, `result` aparecem no codigo sem serem flagadas
+**Cause:** Revisores focam em logica e esquecem de checar nomenclatura, ou a variavel parece "boa o suficiente" no contexto local
+**Fix:** Pergunte "se eu encontrar essa variavel em outro arquivo, sei o que contem?" — se nao, renomeie pelo conteudo: `users`, `orderDetails`, `validatedOrder`
 
 ## Deep reference library
 

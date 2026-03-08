@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-string-1
 description: "Enforces correct JavaScript string declaration patterns when writing code with text values. Use when user asks to 'create a string', 'define text', 'write a template literal', 'handle quotes in strings', or any task involving JavaScript/TypeScript string literals. Applies rules: use single quotes when text contains double quotes, use double quotes when text contains single quotes, use template literals for multiline strings. Make sure to use this skill whenever generating string declarations or text handling code. Not for string methods, regex, or string manipulation logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags:
+    - javascript
+    - string
+    - template-literal
+    - quotes
+    - data-types
 ---
 
 # Strings em JavaScript
@@ -84,6 +95,15 @@ linha 2`
 | `'it's broken'` | `"it's broken"` |
 | `"linha1\nlinha2"` (quando quer multiline real) | `` `linha1\nlinha2` `` com quebra real |
 | `"Ola " + nome + "!"` | `` `Ola ${nome}!` `` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError` ao declarar string | Aspas internas conflitam com delimitador externo | Use aspas alternativas ou template literal |
+| Quebra de linha nao funciona em string | Aspas simples/duplas nao permitem multiline | Use template literal (crase) para strings multilinhas |
+| Concatenacao com `+` fica ilegivel | Muitas variaveis concatenadas | Use template literal: `` `Ola ${nome}!` `` |
+| Aspas dentro de aspas causam erro | Mesmo tipo de aspas dentro e fora | Alterne: `'texto com "aspas"'` ou `"it's working"` |
 
 ## Deep reference library
 

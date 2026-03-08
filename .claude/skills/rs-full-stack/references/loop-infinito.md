@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-loop-infinito
 description: "Guards against infinite loops when writing JavaScript/TypeScript repetition structures. Use when user asks to 'write a while loop', 'create a loop', 'implement polling', 'repeat until condition', or any code with while/do-while/for loops. Ensures every loop has a clear termination condition and warns about missing exit paths. Make sure to use this skill whenever generating loop structures, even simple ones. Not for array methods like map/filter/forEach or recursion."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, loops, while, infinite-loop, control-flow]
 ---
 
 # Loop Infinito — Proteção contra Loops sem Fim
@@ -90,13 +96,16 @@ while (value) {
 | `for (;;) { process() }` | `for (let i = 0; i < max; i++) { process() }` |
 | `while (x > 0) { /* x nunca decrementa */ }` | `while (x > 0) { /* ... */ x-- }` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Navegador travou completamente | Loop infinito sem saida bloqueou a thread principal | Force quit do navegador e adicione condicao de saida ao loop |
+| Node.js consumindo 100% CPU | while(true) sem break ou await | Adicione `break` condicional ou `await` para liberar o event loop |
+| Variavel de controle nao muda | Logica de mutacao esta fora do bloco do loop | Mova a mutacao da variavel para dentro do corpo do while |
+| Loop termina antes do esperado | Condicao de saida muito permissiva | Revise a expressao booleana e teste com valores limites |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre por que loops infinitos travam navegadores e como a memória é afetada
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e cenários reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-loop-infinito/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-loop-infinito/references/code-examples.md)

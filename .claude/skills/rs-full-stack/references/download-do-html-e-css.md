@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-download-do-html-e-css
-description: "Guides project template setup from GitHub repositories when user asks to 'download a template', 'setup a starter project', 'clone a repo for beginners', or 'start a new project from template'. Covers download, folder organization, VSCode setup, and Live Server extension. Make sure to use this skill whenever setting up a Skillz course project or any HTML/CSS/JS starter template. Not for git workflows, deployment, or advanced project scaffolding with bundlers."
+description: "Configures project template setup from GitHub repositories when user asks to 'download a template', 'setup a starter project', 'clone a repo for beginners', or 'start a new project from template'. Covers download, folder organization, VSCode setup, and Live Server extension. Make sure to use this skill whenever setting up a Skillz course project or any HTML/CSS/JS starter template. Not for git workflows, deployment, or advanced project scaffolding with bundlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ambiente
+  tags: [setup, template, vscode, live-server, html, css, projeto]
 ---
 
 # Setup de Projeto Template (HTML/CSS/JS)
@@ -87,13 +93,16 @@ Projeto rodando no navegador via localhost, com hot-reload ativo.
 | Formulario nao faz nada ao clicar | Esperado — funcionalidade sera implementada em JS |
 | Select com moedas (dolar, euro, libra) | Template para conversor de moedas — JS fara a conversao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Live Server nao aparece no menu de contexto | Extensao nao instalada ou VSCode precisa reiniciar | Instale via Extensions > "Live Server" > reinicie o VSCode |
+| Pagina em branco ao abrir com Live Server | `index.html` esta vazio ou com erro de sintaxe | Verifique se o HTML tem a estrutura basica (`<!DOCTYPE html>`, `<html>`, `<body>`) |
+| Imagens nao carregam no navegador | Caminhos relativos incorretos apos renomear pasta | Verifique se a pasta `img/` esta no mesmo nivel do `index.html` |
+| Porta 5500 em uso | Outra instancia do Live Server esta rodando | Feche outras janelas do VSCode ou reinicie o Live Server |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre estrutura do template e Live Server
 - [code-examples.md](references/code-examples.md) — Estrutura HTML do template e detalhes do CSS
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-download-do-html-e-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-download-do-html-e-css/references/code-examples.md)

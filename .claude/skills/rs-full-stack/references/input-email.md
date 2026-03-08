@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-email
 description: "Applies HTML email input validation patterns when building forms with email fields. Use when user asks to 'create a form', 'add email input', 'validate email', 'build a contact form', or 'implement email field'. Covers type=email, multiple, minlength, maxlength, pattern with regex, and title for custom messages. Make sure to use this skill whenever generating HTML forms that include email fields. Not for JavaScript validation, backend email verification, or email sending logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, email, validation, pattern, regex, forms]
 ---
 
 # Input Email — Validacao HTML Nativa
@@ -89,13 +95,16 @@ description: "Applies HTML email input validation patterns when building forms w
 | Validacao de formato apenas com JS | Validacao HTML nativa + JS para casos avancados |
 | `maxlength="99999"` | `maxlength="255"` (limite razoavel para emails) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Validacao nao bloqueia emails invalidos | Usando `type="text"` em vez de `type="email"` | Trocar para `type="email"` |
+| Pattern nao valida campo vazio | `pattern` sozinho nao impede campo vazio | Adicionar `required` junto com `pattern` |
+| Mensagem de erro generica | `title` nao definido junto com `pattern` | Adicionar `title="Instrucao clara do formato"` |
+| `multiple` nao aceita varios emails | Emails nao separados por virgula | Orientar usuario a separar com virgula sem espacos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre regex em pattern, encoding de URL e validacao nativa vs JS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-email/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-email/references/code-examples.md)

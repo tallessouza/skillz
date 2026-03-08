@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-acessando-elementos-no-dom
 description: "Enforces correct DOM element selection patterns when writing vanilla JavaScript. Use when user asks to 'select an element', 'get element by id', 'access DOM', 'query the DOM', 'get elements by class', or 'manipulate HTML elements'. Applies getElementById for unique elements, getElementsByClassName for groups, getElementsByTagName for tag-based selection, console.dir for inspecting properties. Make sure to use this skill whenever writing vanilla JS DOM access code. Not for React/Vue/Angular component code, jQuery, or CSS selectors with querySelector."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, selectors, html-collection, getElementById]
 ---
 
 # Acessando Elementos no DOM
@@ -98,13 +104,16 @@ console.dir(element)
 | `console.log(el)` para ver propriedades | `console.dir(el)` para ver propriedades |
 | `guests[1]` achando que e o primeiro | `guests[0]` e o primeiro elemento |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `getElementById` retorna `null` | Elemento nao existe no DOM ou script roda antes do HTML | Mova o `<script>` para antes de `</body>` ou use `defer` |
+| `getElementsByClassName` retorna colecao vazia | Nome da classe esta errado ou elementos nao existem ainda | Verifique o nome exato da classe no HTML |
+| `textContent` retorna `undefined` em HTMLCollection | Tentando acessar propriedade de colecao, nao de elemento | Acesse pelo indice: `colecao[0].textContent` |
+| `console.log` mostra elemento visual, nao propriedades | Comportamento padrao do `console.log` para elementos DOM | Use `console.dir(elemento)` para ver propriedades |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o objeto document, referencias no DOM e HTMLCollection
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-acessando-elementos-no-dom/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-acessando-elementos-no-dom/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-pagina-issue-deduplicacao
 description: "Enforces Next.js dynamic route pages with fetch deduplication patterns. Use when user asks to 'create a detail page', 'add dynamic route', 'setup generateMetadata', 'deduplicate requests', or 'fetch same data in metadata and page'. Applies rules: params as Promise, generateMetadata shares props with page, fetch auto-deduplication, unstable_cache for non-fetch. Make sure to use this skill whenever building Next.js dynamic pages or configuring metadata from route params. Not for static pages, client components, or API route handlers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: dynamic-routes-deduplication
+  tags: [next-js, dynamic-routes, generateMetadata, fetch-deduplication, unstable-cache, params, app-router]
 ---
 
 # Pagina Dinamica com Deduplicacao no Next.js
@@ -123,14 +129,19 @@ export default async function Page({ params }: Props) {
 | Criar state/cache manual para evitar fetch duplo | Confiar na deduplicacao automatica do Next.js |
 | `unstable_cache` para chamadas fetch | Desnecessario — fetch ja e deduplicado |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-pagina-de-issue-e-deduplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-pagina-de-issue-e-deduplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-pagina-de-issue-e-deduplicacao/references/deep-explanation.md) — No Next.js 15, tanto `params` quanto `searchParams` foram transformados em Promises. Isso significa 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-pagina-de-issue-e-deduplicacao/references/code-examples.md) — app/

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-primeiro-commit
 description: "Enforces correct Git first commit workflow when user asks to 'initialize a repo', 'create first commit', 'git init', 'start a project with git', or 'setup version control'. Applies rules: check status before committing, understand stage area, use restore for mistakes, write meaningful commit messages. Make sure to use this skill whenever setting up a new Git repository or teaching Git basics. Not for advanced Git workflows, branching strategies, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-basics
+  tags: [git, commit, stage-area, version-control, setup]
 ---
 
 # Criando o Primeiro Commit
@@ -99,8 +105,12 @@ git commit -m "initial commit"
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre stage area, restore e o ciclo de vida do commit
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de comandos Git expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-primeiro-commit/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-primeiro-commit/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| "nothing to commit, working tree clean" | Nenhum arquivo no stage area | Rode `git add arquivo` antes de `git commit` |
+| "not a git repository" | Pasta nao inicializada com Git | Rode `git init` na pasta do projeto |
+| Aspas na mensagem de commit cortam o texto | Aspas nao fechadas corretamente | Use `git commit -m "mensagem completa"` com aspas duplas balanceadas |
+| Arquivo aparece como "untracked" | Arquivo novo nunca foi adicionado ao stage | Rode `git add nome-do-arquivo` |
+| `git restore` nao desfaz a mudanca | Arquivo nunca foi adicionado ao stage | `git restore` so funciona para voltar ao estado do ultimo `git add` |

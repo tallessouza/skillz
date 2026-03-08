@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-postcard-dinamico
 description: "Applies dynamic props and TypeScript interfaces to Next.js card components. Use when user asks to 'create a card component', 'make component dynamic', 'add props to component', 'type component props', or 'build a post card'. Enforces interface-first design with nested types, destructured props, and proper image/link patterns. Make sure to use this skill whenever building presentational card components in Next.js or React with TypeScript. Not for API routes, data fetching, or server-side logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: component-patterns
+  tags: [props, typescript, interface, card-component, dynamic-data, next-js]
 ---
 
 # PostCard Dinâmico com Props Tipadas
@@ -140,14 +146,19 @@ function PostCard({ slug, title, description, image, date, author }: PostCardPro
 | `author: any` | `author: { name: string; avatar: string }` |
 | `rounded-2xl` sem verificar o valor real | `rounded-[12px]` com valor exato do design |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-informacoes-dinamicas-ao-post-card/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-informacoes-dinamicas-ao-post-card/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-informacoes-dinamicas-ao-post-card/references/deep-explanation.md) — O instrutor demonstra um padrao importante: antes de substituir os dados hardcoded por props, ele pr
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-informacoes-dinamicas-ao-post-card/references/code-examples.md) — type Author = {

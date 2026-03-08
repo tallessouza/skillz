@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-consulta
 description: "Applies Prisma ORM query patterns when writing database queries with filtering and sorting. Use when user asks to 'query database', 'filter results', 'search by field', 'sort results', 'find records', or 'list with search'. Enforces contains over equals for text search, insensitive mode for case handling, trim inputs, and orderBy placement. Make sure to use this skill whenever writing Prisma findMany with filters or sorting. Not for raw SQL queries, database migrations, or schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-orm
+  tags: [prisma, database, queries, filtering, sorting, orm]
 ---
 
 # Consultas com Prisma ORM
@@ -96,13 +102,16 @@ const questions = await prisma.question.findMany({
 | `request.query.title` direto sem tratamento | `request.query.title?.toString().trim()` |
 | `contains` sem `mode: 'insensitive'` | Sempre incluir `mode: 'insensitive'` em buscas textuais |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Busca nao retorna resultados esperados | Usando igualdade exata em vez de `contains` | Use `contains` com `mode: 'insensitive'` para busca textual |
+| `orderBy` nao funciona | `orderBy` colocado dentro do `where` | Mova `orderBy` para o mesmo nivel que `where` no objeto `findMany` |
+| Query param vem como undefined | Parametro opcional nao tratado | Use `?.toString().trim()` para tratar query params opcionais |
+| Busca case-sensitive retorna poucos resultados | Faltou `mode: 'insensitive'` | Adicione `mode: 'insensitive'` dentro do filtro `contains` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre igualdade vs contains, case sensitivity e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-consulta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-consulta/references/code-examples.md)

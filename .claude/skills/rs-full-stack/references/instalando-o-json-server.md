@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-json-server
 description: "Generates json-server setup and configuration when user needs a local mock API. Use when user asks to 'mock an API', 'simulate a backend', 'create a fake API', 'setup json-server', or 'test API consumption locally'. Applies correct package.json scripts, server.json structure, and port configuration. Make sure to use this skill whenever the user needs a local API for frontend development without a real backend. Not for creating real APIs, Express servers, or database-backed endpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: json-server
+  tags: [json-server, mock-api, frontend, rest, development]
 ---
 
 # JSON Server — Setup de API Local
@@ -95,13 +101,16 @@ Exemplo: `http://localhost:3333/users` retorna o array de users do `server.json`
 - Acessar `http://localhost:{porta}/{recurso}` — deve retornar o JSON do recurso
 - Alterar `server.json` e recarregar — dados atualizados aparecem
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Porta ocupada ao iniciar json-server | Outro processo usando a mesma porta | Alterar `--port` no script para outra porta (ex: 3334) |
+| `command not found: json-server` | Pacote nao instalado no projeto | Executar `npm install json-server` no diretorio do projeto |
+| Endpoint retorna objeto vazio | Recurso sem dados no server.json | Adicionar dados ao array do recurso no server.json |
+| Alteracoes no server.json nao refletem | Cache do navegador | Recarregar a pagina ou usar hard refresh (Ctrl+Shift+R) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-json-server/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-json-server/references/code-examples.md)

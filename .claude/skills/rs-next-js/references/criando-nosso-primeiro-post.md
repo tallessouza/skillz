@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-primeiro-post
 description: "Generates Markdown posts with frontmatter for Next.js Content Layer projects. Use when user asks to 'create a post', 'add markdown content', 'setup blog post', 'write frontmatter', or 'configure content layer posts'. Applies correct frontmatter structure, builds content layer, and verifies JSON output. Make sure to use this skill whenever creating markdown-based content in Next.js projects using Content Layer. Not for React components, API routes, or non-Content-Layer CMS setups."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: content-layer
+  tags: [next-js, markdown, content-layer, frontmatter, blog, static-content]
 ---
 
 # Criando Posts Markdown com Content Layer
@@ -93,14 +99,19 @@ Content Layer gera JSON automaticamente:
 | Editar arquivos em `.contentlayer/generated/` | Esses sao gerados — edite o `.md` original |
 | Esquecer de buildar antes do primeiro uso | `pnpm contentlayer build` antes de importar |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-nosso-primeiro-post/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-nosso-primeiro-post/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-nosso-primeiro-post/references/deep-explanation.md) — O frontmatter e o bloco YAML entre `---` no topo de arquivos Markdown. Ele define metadados estrutur
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-nosso-primeiro-post/references/code-examples.md) — ---

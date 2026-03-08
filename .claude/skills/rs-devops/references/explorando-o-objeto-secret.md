@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-o-objeto-secret
 description: "Applies Kubernetes Secret object patterns when creating or reviewing K8s manifests. Use when user asks to 'create a secret', 'store sensitive data in k8s', 'add environment variables', 'configure deployment secrets', or 'handle API keys in Kubernetes'. Ensures base64 encoding, Opaque type usage, and correct secretKeyRef in Deployments. Make sure to use this skill whenever generating Kubernetes manifests that involve sensitive data like passwords, tokens, API keys, or connection strings. Not for ConfigMaps, Helm charts, or external secret managers like Vault."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-configuracao
+  tags: [kubernetes, secrets, base64, opaque, secretKeyRef, sensitive-data, environment-variables]
 ---
 
 # Kubernetes Secrets
@@ -99,14 +105,14 @@ data:
 | Commitar .env com secrets no repositorio | Usar Secret objects gerenciados pelo pipeline |
 | Usar o mesmo Secret para staging e producao | Separar Secrets por ambiente |
 
+## Troubleshooting
+
+### Secret apply falha com "illegal base64 data"
+**Symptom:** `kubectl apply` retorna erro `illegal base64 data at input` ao criar Secret
+**Cause:** Valor no campo `data` nao esta encodado em base64 ou foi encodado com newline no final
+**Fix:** Encode com `echo -n "valor" | base64` (flag `-n` evita newline) e use o resultado no campo `data`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-o-objeto-secret/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-o-objeto-secret/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

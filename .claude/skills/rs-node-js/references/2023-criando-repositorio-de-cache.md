@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-repositorio-de-cache
-description: "Enforces cache repository patterns in Clean Architecture NestJS applications. Use when user asks to 'add cache', 'implement caching', 'create cache layer', 'optimize with Redis', or 'cache repository'. Applies rules: cache lives exclusively in infra layer, never in domain/use-cases; key-value string storage with JSON serialization; abstract repository with set/get/delete methods; cache invalidation on mutations. Make sure to use this skill whenever implementing caching in layered architectures. Not for HTTP caching, CDN configuration, or browser cache headers."
+name: 2023-criando-repositorio-de-cache
+description: "Implements a cache repository in clean architecture where cache logic lives exclusively in the infrastructure layer, never in domain or use cases. Use when user asks to 'add caching', 'create cache repository', 'implement Redis cache pattern', 'optimize database reads', or 'cache API responses'. Enforces: abstract CacheRepository class in infra, cache-through pattern inside Prisma repositories, JSON serialization, structured cache keys, invalidation on mutations. Make sure to use this skill whenever adding caching to a clean architecture Node.js/NestJS application. Not for frontend caching, CDN configuration, or in-memory caching without Redis."
+category: coding-lens
+tags: [cache, nestjs, prisma, redis, repository, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: cache-architecture
+  tags: [cache, redis, clean-architecture, repository-pattern, nestjs, prisma]
 ---
 
 # Cache Repository em Clean Architecture
@@ -120,14 +129,14 @@ export class GetQuestionBySlugUseCase {
 | Cachear tudo na aplicacao | Cachear apenas dados que raramente mudam |
 | Deixar cache desatualizado para sempre | Implementar invalidacao em mutacoes criticas |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-repositorio-de-cache/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-repositorio-de-cache/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

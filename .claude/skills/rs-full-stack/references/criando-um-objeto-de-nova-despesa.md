@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-objeto-nova-despesa
 description: "Enforces structured object creation patterns when building form-based data objects in JavaScript. Use when user asks to 'create an object from form', 'capture form data', 'build expense object', 'get select option text and value', or 'generate unique IDs without database'. Applies rules: timestamp IDs for prototypes, separate select value/text extraction, created_at metadata, named object properties matching domain. Make sure to use this skill whenever creating objects from HTML form inputs. Not for database schemas, API payloads, or TypeScript interfaces."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, objects, forms, DOM, select, id-generation]
 ---
 
 # Criando Objetos a Partir de Formularios
@@ -97,13 +103,16 @@ form.onsubmit = (event) => {
 | Objeto sem `created_at` | Sempre incluir metadado de criacao |
 | `select.text` (nao existe) | `select.options[select.selectedIndex].text` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `select.text` retorna `undefined` | `text` nao e propriedade direta do select | Use `select.options[select.selectedIndex].text` |
+| IDs duplicados em lista | Dois itens criados no mesmo milissegundo | Use `crypto.randomUUID()` em producao ou `Date.now() + Math.random()` |
+| `amount.value` retorna string, nao numero | Valores de inputs HTML sao sempre strings | Converta com `Number(amount.value)` ou `parseFloat(amount.value)` |
+| Formulario recarrega a pagina ao submeter | Falta `preventDefault()` no handler | Adicione `event.preventDefault()` no inicio do handler de submit |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre IDs, selects e metadados
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto-de-nova-despesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto-de-nova-despesa/references/code-examples.md)

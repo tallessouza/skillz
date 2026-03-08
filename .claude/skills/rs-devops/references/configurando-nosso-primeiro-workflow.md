@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-primeiro-workflow
 description: "Generates GitHub Actions workflow YAML files when user asks to 'create a pipeline', 'setup CI/CD', 'configure GitHub Actions', 'write a workflow', or 'add CI to my repo'. Enforces correct YAML structure with name, jobs, runs-on, steps, and checkout action. Make sure to use this skill whenever creating or editing .github/workflows/ files. Not for Docker configuration, deployment scripts, or non-GitHub CI platforms."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-github-actions
+  tags: [github-actions, ci-cd, workflow, yaml, pipeline]
 ---
 
 # Configurando Primeiro Workflow no GitHub Actions
@@ -103,14 +109,14 @@ jobs:
 | Criar workflow fora de `.github/workflows/` | Sempre dentro de `.github/workflows/` |
 | Omitir `runs-on:` no job | Todo job precisa de um runner declarado |
 
+## Troubleshooting
+
+### Workflow nao aparece na aba Actions do GitHub
+**Symptom:** Arquivo YAML foi commitado mas o workflow nao e listado no GitHub Actions
+**Cause:** O arquivo nao esta dentro de `.github/workflows/` ou tem erro de sintaxe YAML (identacao incorreta)
+**Fix:** Verifique se o path e exatamente `.github/workflows/ci.yaml` e que a identacao usa 2 espacos consistentemente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-nosso-primeiro-workflow/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-nosso-primeiro-workflow/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-nosso-primeiro-workflow/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-nosso-primeiro-workflow/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aplicando-fontes-projeto
 description: "Enforces web typography setup patterns using Google Fonts and CSS custom properties. Use when user asks to 'add fonts', 'setup typography', 'configure Google Fonts', 'style headings', or 'create font variables'. Applies font-family variables, heading hierarchy with weight/size/line-height, link styling with hover states, and font inheritance for nested components. Make sure to use this skill whenever setting up typography in HTML/CSS projects. Not for icon fonts, font-face declarations from local files, or JavaScript font loading."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, typography, google-fonts, css-variables, web-design]
 ---
 
 # Tipografia Web com Google Fonts e Variáveis CSS
@@ -106,13 +112,16 @@ a:hover { color: var(--brand-color-light); }
 | `<link>` da fonte sem preconnect | Preconnect antes, link da fonte depois |
 | Deixar headings com estilo do navegador | `h1, h2, h3 { font: inherit }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fonte do Google Fonts nao carrega | Falta do `preconnect` ou link incorreto | Adicione as linhas `preconnect` antes do link da fonte |
+| Headings ignoram a fonte definida no body | Estilo padrao do navegador sobrescreve heranca | Adicione `h1, h2, h3 { font: inherit }` |
+| Variavel CSS retorna valor invalido | Sintaxe do shorthand `font` incorreta | Use o formato `weight size/line-height family` sem virgulas extras |
+| Hover do link nao muda de cor | Variavel `--brand-color-light` nao definida no `:root` | Defina a variavel de cor no `:root` antes de usar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre herança de fontes e por que headings precisam de `font: inherit`
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aplicando-as-fontes-no-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aplicando-as-fontes-no-projeto/references/code-examples.md)

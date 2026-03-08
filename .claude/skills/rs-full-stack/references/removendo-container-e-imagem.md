@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-container-e-imagem
 description: "Applies correct Docker container and image removal commands and sequences. Use when user asks to 'remove container', 'delete image', 'clean up docker', 'docker rm', 'force remove', or any Docker cleanup task. Enforces stop-before-remove pattern and force flag usage. Make sure to use this skill whenever removing Docker resources. Not for building images, running containers, or Docker Compose operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-fundamentals
+  tags: [docker, container, image, cleanup, devops]
 ---
 
 # Removendo Container e Imagem no Docker
@@ -101,6 +107,15 @@ $ docker image ls    # nenhuma imagem
 | `docker rm` para remover imagem | `docker image rm` |
 | Remover sem verificar depois | Sempre `docker ps -a` + `docker image ls` apos limpeza |
 | Remover imagem antes dos containers que a usam | Remova containers primeiro |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "cannot remove running container" | Container ainda esta em execucao | Execute `docker stop` antes ou use `docker rm -f` |
+| "image is referenced in multiple repositories" | Imagem tem multiplas tags | Remova todas as tags ou use `docker image rm -f` |
+| "image has dependent child images" | Outra imagem foi construida a partir dessa | Remova imagens filhas primeiro |
+| Container removido mas imagem persiste | Remocao de container nao remove imagem | Execute `docker image rm` separadamente |
 
 ## Deep reference library
 

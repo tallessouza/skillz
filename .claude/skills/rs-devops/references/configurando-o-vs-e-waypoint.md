@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-vs-e-waypoint
 description: "Applies Istio Ambient Mode Waypoint configuration for advanced traffic routing without sidecars. Use when user asks to 'configure waypoint', 'setup ambient mode routing', 'fix virtual service not working in ambient', 'istio traffic management without sidecar', or 'route traffic with waypoint'. Ensures correct GatewayClass, labeling, and Virtual Service behavior in ambient mesh. Make sure to use this skill whenever configuring Istio service mesh in Ambient Mode. Not for sidecar-based Istio setups, ingress gateway configuration, or general Kubernetes networking."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-ambient-mode
+  tags: [istio, waypoint, ambient-mode, virtual-service, kubernetes, service-mesh, hbone]
 ---
 
 # Waypoint e Virtual Service no Ambient Mode
@@ -116,14 +122,14 @@ kubectl run fortio --image=fortio/fortio -- load -qps 500 -t 30s http://app-serv
 | Esquecer label no namespace | `kubectl label namespace <ns> istio.io/use-waypoint=waypoint` |
 | Criar Waypoint sem manifesto declarativo | Use `istioctl` para debug, mas mantenha YAML no repo |
 
+## Troubleshooting
+
+### Virtual Service ignorado no Ambient Mode
+**Symptom:** Trafego dividido igualmente entre versoes, ignorando regras do VirtualService
+**Cause:** Waypoint nao esta configurado ou namespace nao esta labelado com `istio.io/use-waypoint`
+**Fix:** Crie o Waypoint com `istioctl waypoint apply --namespace <ns>` e labele o namespace com `kubectl label namespace <ns> istio.io/use-waypoint=waypoint`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-vs-e-waypoint/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-vs-e-waypoint/references/code-examples.md)

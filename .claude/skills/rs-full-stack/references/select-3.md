@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-select-3
 description: "Applies correct HTML SELECT field patterns when writing forms with dropdowns, multi-select, and grouped options. Use when user asks to 'create a form', 'add a dropdown', 'add a select field', 'group options', or 'multi-select'. Covers SELECT, OPTION, OPTGROUP, MULTIPLE, and SIZE attributes. Make sure to use this skill whenever generating HTML forms with selection fields. Not for input text fields, checkboxes, radio buttons, or JavaScript select libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "HTML Select Fields"
+  tags: ['html', 'forms', 'select', 'optgroup', 'accessibility']
 ---
 
 # Campo SELECT em Formularios HTML
@@ -91,6 +97,15 @@ description: "Applies correct HTML SELECT field patterns when writing forms with
 | `multiple` sem size | `multiple size="6"` |
 | OPTGROUP sem label | `<optgroup label="Categoria">` |
 | Primeira opcao com valor real | Primeira opcao com `value=""` como placeholder |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Valor do select nao enviado no formulario | `<select>` sem atributo `name` | Adicione `name="campo"` no elemento select |
+| Primeira opcao selecionada automaticamente | Falta opcao placeholder com value vazio | Adicione `<option value="">Selecione</option>` como primeiro item |
+| Multiple select mostra apenas 1 item | Atributo `size` nao definido | Adicione `size="N"` com N = numero de opcoes visiveis desejadas |
+| OPTGROUP sem identificacao visual | Falta atributo `label` no optgroup | Adicione `label="Categoria"` em cada `<optgroup>` |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-html-1
 description: "Applies correct HTML terminology and mental models when discussing or generating HTML code. Use when user asks 'what is HTML', 'is HTML a programming language', 'explain HTML basics', 'HTML tags', or any introductory web development question. Ensures correct distinction between markup and programming languages. Make sure to use this skill whenever explaining HTML fundamentals or correcting misconceptions. Not for CSS, JavaScript, or advanced HTML patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-html
+  tags: [html, markup, tags, hipertexto, beginner]
 ---
 
 # O que é HTML
@@ -56,13 +62,16 @@ Depois da internet: texto + links + imagens + sons + vídeos (hipertexto). Um te
 
 Este modelo mental cobre apenas o conceito fundamental. Não aborda semântica avançada, acessibilidade, SEO, ou APIs do HTML5.
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pagina aparece em branco no navegador | Arquivo nao salvo ou caminho errado | Verifique se salvou o arquivo `.html` e abra pelo caminho correto |
+| Tags nao renderizam corretamente | Tag nao fechada ou aninhamento incorreto | Verifique se toda tag aberta tem seu fechamento correspondente |
+| Caracteres especiais aparecem estranhos | Encoding do arquivo incorreto | Adicione `<meta charset="UTF-8">` no `<head>` |
+| Navegador mostra codigo ao inves de renderizar | Extensao do arquivo nao e `.html` | Renomeie o arquivo para ter extensao `.html` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre marcação vs programação, analogias e contexto histórico
 - [code-examples.md](references/code-examples.md) — Exemplos de tags HTML com explicações detalhadas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-que-e-html-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-que-e-html-1/references/code-examples.md)

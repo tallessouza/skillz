@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-projeto-no-figma
-description: "Guides Figma project setup and navigation for frontend development. Use when user asks to 'setup Figma', 'duplicate a Figma project', 'read a style guide', 'extract design tokens', or 'start from a Figma design'. Covers account setup, project duplication, page navigation, zoom controls, style guide interpretation (colors, fonts, spacing), and image export. Make sure to use this skill whenever starting a new frontend project from a Figma design. Not for Figma plugin development, prototyping interactions, or design creation."
+description: "Navigates Figma project setup and design token extraction for frontend development. Use when user asks to 'setup Figma', 'duplicate a Figma project', 'read a style guide', 'extract design tokens', or 'start from a Figma design'. Covers account setup, project duplication, page navigation, zoom controls, style guide interpretation (colors, fonts, spacing), and image export. Make sure to use this skill whenever starting a new frontend project from a Figma design. Not for Figma plugin development, prototyping interactions, or design creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: design-to-code
+  tags: [figma, style-guide, design-tokens, frontend, setup]
 ---
 
 # Navegacao e Setup de Projeto no Figma
@@ -52,6 +58,19 @@ O style guide contem tudo que voce precisa para comecar o CSS:
 3. Escolher formato (PNG, SVG, JPG) e escala
 4. Clicar em "Export"
 
+### Exemplo de variaveis CSS extraidas do style guide
+
+```css
+:root {
+  --color-primary: #835afd;
+  --color-background: #f8f8f8;
+  --color-text: #29292e;
+  --font-family: 'Roboto', sans-serif;
+  --font-size-heading: 2.25rem;
+  --font-weight-bold: 700;
+}
+```
+
 ## Heuristics
 
 | Situacao | Faca |
@@ -70,13 +89,15 @@ O style guide contem tudo que voce precisa para comecar o CSS:
 | Ignorar o style guide e comecar direto no codigo | Ler o style guide, criar variaveis CSS, depois codar |
 | Exportar imagens sem verificar a origem | Verificar se a imagem vem do Unsplash ou e asset proprio |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Projeto aparece como read-only | Nao duplicou para seus drafts | Clique em "Duplicate to your drafts" |
+| Nao consegue inspecionar elementos | Conta sem permissao ou nao duplicou | Duplique o projeto e abra a copia |
+| Valores de cor/fonte parecem errados | Consultando o layout em vez do style guide | Sempre extraia valores do style guide, nao do layout |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fluxo Figma-to-code e navegacao
 - [code-examples.md](references/code-examples.md) — Exemplos de variaveis CSS extraidas de style guides
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-projeto-no-figma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-projeto-no-figma/references/code-examples.md)

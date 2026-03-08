@@ -1,39 +1,40 @@
 ---
-name: rs-redux-zustand-migrando-redux-zustand
-description: "Applies Zustand migration patterns when refactoring React state management from Redux to Zustand. Use when user asks to 'migrate from Redux', 'replace Redux with Zustand', 'convert Redux store', 'refactor state management', or 'use Zustand instead of Redux'. Covers store creation, async actions, selective subscriptions, and component migration. Make sure to use this skill whenever converting Redux code to Zustand in any React project. Not for initial Zustand setup from scratch, Redux Toolkit configuration, or other state management libraries like Jotai or Recoil."
+name: rs-redux-zustand-migrando-do-redux-p-zustand
+description: "Applies Zustand migration patterns when refactoring React state management from Redux Toolkit to Zustand. Use when user asks to 'migrate from Redux to Zustand', 'replace Redux with Zustand', 'convert Redux store to Zustand', 'refactor from Redux', 'remove Redux Provider', or 'zustand async actions'. Covers Provider removal, async action migration, selector conversion, and component-by-component migration. Make sure to use this skill whenever converting existing Redux code to Zustand. Not for initial Zustand setup from scratch (use setup-do-zustand), Redux configuration, or Jotai/Recoil."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: redux-zustand
+  module: migrando-redux-zustand
+  tags: [zustand, migration, redux-to-zustand, async, provider-removal, refactoring]
 ---
 
 # Migrando do Redux para Zustand
 
-> Ao migrar de Redux para Zustand, substitua providers, dispatches e selectors por uma unica store com acesso direto a estado e acoes.
+> Substitua providers, dispatches e selectors por uma unica store com acesso direto.
 
 ## Rules
 
-1. **Remova o Provider global** — Zustand nao usa Context API, entao delete o `<Provider store={store}>` do App, porque Zustand acessa estado sem wrapper
-2. **Unifique estado e acoes no useStore** — nao separe `useSelector` e `useDispatch`, porque Zustand retorna ambos de uma unica chamada
-3. **Acoes assincronas sao metodos diretos** — crie `async load()` dentro do `create()`, nao use `createAsyncThunk`, porque Zustand permite async nativamente
-4. **Sempre use selector no useStore** — `useStore(store => store.isLoading)` nao `useStore()`, porque sem selector o componente re-renderiza em qualquer mudanca de estado
-5. **Gerencie loading dentro da propria acao** — faca `set({ isLoading: true })` antes da request e `set({ isLoading: false })` depois, porque elimina reducers de case separados
-6. **Hooks derivados ficam junto ao store** — crie hooks como `useCurrentLesson` no mesmo arquivo do store, porque acessam `useStore` diretamente
+1. **Remova o Provider** — Zustand nao usa Context API
+2. **Unifique estado e acoes** — nao separe selector e dispatch
+3. **Async como metodos diretos** — `async load()` dentro de create(), sem createAsyncThunk
+4. **Sempre use selector** — `useStore(s => s.field)` nunca `useStore()` vazio, porque re-renderiza tudo
+5. **Loading dentro da acao** — `set({ isLoading: true })` antes, `set({ isLoading: false })` depois
+6. **Hooks derivados migram facilmente** — troque useAppSelector por useStore
 
 ## How to write
 
-### Store com acao assincrona
-
 ```typescript
-import { create } from 'zustand'
-import { api } from '../lib/axios'
-
-interface Store {
-  course: Course | null
-  isLoading: boolean
-  load: () => Promise<void>
-}
+// Redux → Zustand mapping
+// configureStore → create()
+// createSlice reducers → metodos no create()
+// createAsyncThunk → async method no create()
+// useAppSelector → useStore(s => s.field)
+// dispatch(action()) → const action = useStore(s => s.action); action()
+// <Provider store={store}> → nada (remova)
 
 export const useStore = create<Store>((set) => ({
-  course: null,
-  isLoading: false,
-
+  course: null, isLoading: false,
   load: async () => {
     set({ isLoading: true })
     const response = await api.get('/courses/1')
@@ -42,96 +43,39 @@ export const useStore = create<Store>((set) => ({
 }))
 ```
 
-### Selector no componente
-
-```typescript
-// Selecione apenas o que precisa — evita re-renders
-const isLoading = useStore(store => store.isLoading)
-const next = useStore(store => store.next)
-
-// Ou multiplos valores num unico selector
-const { currentLessonIndex, currentModuleIndex, play } = useStore(store => ({
-  currentLessonIndex: store.currentLessonIndex,
-  currentModuleIndex: store.currentModuleIndex,
-  play: store.play,
-}))
-```
-
-### Hook derivado no arquivo do store
-
-```typescript
-export function useCurrentLesson() {
-  return useStore(store => {
-    const currentModule = store.course?.modules[store.currentModuleIndex]
-    const currentLesson = currentModule?.lessons[store.currentLessonIndex]
-    return { currentModule, currentLesson }
-  })
-}
-```
-
 ## Example
 
 **Before (Redux):**
 ```typescript
-// App.tsx
-import { Provider } from 'react-redux'
-import { store } from './store'
 <Provider store={store}><App /></Provider>
-
-// Component
-const dispatch = useAppDispatch()
-const modules = useAppSelector(state => state.player.course?.modules)
-const isCourseLoading = useAppSelector(state => state.player.isLoading)
-
-useEffect(() => {
-  dispatch(loadCourse())
-}, [])
+dispatch(loadCourse()) // createAsyncThunk
+useAppSelector(state => state.player.isLoading)
 ```
 
 **After (Zustand):**
 ```typescript
-// App.tsx — sem Provider
-<App />
-
-// Component
-const modules = useStore(store => store.course?.modules)
-const isLoading = useStore(store => store.isLoading)
-const load = useStore(store => store.load)
-
-useEffect(() => {
-  load()
-}, [])
+<App /> // sem Provider
+load() // chamada direta de async
+useStore(store => store.isLoading)
 ```
-
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| `createAsyncThunk` no Redux | Metodo async direto no `create()` do Zustand |
-| `useAppDispatch` + action | Pegue a funcao direto do `useStore(s => s.action)` |
-| `useAppSelector` | `useStore(store => store.campo)` |
-| Provider no App root | Remova completamente |
-| Reducer com cases de loading | `set()` dentro da propria acao async |
-| Hook customizado com useSelector | Mesmo hook, troque useSelector por useStore |
 
 ## Anti-patterns
 
 | Nunca escreva | Escreva ao inves |
 |---------------|-----------------|
-| `const store = useStore()` (sem selector) | `const value = useStore(s => s.value)` |
+| `useStore()` sem selector | `useStore(s => s.value)` |
 | `dispatch(actionCreator())` | `const action = useStore(s => s.action); action()` |
-| `<Provider store={store}>` | Sem provider — Zustand nao precisa |
-| `createAsyncThunk('name', async ...)` | `load: async () => { set(...); await api... }` |
-| Reducers separados para pending/fulfilled/rejected | `set({ isLoading: true/false })` dentro da acao |
+| `<Provider store={store}>` | Sem provider |
+| `createAsyncThunk` | `load: async () => { set(...) }` |
+
+## Troubleshooting
+
+### Componente re-renderiza em toda mudanca
+**Symptom:** Performance pior que Redux apos migracao.
+**Cause:** `useStore()` chamado sem selector — observa todo o estado.
+**Fix:** Sempre passe funcao seletora: `useStore(s => s.specificField)`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/redux-zustand/rs-redux-zustand-migrando-do-redux-p-zustand/references/deep-explanation.md)
-- [Code examples](../../../data/skills/redux-zustand/rs-redux-zustand-migrando-do-redux-p-zustand/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/redux-zustand/rs-redux-zustand-migrando-do-redux-p-zustand/references/deep-explanation.md) — Async simplificado, Provider eliminado, selector obrigatorio, migracao incremental
+- [code-examples.md](../../../data/skills/redux-zustand/rs-redux-zustand-migrando-do-redux-p-zustand/references/code-examples.md) — Store completa, hook derivado, Player/Header/Module/Video migrados, tabela de mapeamento

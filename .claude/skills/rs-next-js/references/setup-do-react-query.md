@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-setup-do-react-query
 description: "Applies React Query setup pattern in Next.js App Router projects mixing Server and Client Components. Use when user asks to 'setup react query', 'configure tanstack query', 'mix server and client components', 'cache client requests in next', or 'fetch user-specific data in nextjs'. Ensures correct provider pattern with useState, use client boundary, and children composition. Make sure to use this skill whenever setting up React Query in a Next.js App Router project. Not for server-side data fetching, SWR setup, or React Query usage/queries themselves."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: data-fetching
+  tags: [react-query, tanstack-query, next-js, app-router, client-components, provider-pattern, useState]
 ---
 
 # Setup do React Query no Next.js App Router
@@ -108,14 +114,19 @@ export default function RootLayout({ children }) {
 | `<ServerComponent />` dentro de arquivo `"use client"` | `{children}` recebendo Server Component via prop |
 | Uma única requisição misturando dados públicos + privados | Duas requisições: uma cacheável (server), uma por usuário (client) |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-setup-do-react-query/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-setup-do-react-query/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-setup-do-react-query/references/deep-explanation.md) — O instrutor usa o exemplo de um board (kanban) para ilustrar uma decisão arquitetural importante. Os
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-setup-do-react-query/references/code-examples.md) — npm install @tanstack/react-query

@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-anotacoes-notion-e-obsidian
-description: "Recommends note-taking tools and habits for developers studying programming courses. Use when user asks about 'taking notes', 'study tools', 'Notion vs Obsidian', 'how to organize study notes', or 'best app for notes'. Make sure to use this skill whenever recommending note-taking workflows for learning. Not for project documentation, README files, or code comments."
+description: "Organizes note-taking tools and habits for developers studying programming courses. Use when user asks about 'taking notes', 'study tools', 'Notion vs Obsidian', 'how to organize study notes', or 'best app for notes'. Make sure to use this skill whenever recommending note-taking workflows for learning. Not for project documentation, README files, or code comments."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [study-tools, note-taking, notion, obsidian, productivity]
 ---
 
 # Anotacoes — Notion e Obsidian
 
 > Escolha uma ferramenta de anotacoes e use-a consistentemente durante os estudos, porque revisar anotacoes proprias e mais eficiente que reassistir aulas.
 
-## Key concept
+## Key concepts
 
 Anotar durante aulas de programacao nao e opcional — e parte do processo de aprendizado. A ferramenta importa menos que o habito. Escolha entre Notion (online, versatil) ou Obsidian (offline, gratuito) e comece a anotar imediatamente.
 
@@ -65,13 +71,16 @@ Anotar durante aulas de programacao nao e opcional — e parte do processo de ap
 - [Notion](https://www.notion.com/pt)
 - [Obsidian](https://obsidian.md/)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Notion nao sincroniza anotacoes | Conexao de internet instavel | Verifique a conexao ou mude para Obsidian que funciona offline |
+| Obsidian nao encontra notas linkadas | Caminho relativo incorreto entre notas | Use o formato `[[nome-da-nota]]` para links internos |
+| Perdi minhas anotacoes do Notion | Conta gratuita sem backup | Exporte periodicamente em Markdown ou habilite backup automatico |
+| Notas ficam desorganizadas | Falta de estrutura de pastas desde o inicio | Crie a hierarquia Curso > Modulo > Aula antes de comecar a anotar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre habitos de anotacao e comparacao detalhada
 - [code-examples.md](references/code-examples.md) — Templates e estruturas de anotacao para cursos de programacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-anotacoes-notion-e-obsidian/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-anotacoes-notion-e-obsidian/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aprendendo-sobre-arrays
 description: "Applies correct array indexing and access patterns when writing JavaScript/TypeScript code. Use when user asks to 'create an array', 'access array element', 'loop through list', 'get item by index', or any array manipulation task. Enforces zero-based indexing awareness, bracket notation access, and proper mental model of arrays as ordered collections. Make sure to use this skill whenever generating code that creates or accesses arrays. Not for array methods like map/filter/reduce, sorting algorithms, or data structure theory."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, arrays, indexing, data-structures, fundamentals]
 ---
 
 # Arrays — Coleções Ordenadas com Índices
@@ -71,13 +77,16 @@ console.log(colors[2]) // "blue" — último item é length - 1
 | `array[array.length]` para o último | `array[array.length - 1]` |
 | `const fruit = ["a", "b"]` (singular) | `const fruits = ["a", "b"]` (plural) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `array[1]` retorna o segundo item, nao o primeiro | Arrays sao zero-indexed em JavaScript | Use `array[0]` para o primeiro item |
+| `array[array.length]` retorna `undefined` | Ultimo indice valido e `length - 1` | Use `array[array.length - 1]` para o ultimo item |
+| Array retorna `undefined` para um indice | Indice esta fora do range `0` a `length - 1` | Verifique o tamanho do array com `.length` antes de acessar |
+| Loop itera uma vez a mais que o esperado | Condicao `<=` em vez de `<` com `.length` | Use `i < array.length` como condicao de parada |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-arrays/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-arrays/references/code-examples.md)

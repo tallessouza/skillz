@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-um-ticket
 description: "Applies the delete route pattern for removing resources in Node.js APIs. Use when user asks to 'delete a record', 'remove an item', 'create a DELETE endpoint', 'implement resource deletion', or 'add a remove route'. Follows controller-based architecture with route params for ID, splice-based removal, and proper HTTP responses. Make sure to use this skill whenever implementing deletion functionality in Node.js APIs. Not for soft-delete patterns, bulk deletion, or database ORM operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, rest-api, delete, splice, controller]
 ---
 
 # Removendo um Recurso via DELETE
@@ -115,8 +121,11 @@ delete(table, id) {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o padrao DELETE e splice vs filter
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0421-removendo-um-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0421-removendo-um-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| DELETE remove mais de um item | `splice` sem segundo argumento `1` | Use `splice(index, 1)` para remover exatamente um elemento |
+| Item nao removido mesmo com ID correto | Comparacao de tipo (string vs number) | Garanta que o ID do param e do registro sao do mesmo tipo |
+| Dados voltam apos reiniciar servidor | `persist()` nao chamado apos splice | Adicione `this.#persist()` dentro do metodo delete |
+| Rota DELETE retorna 404 | Metodo HTTP incorreto no registro de rota | Verifique se usa `server.delete()` e nao `server.get()` |

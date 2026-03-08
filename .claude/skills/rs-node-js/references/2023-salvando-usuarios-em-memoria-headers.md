@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-salvando-usuarios-memoria-headers
 description: "Applies stateful in-memory data patterns and HTTP headers when building Node.js HTTP servers from scratch. Use when user asks to 'create a node server', 'save data in memory', 'return JSON from server', 'set response headers', or 'build a REST API without framework'. Ensures correct JSON serialization with JSON.stringify, proper Content-Type headers, and understanding of stateful vs stateless trade-offs. Make sure to use this skill whenever writing raw Node.js HTTP server code without Express or Fastify. Not for Express/Fastify apps, database persistence, or frontend HTTP clients."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [http-server, json, headers, content-type, in-memory, stateful]
 ---
 
 # Salvando Dados em Memoria e Headers HTTP (Node.js puro)
@@ -81,14 +87,14 @@ res.end(JSON.stringify(users))
 | Dados de producao em array na memoria | Banco de dados externo (stateless) |
 | Headers como parte do body | Headers via `res.setHeader()`, dados via `res.end()` |
 
+## Troubleshooting
+
+### TypeError: chunk argument must be of type string or Buffer
+**Symptom:** Servidor lanca TypeError ao tentar enviar array ou objeto como resposta
+**Cause:** res.end() so aceita string ou Buffer, nao aceita objetos JavaScript diretamente
+**Fix:** Use `res.end(JSON.stringify(data))` e defina `res.setHeader('Content-Type', 'application/json')` antes
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-salvando-usuarios-em-memoria-headers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-salvando-usuarios-em-memoria-headers/references/code-examples.md)

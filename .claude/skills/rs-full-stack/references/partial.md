@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-partial
-description: "Applies TypeScript Partial utility type when generating code that updates or patches objects. Use when user asks to 'update an object', 'patch entity', 'edit partial fields', 'make properties optional', or 'create update function'. Ensures Partial<T> is used instead of duplicating interfaces or marking fields optional manually. Make sure to use this skill whenever generating update/patch logic for typed objects. Not for creating new entities from scratch, form validation schemas, or Zod/class-validator definitions."
+description: "Applies TypeScript Partial utility type when generating code that updates or patches objects. Use when user asks to 'update an object', 'patch entity', 'edit partial fields', 'make properties optional', or 'create update function'. Ensures Partial of T is used instead of duplicating interfaces or marking fields optional manually. Make sure to use this skill whenever generating update/patch logic for typed objects. Not for creating new entities from scratch, form validation schemas, or Zod/class-validator definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript
+  tags: [typescript, partial, utility-types, update, tipagem]
 ---
 
 # TypeScript Partial
@@ -96,6 +102,15 @@ function updateUser(id: number, fields: Partial<User>) { /* ... */ }
 | Tornar campos opcionais na interface original | Manter original intacta + usar `Partial` |
 | `fields: any` em funcao de update | `fields: Partial<User>` |
 | Criar tipo manualmente com todos `?` | `Partial<T>` automatiza isso |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Partial<User>` permite objeto completamente vazio | Partial torna TUDO opcional, incluindo campos obrigatorios | Use `Partial<Pick<User, 'name' \| 'email'>>` para restringir campos atualizaveis |
+| Tipo original ficou com campos opcionais | Modificou a interface original ao inves de usar Partial | Mantenha a interface original intacta e use `Partial<T>` apenas no parametro |
+| Spread nao sobrescreve propriedade | Ordem do spread esta invertida | `{ ...existing, ...partial }` — o partial deve vir por ultimo |
+| Autocomplete nao mostra campos do Partial | IDE nao inferiu o tipo corretamente | Verifique se o tipo generico esta sendo passado: `Partial<User>` |
 
 ## Deep reference library
 

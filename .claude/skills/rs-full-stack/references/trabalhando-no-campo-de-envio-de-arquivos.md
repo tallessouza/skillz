@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-campo-envio-arquivos
 description: "Applies custom file upload drop zone patterns when styling HTML form file inputs. Use when user asks to 'style file upload', 'create drop zone', 'customize input file', 'hide file input', or 'inline SVG for color change'. Covers hidden input overlay, dashed border drop zones, inline SVG with CSS stroke control, and :has(:focus) accessibility patterns. Make sure to use this skill whenever building file upload UI in HTML/CSS. Not for JavaScript drag-and-drop logic, FormData handling, or server-side upload processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-formularios-avancado
+  tags: [html, css, file-upload, drop-zone, svg, accessibility, has-selector]
 ---
 
 # Campo de Envio de Arquivos — Drop Zone Customizada
@@ -123,6 +129,15 @@ input[type="date"]:focus-within {
 | JS para detectar foco no container | CSS `:has(:focus)` ou `:focus-within` |
 | Imagem diferente para cada estado (hover/focus) | SVG inline + CSS variables por estado |
 | Hover styles sem equivalente focus | Sempre duplicar hover com `:has(:focus)` para acessibilidade |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Input file nao responde ao clique | `display: none` em vez de `opacity: 0` | Use `opacity: 0` com `position: absolute` para manter clicavel |
+| Icone SVG nao muda cor em hover | Usando `<img>` em vez de SVG inline | Troque para SVG inline e controle cor via `stroke` ou `fill` no CSS |
+| Foco via teclado nao estiliza o container | Faltando seletor `:has(:focus)` | Adicione `.drop-area:has(input:focus)` no CSS |
+| Drop zone nao cobre area completa | Input sem `inset: 0` ou container sem `position: relative` | Garanta `position: relative` no container e `inset: 0` no input |
 
 ## Deep reference library
 

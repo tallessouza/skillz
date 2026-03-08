@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-scope
 description: "Enforces correct JavaScript variable scoping when writing code with var, let, or const. Use when user asks to 'declare a variable', 'fix scope issue', 'refactor var to let', 'debug undefined variable', or any JS/TS code generation. Applies rules: prefer let/const over var, respect block scope, avoid hoisting traps, never rely on var global scope. Make sure to use this skill whenever generating JavaScript or TypeScript code that declares variables. Not for CSS variables, environment variables, or shell scripting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "JavaScript Scope"
+  tags: ['javascript', 'scope', 'variables', 'let', 'const', 'hoisting']
 ---
 
 # Escopo de Variáveis em JavaScript
@@ -85,6 +91,15 @@ console.log(user) // "Rodrigo"
 | Usar variável antes de declarar | Declarar no topo do escopo onde será usada |
 | `var` dentro de `if`/`for` esperando escopo de bloco | `let` dentro de `if`/`for` |
 | Confiar que `var` dentro de `{}` fica contida | Usar `let` que garante escopo de bloco |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Variavel retorna `undefined` inesperadamente | `var` sofrendo hoisting — declaracao sobe mas valor nao | Substitua `var` por `let` ou `const` |
+| Variavel "vaza" de um bloco if/for | `var` tem escopo de funcao, nao de bloco | Use `let` que respeita escopo de bloco `{}` |
+| ReferenceError ao acessar variavel | `let`/`const` acessada antes da declaracao (temporal dead zone) | Declare a variavel antes de usa-la no mesmo escopo |
+| Variavel modificada inesperadamente | Escopo filho alterou variavel do escopo pai | Declare com `const` para impedir reatribuicao ou use `let` com escopo local |
 
 ## Deep reference library
 

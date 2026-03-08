@@ -1,6 +1,12 @@
 ---
-name: rs-devops-debugando-envio-de-logs
-description: "Applies OpenTelemetry log debugging workflow when troubleshooting observability pipelines. Use when user asks to 'debug logs', 'fix OpenTelemetry', 'logs not showing in Grafana', 'collector not receiving data', or 'troubleshoot observability'. Guides systematic diagnosis: check collector logs, enable DiagSetLog, configure exporter URL or OTEL_EXPORTER_OTLP_ENDPOINT env var. Make sure to use this skill whenever debugging log/metric delivery in OpenTelemetry pipelines. Not for application business logic debugging, frontend debugging, or general Node.js error handling."
+name: rs-devops-debugando-o-envio-de-logs
+description: "Applies systematic debugging approach for OpenTelemetry log pipeline issues with outside-in methodology. Use when user asks to 'debug logs not showing in Grafana', 'fix OTLP log export', 'troubleshoot collector connection', or 'configure OTEL_EXPORTER_OTLP_ENDPOINT'. Enforces outside-in debugging (collector first, then app), DiagSetLog usage, and environment variable configuration. Make sure to use this skill whenever troubleshooting missing logs in Grafana Loki or debugging OTLP collector connectivity. Not for metric debugging (use debugando-algumas-metricas-auto-instrumentadas) or trace issues."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-opentelemetry
+  tags: [opentelemetry, logs, debugging, grafana, loki, otlp, collector, diag]
 ---
 
 # Debugando o Envio de Logs para OpenTelemetry
@@ -9,96 +15,53 @@ description: "Applies OpenTelemetry log debugging workflow when troubleshooting 
 
 ## Rules
 
-1. **Evite conflitos de porta** — se Grafana usa 3000, coloque a API na 3001, porque dois servicos na mesma porta causam falhas silenciosas
-2. **Depure de fora para dentro** — verifique collector (`docker logs`) antes de mexer na aplicacao, porque o problema pode ser infraestrutura
-3. **Use DiagSetLog para debug do SDK** — a lib `@opentelemetry/api` tem `diag.setLogLevel` que mostra erros de envio do lado da aplicacao
-4. **Prefira variavel de ambiente ao hardcode** — `OTEL_EXPORTER_OTLP_ENDPOINT` remove responsabilidade da aplicacao e centraliza config no cluster
-5. **console.log nao e log estruturado** — OpenTelemetry precisa de formatacao minima para processar logs, console.log puro nao sera coletado
-6. **Verifique a porta 4318** — e a porta padrao HTTP do OTLP receiver no OpenTelemetry Collector
+1. **Evite conflitos de porta** — se Grafana usa 3000, coloque a API na 3001
+2. **Depure de fora para dentro** — verifique collector (`docker logs`) antes de mexer na aplicacao
+3. **Use DiagSetLog para debug do SDK** — `diag.setLogLevel` mostra erros de envio
+4. **Prefira variavel de ambiente ao hardcode** — `OTEL_EXPORTER_OTLP_ENDPOINT`
+5. **console.log nao e log estruturado** — OpenTelemetry precisa de formatacao minima
+6. **Verifique a porta 4318** — porta padrao HTTP do OTLP receiver
 
 ## Steps
 
-### Step 1: Verificar se o Collector esta recebendo dados
+### Verificar collector
 
 ```bash
-# Listar containers
 docker ps
-
-# Ver logs do collector (copie o ID do container)
 docker logs <container_id_otel_collector>
 ```
 
-Se o collector mostra apenas "ready" sem dados recebidos, o problema esta no envio da aplicacao.
-
-### Step 2: Habilitar debug no SDK OpenTelemetry
+### Habilitar debug no SDK
 
 ```typescript
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
-
-// Ativar logs de diagnostico do SDK
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 ```
 
-Procure erros como "connection refused on port 4318" — indica que a aplicacao nao alcanca o collector.
+### Configurar endpoint via env var (recomendado)
 
-### Step 3: Configurar endpoint do exporter
-
-**Opcao A — Via codigo (menos recomendado):**
-```typescript
-const exporter = new OTLPTraceExporter({
-  url: 'http://localhost:4318'
-});
-```
-
-**Opcao B — Via variavel de ambiente (recomendado):**
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 yarn run dev
 ```
 
-A lib do OpenTelemetry busca automaticamente essa variavel — nenhuma config no codigo necessaria.
-
-### Step 4: Verificar novamente o collector
-
-```bash
-docker logs <container_id_otel_collector>
-```
-
-Se ainda nao recebe dados, o problema e formatacao dos logs (console.log puro nao e processado).
-
-### Step 5: Estruturar os logs
-
-Console.log simples nao sera coletado. E necessario usar uma lib de logging estruturado (Winston, Pino) com formatacao compativel com OpenTelemetry.
-
 ## Heuristics
 
 | Situacao | Acao |
 |----------|------|
-| Logs nao aparecem no Grafana Loki | Comece verificando `docker logs` do collector |
-| Collector sem dados recebidos | Problema esta na aplicacao → habilite DiagSetLog |
-| Erro "connection refused 4318" | Verifique se collector esta expondo a porta no docker-compose |
-| Funciona local mas nao no cluster | Use `OTEL_EXPORTER_OTLP_ENDPOINT` como env var |
-| Collector recebe mas Grafana vazio | Verifique config do exporter no `otel-collector-config.yaml` |
+| Logs nao aparecem no Grafana Loki | Verifique `docker logs` do collector |
+| Erro "connection refused 4318" | Verifique se collector expoe a porta |
+| Funciona local mas nao no cluster | Use env var `OTEL_EXPORTER_OTLP_ENDPOINT` |
 | Porta 3000 ocupada | Grafana e API competindo — mude API para 3001 |
 
-## Anti-patterns
+## Troubleshooting
 
-| Nunca faca | Faca isto |
-|------------|-----------|
-| Hardcode URL do collector no codigo | Use `OTEL_EXPORTER_OTLP_ENDPOINT` env var |
-| Depurar a aplicacao sem checar o collector | `docker logs` do collector primeiro |
-| Enviar console.log puro como telemetria | Use logging estruturado (Winston/Pino) |
-| Usar mesma porta para API e Grafana | API em 3001, Grafana em 3000 |
-| Remover DiagSetLog antes de confirmar que funciona | Mantenha ate pipeline estavel |
+### Logs nao aparecem no Grafana Loki apos configurar OTLP
+**Symptom:** Aplicacao roda sem erros mas logs nao aparecem no Grafana
+**Cause:** Collector nao esta recebendo os logs — pode ser porta errada ou collector parado
+**Fix:** Rodar `docker logs <collector_container>` para verificar erros no collector antes de mexer na aplicacao
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-debugando-o-envio-de-logs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-debugando-o-envio-de-logs/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

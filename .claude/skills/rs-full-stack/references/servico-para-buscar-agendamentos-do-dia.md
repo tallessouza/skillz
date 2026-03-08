@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-servico-buscar-agendamentos
 description: "Applies fetch-and-filter pattern when building API service functions that retrieve and filter data by date. Use when user asks to 'fetch schedules', 'list appointments', 'filter by day', 'create a service to get data', or 'buscar agendamentos'. Enforces async/await with try/catch, response.json() conversion, and client-side filtering with dayjs. Make sure to use this skill whenever creating API fetch services that filter by date in JavaScript/React Native. Not for POST/create services, database queries, or backend route implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: frontend-api-integration
+  tags:
+    - javascript
+    - fetch
+    - async-await
+    - dayjs
+    - api-service
 ---
 
 # Servico de Busca com Filtro por Data
@@ -96,6 +107,15 @@ export async function scheduleFetchByDay(date) {
 | `function getData()` nome generico | `function scheduleFetchByDay(date)` nome descritivo |
 | fetch sem try/catch | Sempre envolva em try/catch com alert para o usuario |
 | `res.json()` sem await | `await response.json()` — json() retorna Promise |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fetch retorna `undefined` | Falta de `await` no `response.json()` | Adicione `await`: `const data = await response.json()` |
+| Filtro por dia retorna array vazio | Formato de data incompativel entre front e API | Use `dayjs(date).isSame(schedule.when, "day")` com granularidade correta |
+| CORS bloqueando a requisicao | API em dominio/porta diferente sem headers CORS | Configure CORS no backend ou use proxy |
+| Erro nao exibido ao usuario | `catch` sem feedback visual | Adicione `alert()` ou toast no bloco catch |
 
 ## Deep reference library
 

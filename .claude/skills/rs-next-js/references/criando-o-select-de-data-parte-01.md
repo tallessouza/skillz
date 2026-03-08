@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-select-data-01
 description: "Generates time slot selection logic for scheduling forms in Next.js applications. Use when user asks to 'create a time picker', 'generate time slots', 'build scheduling form', 'add hour selection', or 'validate appointment times'. Applies patterns: generate time options outside render cycle, 30-min interval slots, past-time validation with date-fns, Zod refine for cross-field validation. Make sure to use this skill whenever building booking or scheduling features with time selection. Not for date picker components, calendar views, or timezone conversion logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: time-slot-selection
+  tags: [next-js, time-slots, scheduling, zod-refine, date-fns, form-validation, padStart]
 ---
 
 # Select de Horarios para Agendamento
@@ -109,14 +115,19 @@ const schema = z.object({
 | Validacao de hora dentro do onChange | `.refine()` no schema Zod |
 | `minutes++` (incremento de 1) | `minutes += 30` (intervalo comercial) |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-01/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-01/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-01/references/deep-explanation.md) — O instrutor enfatiza: "ele pode ser criado só uma vez, a gente não precisa ficar recriando essas opç
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-01/references/code-examples.md) — function generateTimeOptions(): string[] {

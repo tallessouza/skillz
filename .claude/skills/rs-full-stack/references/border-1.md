@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-border-1
 description: "Applies CSS border property conventions when writing stylesheets. Use when user asks to 'add a border', 'style an element', 'write CSS', or 'create a component with borders'. Enforces shorthand usage, clockwise value ordering (top/right/bottom/left), and individual border targeting with border-top/bottom/left/right. Make sure to use this skill whenever generating CSS that involves borders or element outlines. Not for JavaScript logic, layout systems like flexbox/grid, or box-shadow."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, border, shorthand, styling, box-model]
 ---
 
 # CSS Border
@@ -104,13 +110,16 @@ description: "Applies CSS border property conventions when writing stylesheets. 
 | `border: none; border-bottom-style: solid; border-bottom-width: 1px;` | `border-bottom: 1px solid;` |
 | `border-width: 1px;` sem border-style | `border: 1px solid;` (style obrigatorio) |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Border not showing** | Ensure `border-style` is declared — without it, `border-width` and `border-color` have no effect. |
+| **Border on wrong side only** | Check for specificity conflicts — a later `border: none` may reset all sides. Use `border-bottom` for single-side borders. |
+| **Border adding unexpected width** | Switch to `box-sizing: border-box` so border width is included in the element's declared width. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre shorthands, hierarquia de propriedades e sentido horario
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-border-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-border-1/references/code-examples.md)

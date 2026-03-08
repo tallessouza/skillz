@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-design-figma
-description: "Guides Figma setup and project duplication workflow for development teams. Use when user asks to 'setup Figma', 'duplicate a Figma project', 'configure design tools', or 'prepare design environment'. Covers account creation, project duplication, and file organization. Make sure to use this skill whenever setting up a new project's design workflow. Not for creating designs, prototyping, or advanced Figma features like components or auto-layout."
+description: "Configures Figma setup and project duplication workflow for development teams. Use when user asks to 'setup Figma', 'duplicate a Figma project', 'configure design tools', or 'prepare design environment'. Covers account creation, project duplication, and file organization. Make sure to use this skill whenever setting up a new project's design workflow. Not for creating designs, prototyping, or advanced Figma features like components or auto-layout."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: developer-tools
+  tags: [Figma, design, setup, project-duplication, workflow]
 ---
 
 # Design - Figma: Setup e Duplicação de Projetos
@@ -57,13 +63,16 @@ Seus Arquivos/
 - [ ] Consegue selecionar e mover elementos no projeto duplicado
 - [ ] Alterações são salvas automaticamente
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Projeto nao aparece apos duplicar | Pagina nao recarregou | Recarregue a pagina de "Seus arquivos" |
+| Nao consigo editar elementos | Abriu o projeto original, nao a copia | Feche e abra a copia em "Seus arquivos" |
+| Login com Google falha | Problema temporario do provedor | Tente criar conta com email/senha diretamente |
+| Projeto duplicado perdeu assets | Assets de time nao sao copiados | Exporte manualmente os assets necessarios |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre o papel do Figma no fluxo de desenvolvimento
 - [code-examples.md](references/code-examples.md) — Exemplos práticos de uso do Figma em projetos full-stack
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-design-figma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-design-figma/references/code-examples.md)

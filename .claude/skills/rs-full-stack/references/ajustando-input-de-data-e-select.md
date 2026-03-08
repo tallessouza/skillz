@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ajustando-input-data-select
 description: "Applies cross-browser styling techniques for date inputs and select dropdowns in HTML forms. Use when user asks to 'style a date picker', 'customize select arrow', 'cross-browser form styling', 'replace calendar icon', or 'style form inputs'. Covers pseudo-element replacement, opacity trick for native pickers, CSS calc positioning, and vertical centering with translate. Make sure to use this skill whenever styling native HTML date or select inputs. Not for JavaScript date picker libraries, custom dropdown components, or form validation logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, forms, date-input, select, cross-browser]
 ---
 
 # Estilizando Inputs de Data e Select
@@ -109,13 +115,16 @@ select {
 | Estilizar apenas `::-webkit-calendar-picker-indicator` | Esconder webkit + usar `::before` para cross-browser |
 | `right: 16px` para posicionar icone | `right: 1rem` para consistencia com rem |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Ícone customizado não aparece no Safari | Usou apenas `::-webkit-calendar-picker-indicator` | Use pseudo-elemento `::before` como alternativa cross-browser |
+| Calendário nativo não abre ao clicar | Usou `display: none` no picker indicator | Use `opacity: 0` para esconder mantendo funcionalidade |
+| Ícone descentralizado verticalmente | Faltou `transform: translateY(-50%)` com `top: 50%` | Combine ambas as propriedades no pseudo-elemento |
+| Seta do select não some | Faltou `appearance: none` | Adicione `appearance: none` antes do background-image |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cross-browser, analogia do top 50%, e edge cases Safari vs Edge
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-ajustando-input-de-data-e-select/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-ajustando-input-de-data-e-select/references/code-examples.md)

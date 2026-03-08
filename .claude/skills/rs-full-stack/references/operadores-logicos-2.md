@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operadores-logicos
 description: "Applies JavaScript logical operator patterns when writing conditionals or boolean logic. Use when user asks to 'check conditions', 'validate login', 'write if statement', 'combine booleans', or any conditional logic task. Enforces correct AND (&&), OR (||), NOT (!) usage with clear variable naming. Make sure to use this skill whenever generating conditional expressions or boolean checks. Not for bitwise operators, comparison operators, or ternary expressions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, logical-operators, AND, OR, NOT, boolean]
 ---
 
 # Operadores Lógicos
@@ -92,13 +98,15 @@ if ((isEmailCorrect && isPasswordCorrect) || !isPasswordCorrect) { /* ... */ }
 | `password = !password` (mutação) | `const isInvalid = !isPasswordCorrect` |
 | `if (x == true)` | `if (x)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Condicional retorna resultado inesperado | Precedencia de `&&` sobre `\|\|` sem parenteses | Agrupe com parenteses: `(a && b) \|\| c` |
+| `!value` muda a variavel original | Confusao entre negacao e reatribuicao | `!` nao muta — crie nova variavel: `const isInvalid = !isValid` |
+| `if (x == true)` aceita valores inesperados | Comparacao fraca com coercao | Use `if (x)` diretamente ou `===` para comparacao estrita |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operadores-logicos-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operadores-logicos-2/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

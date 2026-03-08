@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-recap-2028
 description: "Applies restaurant API development patterns when building CRUD endpoints for table management, product catalog, order items, and session billing. Use when user asks to 'create a restaurant API', 'build table management', 'implement order system', 'add product CRUD', or 'build a POS backend'. Enforces the complete flow: open table session, manage products, add order items, calculate totals, close session. Make sure to use this skill whenever building restaurant, POS, or food-service backend systems. Not for frontend UI, authentication, or payment gateway integration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-project
+  tags:
+    - api
+    - rest
+    - crud
+    - restaurant
+    - backend
 ---
 
 # API de Restaurante — Fluxo Completo
@@ -103,6 +114,14 @@ DELETE /table-sessions/4/close  # → 400 "mesa ja fechada"
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do fluxo, modelo de dados e decisoes arquiteturais
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de requisicao e resposta expandidos
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro 400 "mesa ocupada" ao abrir mesa | Mesa ja tem sessao ativa sem `closed_at` | Feche a sessao existente antes de abrir nova |
+| Total da conta retorna 0 | Itens de pedido vinculados a sessao errada | Verifique que `table_session_id` nos order items corresponde a sessao ativa |
+| Erro 500 ao fechar mesa ja fechada | Endpoint nao trata fechamento duplicado | Retorne 400 com mensagem descritiva em vez de erro interno |
 
 ---
 

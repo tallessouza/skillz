@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-calculando-total-conta
 description: "Applies patterns for calculating order totals using Knex raw SQL with SUM, COALESCE, and incremental validation. Use when user asks to 'calculate totals', 'sum order prices', 'build invoice endpoint', 'create billing summary', or 'handle null aggregations'. Enforces step-by-step development with intermediate testing, raw SQL for aggregations, and COALESCE for null safety. Make sure to use this skill whenever building endpoints that aggregate monetary values or quantities. Not for frontend display logic, payment gateway integration, or ORM-only queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sql, knex, aggregation, coalesce, sum, express, api]
 ---
 
 # Calculando o Total da Conta
@@ -90,13 +96,17 @@ const order = await knex("orders")
 | Reduce no JS para totais de banco | SUM no SQL via knex.raw |
 | Retornar `null` para pedido vazio | Retornar `0` via COALESCE |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SUM retorna `null` em vez de `0` | Nenhum registro encontra o WHERE | Envolva com `COALESCE(SUM(...), 0)` |
+| Total retorna valor incorreto | Calculo `price * quantity` errado ou campo errado | Verifique nomes das colunas e faca teste de mesa manual |
+| Endpoint retorna `undefined` | `.first()` ausente na query | Adicione `.first()` para retornar objeto unico |
+| Erro `knex.raw is not a function` | Instancia do knex nao importada corretamente | Verifique o import do knex configurado |
+| Rota nao encontrada (404) | Parametro de rota com nome errado | Confira se `:table_session_id` bate com `request.params` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre desenvolvimento em etapas, teste de mesa, e COALESCE
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-calculando-o-total-da-conta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-calculando-o-total-da-conta/references/code-examples.md)

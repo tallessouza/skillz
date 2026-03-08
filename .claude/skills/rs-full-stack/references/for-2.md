@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-for-2
 description: "Applies JavaScript for loop patterns when writing iteration code. Use when user asks to 'loop through', 'iterate over', 'repeat N times', 'create a for loop', or 'automate repetitive code'. Enforces clear control variable naming, proper structure (init; condition; increment), and replacing duplicated code with loops. Make sure to use this skill whenever generating repetitive sequential code or explaining loop mechanics. Not for array methods like map/filter/reduce, while loops, or for...of/for...in patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-loops
+  tags: [javascript, for-loop, iteration, control-flow]
 ---
 
 # Loop For em JavaScript
@@ -77,13 +83,16 @@ for (let multiplier = 0; multiplier <= 10; multiplier++) {
 | Valor magico dentro do loop | Variavel extraida antes do loop |
 | Virgula separando partes do for | Ponto e virgula: `init; condition; increment` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Loop infinito trava o navegador | Condicao nunca se torna falsa (ex: falta incremento) | Verifique que a condicao converge para false e o incremento esta correto |
+| Loop executa uma vez a menos | Condicao usa `<` quando deveria usar `<=` | Ajuste o operador: `<=` para limite inclusivo, `<` para exclusivo |
+| Variavel de controle acessada fora do loop | Declarou com `var` em vez de `let` | Use `let` no `for` para escopo de bloco |
+| Primeiro valor do loop esta errado | Valor inicial da variavel de controle incorreto | Verifique o primeiro parametro do `for` (init) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ordem de execucao, semantica da condicao e anatomia do for
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-for-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-for-2/references/code-examples.md)

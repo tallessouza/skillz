@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-docker-hub
-description: "Guides Docker Hub image discovery when setting up containers. Use when user asks to 'find a docker image', 'choose a base image', 'create a container', 'pick a node image', or 'search docker hub'. Applies rules: prefer official images, check vulnerability reports, use specific version tags, prefer Alpine variants. Make sure to use this skill whenever selecting Docker images for containers or Dockerfiles. Not for writing Dockerfiles, docker-compose, or container orchestration."
+description: "Navigates Docker Hub image discovery when setting up containers. Use when user asks to 'find a docker image', 'choose a base image', 'create a container', 'pick a node image', or 'search docker hub'. Applies rules: prefer official images, check vulnerability reports, use specific version tags, prefer Alpine variants. Make sure to use this skill whenever selecting Docker images for containers or Dockerfiles. Not for writing Dockerfiles, docker-compose, or container orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker-hub, docker-images, alpine, official-images, container, version-tags]
 ---
 
 # Docker Hub — Descoberta de Imagens
@@ -56,13 +62,16 @@ FROM python:3.12-slim
 | Ignorar vulnerabilidades listadas | Verificar aba de vulnerabilidades antes de adotar |
 | Escolher imagem sem checar tamanho | Comparar variantes (alpine < slim < full) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Build quebra com dependencia nativa em Alpine | musl vs glibc incompatibilidade | Usar variante `-slim` em vez de `-alpine` |
+| Imagem com vulnerabilidades criticas | Versao desatualizada da imagem base | Atualizar para versao mais recente e verificar aba de vulnerabilidades |
+| `docker pull` falha com "not found" | Tag inexistente ou nome incorreto | Verificar tags disponiveis na pagina da imagem no Docker Hub |
+| Imagem muito grande (>1GB) | Usando variante full em vez de Alpine/slim | Trocar para `{imagem}:{versao}-alpine` ou `-slim` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha de imagens e o ecossistema Docker Hub
 - [code-examples.md](references/code-examples.md) — Exemplos de selecao de imagens para diferentes cenarios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-docker-hub/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-docker-hub/references/code-examples.md)

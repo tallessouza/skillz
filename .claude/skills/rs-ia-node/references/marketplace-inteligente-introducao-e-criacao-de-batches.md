@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-batch-api
 description: "Applies OpenAI Batch API patterns when processing bulk AI requests in Node.js. Use when user asks to 'process in bulk', 'batch embeddings', 'batch requests to OpenAI', 'process multiple products', or 'use Batch API'. Covers JSONL file creation, file upload, batch creation, and async processing. Make sure to use this skill whenever user needs to send many OpenAI requests at once instead of one-by-one. Not for single synchronous requests, streaming responses, or real-time user-facing interactions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: batch-api
+  tags: [embeddings, batch-api, async-processing, node-js, openai, ia-node]
 ---
 
 # OpenAI Batch API — Processamento em Massa
@@ -100,14 +106,14 @@ await saveBatchId(batch.id);
 | Esperar resposta sincrona do batch | Implementar polling ou verificacao posterior |
 | Hardcodar completion_window diferente de "24h" | Usar "24h" (unico valor aceito) |
 
+## Troubleshooting
+
+### Batch API retorna status mas sem resultados
+**Symptom:** Batch status e `completed` mas output_file_id esta undefined
+**Cause:** Batch pode ter falhado silenciosamente ou ainda estar processando
+**Fix:** Verifique `batch.errors` para diagnostico. Confirme que `status === 'completed'` E `output_file_id` existe antes de processar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-e-criacao-de-batches/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-e-criacao-de-batches/references/code-examples.md)

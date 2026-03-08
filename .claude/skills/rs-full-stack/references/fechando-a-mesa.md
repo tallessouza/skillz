@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fechando-a-mesa
 description: "Applies table session closing pattern with Knex when building restaurant API endpoints. Use when user asks to 'close a session', 'update status to closed', 'implement checkout endpoint', or 'close a table'. Enforces existence check, already-closed guard, and filtered update with knex.fn.now(). Make sure to use this skill whenever implementing session/table closing logic in Node.js APIs with Knex. Not for opening sessions, listing sessions, or frontend table management UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-api
+  tags: [knex, api, session, guard-clause, update, timestamp]
 ---
 
 # Fechando a Mesa (Session Close Endpoint)
@@ -98,13 +104,16 @@ app.patch("/sessions/:id/close", async (req, res) => {
 | Update sem verificar existencia | `.first()` + check + update |
 | Permitir fechar sessao ja fechada | Guard clause com `session.closedAt` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Update afeta todos os registros | `.where({ id })` ausente no update | Sempre adicionar `.where({ id })` antes de executar update |
+| `closedAt` com timezone errado | Uso de `new Date()` no JS em vez do banco | Usar `knex.fn.now()` para timestamp consistente com o servidor |
+| Sessao fechada pode ser fechada novamente | Guard clause ausente | Verificar `if (session.closedAt)` antes do update |
+| Erro silencioso quando sessao nao existe | Falta verificacao de existencia | Usar `.first()` e checar `if (!session)` antes de operar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre validacoes e ordenacao por closedAt
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fechando-a-mesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fechando-a-mesa/references/code-examples.md)

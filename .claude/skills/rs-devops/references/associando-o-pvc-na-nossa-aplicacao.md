@@ -1,6 +1,12 @@
 ---
 name: rs-devops-associando-pvc-aplicacao
 description: "Applies Kubernetes Persistent Volume Claim (PVC) mounting patterns when configuring deployments with persistent storage. Use when user asks to 'mount a volume', 'persist data in k8s', 'configure PVC in deployment', 'add storage to pod', or 'keep files after pod restart'. Ensures correct volumeMounts and volumes configuration in deployment manifests. Make sure to use this skill whenever writing or modifying Kubernetes deployments that need persistent storage. Not for StorageClass creation, PV provisioning, or StatefulSet configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-storage
+  tags: [kubernetes, github-actions, ci-cd, storage]
 ---
 
 # Associando PVC na Aplicação Kubernetes
@@ -154,14 +160,14 @@ kubectl delete pod <pod> -n <ns>
 kubectl exec -it <novo-pod> -n <ns> -- cat /usr/source/app/uploads/test.txt
 ```
 
+## Troubleshooting
+
+### Pod falha ao montar PVC com erro de volume not found
+**Symptom:** Pod fica em Pending com evento de volume nao encontrado
+**Cause:** O name em volumeMounts nao corresponde ao name em volumes, ou o PVC referenciado nao existe
+**Fix:** Verifique que `volumeMounts[].name` e `volumes[].name` sao identicos e que o PVC esta Bound com `kubectl get pvc -n <ns>`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-associando-o-pvc-na-nossa-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-associando-o-pvc-na-nossa-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-associando-o-pvc-na-nossa-aplicacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-associando-o-pvc-na-nossa-aplicacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

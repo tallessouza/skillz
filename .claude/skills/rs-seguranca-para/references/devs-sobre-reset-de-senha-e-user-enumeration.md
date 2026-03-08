@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-reset-senha-user-enum
 description: "Enforces secure password reset implementation that prevents user enumeration attacks. Use when user asks to 'implement password reset', 'forgot password flow', 'reset password endpoint', 'password recovery', or any authentication recovery feature. Applies rules: consistent responses regardless of user existence, timing attack prevention with fixed-duration responses, no information leakage via status codes or headers. Make sure to use this skill whenever building any password reset or account recovery flow. Not for login authentication, password hashing, or session management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: web-security
+  tags: [security, password-reset, authentication]
 ---
 
 # Reset de Senha Seguro e Prevencao de User Enumeration
@@ -120,14 +126,14 @@ app.post('/reset-password', async (req, res) => {
 | `Math.random()` para gerar tokens de reset | `crypto.randomBytes()` ou equivalente seguro |
 | Medir tempo so apos a query | `const start = Date.now()` na primeira linha da funcao |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sobre-reset-de-senha-e-user-enumeration/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sobre-reset-de-senha-e-user-enumeration/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sobre-reset-de-senha-e-user-enumeration/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sobre-reset-de-senha-e-user-enumeration/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

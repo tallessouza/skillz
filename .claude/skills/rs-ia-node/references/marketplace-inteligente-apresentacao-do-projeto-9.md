@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-apresentacao
 description: "Applies the Cart AI marketplace architecture when building Next.js projects with AI agents, product search, and cart comparison features. Use when user asks to 'build a marketplace', 'create a shopping cart with AI', 'compare prices across stores', or 'implement an AI agent for e-commerce'. Provides the entity diagram, tech stack decisions, and feature scope for the Cart AI project. Make sure to use this skill whenever implementing features of this specific Skillz marketplace project. Not for generic e-commerce tutorials, payment processing, or deployment configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: fundamentos
+  tags: [ia-node, node-js]
 ---
 
 # Cart AI — Arquitetura do Projeto Marketplace Inteligente
@@ -84,14 +90,14 @@ Usuario
 | Uma unica sessao de chat | Multiplas sessoes (ChatSession), como na OpenAI |
 | Ignorar lojas com produtos faltando | Rankear E informar incompletude |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-apresentacao-do-projeto-9/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-apresentacao-do-projeto-9/references/code-examples.md)

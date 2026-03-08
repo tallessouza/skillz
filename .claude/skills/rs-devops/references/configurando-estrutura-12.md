@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-estrutura-12
 description: "Configures Semantic Release in GitHub Actions CI/CD pipelines for automated versioning. Use when user asks to 'setup semantic release', 'automate versioning', 'configure release pipeline', 'add changelog generation', or 'setup semver in CI'. Applies semver conventions, .releaserc configuration, GitHub token scoping, and plugin installation. Make sure to use this skill whenever setting up automated release workflows in Node.js projects. Not for manual versioning, npm publishing, or Docker image tagging."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-semantic-release
+  tags: [github-actions, ci-cd, semantic-release, semver, changelog]
 ---
 
 # Semantic Release — Configuracao na Pipeline
@@ -91,14 +97,14 @@ Version no package.json, CHANGELOG.md e GitHub Release atualizados automaticamen
 | Release de qualquer branch | Restrinja a `["main"]` no .releaserc |
 | Incluir NPM_TOKEN sem publicar | Omita se nao publica no npm registry |
 
+## Troubleshooting
+
+### Semantic Release nao cria release no GitHub
+**Symptom:** Pipeline roda sem erros mas nenhuma release ou tag e criada
+**Cause:** Token GH_TOKEN nao tem permissoes suficientes ou commits nao seguem conventional commits (feat:, fix:)
+**Fix:** Verifique se o token tem escopo contents(rw) e issues(rw), e que os commits seguem o padrao conventional commits
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-estrutura-12/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-estrutura-12/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-estrutura-12/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-estrutura-12/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

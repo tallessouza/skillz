@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-transition-03
 description: "Enforces correct CSS transition patterns including shorthand syntax, element placement, and accessibility. Use when user asks to 'add transition', 'animate on hover', 'css animation', 'smooth effect', or 'transition not working'. Applies rules: transition on element not trigger, prefers-reduced-motion, shorthand order, entry/exit differentiation. Make sure to use this skill whenever writing CSS transitions or debugging transition issues. Not for JavaScript animations, CSS @keyframes, or SVG animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animacoes
+  tags: [css, transition, shorthand, accessibility, prefers-reduced-motion, placement]
 ---
 
 # CSS Transition — Shorthand, Placement & Accessibility
@@ -113,13 +119,16 @@ description: "Enforces correct CSS transition patterns including shorthand synta
 | `transition: all 400ms 2s` sem entender que 2s e delay | Documentar com comentario: `/* 400ms duracao, 2s delay */` |
 | Propriedades separadas quando shorthand resolve | `transition: all 400ms ease` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Transicao so anima na entrada, saida e abrupta | `transition` declarada apenas no `:hover` | Mova `transition` para o seletor base do elemento |
+| Segundo valor numerico interpretado errado | CSS interpreta segundo numero como delay, nao duracao | Ordem: `transition: propriedade duracao delay timing` |
+| Propriedade nao anima com transition | Nem toda propriedade CSS e animavel | Consulte MDN para verificar se a propriedade suporta transicao |
+| Usuarios com sensibilidade a movimento reclamam | Falta `prefers-reduced-motion` | Adicione `@media (prefers-reduced-motion: reduce) { transition: none }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre placement, shorthand parsing e acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-transition-03/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-transition-03/references/code-examples.md)

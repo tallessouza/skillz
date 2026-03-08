@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-gerando-sugestoes-carrinhos
 description: "Applies AI-powered cart suggestion patterns when building marketplace or e-commerce features with LLM integration in Node.js. Use when user asks to 'generate cart suggestions', 'suggest products by store', 'build AI shopping cart', 'create marketplace assistant', or 'score product recommendations'. Enforces structured LLM output with Zod schemas, store-grouped cart generation, scoring systems, and message-cart linking. Make sure to use this skill whenever implementing AI-driven product suggestion or cart creation flows. Not for simple CRUD carts, payment processing, or non-AI product listing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, ia-node, node-js, zod]
 ---
 
 # Gerando Sugestoes de Carrinhos com IA
@@ -133,14 +139,14 @@ const populated = await populateMessages(messages);
 | Retornar mensagens sem popular carrinhos | Verifique `messageType` e faca join quando necessario |
 | Stringify produtos sem formatacao | `JSON.stringify(products, null, 2)` para legibilidade do LLM |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gerando-sugestoes-de-carrinhos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gerando-sugestoes-de-carrinhos/references/code-examples.md)

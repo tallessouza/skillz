@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-setup-openai-msg-pt2
 description: "Applies chat message flow with LLM action detection and persistence pattern when building Node.js AI chat features. Use when user asks to 'handle chat messages', 'save LLM actions', 'link actions to messages', 'build AI cart', or 'integrate OpenAI responses with database'. Covers message history passing, action extraction from LLM output, action persistence with JSON payload, and left join retrieval. Make sure to use this skill whenever implementing chat-to-action pipelines with OpenAI. Not for frontend rendering, payment processing, or embedding/vector search."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: chat
+  tags: [node-js, function-calling, responses-api, openai, ia-node]
 ---
 
 # Chat Message Flow com Detecção e Persistência de Ações
@@ -124,14 +130,14 @@ if (response.action?.type === "suggest_cart") {
 | INNER JOIN mensagens com ações | LEFT JOIN — nem toda mensagem tem ação |
 | Ignorar output_parsed e logar response inteiro | Logar `output_parsed` quando disponível, response completo só como fallback |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-open-ai-e-respondendo-mensagens-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-open-ai-e-respondendo-mensagens-parte-2/references/code-examples.md)

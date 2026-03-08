@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-loading-da-home
 description: "Applies Next.js loading page patterns with skeleton screens when user asks to 'create loading state', 'add skeleton', 'loading page', 'shimmer effect', or 'improve perceived performance'. Enforces skeleton component architecture with tailwind-merge for class composition and proper Tailwind config extension. Make sure to use this skill whenever creating loading states in Next.js App Router projects. Not for API loading states, React Suspense boundaries configuration, or spinner/toast implementations."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, loading-state, skeleton-screen, tailwind-merge, animate-pulse, app-router]
 ---
 
 # Loading com Skeleton Screens no Next.js App Router
@@ -107,14 +114,19 @@ export default function HomeLoading() {
 | `<p>Carregando...</p>` como loading | `<Skeleton className="h-[860px]" />` matching layout real |
 | Spinner centralizado na tela | Skeleton screens replicando estrutura do conteudo |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-loading-da-home/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-loading-da-home/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-loading-da-home/references/deep-explanation.md) — O instrutor explica que um simples "Carregando..." ou spinner no meio da tela "fica muito feio". A p
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-loading-da-home/references/code-examples.md) — // app/api/products/featured/route.ts

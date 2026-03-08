@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-batch-embeddings
 description: "Applies batch embedding patterns when generating vector embeddings with OpenAI Batch API and storing in database. Use when user asks to 'embed products', 'generate embeddings in batch', 'process embeddings', 'store vectors in database', or 'batch API OpenAI'. Covers chunking strategy, batch lifecycle management, and persistence. Make sure to use this skill whenever implementing embedding pipelines with OpenAI Batch API. Not for real-time single-embedding generation, semantic search queries, or RAG retrieval logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: projeto-final
+  tags: [embeddings, node-js, function-calling, openai, ia-node]
 ---
 
 # Batch Embeddings com OpenAI API
@@ -118,14 +124,14 @@ if (result.status === "completed") {
 | Processar 1M de uma vez | Dividir em chunks que cabem na memoria |
 | Descartar resultados do batch | Persistir embeddings no banco |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-conclusao-26/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-conclusao-26/references/code-examples.md)

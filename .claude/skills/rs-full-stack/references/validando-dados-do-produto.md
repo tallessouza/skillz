@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-validando-dados-do-produto
 description: "Enforces Zod validation patterns for API request bodies in Node.js/Express routes. Use when user asks to 'validate request', 'create API route', 'add validation', 'create endpoint', or 'validate input data'. Applies body schema with z.object(), parse for extraction, string trim/min, number gt, and proper error propagation. Make sure to use this skill whenever creating POST/PUT/PATCH endpoints that receive JSON body data. Not for frontend form validation, database schema validation, or environment variable validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-validation
+  tags: [zod, validation, api, schema-validation, express]
 ---
 
 # Validacao de Dados com Zod em Rotas API
@@ -105,6 +111,14 @@ async create(request: Request, response: Response, next: NextFunction) {
 | Validacao espalhada dentro da logica de negocio | Schema declarado antes do handler |
 | `z.number().min(1)` para "maior que zero" | `z.number().gt(0)` — semanticamente correto |
 | Mensagem custom redundante com a padrao | Confie na mensagem padrao do Zod |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Zod lança erro 500 em vez de 400 | Erro do Zod não está sendo capturado pelo error handler | Envolva em try/catch e use `next(error)` para propagar ao middleware de erro |
+| `z.number().gt(0)` aceita strings numéricas | Body vem como string do JSON e não é convertido | Use `z.coerce.number().gt(0)` para converter automaticamente |
+| Mensagem de erro do Zod pouco clara | Mensagem padrão não descreve o campo | Passe mensagem customizada: `z.string().min(6, { message: "Nome precisa ter 6+ chars" })` |
 
 ## Deep reference library
 

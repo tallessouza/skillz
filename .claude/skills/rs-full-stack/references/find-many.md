@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-find-many
 description: "Applies Prisma findMany pattern when listing database records in Node.js APIs. Use when user asks to 'list records', 'get all users', 'fetch items', 'query multiple rows', or 'create a GET endpoint'. Ensures correct async/await usage with Prisma Client findMany method and proper JSON response structure. Make sure to use this skill whenever generating list/index endpoints with Prisma ORM. Not for single record queries (findUnique/findFirst), filtering, or raw SQL."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, findMany, database, rest-api, node-js]
 ---
 
 # Prisma findMany — Listagem de Registros
@@ -72,13 +78,16 @@ app.get('/users', async (request, reply) => {
 | `return reply.send(users)` (array direto) | `return reply.send({ users })` (objeto) |
 | `SELECT * FROM users` com query raw | `prisma.user.findMany()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `findMany` retorna Promise em vez de dados | Falta `await` na chamada | Adicione `await` antes de `prisma.model.findMany()` |
+| Resposta retorna array vazio | Tabela esta vazia ou model name esta incorreto | Verifique o nome do model no `schema.prisma` e se existem registros |
+| Erro `PrismaClientKnownRequestError` | Conexao com banco falhou ou tabela nao existe | Rode `npx prisma migrate dev` e verifique a URL do banco |
+| Dados retornados sem wrapper de objeto | Retornou `reply.send(users)` em vez de `reply.send({ users })` | Envolva o resultado em um objeto antes de enviar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ORM vs SQL e vantagens do findMany
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-find-many/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-find-many/references/code-examples.md)

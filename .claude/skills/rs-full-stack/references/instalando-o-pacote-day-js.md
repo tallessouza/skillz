@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-pacote-day-js
 description: "Applies day.js setup and locale configuration when adding date/time handling to JavaScript projects. Use when user asks to 'add date library', 'configure dayjs', 'setup date formatting', 'handle dates in Portuguese', or 'install dayjs'. Ensures correct locale import, centralized config in libs folder, and main.js entry point import. Make sure to use this skill whenever setting up day.js in a new project. Not for moment.js, date-fns, or native Date API usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: dayjs-setup
+  tags: [dayjs, date, locale, javascript, libs]
 ---
 
 # Configuracao do Day.js
@@ -78,13 +84,16 @@ console.log(dayjs().format("DD/MM/YYYY HH:mm"))
 | Importar config sem extensao `./libs/dayjs` | Usar extensao explicita `./libs/dayjs.js` |
 | Misturar configs de build com configs de runtime na mesma pasta | `libs/` para runtime, raiz para build tools |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Datas exibidas em ingles | Locale nao configurado | Importar `dayjs/locale/pt-br` e chamar `dayjs.locale("pt-br")` |
+| Config nao aplica em toda a app | Import da config ausente no entry point | Adicionar `import "./libs/dayjs.js"` no main.js |
+| Bundler nao resolve o import | Extensao do arquivo ausente no import | Usar extensao explicita: `./libs/dayjs.js` |
+| Plugin nao funciona (ex: relativeTime) | Plugin nao registrado | Importar e registrar com `dayjs.extend(plugin)` no arquivo de config |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao de libs e locale
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-pacote-day-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-pacote-day-js/references/code-examples.md)

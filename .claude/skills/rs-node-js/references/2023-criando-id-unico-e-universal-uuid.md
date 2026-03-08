@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-uuid
-description: "Enforces usage of Node.js native crypto.randomUUID() for generating unique identifiers. Use when user asks to 'create an id', 'generate unique identifier', 'add id to entity', or creates database records needing IDs. Applies rule: always use crypto.randomUUID() over Math.random() or incremental IDs. Make sure to use this skill whenever generating IDs in Node.js server code. Not for frontend-only ID generation, database auto-increment configuration, or ORM-managed IDs."
+name: 2023-criando-id-unico-e-universal-uuid
+description: "Generates unique identifiers using Node.js native crypto.randomUUID() instead of external libraries or incremental IDs. Use when user asks to 'generate unique IDs', 'create UUIDs', 'assign IDs to entities', or 'replace Math.random for identifiers'. Enforces: use crypto.randomUUID() from node:crypto, never Math.random() or incremental counters for IDs. Make sure to use this skill whenever creating entities or records that need unique identifiers in Node.js. Not for database auto-increment IDs, short URL slugs, or browser-side ID generation."
+category: coding-lens
+tags: [entities, uuid]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos
+  tags: [uuid, crypto, randomUUID, entities, node-js, identifiers]
 ---
 
 # Criando ID Unico e Universal (UUID)
@@ -77,14 +86,14 @@ users.push({ id: randomUUID(), name, email })
 | `id: users.length + 1` | `id: randomUUID()` |
 | `import { v4 } from 'uuid'` (sem necessidade) | `import { randomUUID } from 'node:crypto'` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-id-unico-e-universal-uuid/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-id-unico-e-universal-uuid/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

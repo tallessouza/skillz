@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-separando-horarios-periodo
 description: "Applies time-period grouping pattern when rendering scheduled time slots in UI. Use when user asks to 'group by period', 'separate morning afternoon night', 'add section headers to list', 'organize time slots', or builds any scheduling/booking interface. Enforces dynamic header insertion before list items based on hour thresholds. Make sure to use this skill whenever building appointment or scheduling UIs with time grouping. Not for date pickers, calendar grids, or backend time logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: frontend-project
+  tags:
+    - javascript
+    - dom
+    - scheduling
+    - ui-patterns
+    - time-grouping
 ---
 
 # Separando Horarios por Periodo
@@ -87,6 +98,15 @@ availableHours.forEach((hour) => {
 | Esconder horarios indisponiveis com `display:none` | Mostrar com estilo visual de bloqueado (cursor, opacity) |
 | Bloquear clique via JS para indisponiveis | Usar CSS `pointer-events` e `cursor: not-allowed` |
 | Criar 3 listas separadas (manha/tarde/noite) | Usar uma unica lista com cabecalhos intercalados |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Cabecalho de periodo aparece sem itens abaixo | Horarios do periodo nao existem nos dados | Verifique se ha itens no periodo antes de inserir cabecalho |
+| Cabecalho aparece duplicado | Loop re-renderiza sem limpar a lista antes | Limpe `hoursList.innerHTML = ""` antes do loop |
+| Horarios passados ainda clicaveis | Classe `unavailable` nao aplicada ou CSS faltando | Verifique condicao `hour <= currentHour` e estilos CSS |
+| Periodos fora de ordem | Dados de horarios nao estao ordenados | Ordene o array antes de iterar: `hours.sort((a,b) => a - b)` |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-const
 description: "Enforces correct usage of const declarations in JavaScript/TypeScript code. Use when user asks to 'declare a variable', 'create a constant', 'store a value', or any code that involves variable declarations. Applies rules: use const by default, only use let when reassignment is needed, never use var. Make sure to use this skill whenever generating variable declarations, even if the user doesn't mention const. Not for variable naming conventions, scoping rules, or hoisting behavior."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, const, let, var, variables, declarations]
 ---
 
 # Const — Declarações com Valor Fixo
@@ -85,13 +91,16 @@ let i = 0
 | `let x = getValue()` (sem reatribuição depois) | `const x = getValue()` |
 | `let items = []` seguido apenas de `.push()` | `const items = []` seguido de `.push()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeError: Assignment to constant variable | Tentando reatribuir valor a uma `const` | Use `let` se a variavel precisa ser reatribuida |
+| SyntaxError: Missing initializer in const | `const` declarada sem valor inicial | Sempre inicialize na declaracao: `const x = valor` |
+| Objeto const permite alteracao de propriedades | `const` protege a referencia, nao o conteudo | Isso e comportamento correto — use `Object.freeze()` se precisar congelar conteudo |
+| Linter reclama de `let` sem reatribuicao | Variavel declarada com `let` nunca e reatribuida | Troque para `const` — `let` so quando houver reatribuicao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre const vs let vs var, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-const/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-const/references/code-examples.md)

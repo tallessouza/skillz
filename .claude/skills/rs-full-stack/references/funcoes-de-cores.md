@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-de-cores
 description: "Applies CSS color functions (RGB, HSL, Color Mix) when styling elements. Use when user asks to 'add colors', 'style a component', 'change background', 'set text color', or 'mix colors' in CSS. Enforces correct usage of rgb(), hsl(), opacity/alpha channels, and color-mix(). Make sure to use this skill whenever writing CSS color values beyond simple hex. Not for CSS layout, typography, or animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, colors, rgb, hsl, color-mix, opacity, alpha]
 ---
 
 # Funções de Cores no CSS
@@ -74,13 +80,16 @@ background-color: color-mix(in hsl, hsl(0, 100%, 50%), hsl(60, 100%, 50%));
 | `rgb(255, 0, 0, 0.5)` misturando sintaxes | `rgb(255 0 0 / 0.5)` sintaxe moderna |
 | Calcular cor intermediária manualmente | `color-mix()` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Cor não aparece no elemento | Propriedade errada (ex: `color` vs `background-color`) | Verifique se está aplicando na propriedade correta |
+| `color-mix()` não funciona | Navegador não suporta ou falta `in <space>` | Verifique caniuse.com e adicione o espaço de cor: `color-mix(in hsl, ...)` |
+| Alpha/opacidade não aplica | Sintaxe antiga misturada com moderna | Use sintaxe moderna: `rgb(255 0 0 / 0.5)` com `/` |
+| Cor parece diferente entre navegadores | Espaços de cor diferentes no color-mix | Especifique explicitamente `in srgb` ou `in hsl` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre espaços de cor, saturação, luminosidade e quando usar cada função
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-de-cores/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-de-cores/references/code-examples.md)

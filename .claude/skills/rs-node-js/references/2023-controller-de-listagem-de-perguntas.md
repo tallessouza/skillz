@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controller-listagem-perguntas
+name: rs-node-js-2023-controller-de-listagem-de-perguntas
 description: "Applies NestJS listing controller patterns with pagination when building 'list endpoint', 'fetch records', 'paginate results', 'GET route with query params', or 'listing controller'. Enforces Zod query validation with transform, skip/take pagination, and object-wrapped responses. Make sure to use this skill whenever creating any NestJS GET endpoint that returns collections. Not for POST/PUT/DELETE controllers, authentication, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller de Listagem com Paginacao no NestJS
@@ -134,14 +141,14 @@ transform(value: unknown) {
 | `skip: page * 20` | `skip: (page - 1) * perPage` |
 | `@Query() query: any` | `@Query('page', validationPipe) page: PageQueryParamSchema` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-listagem-de-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-listagem-de-perguntas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-listagem-de-perguntas/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-listagem-de-perguntas/references/code-examples.md) — Todos os exemplos de código expandidos com variações

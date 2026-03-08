@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-number
 description: "Applies HTML input number best practices when writing form fields with numeric inputs. Use when user asks to 'create a form', 'add a number field', 'build an input', or 'implement age/quantity picker'. Enforces min, max, step, required, and placeholder attributes for number inputs. Make sure to use this skill whenever generating HTML forms with numeric fields. Not for CSS styling, JavaScript validation logic, or non-numeric input types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, number, validation, min-max, step, forms]
 ---
 
 # Input Number no HTML
@@ -83,13 +89,16 @@ description: "Applies HTML input number best practices when writing form fields 
 | Usar required achando que min/max basta | Usar required explicitamente para campos obrigatórios |
 | Omitir placeholder em campo numérico | Adicionar placeholder com range esperado |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Usuario digita valor fora do range | min/max nao bloqueiam digitacao manual | Validacao ocorre no submit — adicionar validacao JS se necessario |
+| Campo envia vazio mesmo com min/max | `required` nao adicionado | Adicionar `required` ao input |
+| Setas de incremento pulam valores inesperados | `step` mal configurado | Ajustar `step` para o incremento desejado |
+| Campo muito largo visualmente | Range muito grande (ex: 0-999999) | Ajustar min/max para o range real necessario |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre validação nativa e comportamento do browser
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-number/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-number/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre validacao nativa e comportamento do browser
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

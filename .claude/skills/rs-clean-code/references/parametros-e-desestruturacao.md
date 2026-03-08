@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-parametros-e-desestruturacao
 description: "Enforces destructuring and named parameters when writing JavaScript/TypeScript functions. Use when user asks to 'create a function', 'write a controller', 'implement a route', 'pass parameters', or 'refactor function signatures'. Applies rules: always destructure before forwarding, receive named objects instead of positional args, return objects for extensibility. Make sure to use this skill whenever generating functions that receive or forward multiple parameters. Not for variable naming, import organization, or class design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: parametros-e-desestruturacao
+  tags: [destructuring, parameters, named-parameters, typescript, javascript, functions, clean-code]
 ---
 
 # Parâmetros e Desestruturação
@@ -103,6 +109,13 @@ handler({ params: { id: 1 } })
 | `fn(null, { id: 1 })` | `fn({ params: { id: 1 } })` |
 | `return user` | `return { user }` |
 | `controller(body)` (repasse cego) | `const { name, email, password } = body; controller({ name, email, password })` |
+
+## Troubleshooting
+
+### Campos extras vazam ao repassar objeto generico
+**Symptom:** Funcao recebe `body` e repassa direto para o repositorio, permitindo que campos nao esperados (ex: `isAdmin`) sejam salvos no banco
+**Cause:** O objeto foi repassado sem desestruturacao, entao todos os campos do request chegam ao banco
+**Fix:** Desestruture explicitamente: `const { name, email, password } = body; repository.create({ name, email, password })` — apenas campos esperados sao repassados
 
 ## Deep reference library
 

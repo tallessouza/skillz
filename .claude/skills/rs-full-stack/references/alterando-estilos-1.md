@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-alterando-estilos-1
 description: "Applies DOM style manipulation patterns when writing JavaScript that changes element appearance. Use when user asks to 'add a class', 'toggle class', 'change element style', 'show/hide element', 'manipulate CSS with JS', or 'style DOM elements'. Covers classList.add/remove/toggle and element.style properties. Make sure to use this skill whenever generating JS code that modifies visual appearance of HTML elements. Not for CSS-only styling, animations libraries, or CSS-in-JS frameworks like styled-components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, classList, style, manipulation]
 ---
 
 # Manipulacao de Estilos via DOM
@@ -81,13 +87,16 @@ modal.classList.toggle('visible')
 | `element.setAttribute('style', '...')` | `element.style.propriedade = valor` |
 | `element.style.background-color` (com hifen) | `element.style.backgroundColor` (camelCase) |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `element.style.background-color` dá erro | CSS usa hífens mas JS não aceita | Use camelCase: `element.style.backgroundColor` |
+| `classList.toggle` não funciona | Classe CSS não existe no stylesheet | Crie a classe CSS antes de usar toggle |
+| Estilo aplicado com JS não é removido | Usou `element.style` que tem prioridade alta (inline) | Prefira `classList.add/remove` com classes CSS pré-definidas |
+| `querySelector` retorna null | Elemento não existe no DOM no momento da execução | Mova o script para o final do body ou use `DOMContentLoaded` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alterando-estilos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alterando-estilos-1/references/code-examples.md)

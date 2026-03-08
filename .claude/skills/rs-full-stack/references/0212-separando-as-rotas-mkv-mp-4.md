@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-separando-rotas
 description: "Applies route separation pattern when building Node.js HTTP servers without frameworks. Use when user asks to 'create routes', 'organize express-like routes', 'build HTTP server', 'separate route handlers', or 'create middleware for routing'. Enforces routes array with method/path/controller objects, route handler middleware with find-based matching, and clean server.js. Make sure to use this skill whenever structuring a raw Node.js HTTP API. Not for Express/Fastify/Hono projects that have built-in routers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, routing, route-separation, middleware, server-structure]
 ---
 
 # Separando Rotas — Node.js Puro
@@ -113,13 +119,13 @@ src/
 | Import sem extensao .js em ESM | Sempre inclua extensao: `"../routes.js"` |
 | Hardcoded 404 no server.js | 404 no routeHandler como fallback do find() |
 
+## Troubleshooting
+
+### Problem: Route handler returns 404 for all routes even though routes are defined
+- **Cause**: The `routes.find()` comparison does not match because `request.method` or `request.url` differs from the route definition (case, trailing slash, or query string)
+- **Fix**: Ensure route method is uppercase (`"GET"`, `"POST"`) and URL comparison strips query strings before matching
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e evolucao do pattern
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0212-separando-as-rotas-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0212-separando-as-rotas-mkv-mp-4/references/code-examples.md)

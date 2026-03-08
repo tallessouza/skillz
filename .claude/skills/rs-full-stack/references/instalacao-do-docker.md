@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalacao-do-docker
-description: "Guides Docker installation and verification on any OS. Use when user asks to 'install Docker', 'setup Docker', 'verify Docker installation', 'check Docker version', or 'configure Docker environment'. Covers download, CLI setup, and post-install verification commands. Make sure to use this skill whenever setting up a new development environment that requires Docker. Not for Docker container management, Dockerfile creation, or docker-compose workflows."
+description: "Configures Docker installation and verification on any OS with CLI setup. Use when user asks to 'install Docker', 'setup Docker', 'verify Docker installation', 'check Docker version', or 'configure Docker environment'. Covers download, CLI setup, and post-install verification commands. Make sure to use this skill whenever setting up a new development environment that requires Docker. Not for Docker container management, Dockerfile creation, or docker-compose workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-setup
+  tags: [docker, installation, cli, devops, environment]
 ---
 
 # Instalação do Docker
@@ -64,13 +70,16 @@ Docker version 27.x.x, build xxxxxxx
 | Interface gráfica disponível | Ignore-a para prática; o mercado usa CLI |
 | Após instalação | Sempre verifique com `docker -v` antes de prosseguir |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `docker` nao reconhecido como comando | Terminal nao atualizado apos instalacao | Reinicie o terminal ou a maquina |
+| Permissao negada ao rodar `docker` no Linux | Usuario nao pertence ao grupo docker | Execute `sudo usermod -aG docker $USER` e reinicie a sessao |
+| Docker Desktop nao inicia no Windows | Virtualizacao desabilitada na BIOS | Habilite VT-x/AMD-V na BIOS e reinicie |
+| `docker -v` retorna versao antiga | Instalacao anterior conflitante | Desinstale a versao antiga e reinstale |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre CLI vs GUI e contexto de mercado
 - [code-examples.md](references/code-examples.md) — Comandos de verificação e troubleshooting expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalacao-do-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalacao-do-docker/references/code-examples.md)

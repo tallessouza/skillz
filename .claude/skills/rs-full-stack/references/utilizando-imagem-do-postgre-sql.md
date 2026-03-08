@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-imagem-do-postgre-sql
 description: "Applies Docker container creation from Docker Hub images without Dockerfile when user asks to 'run postgres', 'create a database container', 'docker run postgres', 'setup postgres with docker', or 'run a container from hub image'. Covers image selection criteria, environment variables, port mapping, and background execution. Make sure to use this skill whenever creating containers directly from Docker Hub images, especially PostgreSQL. Not for Dockerfile-based builds, docker-compose setups, or database administration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-basics
+  tags: [docker, postgresql, containers, docker-hub, docker-run]
 ---
 
 # Criando Containers Direto do Docker Hub (PostgreSQL)
@@ -76,6 +82,14 @@ docker run \
 | Rodar sem `-d` em desenvolvimento | Sempre use `-d` para liberar o terminal |
 | Deixar container sem nome | Use `--name` para facilitar `docker stop/start/rm` |
 | Usar imagens com ultima atualizacao antiga | Prefira imagens com updates frequentes |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Container falha ao iniciar sem mensagem clara | Variáveis `POSTGRES_USER` e `POSTGRES_PASSWORD` não definidas | Adicione `-e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres` |
+| `port is already allocated` | Porta 5432 já está em uso por outro processo | Use porta diferente no host: `-p 5433:5432` |
+| Não consegue conectar ao Postgres do host | Porta não mapeada ou container não está rodando | Verifique com `docker ps` e confirme mapeamento `-p 5432:5432` |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-extraindo-o-token
 description: "Applies JWT token extraction pattern in Express middleware when building authentication. Use when user asks to 'create auth middleware', 'extract token from request', 'validate bearer token', 'ensure authenticated', or 'protect routes'. Enforces correct header parsing, bearer prefix removal, and early-return on missing token. Make sure to use this skill whenever implementing authentication middleware in Node/Express. Not for token generation, JWT signing/verification, or login flow implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-auth
+  tags: [express, jwt, authentication, middleware, bearer-token, authorization]
 ---
 
 # Extraindo o Token da Requisição
@@ -92,13 +98,16 @@ const [, token] = authHeader.split(" ")
 | `if (!token) return res.status(401).json(...)` dentro do controller | `throw new AppError("JWT token não informado", 401)` no middleware |
 | Exportar como default | `export function EnsureAuthenticated` (named export) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Token sempre `undefined` apos split | Header nao contem prefixo "Bearer " | Verificar se o cliente envia `Authorization: Bearer <token>` |
+| Erro 401 mesmo com token valido | Middleware aplicado antes da rota de login | Nao aplicar EnsureAuthenticated em rotas publicas |
+| `Cannot read property 'split' of undefined` | `authHeader` e undefined (header ausente) | Verificar presenca com `if (!authHeader)` antes do split |
+| Middleware nao bloqueia requisicao sem token | Middleware nao esta na cadeia da rota | Verificar se esta entre o path e o controller: `router.post('/', middleware, controller)` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre o fluxo Bearer token e decisões de design
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-extraindo-o-token/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-extraindo-o-token/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o fluxo Bearer token e decisoes de design
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

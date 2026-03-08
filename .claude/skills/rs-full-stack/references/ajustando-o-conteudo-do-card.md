@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ajustando-conteudo-card
 description: "Enforces semantic HTML card structure using figure/figcaption and CSS techniques for card content layout. Use when user asks to 'create a card', 'build a news card', 'style card content', 'add caption to image', or 'use figure tag'. Applies rules: figure over div for media+caption, inline-block for tags, box-shadow for depth, position absolute for overlay captions. Make sure to use this skill whenever building card components with images and text overlays. Not for general layout, grid systems, or non-card components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, card, figure, semantic]
 ---
 
 # Ajustando o Conteúdo do Card
@@ -120,13 +126,16 @@ description: "Enforces semantic HTML card structure using figure/figcaption and 
 | Cores de sombra sem transparência `#000` | RGBA com alpha: `rgba(17,18,19,0.4)` |
 | Font-size hardcoded em cada elemento | Utility classes: `.text-2xl`, `.text-lg` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Texto do figcaption não aparece sobre a imagem | Faltou `position: relative` no pai ou `position: absolute` no figcaption | Adicione posicionamento correto no card e figcaption |
+| Tag/badge sem padding vertical | Usando `display: inline` | Troque para `display: inline-block` |
+| Conteúdo transborda do card | Faltou `overflow: hidden` no container | Adicione `overflow: hidden` no `.card` |
+| Box-shadow não aparece | Cor sem transparência ou valores zerados | Use RGBA com alpha: `rgba(17,18,19,0.4)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre figure vs div, inline-block behavior e box-shadow
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-ajustando-o-conteudo-do-card/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-ajustando-o-conteudo-do-card/references/code-examples.md)

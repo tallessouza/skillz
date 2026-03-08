@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operadores-atribuicao
 description: "Applies JavaScript assignment operator patterns when writing arithmetic operations on variables. Use when user asks to 'update a variable', 'increment a counter', 'calculate in place', or any in-place arithmetic task. Enforces compound assignment operators (+=, -=, *=, /=, %=, **=) instead of verbose reassignment. Make sure to use this skill whenever generating code that modifies numeric variables in place. Not for comparison operators, logical operators, or destructuring assignment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, assignment, operators, compound-assignment, variables]
 ---
 
 # Operadores de Atribuicao em JavaScript
@@ -76,13 +82,15 @@ total **= 2   // 4
 | `value = value % 2` | `value %= 2` |
 | `value = value ** 2` | `value **= 2` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `TypeError: Assignment to constant variable` | Variavel declarada com `const` | Use `let` para variaveis que serao reatribuidas |
+| `value = value + 2` funciona mas e verboso | Nao usando operador composto | Simplifique para `value += 2` |
+| `**=` nao reconhecido | Versao antiga do Node/browser | Atualize para ES2016+ ou use `Math.pow()` como fallback |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operadores-de-atribuicao-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operadores-de-atribuicao-1/references/code-examples.md)

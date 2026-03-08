@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-intro-chat-sessions
 description: "Applies TDD-first chat session module pattern when building NestJS chat features with PostgreSQL. Use when user asks to 'create chat sessions', 'build a chat module', 'implement session management', 'add conversation feature', or 'create NestJS module with tests first'. Follows test-first development, raw SQL with PostgreSQL, and NestJS module structure. Make sure to use this skill whenever implementing chat or session CRUD in NestJS projects. Not for LLM integration, message handling, or frontend chat UI implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: chat
+  tags: [postgresql, node-js, nestjs, ia-node, chat]
 ---
 
 # Chat Sessions — Modulo NestJS com TDD
@@ -134,14 +140,14 @@ expect(response.body).toContainEqual(expect.objectContaining({ productId: 2 }));
 | Modulo sem registrar no AppModule | Sempre adicione ao `imports` do AppModule |
 | Service sem tipar retorno | Tipe com interface ou tipo inline para evitar `any` |
 
+## Troubleshooting
+
+### Rota retorna 404 mesmo existindo
+**Symptom:** Endpoint retorna 404 Not Found apesar de estar definido no controller
+**Cause:** Modulo nao registrado no AppModule, ou @Param sem decorator no handler
+**Fix:** Verifique se o modulo esta no `imports` do AppModule e que @Param('name') decora o parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-ao-modulo-e-chat-sessions/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-ao-modulo-e-chat-sessions/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-prisma-schema-relations
 description: "Applies Prisma schema design patterns when creating models, relationships, and handling polymorphic associations. Use when user asks to 'create a prisma model', 'add database relations', 'design schema', 'handle polymorphic tables', or 'prisma migrate'. Enforces optional foreign keys over polymorphic enums when relating to few tables, proper field mapping with underscores, and correct relationship setup. Make sure to use this skill whenever designing Prisma schemas or database relationships. Not for query building, Prisma Client usage, or application-level data access patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-schema-design
+  tags: [prisma, schema, relationships, polymorphism, database, orm, typescript]
 ---
 
 # Prisma Schema — Relacionamentos e Polimorfismo
@@ -116,14 +122,14 @@ model Comment {
 | Model sem `@@map` | `@@map("nome_plural_snake_case")` |
 | Relacao sem campo inverso no model referenciado | `comments Comment[]` no model pai |
 
+## Troubleshooting
+
+### Prisma migrate falha com erro de relacionamento ciclico
+**Symptom:** `prisma migrate dev` retorna erro de foreign key circular ou constraint violation
+**Cause:** Dois models referenciam um ao outro com campos obrigatorios, criando dependencia ciclica na criacao
+**Fix:** Torne pelo menos um dos campos de relacionamento opcional (`String?` em vez de `String`) para quebrar o ciclo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-finalizando-schema-do-prisma-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-finalizando-schema-do-prisma-1/references/code-examples.md)

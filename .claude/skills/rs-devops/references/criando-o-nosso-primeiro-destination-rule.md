@@ -1,6 +1,12 @@
 ---
 name: rs-devops-destination-rule
 description: "Applies Istio Destination Rule configuration patterns when writing Kubernetes service mesh manifests. Use when user asks to 'create destination rule', 'configure subsets', 'split traffic', 'route traffic between versions', or 'setup service mesh routing'. Enforces correct subset-to-label mapping, host resolution, and DestinationRule-VirtualService binding. Make sure to use this skill whenever generating Istio routing manifests or debugging traffic splitting issues. Not for general Kubernetes deployments, Ingress configuration, or non-Istio service meshes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-service-mesh
+  tags: [istio, destination-rule, virtual-service, traffic-splitting, subsets, service-mesh]
 ---
 
 # Destination Rule no Istio
@@ -106,14 +112,14 @@ subsets:
 | Esquecer labels nos Deployments | Cada Deployment precisa da label `version` que o subset referencia |
 | Aplicar split sem verificar no Kiali | Sempre valide no Kiali que o trafego esta splitado corretamente |
 
+## Troubleshooting
+
+### Traffic split nao funciona — todo trafego vai para os mesmos pods
+**Symptom:** Mesmo com VirtualService configurado com 80/20, todo trafego vai para um unico conjunto de pods.
+**Cause:** Os subsets no DestinationRule apontam para labels identicas (ex: ambos so com `app: my-app`), entao ambos selecionam os mesmos pods.
+**Fix:** Adicione label `version` distinta em cada subset do DestinationRule e nos respectivos Deployments (ex: `version: v1` e `version: v2`).
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-o-nosso-primeiro-destination-rule/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-o-nosso-primeiro-destination-rule/references/code-examples.md)

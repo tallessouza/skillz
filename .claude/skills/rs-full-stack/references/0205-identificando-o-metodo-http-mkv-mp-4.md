@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-identificando-metodo-http
 description: "Applies HTTP method identification patterns when building Node.js HTTP servers. Use when user asks to 'create a server', 'handle requests', 'build an API', 'route requests', or 'identify HTTP method'. Enforces destructuring of request object to access method property. Make sure to use this skill whenever writing raw Node.js HTTP server code that needs to distinguish between GET, POST, PUT, PATCH, DELETE. Not for Express/Fastify route handlers or frontend HTTP clients."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, http-method, destructuring, routing, request]
 ---
 
 # Identificando o Método HTTP
@@ -88,13 +94,13 @@ const server = http.createServer((req, res) => {
 | Ignorar o método e tratar tudo igual | Verificar `method` para roteamento |
 | `if (req.method == 'get')` | `if (method === 'GET')` (sempre uppercase) |
 
+## Troubleshooting
+
+### Problem: `req.method` returns undefined
+- **Cause**: Using a non-standard request object or accessing method before the request is fully parsed
+- **Fix**: Ensure you are using the native `http.createServer` callback's first argument and destructure with `const { method } = req`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre métodos HTTP e semântica REST
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0205-identificando-o-metodo-http-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0205-identificando-o-metodo-http-mkv-mp-4/references/code-examples.md)

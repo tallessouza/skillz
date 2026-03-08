@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-set-timeout
 description: "Applies correct setTimeout usage patterns when writing JavaScript timing code. Use when user asks to 'delay execution', 'run after timeout', 'schedule a function', 'wait before executing', or 'use setTimeout'. Enforces proper callback structure, millisecond units in variable names, and arrow function syntax. Make sure to use this skill whenever code involves delayed execution or timed callbacks. Not for setInterval, recurring timers, debounce, or throttle patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, setTimeout, clearTimeout, timers, delayed-execution]
 ---
 
 # setTimeout — Execucao Agendada
@@ -84,13 +90,16 @@ setTimeout(() => {
 | `const delay = 3000` (sem unidade) | `const delayInMs = 3000` |
 | `setTimeout(() => {}, 3)` pensando em segundos | `setTimeout(() => {}, 3000)` — lembre: milissegundos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao executa imediatamente em vez de esperar | Parenteses na funcao: `setTimeout(fn(), 1000)` | Remova os parenteses: `setTimeout(fn, 1000)` ou use arrow: `setTimeout(() => fn(), 1000)` |
+| Delay parece muito curto (3ms em vez de 3s) | Valor em segundos em vez de milissegundos | Multiplique por 1000: `3000` para 3 segundos |
+| Timeout nao cancela | Referencia do timer nao armazenada | Guarde em variavel: `const timerId = setTimeout(...)` e use `clearTimeout(timerId)` |
+| Callback executa com `this` errado | Funcao regular perde contexto do `this` | Use arrow function `() => {}` que preserva o escopo lexico |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-set-timeout/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-set-timeout/references/code-examples.md)

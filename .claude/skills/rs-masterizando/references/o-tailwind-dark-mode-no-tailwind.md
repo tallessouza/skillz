@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-dark-mode
 description: "Applies Tailwind CSS dark mode patterns when writing UI components with light/dark theme support. Use when user asks to 'add dark mode', 'create a dark theme', 'style for light and dark', 'toggle theme', or any Tailwind component with theme variants. Enforces dark: prefix usage, proper color contrast pairs, and OS-level theme response. Make sure to use this skill whenever generating Tailwind markup that needs theme awareness. Not for CSS-in-JS theming, styled-components, or non-Tailwind dark mode implementations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: dark-mode
+  tags: [tailwind, dark-mode]
 ---
 
 # Dark Mode no Tailwind
@@ -84,15 +90,19 @@ description: "Applies Tailwind CSS dark mode patterns when writing UI components
 | Dark mode so no body/html | `dark:` em cada elemento que precisa mudar |
 | JavaScript para tema OS-based | Deixe o Tailwind responder ao `prefers-color-scheme` |
 | Mesmo tom para texto primario e secundario no dark | Use `dark:text-slate-100` vs `dark:text-slate-400` |
+## Troubleshooting
+
+### Dark mode nao ativa
+**Symptom:** Classes `dark:` nao tem efeito mesmo com tema escuro no SO.
+**Cause:** Se `darkMode: 'class'` esta configurado, o Tailwind ignora `prefers-color-scheme` e espera a classe `dark` no `<html>`.
+**Fix:** Se quer resposta automatica ao SO, use `darkMode: 'media'` (padrao). Se quer toggle manual, adicione classe `dark` no `<html>`.
+
+### Contraste insuficiente no dark mode
+**Symptom:** Texto dificil de ler em fundo escuro.
+**Cause:** Texto claro demais (`dark:text-zinc-600`) ou fundo muito proximo do texto.
+**Fix:** Use `dark:text-zinc-100` para texto primario e `dark:text-zinc-400` para secundario em fundo `dark:bg-zinc-900`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-dark-mode-no-tailwind/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-dark-mode-no-tailwind/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-dark-mode-no-tailwind/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-dark-mode-no-tailwind/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

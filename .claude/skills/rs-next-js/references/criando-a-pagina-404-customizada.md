@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-pagina-404-customizada
 description: "Generates custom 404 Not Found pages in Next.js App Router projects. Use when user asks to 'create a 404 page', 'handle not found', 'custom error page', 'page not found', or 'not-found page in Next.js'. Applies App Router not-found.tsx convention, UX patterns like auto-focus search, and useRef/useEffect for usability. Make sure to use this skill whenever building error pages in Next.js App Router. Not for API error handling, server error pages (500), or Pages Router 404."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: error-pages
+  tags: [next-js, 404, not-found, app-router, error-page, useRef, useEffect, UX]
 ---
 
 # Pagina 404 Customizada no Next.js App Router
@@ -114,14 +120,19 @@ export function SearchInput() {
 | Criar 404 sem nenhum link de saida | Sempre forneca Home + pelo menos um link contextual |
 | Usar `document.getElementById` para focus | Use `useRef` + `useEffect` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-pagina-404-customizada/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-pagina-404-customizada/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-pagina-404-customizada/references/deep-explanation.md) — No App Router do Next.js, a pagina 404 e criada com o arquivo `not-found.tsx` na pasta `app/`. Basta
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-pagina-404-customizada/references/code-examples.md) — // app/not-found.tsx

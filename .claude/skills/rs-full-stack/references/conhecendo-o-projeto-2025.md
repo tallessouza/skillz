@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-conhecendo-o-projeto-2025
-description: "Guides implementation of a currency converter project with JavaScript. Use when user asks to 'build a currency converter', 'create exchange rate app', 'implement money conversion', or 'add JS to HTML/CSS project'. Covers input validation for integers only, currency selection, and conversion display. Make sure to use this skill whenever building financial conversion interfaces or adding JS functionality to existing HTML/CSS. Not for backend APIs, real-time exchange rates, or payment processing."
+description: "Configures implementation of a currency converter project with JavaScript. Use when user asks to 'build a currency converter', 'create exchange rate app', 'implement money conversion', or 'add JS to HTML/CSS project'. Covers input validation for integers only, currency selection, and conversion display. Make sure to use this skill whenever building financial conversion interfaces or adding JS functionality to existing HTML/CSS. Not for backend APIs, real-time exchange rates, or payment processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-projects
+  tags: [javascript, currency-converter, input-validation, dom-manipulation]
 ---
 
 # Projeto Conversor de Moedas
 
 > Implementar JavaScript em um projeto HTML/CSS existente, adicionando conversao de moedas, selecao de moedas e validacao de input para aceitar apenas numeros inteiros.
 
-## Key concept
+## Key concepts
 
 O projeto e um conversor de moedas (cambio) que recebe um valor inteiro, permite selecionar uma moeda (dolar, euro, libra) e exibe o resultado da conversao em reais. O HTML e CSS ja existem — o foco e adicionar comportamento com JavaScript puro.
 
@@ -63,13 +69,16 @@ projeto/
 | Input type=number resolve validacao | Ainda permite pontos/virgulas em alguns browsers — validacao JS e necessaria |
 | Preciso fazer HTML/CSS primeiro | O projeto fornece HTML/CSS prontos — foco total em JavaScript |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Input aceita letras mesmo com validacao | Evento errado ou validacao nao aplicada ao `input` event | Use `event.target.value.replace(/\D/g, '')` no evento `input` |
+| Resultado da conversao mostra NaN | Valor do input nao convertido para numero | Use `parseInt(inputValue)` antes de multiplicar pela taxa |
+| Select nao muda a moeda na conversao | Valor do select nao lido corretamente | Use `select.value` dentro do handler do botao de conversao |
+| Simbolo da moeda nao atualiza | Mapeamento moeda→simbolo ausente ou incorreto | Crie um objeto `{ USD: '$', EUR: '€', GBP: '£' }` e acesse pela chave |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre decisoes de projeto e requisitos de negocio
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo e padroes de implementacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2025/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2025/references/code-examples.md)

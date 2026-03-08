@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-after-all
 description: "Applies afterAll cleanup patterns when writing test suites in JavaScript/TypeScript. Use when user asks to 'write tests', 'create test suite', 'add test cleanup', 'setup test lifecycle', or 'configure test hooks'. Ensures proper resource cleanup after test execution using afterAll for memory management, file cleanup, and state reset. Make sure to use this skill whenever generating test files with shared resources or setup/teardown needs. Not for individual test assertions, mocking strategies, or CI/CD configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [testing, afterAll, jest, cleanup, lifecycle]
 ---
 
 # afterAll — Limpeza Após Testes
@@ -101,13 +107,16 @@ test('filters active items', () => {
 | Ignorar cleanup de arquivos temporários | `afterAll(() => fs.unlinkSync(tempFile))` |
 | Deixar conexões abertas após suite | `afterAll(async () => await conn.close())` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Testes flaky que falham aleatoriamente | Recursos não limpos entre suites | Adicione `afterAll` para fechar conexões e limpar estado |
+| `afterAll` não executa | Teste anterior lançou exceção não-capturada | Envolva o `afterAll` em try/catch ou use `--forceExit` |
+| Conexão de banco fica aberta após testes | Faltou `afterAll(async () => await conn.close())` | Pareie cada `beforeAll` com seu `afterAll` correspondente |
+| Cleanup roda antes dos testes terminarem | Usou `afterAll` sem `async/await` em operação assíncrona | Adicione `async` no callback e `await` nas operações |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre lifecycle hooks e quando usar cada um
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variações async, banco de dados e arquivos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-after-all/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-after-all/references/code-examples.md)

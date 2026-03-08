@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-revertendo-migration
 description: "Applies Knex migration rollback commands when reverting database changes. Use when user asks to 'undo migration', 'rollback migration', 'revert database changes', 'undo knex migration', or 'desfazer migration'. Covers specific migration rollback, batch rollback, and full rollback. Make sure to use this skill whenever the user needs to undo database schema changes made by Knex migrations. Not for creating migrations, running migrations forward, or non-Knex database operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-migrations
+  tags: [knex, migrations, rollback, database, schema]
 ---
 
 # Revertendo Migrations (Knex)
 
 > Toda migration executada pode ser desfeita — use o metodo down para reverter alteracoes de schema de forma segura e controlada.
 
-## Comandos
+## Key concepts
 
 ### 1. Listar migrations
 
@@ -82,6 +88,15 @@ npx knex migrate:latest
 | Editar migration ja executada | Crie uma nova migration para alterar, porque o banco ja tem o estado da migration antiga |
 | Rodar `rollback --all` em producao sem backup | Faca backup antes, porque rollback --all apaga TUDO |
 | Ignorar a tabela `knex_migrations` | Consulte-a para entender o estado dos batches |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `migrate:down` nao desfaz nada | Nome do arquivo de migration incorreto | Verifique o nome exato com `migrate:list` |
+| Rollback apagou mais do que esperado | `rollback` desfaz todo o batch, nao uma migration | Use `migrate:down {arquivo}` para reverter uma especifica |
+| Tabela ainda existe apos rollback | Metodo `down` da migration nao implementa DROP | Implemente o `down` com `DROP TABLE IF EXISTS` |
+| "migration not found" ao usar `migrate:down` | Arquivo de migration foi deletado manualmente | Restaure o arquivo ou limpe a tabela `knex_migrations` |
 
 ## Deep reference library
 

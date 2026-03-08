@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-usando-config-module-no-nest-js
 description: "Applies NestJS ConfigModule setup with Zod validation and type-safe environment variables. Use when user asks to 'configure environment variables in NestJS', 'setup ConfigModule', 'validate env variables with Zod', 'access env vars in NestJS', or 'type-safe config in Nest'. Make sure to use this skill whenever setting up environment configuration in a NestJS project. Not for generic Node.js env handling, dotenv-only setups, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: config-module-nestjs
+  tags: [nestjs, config-module, zod, environment, type-safe, dependency-injection]
 ---
 
 # ConfigModule no NestJS com Zod
@@ -136,14 +142,14 @@ await app.listen(port)
 | `isGlobal` omitido | `isGlobal: true` no forRoot |
 | `as number` para forcar tipo da porta | `z.coerce.number()` no schema |
 
+## Troubleshooting
+
+### ConfigService.get() retorna undefined mesmo com variavel definida
+**Symptom:** `configService.get('PORT')` retorna `undefined` apesar de PORT estar no `.env`
+**Cause:** O generic `ConfigService<Env, true>` nao foi passado, ou `{ infer: true }` nao foi usado no `get()`
+**Fix:** Use `configService.get('PORT', { infer: true })` com o tipo generico `ConfigService<Env, true>`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-usando-config-module-no-nest-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-usando-config-module-no-nest-js/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-aggregate-root
 description: "Applies DDD AggregateRoot pattern when designing domain entities in TypeScript/Node.js. Use when user asks to 'create an aggregate', 'implement DDD', 'design domain entities', 'model a root entity', or structure entity relationships. Enforces: AggregateRoot extends Entity, abstract class, root entity identifies the aggregate, co-manipulated entities belong together. Make sure to use this skill whenever modeling domain layers with aggregates. Not for simple CRUD, database schemas, or API controllers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-entities
+  tags: [aggregate-root, ddd, entity, abstract-class, domain-modeling, typescript]
 ---
 
 # AggregateRoot — Classe Base DDD
@@ -83,14 +89,19 @@ export class Question extends AggregateRoot<QuestionProps> {
 | Instanciar Entity base diretamente | Torne Entity abstrata tambem |
 | Colocar Comment dentro do agregado Question | Comment e criado separado, nao e co-manipulado |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-aggregate-root/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-classe-base-de-aggregate-root/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-aggregate-root/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-classe-base-de-aggregate-root/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

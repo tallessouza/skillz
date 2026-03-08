@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-frontend-correcoes
 description: "Applies frontend-backend integration patterns for AI chat marketplace applications. Use when user asks to 'integrate chat frontend', 'fix API routes', 'aggregate cart totals', 'debug frontend-backend communication', or 'build chat with suggested carts'. Covers SWR data fetching, SQL aggregation with joins for computed totals, search params state management, and common integration pitfalls. Make sure to use this skill whenever building chat interfaces that display AI-generated product suggestions or shopping carts. Not for pure backend AI logic, prompt engineering, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: frontend-integration
+  tags: [next-js, frontend, node-js, ia-node, swr]
 ---
 
 # Frontend e Correções no Backend — Chat AI Marketplace
@@ -120,14 +126,14 @@ data.suggestedCarts // OK, com ID para acao de escolher
 | Registrar rota de chat no router de cart | Manter rotas no dominio correto |
 | Usar setState para navegacao entre chats | Usar search params (URL state) |
 
+## Troubleshooting
+
+### Dados nao aparecem no frontend
+**Symptom:** Componente renderiza vazio apesar de dados existirem no backend
+**Cause:** CORS bloqueando requisicao, ou nome de propriedade inconsistente entre frontend e backend
+**Fix:** Habilite CORS no backend (`app.enableCors()`). Verifique se as chaves do JSON de resposta batem com o que o componente espera
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-frontend-e-correcoes-no-backend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-frontend-e-correcoes-no-backend/references/code-examples.md)

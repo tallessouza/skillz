@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-script-de-teste
 description: "Applies Jest test execution patterns when configuring or running tests in JavaScript/TypeScript projects. Use when user asks to 'run tests', 'configure jest', 'add test script', 'setup testing', or 'run specific test file'. Covers running specific test files, running all tests, and creating npm test scripts in package.json. Make sure to use this skill whenever setting up or executing Jest test workflows. Not for writing test assertions, mocking, or test architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Jest Test Execution"
+  tags: ['jest', 'testing', 'npm-scripts', 'typescript']
 ---
 
 # Script de Teste com Jest
@@ -85,6 +91,15 @@ Jest exibe:
 | Usar `npx jest` repetidamente no terminal | Criar script `"test": "jest"` |
 | Usar `npx jest` dentro do script do package.json | Usar apenas `jest` (ja instalado local) |
 | Esquecer de rodar todos os testes antes de finalizar | `npm test` como passo final |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Jest nao encontra arquivos de teste | Arquivos nao seguem padrao `*.test.ts` | Renomeie para `*.test.ts` ou configure `testMatch` no jest.config |
+| `npm test` falha com "missing script" | Script `test` nao definido no package.json | Adicione `"test": "jest"` em `scripts` no package.json |
+| Erro de TypeScript ao rodar testes | `ts-jest` nao configurado | Instale `ts-jest` e configure `transform` no jest.config |
+| Testes passam localmente mas falham no CI | Dependencias de dev nao instaladas | Verifique que `jest` e `ts-jest` estao em `devDependencies` |
 
 ## Deep reference library
 

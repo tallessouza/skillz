@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-callback-function-1
 description: "Enforces correct callback function patterns when writing JavaScript/TypeScript code. Use when user asks to 'pass a function as argument', 'create a callback', 'write async handler', 'use higher-order functions', or any code involving functions as parameters. Applies rules: named callbacks for reuse, arrow functions for inline, no unnecessary braces for single expressions. Make sure to use this skill whenever generating code that passes functions as arguments. Not for Promise chains, async/await patterns, or event listener setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, callback, functions, arrow-function, higher-order]
 ---
 
 # Callback Functions
@@ -92,13 +98,16 @@ execute("Processando dados", () => console.log("Dados processados"))
 | Arrow com chaves para uma linha: `() => { return x }` | `() => x` |
 | Callback definido inline quando tem 10+ linhas | Extraia para funcao nomeada |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `callback is not a function` | Funcao nao foi passada como argumento | Verifique se o caller esta passando uma funcao valida |
+| Callback executa antes da hora | Parenteses na passagem: `fn(callback())` | Passe por referencia sem parenteses: `fn(callback)` |
+| `this` undefined dentro do callback | Arrow function nao tem `this` proprio | Use funcao regular ou `.bind(this)` quando precisa de contexto |
+| Stack trace ilegivel | Funcoes anonimas sem nome | Use funcoes nomeadas para debugging mais claro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-callback-function-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-callback-function-1/references/code-examples.md)

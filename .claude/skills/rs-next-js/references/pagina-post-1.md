@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-pagina-post-1
 description: "Applies Next.js Pages Router dynamic route patterns when building detail pages with [slug].tsx. Use when user asks to 'create a post page', 'dynamic route next.js', 'pages router slug', 'breadcrumb navigation', or 'detail page from list'. Covers useRouter query extraction, content filtering by slug, breadcrumb component setup, and article layout structure. Make sure to use this skill whenever building detail/single-item pages in Next.js Pages Router. Not for App Router, API routes, or static-only pages."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: pages-router-dynamic-routes
+  tags: [next-js, pages-router, dynamic-routes, slug, useRouter, breadcrumb, detail-page]
 ---
 
 # Pagina de Post com Rota Dinamica (Pages Router)
@@ -123,14 +129,19 @@ src/pages/blog/
 | Ignorar caso undefined do find | Tratar com `!` ou verificacao + 404 |
 | Usar `filter()[0]` para item unico | Usar `find()` diretamente |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-pagina-post-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-pagina-post-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-pagina-post-1/references/deep-explanation.md) — O instrutor enfatiza que o nome entre colchetes define a chave em `router.query`. Se o arquivo se ch
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-pagina-post-1/references/code-examples.md) — // src/pages/blog/[slug].tsx

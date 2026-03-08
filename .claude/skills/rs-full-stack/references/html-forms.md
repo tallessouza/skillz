@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-html-forms
 description: "Applies HTML form fundamentals when creating forms with action and method attributes. Use when user asks to 'create a form', 'build a login page', 'capture user input', 'submit data', or 'send form data'. Enforces correct use of GET vs POST methods, action attribute, and input/output patterns. Make sure to use this skill whenever generating HTML forms or form-related markup. Not for JavaScript form validation, React/Vue forms, or CSS form styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, forms, get, post, input, submit]
 ---
 
 # HTML Forms — Elemento de Formulário
@@ -86,13 +92,16 @@ description: "Applies HTML form fundamentals when creating forms with action and
 | Senha com `method="GET"` | Senha com `method="POST"` |
 | `<button>Submit</button>` sem type | `<button type="submit">Enviar</button>` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Dados do formulario nao chegam no servidor | Input sem atributo `name` | Adicione `name="campo"` em cada input que deve ser enviado |
+| Senha aparece na URL ao submeter | Formulario usando `method="GET"` | Troque para `method="POST"` em formularios com dados sensiveis |
+| Formulario recarrega a pagina sem acao | `action` aponta para a mesma pagina | Defina `action="/endpoint"` correto ou use JavaScript para prevenir o comportamento padrao |
+| Botao nao submete o formulario | Botao sem `type="submit"` ou fora do `<form>` | Adicione `type="submit"` e certifique-se de que o botao esta dentro do `<form>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre GET vs POST, protocolo HTTP e fluxo front-end/back-end
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-html-forms/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-html-forms/references/code-examples.md)

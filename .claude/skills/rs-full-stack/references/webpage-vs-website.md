@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-webpage-vs-website
 description: "Applies the distinction between WebPage and WebSite when discussing or structuring web projects. Use when user asks to 'create a website', 'build a page', 'structure a web project', or 'plan site architecture'. Ensures correct terminology and mental model for single pages vs multi-page sites. Make sure to use this skill whenever planning or discussing web project structure. Not for backend architecture, API design, or database modeling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, web, webpage, website, terminology, architecture]
 ---
 
 # WebPage vs WebSite
@@ -56,6 +62,15 @@ Cada URL e uma WebPage. O conjunto conectado e o WebSite.
 
 - Essa distincao e conceitual e pedagogica — na pratica, SPAs e aplicacoes web modernas borram a linha entre pagina e site
 - O termo WebSite nao implica tecnologia especifica (pode ser estatico, SSR, SPA, etc.)
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Confusao entre pagina e site ao definir escopo | Falta de distincao conceitual | Uma URL = WebPage; navegacao entre URLs = WebSite |
+| SPA tratada como "uma pagina" | Rotas client-side criam WebPages virtuais | Cada rota e uma WebPage logica, mesmo sem reload |
+| Estrutura de pastas nao reflete a arquitetura | Arquivos HTML nao organizados por pagina | Crie um arquivo HTML por WebPage ou um componente por rota |
+| Cliente pede "um site" mas descreve uma landing page | Ambiguidade no escopo do projeto | Clarifique: "uma pagina unica ou varias paginas conectadas?" |
 
 ## Deep reference library
 

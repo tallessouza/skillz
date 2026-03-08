@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-rota-atualizar-status-ticket
 description: "Applies PATCH route pattern for updating specific resource status in Node.js APIs. Use when user asks to 'close a ticket', 'update status', 'create a PATCH route', 'change resource state', or 'partial update endpoint'. Enforces PATCH over PUT for single-field updates, sub-resource route naming (/:id/close), and dedicated controller per action. Make sure to use this skill whenever creating status-change endpoints or partial update routes. Not for full resource updates (PUT), CRUD scaffolding, or database query optimization."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, rest-api, patch, status-update, routing]
 ---
 
 # Rota para Atualizar Status de Recurso (PATCH)
@@ -83,8 +89,11 @@ app.patch('/tickets/:id/close', (request, response) => {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre PATCH vs PUT e design de sub-rotas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0418-rota-para-atualizar-status-do-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0418-rota-para-atualizar-status-do-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| PATCH retorna 404 | Rota nao registrada ou path incorreto | Verifique se a rota usa `app.patch` e o path inclui `/:id/close` |
+| Import falha com ERR_MODULE_NOT_FOUND | Extensao `.js` ausente no import | Adicione `.js` explicito: `import { x } from './x.js'` |
+| Status nao atualiza no banco | Controller nao chama metodo de update | Verifique se `database.update()` esta sendo chamado com os dados corretos |
+| Cliente envia body desnecessario | Acao ja esta implicita na rota | Remova o body — a rota `/close` ja define a intencao |

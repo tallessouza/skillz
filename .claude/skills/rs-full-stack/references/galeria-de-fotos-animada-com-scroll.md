@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-galeria-fotos-animada-scroll
 description: "Applies CSS scroll-driven animation patterns when building photo galleries or grid layouts with scroll-triggered effects. Use when user asks to 'create a gallery', 'animate on scroll', 'CSS grid layout with images', 'scroll animation', or 'image appear on scroll'. Enforces animation-timeline view(), animation-range tuning, figure/figcaption semantics, and staggered delays via data attributes. Make sure to use this skill whenever building image galleries with CSS animations. Not for JavaScript scroll libraries, intersection observer, or JS-based animation frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-projects
+  tags: [css, gallery, grid, scroll-animation, figure, figcaption, hover]
 ---
 
 # Galeria de Fotos Animada com Scroll
@@ -161,13 +167,16 @@ figcaption img {
 | Inline style delays para stagger | `data-delay` attribute + CSS attribute selector |
 | `position: relative` + `top/left` para overlay | `position: absolute` + `bottom: 0` dentro de `position: relative` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Hover transition "pula" ao remover mouse | `transition` declarada no `:hover` em vez do elemento base | Mova `transition` para o seletor base: `figure > img { transition: scale 500ms; }` |
+| Imagens nao aparecem com animacao de scroll | `animation-timeline: view()` nao suportado no navegador | Verifique caniuse.com e adicione fallback com Intersection Observer |
+| Sobra de pixels embaixo do figure | `line-height` herdado do figure | Remova `line-height` ou aplique `display: block` na img |
+| Stagger nao funciona entre elementos | Todos com mesmo `animation-range` | Use `data-delay` attribute com `animation-range` diferente para elementos alternados |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre transition no base vs hover, animation-timeline view(), e compatibilidade de navegadores
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e CSS completo da galeria
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-galeria-de-fotos-animada-com-scroll/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-galeria-de-fotos-animada-com-scroll/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-adicionando-o-kiali
-description: "Guides Kiali installation and configuration as an Istio service mesh addon for observability. Use when user asks to 'install Kiali', 'visualize service mesh', 'monitor Istio traffic', 'add Istio addon', or 'service mesh observability'. Covers Kiali setup, Prometheus dependency, and troubleshooting image pull errors. Make sure to use this skill whenever setting up Istio observability or service mesh visualization. Not for general Kubernetes monitoring, Grafana standalone setup, or application-level observability without Istio."
+description: "Configures Kiali as an Istio service mesh observability addon alongside Prometheus dependency. Use when user asks to 'install Kiali', 'visualize service mesh', 'monitor Istio traffic', 'add Istio addon', or 'service mesh observability'. Enforces Prometheus co-installation, local manifest versioning, and CRD prerequisite validation. Make sure to use this skill whenever setting up Istio observability or service mesh visualization. Not for general Kubernetes monitoring, Grafana standalone setup, or application-level observability without Istio."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-observability
+  tags: [istio, service-mesh, kiali, prometheus, observability]
 ---
 
 # Adicionando o Kiali ao Istio
@@ -77,14 +83,14 @@ kubectl port-forward svc/kiali -n istio-system 20001:20001
 - Dashboard do Kiali carrega sem erros de metricas
 - Kiali exibe namespaces, aplicacoes, workloads e trafego da malha
 
+## Troubleshooting
+
+### Kiali exibe erro Code Not Found Matrix ao carregar dashboard
+**Symptom:** Dashboard do Kiali mostra erro ao tentar buscar metricas
+**Cause:** Prometheus nao esta instalado ou nao esta rodando no namespace istio-system
+**Fix:** Instale o Prometheus dos addons do Istio e verifique que o pod esta Running com `kubectl get pods -n istio-system -l app=prometheus`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adicionando-o-kiali/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adicionando-o-kiali/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adicionando-o-kiali/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adicionando-o-kiali/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

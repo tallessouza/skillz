@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-banco-de-dados
 description: "Generates SQLite database setup when user asks to 'create a database', 'setup SQLite', 'initialize db file', or 'start a new project with database'. Applies correct file naming conventions (.db extension), folder structure, and cross-platform creation methods. Make sure to use this skill whenever setting up a new SQLite database from scratch. Not for database schema design, migrations, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-sqlite
+  tags: [sqlite, database, setup, file-system]
 ---
 
 # Criando o Banco de Dados SQLite
@@ -77,8 +83,12 @@ project/
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre SQLite como arquivo e metodos de criacao
 - [code-examples.md](references/code-examples.md) — Exemplos de criacao em diferentes plataformas e linguagens
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-banco-de-dados/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de permissao ao criar arquivo | Pasta sem permissao de escrita | Verifique com `ls -la` e ajuste com `chmod` |
+| Arquivo .db criado com conteudo invalido | Arquivo foi editado manualmente | Recrie o arquivo vazio com `touch` ou equivalente |
+| Cliente SQLite nao abre o arquivo | Extensao diferente de `.db` ou `.sqlite` | Renomeie para `.db` |
+| `existsSync` nao encontra o diretorio | Caminho relativo incorreto | Use `path.resolve()` para garantir caminho absoluto |
+| Arquivo .db desaparece apos git clone | Arquivo .db esta no `.gitignore` | Adicione script de setup que cria o arquivo se nao existir |

@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-evite-syntatic-sugars
 description: "Enforces explicit type conversions over JavaScript syntactic sugar when writing or reviewing JS/TS code. Use when user asks to 'convert a value', 'cast types', 'write clean code', 'review code readability', or generates any code with type coercion. Applies rules: use Number() not +prefix, Boolean() not !!, String() not concatenation. Make sure to use this skill whenever generating code that involves type conversion, even implicitly. Not for destructuring, spread operator, or other productive syntactic sugar."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: javascript-limpo
+  tags: [javascript, typescript, type-conversion, syntactic-sugar, readability, Number, Boolean, String]
 ---
 
 # Evite Syntactic Sugars em Conversoes de Tipo
@@ -75,10 +81,17 @@ const count = Number(quantityString) // ou parseInt se truncar e intencional
 | `` `${value}` `` (so pra converter) | `String(value)` |
 | `parseInt(v)` sem saber se tem decimal | `Number(v)` |
 
+## Troubleshooting
+
+### Number() retorna NaN inesperadamente em strings com espacos ou caracteres
+**Symptom:** `Number("12px")` ou `Number("R$ 50")` retorna `NaN` em vez do numero esperado.
+**Cause:** `Number()` e estrito e rejeita qualquer string que nao seja um numero puro, diferente de `parseInt()` que para no primeiro caractere nao-numerico.
+**Fix:** Limpe a string antes da conversao: `Number(value.replace(/[^0-9.-]/g, ''))`, ou use `parseInt(value, 10)` quando souber que o numero esta no inicio da string e o truncamento e aceitavel.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

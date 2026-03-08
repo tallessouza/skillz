@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-passando-parametros-na-requisicao
 description: "Enforces dynamic parameter passing in fetch requests when writing JavaScript/TypeScript API calls. Use when user asks to 'fetch by id', 'get specific item', 'make API call with parameter', 'dynamic URL', or 'template literal in fetch'. Applies rules: template literals for dynamic URLs, async/await pattern, parameter-driven functions. Make sure to use this skill whenever generating fetch calls that need dynamic path segments or query parameters. Not for static fetches, form submissions, or POST/PUT request bodies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest
+  tags: [fetch, parametros, template-literal, async-await, api]
 ---
 
 # Passando Parâmetros na Requisição
@@ -81,6 +87,15 @@ console.log(product)
 | `fetch(url + "/" + id)` | `fetch(\`${url}/${id}\`)` |
 | `function fetchProduct() { /* id hardcoded */ }` | `function fetchProductById(id) { ... }` |
 | `const data = await response.json(); console.log(data)` dentro da função | `return await response.json()` e exiba fora |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| URL mostra `undefined` no lugar do parametro | Variavel nao foi passada ou esta undefined | Verifique se o argumento esta sendo passado na chamada da funcao |
+| Erro 404 ao buscar recurso por ID | ID incorreto ou recurso nao existe | Verifique o valor do ID e se o recurso existe na API |
+| Template literal nao interpola | Usando aspas simples/duplas ao inves de backticks | Use backticks (\`) para template literals, nao aspas |
+| `response.json()` retorna erro | Resposta nao e JSON valido (pode ser 404 HTML) | Verifique `response.ok` antes de chamar `.json()` |
 
 ## Deep reference library
 

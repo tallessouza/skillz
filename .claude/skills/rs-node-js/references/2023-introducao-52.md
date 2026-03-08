@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-introducao-52
-description: "Provides an overview of building a complete REST API with Node.js from zero to deploy, covering Fastify, TypeScript, Knex, SQL, automated testing, CI/CD, linting, and environment variables. Use when user asks to 'start a Node API project', 'what do I need for a REST API', 'plan a Node.js backend', or 'setup a Fastify project from scratch'. Make sure to use this skill whenever planning a new Node.js REST API project architecture. Not for frontend development, specific implementation details, or non-Node.js backends."
+description: "Outlines the complete lifecycle of building a REST API with Node.js from zero to deploy, covering Fastify, TypeScript, Knex, SQL, automated testing, CI/CD, linting, and environment variables. Use when user asks to 'start a Node API project', 'what do I need for a REST API', 'plan a Node.js backend', or 'setup a Fastify project from scratch'. Make sure to use this skill whenever planning a new Node.js REST API project architecture. Not for frontend development, specific implementation details, or non-Node.js backends."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-overview
+  tags: [rest-api, fastify, typescript, knex, sql, vitest, eslint, ci-cd, project-setup]
 ---
 
 # Introducao — API REST com Node.js
@@ -20,7 +26,9 @@ description: "Provides an overview of building a complete REST API with Node.js 
 | Linting | **ESLint** | Padronizacao de codigo no time |
 | Deploy | **CI/CD automatizado** | Push no codigo → deploy automatico em producao |
 
-## Ciclo completo do projeto
+## Key concepts
+
+### Ciclo completo do projeto
 
 1. **Setup inicial** — Fastify + TypeScript + estrutura de pastas
 2. **Banco de dados** — Configurar Knex, migrations, conexao SQL
@@ -46,6 +54,21 @@ description: "Provides an overview of building a complete REST API with Node.js 
 | E2E / Integracao | Mais | Alta — validam o comportamento real da API |
 | Unitarios | Menos | Media — para logica isolada complexa |
 
+```typescript
+// Setup inicial de um projeto Fastify com TypeScript
+import Fastify from 'fastify'
+
+const app = Fastify()
+
+app.get('/hello', async () => {
+  return { hello: 'world' }
+})
+
+app.listen({ port: 3333 }).then(() => {
+  console.log('HTTP Server Running!')
+})
+```
+
 ## Heuristics
 
 | Situacao | Acao |
@@ -55,14 +78,14 @@ description: "Provides an overview of building a complete REST API with Node.js 
 | Time sem padrao de codigo | Configurar ESLint antes de mais nada |
 | Deploy manual | Automatizar com CI/CD o quanto antes |
 
+## Troubleshooting
+
+### Projeto Node.js sem testes desde o inicio
+**Symptom:** Testes sao adicionados apenas no final do projeto, resultando em baixa cobertura e testes frageis
+**Cause:** Decisao de "adicionar testes depois" leva a codigo dificil de testar por estar acoplado
+**Fix:** Configure o framework de testes (Vitest) no setup inicial e escreva testes E2E desde a primeira rota
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-introducao-52/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-introducao-52/references/code-examples.md)

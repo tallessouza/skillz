@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-testes-unitarios
 description: "Enforces in-memory repository pattern and test structure conventions when writing unit tests in Node.js/TypeScript. Use when user asks to 'write tests', 'create unit tests', 'refactor tests', 'test a use case', or 'implement repository for testing'. Applies rules: extract fake repos into InMemory classes, use describe/it/beforeEach structure, name main instance as SUT (System Under Test), assert against repository state. Make sure to use this skill whenever creating or refactoring unit tests for use cases with repository dependencies. Not for integration tests, E2E tests, or database testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: in-memory-repository-tests
+  tags: [in-memory-repository, unit-test, sut, describe, beforeEach, vitest, test-structure]
 ---
 
 # Refatorando Testes Unitarios com In-Memory Repositories
@@ -117,14 +123,14 @@ describe('CreateQuestion', () => {
 | `test('create question', ...)` sem describe | `describe('CreateQuestion', () => { it('should...') })` |
 | `expect(result).toBeTruthy()` apenas | `expect(repository.items[0].id).toEqual(result.id)` tambem |
 
+## Troubleshooting
+
+### InMemoryRepository nao implementa novo metodo da interface
+**Symptom:** TypeScript erro "Class 'InMemoryQuestionsRepository' incorrectly implements interface 'QuestionsRepository'"
+**Cause:** A interface do repositorio foi atualizada com um novo metodo, mas o InMemory repository nao o implementa
+**Fix:** Adicione o metodo faltante na classe InMemory. Se o teste nao usa esse metodo, implemente com retorno minimo (ex: `throw new Error('Not implemented')`)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-os-testes-unitarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-os-testes-unitarios/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-estrutura-pagina-de-issue
 description: "Applies Next.js nested layout patterns and issue detail page structure when building detail/show pages in Next.js App Router. Use when user asks to 'create a detail page', 'build an issue page', 'add a nested layout', 'structure a show page', or 'reuse layout with different header'. Enforces layout encadeado pattern, component extraction for reuse, and status label mapping with asConst. Make sure to use this skill whenever creating detail views or nested layouts in Next.js App Router. Not for list pages, API routes, or server actions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-layouts
+  tags: [nested-layout, detail-page, as-const, component-extraction, app-router, next-js, tailwind]
 ---
 
 # Estrutura de Pagina de Detalhe com Layouts Encadeados (Next.js App Router)
@@ -134,14 +140,19 @@ export default function Layout({ children }) {
 | Extrair componente no primeiro uso | Extrair quando aparece em 2+ lugares |
 | Duplicar header inteiro entre paginas | Compartilhar componentes, variar via layout |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-estrutura-da-pagina-de-issue/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-estrutura-da-pagina-de-issue/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-estrutura-da-pagina-de-issue/references/deep-explanation.md) — O instrutor explica que a pagina de issue nao precisa do search input que existe no header do board.
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-estrutura-da-pagina-de-issue/references/code-examples.md) — // app/issues/layout.tsx

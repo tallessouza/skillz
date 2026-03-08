@@ -1,6 +1,12 @@
 ---
-name: rs-devops-datasources
-description: "Applies Terraform data source patterns when writing infrastructure-as-code. Use when user asks to 'read existing resource', 'reference remote state', 'get resource attributes', 'query AWS resource', or 'use data source in Terraform'. Enforces proper data block syntax, file organization, and cross-resource attribute referencing. Make sure to use this skill whenever generating Terraform code that needs information from existing resources. Not for creating new resources, variable definitions, or output configurations."
+name: rs-devops-terraform-datasources
+description: "Applies Terraform data source patterns when referencing existing infrastructure resources. Use when user asks to 'reference existing resource', 'use terraform data source', 'query existing s3 bucket', 'terraform data block', or 'lookup existing infrastructure'. Enforces data block usage, dedicated datasources.tf file, and dynamic attribute references. Make sure to use this skill whenever referencing pre-existing cloud resources in Terraform configurations. Not for creating new resources, importing state, or Terraform modules."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-data-sources
+  tags: [terraform, data-source, aws, s3, cloudfront, iac, existing-resources]
 ---
 
 # Terraform Data Sources
@@ -9,61 +15,12 @@ description: "Applies Terraform data source patterns when writing infrastructure
 
 ## Rules
 
-1. **Use o bloco `data` para recursos existentes** — `data "aws_s3_bucket" "bucket" {}` nao `resource`, porque data sources consultam sem criar ou modificar
-2. **Crie arquivo dedicado `datasources.tf`** — separe data sources dos resources, porque facilita localizar fontes de dados e mantem responsabilidade unica por arquivo
-3. **Identifique pelo atributo correto** — use `bucket = "nome"` para S3, `name` para outros, porque cada provider define seu proprio atributo de lookup
-4. **Considere workspace na identificacao** — nomes que incluem `terraform.workspace` mudam por ambiente, copie a expressao completa no data source
-5. **Nunca hardcode atributos gerados** — ARN, domain name, region sao atributos de tempo de criacao, use `data.aws_s3_bucket.bucket.arn` em vez de strings fixas
-6. **Data source sem output nao faz nada visivel** — `terraform plan` nao mostra mudancas para data sources isolados, combine com outputs ou references em resources
+1. **Use o bloco `data` para recursos existentes** — data sources consultam sem criar ou modificar
+2. **Crie arquivo dedicado `datasources.tf`** — separe data sources dos resources
+3. **Nunca hardcode atributos gerados** — use `data.aws_s3_bucket.bucket.arn`
+4. **Data source sem output nao faz nada visivel** — combine com references em resources
 
 ## How to write
-
-### Data source basico
-
-```hcl
-# datasources.tf — arquivo dedicado para fontes de dados
-data "aws_s3_bucket" "bucket" {
-  bucket = "skillz-bucket-${terraform.workspace}"
-}
-```
-
-### Referenciando atributos do data source
-
-```hcl
-# Em outro resource, use os atributos consultados
-resource "aws_cloudfront_distribution" "cdn" {
-  origin {
-    domain_name = data.aws_s3_bucket.bucket.bucket_domain_name
-    origin_id   = data.aws_s3_bucket.bucket.id
-  }
-}
-```
-
-### Estrutura de arquivos
-
-```
-infra/
-├── main.tf           # Resources
-├── providers.tf      # Provider config
-├── datasources.tf    # Data sources (arquivo dedicado)
-├── variables.tf      # Input variables
-└── outputs.tf        # Output values
-```
-
-## Example
-
-**Before (hardcoded — fragil e propenso a erro):**
-
-```hcl
-resource "aws_cloudfront_distribution" "cdn" {
-  origin {
-    domain_name = "skillz-bucket-stage.s3.amazonaws.com"
-    origin_id   = "S3Origin"
-  }
-}
-```
-
-**After (com data source — dinamico e correto):**
 
 ```hcl
 # datasources.tf
@@ -71,7 +28,7 @@ data "aws_s3_bucket" "bucket" {
   bucket = "skillz-bucket-${terraform.workspace}"
 }
 
-# main.tf
+# main.tf — referenciando
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = data.aws_s3_bucket.bucket.bucket_domain_name
@@ -80,33 +37,22 @@ resource "aws_cloudfront_distribution" "cdn" {
 }
 ```
 
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| Precisa de ARN, domain name, ou ID de recurso existente | Crie data source, nunca copie o valor |
-| Recurso foi criado no mesmo projeto | Pode usar `resource.name.attribute` direto, data source e opcional |
-| Recurso foi criado fora do Terraform | Data source e obrigatorio para consultar |
-| Multiplos buckets/recursos do mesmo tipo | Use alias descritivo no data source (`"logs_bucket"`, `"assets_bucket"`) |
-| `terraform plan` nao mostra nada apos criar data source | Normal — data source sozinho nao gera mudancas visiveis |
-
 ## Anti-patterns
 
 | Nunca escreva | Escreva em vez disso |
 |---------------|----------------------|
-| `domain_name = "bucket.s3.amazonaws.com"` | `domain_name = data.aws_s3_bucket.bucket.bucket_domain_name` |
-| `arn = "arn:aws:s3:::my-bucket"` | `arn = data.aws_s3_bucket.bucket.arn` |
-| Data sources dentro de `main.tf` misturados com resources | Arquivo `datasources.tf` dedicado |
-| `data "aws_s3_bucket" "data1" {}` (alias generico) | `data "aws_s3_bucket" "assets_bucket" {}` (alias descritivo) |
+| `domain_name = "bucket.s3.amazonaws.com"` | `data.aws_s3_bucket.bucket.bucket_domain_name` |
+| Data sources dentro de `main.tf` | Arquivo `datasources.tf` dedicado |
+| Alias generico (`data1`, `main`) | Alias descritivo (`assets_bucket`) |
+
+## Troubleshooting
+
+### Data source retorna erro "resource not found"
+**Symptom:** `terraform plan` falha com erro indicando que o recurso referenciado pelo data source nao existe.
+**Cause:** O nome ou identificador passado ao data source nao corresponde a um recurso existente na conta/regiao AWS configurada.
+**Fix:** Verifique se o recurso existe na mesma conta e regiao do provider. Use o AWS Console ou CLI para confirmar o nome exato do recurso (ex: nome do bucket S3).
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-datasources/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-datasources/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

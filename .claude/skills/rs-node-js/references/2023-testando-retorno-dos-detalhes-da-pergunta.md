@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-detalhes-pergunta
 description: "Enforces test maintenance when in-memory repository dependencies change in NestJS clean architecture projects. Use when user asks to 'add dependency to repository', 'update in-memory repository constructor', 'fix failing tests after refactor', or 'test response details with relations'. Ensures all test files instantiating affected repositories are updated with new dependencies, even when unused. Make sure to use this skill whenever changing repository constructors or adding relations to use cases. Not for production code, database migrations, or E2E tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [testing, repository-dependencies, in-memory, constructor, type-safety]
 ---
 
 # Manutenção de Testes ao Alterar Dependências de Repositórios
@@ -90,14 +96,14 @@ it('should return question details with author and attachments', async () => {
 | Criar a pergunta sem `authorId` quando testa detalhes | Criar um `student` e passar `authorId: student.id` |
 | Testar apenas o título sem verificar relações | Verificar `author`, `attachments` e outros campos |
 
+## Troubleshooting
+
+### Erro de tipo ao instanciar repositorio in-memory apos refactor
+**Symptom:** IDE mostra erro no constructor do InMemoryQuestionsRepository mas testes passam
+**Cause:** Repositorio ganhou novas dependencias no constructor mas os testes nao foram atualizados — Vitest nao checa tipos
+**Fix:** Atualize TODOS os arquivos de teste que instanciam o repositorio, passando as novas dependencias na ordem correta
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-retorno-dos-detalhes-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-retorno-dos-detalhes-da-pergunta/references/code-examples.md)

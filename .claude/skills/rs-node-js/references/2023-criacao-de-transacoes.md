@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-criacao-de-transacoes
 description: "Applies Fastify transaction creation patterns when building REST API routes with Node.js. Use when user asks to 'create a route', 'insert into database', 'validate request body', 'create transaction endpoint', or 'build POST route with Fastify'. Enforces Zod body validation, Knex insert patterns, route prefixing via plugins, and proper HTTP status codes. Make sure to use this skill whenever creating Fastify routes that receive and persist data. Not for frontend code, authentication, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-rest-fastify
+  tags: [fastify, zod, knex, rest-api, validation]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Criacao de Transacoes — Fastify + Zod + Knex
@@ -117,14 +124,14 @@ app.post('/', async (request, reply) => {
 | `uuid()` de lib externa | `randomUUID()` de `node:crypto` |
 | `z.string()` para campo com valores finitos | `z.enum(['credit', 'debit'])` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criacao-de-transacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criacao-de-transacoes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-criacao-de-transacoes/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-criacao-de-transacoes/references/code-examples.md) — Todos os exemplos de código expandidos com variações

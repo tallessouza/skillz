@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-gap
 description: "Applies CSS gap, row-gap, and column-gap properties when building grid or flexbox layouts. Use when user asks to 'add spacing between elements', 'create a grid layout', 'space grid items', or 'add gap between columns/rows'. Ensures correct use of gap shorthand vs individual row-gap/column-gap. Make sure to use this skill whenever generating CSS grid or flexbox layouts that need spacing between items. Not for margin, padding, or spacing outside of grid/flex containers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, gap, row-gap, column-gap, grid, flexbox, spacing]
 ---
 
 # CSS Gap — Espaçamento entre Elementos do Grid/Flex
@@ -94,13 +100,16 @@ description: "Applies CSS gap, row-gap, and column-gap properties when building 
 | `row-gap` e `column-gap` com mesmo valor | `gap: Xpx` (shorthand) |
 | `padding` sem `box-sizing: border-box` | Sempre combine os dois |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `gap` nao funciona | Aplicado nos filhos em vez do container | Mova `gap` para o elemento com `display: grid` ou `display: flex` |
+| Gap nao aparece em um eixo | Item ocupa grid-area inteira naquele eixo | Comportamento correto — gap so aparece entre vizinhos |
+| Container fica maior que esperado com padding | Falta `box-sizing: border-box` | Adicione `box-sizing: border-box` ao container |
+| `row-gap` e `column-gap` com mesmo valor | Redundancia desnecessaria | Use shorthand `gap: Xpx` quando ambos sao iguais |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando gap aplica ou não, analogias visuais
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de layout com gap expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-gap/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-gap/references/code-examples.md)

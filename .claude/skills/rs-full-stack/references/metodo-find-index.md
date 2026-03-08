@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-find-index
 description: "Applies correct Array.findIndex() usage patterns when writing JavaScript/TypeScript array search code. Use when user asks to 'find index', 'find position', 'locate element in array', 'search array position', or uses findIndex in code. Enforces index-based search over value-based, proper -1 handling, and callback patterns. Make sure to use this skill whenever generating code that searches for element positions in arrays. Not for finding element values (use find), filtering arrays (use filter), or transforming arrays (use map)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-array-methods
+  tags: [javascript, array, findIndex, search, iteration]
 ---
 
 # Método findIndex()
@@ -85,13 +91,16 @@ if (adultIndex !== -1) {
 | `findIndex()` quando quer o valor | `find()` para obter o elemento |
 | `findIndex() !== -1` para checar existência | `some()` para boolean |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `findIndex` retorna sempre -1 | Condicao do callback nunca e satisfeita | Verifique os valores do array e a logica da comparacao |
+| `TypeError: Cannot read property` ao usar resultado | Usou o indice como se fosse o elemento | Use `array[index]` para acessar o elemento, ou use `find()` |
+| `findIndex` retorna 0 mas `if (index)` nao entra | 0 e falsy em JavaScript | Use `if (index !== -1)` em vez de `if (index)` |
+| Encontra o elemento errado | `findIndex` retorna o PRIMEIRO match | Revise a condicao ou use `filter()` para todos os matches |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-find-index/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-find-index/references/code-examples.md)

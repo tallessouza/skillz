@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-secao-call-to-action
 description: "Generates Call to Action sections for Next.js landing pages using Tailwind CSS. Use when user asks to 'create a CTA section', 'build a call to action', 'add a landing page section', 'create a conversion section', or 'finalize a landing page'. Applies patterns: gradient backgrounds, centered layout with flex column, reusable button components, icon with rounded badge, PT Sans Caption for headings. Make sure to use this skill whenever building CTA or final sections of landing pages. Not for blog pages, navigation, or header/hero sections."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: landing-page-sections
+  tags: [cta, call-to-action, landing-page, tailwind, next-js, gradient, button-component]
 ---
 
 # Secao Call to Action
@@ -103,14 +109,19 @@ primary: "bg-blue-200 text-white hover:bg-blue-300 rounded",
 | Icone solto sem container | Icone dentro de div com padding e rounded-full |
 | Titulo sem text-balance | Titulo com `text-balance` para distribuicao uniforme |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-secao-call-to-action/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-secao-call-to-action/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-secao-call-to-action/references/deep-explanation.md) — O instrutor destaca que o botao "Criar loja gratis" aparece em tres pontos da landing page. Isso e i
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-secao-call-to-action/references/code-examples.md) — // components/call-to-action.tsx

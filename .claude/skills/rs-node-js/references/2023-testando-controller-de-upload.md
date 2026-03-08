@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-controller-upload
 description: "Enforces end-to-end testing patterns for upload controllers in NestJS with external storage integration. Use when user asks to 'test upload', 'write e2e test', 'test controller with file upload', 'configure test environment for S3/R2', or 'separate test bucket'. Applies rules: real external services in e2e tests, separate test buckets with auto-cleanup, env override for test environments, proper Prisma repository wiring. Make sure to use this skill whenever writing e2e tests that involve file uploads or external storage. Not for unit tests, mock-based tests, or frontend upload components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [e2e-testing, upload, storage, bucket, env-override, nestjs]
 ---
 
 # Testando Controller de Upload (E2E com Storage Real)
@@ -125,14 +131,14 @@ const fakeUploader = { upload: vi.fn().mockResolvedValue({ url: 'fake' }) }
 | Dezenas de testes e2e para upload | Poucos testes e2e que cobrem o fluxo completo |
 | Deletar arquivos de teste manualmente | Object Lifecycle Rules (auto-delete apos 1 dia) |
 
+## Troubleshooting
+
+### Teste e2e de upload retorna Access Denied
+**Symptom:** Upload para bucket de teste falha com erro de permissao
+**Cause:** API key nao tem acesso ao bucket de teste recem-criado
+**Fix:** Atualize as permissoes da API key para incluir o novo bucket de teste
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-controller-de-upload/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-controller-de-upload/references/code-examples.md)

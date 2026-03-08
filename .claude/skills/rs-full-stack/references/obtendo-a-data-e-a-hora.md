@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-a-data-e-a-hora
 description: "Applies JavaScript Date object fundamentals when working with dates and times. Use when user asks to 'get current date', 'work with dates', 'create a Date object', 'convert timestamps', or 'handle time in JS'. Covers new Date(), getTime(), epoch reference, and timezone awareness. Make sure to use this skill whenever generating code that involves Date operations in JavaScript. Not for date formatting, date libraries like dayjs/luxon, or date arithmetic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, date, timestamp, epoch, timezone]
 ---
 
 # Obtendo a Data e a Hora em JavaScript
@@ -73,13 +79,15 @@ const epochReference = new Date(0)
 | Ignorar fuso ao exibir datas | Sempre considerar timezone do usuario |
 | Comparar datas como strings | Comparar via `getTime()` (numerico) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Data aparece como 31/dez/1969 em vez de 01/jan/1970 | Deslocamento de fuso horario (ex: BRT -3) | Isso e esperado — epoch e UTC, display e local |
+| `new Date(timestamp)` mostra data errada | Timestamp em segundos em vez de milissegundos | Multiplique por 1000: `new Date(ts * 1000)` |
+| Comparacao de datas retorna resultado inesperado | Comparando objetos Date como referencia | Use `getTime()` para comparar numericamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre epoch, fuso horario e overload do Date
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-obtendo-a-data-e-a-hora/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-obtendo-a-data-e-a-hora/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-background-shorthand
 description: "Enforces correct CSS background shorthand syntax when styling elements. Use when user asks to 'add background', 'set background image', 'style element background', 'apply background color and image', or any CSS background task. Applies rules: shorthand overrides previous individual properties, position before slash then size, color-url-repeat-position/size order. Make sure to use this skill whenever writing CSS background declarations. Not for CSS layout, flexbox, grid, or non-background styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, background, shorthand, syntax]
 ---
 
 # Background Shorthand no CSS
@@ -99,13 +105,16 @@ body {
 | `background: url(...) cover` sem barra | `background: url(...) center / cover` |
 | Misturar shorthand com individuais no mesmo seletor | Escolha um: shorthand completo OU individuais |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Shorthand ignora propriedades individuais anteriores | Shorthand reseta tudo que nao esta declarado nele | Inclua todas as propriedades necessarias dentro do shorthand |
+| `cover` nao funciona no shorthand | Faltou a barra `/` separando position de size | Use `center / cover`, nao `center cover` |
+| Cor de fundo sumiu apos adicionar shorthand | Shorthand sem cor declarada reseta background-color | Inclua a cor no shorthand: `background: #fff url(...) ...` |
+| Ordem das propriedades causa erro | Parser espera ordem especifica | Use: cor, url(), repeat, position / size |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre como o shorthand sobrescreve propriedades e ordem de parsing
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-background-shorthand/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-background-shorthand/references/code-examples.md)

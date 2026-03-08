@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-importando-tudo
 description: "Applies JavaScript namespace import pattern (import * as) when writing module imports. Use when user asks to 'import everything', 'import all exports', 'use namespace import', 'import module', or organizes JS/TS modules. Enforces correct syntax: `import * as name from './module.js'` and access via `name.function`. Make sure to use this skill whenever user imports multiple exports from a single module. Not for dynamic imports, CSS/asset imports, or package manager configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: es-modules
+  tags: [javascript, modules, import, namespace, es-modules]
 ---
 
 # Importando Tudo — Namespace Import
@@ -69,13 +75,16 @@ calc.multiply(2, 3)
 | Multiplos `import { x } from './mesmo.js'` | Um unico `import * as nome from './mesmo.js'` |
 | `import * as c` (nome abreviado) | `import * as calc` (nome descritivo) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `import * as calc` retorna objeto vazio | Modulo nao tem `export` nas funcoes | Adicione `export` antes de cada funcao no modulo de origem |
+| Erro "Cannot use import statement outside a module" | Arquivo nao esta configurado como ES Module | Adicione `"type": "module"` no `package.json` ou use extensao `.mjs` |
+| Autocomplete nao mostra funcoes do namespace | IDE nao reconhece o modulo | Verifique se o caminho do import esta correto e inclui extensao `.js` |
+| Tree-shaking nao funciona com `import *` | Bundler nao consegue eliminar exports nao usados | Use importacao individual `import { func }` para melhor tree-shaking |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-importando-tudo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-importando-tudo/references/code-examples.md)

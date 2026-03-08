@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-rotas-health
 description: "Applies Kubernetes health check route patterns when building NestJS applications with liveness, readiness, or startup probes. Use when user asks to 'add health check', 'create readiness endpoint', 'configure k8s probes', 'add liveness route', or 'setup health controller'. Ensures proper separation between /health and /ready endpoints with correct probe mapping. Make sure to use this skill whenever creating health check infrastructure for containerized NestJS apps. Not for general REST API design, database health checks with Terminus, or Kubernetes manifest configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-health-checks
+  tags: [kubernetes, health-check, nestjs, liveness, readiness, probes, k8s]
 ---
 
 # Rotas de Health Check para Kubernetes
@@ -110,14 +116,14 @@ checkReady() { return this.healthService.checkReady(); }
 | Esquecer de registrar no AppModule | Declarar controller e service no module |
 | Implementar ping manual para cada servico | Usar `@nestjs/terminus` para agregar health checks |
 
+## Troubleshooting
+
+### Pod reiniciando constantemente (CrashLoopBackOff)
+**Symptom:** Pod entra em CrashLoopBackOff apos configurar liveness probe apontando para `/health`
+**Cause:** A rota `/health` nao esta registrada no NestJS porque HealthController nao foi declarado no AppModule
+**Fix:** Adicione `HealthController` em `controllers` e `HealthService` em `providers` no `AppModule`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-rotas-na-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-rotas-na-aplicacao/references/code-examples.md)

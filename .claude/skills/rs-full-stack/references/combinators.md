@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-combinators
-description: "Applies CSS combinator selectors correctly when writing stylesheets. Use when user asks to 'style nested elements', 'select child elements', 'write CSS selectors', 'target siblings in CSS', or any CSS selector task. Covers descendant (space), list (comma), next-sibling (+), and child (>) combinators with correct syntax and specificity. Make sure to use this skill whenever generating CSS that targets elements by relationship. Not for CSS properties, layout systems like flexbox/grid, or JavaScript DOM selection."
+description: "Applies CSS combinator selectors correctly when writing stylesheets. Use when user asks to 'style nested elements', 'select child elements', 'write CSS selectors', 'target siblings in CSS', or any CSS selector task. Covers descendant (space), list (comma), next-sibling (+), and child combinator with correct syntax and specificity. Make sure to use this skill whenever generating CSS that targets elements by relationship. Not for CSS properties, layout systems like flexbox/grid, or JavaScript DOM selection."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, selectors, combinators, descendant, child, sibling]
 ---
 
 # CSS Combinators
@@ -98,13 +104,17 @@ aside > ul {
 | `aside > ul { color: red }` esperando limitar heranca de cor | `aside ul { color: red }` (cor herda de qualquer forma) |
 | Repetir bloco CSS identico para span e mark separados | `span, mark { color: red }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Estilo aplicado a elementos aninhados indesejados | Usando descendant (espaco) em vez de child (`>`) | Troque para `parent > child` para selecionar apenas filhos diretos |
+| Seletor `+` nao funciona | Elemento alvo nao e irmao imediato | Verifique a estrutura HTML — `+` exige adjacencia direta |
+| `color` aplicada com `>` afeta filhos aninhados | Propriedades herdaveis propagam independente do seletor | Use descendant para propriedades herdaveis, `>` so faz diferenca para nao-herdaveis |
+| Seletor de lista com virgula nao aplica a todos | Erro de sintaxe em um dos seletores invalida toda a regra | Verifique cada seletor da lista separadamente |
+| Especificidade menor que esperada | Combinators nao aumentam especificidade | Adicione classe ou ID se precisar de maior prioridade |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases de cada combinator
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-combinators/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-combinators/references/code-examples.md)

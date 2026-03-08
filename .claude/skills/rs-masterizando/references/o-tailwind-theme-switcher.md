@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-theme-switcher
 description: "Applies Tailwind CSS dark mode theme switching configuration when user asks to 'add dark mode', 'implement theme switcher', 'configure dark/light theme', 'toggle dark mode', or 'setup theme switching'. Covers darkMode class strategy, HTML class toggling, and Next.js NextThemes integration. Make sure to use this skill whenever configuring dark mode beyond system preferences in Tailwind projects. Not for general Tailwind styling, color customization, or non-theme CSS configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: dark-mode
+  tags: [tailwind, react, nextjs]
 ---
 
 # Theme Switcher — Dark/Light Mode no Tailwind
@@ -106,15 +112,19 @@ function ThemeToggle() {
 | Usar `darkMode: 'media'` quando precisa de toggle | Usar `darkMode: 'class'` |
 | Implementar gerenciamento de tema manual no Next.js | Usar NextThemes que resolve SSR/hydration |
 | Omitir `suppressHydrationWarning` no `<html>` com NextThemes | Adicionar `suppressHydrationWarning` para evitar warnings de hydration |
+## Troubleshooting
+
+### Dark mode nao ativa
+**Symptom:** Classes `dark:` nao tem efeito mesmo com tema escuro no SO.
+**Cause:** Se `darkMode: 'class'` esta configurado, o Tailwind ignora `prefers-color-scheme` e espera a classe `dark` no `<html>`.
+**Fix:** Se quer resposta automatica ao SO, use `darkMode: 'media'` (padrao). Se quer toggle manual, adicione classe `dark` no `<html>`.
+
+### Contraste insuficiente no dark mode
+**Symptom:** Texto dificil de ler em fundo escuro.
+**Cause:** Texto claro demais (`dark:text-zinc-600`) ou fundo muito proximo do texto.
+**Fix:** Use `dark:text-zinc-100` para texto primario e `dark:text-zinc-400` para secundario em fundo `dark:bg-zinc-900`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-theme-switcher/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-theme-switcher/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-theme-switcher/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-theme-switcher/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

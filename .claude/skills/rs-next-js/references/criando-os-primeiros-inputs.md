@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-os-primeiros-inputs
 description: "Applies reactive form input patterns when building forms with shadcn/ui in Next.js. Use when user asks to 'create a form', 'add inputs', 'build a registration form', 'add form fields', or 'use shadcn form components'. Enforces FormField/FormItem/FormControl/FormMessage structure, icon-inside-input pattern, and textarea customization. Make sure to use this skill whenever creating forms with shadcn/ui and react-hook-form. Not for server actions, API routes, or form validation logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: formularios-e-componentes
+  tags: [shadcn-ui, react-hook-form, input, textarea, form-field, next-js, tailwind]
 ---
 
 # Criando Inputs com Formularios Reativos (shadcn/ui)
@@ -140,14 +146,19 @@ description: "Applies reactive form input patterns when building forms with shad
 | `className="paddingLeft: 40px"` inline | `className="pl-10"` com Tailwind |
 | Campos sem espacamento | `space-y-4` no container pai |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-os-primeiros-inputs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-os-primeiros-inputs/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-os-primeiros-inputs/references/deep-explanation.md) — O shadcn/ui usa uma composicao baseada em React Context. Cada nivel da hierarquia tem uma responsabi
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-os-primeiros-inputs/references/code-examples.md) — npx shadcn-ui@latest add form

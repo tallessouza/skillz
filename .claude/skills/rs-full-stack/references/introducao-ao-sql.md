@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-ao-sql
 description: "Applies SQL fundamentals knowledge when writing database queries for relational databases. Use when user asks to 'write a query', 'create a table', 'query the database', 'use SQL', or works with SQLite, PostgreSQL, or SQL Server. Covers SQL as standard language across relational DBs, syntax differences between engines, and CRUD operations. Make sure to use this skill whenever generating SQL or discussing relational database concepts. Not for NoSQL databases, ORMs, or application-level data access patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, database, crud, sqlite, postgresql, relational]
 ---
 
 # Introdução ao SQL
@@ -70,13 +76,15 @@ DELETE FROM users WHERE id = 1;
 - Cada engine tem extensões proprietárias (ex: `RETURNING` no PostgreSQL, `PRAGMA` no SQLite) que não são portáveis
 - Para operações complexas de aplicação, ORMs podem abstrair o SQL mas é fundamental entender o que acontece por baixo
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Query retorna erro de sintaxe | Falta ponto e vírgula ou aspas incorretas para a engine | Confira as convenções da engine (SQLite: `;` opcional, PostgreSQL: `;` obrigatório) |
+| `INSERT` falha com "NOT NULL constraint" | Coluna obrigatória não recebeu valor no INSERT | Inclua todas as colunas NOT NULL na lista de valores do INSERT |
+| `DELETE` sem WHERE apagou tudo | Faltou cláusula WHERE no DELETE | Sempre adicione WHERE ao DELETE; teste com SELECT antes para confirmar quais registros serão afetados |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre portabilidade SQL e analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Exemplos de CRUD expandidos com variações por engine
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-ao-sql/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-ao-sql/references/code-examples.md)

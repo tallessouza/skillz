@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-middleware
 description: "Enforces Node.js middleware patterns for request/response interception and code reuse. Use when user asks to 'create middleware', 'handle request body', 'parse JSON body', 'avoid code duplication in routes', or 'intercept requests'. Applies patterns: separate middleware files, body parsing with chunks, request property injection, response header setting. Make sure to use this skill whenever building raw Node.js HTTP servers without Express. Not for Express middleware, authentication, or error handling middleware."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [middleware, nodejs, json-body, code-reuse, request-injection]
 ---
 
 # Utilizando Middleware no Node.js
@@ -118,13 +124,13 @@ const server = http.createServer(async (request, response) => {
 | `response.end(request.body.price)` (numero) | `response.end(request.body.price.toString())` |
 | Middleware sincrono lendo body | `async function` com `for await` |
 
+## Troubleshooting
+
+### Problem: `response.end(request.body)` throws "write after end" or sends `[object Object]`
+- **Cause**: `response.end()` only accepts strings or Buffers, not objects; passing an object calls `.toString()` which returns `[object Object]`
+- **Fix**: Use `response.end(JSON.stringify(request.body))` to serialize the object before sending
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre middleware, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0211-utilizando-middleware-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0211-utilizando-middleware-mkv-mp-4/references/code-examples.md)

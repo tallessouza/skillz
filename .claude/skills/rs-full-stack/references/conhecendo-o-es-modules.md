@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-es-modules
 description: "Applies ES Modules (ESM) patterns when structuring JavaScript/TypeScript code. Use when user asks to 'organize code', 'split into modules', 'create imports', 'export functions', 'modularize', or 'structure a project'. Enforces proper import/export usage, single-responsibility modules, and code reuse through modularization. Make sure to use this skill whenever creating new files or reorganizing existing code into modules. Not for bundler configuration, CommonJS/require syntax, or package.json setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modules
+  tags: [es-modules, import, export, named-exports, modularization, code-organization]
 ---
 
 # ES Modules (ESM)
@@ -83,13 +89,16 @@ export function createOrder(userId: string) { return { userId, date: formatDate(
 | Arquivo com multiplas responsabilidades misturadas | Um modulo por responsabilidade |
 | `export default` para multiplas funcoes | Named exports para cada funcao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: Cannot use import statement` | Projeto nao configurado para ESM | Adicionar `"type": "module"` no package.json ou usar extensao `.mjs` |
+| Import nao encontra o modulo | Caminho relativo incorreto ou extensao ausente | Verificar caminho e adicionar extensao se necessario (`.js` em ESM puro) |
+| `export` nao reconhecido | Arquivo tratado como CommonJS | Verificar `"type": "module"` no package.json |
+| Funcao importada retorna `undefined` | Funcao nao exportada no modulo de origem | Adicionar `export` antes da declaracao da funcao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre modularizacao, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-es-modules/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-es-modules/references/code-examples.md)

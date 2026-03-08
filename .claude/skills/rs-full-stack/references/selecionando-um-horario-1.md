@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-selecionando-um-horario-1
 description: "Applies click-to-select UI pattern when building time/slot selection interfaces with vanilla JavaScript. Use when user asks to 'select an item from a list', 'highlight clicked element', 'toggle active class on click', or 'build a time picker'. Enforces the remove-all-then-add-one pattern for single-selection UIs. Make sure to use this skill whenever implementing click-based selection in lists with CSS class toggling. Not for React/Vue state management, multi-select patterns, or form validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "DOM Click Selection"
+  tags: ['javascript', 'dom', 'classList', 'ui-selection', 'events']
 ---
 
 # Selecao de Horario com Click — Padrao Remove-All-Add-One
@@ -95,6 +101,15 @@ availableHours.forEach((available) => {
 | Logica de click dentro do arquivo de load | Arquivo separado `hours.click.js` |
 | Toggle sem remover dos outros | Remove de todos primeiro, depois add no clicado |
 | Selecao sem feedback visual | CSS class `hour-selected` com estilo diferenciado |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Click nao seleciona nenhum item | Funcao de click chamada antes de renderizar os itens | Chame `hoursClick()` APOS a renderizacao dos elementos no DOM |
+| Multiplos itens ficam selecionados | Falta remover classe de todos antes de adicionar | Itere todos os itens com `classList.remove` antes de `classList.add` |
+| Itens indisponiveis respondem ao click | `querySelectorAll` selecionando todos os itens | Filtre apenas disponiveis: `querySelectorAll(".hour-available")` |
+| `className` sobrescreve outras classes | Usando `element.className = "selected"` | Use `classList.add` e `classList.remove` para manipulacao segura |
 
 ## Deep reference library
 

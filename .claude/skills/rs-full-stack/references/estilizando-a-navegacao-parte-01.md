@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estilizando-navegacao-01
 description: "Applies CSS navigation styling patterns when building navbars with Flexbox. Use when user asks to 'style a navbar', 'create navigation layout', 'align nav items', 'space between nav elements', or 'style links'. Covers display flex, justify-content, align-items, list-style reset, pseudo-classes last-child/hover, padding-block, gap, object-fit, and global anchor resets. Make sure to use this skill whenever styling navigation components or horizontal layouts with CSS. Not for JavaScript interactivity, responsive breakpoints, or CSS Grid layouts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-navigation
+  tags: [css, flexbox, navigation, navbar, gap, object-fit, pseudo-classes]
 ---
 
 # Estilizando Navegacao com CSS Flexbox
@@ -119,13 +125,16 @@ nav ul li:last-child img {
 | `margin-right: 20px` em cada li | `gap: 20px` no flex container |
 | Estilos de nav misturados no global | Arquivo `nav.css` separado |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Itens do nav empilhados verticalmente | Faltou `display: flex` no container | Adicionar `display: flex` no `nav` ou `ul` |
+| Bullet points visiveis na lista | `list-style` nao removido | Adicionar `list-style: none` no `ul` |
+| Link com cor azul padrao | Reset global de anchor ausente | Adicionar `a { color: inherit; text-decoration: none; }` |
+| Imagem de perfil distorcida | `object-fit` nao aplicado | Adicionar `object-fit: cover` com dimensoes fixas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Flexbox, pseudo-classes e organizacao CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estilizando-a-navegacao-parte-01/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estilizando-a-navegacao-parte-01/references/code-examples.md)

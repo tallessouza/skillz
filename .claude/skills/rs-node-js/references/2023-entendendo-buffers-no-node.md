@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entendendo-buffers
-description: "Applies Node.js Buffer knowledge when working with binary data, streams, or memory-efficient operations. Use when user asks to 'read binary data', 'work with streams', 'convert between encodings', 'handle buffers', or manipulate raw data in Node.js. Ensures correct Buffer API usage and understanding of binary representations. Make sure to use this skill whenever writing Node.js code that deals with binary data, file I/O, or stream processing. Not for browser-only JavaScript, frontend string manipulation, or high-level HTTP response handling."
+name: 2023-entendendo-buffers-no-node
+description: "Demonstrates Node.js Buffer API for working with binary data in memory, including creation from strings, JSON conversion, and integration with streams. Use when user asks to 'work with buffers', 'handle binary data', 'convert string to buffer', or 'process binary in Node.js'. Make sure to use this skill whenever manipulating binary data, reading file chunks, or understanding how streams handle data internally in Node.js. Not for frontend JavaScript, browser APIs like ArrayBuffer, or high-level string operations."
+category: reference
+tags: [buffers, streams]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [buffers, binary-data, streams, nodejs, memory, performance]
 ---
 
 # Buffers no Node.js
@@ -88,14 +97,14 @@ const buffer = Buffer.from("conteudo com acentuação e caracteres especiais")
 | Usar Typed Array no Node para I/O | Use Buffer — e o que o Node usa internamente |
 | Tratar Buffer como armazenamento permanente | Buffer e transitorio — processe e descarte |
 
+## Troubleshooting
+
+### Dados corrompidos ao converter Buffer para string no meio de uma stream
+**Symptom:** Caracteres especiais (acentos, emojis) aparecem quebrados na saida
+**Cause:** Chamou `toString()` em cada chunk individualmente — caracteres multi-byte podem ser divididos entre chunks
+**Fix:** Acumule todos os buffers com `Buffer.concat()` e converta para string apenas no final
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entendendo-buffers-no-node/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entendendo-buffers-no-node/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-git-stage-area
 description: "Applies Git staging area workflow when user asks to 'add files to git', 'stage changes', 'prepare a commit', 'check git status', or 'remove from staging'. Enforces correct use of git add, git status, git rm --cached, and the re-staging requirement after modifications. Make sure to use this skill whenever the user is learning Git basics or managing staged files. Not for advanced Git operations like rebasing, cherry-picking, or branch management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, staging, add, status, version-control]
 ---
 
 # Git Stage Area — Adicionando e Removendo Modificações
@@ -85,13 +91,16 @@ git commit -m "adiciona frases"  # commit COM a modificacao
 | Deletar arquivo para remover do stage | `git rm --cached <arquivo>` |
 | `git add .` sem verificar o que sera adicionado | `git status` antes do `git add .` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo nao aparece no `git status` | Arquivo esta listado no `.gitignore` | Verifique o `.gitignore` e remova a entrada se necessario |
+| Commit nao inclui alteracoes recentes | Arquivo foi editado apos o `git add` | Execute `git add <arquivo>` novamente antes do commit |
+| `git rm --cached` deleta o arquivo | Confusao com `git rm` sem `--cached` | Sempre use `--cached` para remover apenas do stage, nao do disco |
+| `git add .` adiciona arquivos indesejados | Sem `.gitignore` configurado | Crie `.gitignore` com padroes de exclusao antes do `git add .` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Stage Area, analogias e mental model
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de comandos expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionado-modificacoes-ao-stage-area/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionado-modificacoes-ao-stage-area/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-escolhendo-carrinho
 description: "Applies cart activation pattern when building multi-cart systems in Node.js. Use when user asks to 'activate a cart', 'switch cart', 'select cart', 'manage cart state', or implement shopping cart selection logic. Enforces single-active-cart-per-user pattern: deactivate all user carts first, then activate the chosen one. Make sure to use this skill whenever implementing cart state management with multiple carts per user. Not for cart item management, checkout flow, or payment processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, ia-node, node-js]
 ---
 
 # Escolhendo o Carrinho Sugerido
@@ -106,14 +112,14 @@ async useCart(cartId: string, userId: string) {
 | `PUT /cart/:id { active: true }` generico | `POST /cart/:id/use` dedicado para a acao |
 | Verificar `if (cart.active)` para rejeitar | Permitir selecao independente do estado atual |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-escolhendo-o-carrinho-sugerido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-escolhendo-o-carrinho-sugerido/references/code-examples.md)

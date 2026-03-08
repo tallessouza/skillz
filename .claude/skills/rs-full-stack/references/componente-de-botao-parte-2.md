@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-componente-de-botao-parte-2
 description: "Applies CSS gradient border and gradient text techniques for secondary button components. Use when user asks to 'create a gradient button', 'style a secondary button', 'make gradient text CSS', 'gradient border effect', or 'background-clip text'. Covers aria-label as content source via CSS attr(), pseudo-elements for layered effects, and inset positioning. Make sure to use this skill whenever building buttons with gradient borders or gradient text in CSS. Not for primary button styling, JavaScript button logic, or accessibility auditing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, gradient, button, background-clip, pseudo-elements, aria-label]
 ---
 
 # Componente de Botao Secundario — CSS Gradient Border e Texto
@@ -115,13 +121,17 @@ description: "Applies CSS gradient border and gradient text techniques for secon
 | `inset: 0` esperando borda visivel | `inset: 0.093rem` (ou 1.5px) para revelar gradiente |
 | `background: transparent` no ::before | `background-color: var(--bg-color)` opaco |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Texto gradiente nao aparece | Faltou `color: transparent` junto com `background-clip: text` | Adicione `color: transparent` ao elemento com background-clip |
+| `background-clip: text` nao funciona no Chrome | Faltou vendor prefix `-webkit-` | Adicione `-webkit-background-clip: text` antes de `background-clip: text` |
+| Borda gradiente nao visivel | `inset: 0` no `::before` cobre todo o gradiente | Use `inset: 0.093rem` para deixar o gradiente aparecer como borda |
+| Texto do botao vazio | Conteudo via `attr(aria-label)` mas atributo esta como `arial-label` | Corrija o typo: use `aria-label`, nao `arial-label` |
+| `::before` cobre o texto | z-index nao configurado corretamente | Adicione `z-index: 1` ao `::after` e `position: relative` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que pseudo-elementos sao necessarios e limitacoes do CSS atual
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-componente-de-botao-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-componente-de-botao-parte-2/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-serializacao
 description: "Guards against insecure deserialization vulnerabilities when writing backend code in Python, PHP, Java, or Node.js. Use when user asks to 'serialize objects', 'persist state', 'save objects to disk', 'pickle data', 'unserialize input', or uses pickle/serialize/marshal in code. Ensures serialized data never crosses trust boundaries. Make sure to use this skill whenever code deserializes data from any external source. Not for JSON parsing, API response handling, or database ORM operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, serialization, deserialization, pickle]
 ---
 
 # Serialização Segura em Backend
@@ -113,14 +119,14 @@ def load_user_session(session_file: str) -> dict:
 | `pickle.dump(obj, s3_file)` | `json.dump(obj.__dict__, s3_file)` |
 | `unserialize($data)` sem allowed_classes | `unserialize($data, ['allowed_classes' => [Safe::class]])` |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-serializacao-em-backend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-serializacao-em-backend/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-serializacao-em-backend/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-serializacao-em-backend/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

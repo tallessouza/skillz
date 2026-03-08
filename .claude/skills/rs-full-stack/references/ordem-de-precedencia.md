@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ordem-de-precedencia
 description: "Applies JavaScript operator precedence rules when writing or reviewing arithmetic expressions. Use when user asks to 'calculate', 'write an expression', 'fix a calculation', 'debug math', or any task involving multiple operators in JS. Ensures correct evaluation order using parentheses where needed. Make sure to use this skill whenever generating code with compound arithmetic or logical expressions. Not for string operations, array methods, or non-expression code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-javascript
+  tags: [javascript, operadores, precedencia, parenteses, aritmetica]
 ---
 
 # Ordem de Precedência em JavaScript
@@ -65,6 +71,15 @@ const finalPrice = (basePrice + (basePrice * discountRate)) + (shippingCost * ta
 | `price * 1 + tax` | `price * (1 + tax)` |
 | `a && b \|\| c` sem parenteses | `(a && b) \|\| c` ou `a && (b \|\| c)` |
 | Expressao longa sem agrupamento | Variaveis intermediarias nomeadas |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Calculo retorna valor inesperado | Precedencia implicita avaliou na ordem errada | Adicione parenteses para explicitar a ordem desejada |
+| Expressao financeira com centavos errados | Multiplicacao/divisao executou antes da soma | Agrupe operacoes de soma com parenteses antes de multiplicar |
+| Condicional logica retorna resultado errado | `&&` avaliou antes de `\|\|` | Use parenteses para agrupar condicoes OR separadas |
+| Resultado diferente entre calculadora e JS | Ordem de avaliacao da calculadora e linear | JS segue precedencia matematica — use parenteses |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0410-salvando-ticket
 description: "Applies database insert pattern with table auto-creation when building Node.js persistence layers. Use when user asks to 'save data', 'insert record', 'create database method', 'persist to file', or 'build CRUD operations' in Node.js. Enforces check-then-create table pattern, array-based storage, and proper HTTP 201 responses. Make sure to use this skill whenever implementing file-based database insert methods or in-memory persistence in Node.js. Not for SQL databases, ORMs, or frontend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, database, insert, persistence, crud, json]
 ---
 
 # Salvando Dados com Insert em File-Based Database
@@ -90,13 +96,16 @@ response.writeHead(201).end(JSON.stringify(ticket))
 | Insert sem chamar persist | Insert seguido de `this.#persist()` |
 | `return data` quando caller ja tem os dados | Omita o return, mantenha simples |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `TypeError: Cannot read properties of undefined (reading 'push')` | Tabela não existe e não foi inicializada | Use `Array.isArray()` para checar antes do push |
+| Dados não persistem após reiniciar | `#persist()` não está sendo chamado após insert | Adicione `this.#persist()` ao final do método insert |
+| Status 200 em vez de 201 | Falta `writeHead(201)` na resposta | Use `response.writeHead(201).end(JSON.stringify(data))` |
+| `db.json` não atualiza | Método persist não está escrevendo no arquivo | Verifique se `writeFile` usa o path correto |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o padrao check-then-create e estrutura de dados JSON
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0410-salvando-o-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0410-salvando-o-ticket-mkv-mp-4/references/code-examples.md)

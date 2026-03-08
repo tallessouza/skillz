@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-metodos-de-renderizacao
 description: "Applies correct Next.js rendering method (CSR, SSR, SSG, ISR) when building pages with Pages Router. Use when user asks to 'create a page', 'add a route', 'improve SEO', 'optimize performance', 'setup static generation', or 'configure revalidation' in Next.js. Guides selection based on content dynamism, SEO needs, and server load. Make sure to use this skill whenever creating or modifying Next.js pages to pick the right rendering strategy. Not for App Router server components, React Server Components, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: renderizacao
+  tags: [csr, ssr, ssg, isr, rendering, pages-router, getServerSideProps, getStaticProps, next-js]
 ---
 
 # Métodos de Renderização do Next.js (Pages Router)
@@ -94,14 +100,19 @@ export const getStaticProps: GetStaticProps = async () => {
 | Acessar `window`/`document` direto em SSR | Checar `typeof window !== 'undefined'` antes |
 | Rebuild total do site para mudar uma página | ISR — rebuilda apenas a página específica |
 
+## Troubleshooting
+
+### Dados nao atualizam apos modificacao (SSG/ISR)
+**Symptom:** Pagina mostra dados antigos mesmo apos atualizar no banco de dados
+**Cause:** Em SSG, a pagina e gerada apenas no build. Em ISR, existe um intervalo de revalidacao
+**Fix:** Para SSG, rodar `next build` novamente. Para ISR, aguardar o intervalo de `revalidate` expirar. Para dados que precisam ser sempre frescos, usar SSR com `getServerSideProps`
+
+### getServerSideProps/getStaticProps nao executa
+**Symptom:** Funcao de data fetching parece nao ser chamada, dados nao aparecem
+**Cause:** Essas funcoes so funcionam em arquivos dentro de `pages/`, nao em componentes ou arquivos fora do diretorio pages
+**Fix:** Mover a funcao para o arquivo de pagina dentro de `pages/`. Em App Router, usar fetch direto no Server Component com async/await
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-metodos-de-renderizacao-do-next-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-metodos-de-renderizacao-do-next-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-metodos-de-renderizacao-do-next-js/references/deep-explanation.md) — O instrutor enfatiza que esta aula é "bem crucial" e recomenda revisitá-la periodicamente. A escolha
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-metodos-de-renderizacao-do-next-js/references/code-examples.md) — import { useEffect, useState } from 'react'

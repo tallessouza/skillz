@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-setup-openai-resp
 description: "Applies OpenAI Responses API setup with Zod structured outputs in NestJS projects. Use when user asks to 'integrate OpenAI', 'setup LLM service', 'structured output with Zod', 'parse AI responses', or 'create chat assistant'. Covers API client initialization, webhook configuration, discriminated union schemas, and zodTextFormat for type-safe AI responses. Make sure to use this skill whenever building NestJS services that call OpenAI with structured response parsing. Not for streaming responses, embeddings, image generation, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: chat
+  tags: [zod, node-js, nestjs, responses-api, openai, ia-node]
 ---
 
 # Setup OpenAI com Structured Outputs em NestJS
@@ -148,14 +154,14 @@ const action = response.outputParsed.action.type; // TypeScript OK
 | `new OpenAI({ apiKey: process.env.KEY })` em NestJS | Injete `ConfigService` no constructor |
 | Lancar excecao dentro do LLM service | Retorne `null`, deixe o caller tratar |
 
+## Troubleshooting
+
+### Rota retorna 404 mesmo existindo
+**Symptom:** Endpoint retorna 404 Not Found apesar de estar definido no controller
+**Cause:** Modulo nao registrado no AppModule, ou @Param sem decorator no handler
+**Fix:** Verifique se o modulo esta no `imports` do AppModule e que @Param('name') decora o parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-open-ai-e-respondendo-mensagens-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-open-ai-e-respondendo-mensagens-parte-1/references/code-examples.md)

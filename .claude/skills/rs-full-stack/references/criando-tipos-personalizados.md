@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tipos-personalizados
 description: "Enforces creation of custom TypeScript types to represent domain-specific data instead of using only primitives. Use when user asks to 'create a type', 'define a product type', 'model domain data', 'represent an entity', or any TypeScript data modeling task. Applies rules: use type aliases for domain objects, go beyond primitives for complex data, name types by domain concept. Make sure to use this skill whenever modeling application data in TypeScript. Not for primitive type annotations, utility types, or generic type manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, types, type-alias, domain-modeling, custom-types]
 ---
 
 # Criando Tipos Personalizados
@@ -94,13 +100,16 @@ const notebook: Product = {
 | Objetos sem tipo definido | Objeto anotado com tipo customizado |
 | `type Data = { ... }` | `type Product = { ... }` (nome pelo domínio) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Type '{ name: string }' is not assignable to type 'Product'` | Objeto incompleto para o tipo definido | Adicione todas as propriedades obrigatorias do tipo |
+| Tipo nao aparece no autocomplete | Tipo definido mas nao exportado | Adicione `export` antes de `type` |
+| `any` aceito sem erro | tsconfig com `strict: false` | Habilite `"strict": true` no tsconfig.json |
+| Propriedade opcional causa erro em acesso | Falta verificacao de nulabilidade | Use optional chaining `obj?.prop` ou verifique antes de acessar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando e por que criar tipos customizados
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variações de tipos customizados
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tipos-personalizados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tipos-personalizados/references/code-examples.md)

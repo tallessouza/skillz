@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atributos-1
 description: "Enforces correct HTML attribute syntax when writing HTML markup. Use when user asks to 'create HTML', 'write a tag', 'add an attribute', 'build a page', or any HTML generation task. Applies rules: always use double quotes, never omit quotes on attribute values, space between tag name and attributes, name=value syntax. Make sure to use this skill whenever generating HTML elements with attributes. Not for CSS, JavaScript logic, or server-side code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, attributes, syntax, markup, web-fundamentals]
 ---
 
 # Atributos HTML
@@ -71,13 +77,16 @@ description: "Enforces correct HTML attribute syntax when writing HTML markup. U
 | `<img src="x"alt="y">` | `<img src="x" alt="y">` |
 | `<imgsrc="x">` | `<img src="x">` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Atributo nao funciona na tag | Atributo especifico usado em tag incompativel | Verifique na documentacao se o atributo e global ou especifico daquela tag |
+| Valor do atributo quebra ao adicionar mais atributos | Aspas omitidas no valor do primeiro atributo | Sempre use aspas duplas em todos os valores de atributos |
+| Apostrofo no valor quebra o HTML | Uso de aspas simples para envolver o valor | Use aspas duplas que protegem automaticamente contra apostrofos |
+| Atributos colados sem espaco | Falta de separacao entre atributos | Adicione espaco entre cada atributo: `src="x" alt="y"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atributos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atributos-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-responsividade-formulario
 description: "Applies Tailwind CSS mobile-first responsive patterns when building form layouts. Use when user asks to 'make responsive', 'add breakpoints', 'mobile layout', 'responsive form', or 'tailwind responsive'. Enforces mobile-first with flex-col default flipping to lg:flex-row, grid only at lg breakpoint, and minimal breakpoint strategy (mobile + lg). Make sure to use this skill whenever creating or adjusting responsive layouts with Tailwind CSS. Not for CSS-in-JS, media queries in plain CSS, or non-Tailwind responsive design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: responsividade
+  tags: [tailwind, react, responsive, css-grid, flexbox, forms]
 ---
 
 # Responsividade de Formularios com Tailwind
@@ -89,15 +95,19 @@ description: "Applies Tailwind CSS mobile-first responsive patterns when buildin
 | `hidden` para labels de acessibilidade | `sr-only` ou `lg:sr-only` |
 | `md:` + `lg:` + `xl:` em tudo | Apenas `lg:` na maioria dos casos |
 | `items-center` fixo em form rows | `lg:items-center` (stretch no mobile) |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-do-formulario/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-do-formulario/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-do-formulario/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

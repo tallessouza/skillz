@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-filtrando-valores
-description: "Enforces correct SQL WHERE clause filtering with comparison operators when writing database queries. Use when user asks to 'filter records', 'query database', 'write SQL', 'select where', or 'find rows matching condition'. Applies operators: =, <> (not equal), >, <, >=, <=. Make sure to use this skill whenever generating SQL queries with conditions. Not for JOIN operations, subqueries, or aggregate functions."
+description: "Enforces correct SQL WHERE clause filtering with comparison operators when writing database queries. Use when user asks to 'filter records', 'query database', 'write SQL', 'select where', or 'find rows matching condition'. Applies comparison operators including equals, not-equal, greater-than, less-than, and their or-equal variants. Make sure to use this skill whenever generating SQL queries with conditions. Not for JOIN operations, subqueries, or aggregate functions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-queries
+  tags: [sql, where, comparison-operators, filtering, select]
 ---
 
 # Filtrando Valores com WHERE no SQL
@@ -83,13 +89,16 @@ SELECT * FROM products WHERE price >= 550;
 | `WHERE price < 800` (querendo incluir 800) | `WHERE price <= 800` |
 | `WHERE 800 = price` | `WHERE price = 800` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Filtro exclui registro que deveria incluir | Uso de `>` em vez de `>=` (ou `<` em vez de `<=`) | Usar operador com igual quando o limite deve ser incluso |
+| `!=` causa erro em alguns bancos | Operador nao padrao SQL ANSI | Substituir por `<>` que funciona em todos os bancos |
+| Query retorna 0 resultados inesperadamente | Valor comparado nao existe na coluna | Testar com `SELECT DISTINCT coluna` para ver valores existentes |
+| Comparacao com string falha silenciosamente | Falta aspas simples ao redor do valor string | Usar `WHERE name = 'valor'` com aspas simples |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada operador e quando usar
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-filtrando-valores/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-filtrando-valores/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-limpando-containers-e-imagens
 description: "Applies Docker cleanup procedures when user asks to 'clean docker', 'remove containers', 'delete images', 'reset docker environment', or 'organize docker'. Executes safe removal of containers and images to maintain a clean development environment. Make sure to use this skill whenever the user wants to remove unused Docker resources or start fresh. Not for Docker Compose management, volume cleanup, or production container orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, containers, images, cleanup, environment]
 ---
 
 # Limpando Containers e Imagens Docker
@@ -109,13 +115,16 @@ docker image ls   # Deve estar vazio
 | Remover imagens sem remover containers dependentes | Remover containers primeiro, depois imagens |
 | Esquecer de verificar apos limpeza | Rodar `docker ps -a` e `docker image ls` para confirmar |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `docker rm -f` falha com permissao negada | Usuario nao esta no grupo docker | Execute com `sudo` ou adicione usuario ao grupo docker |
+| `docker rmi` falha por imagem em uso | Container dependente ainda existe | Remova o container dependente primeiro |
+| `docker system prune -a` removeu demais | Comando remove tudo nao utilizado | Liste antes com `docker ps -a` e `docker image ls` para confirmar |
+| Beekeeper/DBeaver mostra erro de conexao apos cleanup | Container do banco foi removido | Recrie o container do banco e reconecte |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao de ambiente Docker
 - [code-examples.md](references/code-examples.md) — Todos os comandos expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-limpando-containers-e-imagens/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-limpando-containers-e-imagens/references/code-examples.md)

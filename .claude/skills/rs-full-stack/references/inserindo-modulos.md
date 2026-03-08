@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inserindo-modulos
 description: "Applies SQL INSERT patterns for populating related tables and testing foreign key constraints. Use when user asks to 'insert data', 'populate tables', 'test relationships', 'add records with foreign keys', or 'bulk insert'. Demonstrates foreign key restriction in action and multi-row INSERT syntax. Make sure to use this skill whenever inserting data into tables with relationships or testing one-to-many constraints. Not for CREATE TABLE, schema design, or SELECT query optimization."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, insert, foreign-key, multi-row, constraints, relationships]
 ---
 
 # Inserindo Dados em Tabelas Relacionadas
@@ -88,13 +94,16 @@ SELECT * FROM courses_modules;
 | Terminar com virgula: `('valor', 2),` | Terminar com `;`: `('valor', 2);` |
 | Um INSERT por registro quando sao do mesmo lote | Multi-row: `VALUES (...), (...), (...);` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de violacao de chave estrangeira | ID referenciado nao existe na tabela pai | Verificar com `SELECT * FROM tabela_pai` antes de inserir |
+| INSERT espera mais valores | Virgula no final em vez de ponto e virgula | Trocar virgula final por `;` |
+| ID serial inserido manualmente causa conflito | Passando ID em coluna auto-increment | Omitir coluna ID do INSERT |
+| Dados inseridos na tabela errada | Nome da tabela incorreto | Verificar nome exato da tabela com `\dt` ou equivalente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre FK constraints e relacionamento 1:N
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inserindo-modulos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inserindo-modulos/references/code-examples.md)

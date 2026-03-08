@@ -1,6 +1,12 @@
 ---
 name: rs-nodejs-refatorando-instancias-testes
 description: "Enforces beforeEach test isolation pattern when writing unit tests in TypeScript/JavaScript. Use when user asks to 'write tests', 'create test file', 'add unit tests', 'refactor tests', or any test creation task. Applies rules: declare variables with let outside describe, instantiate inside beforeEach, never share state between tests, import beforeEach from vitest not node:test. Make sure to use this skill whenever generating or refactoring test files. Not for production code, integration tests with real databases, or E2E tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: test-isolation-beforeeach
+  tags: [testing, beforeEach, vitest, isolation, sut, let-declaration, test-refactoring]
 ---
 
 # Isolamento de Testes com beforeEach
@@ -120,14 +126,14 @@ describe('Register Use Case', () => {
 | Reutilizar nome generico como `useCase` | Usar `sut` (subject under test) |
 | Criar dados de setup no `beforeEach` que so um teste usa | Criar dados especificos dentro do proprio `it` |
 
+## Troubleshooting
+
+### Testes passam individualmente mas falham quando rodados juntos
+**Symptom:** `vitest run` falha em testes que passam quando executados isoladamente com `vitest run --testNamePattern`
+**Cause:** Repositorios in-memory estao sendo compartilhados entre testes — dados de um teste interferem em outro
+**Fix:** Mova a instanciacao do repositorio e do SUT para dentro do `beforeEach`, garantindo que cada teste comeca com estado limpo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-instancias-nos-testes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-instancias-nos-testes/references/code-examples.md)

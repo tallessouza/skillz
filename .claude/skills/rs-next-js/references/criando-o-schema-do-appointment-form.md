@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-schema-appointment-form
 description: "Applies Zod schema validation with react-hook-form integration pattern when building forms in Next.js. Use when user asks to 'create a form', 'add form validation', 'setup zod schema', 'integrate react-hook-form', or 'build appointment form'. Enforces typed schemas, inferred types, zodResolver binding, and default values. Make sure to use this skill whenever creating validated forms in React/Next.js projects. Not for API validation, server-side schemas, or database models."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: form-schema
+  tags: [next-js, zod, react-hook-form, zodResolver, form-validation, typescript, schema-first]
 ---
 
 # Schema de Formulario com Zod + React Hook Form
@@ -123,14 +129,19 @@ const form = useForm<FormValues>({
 | `<input onChange={e => setField(e.target.value)}>` | `<input {...form.register("field")}>` |
 | Mensagem de erro padrao do Zod | `{ message: "Texto em portugues" }` |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-schema-do-appointment-form/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-schema-do-appointment-form/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-schema-do-appointment-form/references/deep-explanation.md) — O instrutor segue um padrao claro: definir o schema Zod ANTES de qualquer JSX. Isso porque o schema 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-schema-do-appointment-form/references/code-examples.md) — import { z } from "zod"

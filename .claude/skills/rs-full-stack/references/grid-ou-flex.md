@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-ou-flex
 description: "Applies CSS Grid vs Flexbox decision-making when writing layouts. Use when user asks to 'create a layout', 'style a component', 'build a navigation', 'add CSS grid', 'use flexbox', or any CSS layout task. Evaluates layout complexity and chooses the simpler tool: Flex for one-dimensional flows, Grid for two-dimensional structures. Make sure to use this skill whenever generating CSS layout code. Not for JavaScript logic, animations, or non-layout styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, grid, flexbox, layout, decision-making]
 ---
 
 # Grid ou Flex — Decisao Pratica
@@ -90,13 +96,16 @@ description: "Applies CSS Grid vs Flexbox decision-making when writing layouts. 
 | Escolher ferramenta por "moda" ou "preferencia fixa" | Avaliar o layout especifico e escolher pelo menor codigo |
 | Ficar paralisado na duvida "Grid ou Flex?" | Escolher qualquer um e seguir — ambos funcionam |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Layout simples com muito codigo CSS | Usando Grid quando Flex bastaria | Avalie se `display: flex; gap: 8px` resolve o caso |
+| Flex com wraps aninhados ficando complexo | Forcando layout 2D com Flexbox | Migre para `display: grid; grid-template-columns/rows` |
+| Paralisia na escolha Grid vs Flex | Ambos resolvem o caso | Escolha o que domina mais — produtividade importa mais que pureza |
+| Menu horizontal com 3+ propriedades Grid | `grid-auto-flow: column` + `justify-content` desnecessarios | Simplifique com `display: flex; gap: 8px` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-ou-flex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-ou-flex/references/code-examples.md)

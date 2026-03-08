@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-identificando-a-moeda
 description: "Applies currency conversion patterns using switch-case and named constants in JavaScript. Use when user asks to 'convert currency', 'use switch case', 'create constants for values', 'handle multiple options', or 'build a converter'. Enforces uppercase constants for reusable values, switch-case for multi-option branching, and parameterized functions. Make sure to use this skill whenever generating code that selects between multiple fixed options or uses repeated magic values. Not for API integration, real-time exchange rates, or internationalization (i18n)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, switch-case, constants, functions, conversion]
 ---
 
 # Conversao de Moedas com Switch-Case e Constantes
@@ -108,13 +114,16 @@ switch (moeda) {
 | Valores de cotacao inline em 5 arquivos | Uma constante no topo, importada onde necessario |
 | Testar tudo no final | Testar incrementalmente a cada etapa |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Switch executa multiplos cases | Falta `break` apos cada case | Adicione `break` no final de cada bloco `case` |
+| Nenhum case e executado | Valor comparado nao corresponde (case-sensitive ou tipo diferente) | Verifique se o valor do switch corresponde exatamente ao case (incluindo tipo e maiusculas) |
+| Constante com valor errado nao gera erro | JavaScript nao valida semantica de constantes | Teste incrementalmente com `console.log` apos cada atribuicao |
+| Funcao retorna undefined | Falta `return` ou logica nao cobre todos os cases | Adicione `default` no switch ou `return` explicito |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre constantes vs valores fixos, convencoes e switch-case
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-identificando-a-moeda/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-identificando-a-moeda/references/code-examples.md)

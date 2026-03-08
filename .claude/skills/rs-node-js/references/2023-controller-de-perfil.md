@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-de-perfil
 description: "Applies authenticated profile controller pattern with JWT middleware in Fastify/Node.js. Use when user asks to 'create a profile route', 'protect routes with authentication', 'add JWT middleware', 'verify token in routes', or 'return user data without password'. Ensures JWT verification is extracted as reusable middleware with onRequest hook. Make sure to use this skill whenever building authenticated API routes in Fastify. Not for frontend auth, session-based auth, or OAuth flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller de Perfil com JWT Middleware
@@ -120,14 +127,14 @@ app.get('/me', { onRequest: [verifyJWT] }, profile)
 | `delete user.password_hash` direto no objeto | Spread com `password_hash: undefined` para evitar erro de tipo |
 | Copiar verificacao JWT em cada controller | Um middleware em arquivo separado reutilizado via onRequest |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-perfil/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-perfil/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-perfil/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-perfil/references/code-examples.md) — Todos os exemplos de código expandidos com variações

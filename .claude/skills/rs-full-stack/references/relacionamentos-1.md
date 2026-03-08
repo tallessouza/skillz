@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-relacionamentos-1
 description: "Enforces Prisma ORM relationship patterns when defining database schemas with foreign keys and relations. Use when user asks to 'create a relationship', 'add foreign key', 'connect tables', 'define one-to-many', or 'setup Prisma schema relations'. Applies rules: always define both sides of relation, use @relation with fields/references, handle migration failures from existing invalid data. Make sure to use this skill whenever creating or modifying Prisma schema relationships. Not for raw SQL migrations, query building, or non-Prisma ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, relationships, foreign-key, one-to-many, orm, schema]
 ---
 
 # Relacionamentos no Prisma ORM
@@ -92,6 +98,15 @@ model Question {
 | Definir relacao so em um modelo | Defina nos dois modelos (pai e filho) |
 | Migrar sem limpar dados invalidos | Normalize dados antes de `migrate dev` |
 | Usar string literal como FK sem validacao | Deixe o Prisma enforcar a constraint |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Migration falha com erro de FK | Dados existentes referenciam IDs inexistentes | Delete registros invalidos antes de rodar `migrate dev` |
+| Prisma Studio nao mostra nova relacao | Studio cacheia schema na inicializacao | Pare e reinicie o Prisma Studio |
+| Erro "Both sides of the relation must be defined" | Relacao declarada em apenas um modelo | Adicione o campo de relacao no outro modelo tambem |
+| Tipo do campo FK nao bate com PK | Tipos incompativeis entre modelos | Use o mesmo tipo (String, Int) em ambos os lados |
 
 ## Deep reference library
 

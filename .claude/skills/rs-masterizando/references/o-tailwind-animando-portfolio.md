@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-animando-portfolio
 description: "Applies AutoAnimate library for automatic list/grid animations in React components. Use when user asks to 'animate a list', 'add animations to items', 'animate portfolio', 'smooth add/remove transitions', or 'auto animate elements'. Configures useAutoAnimate hook with parent ref pattern for enter/exit animations. Make sure to use this skill whenever adding appear/disappear animations to dynamic lists or grids in React. Not for complex gesture animations, scroll animations, or CSS keyframe animations — use Framer Motion or CSS for those."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: animacoes
+  tags: [tailwind, react, animation, css-grid, flexbox]
 ---
 
 # AutoAnimate em Listas e Grids React
@@ -95,15 +101,19 @@ export function FileList({ files, onRemove }) {
 | Ref no item filho individual | Ref no elemento PAI que envolve os itens |
 | AutoAnimate para slide/drag | Framer Motion para gestos complexos |
 | Instalar Framer Motion so para add/remove em lista | AutoAnimate — muito mais leve |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-animando-portfolio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-animando-portfolio/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-animando-portfolio/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-animando-portfolio/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

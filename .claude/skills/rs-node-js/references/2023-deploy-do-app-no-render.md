@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-deploy-render
-description: "Guides deployment of Node.js APIs to Render.com with PostgreSQL. Use when user asks to 'deploy to render', 'host node app', 'configure production database', 'setup postgres for production', or 'deploy backend'. Covers dual-database config (SQLite dev + Postgres prod), Knex client switching, Zod coerce for PORT, build commands, and environment variables. Make sure to use this skill whenever deploying a Fastify/Express app to Render or switching from SQLite to Postgres for production. Not for frontend deploys, Docker-only workflows, or AWS/Vercel/Fly.io deployments."
+name: 2023-deploy-do-app-no-render
+description: "Configures a Node.js application for deployment on Render.com with dual-database support (SQLite dev, PostgreSQL production) using Knex and Zod environment validation. Use when user asks to 'deploy to Render', 'configure dual database', 'set up production PostgreSQL', or 'prepare Node app for deployment'. Make sure to use this skill whenever deploying a Fastify/Node.js app to Render or configuring environment-based database switching. Not for AWS/Vercel/Docker deployments, frontend hosting, or non-Knex ORMs."
+category: workflow
+tags: [deploy, docker, error-handling, fastify, knex, migrations]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: deploy
+  tags: [deploy, render, postgresql, sqlite, knex, dual-database, production]
 ---
 
 # Deploy de App Node.js no Render
@@ -132,14 +141,14 @@ PORT=3333
 - Testar endpoints via Insomnia/Postman usando a URL de producao
 - Verificar logs no painel do Render para confirmar "HTTP server running"
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-deploy-do-app-no-render/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-deploy-do-app-no-render/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

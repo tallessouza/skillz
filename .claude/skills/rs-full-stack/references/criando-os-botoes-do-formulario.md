@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-botoes-formulario
 description: "Applies HTML form button patterns and CSS button styling when creating form actions. Use when user asks to 'create form buttons', 'add submit button', 'style buttons', 'create action buttons', or 'build form actions'. Enforces button type attributes, unset-first CSS strategy, hover/focus states, and layout with flexbox. Make sure to use this skill whenever building form buttons or action bars. Not for icon buttons, floating action buttons, or button component libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-css-forms
+  tags: [html, css, buttons, forms, flexbox, accessibility]
 ---
 
 # Botões de Formulário
@@ -113,13 +119,16 @@ button {
 | `float: right` para alinhar botão | `margin-left: auto` com flexbox |
 | Cor hardcoded repetida sem variável | Variável CSS se usar mais de uma vez |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Botao envia formulario sem querer | Falta `type="button"` no botao secundario | Adicione `type="button"` explicitamente |
+| Estilos do botao nao aplicam | Seletor CSS nao corresponde a classe | Verifique se `.btn-primary` esta no CSS e na classe do HTML |
+| Hover funciona mas focus nao | Apenas `:hover` definido sem `:focus` | Combine `:hover, :focus` no mesmo seletor |
+| Botao sem aparencia de clicavel | Falta `cursor: pointer` apos `all: unset` | Adicione `cursor: pointer` na regra do botao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre tipos de botão, all: unset, e acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-os-botoes-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-os-botoes-do-formulario/references/code-examples.md)

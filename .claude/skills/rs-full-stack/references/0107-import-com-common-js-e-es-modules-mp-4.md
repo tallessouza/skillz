@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0107-commonjs-es-modules
 description: "Enforces ES Modules import syntax over CommonJS require in Node.js projects. Use when user asks to 'create a server', 'import a package', 'setup node project', 'configure package.json', or any Node.js code generation. Applies rules: always use import/from syntax, configure type module in package.json, prefix Node built-in packages with node: protocol. Make sure to use this skill whenever generating Node.js import statements or initializing Node projects. Not for browser-only JavaScript, Deno, or Bun-specific module systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [esm, commonjs, import, require, modules, node-protocol]
 ---
 
 # Import com CommonJS e ES Modules
@@ -78,13 +84,13 @@ import dayjs from 'dayjs'
 | `import fs from 'fs'` | `import fs from 'node:fs'` |
 | package.json sem type field | `"type": "module"` no package.json |
 
+## Troubleshooting
+
+### Problem: "Cannot use import statement outside a module" error
+- **Cause**: Missing `"type": "module"` in `package.json`, so Node treats `.js` files as CommonJS
+- **Fix**: Add `"type": "module"` to your `package.json` to enable ES Modules syntax
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre CommonJS vs ES Modules, historico e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0107-import-com-common-js-e-es-modules-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0107-import-com-common-js-e-es-modules-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-gerenciando-redes
 description: "Applies Docker network management commands when working with container networking. Use when user asks to 'connect container to network', 'create docker network', 'inspect container network', 'associate network', or any Docker networking task. Covers docker network connect/disconnect, --network flag on docker run, and inspect commands for both networks and containers. Make sure to use this skill whenever managing Docker container networks or debugging container connectivity. Not for Docker volume management, Dockerfile creation, or docker-compose networking."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-networking
+  tags: [docker, network, connect, disconnect, inspect, bridge, container-networking]
 ---
 
 # Gerenciando Redes Docker
@@ -89,14 +95,14 @@ docker network connect minha-rede <container-id>
 | Passar container antes da rede no `connect` | Ordem: `connect <rede> <container>` |
 | Assumir que `--network` mantem a bridge | Verificar com `docker container inspect` |
 
+## Troubleshooting
+
+### Container nao consegue acessar outro container na mesma rede
+**Symptom:** `curl http://container-name:port` retorna "connection refused" entre containers na mesma rede customizada
+**Cause:** Container destino nao esta na mesma rede ou o nome usado nao corresponde ao nome do container
+**Fix:** Verifique com `docker network inspect <rede>` se ambos containers estao listados, e use o nome exato do container como hostname
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-gerenciando-redes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-gerenciando-redes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

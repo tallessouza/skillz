@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-eventos-de-dominio
 description: "Applies Domain Events testing patterns when writing DDD event-driven code in Node.js/TypeScript. Use when user asks to 'test domain events', 'create event handler test', 'test aggregate events', 'implement domain event test', or 'test subdomain communication'. Ensures correct flow: register subscriber, create aggregate, assert event queued, dispatch via repository, assert handler called. Make sure to use this skill whenever testing or implementing domain events in DDD architectures. Not for unit testing regular functions, API endpoint testing, or database integration tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [domain-events, ddd, aggregate, subscriber, dispatch, testing]
 ---
 
 # Testando Eventos de Domínio
@@ -105,14 +111,14 @@ it('should fire event', () => {
 | Usar `this` em método `static create()` | Usar a variável local do agregado criado |
 | Assumir que criar agregado = evento disparado | Separar criação (enfileira) de persistência (dispara) |
 
+## Troubleshooting
+
+### Handler de evento nunca e chamado no teste
+**Symptom:** callbackSpy nunca e invocado mesmo apos criar o agregado
+**Cause:** Criar o agregado apenas enfileira o evento — o dispatch acontece separadamente apos persistencia
+**Fix:** Chame `DomainEvents.dispatchEventsForAggregate(aggregate.id)` apos criar o agregado para disparar os eventos
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-eventos-de-dominio/references/code-examples.md)

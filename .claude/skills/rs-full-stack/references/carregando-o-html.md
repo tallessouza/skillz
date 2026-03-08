@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-carregando-o-html
 description: "Configures HTML-Webpack-Plugin to include HTML files in Webpack builds. Use when user asks to 'setup webpack html', 'add html to webpack build', 'configure html-webpack-plugin', 'webpack not loading html', or 'include html in dist folder'. Make sure to use this skill whenever setting up Webpack with HTML templates or debugging missing HTML in build output. Not for CSS loaders, JavaScript bundling, or non-Webpack build tools."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [webpack, html, html-webpack-plugin, bundler, configuration]
 ---
 
 # Configurando HTML no Webpack com HTML-Webpack-Plugin
@@ -83,13 +89,17 @@ dist/
 - `npm run dev` mostra conteudo HTML no navegador (sem CSS e normal neste ponto)
 - O HTML gerado contem a tag `<script>` injetada automaticamente pelo plugin
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| HTML nao aparece em `dist/` apos build | HtmlWebpackPlugin nao configurado | Instale e adicione ao array `plugins` |
+| Erro `Cannot find module 'html-webpack-plugin'` | Plugin nao instalado | Execute `npm install html-webpack-plugin --save-dev` |
+| HTML aparece sem conteudo | `template` apontando para arquivo errado | Verifique o path com `path.resolve(__dirname, "index.html")` |
+| Script tag nao injetada no HTML | Plugin nao adicionado ao array `plugins` | Adicione `new HtmlWebpackPlugin({...})` na configuracao |
+| DevServer mostra pagina em branco | HTML sem conteudo ou DevServer nao reiniciado | Reinicie com `Ctrl+C` e `npm run dev` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que o HTML nao entra na build por padrao
 - [code-examples.md](references/code-examples.md) — Configuracao completa do webpack.config.js e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-carregando-o-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-carregando-o-html/references/code-examples.md)

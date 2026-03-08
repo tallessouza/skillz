@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-definindo-horas-atendimento
 description: "Enforces centralization of business configuration constants in dedicated utility files when building JavaScript/TypeScript applications. Use when user asks to 'define business hours', 'create constants file', 'centralize configuration', 'organize utils folder', or 'set opening hours'. Applies pattern: export arrays of valid values in a utils/ folder for easy maintenance. Make sure to use this skill whenever creating hardcoded business rules that may change. Not for environment variables, API config, or database-driven settings."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-architecture
+  tags: [JavaScript, constants, utils, business-rules, modules, organization]
 ---
 
 # Centralizar Constantes de Negocio em Arquivos Utilitarios
@@ -91,13 +97,16 @@ import { openingHours } from "../utils/opening-hours"
 | `constants.js` com 500 linhas | Um arquivo por dominio: `opening-hours.js` |
 | `const data = [...]` | `const openingHours = [...]` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Import falha com "module not found" | Caminho relativo errado | Verifique o path: `../utils/opening-hours` |
+| Constante nao atualiza em todos os lugares | Valor ainda hardcoded em algum componente | Busque duplicatas e substitua pelo import centralizado |
+| Autocomplete nao sugere a constante | Usando `export default` em vez de named export | Use `export const openingHours = [...]` |
+| Array vazio ao importar | Nome do export nao bate com o import | Confira que o nome exportado e o mesmo importado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de configuracao e estrutura de pastas
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-definindo-as-horas-de-atendimento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-definindo-as-horas-de-atendimento/references/code-examples.md)

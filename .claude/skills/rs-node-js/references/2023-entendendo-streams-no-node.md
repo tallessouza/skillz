@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entendendo-streams
-description: "Applies Node.js Streams concepts when designing data processing, file uploads, or real-time data flows. Use when user asks to 'process large files', 'handle CSV import', 'stream data', 'upload files', 'read large datasets', or build any feature involving incremental data processing. Ensures Readable and Writable Streams are used instead of buffering entire payloads. Make sure to use this skill whenever implementing file processing, large data imports, or real-time data pipelines in Node.js. Not for frontend-only code, static file serving, or simple JSON API responses."
+name: 2023-entendendo-streams-no-node
+description: "Processes data incrementally using Node.js Readable and Writable Streams with pipe and backpressure management, avoiding loading entire payloads into memory. Use when user asks to 'stream data', 'process large files', 'handle file uploads', 'pipe readable to writable', or 'avoid memory issues with large data'. Make sure to use this skill whenever handling large file uploads, CSV imports, media streaming, or any I/O operation where data should be processed in chunks. Not for small JSON responses, frontend fetch API, or message queue consumers."
+category: reference
+tags: [buffers, streams]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [streams, readable, writable, pipe, backpressure, nodejs, performance]
 ---
 
 # Streams no Node.js
@@ -68,14 +77,14 @@ Tempo total: upload e processamento acontecem em PARALELO
 | API retornando lista com milhoes de registros | Stream a response ao inves de JSON.stringify tudo |
 | Arquivo < 1MB em servidor com memoria sobrando | Stream opcional, avalie simplicidade vs performance |
 
+## Troubleshooting
+
+### Writable stream para de receber dados sem erro aparente
+**Symptom:** A stream de escrita para de processar chunks sem emitir erro ou encerrar
+**Cause:** Backpressure — o writable nao consegue consumir na velocidade que o readable envia, e o buffer interno encheu
+**Fix:** Use `pipeline()` ou `.pipe()` que gerenciam backpressure automaticamente ao inves de `write()` manual
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entendendo-streams-no-node/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entendendo-streams-no-node/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

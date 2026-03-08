@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-iniciando-a-home
 description: "Applies Next.js home page scaffolding patterns when setting up initial page layout with fonts, Tailwind classes, and component structure. Use when user asks to 'create a home page', 'setup Next.js layout', 'configure fonts in Next.js', 'start a new page', or 'scaffold initial page structure'. Ensures correct Inter font configuration, semantic HTML structure, and Tailwind utility patterns. Make sure to use this skill whenever creating initial Next.js pages or configuring custom fonts. Not for API routes, database setup, or backend logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: paginas-e-layout
+  tags: [home-page, scaffolding, fonts, next-font, tailwind, layout, next-js]
 ---
 
 # Iniciando a Home — Next.js Page Scaffolding
@@ -118,14 +124,19 @@ export default function Home() {
 | Estilos inline para layout | Usar Tailwind utilities (`flex`, `items-center`, `justify-between`) |
 | Deixar fontes do starter template | Substituir pelas fontes reais do projeto |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-iniciando-a-home/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-iniciando-a-home/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-iniciando-a-home/references/deep-explanation.md) — O Next.js vem com fontes padrao (Geist, Geist_Mono) no template inicial. O instrutor enfatiza que es
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-iniciando-a-home/references/code-examples.md) — // layout.tsx — gerado pelo create-next-app

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-abrindo-a-mesa
 description: "Applies table session opening pattern with Zod validation, Knex insert, and DB typing when building restaurant API endpoints. Use when user asks to 'create a session endpoint', 'open a table', 'insert with Knex and Zod', or 'validate and insert in Express'. Enforces: Zod body validation, typed Knex inserts, foreign key integrity awareness, proper DB typing files. Make sure to use this skill whenever creating validated insert endpoints with Knex. Not for query/select operations, authentication, or frontend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [knex, zod, validation, insert, express, api, typescript]
 ---
 
 # Abrindo Sessao de Mesa — Insert Validado com Zod + Knex
@@ -107,13 +113,16 @@ app.post("/sessions", async (request, response) => {
 | `return response.json()` para insert | `return response.status(201).json()` |
 | Tipagem inline no handler | Arquivo dedicado `*-repository.d.ts` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `ZodError` ao enviar request | Body nao corresponde ao schema definido | Verifique se o body contem `table_id` como numero, nao string |
+| Erro de foreign key constraint | `table_id` referencia mesa inexistente | Confirme que a mesa existe na tabela `tables` antes do insert |
+| `TypeError: knex is not a function` | Import incorreto do knex | Verifique se o import usa `import { knex } from "@/database/knex"` |
+| Insert retorna 200 em vez de 201 | Esqueceu `.status(201)` na response | Adicione `response.status(201).json()` explicitamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre foreign keys, integridade relacional e fluxo de validacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abrindo-a-mesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abrindo-a-mesa/references/code-examples.md)

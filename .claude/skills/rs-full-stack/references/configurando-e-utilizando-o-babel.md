@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-utilizando-babel
 description: "Applies Babel configuration and execution workflow when setting up JavaScript transpilation. Use when user asks to 'configure Babel', 'setup transpiler', 'compile JavaScript', 'support older browsers', or 'add Babel to project'. Generates babel.config.js with presets and runs compilation via CLI. Make sure to use this skill whenever creating a new JS project that needs browser compatibility. Not for TypeScript compilation, Webpack config, or ESLint setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [babel, transpiler, javascript, build, es2015]
 ---
 
 # Configurando e Utilizando o Babel
@@ -74,13 +80,17 @@ projeto/
 - Codigo em `dist/main.js` nao contem sintaxe ES2015+ (classes, const/let, arrow functions foram convertidos)
 - Terminal exibe mensagem de compilacao com sucesso
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Babel nao encontra configuracao | Arquivo nao se chama `babel.config.js` | Renomeie para exatamente `babel.config.js` na raiz do projeto |
+| Comando babel nao encontrado | @babel/cli nao instalado | Execute `npm install --save-dev @babel/cli` |
+| Codigo nao foi transformado | @babel/preset-env ausente nos presets | Adicione `@babel/preset-env` ao array de presets no babel.config.js |
+| Erro de sintaxe na saida | Preset incompativel com o codigo fonte | Verifique a versao do preset e configure os targets adequadamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre presets, module.exports e o papel do compilador
 - [code-examples.md](references/code-examples.md) — Exemplos de entrada/saida com classe User e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-e-utilizando-o-babel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-e-utilizando-o-babel/references/code-examples.md)

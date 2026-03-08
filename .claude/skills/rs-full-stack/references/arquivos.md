@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-arquivos
 description: "Applies file types and extensions knowledge when working with web files, assets, or media. Use when user asks to 'handle files', 'work with extensions', 'organize assets', 'choose file format', or discusses file types in web projects. Ensures correct extension usage, file-application associations, and understanding that code files BUILD applications. Make sure to use this skill whenever dealing with file formats, media types, or asset organization in web projects. Not for file system operations, OS-level file management, or database storage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [files, extensions, file-types, assets, media, web-development]
 ---
 
 # Arquivos — Do Físico ao Virtual
 
 > Todo arquivo digital possui uma extensao que identifica seu tipo, e precisa do aplicativo correto para ser interpretado.
 
-## Key concept
+## Key concepts
 
 Arquivos (files) sao a unidade fundamental da computacao. Cada arquivo possui uma **extensao** (file extension) — o sufixo apos o ponto no nome — que identifica seu tipo e determina qual aplicativo pode interpreta-lo. O termo "file" aparece constantemente em programacao: filesystem, file upload, file reader, config file.
 
@@ -41,6 +47,15 @@ A extensao diz ao sistema operacional e ao desenvolvedor o que aquele arquivo co
 
 Arquivos `.js` sao interpretados pelo Node.js ou pelo navegador para CRIAR uma aplicacao. Essa aplicacao, por sua vez, interpreta outros arquivos (imagens, PDFs, videos). O arquivo e ao mesmo tempo **insumo** e **produto** da programacao.
 
+## Example
+
+```html
+<!-- Extensoes comuns em projetos web -->
+<link rel="stylesheet" href="styles.css" />
+<script src="app.js" defer></script>
+<img src="logo.png" alt="Logo" />
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -62,13 +77,16 @@ Arquivos `.js` sao interpretados pelo Node.js ou pelo navegador para CRIAR uma a
 
 Este conceito e introdutorio. Nao cobre: MIME types detalhados, encoding de arquivos binarios, streams, buffers, ou manipulacao programatica de arquivos com filesystem APIs.
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo nao abre no programa esperado | Extensao incorreta ou programa nao instalado | Verifique a extensao e instale o aplicativo compativel |
+| Imagem aparece corrompida apos renomear extensao | Renomear `.jpg` para `.png` nao converte o formato | Use um editor de imagem para converter o formato real |
+| Servidor retorna MIME type incorreto | Extensao do arquivo nao corresponde ao conteudo | Configure MIME types no servidor ou corrija a extensao do arquivo |
+| Asset nao carrega no navegador | Caminho relativo incorreto ou extensao com maiusculas | Use caminhos relativos corretos e extensoes em lowercase |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a transicao fisico-virtual e o ciclo arquivo-aplicativo
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de extensoes e uso em projetos web
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-arquivos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-arquivos/references/code-examples.md)

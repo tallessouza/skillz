@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-componentes-puros
 description: "Enforces pure component patterns when creating or refactoring React components. Use when user asks to 'create a component', 'extract a component', 'refactor component', 'decouple component', or 'separate into components'. Ensures components receive behavior via props instead of embedding business logic, maintaining context-independence and reusability. Make sure to use this skill whenever extracting or splitting React components. Not for state management architecture, styling, or non-React code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: componentes-react
+  tags: [react, pure-components, props, decoupling, component-extraction, reusability]
 ---
 
 # Componentes Puros
@@ -96,10 +102,17 @@ function Header({ onCreateNewTodo }: HeaderProps) {
 | Componente que importa contexto global para funcionar | Componente que recebe tudo via props |
 | Extrair componente levando toda a logica junto | Extrair apenas interface, comportamento fica no pai |
 
+## Troubleshooting
+
+### Componente extraido quebra ao ser movido para outra pagina
+**Symptom:** O componente funciona na pagina original mas lanca erro ou mostra dados vazios ao ser usado em outra parte da aplicacao.
+**Cause:** O componente depende de um Context, hook customizado ou estado do componente pai que so existe naquele contexto especifico.
+**Fix:** Identifique todas as dependencias externas (useContext, props implicitas) e converta-as em props explicitas na interface do componente.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

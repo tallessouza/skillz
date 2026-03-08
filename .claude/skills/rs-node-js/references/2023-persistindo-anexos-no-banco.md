@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-persistindo-anexos-no-banco
 description: "Applies cross-repository persistence patterns when implementing Prisma repositories in clean architecture NestJS projects. Use when user asks to 'persist related entities', 'save attachments', 'implement prisma repository', 'create many related records', or 'map domain entities to database operations'. Enforces correct ordering of dependent inserts, Promise.all for independent operations, and domain-to-persistence mapping that breaks 1:1 entity-row assumptions. Make sure to use this skill whenever implementing repository methods that touch multiple related tables. Not for in-memory repositories, domain layer logic, or controller route definitions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-repositories
+  tags: [prisma, cross-repository, persistence, promise-all, mapper, nestjs, clean-architecture]
 ---
 
 # Persistindo Anexos no Banco (Cross-Repository Persistence)
@@ -146,14 +152,14 @@ async createMany(attachments: QuestionAttachment[]) {
 | Operacoes independentes em sequencia | `Promise.all([op1, op2, op3])` |
 | Executar query com lista vazia | `if (items.length === 0) return` |
 
+## Troubleshooting
+
+### Foreign key violation ao criar entidade pai e filhos simultaneamente
+**Symptom:** Erro de constraint violation ao inserir registros filhos que referenciam o pai
+**Cause:** `Promise.all` executa create do pai e filhos em paralelo, mas os filhos precisam da FK do pai
+**Fix:** Use `await` sequencial: primeiro crie o pai, depois os filhos. `Promise.all` so para operacoes independentes (update)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-persistindo-anexos-no-banco/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-persistindo-anexos-no-banco/references/code-examples.md)

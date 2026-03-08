@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-hardware-e-software
 description: "Applies the distinction between hardware, software, and programs/apps when discussing web development concepts. Use when user asks 'what is hardware', 'what is software', 'difference between program and software', 'what do web developers build', or any foundational computing concept question. Make sure to use this skill whenever explaining computing layers or scoping what web development produces. Not for writing code, debugging, or implementing features."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: computing-fundamentals
+  tags: [concepts, hardware, software, fundamentals, web-development]
 ---
 
 # Hardware e Software
 
 > Na programacao web, construimos programas, aplicativos e apps — nao softwares de sistema.
 
-## Key concept
+## Key concepts
 
 Existem tres camadas no computador que todo programador web precisa distinguir:
 
@@ -45,6 +51,18 @@ Quando voce abre o Chrome e navega na internet, voce esta usando um **programa**
 | Programador web constroi softwares | Programador web constroi programas, aplicativos e apps — interfaces para interacao na internet |
 | Hardware e so o que esta visivel | Componentes internos (RAM, placa-mae, HD) tambem sao hardware — tudo que e fisico |
 
+## Example
+
+```
+Camadas do computador:
+
+Hardware (fisico)     →  Teclado, mouse, placa-mae, RAM, HD
+  ↓
+Software (logico)     →  Drivers, controladores, servicos do SO
+  ↓
+Programa/App (usuario) →  Chrome, WhatsApp, Instagram, sua aplicacao web
+```
+
 ## When to apply
 
 - Ao explicar fundamentos de computacao para iniciantes
@@ -57,13 +75,15 @@ Quando voce abre o Chrome e navega na internet, voce esta usando um **programa**
 - A fronteira entre software e programa e fluida na pratica (ex: Electron apps sao programas que incluem muito "software")
 - Para decisoes tecnicas reais, use conceitos mais especificos (frontend, backend, driver, kernel, runtime)
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Aluno confunde software com programa | Terminologia BR usa como sinonimo | Explique a distincao tecnica: software e sistema-sistema, programa e usuario-sistema |
+| Nao sabe onde se encaixa como dev web | Falta de contexto sobre camadas | Dev web constroi programas/apps para internet, nao drivers ou SOs |
+| Pergunta se hardware precisa de software | Confusao sobre dependencia entre camadas | Sim, hardware sem software nao executa funcoes uteis para o usuario |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e contexto cultural BR vs US
 - [code-examples.md](references/code-examples.md) — Exemplos concretos de cada camada com cenarios do dia-a-dia
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-hardware-e-software/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-hardware-e-software/references/code-examples.md)

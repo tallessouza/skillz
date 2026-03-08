@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-docker-compose
 description: "Generates Docker Compose configurations for multi-container applications. Use when user asks to 'create docker-compose', 'orchestrate containers', 'setup docker services', 'define multi-container app', or 'configure postgres with node'. Applies patterns: service definition with build context, volume persistence for databases, port mapping, depends_on for service dependencies, environment variables. Make sure to use this skill whenever setting up Docker Compose for Node.js + PostgreSQL stacks. Not for Dockerfile creation, Kubernetes, or cloud deployment configurations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, docker-compose, postgresql, containers, volumes]
 ---
 
 # Criando Docker Compose
@@ -124,8 +130,12 @@ docker compose up
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia YAML, volumes vs bind mounts, e depends_on
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-docker-compose/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-docker-compose/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Container do banco perde dados ao recriar | Volume nao declarado ou bind mount incorreto | Declare volume nomeado na secao `volumes:` raiz e mapeie no servico |
+| API nao conecta ao banco | `depends_on` ausente ou banco ainda inicializando | Adicione `depends_on` e implemente retry/healthcheck na API |
+| Erro de indentacao no YAML | Mix de tabs e espacos ou nivel incorreto | Use apenas espacos (2 por nivel), valide com `docker compose config` |
+| `docker compose up` falha com "service not found" | Nome do servico com typo ou YAML mal formatado | Verifique nomes dos servicos e indentacao com `docker compose config` |
+| Porta ja em uso no host | Outro processo usando a mesma porta | Altere a porta do host no mapeamento `"OUTRA_PORTA:PORTA_CONTAINER"` |

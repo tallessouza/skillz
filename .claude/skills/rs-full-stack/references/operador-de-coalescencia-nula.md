@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operador-coalescencia-nula
 description: "Applies nullish coalescing operator (??) patterns when writing JavaScript/TypeScript code. Use when user asks to 'handle null values', 'set default values', 'check if undefined', 'fallback value', or any code dealing with optional properties. Enforces ?? over || for null/undefined checks because ?? only triggers on null/undefined, not on false/0/''. Make sure to use this skill whenever generating code with optional values or default assignments. Not for logical OR operations, ternary expressions, or boolean logic unrelated to nullish checks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [javascript, nullish-coalescing, optional, default-values, operators]
 ---
 
 # Operador de Coalescência Nula (??)
@@ -70,13 +76,15 @@ const content = value ?? "conteúdo padrão"
 | `typeof value === "undefined" ? "default" : value` | `value ?? "default"` |
 | `if (value) { use(value) } else { use("default") }` | `use(value ?? "default")` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Valor `0` ou `""` substituido pelo fallback | Usou `\|\|` que trata falsy values | Troque para `??` que so dispara em `null`/`undefined` |
+| `false` sendo ignorado como valor valido | `\|\|` trata `false` como falsy | Use `??` para preservar `false` como valor legitimo |
+| Encadeamento `a ?? b ?? c` nao funciona | Versao antiga do Node/browser | Atualize para Node 14+ ou use Babel para transpilacao |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, diferença entre ?? e ||, edge cases com falsy values
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operador-de-coalescencia-nula/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operador-de-coalescencia-nula/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, diferenca entre ?? e ||, edge cases com falsy values
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

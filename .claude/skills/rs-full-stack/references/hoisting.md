@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-hoisting
 description: "Enforces correct understanding of JavaScript hoisting when writing or reviewing code with var, let, and const. Use when user asks to 'declare variables', 'fix undefined error', 'refactor var to let/const', 'explain hoisting', or reviews JavaScript scope issues. Applies rules: prefer let/const over var, understand declaration hoisting vs initialization, avoid using variables before declaration. Make sure to use this skill whenever generating JavaScript code that involves variable declarations or scope decisions. Not for TypeScript-specific type declarations, module imports, or function-only topics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, hoisting, var, let, const, scope]
 ---
 
 # Hoisting em JavaScript
@@ -83,13 +89,16 @@ for (let i = 0; i < 5; i++) {
 | `var` dentro de `for`/`if`/`while` | `let` ou `const` dentro de blocos |
 | `var` no escopo global para "facilitar acesso" | `const`/`let` no escopo mais restrito possivel |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Variavel retorna `undefined` inesperadamente | `var` foi hoisted mas inicializacao ficou abaixo | Mova a declaracao para antes do uso ou troque para `let`/`const` |
+| `ReferenceError: x is not defined` | Usando `let`/`const` antes da declaracao (temporal dead zone) | Declare a variavel antes de usa-la no codigo |
+| Variavel de loop vaza para fora do bloco | Usando `var` em `for`/`if`/`while` | Troque `var` por `let` para escopo de bloco |
+| Funcao nao encontrada quando chamada antes da declaracao | Funcao declarada como arrow function ou expression | Use `function` declaration ou mova a chamada para depois da declaracao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hoisting, analogia do guindaste, e diferenca entre declaracao e inicializacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes de var/let/const
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-hoisting/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-hoisting/references/code-examples.md)

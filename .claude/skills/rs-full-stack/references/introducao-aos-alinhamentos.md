@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-aos-alinhamentos
 description: "Applies CSS Grid alignment property selection when writing grid layouts. Use when user asks to 'align grid items', 'center with grid', 'layout with CSS Grid', 'justify grid content', or any grid alignment task. Enforces the 3x3 mental model: align/justify/place x content/items/self. Make sure to use this skill whenever generating CSS Grid code that involves positioning elements. Not for Flexbox alignment, non-grid layouts, or general CSS spacing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid-alignment
+  tags: [css, grid, alignment, justify, align, place]
 ---
 
 # Alinhamento no CSS Grid
@@ -111,13 +117,15 @@ place (ambos) | place-content         | place-items        | place-self
 | Colocar `align-self` no container | `self` so funciona no item filho |
 | Colocar `align-content` no item | `content` so funciona no container pai |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `align-content` não faz efeito | Grid ocupa exatamente o espaço dos tracks, sem sobra | Defina altura/largura fixa no container para criar espaço sobrando |
+| `justify-items` não move o item | Item ocupa toda a célula (stretch padrão) | Defina tamanho fixo no item ou use `justify-items: start/center/end` |
+| `place-self` no container não funciona | `self` é propriedade do item filho, não do container | Mova `place-self` para o seletor do item específico |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-aos-alinhamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-aos-alinhamentos/references/code-examples.md)

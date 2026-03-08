@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-secao-hero
 description: "Applies Hero section construction patterns when building landing pages with Next.js. Use when user asks to 'create a hero section', 'build a landing page', 'make a responsive hero', or 'implement a hero component'. Enforces mobile-first responsive layout with CSS grid, Next.js Image component, Link wrapping for CTAs, and semantic HTML structure. Make sure to use this skill whenever creating hero or above-the-fold sections in Next.js projects. Not for API routes, data fetching, or backend logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: landing-page-sections
+  tags: [hero-section, landing-page, responsive, css-grid, next-image, next-link, semantic-html]
 ---
 
 # Secao Hero — Next.js Landing Page
@@ -133,14 +139,19 @@ export default function Home() {
 | Imagem visivel no mobile sem necessidade | `hidden md:flex` para mostrar so no desktop |
 | `<div>` como container da secao | `<section>` com classe container |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-secao-hero/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-secao-hero/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-secao-hero/references/deep-explanation.md) — O instrutor cria `HeroSection.tsx` como componente isolado desde o inicio. A pagina `index.tsx` fica
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-secao-hero/references/code-examples.md) — Estrutura final do `HeroSection.tsx` conforme construido na aula:

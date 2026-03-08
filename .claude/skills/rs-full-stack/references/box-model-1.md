@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-box-model
 description: "Applies CSS Box Model mental model when writing or reviewing HTML/CSS layout code. Use when user asks to 'style a page', 'add spacing', 'fix layout', 'add margin or padding', 'set width/height', or any CSS layout task. Ensures correct understanding of content, padding, border, and margin layers. Make sure to use this skill whenever generating CSS that involves spacing, sizing, or borders. Not for JavaScript logic, animations, or CSS selectors."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, box-model, padding, margin, border, layout]
 ---
 
 # Box Model
@@ -101,13 +107,16 @@ description: "Applies CSS Box Model mental model when writing or reviewing HTML/
 | Usar padding pra afastar elementos vizinhos | Use `margin` para espaco externo |
 | Esquecer que border adiciona tamanho | Inclua border no calculo ou use border-box |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Element larger than expected** | Check `box-sizing` — default `content-box` adds padding and border on top of the declared width. Use `border-box`. |
+| **Margin between elements disappearing** | This is margin collapsing — adjacent vertical margins merge into the larger one. Use padding or a border to prevent it. |
+| **Padding vs margin confusion** | Padding is space inside the border (between content and border). Margin is space outside the border (between elements). |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-box-model-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-box-model-1/references/code-examples.md)

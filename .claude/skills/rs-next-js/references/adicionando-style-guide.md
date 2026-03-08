@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-adicionando-style-guide
 description: "Applies custom Style Guide configuration in Tailwind CSS for Next.js projects. Use when user asks to 'configure tailwind', 'add style guide', 'setup design tokens', 'customize theme', or 'replace default styles with custom design'. Covers color tokens, typography, font sizes, container config, and component refactoring to match a Figma design. Make sure to use this skill whenever setting up or migrating a Tailwind theme from a design system. Not for creating components from scratch, building layouts, or CSS-in-JS solutions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: design-system
+  tags: [tailwind, style-guide, design-tokens, typography, figma, theme-config]
 ---
 
 # Adicionando Style Guide no Next.js com Tailwind
@@ -101,14 +107,19 @@ Substitua classes genéricas/de lib pelos novos tokens:
 | Importar fonte via `<link>` no `_document` | Usar `next/font/google` no layout |
 | Definir `container` dentro de `extend` | Definir `container` direto em `theme` (substituição completa) |
 
+## Troubleshooting
+
+### Estilos Tailwind nao aplicam
+**Symptom:** Classes Tailwind no JSX nao geram CSS correspondente
+**Cause:** Arquivo/pasta nao esta mapeado no array `content` do tailwind.config
+**Fix:** Adicionar o path da pasta no `content` do tailwind.config: `'./src/{nova-pasta}/**/*.{js,ts,jsx,tsx}'`. Reiniciar o servidor de desenvolvimento
+
+### Fontes customizadas nao carregam
+**Symptom:** Fonte do Google Fonts/local nao aparece, fallback e usado
+**Cause:** Configuracao incorreta do next/font ou CSS variable nao aplicada
+**Fix:** Usar `next/font/google` ou `next/font/local` e aplicar a className no elemento raiz do layout. Verificar que a variavel CSS esta sendo referenciada no Tailwind config
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-style-guide/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-style-guide/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-style-guide/references/deep-explanation.md) — O instrutor destaca um cenário real: o projeto já usava shadcn/ui com variáveis CSS próprias (--prim
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-style-guide/references/code-examples.md) — import type { Config } from 'tailwindcss';

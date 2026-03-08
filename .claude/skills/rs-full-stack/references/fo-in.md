@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fo-in
 description: "Applies correct for...in loop patterns when iterating over object properties or array indices in JavaScript. Use when user asks to 'loop through object', 'iterate properties', 'traverse object keys', 'use for in', or 'access object properties dynamically'. Enforces bracket notation for dynamic property access and meaningful iterator variable names. Make sure to use this skill whenever generating code that iterates over object properties. Not for array element iteration (prefer for...of), forEach, or map/filter/reduce patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-loops
+  tags: [javascript, for-in, loops, objects, iteration]
 ---
 
 # For In — Iteracao sobre Propriedades de Objetos
@@ -75,13 +81,16 @@ for (let property in user) {
 | `for (let x in arr)` (nome generico) | `for (let index in arr)` |
 | `for (let key in arr)` para iterar valores | `for (let item of arr)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `object.property` retorna `undefined` dentro do loop | Usando notacao de ponto com variavel dinamica | Use notacao de colchetes: `object[property]` |
+| `for...in` itera propriedades herdadas | Objeto herda propriedades do prototype | Adicione `if (obj.hasOwnProperty(prop))` dentro do loop |
+| Indices do array vem como string | `for...in` retorna chaves como strings por definicao | Use `for...of` para valores ou converta com `Number(index)` |
+| Loop itera mais vezes que o esperado | Propriedades adicionadas ao prototype estao sendo incluidas | Use `Object.keys(obj)` com `for...of` em vez de `for...in` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar for...in vs for...of, notacao de colchetes vs ponto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fo-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fo-in/references/code-examples.md)

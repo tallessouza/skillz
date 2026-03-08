@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-executando-webpack
-description: "Guides Webpack setup and execution in JavaScript projects. Use when user asks to 'setup webpack', 'configure bundler', 'create build script', 'bundle javascript', or 'start a new JS project with webpack'. Follows src/ convention, entry point configuration, and npm build scripts. Make sure to use this skill whenever setting up a new frontend project that needs module bundling. Not for Vite, esbuild, Rollup, or other bundler configurations."
+description: "Configures Webpack setup and execution in JavaScript projects with src/ convention and npm build scripts. Use when user asks to 'setup webpack', 'configure bundler', 'create build script', 'bundle javascript', or 'start a new JS project with webpack'. Follows src/ convention, entry point configuration, and npm build scripts. Make sure to use this skill whenever setting up a new frontend project that needs module bundling. Not for Vite, esbuild, Rollup, or other bundler configurations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: webpack-execution
+  tags: [webpack, bundler, javascript, build, npm]
 ---
 
 # Instalando e Executando o Webpack
@@ -123,13 +129,16 @@ projeto/
 | Rodar webpack manualmente no terminal toda vez | Criar script npm (`"build": "webpack ..."`) |
 | Usar caminho errado no entry point | Caminho relativo a partir da raiz do projeto |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Warning sobre `mode` nao definido | Webpack requer mode explicito | Adicionar `--mode development` ou configurar no webpack.config.js |
+| `npm` nao encontrado | Node.js nao instalado | Instalar Node.js primeiro |
+| Pasta `dist/` nao aparece na IDE | Arvore de arquivos nao atualizada | Recarregar a arvore de arquivos no editor |
+| Import nao funciona no HTML | Script carregado sem type module | Usar bundler ao inves de script direto no HTML |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre empacotadores e convencoes de projeto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-e-executando-o-webpack/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-e-executando-o-webpack/references/code-examples.md)

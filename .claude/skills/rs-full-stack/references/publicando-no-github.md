@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-publicando-no-github
-description: "Guides publishing projects to GitHub using Visual Studio Code's built-in Git integration. Use when user asks to 'publish to github', 'push project to github', 'upload code to github', 'publish repository from vscode', or 'create github repo from vscode'. Covers authentication, public vs private repos, and naming conflicts. Make sure to use this skill whenever a beginner asks how to get their project on GitHub using VS Code. Not for Git CLI workflows, GitHub Actions, CI/CD pipelines, or advanced Git operations like branching and merging."
+description: "Configures publishing projects to GitHub using Visual Studio Code's built-in Git integration. Use when user asks to 'publish to github', 'push project to github', 'upload code to github', 'publish repository from vscode', or 'create github repo from vscode'. Covers authentication, public vs private repos, and naming conflicts. Make sure to use this skill whenever a beginner asks how to get their project on GitHub using VS Code. Not for Git CLI workflows, GitHub Actions, CI/CD pipelines, or advanced Git operations like branching and merging."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags:
+    - git
+    - github
+    - vscode
+    - publish
 ---
 
 # Publicando no GitHub pelo VS Code
@@ -57,6 +67,11 @@ Após publicar, o VS Code oferece abrir o repositório no navegador. Confirme qu
 
 ## Verification
 
+```bash
+# Verificar se o repositorio foi criado no GitHub
+gh repo view nome-do-projeto --json name,visibility,url
+```
+
 - Abra o repositório no GitHub pelo link oferecido pelo VS Code
 - Confirme que todos os commits aparecem na aba "Commits"
 - Confirme que todos os arquivos do projeto estão presentes
@@ -66,6 +81,14 @@ Após publicar, o VS Code oferece abrir o repositório no navegador. Confirme qu
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre autenticação, nomes de repositório e visibilidade
 - [code-examples.md](references/code-examples.md) — Fluxos visuais passo a passo e cenários alternativos
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Publicacao bloqueada — nome ja existe | Repositorio com mesmo nome na conta GitHub | Renomeie a pasta do projeto no sistema de arquivos e reabra no VS Code |
+| Autenticacao falha no VS Code | Credenciais GitHub expiradas ou conta errada | Faca logout e login novamente no prompt de autenticacao |
+| Commits nao aparecem no GitHub apos publicar | Commits locais nao foram sincronizados | Clique em Sync Changes na barra de status do VS Code |
 
 ---
 

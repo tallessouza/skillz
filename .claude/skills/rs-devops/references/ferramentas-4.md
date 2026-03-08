@@ -1,13 +1,19 @@
 ---
 name: rs-devops-ferramentas-4
-description: "Guides observability tool selection and Grafana LGTM stack setup when configuring monitoring infrastructure. Use when user asks to 'setup monitoring', 'configure observability', 'choose logging tool', 'setup Grafana', 'configure Prometheus', or 'add metrics to application'. Applies Grafana LGTM stack (Loki, Grafana, Tempo, Mimir) with Prometheus for open-source observability. Make sure to use this skill whenever setting up observability or comparing monitoring tools. Not for application code instrumentation or OpenTelemetry configuration."
+description: "Configures observability tool selection and Grafana LGTM stack setup when configuring monitoring infrastructure. Use when user asks to 'setup monitoring', 'configure observability', 'choose logging tool', 'setup Grafana', 'configure Prometheus', or 'add metrics to application'. Applies Grafana LGTM stack (Loki, Grafana, Tempo, Mimir) with Prometheus for open-source observability. Make sure to use this skill whenever setting up observability or comparing monitoring tools. Not for application code instrumentation or OpenTelemetry configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade
+  tags: [grafana, loki, tempo, mimir, prometheus, lgtm-stack, observability, monitoring]
 ---
 
 # Ferramentas de Observabilidade
 
 > Escolha ferramentas de observabilidade desacopladas da aplicacao — a aplicacao emite dados, a ferramenta agrega e visualiza.
 
-## Principio fundamental
+## Key concepts
 
 A aplicacao nunca armazena seus proprios logs, metricas ou traces. Ela emite para uma ferramenta externa que cuida da agregacao, visualizacao e alertas.
 
@@ -86,14 +92,14 @@ services:
 | Ignorar custo exponencial de ferramentas pagas | Calcular projecao de custos baseado no crescimento de logs |
 | Usar Grafana achando que ele armazena dados | Configurar data sources (Prometheus, Loki, Tempo) — Grafana so visualiza |
 
+## Troubleshooting
+
+### Grafana mostra "No data" nos dashboards
+**Symptom:** Dashboards do Grafana nao exibem dados apesar dos servicos estarem rodando
+**Cause:** Data sources nao estao configurados no Grafana — Grafana nao armazena dados, precisa de conexao com Prometheus, Loki ou Tempo
+**Fix:** Acesse Configuration > Data Sources no Grafana e adicione os endpoints corretos (ex: `http://prometheus:9090`, `http://loki:3100`)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-ferramentas-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-ferramentas-4/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

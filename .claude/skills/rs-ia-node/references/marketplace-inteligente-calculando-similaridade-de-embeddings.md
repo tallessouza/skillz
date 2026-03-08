@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-similaridade-embeddings
 description: "Applies cosine similarity search patterns when building embedding-based product search, recommendation, or semantic matching features in Node.js. Use when user asks to 'compare embeddings', 'find similar products', 'semantic search', 'cosine similarity', or 'build recommendations with AI'. Implements generate-compare-filter-sort-slice pipeline for efficient vector search in memory or database. Make sure to use this skill whenever implementing any embedding comparison or similarity ranking logic. Not for generating embeddings from scratch, training models, or vector database configuration (pgvector, Pinecone)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: embeddings
+  tags: [embeddings, ia-node, postgresql, node-js]
 ---
 
 # Similaridade de Embeddings para Busca Semantica
@@ -112,14 +118,14 @@ const related = findSimilarProducts(embedding, 10)
 | Ordenar crescente por similaridade | `sort((a, b) => b.similarity - a.similarity)` decrescente |
 | Ignorar o caso de embedding nulo no input | Validar e retornar 400 se nao gerou |
 
+## Troubleshooting
+
+### Busca por similaridade retorna produtos irrelevantes
+**Symptom:** Produtos retornados nao tem relacao semantica com o input
+**Cause:** Embeddings gerados com pouco contexto (so nome, sem descricao) ou modelo de embedding diferente entre geracao e busca
+**Fix:** Concatene nome + descricao ao gerar embeddings. Garanta que o mesmo modelo de embedding e usado na geracao e na busca
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-calculando-similaridade-de-embeddings/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-calculando-similaridade-de-embeddings/references/code-examples.md)

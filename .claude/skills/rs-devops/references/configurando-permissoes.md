@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-permissoes
 description: "Applies correct permissions and checkout configuration for Terraform CI/CD pipelines on GitHub Actions with AWS. Use when user asks to 'configure terraform pipeline', 'fix pipeline permissions', 'setup IAM role for CI', 'configure OpenID Connect for GitHub Actions', or 'terraform pipeline not working'. Ensures checkout step, scoped IAM roles, OIDC token permissions, and state awareness. Make sure to use this skill whenever setting up Terraform automation in GitHub Actions. Not for application CI/CD, Docker builds, or non-AWS cloud providers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-ci-cd
+  tags: [terraform, github-actions, iam, oidc, aws, ci-cd, pipeline, permissions]
 ---
 
 # Configurando Permissoes para Pipeline Terraform
@@ -135,14 +141,14 @@ terraform fmt --check
 | Confiar no state local para pipeline CI | Configurar backend remoto (S3) para estado compartilhado |
 | Rodar `terraform apply` sem state remoto | Primeiro configurar backend, depois habilitar apply |
 
+## Troubleshooting
+
+### Pipeline falha em configure-aws-credentials
+**Symptom:** Erro de autenticacao ao tentar assumir role na AWS via GitHub Actions
+**Cause:** Bloco `permissions` com `id-token: write` ausente no workflow YAML
+**Fix:** Adicione `permissions: { id-token: write, contents: read }` no nivel do job ou workflow
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-permissoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-permissoes/references/code-examples.md)

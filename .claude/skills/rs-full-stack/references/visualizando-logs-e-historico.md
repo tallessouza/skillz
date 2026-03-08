@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-visualizando-logs-e-historico
 description: "Applies Docker logs and history inspection commands when debugging containers or analyzing image layers. Use when user asks to 'check container logs', 'view docker logs', 'inspect image history', 'debug container', or 'analyze image layers'. Make sure to use this skill whenever troubleshooting Docker containers or investigating image composition. Not for building Dockerfiles, docker-compose, or container orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, logs, history, debugging, containers, image-layers]
 ---
 
 # Visualizando Logs e Histórico no Docker
@@ -78,6 +84,15 @@ docker history --no-trunc <nome_da_imagem>
 | `docker logs <nome_da_imagem>` | `docker logs <container_id>` — logs são de containers |
 | `docker history <container_id>` | `docker history <nome_da_imagem>` — history é de imagens |
 | Ignorar a coluna SIZE do history | Analisar SIZE para otimizar Dockerfile |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `Error: No such container` | Container ID ou nome incorreto | Execute `docker ps -a` para listar todos os containers |
+| Logs vazios | Aplicacao nao escreve em stdout/stderr | Verifique se a aplicacao usa `console.log` ou redireciona output |
+| `docker history` mostra `<missing>` | Layers intermediarias de imagem base | Normal — imagens multi-stage ou base nao mantem IDs intermediarios |
+| Logs muito extensos | Container rodando ha muito tempo | Use `--tail 50` para limitar ou `--since 1h` para filtrar por tempo |
 
 ## Deep reference library
 

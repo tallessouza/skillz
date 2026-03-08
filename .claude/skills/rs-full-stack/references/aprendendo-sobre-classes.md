@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aprendendo-sobre-classes
 description: "Applies JavaScript class patterns when writing OOP code with ES6+ classes. Use when user asks to 'create a class', 'implement inheritance', 'extend a class', 'write a constructor', or any object-oriented JavaScript/TypeScript task. Enforces proper constructor usage, method definitions, and inheritance via extends/super. Make sure to use this skill whenever generating class-based code in JS/TS. Not for functional programming patterns, plain object literals, or prototype manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, classes, oop, inheritance, es6, constructor]
 ---
 
 # Classes em JavaScript
@@ -123,13 +129,16 @@ class Dog extends Animal {
 | `Parent.call(this, args)` | `super(args)` |
 | `const obj = new Animal` (sem parenteses) | `const obj = new Animal("name")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `this` retorna `undefined` dentro de metodo | Metodo definido como arrow function em contexto errado | Use method shorthand `method() {}` em vez de arrow function para metodos de classe |
+| Erro `Must call super() before accessing this` | Construtor filho acessa `this` antes de chamar `super()` | Coloque `super()` como primeira linha do construtor filho |
+| Propriedades da classe pai nao aparecem no filho | Falta de `super()` no construtor da classe filha | Adicione `super(args)` para chamar o construtor pai |
+| `new` esquecido ao instanciar | Chamou a classe como funcao sem `new` | Sempre use `new MinhaClasse()` para criar instancias |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre syntax sugar, prototipos e heranca
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-classes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-classes/references/code-examples.md)

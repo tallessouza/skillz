@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-e2e-perguntas
 description: "Applies NestJS E2E testing patterns for authenticated endpoints when writing controller tests. Use when user asks to 'write e2e test', 'test controller', 'test authenticated route', 'test NestJS endpoint', or 'add integration test'. Covers authentication setup in tests, JWTService token generation, Prisma database seeding and assertions. Make sure to use this skill whenever creating NestJS controller E2E tests that require authentication. Not for unit tests, service tests, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-e2e-controllers
+  tags: [e2e, nestjs, testing, jwt, prisma, authentication, controllers]
 ---
 
 # Testes E2E de Controllers Autenticados no NestJS
@@ -156,14 +162,14 @@ await request(app.getHttpServer())
 | Validar todas as propriedades do objeto retornado | `expect.objectContaining({ title: '...' })` |
 | Hardcodar `perPage: 1` em producao | Usar valor real (ex: 20) e testar com seed adequado |
 
+## Troubleshooting
+
+### Teste retorna 401 mesmo com token gerado via JWTService
+**Symptom:** Rota autenticada retorna 401 Unauthorized apesar de usar `jwt.sign({ sub: user.id })`
+**Cause:** O JwtService obtido via `moduleRef.get(JwtService)` pode estar usando chave diferente da configurada no AuthModule
+**Fix:** Verifique que o `AppModule` importa o `ConfigModule` com as variaveis JWT_PRIVATE_KEY e JWT_PUBLIC_KEY corretas no ambiente de teste
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-perguntas/references/code-examples.md)

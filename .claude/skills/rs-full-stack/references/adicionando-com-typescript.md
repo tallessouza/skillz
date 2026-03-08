@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-com-typescript
 description: "Applies TypeScript setup conventions when initializing a Node.js project with TypeScript. Use when user asks to 'add typescript', 'setup typescript in node', 'initialize a node project', or 'configure typescript'. Enforces correct dependency installation as devDependencies, proper @types/node usage, and explains node_modules structure. Make sure to use this skill whenever setting up TypeScript in a new Node.js backend project. Not for frontend-specific TypeScript config, tsconfig tuning, or advanced TypeScript type gymnastics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, nodejs, setup, devDependencies, types]
 ---
 
 # Adicionando TypeScript ao Node.js
@@ -71,13 +77,16 @@ Apos execucao, o projeto deve ter:
 | Versoes diferentes do time/curso | Fixar mesma versao para evitar problemas |
 | Commitar node_modules | Adicionar `node_modules/` ao `.gitignore` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Cannot find module 'typescript'` | TypeScript nao instalado ou node_modules ausente | Execute `npm install` para reinstalar dependencias |
+| Erros de tipo em APIs do Node (`fs`, `path`) | `@types/node` nao instalado | Execute `npm i @types/node -D` |
+| TypeScript aparece em `dependencies` | Instalou sem flag `-D` | Mova para `devDependencies` no `package.json` manualmente |
+| Versoes incompativeis entre ambientes | Versao nao fixada no install | Fixe versao exata: `npm i typescript@5.5.4 -D` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre devDependencies vs dependencies e como TypeScript funciona no pipeline
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de instalacao e verificacao expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-com-typescript/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-com-typescript/references/code-examples.md)

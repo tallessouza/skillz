@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inferencia-tipagem-explicita
 description: "Enforces correct use of TypeScript type inference versus explicit typing when writing TypeScript code. Use when user asks to 'create a variable', 'declare a type', 'write TypeScript', or any TS code generation task. Applies rules: use inference when value is assigned at declaration, use explicit typing when declaring without assignment. Make sure to use this skill whenever generating TypeScript variable declarations. Not for JavaScript-only projects, runtime type checking, or Zod/io-ts schema validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, types, inference, explicit-typing, variables]
 ---
 
 # Inferência de Tipos e Tipagem Explícita
@@ -70,13 +76,16 @@ name = "Rodrigo"
 | `let data` (sem tipo, sem valor) | `let data: string` (tipo explícito) |
 | `const flag: boolean = true` | `const flag = true` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Variavel declarada sem tipo fica como `any` | `let data` sem valor e sem tipo explicito | Adicione tipo explicito: `let data: string` |
+| Tipo inferido e mais restrito que o desejado | `const x = "hello"` infere tipo literal `"hello"` | Use `let` ou anotacao explicita `const x: string = "hello"` |
+| Redundancia de tipo flagrada pelo linter | Tipo explicito quando inferencia ja resolve | Remova a anotacao quando o valor ja esta presente na declaracao |
+| Erro de tipo ao reatribuir variavel | TypeScript inferiu tipo diferente do novo valor | Declare com tipo union ou use tipo explicito mais abrangente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando usar cada abordagem e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inferencia-de-tipos-e-tipagem-explicita/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inferencia-de-tipos-e-tipagem-explicita/references/code-examples.md)

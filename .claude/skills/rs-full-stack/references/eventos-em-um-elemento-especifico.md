@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-eventos-elemento-especifico
 description: "Applies DOM event listener patterns on specific elements when writing JavaScript/TypeScript front-end code. Use when user asks to 'add event listener', 'handle scroll', 'detect end of list', 'scroll to top', 'click on button', 'listen for events on element', or 'prevent default behavior'. Covers addEventListener on queried elements, scroll tracking, scrollTo with smooth behavior, and preventDefault. Make sure to use this skill whenever attaching DOM events to specific elements. Not for global/window events, framework-specific event systems (React onClick, Vue @click), or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, events, scroll, querySelector]
 ---
 
 # Eventos em Elemento Específico
@@ -88,13 +94,16 @@ button.addEventListener("click", (event) => {
 | `list.scrollTo(0, 0)` | `list.scrollTo({ top: 0, behavior: "smooth" })` |
 | Botão sem `preventDefault()` dentro de form | `event.preventDefault()` no início do callback |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Cannot read properties of null` ao adicionar listener | Elemento nao encontrado pelo querySelector | Verificar seletor CSS e garantir que DOM carregou |
+| `scrollTop` retorna 0 sempre | Lendo do `event` em vez do elemento | Usar `element.scrollTop`, nao `event.scrollTop` |
+| `scrollTo` faz salto brusco | Falta `behavior: 'smooth'` | Usar `element.scrollTo({ top: 0, behavior: 'smooth' })` |
+| Clique recarrega a pagina | Botao dentro de form sem `preventDefault` | Adicionar `event.preventDefault()` no handler |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando usar eventos específicos vs globais, analogia do scroll e mecânica do event object
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula com variações e cenários reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-eventos-em-um-elemento-especifico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-eventos-em-um-elemento-especifico/references/code-examples.md)

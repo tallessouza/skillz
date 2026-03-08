@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-modelagem-ameacas
 description: "Applies threat modeling practices when designing system architecture, reviewing security, or planning infrastructure. Use when user asks to 'model threats', 'analyze security', 'draw architecture diagram', 'identify vulnerabilities', 'review attack surface', or 'plan security mitigations'. Guides STRIDE-based threat identification, trust boundary mapping, and mitigation planning. Make sure to use this skill whenever discussing system security architecture or threat analysis. Not for code-level security fixes, OWASP code patterns, or penetration testing execution."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, threat-modeling, stride, architecture]
 ---
 
 # Modelagem de Ameacas
@@ -123,14 +129,14 @@ Status: Open → criar tarefa
 | **OWASP Cornucopia** | Jogo de cartas (3-6 jogadores) | Pensar fora da caixa em equipe |
 | **Microsoft Threat Modeling Tool** | Diagramas STRIDE | Alternativa ao Threat Dragon |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-modelagem-de-ameacas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-modelagem-de-ameacas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-modelagem-de-ameacas/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-modelagem-de-ameacas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

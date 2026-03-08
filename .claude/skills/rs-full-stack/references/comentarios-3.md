@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comentarios-3
-description: "Applies HTML comment syntax when writing or organizing HTML code. Use when user asks to 'comment out HTML', 'add HTML comments', 'hide HTML content', 'organize HTML code', or 'document HTML'. Writes comments with correct <!-- --> syntax and uses them for code organization. Make sure to use this skill whenever generating HTML that benefits from inline documentation. Not for CSS comments, JS comments, or JSX comments."
+description: "Applies HTML comment syntax when writing or organizing HTML code. Use when user asks to 'comment out HTML', 'add HTML comments', 'hide HTML content', 'organize HTML code', or 'document HTML'. Writes comments with correct comment delimiter syntax and uses them for code organization. Make sure to use this skill whenever generating HTML that benefits from inline documentation. Not for CSS comments, JS comments, or JSX comments."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, comments, organization, documentation, syntax]
 ---
 
 # Comentarios no HTML
@@ -94,13 +100,16 @@ description: "Applies HTML comment syntax when writing or organizing HTML code. 
 | `<!-- isso e um paragrafo -->` acima de `<p>` | Nada — o `<p>` ja e auto-explicativo |
 | Comentarios dentro de comentarios (aninhados) | Separe em blocos distintos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Comentario HTML aparece na pagina | Sintaxe errada: `<!- -->` com um traco | Use `<!-- -->` com dois tracos de cada lado |
+| Comentario HTML quebra o layout | Comentario aninhado dentro de outro comentario | Remova aninhamento — HTML nao suporta comentarios dentro de comentarios |
+| Codigo comentado permanece no bundle | Comentarios HTML sao enviados ao navegador | Use ferramenta de minificacao que remove comentarios em producao |
+| Comentario nao esconde conteudo | Tag de fechamento `-->` ausente ou mal posicionada | Verifique que `<!--` e `-->` envolvem todo o trecho |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comentarios-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comentarios-3/references/code-examples.md)

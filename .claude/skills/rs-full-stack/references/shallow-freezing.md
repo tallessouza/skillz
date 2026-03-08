@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-shallow-freezing
 description: "Applies Object.freeze() correctly when writing JavaScript/TypeScript code that needs immutable objects. Use when user asks to 'freeze an object', 'make object immutable', 'prevent object modification', or 'protect object properties'. Enforces awareness that Object.freeze() is shallow — nested objects remain mutable. Make sure to use this skill whenever generating code that freezes objects or discusses object immutability in JS/TS. Not for deep freezing solutions, structuredClone, or Immer/immutable libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-objects
+  tags:
+    - javascript
+    - object-freeze
+    - immutability
+    - shallow-freeze
+    - object-protection
 ---
 
 # Shallow Freezing com Object.freeze()
@@ -97,6 +108,15 @@ settings.notifications.sms = true // Agora sim, bloqueado
 | Mutar antes de verificar se esta frozen | Use `Object.isFrozen(obj)` para checar |
 | Freeze em arrays e achar que `.push()` funciona | Freeze bloqueia push/pop/splice tambem |
 | Ignorar strict mode ao usar freeze | Use `"use strict"` para receber TypeError em vez de falha silenciosa |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Propriedade aninhada foi modificada mesmo com freeze | Object.freeze() e shallow — nao congela objetos internos | Congele cada nivel: `Object.freeze(obj.nested)` |
+| Mutacao silenciosa sem erro | Codigo nao esta em strict mode | Adicione `"use strict"` para receber TypeError |
+| `push()` funciona em array de objeto frozen | O array interno nao foi congelado | Congele o array tambem: `Object.freeze(obj.items)` |
+| Nao consegue verificar se objeto esta frozen | Usando comparacao manual | Use `Object.isFrozen(obj)` para verificar |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-projeto-nodejs
 description: "Generates Node.js project scaffolding when user asks to 'create a node project', 'initialize a project', 'start a new node app', 'npm init', or 'setup a backend project'. Applies correct npm init workflow, package.json configuration, and project folder structure. Make sure to use this skill whenever bootstrapping a new Node.js project from scratch. Not for frontend-only projects, Deno, Bun, or existing project configuration changes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, npm-init, package-json, project-setup, scaffolding]
 ---
 
 # Criando um Projeto Node.js
@@ -89,13 +95,13 @@ nome-do-projeto/
 | Deixar `description` e `author` vazios em projetos reais | Preencher com informacoes do projeto |
 | Inicializar na pasta errada | Confirmar com `pwd` antes de rodar `npm init` |
 
+## Troubleshooting
+
+### Problem: `npm init` creates package.json in the wrong directory
+- **Cause**: Running the command before navigating to the project folder
+- **Fix**: Always confirm your current directory with `pwd` before running `npm init -y`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre npm, package.json e licencas
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de configuracao e variantes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0105-criando-um-projeto-nodejs-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0105-criando-um-projeto-nodejs-mp-4/references/code-examples.md)

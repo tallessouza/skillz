@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-find-unique
 description: "Applies Prisma findUnique patterns when querying single records by unique field. Use when user asks to 'find one record', 'get by id', 'fetch single user', 'show endpoint', or implements detail/show routes. Enforces where clause with unique fields, singular naming, and clean parameter extraction. Make sure to use this skill whenever building Prisma queries that return a single entity. Not for listing multiple records (findMany), creating, updating, or deleting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, findUnique, database, rest-api, node-js]
 ---
 
 # Prisma findUnique
@@ -79,13 +85,16 @@ async show(request) {
 | `const users = await prisma.user.findUnique(...)` | `const user = await prisma.user.findUnique(...)` |
 | `where: { id: request.params.id }` | `const { id } = request.params` + `where: { id }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `findUnique` retorna `null` | Registro nao existe com o ID fornecido | Adicione tratamento para null e retorne 404 |
+| Erro `Argument where must have exactly one unique field` | Campo passado no `where` nao e unico no schema | Use `findFirst` para campos nao-unicos ou adicione `@unique` no schema |
+| Parametro `id` chega como string em vez de number | Route params sao strings por padrao | Converta com `Number(id)` ou use validacao com Zod |
+| Erro de tipo no `request.params` | Falta tipagem do parametro no Fastify/Express | Defina o schema de params na rota |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre findUnique vs findMany e organizacao de codigo
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-find-unique/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-find-unique/references/code-examples.md)

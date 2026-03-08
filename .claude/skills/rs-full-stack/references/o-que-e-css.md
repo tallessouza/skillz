@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-css
 description: "Applies CSS foundational mental model when writing or reviewing stylesheets. Use when user asks to 'style a page', 'add CSS', 'write styles', 'create a stylesheet', or 'explain CSS basics'. Enforces property-value pair thinking and cascade awareness in every styling decision. Make sure to use this skill whenever generating CSS or explaining styling concepts to beginners. Not for JavaScript logic, HTML structure, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, cascade, styling, fundamentals, property-value]
 ---
 
 # O que é CSS
@@ -59,13 +65,15 @@ Tudo em CSS se resume a aprender novas propriedades e seus valores possíveis. C
 - CSS não define estrutura do conteúdo — isso é HTML
 - Regras avançadas (especificidade, herança, media queries) vão além deste modelo básico
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Estilo nao aparece na pagina | Arquivo CSS nao linkado no HTML | Adicione `<link rel="stylesheet" href="style.css">` no `<head>` |
+| Estilo e sobrescrito inesperadamente | Regra posterior na cascata tem prioridade | Verifique a ordem das declaracoes e especificidade |
+| Propriedade nao tem efeito | Valor invalido ou propriedade escrita errada | Verifique a sintaxe: `propriedade: valor;` com ponto e virgula |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cascata, analogias e contexto histórico
-- [code-examples.md](references/code-examples.md) — Exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-que-e-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-que-e-css/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cascata, analogias e contexto historico
+- [code-examples.md](references/code-examples.md) — Exemplos de codigo expandidos com variacoes

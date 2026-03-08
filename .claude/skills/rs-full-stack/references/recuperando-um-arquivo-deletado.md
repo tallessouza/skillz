@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-recuperando-arquivo-deletado
 description: "Applies Git file recovery techniques when user needs to 'recover a deleted file', 'restore a file from history', 'undo a file deletion', 'bring back a removed file', or 'checkout a previous version'. Guides through git checkout, git restore, and stage area management for deleted files. Make sure to use this skill whenever the user mentions recovering or restoring files deleted in Git history. Not for branch recovery, commit reversal, or general git undo operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-fundamentals
+  tags:
+    - git
+    - restore
+    - checkout
+    - recovery
 ---
 
 # Recuperando Arquivos Deletados com Git
@@ -97,6 +107,14 @@ git restore phrases.txt    # volta instantaneamente
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre rastreamento de delecoes e stage area
 - [code-examples.md](references/code-examples.md) — Todos os exemplos expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `git restore` nao recupera o arquivo | Arquivo ja foi deletado e comitado | Use `git checkout <hash> -- <arquivo>` com o hash do commit anterior |
+| Arquivo recuperado aparece no stage area | `git checkout` de commit antigo adiciona ao stage automaticamente | Use `git restore --staged <arquivo>` para remover do stage |
+| Nao encontra o commit que tinha o arquivo | Historico longo e dificil de navegar | Use `git log --all -- <arquivo>` para ver apenas commits que tocaram aquele arquivo |
 
 ---
 

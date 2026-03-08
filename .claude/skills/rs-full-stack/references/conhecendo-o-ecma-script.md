@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-conhecendo-o-ecma-script
 description: "Applies ECMAScript version knowledge when discussing JavaScript features, compatibility, or modern syntax. Use when user asks about 'ES6', 'ES2023', 'ECMAScript', 'JavaScript versions', 'modern JavaScript', or 'browser compatibility'. Provides decision framework for identifying which ES version introduced a feature. Make sure to use this skill whenever referencing JavaScript specification versions or explaining why a feature exists. Not for teaching JavaScript syntax, writing code, or debugging."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [ecmascript, es6, es2015, javascript-versions, browser-compatibility, tc39]
 ---
 
 # Conhecendo o ECMAScript
 
 > Ao referenciar funcionalidades do JavaScript, identifique a versao do ECMAScript que as introduziu para garantir compatibilidade e contexto historico.
 
-## Key concept
+## Key concepts
 
 JavaScript e a linguagem que se escreve e executa nos navegadores. ECMAScript e a especificacao que define como o JavaScript deve se comportar. Sao coisas distintas: JavaScript e a implementacao, ECMAScript e o padrao.
 
@@ -57,19 +63,32 @@ A padronizacao garante que diferentes engines (V8, SpiderMonkey, JavaScriptCore)
 - Ao configurar targets de transpilacao (tsconfig, Babel, esbuild)
 - Ao comparar "JavaScript antigo" vs "JavaScript moderno"
 
+## Code example
+
+```javascript
+// Features introduzidas no ES6/ES2015
+const name = 'world'           // const (ES6)
+const greet = () => `Hello ${name}` // arrow function + template literal (ES6)
+const [a, b] = [1, 2]         // destructuring (ES6)
+const obj = { name, greet }   // shorthand properties (ES6)
+```
+
 ## Limitations
 
 - Esta skill nao ensina syntax especifica — apenas contextualiza versoes
 - Nao cobre APIs do browser (DOM, Fetch) que nao fazem parte do ECMAScript
 - Nao substitui verificacao real de compatibilidade (caniuse, MDN)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Feature ES2023 nao funciona no browser | Browser nao suporta a versao ES | Verificar compatibilidade em caniuse.com ou MDN |
+| Confusao entre ES6 e ES2015 | Nomenclatura dupla | Sao a mesma versao — ES6 e o numero sequencial, ES2015 e o ano |
+| Transpilacao nao converte feature moderna | Target do Babel/TS muito recente | Ajustar target para versao ES que o runtime alvo suporta |
+| Feature funciona no Chrome mas nao no Safari | Diferentes engines implementam ES em ritmos diferentes | Adicionar polyfill ou ajustar targets de transpilacao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Historia completa, analogias e contexto do ecossistema
 - [code-examples.md](references/code-examples.md) — Mapeamento de features por versao ES com exemplos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-ecma-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-ecma-script/references/code-examples.md)

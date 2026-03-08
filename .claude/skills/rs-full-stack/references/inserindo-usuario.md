@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inserindo-usuario
 description: "Applies Prisma ORM user insertion patterns when writing create operations with Prisma Client. Use when user asks to 'insert a record', 'create a user', 'save to database with Prisma', 'setup Prisma client', or 'configure ORM connection'. Enforces proper client setup with logging, data property usage, and unique constraint handling. Make sure to use this skill whenever generating Prisma create operations or setting up PrismaClient instances. Not for raw SQL queries, Drizzle ORM, TypeORM, or non-database code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, orm, create, insert, prisma-client, typescript]
 ---
 
 # Inserindo Registros com Prisma ORM
@@ -93,13 +99,16 @@ async function createUser(req, res) {
 | Validacao manual de unique antes do insert | Deixe o Prisma enforcar a constraint e trate o erro |
 | SQL raw para inserts simples | `prisma.model.create()` com tipagem automatica |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de unique constraint violation | Email ou campo `@unique` duplicado | Tratar o erro do Prisma ou verificar duplicidade antes |
+| `prisma.user` nao existe no client | Schema nao gerado ou modelo sem `model User` | Executar `npx prisma generate` apos alterar schema |
+| Multiplas conexoes ao banco | `new PrismaClient()` em cada arquivo | Centralizar instancia em `src/prisma.ts` |
+| SQL nao aparece nos logs | `log: ['query']` nao configurado | Adicionar `log: ['query']` no construtor do PrismaClient |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre setup do client, logging e constraints
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inserindo-usuario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inserindo-usuario/references/code-examples.md)

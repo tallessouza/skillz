@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-projeto-node
-description: "Generates Node.js project setup from scratch using native modules and ES Modules configuration. Use when user asks to 'create a node project', 'setup node from scratch', 'initialize node server', 'start a new node.js app', or 'create HTTP server without framework'. Applies correct ESM config, node: prefix imports, and server structure. Make sure to use this skill whenever bootstrapping a new Node.js project without frameworks. Not for Express/Fastify setup, frontend projects, or Deno/Bun runtimes."
+name: 2023-criando-um-projeto-node
+description: "Initializes Node.js projects with ES Modules, node: prefix imports, and native HTTP server setup. Use when user asks to 'create a Node project', 'initialize a new backend', 'set up ES modules', or 'create an HTTP server from scratch'. Make sure to use this skill whenever bootstrapping a new Node.js project or configuring ES Modules with package.json type module. Not for Express/Fastify setup, frontend projects, or Bun/Deno runtimes."
+category: workflow
+tags: [fastify, modules, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos
+  tags: [node-js, es-modules, http-server, project-setup, node-prefix]
 ---
 
 # Criando um Projeto Node.js
@@ -84,14 +93,14 @@ Testar: `curl http://localhost:3333` ou abrir no navegador.
 | `res.send("Hello")` (sem Express) | `res.end("Hello")` |
 | `npm init` (interativo) | `npm init -y` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-um-projeto-node/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-um-projeto-node/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

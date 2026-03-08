@@ -1,13 +1,19 @@
 ---
 name: rs-devops-o-que-e-observabilidade
 description: "Applies observability principles when designing, reviewing, or instrumenting production systems. Use when user asks to 'add monitoring', 'make observable', 'add metrics', 'instrument application', 'debug production', or 'improve reliability'. Ensures the three pillars (logs, metrics, traces) are considered and systems expose proper outputs. Make sure to use this skill whenever discussing production readiness or system visibility. Not for CI/CD pipeline setup, container configuration, or Kubernetes deployment."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability
+  tags: [observability, logs, metrics, traces, monitoring, reliability, production]
 ---
 
 # Observabilidade
 
 > Promova visibilidade do ecossistema de aplicacoes para descobrir problemas antes do cliente.
 
-## Conceito central
+## Key concepts
 
 Observabilidade e a capacidade de entender o estado interno de um sistema a partir das suas saidas (outputs). Nao se trata apenas de saber SE algo esta errado, mas de entender O QUE, ONDE e POR QUE esta errado — de maneira proativa, antes que o usuario final descubra.
 
@@ -64,20 +70,31 @@ Observabilidade e baseada nas **saidas** (outputs) que o sistema exporta. A apli
 - Ao investigar problemas de performance ou confiabilidade
 - Ao avaliar maturidade operacional de um projeto
 
+## Diagnostic
+
+```bash
+# Checklist de observabilidade para producao
+# [ ] Logs estruturados configurados (JSON)
+# [ ] Metricas expostas (Prometheus /metrics endpoint)
+# [ ] Tracing propagado entre servicos (x-trace-id)
+# [ ] Alertas proativos configurados (Alertmanager/PagerDuty)
+# [ ] Dashboards com os 4 sinais (latencia, trafego, erros, saturacao)
+```
+
 ## Limitacoes
 
 - Observabilidade nao substitui testes (unitarios, integracao, e2e)
 - Instrumentacao tem custo computacional — balanceie granularidade vs overhead
 - Ferramentas de observabilidade precisam de infraestrutura propria (storage, processamento)
 
+## Troubleshooting
+
+### Sistema tem metricas mas time nao detecta problemas a tempo
+**Symptom:** Dashboards existem mas MTTD continua alto e usuarios reportam bugs antes do time
+**Cause:** Metricas configuradas sem alertas proativos — dashboards sao passivos, requerem que alguem olhe
+**Fix:** Configurar alertas automaticos (Prometheus Alertmanager, PagerDuty) para metricas criticas como taxa de erro e latencia p99
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-e-observabilidade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-e-observabilidade/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

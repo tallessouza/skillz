@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-git-windows
-description: "Guides Git installation and credential configuration on Windows. Use when user asks to 'install git', 'setup git on windows', 'configure git credentials', 'git bash setup', or 'git global config'. Follows Git SCM official process with Git Bash as recommended terminal. Make sure to use this skill whenever setting up a new Windows development environment. Not for Linux/Mac git installation, GitHub account creation, or SSH key setup."
+description: "Configures Git installation and credential setup on Windows with Git Bash as recommended terminal. Use when user asks to 'install git', 'setup git on windows', 'configure git credentials', 'git bash setup', or 'git global config'. Follows Git SCM official process with Git Bash as recommended terminal. Make sure to use this skill whenever setting up a new Windows development environment. Not for Linux/Mac git installation, GitHub account creation, or SSH key setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-windows
+  tags: [git, windows, gitbash, configuration, setup]
 ---
 
 # Instalando e Configurando Git no Windows
@@ -73,13 +79,16 @@ git -v              # Deve retornar versao do git
 git config --list   # Deve mostrar user.name e user.email configurados
 ```
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `git -v` nao funciona no Git Bash | Instalacao incompleta ou corrompida | Reinstalar seguindo os mesmos passos |
+| Nao sabe se sistema e 32 ou 64-bit | Informacao do sistema nao verificada | Abrir System Information e verificar tipo do sistema |
+| Git Bash nao aparece no menu | Instalacao nao concluida | Executar o instalador novamente e finalizar |
+| Commits nao vinculam ao GitHub | Email global diferente do GitHub | Configurar com `git config --global user.email` usando email do GitHub |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolhas de terminal e conexao Git-GitHub
 - [code-examples.md](references/code-examples.md) — Todos os comandos com variacoes e troubleshooting
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-windows-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-windows-1/references/code-examples.md)

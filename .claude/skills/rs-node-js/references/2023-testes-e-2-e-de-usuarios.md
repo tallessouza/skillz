@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-e2e-usuarios
 description: "Applies NestJS E2E testing patterns when writing end-to-end tests for controllers. Use when user asks to 'write e2e test', 'test controller', 'test route', 'create integration test', or 'test NestJS endpoint'. Covers createTestingModule setup, supertest requests, database assertions with Prisma, and isolated test environments. Make sure to use this skill whenever generating NestJS controller tests or e2e test files. Not for unit tests, mocking services, or frontend testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-e2e-nestjs
+  tags: [e2e, nestjs, testing, supertest, prisma, createTestingModule, controllers]
 ---
 
 # Testes E2E no NestJS
@@ -112,14 +118,14 @@ test('[POST] /sessions', async () => {
 | Validar somente `statusCode` na criacao | Validar statusCode + consultar banco |
 | Criar instancia separada de dependencias | Pegar do modulo via `.get()` |
 
+## Troubleshooting
+
+### createTestingModule nao encontra PrismaService
+**Symptom:** `Nest can't resolve dependencies of PrismaService` ao compilar o modulo de teste
+**Cause:** O `AppModule` nao exporta o `PrismaService` ou o `DatabaseModule` nao esta importado
+**Fix:** Adicione `DatabaseModule` no array de imports do `createTestingModule` e use `moduleRef.get(PrismaService)` para obter a instancia
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-usuarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-usuarios/references/code-examples.md)

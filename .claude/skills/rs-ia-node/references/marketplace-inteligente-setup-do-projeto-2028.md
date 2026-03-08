@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-setup-projeto
 description: "Applies OpenAI SDK setup pattern when initializing a Node.js project with OpenAI integration. Use when user asks to 'setup openai', 'integrate gpt', 'connect to openai api', 'create chat completion', or 'initialize openai client'. Follows SDK-first approach with proper client initialization, chat completions structure, and response handling. Make sure to use this skill whenever bootstrapping OpenAI integration in Node/TypeScript projects. Not for Python SDK, LangChain, or non-OpenAI LLM providers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: fundamentos
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Setup de Projeto com OpenAI SDK (Node.js)
@@ -87,14 +93,14 @@ Cada mensagem tem `role` (quem enviou) e `content` (conteudo textual). Voce pode
 | `completion.choices.message` (sem indice) | `completion.choices[0].message.content` |
 | Hardcodar a API key no codigo | Usar variavel de ambiente |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-do-projeto-2028/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-do-projeto-2028/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-gerando-open-graph-image
 description: "Generates Open Graph image routes in Next.js App Router using ImageResponse from next/og. Use when user asks to 'create og image', 'add open graph', 'generate social preview', 'share preview image', or 'embed image for sharing'. Applies correct file naming, Flexbox-only CSS, ImageResponse dimensions, and caching. Make sure to use this skill whenever creating social sharing images in Next.js projects. Not for general image optimization, static assets, or favicon generation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo-e-metadata
+  tags: [open-graph, og-image, ImageResponse, social-preview, seo, app-router, next-js]
 ---
 
 # Gerando Open Graph Image no Next.js
@@ -106,14 +112,19 @@ O Next.js gera automaticamente no `<head>`:
 | Imagem sem dimensoes explicitas | `{ width: 1200, height: 630 }` como segundo argumento |
 | Fetch sem cache em OG image | Adicionar `"use cache"` ou `unstable_cache` |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-gerando-open-graph-image/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-gerando-open-graph-image/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-gerando-open-graph-image/references/deep-explanation.md) — O instrutor destaca que, embora o autocomplete sugira importar de `next/server`, a importacao corret
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-gerando-open-graph-image/references/code-examples.md) — app/

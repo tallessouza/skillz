@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-navegando-pelos-commits
 description: "Applies Git commit navigation patterns when user asks to 'check previous version', 'go back to old commit', 'view commit history', 'navigate commits', or 'see how file looked before'. Enforces correct use of git log, git checkout with SHA, and detached HEAD understanding. Make sure to use this skill whenever user needs to inspect or navigate Git history. Not for branching strategies, merge conflicts, or git rebase workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-fundamentals
+  tags: [git, commits, checkout, detached-head, history]
 ---
 
 # Navegando Pelos Commits
@@ -91,13 +97,16 @@ git checkout main
 | Ficar em detached HEAD trabalhando | Volte com `git checkout main` ou crie branch |
 | Entrar em panico com mensagem "detached HEAD" | E normal — e modo observacao, nao erro |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `error: pathspec 'abc1234' did not match` | SHA copiado incorretamente ou insuficiente | Copie pelo menos 7 caracteres do SHA via `git log` |
+| Mensagem "detached HEAD" assusta | Comportamento normal ao fazer checkout de commit | Volte com `git checkout main` quando terminar de inspecionar |
+| `git log` nao mostra commits futuros | Voce esta em detached HEAD no passado | Volte para main: `git checkout main` para ver todos os commits |
+| Tela do `git log` travada | Pager do terminal esperando input | Digite `:q` para sair do pager |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre HEAD, SHA-1, e detached HEAD
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de navegacao expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-navegando-pelos-commits/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-navegando-pelos-commits/references/code-examples.md)

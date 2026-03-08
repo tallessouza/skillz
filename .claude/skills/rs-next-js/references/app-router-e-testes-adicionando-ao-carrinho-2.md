@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-isolate-client
 description: "Enforces client component isolation pattern in Next.js App Router when writing React components. Use when user asks to 'add interactivity', 'use context', 'create a component with hooks', 'add to cart', or any task mixing server and client components. Applies rule: extract only the interactive part into a separate client component, keep parent as server component. Make sure to use this skill whenever generating Next.js App Router components that need hooks or browser APIs. Not for API routes, middleware, or pure server-side logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [client-component, isolation, cart, hooks, server-component, app-router]
 ---
 
 # Isolamento de Client Components no Next.js App Router
@@ -142,14 +148,19 @@ export default async function ProductPage({ params }) {
 | Fetch de dados dentro de client component | Fetch no server component, passe via props |
 | Logica de contexto espalhada no server component | Componente client encapsulado que usa o hook |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-adicionando-ao-carrinho-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-adicionando-ao-carrinho-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-adicionando-ao-carrinho-2/references/deep-explanation.md) — No Next.js App Router, todo componente e Server Component por padrao. Quando voce precisa usar hooks
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-adicionando-ao-carrinho-2/references/code-examples.md) — // components/header.tsx

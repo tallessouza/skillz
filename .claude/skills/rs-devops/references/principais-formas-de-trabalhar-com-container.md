@@ -1,6 +1,12 @@
 ---
-name: rs-devops-formas-trabalhar-container
-description: "Applies container tooling knowledge when choosing between Docker, Podman, LXC, or LXD for containerization. Use when user asks to 'setup containers', 'choose container runtime', 'install Docker', 'compare Docker vs Podman', or 'containerize an application'. Guides decisions on which container interface to use based on OCI standards. Make sure to use this skill whenever container runtime selection or Docker ecosystem navigation is relevant. Not for Dockerfile writing, docker-compose configuration, or Kubernetes orchestration."
+name: rs-devops-principais-formas-de-trabalhar-com-container
+description: "Applies container runtime selection criteria when choosing between Docker, Podman, LXC, or containerd. Use when user asks to 'choose container runtime', 'compare docker vs podman', 'install docker', 'understand OCI', or 'evaluate container tools'. Provides decision framework for runtime selection based on context. Make sure to use this skill whenever discussing container tooling choices. Not for Dockerfile writing, Kubernetes orchestration, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: container-fundamentals
+  tags: [docker, podman, containers, oci, lxc, containerd, runtime]
 ---
 
 # Formas de Trabalhar com Containers
@@ -81,14 +87,156 @@ Acesse `https://docs.docker.com/get-docker/` e selecione seu sistema operacional
 - Nao cobre orquestracao (Kubernetes, Docker Swarm)
 - Nao cobre arquitetura interna do Docker (proximo topico do curso)
 
+## Troubleshooting
+
+### Docker daemon nao inicia apos instalacao
+**Symptom:** `docker ps` retorna erro "Cannot connect to the Docker daemon"
+**Cause:** Docker daemon nao esta rodando ou usuario nao tem permissao no socket
+**Fix:** Iniciar o daemon com `sudo systemctl start docker` e adicionar usuario ao grupo docker com `sudo usermod -aG docker $USER`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 ---
 
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-principais-formas-de-trabalhar-com-container/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-principais-formas-de-trabalhar-com-container/references/code-examples.md)
+# Deep Explanation: Formas de Trabalhar com Containers
+
+## O papel da OCI na decisao de tooling
+
+O instrutor enfatiza que a OCI (Open Container Initiative) foi criada justamente para possibilitar multiplas ferramentas e interfaces. Isso significa que containers sao uma **estrutura agnostica** — voce tem o container, e a interface que usa para lidar com ele fica a seu criterio.
+
+Essa e uma distincao arquitetural importante: o container em si e padronizado. O que muda e a ferramenta que voce usa para construir, executar e gerenciar esses containers. Todas seguem o mesmo padrao OCI, entao imagens criadas com Docker funcionam no Podman e vice-versa.
+
+## Por que Docker venceu o mercado
+
+O instrutor destaca que Docker foi quem **popularizou** o assunto containers. Antes do Docker, containers existiam (LXC ja estava la), mas nao tinham adocao massiva. Docker trouxe:
+
+1. **Simplicidade** — abstraiu a complexidade do LXC
+2. **Portabilidade forte** — "portabilidade entre maquinas" e um dos pontos que o instrutor mais enfatiza
+3. **Leveza e desempenho** — containers Docker sao extremamente leves
+4. **Escalabilidade** — facilidade de escalar horizontalmente
+5. **Comunidade ativa** — o instrutor destaca que comunidade e "um ponto muito importante quando voce vai escolher uma tecnologia para trabalhar"
+
+## Docker como suite, nao ferramenta unica
+
+Um insight importante do instrutor: "quando nos falamos do Docker para se trabalhar localmente, geralmente a gente esta falando do Docker Desktop". Mas Docker e na verdade uma **suite de produtos**:
+
+- Docker Desktop (desenvolvimento local)
+- Docker Hub (container registry)
+- Docker Scout (seguranca)
+- Docker CLI (linha de comando)
+- Planos: Pro, Personal, Team, Business
+
+Isso significa que ao escolher Docker, voce esta entrando em um ecossistema, nao apenas instalando uma ferramenta.
+
+## Sobre Container Registry
+
+O instrutor menciona que Docker Hub e "basicamente um container registry" — voce armazena suas imagens de container la. Mas ele tambem nota que "existem N ferramentas" de registry, e que o conceito de Container Registry sera explorado mais a fundo no curso.
+
+## Recomendacao do instrutor sobre Podman
+
+O instrutor faz uma recomendacao especifica: "se quiser brincar um pouquinho, eu recomendo a utilizacao do Podman" para ambientes locais. Isso sugere que Podman e uma alternativa viavel para experimentacao, mesmo que Docker seja o padrao para trabalho profissional.
+
+## LXC vs LXD
+
+O instrutor esclarece a relacao: LXD esta "muito proximo do LXC" — LXD e o daemon que gerencia containers LXC no Linux. Sao complementares, nao concorrentes.
+
+---
+
+# Code Examples: Formas de Trabalhar com Containers
+
+## Instalacao do Docker
+
+### Linux (Ubuntu/Debian)
+
+```bash
+# Remover versoes antigas
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+# Instalar dependencias
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+
+# Adicionar chave GPG oficial do Docker
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# Adicionar repositorio
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Instalar Docker Engine
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### Verificacao da instalacao
+
+```bash
+# Verificar se Docker esta rodando
+docker --version
+# Docker version 27.x.x, build xxxxxxx
+
+# Testar com container hello-world
+docker run hello-world
+```
+
+### Mac
+
+```bash
+# Via Homebrew
+brew install --cask docker
+
+# Depois abra o Docker Desktop pela primeira vez para completar setup
+# Para Apple Silicon (M1+): selecione a versao Apple Silicon no download
+```
+
+### Windows (WSL2)
+
+```powershell
+# 1. Instalar WSL2 (se ainda nao tem)
+wsl --install
+
+# 2. Baixar Docker Desktop do site oficial
+# 3. Durante instalacao, marcar "Use WSL 2 based engine"
+# 4. Reiniciar e verificar
+docker --version
+```
+
+## Comparando Docker vs Podman (comandos equivalentes)
+
+```bash
+# Docker
+docker run -d nginx
+docker ps
+docker stop <container_id>
+docker images
+
+# Podman (mesmos comandos, compativel)
+podman run -d nginx
+podman ps
+podman stop <container_id>
+podman images
+```
+
+A compatibilidade de comandos e possivel porque ambos seguem o padrao OCI.
+
+## Verificando o ecossistema Docker instalado
+
+```bash
+# Ver todos os componentes instalados
+docker info
+
+# Verificar Docker Compose
+docker compose version
+
+# Verificar Buildx
+docker buildx version
+
+# Login no Docker Hub (container registry)
+docker login
+```

@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-tecnologias-basicas-da-web
 description: "Applies web technology stack mental model when user asks to 'choose a stack', 'what technology should I use', 'frontend vs backend', 'start a web project', or 'learn web development'. Maps HTML/CSS/JS roles on frontend and language/database choices on backend. Make sure to use this skill whenever the user needs guidance on web technology selection or architecture decisions for web projects. Not for deep implementation details, framework comparisons, or DevOps/deployment topics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-web
+  tags: [web, html, css, javascript, frontend, backend, stack, tecnologias]
 ---
 
 # Tecnologias Basicas da Web
 
 > Cada tecnologia web tem um papel especifico: estrutura, estilo, inteligencia no frontend; linguagem de programacao e banco de dados no backend.
 
-## Key concept
+## Key concepts
 
 A web se divide em duas camadas: **frontend** (o que o usuario ve e interage no navegador) e **backend** (o que roda no servidor, processa dados e os armazena). No frontend, tres tecnologias sao fundamentais e insubstituiveis. No backend, ha liberdade de escolha entre diversas linguagens, mas sempre sera necessaria uma linguagem de consulta a banco de dados.
 
@@ -58,6 +64,37 @@ Nao estude Java, Python, PHP e C# ao mesmo tempo para fazer a mesma coisa no bac
 | SQL e NoSQL competem entre si | Sao abordagens diferentes para problemas diferentes; nao sao mutuamente exclusivos |
 | Quanto mais tecnologias eu souber, melhor | Profundidade numa stack vence amplitude superficial em todas |
 
+## Example
+
+```html
+<!-- HTML: estrutura -->
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Meu Site</h1>
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+```css
+/* CSS: estilo */
+h1 {
+  color: #333;
+  font-family: sans-serif;
+}
+```
+
+```javascript
+// JavaScript: inteligencia
+document.querySelector('h1').addEventListener('click', () => {
+  alert('Clicou no titulo!')
+})
+```
+
 ## When to apply
 
 - Ao iniciar um novo projeto web e precisar definir a stack
@@ -72,6 +109,15 @@ Nao estude Java, Python, PHP e C# ao mesmo tempo para fazer a mesma coisa no bac
 - Nao aborda DevOps, deploy, CI/CD ou infraestrutura
 - Nao detalha as diferencas entre bancos SQL vs NoSQL
 - Nao substitui a necessidade de aprofundamento em cada tecnologia individualmente
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Confusao sobre qual tecnologia aprender primeiro | Tentando absorver tudo ao mesmo tempo | Comece por HTML, depois CSS, depois JavaScript — uma de cada vez |
+| JavaScript nao funciona no servidor | Tentando rodar JS fora do browser sem runtime | Instale Node.js ou Bun para executar JS no servidor |
+| Dificuldade em escolher linguagem backend | Comparando todas as opcoes simultaneamente | Escolha UMA (ex: Node.js se ja sabe JS) e domine antes de mudar |
+| HTML parece "linguagem de programacao" | Confusao conceitual sobre marcacao vs programacao | HTML e linguagem de marcacao (estrutura), nao de programacao (logica) |
 
 ## Deep reference library
 

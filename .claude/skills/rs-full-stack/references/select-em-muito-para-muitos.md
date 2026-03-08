@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-select-em-muito-para-muitos
 description: "Applies correct SQL SELECT patterns for many-to-many relationships using INNER JOINs across junction tables. Use when user asks to 'query many-to-many', 'join three tables', 'select from junction table', 'connect students and courses', or any SQL involving M:N relationships. Enforces column aliasing with AS, table aliases, and frontend-friendly naming (underscores, no spaces). Make sure to use this skill whenever writing SELECT queries that involve junction/pivot tables. Not for one-to-many joins, INSERT operations, or schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-queries
+  tags:
+    - sql
+    - join
+    - many-to-many
+    - junction-table
+    - inner-join
 ---
 
 # Select em Muitos para Muitos
@@ -95,6 +106,15 @@ INNER JOIN courses c ON c.id = sc.course_id;
 | `FROM students s INNER JOIN students_courses` | `FROM students_courses sc INNER JOIN students s` (parta da junction) |
 | Colunas `name` duplicadas sem AS | Cada `name` com alias unico: `student_name`, `course_name` |
 | `ON students_courses.student_id = students.id` sem alias | `ON s.id = sc.student_id` com aliases |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Colunas "name" duplicadas no resultado | Falta de alias AS nas colunas com mesmo nome | Use `s.name AS student_name, c.name AS course_name` |
+| Query retorna registros duplicados | Junction table tem entradas duplicadas | Verifique constraints UNIQUE na junction table |
+| INNER JOIN retorna menos registros que esperado | Registros sem correspondencia na tabela relacionada | Use LEFT JOIN se quiser incluir registros sem match |
+| Erro de sintaxe no alias | Espaco no alias sem aspas | Use underscore: `student_name` em vez de `student name` |
 
 ## Deep reference library
 

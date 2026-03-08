@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-projeto-3
 description: "Applies Node.js project initialization workflow when user asks to 'create a node project', 'start a new API', 'setup express project', 'init npm project', or 'scaffold backend'. Follows conventions: src/ folder structure, server.js entry point, clean package.json configuration. Make sure to use this skill whenever bootstrapping a new Node.js backend project from scratch. Not for frontend projects, monorepo setup, or framework-specific scaffolding like Next.js or Nest.js."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-setup
+  tags: [nodejs, npm-init, project-setup, express, backend]
 ---
 
 # Criando Projeto Node.js (API REST)
@@ -100,8 +106,12 @@ projeto/
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre convenções de estrutura Node.js
 - [code-examples.md](references/code-examples.md) — Exemplos de package.json e variações de setup
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-projeto-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-projeto-3/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm init -y` falha | Node.js nao instalado ou nao no PATH | Verifique com `node --version` e instale se necessario |
+| `node src/server.js` nao encontra o arquivo | Arquivo nao foi criado ou caminho errado | Verifique com `ls src/` se `server.js` existe |
+| `main` aponta para `index.js` na raiz | Default do `npm init -y` | Altere para `"main": "src/server.js"` no package.json |
+| Scripts do package.json nao executam | Formatacao JSON invalida | Verifique se o JSON esta bem formado (virgulas, chaves) |
+| Pasta `src/` nao foi criada | Esqueceu de rodar `mkdir src` | Crie a pasta com `mkdir src` |

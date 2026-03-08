@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-enviando-requisicao-get
 description: "Applies Express.js GET route patterns when creating API endpoints or handling HTTP requests. Use when user asks to 'create a route', 'add an endpoint', 'handle GET request', 'setup express server', or 'build REST API'. Enforces proper route definition with app.get(), request/response handling, and res.send()/res.json() usage. Make sure to use this skill whenever writing Express route handlers. Not for frontend fetch calls, database queries, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-routes
+  tags: [express, routes, get, http, api, request, response]
 ---
 
 # Rotas GET com Express
@@ -92,13 +98,16 @@ app.listen(3333, () => {
 | `res.end("text")` | `response.send("text")` — Express seta headers |
 | `res.writeHead(200, {...})` | `response.status(200).send()` ou apenas `response.send()` (200 e default) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Rota retorna `Cannot GET /path` | Path da rota nao corresponde a URL requisitada | Verificar que o path no `app.get()` corresponde exatamente a URL |
+| Resposta vem como texto em vez de JSON | Usando `res.send()` em vez de `res.json()` | Usar `response.json(data)` para APIs REST |
+| Servidor nao responde na porta | `app.listen()` nao chamado ou porta em uso | Verificar se `listen` esta sendo chamado e a porta esta livre |
+| Rotas nao funcionam | Rotas definidas apos `app.listen()` | Mover definicoes de rota para antes de `app.listen()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Node puro vs Express e por que aprender ambos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-enviando-requisicao-com-o-metodo-get/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-enviando-requisicao-com-o-metodo-get/references/code-examples.md)

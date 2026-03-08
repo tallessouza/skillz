@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcionamento-node-js
 description: "Applies Node.js runtime architecture knowledge when designing or debugging async code. Use when user asks to 'explain event loop', 'debug async issue', 'understand call stack', 'why is Node single threaded', or 'how Node handles requests'. Enforces correct mental model of Single Thread, Non-Blocking I/O, Call Stack, Event Loop, and Event Queue. Make sure to use this skill whenever user has misconceptions about Node concurrency or is debugging async behavior. Not for browser JavaScript runtime, Web Workers, or Deno/Bun internals."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, event-loop, call-stack, async, single-thread, non-blocking]
 ---
 
 # Funcionamento do Node.js
@@ -70,13 +76,13 @@ Event Loop (Single Thread, Non-Blocking I/O)
 | Tarefas executam em paralelo no Node | Nao — executam uma por vez, mas a thread nunca fica ociosa esperando I/O |
 | Toda operacao passa pela Event Queue | Nao — operacoes sincronas vao direto para a Call Stack |
 
+## Troubleshooting
+
+### Problem: Application freezes and stops responding to requests
+- **Cause**: A heavy synchronous operation (e.g., large loop or CPU-intensive calculation) is blocking the Call Stack
+- **Fix**: Move CPU-intensive work to worker threads or break it into smaller async chunks so the Event Loop can continue processing other requests
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Analogia completa da cafeteria, raciocinio do instrutor e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de operacoes sincronas vs assincronas no Node
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0103-o-funcionamento-do-node-js-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0103-o-funcionamento-do-node-js-mkv-mp-4/references/code-examples.md)

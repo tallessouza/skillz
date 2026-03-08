@@ -1,6 +1,12 @@
 ---
 name: rs-devops-logs
 description: "Enforces structured logging best practices when implementing observability, log systems, or debugging infrastructure. Use when user asks to 'add logging', 'implement logs', 'debug application', 'set up observability', or 'configure log levels'. Applies rules: structured JSON logs, severity levels, immutable log entries, external log storage, standardized log format across services. Make sure to use this skill whenever writing logging code or designing log infrastructure. Not for metrics, tracing, or application business logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-logs
+  tags: [logs, observability, structured-logging, json, severity, monitoring]
 ---
 
 # Logs — Primeiro Pilar da Observabilidade
@@ -109,14 +115,14 @@ logger.error('Payment processing failed', {
 | Editar log ja emitido | Emita novo log com informacao corrigida |
 | Logar tudo em producao | Logue erros sempre, sucesso seletivamente |
 
+## Troubleshooting
+
+### Logs desaparecem quando container reinicia
+**Symptom:** Apos restart do container, todos os logs anteriores sao perdidos
+**Cause:** Logs estao sendo armazenados dentro do container (filesystem local) em vez de exportados para ferramenta externa
+**Fix:** Configure exportacao para ferramenta externa (Grafana Loki, LogZIO, etc.) — nunca armazene logs dentro do container
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-logs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-logs/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

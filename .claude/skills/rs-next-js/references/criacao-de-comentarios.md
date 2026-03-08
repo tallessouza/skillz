@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criacao-de-comentarios
 description: "Applies Next.js server action patterns for form submissions that require authenticated server-side requests. Use when user asks to 'create a comment form', 'submit form with authentication', 'forward cookies in Next.js', 'server action with headers', or 'React Hook Form with server components'. Ensures correct header forwarding, server-only imports, and session handling. Make sure to use this skill whenever building authenticated form submissions in Next.js App Router. Not for client-only forms, static pages, or non-authenticated endpoints."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: comments-and-auth
+  tags: [next-js, server-actions, authentication, cookies, headers, react-hook-form, server-only]
 ---
 
 # Criacao de Comentarios — Next.js Server Actions com Autenticacao
@@ -170,14 +176,19 @@ return <CommentForm onCreateComment={handleCreateComment} />
 | Confiar que Fetch API envia content-type | Sempre setar `content-type: application/json` explicitamente |
 | Chamar funcao server-only diretamente do client | Criar server action com `"use server"` como ponte |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criacao-de-comentarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criacao-de-comentarios/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criacao-de-comentarios/references/deep-explanation.md) — Quando o browser faz uma requisicao (client-side), ele automaticamente inclui cookies, authorization
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criacao-de-comentarios/references/code-examples.md) — // http/create-comment.ts

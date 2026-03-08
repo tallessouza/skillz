@@ -1,6 +1,12 @@
 ---
 name: rs-devops-logando-informacoes-da-aplicacao
 description: "Enforces structured logging setup with Pino and pino-pretty in Node.js applications. Use when user asks to 'configure logging', 'add logs', 'setup pino', 'format log output', or 'send logs to Grafana'. Applies Pino transport configuration, log levels, timestamp formatting, colorization, and OpenTelemetry Collector integration for log export. Make sure to use this skill whenever setting up application logging or debugging log pipelines. Not for application metrics, tracing spans, or Prometheus configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-logging
+  tags: [pino, logging, nodejs, observability, structured-logs, opentelemetry]
 ---
 
 # Logging Estruturado com Pino
@@ -105,14 +111,14 @@ log.error("Connection failed");
 | Exportar logger como default | `export { log }` como named export |
 | Misturar Pino com OpenTelemetry SDK conceitos | Pino = formatacao stdout, OTel = exportacao para collectors |
 
+## Troubleshooting
+
+### Logs nao aparecem no Grafana Loki
+**Symptom:** Aplicacao emite logs no terminal mas eles nao aparecem no Grafana Loki
+**Cause:** O endpoint do exporter OpenTelemetry esta duplicando o path `/v1/logs` — o SDK ja concatena automaticamente
+**Fix:** Configure o endpoint do OTel apenas como `/otlp`, sem adicionar `/v1/logs` manualmente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-logando-informacoes-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-logando-informacoes-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

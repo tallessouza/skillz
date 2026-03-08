@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criar-projeto-node-ts
 description: "Generates a basic Node.js + TypeScript project setup for testing purposes. Use when user asks to 'create a node project', 'setup typescript project', 'init a new ts project', or 'start a testing project'. Follows tsx watch pattern with src/server.ts entry point. Make sure to use this skill whenever scaffolding a new Node.js + TypeScript project from scratch. Not for React, Next.js, or frontend project setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-fundamentos
+  tags: [nodejs, typescript, tsx, project-setup, hot-reload]
 ---
 
 # Criar Projeto Node.js + TypeScript
@@ -88,13 +94,16 @@ Projeto funcional com hot-reload que imprime no terminal a cada alteracao salva.
 1. `npm run dev` imprime "Hello World" no terminal
 2. Alterar o texto em `server.ts` e salvar — o terminal deve mostrar o novo texto automaticamente
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `tsx: command not found` | tsx nao instalado ou node_modules ausente | Execute `npm i tsx@4.19.1` e verifique `node_modules/.bin/tsx` |
+| `npm run dev` nao recarrega ao salvar | Usando `tsx` sem `watch` | Verifique se o script usa `tsx watch src/server.ts` (com `watch`) |
+| `EADDRINUSE` ao evoluir para HTTP | Porta ja ocupada por outro processo | Mate o processo: `lsof -i :3333` e `kill -9 <PID>`, ou use outra porta |
+| TypeScript errors no editor mas tsx executa | Falta `tsconfig.json` no projeto | Crie com `npx tsc --init` para habilitar checagem de tipos no editor |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha do tsx e estrutura minimalista
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criar-um-novo-projeto-node-js-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criar-um-novo-projeto-node-js-1/references/code-examples.md)

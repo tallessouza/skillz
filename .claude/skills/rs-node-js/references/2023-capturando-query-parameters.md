@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-query-parameters
 description: "Enforces query parameter extraction patterns when building Node.js HTTP servers from scratch. Use when user asks to 'parse query string', 'extract query params', 'filter API results', 'add search to endpoint', or 'build route matching with regex'. Applies regex-based query capture, manual query string parsing with split/reduce, and proper defaults for missing params. Make sure to use this skill whenever implementing raw HTTP query parameter handling without frameworks. Not for Express/Fastify/Hapi query parsing or frontend URL manipulation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: http-fundamentals
+  tags: [nodejs, http, query-params, regex, url-parsing, routing, rest-api]
 ---
 
 # Capturando Query Parameters
@@ -92,14 +98,19 @@ const routeRegex = /^\/users\/(?<id>[a-z0-9-]+)(?<query>\?(.*))?$/
 | `query.split('&')` sem remover o `?` | `query.substr(1).split('&')` |
 | Route params e query params misturados no mesmo objeto | Desestruture: `const { query, ...params }` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-capturando-query-parameters/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-capturando-query-parameters/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-capturando-query-parameters/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-capturando-query-parameters/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

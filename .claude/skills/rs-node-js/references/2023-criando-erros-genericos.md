@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-erros-genericos
-description: "Enforces functional error handling patterns with typed error classes in Node.js use cases. Use when user asks to 'handle errors', 'create error classes', 'return errors from use cases', 'implement Either pattern', or 'add error handling to domain layer'. Applies rules: error classes extend Error and implement UseCaseError interface, use Left/Right instead of throwing, type errors in Either union, test with instanceof. Make sure to use this skill whenever creating use case error handling in DDD/Clean Architecture projects. Not for HTTP error responses, middleware error handling, or infrastructure-level errors."
+name: 2023-criando-erros-genericos
+description: "Creates typed error classes for use cases following the Either pattern in DDD Node.js/TypeScript applications. Use when user asks to 'handle errors in use cases', 'create custom errors', 'implement Either pattern', 'type error responses', or 'test error scenarios'. Enforces: error classes extend Error and implement UseCaseError, Either types list all possible errors, tests use instanceof not string comparison. Make sure to use this skill whenever implementing error handling in domain use cases or creating typed error responses. Not for HTTP error handling, validation errors, or infrastructure-level exceptions."
+category: coding-lens
+tags: [ddd, either-pattern, error-handling, middleware, repository, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling
+  tags: [ddd, either-pattern, error-handling, use-case-error, typescript, domain-driven-design]
 ---
 
 # Erros Genéricos em Use Cases
@@ -114,14 +123,14 @@ expect(result.value).toBeInstanceOf(NotAllowedError)
 | Erro sem `extends Error` | `class MyError extends Error implements UseCaseError` |
 | Comparar `result.value === 'string'` | `result.value instanceof NotAllowedError` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-erros-genericos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-erros-genericos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

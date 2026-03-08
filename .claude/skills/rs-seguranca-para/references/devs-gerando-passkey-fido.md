@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-passkey-fido
 description: "Generates WebAuthn FIDO passkey registration flows when implementing passwordless authentication. Use when user asks to 'add passkey', 'implement passwordless login', 'register FIDO key', 'WebAuthn registration', or 'authenticate without password'. Applies the two-fetch pattern: generate challenge then create credential. Make sure to use this skill whenever building authentication flows that mention passkeys or FIDO. Not for traditional password auth, OAuth, JWT tokens, or session management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, webauthn, fido, passkey, passwordless]
 ---
 
 # Registro de Passkeys FIDO (WebAuthn)
@@ -112,14 +118,14 @@ def registration_options():
 | Mostrar botao sem checar suporte | `browserSupportsWebAuthn()` primeiro |
 | Um unico fetch no registro | Dois fetches: options + verificacao |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerando-passkey-fido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerando-passkey-fido/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerando-passkey-fido/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerando-passkey-fido/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

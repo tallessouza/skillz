@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-upload-use-case
 description: "Applies testing patterns for upload and file attachment use cases in clean architecture NestJS projects. Use when user asks to 'test upload', 'test file attachment', 'create fake uploader', 'mock storage', or 'test use case with file'. Enforces fake storage implementations, in-memory repositories for attachments, buffer handling in tests, and invalid file type validation. Make sure to use this skill whenever writing tests for upload or file storage features. Not for implementing actual storage providers, controllers, or infrastructure-layer upload logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [testing, upload, fake-uploader, in-memory, attachment, buffer]
 ---
 
 # Testando Caso de Uso de Upload
@@ -107,14 +113,14 @@ it('should not be able to upload with invalid file type', async () => {
 | Verificar so o resultado sem checar o uploader | Verificar resultado E `fakeUploader.uploads` |
 | Criar fake sem propriedade publica de uploads | Expor `public uploads: Upload[]` para assertions |
 
+## Troubleshooting
+
+### Teste de upload nao detecta que arquivo foi salvo
+**Symptom:** Assertion no fakeUploader.uploads retorna array vazio
+**Cause:** FakeUploader nao expoe a propriedade uploads como public ou o caso de uso nao chama o uploader
+**Fix:** Declare `public uploads: Upload[] = []` no FakeUploader e verifique que o caso de uso chama `this.uploader.upload()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-caso-de-uso-de-upload/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-caso-de-uso-de-upload/references/code-examples.md)

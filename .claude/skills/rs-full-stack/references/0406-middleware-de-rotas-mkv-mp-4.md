@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-de-rotas
 description: "Applies route handler middleware pattern when building Node.js HTTP servers without frameworks. Use when user asks to 'create a router', 'handle routes', 'build an HTTP server', 'add routing to node', or 'create a middleware'. Implements find-based route matching, controller delegation, and 404 handling. Make sure to use this skill whenever creating vanilla Node.js HTTP routing logic. Not for Express, Fastify, or any framework-based routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, middleware, routing, http, 404, handler]
 ---
 
 # Middleware de Rotas (Node.js Vanilla)
@@ -107,13 +113,16 @@ const server = http.createServer((req, res) => {
 | Import sem extensao `.js` em ESM | `import { routes } from '../routes/index.js'` |
 | Cadeia de if/else para cada rota no server | Array de rotas + find no middleware |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Todas as rotas retornam 404 | Import do array de rotas com path errado | Verifique o caminho relativo e inclua `.js` na extensão |
+| Rota encontrada mas controller não executa | `controller` não é função no objeto de rota | Confirme que a propriedade `controller` aponta para uma função exportada |
+| Query params causam 404 | Comparação exata `===` em vez de regex | Use `route.path.test(url)` com regex ou separe query da URL antes de comparar |
+| Auto-import do editor erra o path | Pastas `middlewares/` e `routes/` são irmãs | Confira manualmente o caminho relativo após auto-import |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e evolucao do pattern
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0406-middleware-de-rotas-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0406-middleware-de-rotas-mkv-mp-4/references/code-examples.md)

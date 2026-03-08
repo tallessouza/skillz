@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entidades-de-comentarios
-description: "Enforces separation between domain entities and persistence entities when modeling comments or polymorphic relationships in DDD applications. Use when user asks to 'create comment entity', 'model comments', 'add comments to questions/answers', 'implement polymorphic entities', or any DDD entity design task. Applies rules: separate domain entities even when persistence is shared, never mirror database tables 1:1, identify unique domain concepts independently. Make sure to use this skill whenever designing domain entities that share similar fields but belong to different aggregates. Not for database schema design, ORM configuration, or persistence layer implementation."
+name: 2023-entidades-de-comentarios
+description: "Creates separate domain entities for similar but distinct concepts (AnswerComment vs QuestionComment) instead of a single polymorphic entity, keeping domain modeling independent from database tables. Use when user asks to 'model comments', 'separate domain entities', 'avoid polymorphic entities', or 'distinguish domain from persistence'. Make sure to use this skill whenever modeling entities that share similar fields but belong to different domain contexts. Not for database table design, ORM entity mapping, or frontend component modeling."
+category: coding-lens
+tags: [ddd, entities, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: entidades-dominio
+  tags: [ddd, entities, domain-vs-persistence, comments, value-objects, typescript]
 ---
 
 # Entidades de Dominio vs Entidades de Persistencia
@@ -114,14 +123,14 @@ export class QuestionComment extends Entity<QuestionCommentProps> {
 | Modelar dominio pensando nas tabelas | Modelar dominio pensando no negocio |
 | `id: string` para relacionamentos | `id: UniqueEntityId` com Value Object |
 
+## Troubleshooting
+
+### Entidade generica Comment com parentType polimorfico
+**Symptom:** Uma unica classe `Comment` com `parentType: 'question' | 'answer'` — logica condicional em todo lugar
+**Cause:** Modelagem baseada em tabelas do banco ao inves de conceitos de dominio
+**Fix:** Crie entidades separadas `QuestionComment` e `AnswerComment` — polimorfismo fica na camada de persistencia, nao no dominio
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entidades-de-comentarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entidades-de-comentarios/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

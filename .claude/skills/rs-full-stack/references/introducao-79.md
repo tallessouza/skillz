@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-79
 description: "Applies HSL hue rotation technique for generating distinct visual colors in CSS layouts. Use when user asks to 'create colored boxes', 'style multiple items differently', 'generate color variations', or 'set up visual demos with CSS'. Enforces HSL with CSS custom properties for hue rotation instead of hardcoded hex/rgb values. Make sure to use this skill whenever generating multiple visually distinct elements in CSS. Not for color theory, design systems, or accessibility contrast checks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-colors
+  tags: [css, hsl, colors, custom-properties, visual]
 ---
 
 # Cores Distintas com HSL e Variáveis CSS
@@ -74,13 +80,15 @@ description: "Applies HSL hue rotation technique for generating distinct visual 
 | `background: red; background: blue;` repeated | `hsl(var(--hue), 100%, 70%)` with variable |
 | Random RGB values for distinction | Evenly spaced hue values on the 360° wheel |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Cores não aparecem nos elementos | Variável CSS `--hue` não definida no elemento ou ancestral | Adicione `style="--hue: 0"` no elemento ou defina no CSS |
+| Todas as cores parecem iguais | Valores de hue muito próximos entre si | Distribua hues com intervalos de 60-100 graus (ex: 0, 100, 200, 300) |
+| `hsl()` não funciona em navegador antigo | Navegador não suporta `var()` dentro de `hsl()` | Use valores hsl hardcoded como fallback ou verifique compatibilidade |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Como funciona a roda HSL, analogias visuais e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código do setup visual com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-79/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-79/references/code-examples.md)

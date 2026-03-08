@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-shorthand-grid-template
 description: "Applies CSS grid-template shorthand syntax when writing grid layouts. Use when user asks to 'create a grid layout', 'define grid areas', 'set up grid rows and columns', or 'simplify grid CSS'. Combines grid-template-areas, grid-template-rows, and grid-template-columns into one declaration. Make sure to use this skill whenever consolidating grid properties into shorthand. Not for flexbox, grid-area placement on children, or grid-auto-flow."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags:
+    - css
+    - grid
+    - grid-template
+    - shorthand
+    - layout
 ---
 
 # Shorthand grid-template
@@ -90,6 +101,15 @@ description: "Applies CSS grid-template shorthand syntax when writing grid layou
 | `grid-template-areas` + `grid-template` juntos | Apenas `grid-template` (ja inclui areas) |
 | Shorthand sem a barra quando precisa de columns | Adicione `/ columns` no final |
 | Shorthand em grids com tracks dinamicos (auto-fill) | Propriedades separadas |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Grid nao aplica colunas | Falta a barra `/` antes das definicoes de coluna | Adicione `/ 80px 1fr` ao final do shorthand |
+| Areas nao correspondem aos filhos | Nome da area no `grid-area` do filho difere do template | Confira nomes identicos entre template e `grid-area` |
+| Shorthand conflita com `grid-template-areas` separado | Ambas propriedades definidas | Use apenas `grid-template` (ja inclui areas) |
+| Layout inesperado com `repeat()` ou `minmax()` | Shorthand nao suporta bem funcoes complexas | Use propriedades separadas para grids complexos |
 
 ## Deep reference library
 

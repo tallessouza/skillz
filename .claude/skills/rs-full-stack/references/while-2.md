@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-while-2
 description: "Applies correct while loop patterns when writing JavaScript/TypeScript repetition structures. Use when user asks to 'create a loop', 'repeat until', 'while loop', 'keep running until', or any iterative control flow task. Enforces proper boolean conditions, control variables, and exit strategies. Make sure to use this skill whenever generating while loops or converting other loops to while. Not for for/for-of/for-in loops, array iteration methods, or recursive patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, while, loop, repetition, control-flow]
 ---
 
 # Loop While — Estrutura de Repeticao
@@ -95,6 +101,15 @@ console.log("Segue o fluxo")
 | `while (x)` (nome generico) | `while (shouldContinue)` |
 | `if (response == 2)` (prompt retorna string) | `if (response === "2")` |
 | While sem nenhum caminho para false | Sempre inclua logica de saida no bloco |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Loop infinito trava o navegador | Variavel de controle nunca muda para `false` | Garanta que existe logica dentro do bloco que altera a condicao |
+| Loop executa 0 vezes | Condicao ja e `false` antes de entrar | Verifique o valor inicial da variavel de controle ou use `do...while` |
+| Comparacao com prompt falha | `prompt()` retorna string, comparando com number | Use `===` com string: `response === "2"` |
+| Loop nao para quando usuario digita "2" | Usando `==` com tipo errado ou espaco extra no input | Use `.trim()` no retorno do prompt e `===` para comparacao estrita |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-implementando-otp
 description: "Enforces correct OTP/TOTP implementation patterns when building two-factor authentication. Use when user asks to 'add 2FA', 'implement OTP', 'add two-factor authentication', 'generate TOTP', 'create QR code for auth', or any MFA-related task. Applies rules: per-user secret storage, QR code provisioning, validation before activation, TOTP over HOTP. Make sure to use this skill whenever implementing authentication flows that mention OTP or 2FA. Not for OAuth, JWT tokens, session management, or password hashing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, otp, totp, 2fa, mfa]
 ---
 
 # Implementando OTP (Two-Factor Authentication)
@@ -128,14 +134,14 @@ def confirm_2fa(user, code):
 | Guardar segredo em plain text | Criptografar segredo no banco (AES) |
 | Alterar intervalo padrao de 30s | Manter 30s para compatibilidade |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-implementando-otp/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-implementando-otp/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-implementando-otp/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-implementando-otp/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

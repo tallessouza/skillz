@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-o-projeto-6
 description: "Applies CSS project scaffolding structure when setting up a new HTML/CSS project. Use when user asks to 'create a project', 'start a new site', 'setup HTML CSS', 'scaffold a frontend project', or 'organize CSS files'. Enforces modular CSS with index.css as entry point importing global.css and feature-specific files. Make sure to use this skill whenever creating a new static HTML/CSS project from scratch. Not for React, Next.js, or framework-based projects with built-in CSS tooling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, modular-css, import, project-structure, live-preview]
 ---
 
 # Estrutura de Projeto CSS Modular
@@ -118,13 +124,16 @@ projeto/
 - `global.css` contem apenas estilos verdadeiramente globais
 - Live Preview mostra o projeto corretamente dentro do VS Code
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao aplica estilos | `<link>` apontando para arquivo errado | Verificar `href="styles/index.css"` no HTML |
+| `@import` nao funciona | Path relativo incorreto dentro do `index.css` | Usar `@import url("global.css")` sem prefixo de pasta |
+| Live Preview nao atualiza | Extensao nao instalada ou desativada | Reinstalar Live Preview (Microsoft) no VS Code |
+| Estilos do `global.css` nao aparecem | `index.css` vazio ou sem `@import` | Adicionar `@import url("global.css")` no `index.css` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao CSS modular e workflow de desenvolvimento
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-6/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-6/references/code-examples.md)

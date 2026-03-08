@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-vazamento-token-reset
 description: "Enforces security practices on password reset and authentication pages to prevent token leakage. Use when user asks to 'build a reset password page', 'create login form', 'implement forgot password', 'add authentication flow', or 'secure sensitive pages'. Applies Referrer-Policy no-referrer header, blocks external scripts/CSS/analytics on auth pages, and removes unnecessary links. Make sure to use this skill whenever generating password reset, login, or signup pages. Not for general HTTP security headers, API authentication, or session management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, password-reset, authentication]
 ---
 
 # Seguranca em Paginas de Reset de Senha
@@ -113,14 +119,14 @@ def reset_password(request):
 | Logo com `<a href="/">` no reset | `<img>` sem link |
 | Confiar que ninguem adicionara links no futuro | Configurar Referrer-Policy: no-referrer como defesa permanente |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-como-evitar-vazamento-de-token-no-reset-de-senha/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-como-evitar-vazamento-de-token-no-reset-de-senha/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-como-evitar-vazamento-de-token-no-reset-de-senha/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-como-evitar-vazamento-de-token-no-reset-de-senha/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

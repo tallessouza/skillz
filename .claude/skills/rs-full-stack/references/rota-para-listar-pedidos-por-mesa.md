@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-rota-listar-pedidos-mesa
 description: "Applies REST route pattern for listing orders by table session in Node.js/Express APIs. Use when user asks to 'create a GET route', 'list orders by table', 'add index endpoint', or 'fetch items by session'. Follows controller-routes separation with async error handling via next(). Make sure to use this skill whenever building restaurant or order management API endpoints. Not for database queries, authentication, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Express REST Routes"
+  tags: ['express', 'rest-api', 'routes', 'knex', 'listing']
 ---
 
 # Rota Para Listar Pedidos Por Mesa
@@ -87,6 +93,15 @@ async index(request: Request, response: Response, next: NextFunction) {
 | `catch (error) { console.log(error) }` | `catch (error) { next(error) }` |
 | `req.query.sessionId` para identificador unico | `req.params.id` via rota `/table-session/:id` |
 | `res.send(data)` | `response.json(data)` para APIs REST |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Endpoint retorna array vazio | ID da sessao nao corresponde a registros | Verifique o `table_session_id` no banco e o parametro enviado |
+| Erro "Cannot read property of undefined" | `request.params` sem desestruturacao correta | Use `const { id } = request.params` com a rota definida como `/:id` |
+| Resposta sem Content-Type JSON | Usando `res.send()` em vez de `res.json()` | Substitua por `response.json(data)` para APIs REST |
+| Erro nao tratado crasha o servidor | Falta try/catch no metodo do controller | Envolva a logica em try/catch com `next(error)` no catch |
 
 ## Deep reference library
 

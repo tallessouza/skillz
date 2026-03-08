@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-preparando-para-deploy
 description: "Applies Node.js TypeScript deploy preparation workflow when user asks to 'prepare for deploy', 'build TypeScript project', 'configure tsup', 'setup production build', or 'prepare app for production'. Guides through tsup setup, build scripts, .eslintignore/.gitignore configuration, and GitHub upload. Make sure to use this skill whenever preparing a Node.js TypeScript API for deployment. Not for actual deployment to hosting services, Docker setup, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: deploy-preparation
+  tags: [tsup, build, deploy, typescript, esbuild, gitignore, eslintignore, production]
 ---
 
 # Preparando para Deploy — Node.js TypeScript
@@ -110,14 +116,14 @@ gh repo create --source=. --private --push
 - `git status` nao mostra arquivos de build, .db ou node_modules
 - ESLint nao reporta erros em arquivos da pasta build
 
+## Troubleshooting
+
+### Build falha com erros de tipagem
+**Symptom:** `npm run build` falha com erros TypeScript que nao apareciam no desenvolvimento
+**Cause:** tsup usa ESBuild que nao faz type-checking, mas pode falhar em imports incorretos ou arquivos nao encontrados
+**Fix:** Rode `npx tsc --noEmit` para verificar erros de tipo separadamente. Corrija os erros e rode o build novamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-preparando-para-deploy/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-preparando-para-deploy/references/code-examples.md)

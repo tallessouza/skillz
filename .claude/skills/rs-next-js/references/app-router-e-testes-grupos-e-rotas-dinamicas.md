@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-grupos-rotas-dinamicas
 description: "Applies Next.js App Router route groups and dynamic routes patterns when structuring pages. Use when user asks to 'create a route', 'add a page', 'setup routing', 'dynamic params', 'group pages', or 'share layout between pages'. Enforces parentheses for route groups, brackets for dynamic segments, and spread syntax for catch-all routes. Make sure to use this skill whenever creating or modifying Next.js App Router file structure. Not for API routes, middleware, or server actions."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, route-groups, dynamic-routes, catch-all, params, file-routing]
 ---
 
 # Grupos e Rotas Dinamicas no Next.js App Router
@@ -133,14 +140,19 @@ app/
 | `params.id` usado direto como number sem conversao | `Number(params.id)` ou `parseInt(params.id, 10)` |
 | Multiplas pastas dinamicas aninhadas para dados relacionados | `[...data]` catch-all quando os segmentos formam um conjunto |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-grupos-e-rotas-dinamicas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-grupos-e-rotas-dinamicas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-grupos-e-rotas-dinamicas/references/deep-explanation.md) — No Next.js App Router, toda pasta pode ter um `layout.tsx` que envolve automaticamente todas as pagi
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-grupos-e-rotas-dinamicas/references/code-examples.md) — app/

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-histogramas
 description: "Applies Prometheus histogram patterns when instrumenting applications with metrics. Use when user asks to 'create histogram', 'monitor request duration', 'add metrics', 'instrument application', 'create dashboard', or 'monitor latency'. Covers bucket/count/sum triple, PromQL queries with rate and sum, and histogram_record instrumentation. Make sure to use this skill whenever working with Prometheus histograms or application observability. Not for logging, tracing, or non-Prometheus monitoring systems."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-metricas
+  tags: [prometheus, histogram, metrics, promql, observability, bucket, latency]
 ---
 
 # Histogramas no Prometheus
@@ -96,14 +102,14 @@ histogram.record(elapsed); // Gera bucket + count + sum automaticamente
 | Usar counter para medir duracao | Usar histograma que da distribuicao |
 | Criar metrica sem unit no nome | Incluir unidade: `_milliseconds`, `_bytes` |
 
+## Troubleshooting
+
+### Histograma retorna valor zero no Grafana
+**Symptom:** Dashboard mostra 0 para todas as metricas de histograma
+**Cause:** A consulta PromQL nao filtra por `service_name`, misturando dados de multiplas instancias que se cancelam, ou o histograma usa `add()` em vez de `record()`
+**Fix:** Adicione filtro `{service_name="sua-app"}` na query e verifique que o codigo usa `histogram.record(value)`, nao `histogram.add(1)`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-histogramas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-histogramas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

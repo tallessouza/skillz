@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-tags-genericas-div-e-span
 description: "Enforces correct usage of div and span HTML elements when structuring markup. Use when user asks to 'create a layout', 'structure HTML', 'add a container', 'wrap elements', or 'build a page section'. Applies rules: div for block containers, span for inline wrappers, always add class/id/data attributes since they lack semantics. Make sure to use this skill whenever generating HTML structure with generic containers. Not for semantic HTML elements like header, nav, main, section, article, or footer."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags:
+    - html
+    - div
+    - span
+    - block-inline
+    - containers
 ---
 
 # Tags Genéricas: Div e Span
@@ -73,6 +84,15 @@ description: "Enforces correct usage of div and span HTML elements when structur
 | `<div>` onde `<section>` se aplica | `<section class="features">` |
 | `<span>` onde `<strong>` ou `<em>` se aplica | `<strong>` ou `<em>` |
 | Div dentro de span (bloco dentro de inline) | Span dentro de div |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao aplica no div/span | Elemento sem classe ou id para selecionar | Adicione `class` ou `id` ao elemento |
+| Layout quebrado com div dentro de span | Bloco dentro de inline viola o fluxo | Use span dentro de div, nunca div dentro de span |
+| Leitor de tela ignora secao importante | Div sem semantica para acessibilidade | Use elemento semantico (`<section>`, `<nav>`) quando aplicavel |
+| Muitos divs sem proposito claro (div soup) | Falta de atributos significativos | Adicione classes descritivas ou substitua por tags semanticas |
 
 ## Deep reference library
 

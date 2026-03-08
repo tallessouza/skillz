@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-especificidade-1
 description: "Enforces CSS specificity awareness when writing or debugging stylesheets. Use when user asks to 'style a component', 'fix CSS not applying', 'debug styles', 'write CSS selectors', or 'why is my style not working'. Applies specificity weight system: element=001, class=010, ID=100, combined selectors sum weights. Make sure to use this skill whenever writing CSS selectors or debugging style conflicts. Not for JavaScript logic, HTML structure, or CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-specificity
+  tags: [css, specificity, selectors, cascade, id, class, element, weight]
 ---
 
 # Especificidade CSS
@@ -82,13 +88,16 @@ p.highlight { color: red; } /* peso 011 — vence .highlight sozinho (010) */
 | Ignorar especificidade e culpar "bug do CSS" | Inspecionar peso dos seletores no editor ou DevTools |
 | Duplicar estilos para "sobrepor" | Ajustar o seletor para ter o peso correto |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Estilo nao aplica mesmo estando correto | Outro seletor com especificidade maior sobrepoem | Inspecionar com DevTools e comparar pesos dos seletores |
+| `!important` nao funciona como esperado | Outro `!important` com seletor mais especifico | Remover `!important` e resolver via especificidade correta |
+| Classe nao sobrepoe ID | ID (100) sempre vence classe (010) | Usar combinacao de seletores ou refatorar para classes |
+| Estilos aplicam em ordem errada | Confundindo cascata com especificidade | Lembrar: especificidade > ordem no arquivo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cascata vs especificidade, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-especificidade-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-especificidade-1/references/code-examples.md)

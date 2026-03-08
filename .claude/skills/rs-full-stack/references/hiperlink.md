@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-hiperlink
 description: "Enforces correct HTML hyperlink patterns when writing anchor tags or navigation. Use when user asks to 'create a link', 'add navigation', 'link to a page', 'add anchor tag', or any task involving HTML links. Applies rules: href is mandatory, URL vs fragment usage, target=_blank for external links, semantic link content. Make sure to use this skill whenever generating HTML with links or navigation elements. Not for CSS styling, JavaScript event handlers, or React Router."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, anchor, hyperlink, navigation, accessibility]
 ---
 
 # Hiperlink HTML — Tag `<a>`
@@ -76,13 +82,16 @@ description: "Enforces correct HTML hyperlink patterns when writing anchor tags 
 | `<a href="" onclick="...">` | `<a href="/pagina">Descricao</a>` |
 | Texto generico "Clique aqui" | Texto descritivo do destino |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Link nao funciona (nao navega) | Atributo `href` ausente no `<a>` | Adicione `href="/destino"` ou `href="https://..."` |
+| Link fragmento nao rola para a secao | Elemento alvo nao tem `id` correspondente | Adicione `id="secao"` no elemento destino que corresponde ao `href="#secao"` |
+| Link externo abre na mesma aba | Falta `target="_blank"` | Adicione `target="_blank"` para links externos |
+| Leitor de tela nao descreve o link | Texto do link e generico ("clique aqui") | Use texto descritivo do destino no conteudo do `<a>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-hiperlink/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-hiperlink/references/code-examples.md)

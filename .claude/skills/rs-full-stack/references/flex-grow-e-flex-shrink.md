@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-flex-grow-e-flex-shrink
 description: "Enforces correct flex-grow and flex-shrink usage when writing CSS Flexbox layouts. Use when user asks to 'create a layout', 'distribute space', 'make items grow', 'shrink elements', 'flex layout', or any Flexbox task. Applies proportional growth with flex-grow, proportional shrink with flex-shrink, and flex-basis over width/height to avoid axis-inversion bugs. Make sure to use this skill whenever generating Flexbox CSS, even for simple layouts. Not for CSS Grid, positioning, or non-layout styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, flex-grow, flex-shrink, layout]
 ---
 
 # Flex Grow e Flex Shrink
@@ -115,13 +121,16 @@ description: "Enforces correct flex-grow and flex-shrink usage when writing CSS 
 | `flex-grow: 1` achando que grow e shrink têm mesma lógica | Lembre: grow maior = item maior, shrink maior = item MENOR |
 | `align-items: stretch` + `width` fixa no eixo transversal | Remover width ou usar flex-basis |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Item com `flex-grow: 1` nao cresce | Container nao tem espaco livre disponivel | Verifique se o container tem largura/altura suficiente |
+| `flex-shrink: 0` causa overflow | Item mantém tamanho exato e nao cabe no container | Adicione `overflow: auto` no container ou reduza o `flex-basis` |
+| `align-items: stretch` nao funciona | `width` ou `height` fixa esta bloqueando o stretch | Remova a propriedade fixa e use `flex-basis` |
+| Proporcoes de grow nao parecem corretas | Outros itens tem flex-basis diferente, afetando a distribuicao | Lembre que grow distribui apenas o espaco LIVRE, nao o espaco total |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre proporções, conflitos de propriedades e analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e cenários reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-flex-grow-e-flex-shrink/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-flex-grow-e-flex-shrink/references/code-examples.md)

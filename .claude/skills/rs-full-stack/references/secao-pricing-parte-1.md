@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-secao-pricing-parte-1
 description: "Enforces semantic HTML structure and CSS patterns for pricing sections in landing pages. Use when user asks to 'create a pricing section', 'build pricing cards', 'make a plans and prices layout', or 'structure pricing HTML'. Applies custom HTML tags with hyphenated names, role attributes for accessibility, aria-label on buttons, radial gradients for separators, and CSS custom properties for responsive font sizes. Make sure to use this skill whenever building pricing or plan comparison sections. Not for JavaScript logic, payment integration, or backend pricing APIs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "HTML Semantic Pricing"
+  tags: ['html', 'css', 'pricing', 'accessibility', 'custom-elements', 'landing-page']
 ---
 
 # Secao Pricing — HTML Semantico e CSS Responsivo
@@ -186,6 +192,15 @@ zin-pricing small {
 | `font-size: 2.5rem` hardcoded em media query | `font-size: var(--font-size-price)` com custom property |
 | `<hr>` para separador estilizado | `<div class="separator">` com gradient |
 | `border: 1px solid` para separador com fade | `background: radial-gradient(...)` |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Custom element nao estiliza | Tag sem hifen no nome | Use hifen obrigatorio: `<zin-pricing>` nao `<pricing>` |
+| Leitor de tela ignora lista de features | `role="list"` ausente em `<ul>` sem marcadores | Adicione `role="list"` na `<ul>` quando remover bullets |
+| Botao sem acessibilidade | Botao sem texto visivel nem `aria-label` | Adicione `aria-label="Acao descritiva"` no botao |
+| Tamanho de fonte nao muda entre breakpoints | Valor hardcoded em vez de custom property | Use `font-size: var(--font-size-price)` com valores diferentes por breakpoint |
 
 ## Deep reference library
 

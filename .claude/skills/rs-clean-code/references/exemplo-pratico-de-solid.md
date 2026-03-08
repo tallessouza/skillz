@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-exemplo-pratico-de-solid
 description: "Enforces SOLID principles when writing TypeScript/JavaScript classes and modules. Use when user asks to 'refactor code', 'apply SOLID', 'create a service', 'implement a use case', 'design classes', or 'separate responsibilities'. Applies interconnected SRP, OCP, LSP, DIP, and ISP through interfaces, dependency injection, and class segregation. Make sure to use this skill whenever creating classes, services, or use cases that handle multiple variants or payment/pricing logic. Not for folder structure, database design, or architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: solid-pratico
+  tags: [solid, srp, ocp, lsp, dip, isp, typescript, dependency-injection, strategy-pattern]
 ---
 
 # SOLID na Pratica
@@ -141,10 +147,17 @@ const result = new CalculateOrderDiscount(new Pix()).execute(2000)
 | Classe que importa todas as implementacoes | Injecao de dependencia via construtor |
 | Uma classe que calcula, valida e persiste | Uma classe por responsabilidade |
 
+## Troubleshooting
+
+### Nova implementacao da interface quebra em runtime mas compila sem erro
+**Symptom:** Uma nova classe que implementa a interface compila corretamente, mas ao ser usada no lugar de outra implementacao, o comportamento e inesperado (ex: retorna undefined em vez de numero).
+**Cause:** A interface define a assinatura dos metodos mas nao garante semantica. A nova implementacao pode retornar tipos corretos mas com logica errada (violando LSP).
+**Fix:** Escreva testes unitarios para cada implementacao da interface validando o contrato esperado (ex: desconto nunca negativo, sempre menor que o valor original). Isso garante LSP em runtime, nao apenas em compilacao.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

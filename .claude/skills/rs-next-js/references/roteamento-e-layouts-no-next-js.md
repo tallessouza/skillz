@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-roteamento-e-layouts
 description: "Enforces Next.js App Router routing and layout patterns when structuring pages, creating route groups, or organizing components. Use when user asks to 'create a page', 'add a route', 'organize layouts', 'group routes', or 'structure a Next.js app'. Applies rules: route groups with parentheses, nested layouts, component placement (app/ vs components/), special file conventions. Make sure to use this skill whenever scaffolding Next.js App Router projects or adding new routes. Not for Pages Router, API routes, or server actions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-routing-layouts
+  tags: [next-js, app-router, routing, layouts, route-groups, nested-layouts, page-tsx, layout-tsx]
 ---
 
 # Roteamento e Layouts no Next.js App Router
@@ -114,14 +120,19 @@ app/
 | Criar pasta `pages/` no App Router | Usar `app/` com `page.tsx` |
 | Layout vazio so para ter a pasta | Remover layout se nao adiciona nada |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-roteamento-e-layouts-no-next-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-roteamento-e-layouts-no-next-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-roteamento-e-layouts-no-next-js/references/deep-explanation.md) — No antigo Pages Router, cada arquivo dentro de `pages/` automaticamente virava uma rota. Isso signif
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-roteamento-e-layouts-no-next-js/references/code-examples.md) — app/

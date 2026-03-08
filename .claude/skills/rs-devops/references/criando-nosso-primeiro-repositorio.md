@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-primeiro-repositorio
-description: "Guides repository setup for CI/CD pipelines when creating a new GitHub project with Docker support. Use when user asks to 'create a repo for CI/CD', 'setup GitHub repository', 'initialize project for pipeline', or 'prepare repo for GitHub Actions'. Covers naming conventions, gitignore validation, SSH config, and initial push. Make sure to use this skill whenever setting up a new repository intended for CI/CD workflows. Not for GitHub Actions configuration, Dockerfile creation, or pipeline definition."
+description: "Configures GitHub repository structure for CI/CD pipelines with naming conventions, gitignore validation, and clean first commits. Use when user asks to 'create a repo for CI/CD', 'setup GitHub repository', 'initialize project for pipeline', or 'prepare repo for GitHub Actions'. Enforces semantic naming conventions, pre-add gitignore validation, SSH authentication, and conventional commits from the start. Make sure to use this skill whenever setting up a new repository intended for CI/CD workflows. Not for GitHub Actions configuration, Dockerfile creation, or pipeline definition."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-repository-setup
+  tags: [github, repository, ci-cd, gitignore, ssh, conventional-commits]
 ---
 
 # Criando Repositorio para CI/CD
@@ -96,14 +102,14 @@ Repositorio no GitHub com:
 | Repo sem descricao | Sempre preencha description |
 | Nome generico como `my-api` ou `test-project` | Use convencao semantica `org.modulo.tipo` |
 
+## Troubleshooting
+
+### Push rejeitado com erro "failed to push some refs"
+**Symptom:** `git push` falha porque o repositorio remoto tem commits que nao existem localmente (README, .gitignore criados pelo GitHub).
+**Cause:** O repositorio foi criado no GitHub com README ou .gitignore, gerando um commit inicial que conflita com o historico local.
+**Fix:** Crie o repositorio no GitHub sem nenhum arquivo inicial (sem README, sem .gitignore, sem license) e faca push do projeto local.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-repositorio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-repositorio/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-degrade
 description: "Applies CSS gradient patterns using linear-gradient and radial-gradient when writing stylesheets. Use when user asks to 'create a gradient', 'add background gradient', 'style a hero section', 'make a color transition', or any CSS background styling task. Enforces correct syntax: angle/direction first, color stops with transition percentages, and background-image property usage. Make sure to use this skill whenever generating CSS with gradient backgrounds. Not for JavaScript color manipulation, SVG gradients, or canvas drawing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, gradient, linear-gradient, radial-gradient, background]
 ---
 
 # Funções Degradê CSS
@@ -92,13 +98,16 @@ description: "Applies CSS gradient patterns using linear-gradient and radial-gra
 | `linear-gradient(red, blue, 90deg)` | `linear-gradient(90deg, red, blue)` |
 | Gradiente sem direção quando precisa de controle | Sempre explicite `Xdeg` ou `to direction` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Gradiente nao aparece | Usando `background-color` em vez de `background-image` | Use `background-image: linear-gradient(...)` ou shorthand `background` |
+| Direcao do gradiente errada | Angulo ou keyword na posicao errada | Primeiro argumento e sempre a direcao: `linear-gradient(90deg, cor1, cor2)` |
+| Transicao muito abrupta ou lavada | Falta de pontos de transicao | Adicione porcentagem: `red 80%, blue` para controlar onde a transicao comeca |
+| Gradiente cortado ou repetindo | Elemento sem altura definida | Defina altura explicita ou use `min-height` no container |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre gradientes como imagens, ângulos e transições
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-degrade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-degrade/references/code-examples.md)

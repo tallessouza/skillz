@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-extender-interfaces
 description: "Enforces TypeScript interface extension patterns when writing typed code. Use when user asks to 'create an interface', 'define types', 'share properties between types', 'extend a type', or 'avoid duplicate properties'. Applies DRY principle to interfaces via extends keyword, extracting common properties into base interfaces. Make sure to use this skill whenever creating multiple interfaces with shared properties. Not for generic types, utility types, or class inheritance."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, interfaces, extends, dry, types, reuse]
 ---
 
 # Como Estender Interfaces
@@ -96,13 +102,17 @@ interface Student extends Person {
 | Comentar campos herdados dentro da filha | Remova-os — `extends` ja os inclui |
 | Interface base com propriedades especificas de um filho | Mantenha so o que e comum a todos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Propriedade herdada nao aparece no autocomplete | IDE nao reconhece o `extends` | Reinicie o TypeScript server no editor |
+| Conflito de tipos entre interface pai e filha | Propriedade redeclarada com tipo incompativel | Remova a propriedade da filha ou use tipo compativel |
+| `extends` nao funciona com `type` | `type` usa `&` (intersection), nao `extends` | Use `type Child = Parent & { prop: type }` para types |
+| Interface filha aceita objeto sem campos da base | Tipagem estrutural do TypeScript | Verifique se o objeto satisfaz todas as propriedades obrigatorias |
+| Heranca profunda (3+ niveis) confusa | Muitos niveis de extensao | Prefira composicao com intersection types para casos complexos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias com OOP e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-extender-interfaces/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-extender-interfaces/references/code-examples.md)

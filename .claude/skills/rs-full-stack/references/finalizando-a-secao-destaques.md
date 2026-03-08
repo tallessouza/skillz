@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-finalizando-secao-destaques
 description: "Applies CSS :has() selector patterns and semantic HTML figure/figcaption structure when building card-based news layouts. Use when user asks to 'create a card component', 'build a news section', 'conditional styling based on children', or 'use figcaption'. Enforces :has() for parent styling based on child content, semantic figure/figcaption markup, and consistent card patterns. Make sure to use this skill whenever building card grids or news portal layouts. Not for JavaScript interactivity, responsive breakpoints, or CSS Grid/Flexbox layout systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-avancado
+  tags: [css, has-selector, figure, figcaption, cards, semantic-html]
 ---
 
 # Finalizando Seção de Destaques — CSS :has() e Figure/Figcaption
@@ -99,13 +105,16 @@ figcaption:has(.text-large) {
 | `.card-small { padding: 12px }` (classe extra) | `figcaption:has(.text-large) { padding: 12px }` |
 | Padding diferente via classes manuais | `:has()` para detectar conteudo e ajustar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `:has()` nao funciona no navegador | Navegador antigo sem suporte a `:has()` | Verifique compatibilidade em caniuse.com; use classe manual como fallback |
+| `figcaption` nao aparece estilizado | Seletor CSS nao aponta para figcaption corretamente | Inspecione a hierarquia no DevTools e ajuste o seletor |
+| Cards com alturas diferentes na grid | Conteudo de texto varia entre cards | Use `line-clamp` ou altura fixa no figcaption |
+| Imagem nao preenche o card | Falta `object-fit: cover` na imagem | Adicione `img { object-fit: cover; width: 100%; }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre :has(), analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-finalizando-a-secao-destaques/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-finalizando-a-secao-destaques/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listas-3
 description: "Applies HTML list markup conventions when writing ordered and unordered lists. Use when user asks to 'create a list', 'add ingredients', 'make a step-by-step', 'write HTML list', or any task involving ul/ol/li elements. Enforces correct semantic choice between ol and ul based on content intent. Make sure to use this skill whenever generating HTML that contains sequential or grouped items. Not for CSS list styling, JavaScript list manipulation, or data structure lists."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, lists, ul, ol, li, semantics]
 ---
 
 # Listas HTML — Ordenadas e Não Ordenadas
@@ -91,13 +97,16 @@ Renderiza com números (1, 2, 3).
 | `<ol>` para ingredientes | `<ul>` para ingredientes |
 | `<ul>` para passo a passo | `<ol>` para passo a passo |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Itens da lista sem bullet/numero | CSS resetou `list-style` | Adicione `list-style-type: disc` (ul) ou `decimal` (ol) |
+| Lista nao aparece indentada | CSS removeu padding padrao | Adicione `padding-left` ao ul/ol |
+| Numeros da ol nao correspondem a ordem visual | Itens fora de ordem no HTML | Reordene os `<li>` no codigo fonte |
+| Lista aninhada com estilo errado | Sublista dentro de ul/ol sem estar dentro de um `<li>` | Aninhe `<ul>`/`<ol>` dentro de um `<li>` pai |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listas-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listas-3/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-template-areas
 description: "Applies CSS Grid Template Areas layout patterns when writing HTML/CSS code. Use when user asks to 'create a layout', 'build a page structure', 'use css grid', 'position elements with grid', or 'make a header/sidebar/footer layout'. Enforces grid-template-areas on the container and grid-area on children for semantic, visual layout definition. Make sure to use this skill whenever generating page layouts with named regions. Not for flexbox layouts, grid-template-columns/rows only approaches, or JavaScript positioning."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, grid-template-areas, grid-area, layout, semantic]
 ---
 
 # Grid Template Areas
@@ -100,13 +106,16 @@ description: "Applies CSS Grid Template Areas layout patterns when writing HTML/
 | Nomes genéricos: `area1`, `area2`, `area3` | Nomes semânticos: `header`, `main`, `footer` |
 | Areas retangulares não-contíguas (L-shape) | Apenas retângulos contíguos por área |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `grid-area` nao funciona | Aspas no valor do filho: `grid-area: "header"` | Remova aspas: `grid-area: header` (e identificador CSS, nao string) |
+| Area nao expande como esperado | Nome nao repetido no template | Repita o nome: `"header header header"` para ocupar 3 colunas |
+| Erro de layout com forma L | Areas nao-retangulares nao sao permitidas | Use apenas retangulos contiguos por area nomeada |
+| `grid-column` conflita com areas | Misturando posicionamento por linhas e por areas | Use apenas `grid-area` quando `grid-template-areas` esta definido |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-template-areas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-template-areas/references/code-examples.md)

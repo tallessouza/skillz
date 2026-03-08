@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-testes-automatizados
-description: "Applies automated testing strategy knowledge when writing or planning tests for Node.js APIs. Use when user asks to 'write tests', 'add test coverage', 'create e2e tests', 'plan testing strategy', or 'set up testing'. Enforces test pyramid principles: many unit tests, fewer integration, minimal e2e. Guides test type selection based on architecture maturity. Make sure to use this skill whenever discussing or implementing tests in Node.js back-end applications. Not for front-end component testing, CI/CD pipeline setup, or test runner configuration."
+name: 2023-entendo-testes-automatizados
+description: "Applies test strategy selection using the test pyramid: unit tests for isolated functions, integration tests for composed units, and E2E tests for full HTTP flows in Node.js APIs. Use when user asks to 'choose test type', 'write automated tests', 'start testing an API', or 'understand test pyramid'. Make sure to use this skill whenever deciding which type of test to write for a Node.js backend feature or planning a testing strategy for an application. Not for frontend component testing, performance/load testing, or manual QA processes."
+category: coding-lens
+tags: [deploy, repository, testing, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-automatizados
+  tags: [testing, unit-tests, integration-tests, e2e, test-pyramid, typescript]
 ---
 
 # Testes Automatizados em APIs Node.js
@@ -87,14 +96,14 @@ test('should format date as YYYY-M-D', () => {
 | Ignorar testes porque a aplicacao e pequena | Teste desde o inicio, quanto antes melhor |
 | Esperar arquitetura perfeita para comecar a testar | Comece com e2e que nao exige arquitetura |
 
+## Troubleshooting
+
+### Suite de testes E2E demora mais de 10 minutos para rodar
+**Symptom:** CI fica lento e caro, devs evitam rodar testes localmente
+**Cause:** Excesso de testes E2E — cada teste precisa de HTTP + banco de dados, levando ~500ms cada
+**Fix:** Siga a piramide de testes: converta testes redundantes em unitarios (ms) e mantenha apenas testes E2E para fluxos criticos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entendo-testes-automatizados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entendo-testes-automatizados/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

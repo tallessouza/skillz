@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-fluxo-melhor-resposta
 description: "Enforces correct Domain Event flow implementation in DDD/Clean Architecture when user asks to 'create a domain event', 'implement event subscriber', 'notify on state change', 'dispatch domain event', or 'handle aggregate events'. Applies patterns: event class creation, conditional event dispatching, subscriber wiring, value object comparison with equals() instead of ===. Make sure to use this skill whenever implementing domain events, event-driven notifications, or aggregate state change side-effects in Node.js/TypeScript. Not for REST API design, database queries, or UI components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [ddd, domain-events, value-objects, equals, aggregate, subscriber, typescript]
 ---
 
 # Fluxo de Domain Events — Best Answer Chosen
@@ -148,14 +154,14 @@ set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
 | Subscriber sem null check | `if (!entity) return` antes de usar |
 | Evento sem dados de contexto | Evento carrega aggregate + ids relevantes |
 
+## Troubleshooting
+
+### Evento dispara mesmo quando o valor nao mudou
+**Symptom:** Notificacoes duplicadas sao enviadas ao definir a mesma melhor resposta
+**Cause:** A comparacao entre value objects usa === em vez de equals(), comparando referencia em memoria
+**Fix:** Use o metodo .equals() do value object para comparar: if (!this.props.bestAnswerId.equals(bestAnswerId))
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fluxo-de-melhor-resposta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fluxo-de-melhor-resposta/references/code-examples.md)

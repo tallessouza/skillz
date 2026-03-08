@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-docker-ignore
 description: "Applies .dockerignore best practices when creating or reviewing Docker configurations. Use when user asks to 'create a Dockerfile', 'dockerize a project', 'set up Docker', 'optimize Docker build', or 'create .dockerignore'. Ensures unnecessary files stay out of containers. Make sure to use this skill whenever setting up Docker for any project. Not for .gitignore configuration, CI/CD pipelines, or Docker Compose networking."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, dockerignore, containers, build-optimization, node-js]
 ---
 
 # Docker Ignore
@@ -69,13 +75,16 @@ project/
 | Esquecer de criar `.dockerignore` | Criar junto com o `Dockerfile`, sempre |
 | Usar nomes com case errado (`dockerfile`) | Usar exatamente `Dockerfile` com D maiusculo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem Docker muito grande (500MB+) | `node_modules` ou `.git` nao estao no `.dockerignore` | Adicionar `node_modules`, `.git` e `dist` ao `.dockerignore` |
+| Build demora mais que o esperado | Contexto de build inclui arquivos desnecessarios | Verificar `.dockerignore` e adicionar pastas pesadas |
+| `.dockerignore` nao faz efeito | Arquivo esta em local errado ou com nome errado | Colocar na raiz do projeto, mesmo diretorio do `Dockerfile` |
+| Dependencias de plataforma errada no container | `node_modules` local copiado para o container | Ignorar `node_modules` e rodar `npm install` dentro do Dockerfile |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogia com .gitignore e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos para diferentes stacks
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-docker-ignore/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-docker-ignore/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-arquitetura-istio
 description: "Applies Istio service mesh architecture knowledge when designing or configuring Kubernetes clusters with Istio. Use when user asks to 'setup Istio', 'configure service mesh', 'add sidecar proxy', 'install Istio addons', or 'design microservices networking'. Covers CRD model, control/data plane, sidecar vs ambient mode, and multi-cluster deployment. Make sure to use this skill whenever working with Istio manifests or service mesh decisions on Kubernetes. Not for general Kubernetes networking without Istio, nor for Envoy-specific proxy configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh
+  tags: [istio, service-mesh, crd, sidecar, ambient-mode, control-plane, data-plane, kubernetes]
 ---
 
 # Arquitetura do Istio
@@ -70,14 +76,14 @@ spec:
 - Para detalhes de control plane e data plane internals, consultar aulas especificas sobre esses temas
 - Addons especificos (Kiali, Jaeger, etc.) tem configuracoes proprias nao cobertas aqui
 
+## Troubleshooting
+
+### Manifesto Istio retorna "no matches for kind" ao aplicar
+**Symptom:** `kubectl apply` de um VirtualService ou DestinationRule retorna erro "no matches for kind"
+**Cause:** Istio CRDs nao estao instalados no cluster — o Istio precisa ser instalado antes de usar seus recursos
+**Fix:** Instale o Istio com `istioctl install --set profile=demo` e verifique com `kubectl get crds | grep istio`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-a-arquitetura-do-istio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-a-arquitetura-do-istio/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

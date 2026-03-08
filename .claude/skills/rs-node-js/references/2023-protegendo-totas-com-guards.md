@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-protegendo-rotas-guards
 description: "Applies NestJS Guard pattern with Passport JWT strategy when protecting routes or implementing authentication. Use when user asks to 'protect a route', 'add authentication', 'create a guard', 'JWT strategy', 'restrict access', or 'authorize requests' in NestJS. Enforces correct JWT strategy setup with public key validation, Zod payload schema, and UseGuards decorator. Make sure to use this skill whenever implementing route protection in NestJS applications. Not for login/token generation, session-based auth, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-guards
+  tags: [nestjs, guards, passport, jwt-strategy, authentication, zod, rs256, route-protection]
 ---
 
 # Protegendo Rotas com Guards no NestJS
@@ -132,14 +138,14 @@ export class CreateQuestionController {
 | Strategy sem `@Injectable()` | Sempre adicione o decorator |
 | Strategy criada mas nao registrada no modulo | Adicione nos `providers` do modulo |
 
+## Troubleshooting
+
+### NestJS erro "Unknown authentication strategy 'jwt'"
+**Symptom:** Ao acessar rota protegida, NestJS retorna erro dizendo que a strategy 'jwt' nao foi encontrada
+**Cause:** A `JwtStrategy` nao foi registrada como provider no modulo, ou esta faltando o decorator `@Injectable()`
+**Fix:** Adicione `JwtStrategy` no array `providers` do modulo e verifique que a classe tem `@Injectable()` decorando-a
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-protegendo-totas-com-guards/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-protegendo-totas-com-guards/references/code-examples.md)

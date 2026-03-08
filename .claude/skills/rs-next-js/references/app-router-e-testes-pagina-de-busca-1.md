@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-pagina-busca
 description: "Generates Next.js App Router search page structure with grid layout for product results. Use when user asks to 'create search page', 'add product search', 'build search results page', 'list search results', or 'search page layout' in Next.js App Router projects. Applies patterns: search route under app/(store)/search/, grid layout for results, search term display, next/image and next/link for products. Make sure to use this skill whenever building search or listing pages in Next.js App Router. Not for API route creation, search input handling, or server-side data fetching logic."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, search-page, grid-layout, next-image, next-link, e-commerce]
 ---
 
 # Pagina de Busca — Next.js App Router
@@ -125,14 +132,19 @@ export default async function Search() {
 | Busca sem feedback do termo | `Resultados para: <span>{termo}</span>` |
 | Resultados em lista vertical | `grid grid-cols-3 gap-6` |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-de-busca-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-de-busca-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-de-busca-1/references/deep-explanation.md) — O instrutor segue uma abordagem pragmatica: primeiro monta a pagina com dados estaticos (hardcoded),
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-de-busca-1/references/code-examples.md) — Este e o codigo final da aula, com dados hardcoded:

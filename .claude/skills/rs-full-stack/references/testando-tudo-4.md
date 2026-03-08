@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-testando-tudo-4
 description: "Enforces manual testing procedures for frontend currency converter applications. Use when user asks to 'test the app', 'verify the converter', 'check if it works', 'validate the application', or 'do manual QA' on a currency conversion feature. Applies systematic input validation testing, currency switching verification, and output format checks. Make sure to use this skill whenever completing a currency converter project or similar form-based UI. Not for unit testing, automated testing, or backend API testing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-projetos
+  tags: [testing, manual-testing, qa, frontend, validation, currency-converter]
 ---
 
 # Teste Manual de Aplicacao Frontend
@@ -67,6 +73,15 @@ Para cada moeda disponivel (dolar, euro, libra):
 | Testar uma moeda e assumir que todas funcionam | Testar cada moeda individualmente |
 | Ignorar formatacao visual | Verificar simbolos, decimais e separadores |
 | Testar sem recarregar a pagina | Comecar com estado limpo |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Output nao atualiza ao trocar moeda | Event listener do select nao esta disparando | Verifique se o evento `change` esta vinculado ao elemento correto |
+| Simbolo da moeda aparece errado | Mapeamento moeda-simbolo incorreto | Revise o objeto/mapa que associa cada moeda ao seu simbolo |
+| Formatacao sem separador de milhar | Usando `toString()` em vez de formatador | Use `toLocaleString()` ou `Intl.NumberFormat` para formatar valores |
+| Input aceita letras e caracteres especiais | Faltando `type="number"` ou filtro de keypress | Adicione `type="number"` no input ou filtre eventos de teclado |
 
 ## Deep reference library
 

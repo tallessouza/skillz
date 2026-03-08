@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-bg-image-container
 description: "Applies CSS background-image and container page styling patterns when writing HTML/CSS layouts. Use when user asks to 'add background image', 'style a container', 'center a page wrapper', 'fix box-sizing', or any CSS layout task with background and containment. Enforces cover background, border-box sizing, Figma-to-CSS translation, and centered fixed-width containers. Make sure to use this skill whenever creating page layouts with background images or fixed-width centered containers. Not for JavaScript logic, animations, or responsive grid systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-styling
+  tags: [css, background-image, box-sizing, container, layout]
 ---
 
 # Imagem de Fundo e Container Page
@@ -98,13 +104,16 @@ body {
 | CSS em ordem aleatoria | CSS na ordem que aparece no HTML |
 | Valores de padding/cor inventados | Valores extraidos do Figma |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Container ultrapassa largura declarada | Padding soma na largura sem `box-sizing: border-box` | Adicione `box-sizing: border-box` ao container |
+| Imagem de fundo repete em padrao | Falta `background-size: cover` | Adicione `background-size: cover` no elemento com background-image |
+| Container nao centraliza horizontalmente | Falta `margin: auto` nos lados | Use `margin: Ypx auto` para centralizar com espaco vertical |
+| Imagem de fundo nao aparece | Caminho do arquivo incorreto ou arquivo inexistente | Verifique o caminho relativo no `url()` e confirme que o arquivo existe |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre box model, background-size options e fluxo Figma-to-CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-imagem-de-fundo-e-container-page/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-imagem-de-fundo-e-container-page/references/code-examples.md)

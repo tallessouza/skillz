@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-node-watch
 description: "Enforces Node.js --watch flag usage and mandatory server responses when creating or modifying HTTP servers. Use when user asks to 'create a server', 'start a node project', 'run node', 'setup express', or 'build an API'. Ensures dev servers use --watch for auto-restart and every request handler sends a response. Make sure to use this skill whenever scaffolding Node.js server code or writing npm scripts. Not for frontend dev servers, Docker, or production deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, watch, auto-restart, response, development, server]
 ---
 
 # Node Watch e Resposta Obrigatoria do Servidor
@@ -89,13 +95,13 @@ const server = http.createServer((req, res) => {
 | `Ctrl+C` + re-run manual a cada mudanca | `--watch` para auto-restart |
 | Resposta apenas no caminho feliz | Resposta em todos os caminhos (sucesso e erro) |
 
+## Troubleshooting
+
+### Problem: Server does not reflect code changes after saving files
+- **Cause**: Running `node src/server.js` without the `--watch` flag, requiring manual restart
+- **Fix**: Use `node --watch src/server.js` or configure `"dev": "node --watch src/server.js"` in package.json scripts
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre watch mode e ciclo request-response
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0109-node-watch-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0109-node-watch-mkv-mp-4/references/code-examples.md)

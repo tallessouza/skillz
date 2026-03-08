@@ -1,6 +1,12 @@
 ---
 name: rs-devops-mantendo-estado-na-nuvem
 description: "Applies Terraform remote state configuration with S3 backend when setting up infrastructure state management. Use when user asks to 'configure remote state', 'store terraform state in S3', 'setup backend S3', 'migrate local state to remote', or 'create state bucket'. Follows AWS S3 backend pattern with prevent_destroy lifecycle, encryption, and state migration. Make sure to use this skill whenever configuring Terraform backends or state storage. Not for application deployment, CI/CD pipelines, or non-Terraform infrastructure tools."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-remote-state
+  tags: [terraform, s3, remote-state, backend, aws, state-management, encryption]
 ---
 
 # Terraform — Estado Remoto com S3
@@ -108,14 +114,14 @@ O Terraform detecta que existe estado local e pergunta se deseja migrar para o S
 | Deletar bucket de estado manualmente | Migrar estado antes de qualquer remocao |
 | Misturar config de estado com recursos de app | Separar em arquivo/repo configurativo |
 
+## Troubleshooting
+
+### terraform init falha ao migrar estado para S3
+**Symptom:** `terraform init` retorna erro ao tentar configurar backend S3
+**Cause:** O campo no bloco backend esta incorreto (usando `name` em vez de `bucket`) ou o bucket nao existe na regiao especificada
+**Fix:** Verifique que o campo e `bucket` (nao `name`), que o bucket existe, e que a regiao no backend corresponde a regiao real do bucket
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-mantendo-o-estado-na-nuvem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-mantendo-o-estado-na-nuvem/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

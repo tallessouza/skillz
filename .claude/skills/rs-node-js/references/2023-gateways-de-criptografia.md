@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-gateways-de-criptografia
 description: "Enforces cryptography gateway patterns in Clean Architecture NestJS applications. Use when user asks to 'add authentication', 'implement login', 'hash password', 'generate JWT token', 'create user registration', or any auth-related feature. Applies rules: crypto functions never called directly from use cases, abstract contracts as gateways, Interface Segregation for hash/compare separation. Make sure to use this skill whenever implementing authentication or cryptography in layered architectures. Not for HTTP controller logic, database schema design, or frontend auth flows."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: cryptography-gateways
+  tags: [cryptography, bcrypt, jwt, nestjs, clean-architecture, interface-segregation, solid]
 ---
 
 # Gateways de Criptografia
@@ -124,14 +130,14 @@ export class AuthenticateStudentUseCase {
 | Um contrato `Hasher` com `hash()` e `compare()` | Dois contratos: `HashGenerator` e `HashComparer` (ISP) |
 | Bcrypt importado no domain | Bcrypt apenas em `infra/cryptography/bcrypt-hasher.ts` |
 
+## Troubleshooting
+
+### NestJS nao resolve a dependencia do contrato de criptografia
+**Symptom:** Erro Nest can't resolve dependencies of UseCase ao injetar HashGenerator ou Encrypter
+**Cause:** O contrato foi definido como interface TypeScript em vez de abstract class, e interfaces nao existem em runtime
+**Fix:** Use abstract class em vez de interface para os contratos de criptografia, porque o NestJS precisa de um token em runtime para DI
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-gateways-de-criptografia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-gateways-de-criptografia/references/code-examples.md)

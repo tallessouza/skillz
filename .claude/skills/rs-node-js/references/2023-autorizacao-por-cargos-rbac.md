@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-autorizacao-rbac
 description: "Applies Role-Based Access Control (RBAC) patterns when building Node.js APIs with Fastify and Prisma. Use when user asks to 'add authorization', 'restrict routes by role', 'create admin-only routes', 'implement RBAC', 'add permissions', or 'protect endpoints by user role'. Enforces enum-based roles in Prisma, JWT payload with role, and reusable verify-role middleware. Make sure to use this skill whenever implementing route-level authorization in Node.js APIs. Not for authentication (login/register), session management, or OAuth/third-party auth flows."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: authorization
+  tags: [rbac, authorization, fastify, prisma, jwt, middleware, roles, permissions]
 ---
 
 # Autorização por Cargos (RBAC)
@@ -124,14 +130,14 @@ app.post('/gyms', { onRequest: [verifyJWT, verifyUserRole('ADMIN')] }, createGym
 | Buscar user no banco a cada request para checar role | Persistir role no JWT payload |
 | Middleware global de RBAC | Hook `onRequest` por rota individual |
 
+## Troubleshooting
+
+### Middleware de role retorna 401 mesmo com role correta
+**Symptom:** Admin autenticado recebe 401 em rota protegida
+**Cause:** A role nao esta no payload do JWT ou o refresh token nao inclui role
+**Fix:** Verifique que `reply.jwtSign({ role: user.role }, ...)` inclui a role no token
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-autorizacao-por-cargos-rbac/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-autorizacao-por-cargos-rbac/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-autorizacao-por-cargos-rbac/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-autorizacao-por-cargos-rbac/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-aws-e-cloud-formation
 description: "Applies knowledge of AWS CloudFormation and native cloud IaC tools when evaluating infrastructure strategies. Use when user asks to 'choose IaC tool', 'setup CloudFormation', 'compare IaC options', 'manage AWS infrastructure', or 'avoid vendor lock-in'. Guides decisions about native vs multi-cloud IaC tools. Make sure to use this skill whenever discussing cloud provider native IaC services or evaluating vendor lock-in trade-offs. Not for Terraform/OpenTofu usage, Ansible configuration, or application-level code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: iac-cloud-native
+  tags: [cloud]
 ---
 
 # AWS CloudFormation e Ferramentas Nativas de IaC
@@ -74,14 +80,14 @@ Para estudo, a AWS oferece free tier — quota maxima de uso mensal sem cobranca
 - Para uso pratico de Terraform/OpenTofu, consulte skills especificas
 - Nao cobre detalhes de sintaxe CloudFormation YAML/JSON
 
+## Troubleshooting
+
+### CloudFormation stack falha ao criar com erro de permissao
+**Symptom:** Stack creation retorna erro InsufficientCapabilities ou AccessDenied
+**Cause:** O usuario/role IAM usado nao tem permissoes para criar os recursos declarados no template
+**Fix:** Verifique as permissoes IAM do usuario e adicione as capabilities necessarias (CAPABILITY_IAM, CAPABILITY_NAMED_IAM) ao criar a stack
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-aws-e-cloud-formation/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-aws-e-cloud-formation/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-aws-e-cloud-formation/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-aws-e-cloud-formation/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

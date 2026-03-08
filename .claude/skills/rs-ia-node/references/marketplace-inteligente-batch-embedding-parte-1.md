@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-batch-embedding-1
 description: "Generates batch embedding pipelines using OpenAI Batch API with JSONlines and webhooks. Use when user asks to 'embed products', 'batch process embeddings', 'create batch openai', 'process embeddings in bulk', or 'use openai batch api'. Applies patterns: JSONlines file creation, batch upload, webhook handling with signature validation, and response parsing. Make sure to use this skill whenever implementing bulk embedding or batch processing with OpenAI. Not for single embedding calls, streaming responses, or chat completions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: embeddings
+  tags: [embeddings, batch-api, async-processing, node-js, openai, ia-node]
 ---
 
 # Batch Embedding com OpenAI Batch API
@@ -147,14 +153,14 @@ const batch = await client.batches.create({
 | Assumir ordem dos resultados | Usar `custom_id` para vincular request/response |
 | Parse direto do output file | `.text()` primeiro, depois `.split("\n")` e parse |
 
+## Troubleshooting
+
+### Batch API retorna status mas sem resultados
+**Symptom:** Batch status e `completed` mas output_file_id esta undefined
+**Cause:** Batch pode ter falhado silenciosamente ou ainda estar processando
+**Fix:** Verifique `batch.errors` para diagnostico. Confirme que `status === 'completed'` E `output_file_id` existe antes de processar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-batch-embedding-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-batch-embedding-parte-1/references/code-examples.md)

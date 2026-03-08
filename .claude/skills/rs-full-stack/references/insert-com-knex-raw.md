@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-insert-com-knex-raw
 description: "Applies Knex raw SQL patterns when writing database queries with Knex.js query builder. Use when user asks to 'write raw SQL with Knex', 'use knex.raw', 'insert with raw query', 'execute SQL directly', or 'bypass query builder'. Ensures parameterized queries with ? placeholders to prevent SQL injection. Make sure to use this skill whenever combining raw SQL with Knex query builder. Not for Prisma, TypeORM, Drizzle, or pure SQL without Knex."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-query-builder
+  tags: [knex, raw-sql, parameterized-queries, sql-injection, query-builder]
 ---
 
 # Insert com Knex Raw
@@ -61,13 +67,16 @@ await knex.raw("INSERT INTO courses (name) VALUES(?)", [courseName])
 | `knex.raw("INSERT ... '" + val + "'")` | `knex.raw("INSERT ... ?", [val])` |
 | SQL direto sem `knex.raw()` | Sempre passe pelo `knex.raw()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SQL injection vulneravel | String interpolada no SQL | Usar `?` placeholder com array de valores |
+| Erro de sintaxe no raw | SQL malformado ou falta de aspas | Validar SQL separadamente antes de usar no raw |
+| Valor nao substituido no placeholder | Array de valores em ordem errada | Verificar que valores no array correspondem a posicao dos `?` |
+| Query builder suficiente para o caso | Usando raw sem necessidade | Preferir `knex("table").insert({})` quando possivel |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar raw vs query builder
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-insert-com-knex-raw/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-insert-com-knex-raw/references/code-examples.md)

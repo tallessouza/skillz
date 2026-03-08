@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-projeto-que-vamos-utilizar
-description: "Guides Node.js TypeScript project setup for Docker containerization. Use when user asks to 'prepare a node project for docker', 'setup typescript build for production', 'configure dev and prod scripts', or 'containerize a node app'. Covers dev/build/start scripts, TypeScript compilation to dist, and production execution flow. Make sure to use this skill whenever setting up a Node.js TypeScript project that will run in Docker. Not for Dockerfile creation, docker-compose, or container orchestration."
+description: "Configures Node.js TypeScript project setup for Docker containerization. Use when user asks to 'prepare a node project for docker', 'setup typescript build for production', 'configure dev and prod scripts', or 'containerize a node app'. Covers dev/build/start scripts, TypeScript compilation to dist, and production execution flow. Make sure to use this skill whenever setting up a Node.js TypeScript project that will run in Docker. Not for Dockerfile creation, docker-compose, or container orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-typescript
+  tags:
+    - nodejs
+    - typescript
+    - docker
+    - build
+    - production
 ---
 
 # Preparar Projeto Node.js TypeScript para Docker
@@ -97,6 +108,14 @@ project/
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fluxo dev vs producao e por que separar build/start
 - [code-examples.md](references/code-examples.md) — Exemplos de server.ts, package.json e tsconfig.json completos
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm start` falha com "Cannot find module dist/server.js" | Build nao foi executado antes do start | Execute `npm run build` antes de `npm start` |
+| Imports TypeScript nao reconhecidos no editor | `node_modules` nao instalado | Execute `npm install` para gerar a pasta |
+| Mudancas no codigo nao refletem em producao | Producao roda o JS compilado da `dist/`, nao o fonte | Execute `npm run build` novamente apos mudancas |
 
 ---
 

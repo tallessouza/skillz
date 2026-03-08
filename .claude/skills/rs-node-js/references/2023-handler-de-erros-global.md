@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-handler-de-erros-global
 description: "Applies global error handling patterns when building Fastify APIs with Node.js. Use when user asks to 'handle errors', 'create error handler', 'setup error middleware', 'treat validation errors', or 'add global error handling' in Fastify applications. Enforces centralized error treatment with setErrorHandler, Zod validation formatting, environment-aware logging, and proper HTTP status codes. Make sure to use this skill whenever creating or reviewing Fastify error handling, even if user only mentions a specific error type. Not for Express.js middleware, frontend error boundaries, or database error handling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling
+  tags: [fastify, error-handler, zod, validation, http, nodejs]
 ---
 
 # Handler de Erros Global (Fastify)
@@ -125,14 +131,14 @@ app.setErrorHandler((error, _request, reply) => {
 | Tratar `ZodError` em cada controller individualmente | Trate uma vez no `setErrorHandler` global |
 | Ignorar erros desconhecidos (catch vazio) | Sempre logue ou re-lance |
 
+## Troubleshooting
+
+### Erro 500 sem log ou detalhes no terminal
+**Symptom:** A API retorna 500 Internal Server Error mas nenhum log aparece no terminal
+**Cause:** O erro desconhecido e capturado no catch do controller com return reply.status(500) em vez de ser re-lancado
+**Fix:** No catch do controller, apos tratar erros conhecidos, use throw error para que o setErrorHandler global capture e logue
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-handler-de-erros-global/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-handler-de-erros-global/references/code-examples.md)

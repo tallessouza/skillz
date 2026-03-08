@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estruturando-ultimas-secoes
 description: "Applies HTML section structuring patterns when building multi-article news portal layouts. Use when user asks to 'create a news section', 'structure articles grid', 'build a portal layout', 'add content sections with cards', or 'layout articles with images and text'. Enforces semantic HTML with article tags, grid utility classes, content-tag spans, and consistent header patterns across sections. Make sure to use this skill whenever structuring repeated content sections in a news or blog portal. Not for CSS styling, animations, or JavaScript interactivity."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-layout
+  tags: [html, semantic-html, article, grid, news-portal]
 ---
 
 # Estruturando Secoes de Portal de Noticias
@@ -166,13 +172,16 @@ description: "Applies HTML section structuring patterns when building multi-arti
 | Imagem e texto na mesma div sem separacao | Divs distintas dentro do article |
 | `<img>` sem atributo alt | `<img alt="descricao relevante">` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Articles nao alinham imagem e texto lado a lado | Falta `grid grid-flow-col` no article | Adicionar classes de grid no article |
+| Espacamento entre articles inconsistente | Usando margin em vez de gap | Usar `gap-32` no container grid |
+| Ordem imagem/texto invertida | Divs na ordem errada dentro do article | Trocar ordem das divs filhas do article |
+| Utility class `gap-32` nao funciona | Classe nao definida no CSS | Criar `.gap-32 { gap: 32px; }` no utility.css |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre semantica HTML, hierarquia de headings e padroes de replicacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e secoes completas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-as-ultimas-secoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-as-ultimas-secoes/references/code-examples.md)

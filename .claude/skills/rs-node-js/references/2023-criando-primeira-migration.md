@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-primeira-migration
-description: "Applies Knex migration setup and creation patterns when configuring database migrations in Node.js with TypeScript. Use when user asks to 'create a migration', 'setup knex', 'configure database tables', 'add knex migrations', or 'setup database versioning'. Covers knexfile config, TSX loader, migration directory setup, and CLI commands. Make sure to use this skill whenever setting up Knex migrations in a TypeScript Node.js project. Not for Prisma, Drizzle, TypeORM, or other ORMs."
+name: 2023-criando-primeira-migration
+description: "Sets up Knex migrations with TypeScript support using TSX loader, separated config from connection, and knexfile at project root. Use when user asks to 'create first migration', 'setup Knex migrations', 'configure database versioning', or 'use Knex with TypeScript'. Enforces: separate config export from knex instance, knexfile.ts at root importing config, TSX loader script in package.json, double dash for npm run arguments. Make sure to use this skill whenever setting up database migration infrastructure with Knex in a TypeScript Node.js project. Not for Prisma migrations, raw SQL migrations, or JavaScript-only projects."
+category: workflow
+tags: [knex, migrations, modules, prisma, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: database-migrations
+  tags: [knex, migrations, typescript, sqlite, database, tsx]
 ---
 
 # Criando Primeira Migration com Knex
@@ -98,14 +107,14 @@ db/*.db
 | Deixar config e conexao na mesma exportacao | Separar `config` e `knex` como exports distintos |
 | Criar pasta de migrations na raiz | Configurar `migrations.directory` para `./db/migrations` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-primeira-migration/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-primeira-migration/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-instalacao-e-configuracao
 description: "Applies ContentLayer setup and configuration patterns when creating a Next.js blog with Markdown content. Use when user asks to 'setup contentlayer', 'configure markdown blog', 'create next.js blog', 'integrate mdx', or 'setup content layer with next'. Covers dependency installation, next.config wrapping, tsconfig paths, schema definition with computed fields, and gitignore. Make sure to use this skill whenever setting up ContentLayer or a Markdown-based blog in Next.js. Not for writing blog posts, styling, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: contentlayer
+  tags: [contentlayer, markdown, blog, next-js, computed-fields, tsconfig, schema]
 ---
 
 # Instalação e Configuração do ContentLayer com Next.js
@@ -111,14 +117,19 @@ posts/                   → pasta criada na raiz (conteúdo vem depois)
 | Instalar `contentlayer` (v1) | Use `contentlayer2` e `next-contentlayer2` |
 | Esquecer `baseUrl: "."` no tsconfig | Sempre adicionar — paths não funcionam sem baseUrl |
 
+## Troubleshooting
+
+### Erro ao iniciar projeto Next.js
+**Symptom:** `npm run dev` falha com erros de modulo ou dependencia
+**Cause:** Dependencias nao instaladas, versao do Node incompativel, ou conflito de pacotes
+**Fix:** Rodar `npm install` para garantir dependencias. Verificar versao do Node (`node -v`, minimo 18+). Deletar `node_modules` e `package-lock.json` e reinstalar
+
+### TypeScript errors no projeto novo
+**Symptom:** Erros de tipo em arquivos recem-criados
+**Cause:** tsconfig.json nao inclui os paths corretos ou falta `@types` de dependencias
+**Fix:** Verificar `include` no tsconfig.json. Instalar types necessarios: `npm i -D @types/react @types/node`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-instalacao-e-configuracao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-instalacao-e-configuracao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-instalacao-e-configuracao/references/deep-explanation.md) — O ContentLayer é uma **ponte** entre arquivos Markdown e o projeto Next.js. Ele transforma arquivos 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-instalacao-e-configuracao/references/code-examples.md) — npm install contentlayer2 next-contentlayer2

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-um-query-builder
 description: "Applies Query Builder concepts when choosing between raw SQL and query builders in Node.js/TypeScript projects. Use when user asks to 'connect to database', 'write a query', 'setup Knex', 'configure database layer', or 'choose between SQL and ORM'. Explains abstraction benefits, database portability, and readability gains. Make sure to use this skill whenever discussing database access patterns or setting up a data layer. Not for ORM-specific patterns (Prisma, TypeORM), raw SQL optimization, or database administration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: banco-de-dados
+  tags: [query-builder, knex, sql, banco-de-dados, abstracao]
 ---
 
 # Query Builder
@@ -67,6 +73,15 @@ Voce nao precisa saber o SQL exato que sera gerado. Usa metodos (selecionar, ins
 - Nao oferece mapeamento objeto-relacional (para isso, use um ORM)
 - Features muito especificas de um banco podem nao ter suporte
 - Para queries extremamente complexas, SQL cru pode ser mais expressivo
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Query builder gera SQL invalido | Metodo encadeado na ordem errada | Verifique a documentacao do builder para a ordem correta dos metodos |
+| Erro ao trocar de SQLite para Postgres | Tipos ou funcoes incompativeis entre bancos | Revise o schema e use tipos suportados por ambos os bancos |
+| `knex` retorna array vazio quando deveria ter dados | Tabela ou coluna com nome errado | Verifique nomes de tabelas e colunas no banco |
+| Conexao com banco falha | String de conexao incorreta ou banco nao rodando | Verifique configuracao de host, porta e credenciais |
 
 ## Deep reference library
 

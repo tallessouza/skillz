@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-checkbox
 description: "Applies custom checkbox styling techniques when building HTML forms with CSS-only checkboxes. Use when user asks to 'create a checkbox', 'style a checkbox', 'custom checkbox CSS', 'form with terms acceptance', or 'replace default checkbox'. Covers unset native styles, absolute positioning over wrapper, background-image swap for states (default/hover/checked), and focus-within accessibility. Make sure to use this skill whenever generating custom form checkboxes without JavaScript. Not for JavaScript toggle components, React/Vue checkbox libraries, or radio button styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-formularios-avancado
+  tags: [html, css, checkbox, custom, form, accessibility, focus-within]
 ---
 
 # Custom Checkbox com CSS Puro
@@ -116,6 +122,15 @@ description: "Applies custom checkbox styling techniques when building HTML form
 | Imagem com tag `<img>` para checkbox | `background-image` no div — permite troca por estado CSS |
 | `align-items: stretch` (padrao) no wrapper | `align-items: flex-start` — evita checkbox esticado |
 | Tamanho do checkbox sem flex shorthand | `flex: 0 0 1.5rem` — controla grow, shrink e basis |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Checkbox nao responde ao clique | `display: none` no input em vez de `all: unset` | Use `all: unset` com `position: absolute` para manter funcional |
+| Imagem do checkbox estica no flex | Faltando `flex: 0 0 1.5rem` no elemento de imagem | Adicione `flex: 0 0 1.5rem` para tamanho fixo |
+| Estado checked nao muda a imagem | Seletor CSS incorreto para `:checked` | Use `.CheckBoxWrapper:has(:checked) .CheckBoxImg` |
+| Foco via teclado (Tab) nao estiliza | Faltando `:focus-within` no wrapper | Adicione `.CheckBoxWrapper:focus-within .CheckBoxImg` ao CSS |
 
 ## Deep reference library
 

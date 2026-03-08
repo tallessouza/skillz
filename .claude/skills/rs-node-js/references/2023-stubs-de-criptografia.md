@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-stubs-de-criptografia
 description: "Applies stub patterns for cryptography contracts when writing unit tests in NestJS or Node.js. Use when user asks to 'create test doubles', 'mock crypto', 'fake hasher', 'stub encryption', 'write unit tests for auth', or 'test password hashing'. Ensures stubs implement real interfaces with fictitious but verifiable logic. Make sure to use this skill whenever creating test infrastructure for hashing, encryption, or JWT token generation. Not for production cryptography implementation, bcrypt configuration, or integration tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [testing, stubs, cryptography, hash, fake, test-doubles]
 ---
 
 # Stubs de Criptografia
@@ -91,14 +97,14 @@ export class FakeHasher implements HashGenerator, HashComparer {
 | Classe separada para cada contrato relacionado | Uma classe implementando multiplos contratos |
 | `Math.random().toString()` no stub | Transformacao deterministica do input |
 
+## Troubleshooting
+
+### Stub de hash retorna o input inalterado e compare sempre passa
+**Symptom:** Teste de autenticacao nunca falha mesmo com senha errada
+**Cause:** FakeHasher implementa hash como identity function (`return plain`)
+**Fix:** Transforme o input de forma previsivel: `return plain.concat('-hashed')` e compare com a mesma transformacao
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-stubs-de-criptografia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-stubs-de-criptografia/references/code-examples.md)

@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-sintaxe
 description: "Enforces correct JavaScript syntax awareness when writing or debugging JS code. Use when user asks to 'fix syntax error', 'debug JavaScript', 'write JavaScript code', or encounters 'not recognized' errors. Applies rules: use reserved words exactly as defined, respect command structure like console.log, understand optional vs required syntax elements. Make sure to use this skill whenever a user reports a syntax error or asks about JavaScript writing rules. Not for logic errors, runtime bugs, or non-JavaScript languages."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags:
+    - javascript
+    - syntax
+    - debugging
+    - reserved-words
+    - case-sensitive
 ---
 
 # Sintaxe JavaScript
@@ -69,6 +80,15 @@ let nome = "Maria"
 | `Console.log()` | `console.log()` |
 | `LET x = 1` | `let x = 1` |
 | `VAR x = 1` | `var x = 1` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `ReferenceError: con is not defined` | Comando escrito incorretamente (`con.sole.log`) | Escreva exatamente `console.log()` |
+| `ReferenceError: Console is not defined` | Letra maiuscula no inicio | JavaScript e case-sensitive: use `console` minusculo |
+| `SyntaxError: Unexpected identifier` | Palavra reservada em maiuscula (`LET`, `VAR`) | Use minusculo: `let`, `var`, `const` |
+| Palavra reservada sem cor no editor | Digitacao incorreta | Verifique syntax highlighting — palavras corretas tem cor |
 
 ## Deep reference library
 

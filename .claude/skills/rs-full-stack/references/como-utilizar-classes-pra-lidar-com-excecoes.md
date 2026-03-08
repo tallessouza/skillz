@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-classes-excecoes
 description: "Enforces proper exception handling with JavaScript error classes when writing try/catch blocks, custom errors, or validation logic. Use when user asks to 'handle errors', 'throw exceptions', 'create custom errors', 'validate input', or 'add error handling'. Applies instanceof checks, specific-to-generic exception chaining, and user-friendly error messages. Make sure to use this skill whenever generating error handling code in JavaScript/TypeScript. Not for HTTP status codes, logging frameworks, or error monitoring setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, exceptions, try-catch, instanceof, error-classes, validation]
 ---
 
 # Classes para Lidar com Exceções
@@ -87,13 +93,17 @@ try {
 | `catch` vazio que engole o erro | No mínimo um `console.log(error.message)` no else |
 | Todos os throws com `new Error()` genérico | Use `RangeError`, `TypeError`, `SyntaxError` quando aplicável |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `throw "string"` não tem stack trace | Lançando string em vez de objeto Error | Use `throw new Error("mensagem")` ou classe de erro |
+| Catch vazio engole erros silenciosamente | Bloco catch sem tratamento | Adicione pelo menos `console.error(error.message)` no catch |
+| `instanceof RangeError` não funciona | Erro lançado como `Error` genérico, não `RangeError` | Use `throw new RangeError(msg)` para tipo correto |
+| Código após throw executa | throw dentro de condicional, não cobre todos os caminhos | Verifique que o throw está no caminho correto do fluxo |
+| Mensagem de erro expõe detalhes internos ao usuário | Mensagem técnica passada direto | Use mensagem amigável no catch e log técnico separado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre throw como return, classes nativas de erro e encadeamento
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-utilizar-classes-pra-lidar-com-excecoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-utilizar-classes-pra-lidar-com-excecoes/references/code-examples.md)

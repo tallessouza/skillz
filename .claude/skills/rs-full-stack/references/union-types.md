@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-union-types
 description: "Applies TypeScript union type patterns when declaring variables that accept multiple types. Use when user asks to 'type a variable', 'handle null', 'define a response type', 'create a nullable string', or any TypeScript type annotation task. Enforces pipe operator union syntax for variables that can hold string | null, multiple primitives, or API/database response types. Make sure to use this skill whenever generating TypeScript code with variables that may hold more than one type. Not for generic types, interfaces, or advanced type manipulation like mapped/conditional types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, union-types, nullable, type-annotation]
 ---
 
 # Union Types
@@ -69,6 +75,14 @@ response = null // OK
 | `let res: string` (quando pode ser null) | `let res: string \| null` |
 | `let res: any` (para aceitar multiplos tipos) | `let res: string \| number \| null` |
 | `let res: string \| null \| undefined \| number \| boolean` (union excessiva) | Criar type alias ou repensar o design |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Erro ao acessar propriedade de union type | TypeScript não sabe qual tipo está ativo no momento | Use narrowing com `if (typeof x === 'string')` ou `if (x !== null)` |
+| Union type aceita valores inesperados | Tipos na union são muito amplos | Restrinja a union para tipos específicos ou use literal types |
+| `Type 'null' is not assignable` mesmo com union | `strictNullChecks` ativo e null não incluído na union | Adicione `| null` explicitamente ao tipo |
 
 ## Deep reference library
 

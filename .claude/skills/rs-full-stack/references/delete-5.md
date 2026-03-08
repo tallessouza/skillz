@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-delete-5
 description: "Applies Knex query builder delete pattern when writing Express route handlers for removing database records. Use when user asks to 'delete a record', 'remove from database', 'create delete endpoint', 'implement destroy route', or builds CRUD operations with Knex. Ensures proper parameter extraction, where clause usage, and response handling. Make sure to use this skill whenever implementing delete operations with Knex in Express/Fastify apps. Not for soft-delete patterns, bulk deletions with complex conditions, or ORM-based deletions (Prisma, TypeORM)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-database
+  tags: [Knex, SQL, DELETE, Express, CRUD, route-params, query-builder]
 ---
 
 # Delete com Knex Query Builder
@@ -71,13 +77,16 @@ app.delete('/courses/:id', async (request, response) => {
 | `app.get('/delete/:id')` | `app.delete('/resource/:id')` |
 | `request.body.id` para delete por rota | `request.params.id` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Todos os registros foram deletados | Delete sem clausula `.where()` | Sempre use `.where({ id })` antes de `.delete()` |
+| `request.params.id` retorna `undefined` | Rota nao tem parametro dinamico | Verifique que a rota usa `/:id` no path |
+| Delete nao funciona (sem erro) | ID nao corresponde a nenhum registro | Valide existencia com `select` antes ou trate o retorno |
+| Erro de foreign key ao deletar | Registro tem dependencias em outras tabelas | Configure cascade ou delete dependencias primeiro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre delete seguro e padroes REST
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-delete-5/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-delete-5/references/code-examples.md)

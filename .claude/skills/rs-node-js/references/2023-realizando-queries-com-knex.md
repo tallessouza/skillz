@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-queries-knex
 description: "Applies Knex.js query patterns when writing database operations in Node.js APIs. Use when user asks to 'insert data', 'query database', 'fetch records', 'create CRUD', 'use knex', or any database operation with Knex. Covers insert with returning, select, where clauses, and UUID generation. Make sure to use this skill whenever generating Knex database code. Not for raw SQL, Prisma, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: knex-queries
+  tags: [knex, query, insert, select, where, returning, uuid, database]
 ---
 
 # Realizando Queries com Knex
@@ -88,14 +94,14 @@ const transaction = await knex('transactions')
 | `id: uuid()` (lib externa) | `id: randomUUID()` (node:crypto nativo) |
 | `.where('amount = 1000')` (string SQL) | `.where('amount', 1000)` (metodo encadeado) |
 
+## Troubleshooting
+
+### Insert retorna apenas `[1]` em vez dos dados inseridos
+**Symptom:** `await knex('table').insert({...})` retorna `[1]` (numero de linhas) em vez do objeto inserido
+**Cause:** Falta o `.returning('*')` encadeado apos o insert — sem ele, o Knex retorna apenas o count de linhas afetadas
+**Fix:** Adicione `.returning('*')` ao final da chain: `knex('table').insert({...}).returning('*')`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-realizando-queries-com-knex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-realizando-queries-com-knex/references/code-examples.md)

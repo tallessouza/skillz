@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listando-sessoes-das-mesas
 description: "Applies REST API listing endpoint patterns when building index/list routes in Node.js with Knex. Use when user asks to 'list records', 'create index endpoint', 'add GET route', 'fetch all items', or 'query database with ordering'. Enforces controller index method structure, route registration, orderBy usage, and selective column queries with Knex select. Make sure to use this skill whenever implementing list/index API endpoints. Not for create, update, delete endpoints or frontend data fetching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express
+  tags: [express, knex, rest-api, index, controller, orderBy]
 ---
 
 # Listando Registros via API (Index Endpoint)
@@ -94,13 +100,16 @@ async index(request: Request, response: Response, next: NextFunction) {
 | `router.get("/list", ...)` | `router.get("/", ...)` |
 | `const data = await knex(...)` | `const sessions = await knex(...)` (nome descritivo) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro 500 na listagem | Typo no nome da tabela (ex: `table_session` vs `table_sessions`) | Verifique nome exato com underscores e plural |
+| Dados retornados em ordem inconsistente | Falta `orderBy` na query | Adicione `.orderBy("coluna")` |
+| Resposta com todas as colunas quando so precisa de algumas | `select()` omitido retorna tudo | Use `.select("id", "table_id")` para colunas especificas |
+| Erro nao tratado causa crash do servidor | catch sem `next(error)` | Use `try/catch` com `next(error)` para delegar ao middleware |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listando-sessoes-das-mesas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listando-sessoes-das-mesas/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-inicial-variaveis-css
 description: "Enforces CSS project structure with variables and REM units when setting up web projects. Use when user asks to 'create a project', 'setup CSS', 'define colors', 'configure fonts', 'use rem units', or 'create CSS variables'. Applies rules: always use REM instead of pixels, define colors and fonts as CSS custom properties in :root, organize CSS with imports. Make sure to use this skill whenever starting a new HTML/CSS project or defining design tokens. Not for JavaScript logic, backend setup, or CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, variables, rem, custom-properties, design-tokens]
 ---
 
 # Estrutura Inicial e Variáveis do CSS
@@ -140,13 +146,16 @@ h1 {
 | `href="/styles/index.css"` | `href="styles/index.css"` |
 | `@import url("/global.css")` | `@import url("global.css")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel CSS nao funciona | Definida fora do `:root` ou com sintaxe errada | Usar `--nome: valor` no `:root` e `var(--nome)` no uso |
+| Fonte do Google Fonts nao carrega | Falta `preconnect` ou ordem errada dos links | Colocar `preconnect` antes do link da fonte no `<head>` |
+| REM nao esta convertendo corretamente | `font-size` definido em pixels no `html` | Remover `font-size` do `html` ou usar `font-size: 100%` |
+| @import nao carrega o CSS | Caminho com barra inicial `/global.css` | Usar caminho relativo sem barra: `url("global.css")` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Explicação completa sobre REM vs EM vs pixels e acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código com variações e tabela de conversão px→rem
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-inicial-e-variaveis-do-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-inicial-e-variaveis-do-css/references/code-examples.md)

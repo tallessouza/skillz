@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-input-de-biografia
 description: "Applies Tailwind CSS textarea and toolbar patterns when building form bio sections, rich text editor UIs, or textarea components. Use when user asks to 'create a textarea', 'build a bio input', 'add a text editor toolbar', 'style a textarea with Tailwind', or 'create toolbar buttons'. Covers resize control, arbitrary min-height values, select defaults, icon button toolbars, and textarea component extraction. Make sure to use this skill whenever building form sections with textarea or editor-like UIs in Tailwind. Not for actual rich text editor functionality, TipTap integration, or non-Tailwind styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, css-grid, flexbox, forms]
 ---
 
 # Input de Biografia — Textarea com Toolbar
@@ -128,15 +134,19 @@ export function Textarea(props: TextareaProps) {
 | `min-h-screen` em textarea | `min-h-[120px]` (valor adequado) |
 | Placeholder no Select quando há default | `defaultValue="normal"` |
 | Ícones `h-6 w-6` em toolbar compacta | `h-4 w-4` com `strokeWidth` maior |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-input-de-biografia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-input-de-biografia/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-input-de-biografia/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-input-de-biografia/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-injetando-falha-nas-aplicacoes
 description: "Applies Istio fault injection patterns (delay and abort) in Kubernetes service mesh environments. Use when user asks to 'inject faults', 'simulate failures', 'test resilience', 'add delay to service', 'simulate 503/504 errors', or 'chaos testing with Istio'. Configures VirtualService fault rules with percentage-based traffic impact. Make sure to use this skill whenever configuring fault injection or discussing chaos engineering with Istio. Not for application-level error handling, Circuit Breaker configuration, or non-Istio chaos tools like Chaos Mesh or Litmus."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-fault-injection
+  tags: [istio, fault-injection, chaos-engineering, virtualservice, kubernetes, resilience]
 ---
 
 # Fault Injection com Istio
@@ -109,14 +115,14 @@ http:
 | Modificar a aplicacao para retornar erros de teste | Usar fault injection do Istio — injeta no proxy |
 | Deixar fault injection ativo apos teste | Remover ou comentar a configuracao de fault |
 
+## Troubleshooting
+
+### Fault injection nao tem efeito no trafego
+**Symptom:** Configurou fault no VirtualService mas todas as requisicoes retornam normalmente
+**Cause:** O fault injection foi configurado no DestinationRule em vez do VirtualService, ou o namespace nao tem sidecar Istio injetado
+**Fix:** Mova a configuracao de fault para o VirtualService e verifique que os pods mostram 2/2 containers (app + istio-proxy)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-injetando-falha-nas-aplicacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-injetando-falha-nas-aplicacoes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

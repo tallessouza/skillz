@@ -1,6 +1,12 @@
 ---
 name: rs-devops-melhorias-otimizacoes-imagem
 description: "Enforces Docker image optimization best practices when writing Dockerfiles or configuring Docker builds. Use when user asks to 'create a Dockerfile', 'optimize Docker image', 'reduce image size', 'docker build', or 'containerize application'. Applies rules: copy lock files separately, use .dockerignore, separate file and folder COPY commands, always tag images with versions. Make sure to use this skill whenever generating or reviewing Dockerfiles. Not for docker-compose, orchestration, networking, or volume configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-otimizacao
+  tags: [docker, dockerfile, optimization, dockerignore, image-size, cache, tags]
 ---
 
 # Otimizacao de Imagens Docker
@@ -120,14 +126,14 @@ docker build -t api-skillz:v1 .
 | Ignorar `.yarn` quando yarn berry precisa dele | Remover `.yarn` do .dockerignore se usado no install |
 | Copiar `node_modules` para dentro do container | Adicionar `node_modules` ao .dockerignore |
 
+## Troubleshooting
+
+### Build falha com "not found" apos adicionar .dockerignore
+**Symptom:** `docker build` falha porque um arquivo necessario nao e encontrado
+**Cause:** O `.dockerignore` esta ignorando um arquivo necessario ao build (ex: `.yarn/releases/` quando usa yarn berry)
+**Fix:** Remova do `.dockerignore` os arquivos que sao necessarios durante o install/build (ex: `.yarn` se usa yarn berry v3+)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-melhorias-e-otimizacoes-na-nossa-imagem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-melhorias-e-otimizacoes-na-nossa-imagem/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-schema-prisma
-description: "Applies Prisma schema design patterns when creating or modifying database models in NestJS projects. Use when user asks to 'create a prisma schema', 'add a model', 'define relationships', 'create migration', or 'setup database tables'. Enforces enum usage, named relations for same-table references, unique constraints on one-to-one fields, optional field handling, and column mapping conventions. Make sure to use this skill whenever designing Prisma schemas with complex relationships. Not for query building, Prisma Client usage, or application-level data access patterns."
+name: 2023-criando-schema-do-prisma-2024
+description: "Designs Prisma schemas with enums, named relations, unique constraints, and snake_case column mappings for NestJS/PostgreSQL projects. Use when user asks to 'create Prisma schema', 'define database models', 'setup named relations', 'add enums to Prisma', or 'map columns to snake_case'. Enforces: enums for fixed values, named relations for multiple references to same table, @unique on one-to-one FKs, @map for snake_case columns, @@map for table names. Make sure to use this skill whenever defining or extending Prisma schemas with complex relationships in NestJS applications. Not for Knex schemas, raw SQL DDL, or simple single-table models."
+category: coding-lens
+tags: [migrations, nestjs, prisma, uuid]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-schema
+  tags: [prisma, schema, nestjs, enums, relations, named-relations, postgresql]
 ---
 
 # Criando Schema do Prisma
@@ -137,14 +146,14 @@ model Question {
 | `authorId String @map("authorId")` | `authorId String @map("author_id")` em snake_case |
 | Campo opcional sem tratar `null` no mapper | Verificar existencia antes de criar value object |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-schema-do-prisma-2024/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-schema-do-prisma-2024/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

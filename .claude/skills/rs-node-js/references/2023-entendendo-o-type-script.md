@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entendendo-o-type-script
-description: "Applies TypeScript fundamentals and setup patterns when configuring new Node.js projects with TypeScript. Use when user asks to 'setup TypeScript', 'create a Node project', 'configure tsconfig', 'convert JS to TS', or 'add types to a project'. Covers tsconfig target selection, interface-first typing, and the JS compilation workflow. Make sure to use this skill whenever setting up TypeScript in a Node.js backend project. Not for React/frontend TypeScript setup, advanced generics, or type gymnastics."
+name: 2023-entendendo-o-type-script
+description: "Configures TypeScript in Node.js projects with proper tsconfig target, interface-based parameter typing, and TS-to-JS compilation workflow. Use when user asks to 'set up TypeScript', 'configure tsconfig', 'add types to Node.js', or 'compile TypeScript'. Make sure to use this skill whenever initializing TypeScript in a Node.js backend project or defining interfaces for function parameters. Not for frontend React/Next.js TypeScript setup, advanced generic types, or runtime type validation with Zod."
+category: coding-lens
+tags: [node-js, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [typescript, node-js, tsconfig, interfaces, compilation, type-safety]
 ---
 
 # Entendendo o TypeScript
@@ -100,14 +109,14 @@ calculateAgeOfUser({ birthYear: 1990 })  // OK, autocomplete funciona
 | `npm i typescript` (dependencia normal) | `npm i -D typescript` (devDependency) |
 | Tipos inline complexos em parametros | Interface nomeada separada |
 
+## Troubleshooting
+
+### Erro de sintaxe ao executar arquivo .ts com Node diretamente
+**Symptom:** `SyntaxError: Unexpected token ':'` ao rodar `node src/index.ts`
+**Cause:** Node.js nao entende TypeScript nativamente — precisa compilar para JavaScript primeiro
+**Fix:** Compile com `npx tsc src/index.ts` e execute o arquivo gerado `node src/index.js`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entendendo-o-type-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entendendo-o-type-script/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

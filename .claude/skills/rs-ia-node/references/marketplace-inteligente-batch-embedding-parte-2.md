@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-batch-embedding-2
 description: "Applies batch embedding webhook handling and vector storage patterns when building AI-powered product catalogs with OpenAI Batch API and NestJS. Use when user asks to 'handle batch webhooks', 'store embeddings', 'process OpenAI batch results', 'configure webhook middleware', or 'search similar products with vectors'. Make sure to use this skill whenever implementing webhook receivers for OpenAI batch processing or storing embedding results in PostgreSQL with pgvector. Not for generating embeddings from scratch, frontend search UI, or non-OpenAI embedding providers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: embeddings
+  tags: [postgresql, embeddings, batch-api, async-processing, node-js, nestjs, openai, ia-node]
 ---
 
 # Batch Embedding — Webhook, Storage e Busca por Similaridade
@@ -147,14 +153,14 @@ async handle(@Body() body: string, @Headers() headers) {
 | Retornar produtos similares sem ordenacao | Ordenar por score de distancia ascendente |
 | Guardar embedding como string no banco | Cast para `::vector` usando pgvector |
 
+## Troubleshooting
+
+### Batch API retorna status mas sem resultados
+**Symptom:** Batch status e `completed` mas output_file_id esta undefined
+**Cause:** Batch pode ter falhado silenciosamente ou ainda estar processando
+**Fix:** Verifique `batch.errors` para diagnostico. Confirme que `status === 'completed'` E `output_file_id` existe antes de processar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-batch-embedding-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-batch-embedding-parte-2/references/code-examples.md)

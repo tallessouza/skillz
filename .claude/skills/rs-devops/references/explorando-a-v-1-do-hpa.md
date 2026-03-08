@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-a-v-1-do-hpa
 description: "Applies Kubernetes HPA v1 manifest patterns when creating or reviewing Horizontal Pod Autoscaler configurations. Use when user asks to 'create HPA', 'autoscale pods', 'horizontal pod autoscaler', 'scale kubernetes app', or 'configure CPU-based scaling'. Covers scaleTargetRef, minReplicas, maxReplicas, and targetCPUUtilizationPercentage. Make sure to use this skill whenever generating HPA v1 manifests or reviewing existing ones. Not for HPA v2beta2/v2 configurations, memory-based scaling, or custom metrics."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, hpa, hpa-v1, autoscaling, cpu-scaling, scaleTargetRef]
 ---
 
 # Kubernetes HPA v1
@@ -118,14 +124,14 @@ kubectl delete hpa <nome-hpa> -n <namespace>
 kubectl delete -f k8s/hpa.yaml -n <namespace>
 ```
 
+## Troubleshooting
+
+### HPA v1 apply falha com campo targetMemoryUtilizationPercentage
+**Symptom:** `kubectl apply` retorna erro ao tentar usar `targetMemoryUtilizationPercentage` no HPA v1
+**Cause:** O campo `targetMemoryUtilizationPercentage` foi deprecado e nao existe na API `autoscaling/v1`
+**Fix:** Remova o campo e use apenas `targetCPUUtilizationPercentage` na v1, ou migre para `autoscaling/v2` para escalar por memoria
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-a-v-1-do-hpa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-a-v-1-do-hpa/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

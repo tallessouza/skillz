@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-chat-messages
 description: "Enforces incremental chat message architecture when building AI-powered chat systems with Node.js and PostgreSQL. Use when user asks to 'add messages to chat', 'create chat message route', 'implement chat with AI actions', 'build message flow with LLM', or 'handle different message types'. Applies patterns: separate public/private service methods, message type flags for frontend rendering, LLM action detection before execution, confirmation-before-action flow. Make sure to use this skill whenever implementing chat messaging with AI decision-making backends. Not for simple CRUD without AI, frontend-only chat UI, or WebSocket real-time implementations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: chat
+  tags: [ia-node, postgresql, node-js, chat]
 ---
 
 # Chat Messages com AI Action Detection
@@ -130,14 +136,14 @@ Usuario confirma → API embeda refined_input → busca vetorial → monta carri
 | Ignorar `message_type` e inspecionar content no frontend | Usar flag explicita para tipo de renderizacao |
 | Usar o input cru do usuario para embedding | Permitir que LLM refine o input com mais contexto |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-adicionando-mensagens-ao-chat-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-adicionando-mensagens-ao-chat-parte-1/references/code-examples.md)

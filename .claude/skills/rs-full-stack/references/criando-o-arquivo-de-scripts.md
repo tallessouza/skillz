@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-arquivo-de-scripts
 description: "Applies correct script tag placement and connection when linking JavaScript files to HTML. Use when user asks to 'connect JS to HTML', 'add script tag', 'link JavaScript file', 'create script file', or 'setup HTML with JS'. Ensures script tag is placed before closing body tag with src attribute. Make sure to use this skill whenever setting up a new HTML+JS project structure. Not for module bundlers, build tools, or framework-specific script loading like Next.js or Vite."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-javascript-basics
+  tags: [html, javascript, script-tag, dom, setup]
 ---
 
 # Conectando JavaScript ao HTML
@@ -71,8 +77,12 @@ projeto/
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre posicionamento de scripts e carregamento do DOM
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variações de caminhos e estruturas
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-de-scripts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-de-scripts/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Console nao exibe a mensagem de teste | Caminho no `src` esta incorreto | Verifique o caminho relativo com `./` e o nome exato do arquivo |
+| Script executa antes do DOM estar pronto | Tag `<script>` esta no `<head>` | Mova para antes de `</body>` |
+| Erro "Unexpected token" no console | Arquivo JS tem sintaxe invalida | Verifique a sintaxe do JavaScript no arquivo |
+| Script com `src` e conteudo inline ao mesmo tempo | Browser ignora o conteudo inline quando `src` esta presente | Use `src` OU conteudo inline, nunca ambos na mesma tag |
+| Alteracoes no JS nao aparecem | Cache do browser | Force refresh com Ctrl+Shift+R |

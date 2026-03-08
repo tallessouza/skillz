@@ -1,6 +1,12 @@
 ---
 name: rs-nodejs-atualizacao-de-registros
 description: "Applies the PUT route pattern for updating records in Node.js HTTP servers. Use when user asks to 'update a record', 'edit user data', 'create PUT route', 'implement update endpoint', or 'modify existing resource'. Enforces route params for ID, body parsing for data, row-index lookup before replacement, and 204 response. Make sure to use this skill whenever implementing update/edit functionality in Node.js APIs. Not for GET/POST/DELETE routes, database migrations, or ORM-based updates."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: http-fundamentals
+  tags: [nodejs, http, put, update, route-params, rest-api, crud]
 ---
 
 # Atualizacao de Registros (PUT)
@@ -89,14 +95,14 @@ update(table, id, data) {
 | Substituir sem buscar indice | Sempre `findIndex` antes de substituir |
 | Omitir o ID na substituicao | `{ id, ...data }` preserva o ID original |
 
+## Troubleshooting
+
+### PUT substitui toda a tabela ao inves do registro
+**Symptom:** Apos update, a tabela contem apenas 1 registro
+**Cause:** Codigo faz `this.#database[table] = data` ao inves de substituir pelo indice
+**Fix:** Use `findIndex` para localizar o registro e substitua apenas `this.#database[table][rowIndex]`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-atualizacao-de-registros/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-atualizacao-de-registros/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-atualizacao-de-registros/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-atualizacao-de-registros/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-listagem-catalogo-backend
 description: "Applies NestJS catalog module backend setup pattern when user asks to 'create a module', 'setup postgres service', 'list products', 'catalog endpoint', or 'nestjs backend with postgres'. Follows structure: database dump with pgVector, NestJS module/controller/service layers, shared PostgreSQL service with ConfigService, and e2e tests. Make sure to use this skill whenever building NestJS API modules that interact with PostgreSQL. Not for frontend UI, cart logic, or AI/embedding search implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: catalog
+  tags: [ia-node, postgresql, node-js, nestjs]
 ---
 
 # Listagem do Catalogo no Backend
@@ -161,14 +167,14 @@ export class PostgresService implements OnApplicationBootstrap {
 | Controller chamando banco direto | Controller → Service → PostgresService |
 | Testar so com Postman | Escreva teste e2e com Jest + supertest |
 
+## Troubleshooting
+
+### Rota retorna 404 mesmo existindo
+**Symptom:** Endpoint retorna 404 Not Found apesar de estar definido no controller
+**Cause:** Modulo nao registrado no AppModule, ou @Param sem decorator no handler
+**Fix:** Verifique se o modulo esta no `imports` do AppModule e que @Param('name') decora o parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-backend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-backend/references/code-examples.md)

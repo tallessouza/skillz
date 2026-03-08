@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-editando-perguntas-anexos
-description: "Applies the WatchedList pattern for editing entities with attachments in NestJS Clean Architecture. Use when user asks to 'edit entity with relations', 'update attachments', 'manage many-to-many edits', 'handle aggregate list updates', or 'implement edit with file uploads'. Ensures correct insertion/removal of related entities through tracked lists. Make sure to use this skill whenever editing an entity that has a list of related sub-entities (attachments, tags, items). Not for simple CRUD without sub-entity management or file upload mechanics."
+name: 2023-editando-perguntas-com-anexos
+description: "Implements WatchedList pattern in NestJS with Prisma for editing entities with attachment lists, including E2E test factories that use update instead of create for relationships. Use when user asks to 'edit with attachments in NestJS', 'test WatchedList E2E', 'create attachment factory', or 'handle sub-entity editing with Prisma'. Make sure to use this skill whenever writing NestJS controllers and E2E tests for entities with editable sub-entity collections. Not for domain-layer WatchedList implementation, frontend file upload, or simple entity updates without related items."
+category: coding-lens
+tags: [attachments, entities, nestjs, prisma, testing, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: watched-list-nestjs
+  tags: [attachments, watched-list, nestjs, prisma, e2e-testing, typescript]
 ---
 
 # Editando Entidades com Anexos (WatchedList Pattern)
@@ -125,14 +134,14 @@ expect(attachmentsOnDatabase).toEqual(
 | Verificar apenas o count após edição | Verifique os IDs específicos para garantir que os corretos sobreviveram |
 | Comparar listas manualmente no use case | Delegue ao WatchedList que já implementa o tracking |
 
+## Troubleshooting
+
+### Factory de relacionamento cria registro duplicado ao inves de relacionar
+**Symptom:** Erro de unique constraint ou attachment duplicado no banco ao rodar teste E2E
+**Cause:** Usando `prisma.attachment.create()` na factory ao inves de `prisma.attachment.update()` — o attachment ja existe do upload previo
+**Fix:** Use `prisma.attachment.update({ where: { id }, data: { questionId } })` para relacionar, nao `create`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-editando-perguntas-com-anexos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-editando-perguntas-com-anexos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

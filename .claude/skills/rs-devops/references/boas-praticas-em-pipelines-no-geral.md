@@ -1,6 +1,12 @@
 ---
 name: rs-devops-boas-praticas-pipelines
 description: "Enforces best practices for CI/CD pipeline security by extracting hardcoded secrets and variables in GitHub Actions workflows. Use when user asks to 'create a pipeline', 'write a GitHub Actions workflow', 'configure CI/CD', 'setup deployment', or 'review pipeline security'. Applies rules: no hardcoded credentials, roles as secrets, regions as secrets, service names as variables, uppercase naming for vars. Make sure to use this skill whenever generating or reviewing CI/CD pipeline YAML files. Not for application code secrets management, .env files, or Docker configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-security
+  tags: [github-actions, ci-cd]
 ---
 
 # Boas Praticas em Pipelines CI/CD
@@ -101,14 +107,14 @@ env:
 | Secrets antigas de provedores abandonados | Delete e mantenha repositorio limpo |
 | `servicename` (lowercase) | `SERVICE_NAME` (uppercase como constante) |
 
+## Troubleshooting
+
+### Pipeline expoe credenciais nos logs de execucao
+**Symptom:** ARN de roles ou tokens aparecem em texto claro nos logs do CI/CD
+**Cause:** Valores sensiveis estao hardcoded no YAML do workflow em vez de secrets
+**Fix:** Extraia todos os valores sensiveis para secrets do repositorio e referencie com `${{ secrets.NOME }}`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-boas-praticas-em-pipelines-no-geral/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-boas-praticas-em-pipelines-no-geral/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-boas-praticas-em-pipelines-no-geral/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-boas-praticas-em-pipelines-no-geral/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

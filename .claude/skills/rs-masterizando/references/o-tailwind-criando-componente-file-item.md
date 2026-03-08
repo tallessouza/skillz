@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-file-item-states
 description: "Enforces multi-state component patterns with Tailwind CSS when building upload components or any UI element with progress, complete, and error states. Use when user asks to 'create a file upload component', 'add error state to component', 'style upload progress', 'create multi-state UI', or 'add visual feedback states'. Applies conditional styling, custom color palettes, and icon swapping based on component state. Make sure to use this skill whenever building components that need progress/success/error visual variations. Not for form validation logic, file upload API integration, or server-side error handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, react, flexbox]
 ---
 
 # Componente Multi-Estado com Tailwind CSS
@@ -127,15 +133,19 @@ export default {
 | `style={{ width: '80%' }}` fixo | `style={{ width: state === 'complete' ? '100%' : '80%' }}` |
 | `color: 'red'` inline para erros | Classes Tailwind com paleta semantica `error-700` |
 | Um componente gigante com tudo | FileItem extraido com props tipadas |
+## Troubleshooting
+
+### Props nao chegam ao elemento HTML
+**Symptom:** className, onClick ou outras props passadas ao componente nao funcionam.
+**Cause:** O componente nao usa spread props (`{...props}`) no elemento raiz.
+**Fix:** Adicione `{...props}` no elemento HTML raiz do componente para repassar todas as props.
+
+### Estilos do consumidor sobrescritos pelo componente
+**Symptom:** className passada pelo pai nao tem efeito.
+**Cause:** O spread `{...props}` esta antes das classes base, sobrescrevendo o className do pai.
+**Fix:** Coloque classes base antes do spread: `className="base-classes" {...props}` ou use `twMerge`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-componente-file-item/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-componente-file-item/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-componente-file-item/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-componente-file-item/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

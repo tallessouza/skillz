@@ -1,13 +1,19 @@
 ---
 name: rs-devops-o-que-e-escala
 description: "Applies Kubernetes scaling concepts when designing or reviewing application deployments. Use when user asks to 'scale an app', 'handle high traffic', 'configure autoscaling', 'prepare for traffic spikes', or 'load test a Kubernetes deployment'. Provides mental model for why scaling matters, when to apply manual vs auto scaling, and what resilience means in practice. Make sure to use this skill whenever discussing Kubernetes scaling strategy or capacity planning. Not for implementing specific HPA/VPA manifests, Helm charts, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, scaling, autoscaling, resilience, capacity-planning, hpa, traffic]
 ---
 
 # O que e Escala no Kubernetes
 
 > Escalar e adaptar a aplicacao a cenarios variados de trafego, mantendo-a de pe de forma resiliente — automaticamente.
 
-## Key concept
+## Key concepts
 
 Escala e a capacidade de uma aplicacao se adaptar a diferentes cenarios de trafego — alto ou baixo, curto ou longo. A aplicacao deve ser **resiliente**: continuar funcionando durante periodos atipicos, especialmente de alto trafego.
 
@@ -53,20 +59,33 @@ O sistema monitora metricas (CPU, memoria, requests). Quando os valores ultrapas
 - Ao revisar manifests Kubernetes que definem replicas fixas sem auto escala
 - Ao discutir resiliencia e disponibilidade de servicos
 
+## Diagnostic
+
+```bash
+# Verificar HPA configurado
+kubectl get hpa
+
+# Verificar metricas de consumo dos pods
+kubectl top pods
+
+# Verificar replicas atuais de um deployment
+kubectl get deployment <name> -o jsonpath='{.spec.replicas}'
+```
+
 ## Limitations
 
 - Este modelo mental cobre o **porque** e o **quando** escalar, nao o **como** implementar (HPA, VPA, KEDA)
 - Nao substitui testes de carga reais — a teoria de escala precisa ser validada com simulacao de trafego
 - Escala resolve problemas de capacidade, nao de performance de codigo (uma aplicacao lenta com 100 replicas continua lenta)
 
+## Troubleshooting
+
+### Auto escala nao reage a picos de trafego
+**Symptom:** HPA configurado mas pods nao escalam quando trafego aumenta
+**Cause:** Metrics Server nao instalado ou metricas nao sendo coletadas corretamente
+**Fix:** Verificar se Metrics Server esta rodando (`kubectl top pods`) e se os recursos requests/limits estao definidos no Deployment
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-e-escala/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-e-escala/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

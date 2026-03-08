@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-erros-customizados-classes
 description: "Enforces custom error class patterns when writing JavaScript/TypeScript error handling. Use when user asks to 'create custom errors', 'handle errors', 'throw exceptions', 'build error classes', or any error handling task. Applies rules: extend Error or use structured classes, instanceof checks in catch blocks, descriptive error messages with context prefix. Make sure to use this skill whenever generating error handling code or creating domain-specific errors. Not for logging configuration, HTTP status codes, or try/catch syntax basics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, typescript, error-handling, custom-errors, classes, instanceof]
 ---
 
 # Erros Customizados com Classes
@@ -105,13 +111,17 @@ try {
 | `error.message === 'not found'` (comparar string) | `error instanceof NotFoundError` |
 | Catch vazio `catch {}` | Pelo menos log ou rethrow |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `instanceof` retorna false para erro customizado | Classe não herda de `Error` | Adicione `extends Error` na declaração da classe |
+| Stack trace não mostra o nome correto | `this.name` não definido no construtor | Adicione `this.name = 'NomeDaClasse'` no construtor |
+| Catch não diferencia tipos de erro | Usando catch genérico sem instanceof | Adicione verificações `if (error instanceof X)` encadeadas |
+| Propriedades extras undefined no catch | TypeScript não infere o tipo no catch | Use type guard com `instanceof` antes de acessar propriedades |
+| Erro customizado perde stack trace | `super(message)` não chamado no construtor | Sempre chame `super(message)` como primeira instrução |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre herança de Error, prototype chain e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-utilizar-classes-para-criar-erros-customizados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-utilizar-classes-para-criar-erros-customizados/references/code-examples.md)

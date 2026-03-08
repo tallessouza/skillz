@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-intro-banco-de-dados
 description: "Applies foundational database concepts when designing data models or choosing storage strategies. Use when user asks to 'create a database', 'design a schema', 'model data', 'store data', or discusses data vs information distinctions. Ensures correct reasoning about data organization, integrity, and scalability. Make sure to use this skill whenever making architectural decisions about data storage. Not for SQL syntax, query optimization, or specific database engine configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-fundamentals
+  tags: [database, data-modeling, schema, integrity, scalability]
 ---
 
 # Introdução a Banco de Dados
 
 > Dados isolados nao tem significado — organize-os em banco de dados para extrair informacao com integridade, eficiencia e escalabilidade.
 
-## Key concept
+## Key concepts
 
 Dado e informacao sao conceitos distintos mas interdependentes. Dado e material bruto sem significado isolado (ex: "2006" pode ser ano, codigo, numero). Informacao e a percepcao concreta extraida ao organizar e processar dados (ex: "Joao nasceu em 2006, tem 18 anos"). Um banco de dados existe para transformar dados brutos em informacao acessivel.
 
@@ -39,6 +45,16 @@ Banco de dados oferece 4 vantagens que arquivos nao tem:
 
 Quando voce define que uma coluna armazena numero, o banco rejeita texto automaticamente. Isso nao e apenas validacao — e garantia estrutural de consistencia. A aplicacao nao precisa validar o que o banco ja garante.
 
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  birth_year INTEGER NOT NULL
+);
+
+-- Banco rejeita automaticamente: INSERT INTO users (name, birth_year) VALUES ('Joao', 'abc');
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -62,13 +78,15 @@ Quando voce define que uma coluna armazena numero, o banco rejeita texto automat
 - Nao aborda diferencas entre bancos relacionais vs nao-relacionais (coberto em aulas posteriores)
 - Nao trata de otimizacao de performance ou indexacao
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Dados inseridos com tipo errado não geram erro | Banco com tipagem flexível (ex: SQLite type affinity) | Use banco com tipagem estrita (PostgreSQL) ou adicione validação na aplicação |
+| Dados parecem inconsistentes entre ambientes | Sem constraints definidos no schema (NOT NULL, UNIQUE, FK) | Adicione constraints ao criar tabelas para garantir integridade |
+| Dificuldade em extrair informação útil dos dados | Dados armazenados sem estrutura clara (colunas genéricas) | Redesenhe o schema com colunas específicas e nomeadas semanticamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre dado vs informacao, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de organizacao de dados e extracao de informacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-a-banco-de-dados-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-a-banco-de-dados-2/references/code-examples.md)

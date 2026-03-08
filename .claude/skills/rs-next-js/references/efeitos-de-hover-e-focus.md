@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-efeitos-de-hover-e-focus
 description: "Enforces consistent hover and focus-visible patterns when writing Tailwind CSS interactive components. Use when user asks to 'create a button', 'add hover effect', 'style a card', 'make focusable component', or 'improve accessibility'. Applies rules: focus-visible over focus, ring pattern for keyboard navigation, tw-merge multi-line organization, transition-colors with short duration. Make sure to use this skill whenever creating interactive UI elements with Tailwind. Not for animation libraries, CSS-in-JS, or non-Tailwind styling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: estilizacao-e-tailwind
+  tags: [tailwind, hover, focus-visible, accessibility, tw-merge, ring, transition, next-js]
 ---
 
 # Efeitos de Hover e Focus
@@ -99,14 +105,19 @@ export function Button({ className, ...props }: ButtonProps) {
 | `hover:bg-navy-600` sem opacidade em fundo escuro | `hover:bg-navy-600/50` |
 | Ring offset sem cor de fundo | `focus-visible:ring-offset-navy-950` |
 
+## Troubleshooting
+
+### Estilos Tailwind nao aplicam
+**Symptom:** Classes Tailwind no JSX nao geram CSS correspondente
+**Cause:** Arquivo/pasta nao esta mapeado no array `content` do tailwind.config
+**Fix:** Adicionar o path da pasta no `content` do tailwind.config: `'./src/{nova-pasta}/**/*.{js,ts,jsx,tsx}'`. Reiniciar o servidor de desenvolvimento
+
+### Fontes customizadas nao carregam
+**Symptom:** Fonte do Google Fonts/local nao aparece, fallback e usado
+**Cause:** Configuracao incorreta do next/font ou CSS variable nao aplicada
+**Fix:** Usar `next/font/google` ou `next/font/local` e aplicar a className no elemento raiz do layout. Verificar que a variavel CSS esta sendo referenciada no Tailwind config
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-efeitos-de-hover-e-focus/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-efeitos-de-hover-e-focus/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-efeitos-de-hover-e-focus/references/deep-explanation.md) — O instrutor explica a diferenca fundamental:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-efeitos-de-hover-e-focus/references/code-examples.md) — // components/button.tsx

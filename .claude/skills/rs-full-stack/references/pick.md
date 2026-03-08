@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-pick
 description: "Applies TypeScript Pick utility type when creating partial types from existing interfaces. Use when user asks to 'create a preview type', 'select specific properties', 'reuse part of an interface', 'pick fields from a type', or any type subsetting task. Ensures Pick is used instead of duplicating interfaces. Make sure to use this skill whenever the user creates a new interface that duplicates properties from an existing one. Not for Omit, Partial, or other utility types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags:
+    - typescript
+    - utility-types
+    - pick
+    - interfaces
 ---
 
 # TypeScript Pick Utility Type
@@ -87,6 +97,14 @@ const summary: Pick<Book, "title" | "pages"> = { title: "TypeScript", pages: 150
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "Type X is not assignable to type Pick" | Propriedades obrigatorias do tipo original ausentes no objeto | Verifique que todas as chaves listadas no Pick estao presentes no objeto |
+| Pick nao atualiza quando tipo original muda | Chave removida do tipo original mas ainda referenciada no Pick | Remova a chave inexistente do segundo parametro do Pick |
+| Intellisense nao mostra propriedades do Pick | IDE nao resolveu o tipo corretamente | Reinicie o TypeScript server (Ctrl+Shift+P → Restart TS Server) |
 
 ---
 

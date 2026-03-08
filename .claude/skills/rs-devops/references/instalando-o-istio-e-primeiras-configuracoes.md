@@ -1,6 +1,12 @@
 ---
 name: rs-devops-instalando-istio-config
-description: "Guides Istio installation and initial configuration on Kubernetes clusters. Use when user asks to 'install Istio', 'setup service mesh', 'configure Istio on cluster', 'install istioctl', or 'setup sidecar proxy'. Covers istioctl download, cluster installation, profile selection, and verification via kubectl and Lens. Make sure to use this skill whenever setting up Istio or troubleshooting Istio installation. Not for Istio traffic management rules, VirtualService config, or application sidecar injection."
+description: "Configures Istio installation and initial configuration on Kubernetes clusters. Use when user asks to 'install Istio', 'setup service mesh', 'configure Istio on cluster', 'install istioctl', or 'setup sidecar proxy'. Configures istioctl download, cluster installation, profile selection, and verification via kubectl and Lens. Make sure to use this skill whenever setting up Istio or troubleshooting Istio installation. Not for Istio traffic management rules, VirtualService config, or application sidecar injection."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-instalacao
+  tags: [istio, istioctl, kubernetes, service-mesh, ingress-gateway, istiod]
 ---
 
 # Instalando o Istio e Primeiras Configuracoes
@@ -115,14 +121,14 @@ Apos instalacao bem-sucedida:
 | Assumir que sidecar ja esta injetado | Sidecars so aparecem quando aplicacao e deployada com label de injecao |
 | Esquecer de atualizar abas do terminal apos export | Rodar `source` ou reiniciar terminal |
 
+## Troubleshooting
+
+### istioctl nao encontrado apos instalacao
+**Symptom:** Terminal retorna "command not found: istioctl" apos executar o script de download
+**Cause:** O export do PATH so afeta a sessao atual do terminal, nao persiste em novas abas
+**Fix:** Feche e reabra o terminal, ou execute `source ~/.bashrc` / `source ~/.zshrc` para recarregar o profile
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-instalando-o-istio-e-primeiras-configuracoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-instalando-o-istio-e-primeiras-configuracoes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

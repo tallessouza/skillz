@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comandos-basicos-repo-local
 description: "Applies Git local repository workflow commands when user asks to 'initialize a project', 'start a repo', 'commit changes', 'check git status', or 'view commit history'. Enforces correct usage of git init, git status, git add, git commit -m, and git log for local development. Make sure to use this skill whenever setting up or managing a local Git repository. Not for remote operations, branching, merging, or GitHub/GitLab workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, init, commit, status, log, local-repository]
 ---
 
 # Comandos Basicos para Repositorio Local Git
@@ -92,13 +98,17 @@ git log
 | Commit sem verificar status | Sempre `git status` antes de `git add` e `git commit` |
 | Ignorar `git log` | Consultar historico regularmente para contexto |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `fatal: not a git repository` | `git init` nao foi executado na pasta | Execute `git init` na raiz do projeto |
+| `nothing to commit, working tree clean` | Nenhuma modificacao pendente | Verifique se salvou os arquivos antes de `git add` |
+| `git commit` abre editor vim | Faltou flag `-m` na chamada | Use `git commit -m "mensagem"` |
+| Arquivos indesejados no staging | `git add .` adicionou tudo | Use `git reset HEAD <arquivo>` para remover do staging |
+| Historico vazio no `git log` | Nenhum commit foi feito ainda | Faca o primeiro commit antes de consultar o log |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comandos-basicos-para-repositorio-local/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comandos-basicos-para-repositorio-local/references/code-examples.md)

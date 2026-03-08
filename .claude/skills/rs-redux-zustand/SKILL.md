@@ -29,6 +29,8 @@ O que você está fazendo com state management?
 ├─ UI components?
 │  ├─ Estrutura base → [estrutura-base-da-ui.md](references/estrutura-base-da-ui.md)
 │  ├─ Módulos e player → [ui-dos-modulos-e-player.md](references/ui-dos-modulos-e-player.md)
+│  ├─ Radix Collapsible → [radix-collapsible-nos-modulos.md](references/radix-collapsible-nos-modulos.md)
+│  ├─ Scrollbar sidebar → [scrollbar-na-sidebar.md](references/scrollbar-na-sidebar.md)
 │  └─ Separando componentes → [separando-componentes-2.md](references/separando-componentes-2.md)
 │
 ├─ Interações state-driven?
@@ -49,3 +51,14 @@ O que você está fazendo com state management?
 
 Quando chamado pelo `rs-implementation-workflow`:
 - **Fase 3 (Implementação)** → Siga o ramo relevante por feature de state
+
+## Cross-References — Decision Coverage
+
+Quando este router nao cobre uma decisao, delegue para:
+
+| Decisao | Delegue para | Motivo |
+|---------|-------------|--------|
+| D1_FRAMEWORK_WEB (Next.js) | [rs-next-js](../rs-next-js/SKILL.md) | Next.js / React profundo |
+| D3_STYLING (Tailwind) | [rs-masterizando](../rs-masterizando/SKILL.md) | Tailwind CSS |
+| D3_TESTING (testes) | [rs-testes-e](../rs-testes-e/SKILL.md) | Testes profundos |
+| D3_AUTH (JWT/OAuth) | [rs-seguranca-para](../rs-seguranca-para/SKILL.md) | Auth |

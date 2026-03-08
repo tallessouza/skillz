@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-agendamento-api
 description: "Applies the delete-and-reload pattern when implementing cancellation or removal features against a REST API. Use when user asks to 'cancel an appointment', 'remove an item via API', 'delete a booking', 'implement a cancel button', or 'add delete functionality'. Enforces confirmation before delete, proper error handling, and list reload after successful deletion. Make sure to use this skill whenever implementing any delete/cancel flow that hits an API endpoint. Not for database-level deletion, bulk operations, or soft-delete strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: frontend-api-integration
+  tags: [javascript, fetch, delete, api, crud, dom]
 ---
 
 # Removendo Agendamentos da API
@@ -116,6 +122,15 @@ async function onCancelClick(id) {
 | URL hardcoded no fetch | `apiConfig.baseURL + "/resource/" + id` |
 | Funcao de cancel dentro do componente UI | Arquivo separado `schedule-cancel.js` |
 | Ignorar erro silenciosamente | try/catch com alert informando o usuario |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| DELETE envia GET em vez de DELETE | Falta `{ method: "DELETE" }` no fetch | Passe o objeto de opcoes com method explicitamente |
+| Lista nao atualiza apos cancelar | Falta chamada de reload apos o delete | Adicione `await loadSchedules()` apos o cancel |
+| Clique acidental deleta sem confirmar | Falta `confirm()` antes da chamada | Adicione confirmacao com `confirm()` antes do fetch |
+| Erro silencioso no cancelamento | Falta try/catch com feedback | Envolva em try/catch e use `alert()` para informar o usuario |
 
 ## Deep reference library
 

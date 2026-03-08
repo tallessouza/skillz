@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-css-tag-manager-ataque
 description: "Guards against front-end attack surface expansion via CSS class naming and Tag Manager mismanagement. Use when user asks to 'organize CSS files', 'name CSS classes', 'set up Tag Manager', 'add Google Analytics', 'include third-party scripts', or 'review front-end security'. Ensures CSS naming in admin areas avoids leaking roles, routes, and capabilities to attackers during reconnaissance. Make sure to use this skill whenever structuring CSS for authenticated/admin interfaces or discussing Tag Manager access policies. Not for general CSS styling, design systems, or back-end security hardening."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, tag-manager, reconnaissance]
 ---
 
 # CSS e Tag Manager: Superficie de Ataque no Front-End
@@ -88,14 +94,14 @@ app.get('/styles/panel', authenticate, authorize('admin'), (req, res) => {
 | Senha do Tag Manager em planilha compartilhada | SSO corporativo ou contas Google individuais |
 | Copiar script de blog para o Tag Manager | Revisar script com programador antes de incluir |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-css-e-tag-manager-aumentando-a-superficie-de-ataques/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-css-e-tag-manager-aumentando-a-superficie-de-ataques/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-css-e-tag-manager-aumentando-a-superficie-de-ataques/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-css-e-tag-manager-aumentando-a-superficie-de-ataques/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

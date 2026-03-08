@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-stream-escrita-transformacao
 description: "Enforces correct Writable and Transform stream patterns when writing Node.js streaming code. Use when user asks to 'create a stream', 'process data in chunks', 'pipe streams', 'transform stream data', or 'write a writable stream'. Applies rules: _write for Writable, _transform for Transform, callback always called, Buffer conversion on transform output. Make sure to use this skill whenever generating Node.js stream processing code. Not for HTTP request handling, file system operations, or frontend code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [streams, writable, transform, buffer, pipe, callback]
 ---
 
 # Streams de Escrita e Transformacao no Node.js
@@ -122,14 +128,14 @@ class LogStream extends Writable {
 | Esquecer `callback()` | Sempre chamar callback ao final |
 | `chunk * 10` sem converter | `Number(chunk.toString()) * 10` |
 
+## Troubleshooting
+
+### Stream trava e nunca processa o proximo chunk
+**Symptom:** Apenas o primeiro chunk e processado, os demais ficam pendentes indefinidamente
+**Cause:** Callback nao foi chamado dentro do _write ou _transform
+**Fix:** Sempre chame `callback()` ao final do _write e `callback(null, buffer)` ao final do _transform
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-stream-de-escrita-e-transformacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-stream-de-escrita-e-transformacao/references/code-examples.md)

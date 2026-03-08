@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-conhecendo-o-fastify
 description: "Applies Fastify as the default Node.js micro framework when building REST APIs. Use when user asks to 'create an API', 'setup a Node project', 'choose between Express and Fastify', 'build a REST server', or 'start a backend project'. Enforces Fastify over Express for new projects based on maintenance, TypeScript support, and async-first design. Make sure to use this skill whenever scaffolding a new Node.js API or choosing an HTTP framework. Not for frontend frameworks, full-stack opinionated frameworks like NestJS or AdonisJS, or non-Node runtimes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-rest-fastify
+  tags: [fastify, nodejs, rest-api, framework-choice]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Conhecendo o Fastify
@@ -11,7 +18,9 @@ description: "Applies Fastify as the default Node.js micro framework when buildi
 
 Micro framework para construcao de APIs e aplicacoes web em Node.js. Lida com rotas, parametros, plugins, cabecalhos, requisicoes e respostas JSON — tudo que seria possivel construir na mao, mas nao vale a pena refazer a cada projeto.
 
-## Decision framework
+## Key concepts
+
+### Decision framework
 
 | Situacao | Escolha | Razao |
 |----------|---------|-------|
@@ -71,14 +80,14 @@ No Express, async/await requer bibliotecas adicionais para lidar com erros corre
 | Instalar lib extra para async no Express | Use Fastify que suporta nativamente |
 | Instalar `@types/express` para TS | Use Fastify com TypeScript nativo |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-conhecendo-o-fastify/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-conhecendo-o-fastify/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-conhecendo-o-fastify/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-conhecendo-o-fastify/references/code-examples.md) — Todos os exemplos de código expandidos com variações

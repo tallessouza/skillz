@@ -1,6 +1,12 @@
 ---
 name: rs-devops-comunicacao-entre-containers
 description: "Applies Docker Compose multi-service configuration patterns when writing docker-compose.yml files. Use when user asks to 'create docker-compose', 'add service to compose', 'configure container networking', 'connect containers', or 'setup depends_on'. Enforces build context, container naming, custom networks, depends_on, and docker-compose CLI usage. Make sure to use this skill whenever generating or reviewing Docker Compose files with multiple services. Not for single-container Dockerfiles, Kubernetes manifests, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-compose
+  tags: [docker, docker-compose, networking, depends-on]
 ---
 
 # Comunicacao entre Containers com Docker Compose
@@ -123,14 +129,14 @@ networks:
 | Confiar que `depends_on` garante servico pronto | Usar wait-for-it ou healthcheck para garantia real |
 | Usar rede default sem declarar | Declarar network customizada com driver bridge |
 
+## Troubleshooting
+
+### Container nao consegue conectar a outro servico na mesma rede
+**Symptom:** Erro de conexao recusada entre containers no Docker Compose
+**Cause:** Os servicos nao estao na mesma rede customizada ou o depends_on nao foi declarado
+**Fix:** Verifique se ambos os servicos estao associados a mesma network e use `docker compose up --build -d`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-comunicacao-entre-containers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-comunicacao-entre-containers/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-comunicacao-entre-containers/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-comunicacao-entre-containers/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

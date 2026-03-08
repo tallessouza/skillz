@@ -1,6 +1,12 @@
 ---
 name: rs-devops-grafana-tempo
 description: "Generates Grafana Tempo configuration for distributed tracing in Docker Compose environments. Use when user asks to 'configure tracing', 'setup Tempo', 'add traces to Grafana', 'configure distributed tracing', or 'setup OpenTelemetry collector'. Applies Docker Compose service definition, tempo.yaml configuration, and Grafana datasource integration. Make sure to use this skill whenever setting up observability tracing infrastructure with Grafana stack. Not for application-level instrumentation code, Prometheus metrics, or log collection with Loki/Promtail."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-tracing
+  tags: [grafana, tempo, tracing, docker-compose, opentelemetry, otlp, datasource]
 ---
 
 # Grafana Tempo — Configuracao de Tracing
@@ -123,14 +129,14 @@ No `datasources.yaml` do Grafana:
 - Grafana > Connections > Data Sources mostra Tempo listado
 - Grafana > Explore com Tempo selecionado mostra interface TraceQL
 
+## Troubleshooting
+
+### Tempo reinicia em loop com erro de storage config
+**Symptom:** Container `tempo` reinicia constantemente, `docker logs tempo` mostra "wall not found in storage config"
+**Cause:** Indentacao incorreta no `tempo.yaml` — `wal` e `local` devem estar dentro de `storage.trace`, nao em `storage` diretamente
+**Fix:** Verifique que a hierarquia YAML e `storage.trace.wal` e `storage.trace.local`, nao `storage.wal`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-grafana-tempo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-grafana-tempo/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

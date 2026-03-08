@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-style
 description: "Enforces avoidance of inline HTML style attribute when writing HTML/CSS code. Use when user asks to 'style an element', 'add CSS', 'create HTML', 'build a page', or 'fix styling'. Warns against inline styles due to high specificity, recommends external/internal stylesheets instead. Make sure to use this skill whenever generating HTML with visual styling. Not for CSS architecture, preprocessors, or CSS-in-JS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags:
+    - css
+    - html
+    - inline-style
+    - specificity
+    - best-practices
 ---
 
 # Atributo Style (Inline CSS)
@@ -76,6 +87,15 @@ description: "Enforces avoidance of inline HTML style attribute when writing HTM
 | `<div style="display: flex">` | `<div class="container">` + CSS externo |
 | `<p style="color: red">` | `<p class="error-text">` + CSS externo |
 | `<h1 style="font-size: 2rem">` | `<h1 class="heading-lg">` + CSS externo |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS externo nao sobrescreve estilo do elemento | Inline style tem especificidade altissima | Remova o `style=""` do HTML e use classe CSS |
+| Estilo aplica em um elemento mas nao em outro | Um tem inline style, outro nao | Padronize removendo todos os inline styles |
+| Email HTML com estilos quebrados | Client de email nao suporta `<style>` | Para emails, inline style e aceitavel (excecao a regra) |
+| Dificuldade de manter estilos consistentes | Estilos espalhados em atributos style individuais | Centralize em arquivo CSS com classes reutilizaveis |
 
 ## Deep reference library
 

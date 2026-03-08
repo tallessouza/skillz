@@ -1,21 +1,27 @@
 ---
 name: rs-clean-code-causa-vs-efeito
-description: "Enforces cause-over-effect naming for boolean variables in any codebase. Use when user asks to 'create a state variable', 'add a boolean flag', 'disable a button', 'show loading state', or any UI state management. Applies rule: name booleans by WHY something happens (isFormSubmitting) not WHAT happens in the UI (isButtonDisabled). Make sure to use this skill whenever generating boolean variables or state flags, even if the user doesn't mention naming. Not for general variable naming, function naming, or non-boolean variables."
+description: "Enforces cause-over-effect naming for boolean variables and state flags in JavaScript/TypeScript code. Use when user asks to 'create a state variable', 'add a boolean flag', 'disable a button conditionally', 'show loading state', or 'manage UI state'. Applies the Cause-Root Pattern: name booleans by WHY something happens (isFormSubmitting) not WHAT changes in the UI (isButtonDisabled), because the cause is reusable across multiple UI effects. Make sure to use this skill whenever generating boolean variables, state flags, or conditional UI logic. Not for general variable naming (use rs-clean-code-nomenclatura-de-variaveis), function naming, or non-boolean variables."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: premissas-de-escrita
+  tags: [naming, booleans, state, react, clean-code, cause-effect]
 ---
 
 # Causa vs Efeito
 
-> Nomeie variaveis booleanas pela CAUSA (o que esta acontecendo) e nunca pelo EFEITO (a consequencia na interface).
+> Nomeie variaveis booleanas pela CAUSA (o que esta acontecendo no sistema) e nunca pelo EFEITO (a consequencia visual na interface).
 
 ## Rules
 
-1. **Nomeie pela causa, nao pelo efeito** — `isFormSubmitting` nao `isButtonDisabled`, porque a causa e reutilizavel em multiplos contextos, o efeito e especifico de um unico elemento
-2. **Teste de reutilizacao** — se a variavel so faz sentido em um unico lugar da UI, provavelmente voce nomeou pelo efeito
-3. **Derive efeitos da causa** — crie variaveis auxiliares derivadas se necessario, mas a variavel-raiz sempre representa a causa
+1. **Nomeie pela causa, nao pelo efeito** — `isFormSubmitting` nao `isButtonDisabled`, porque a causa e reutilizavel em multiplos contextos enquanto o efeito e especifico de um unico elemento UI
+2. **Aplique o teste de reutilizacao** — se a variavel so faz sentido em um unico lugar da UI, provavelmente voce nomeou pelo efeito, porque o nome deveria descrever o estado do sistema
+3. **Derive efeitos da causa** — crie variaveis auxiliares derivadas quando necessario (`const shouldDisableButton = isFormSubmitting`), mas a variavel-raiz sempre representa a causa, porque isso mantem uma unica fonte de verdade
 
 ## How to write
 
-### Booleano pela causa
+### Cause-Root Pattern
 
 ```typescript
 // A variavel descreve O QUE ESTA ACONTECENDO no sistema
@@ -26,7 +32,7 @@ const shouldDisableButton = isFormSubmitting
 const buttonLabel = isFormSubmitting ? 'Carregando...' : 'Enviar'
 ```
 
-### Uso em componente
+### Uso em componente React
 
 ```tsx
 function Button() {
@@ -34,7 +40,6 @@ function Button() {
 
   return (
     <button disabled={isFormSubmitting}>
-      <span>icon</span>
       {isFormSubmitting ? 'Carregando...' : 'Enviar'}
     </button>
   )
@@ -82,14 +87,19 @@ const isFormSubmitting = true
 | `isSpinnerShowing` | `isDataLoading` |
 | `isOverlayActive` | `isFileUploading` |
 
+## Troubleshooting
+
+### Booleano parece correto mas acopla ao componente
+**Symptom:** Variavel `isModalOpen` funciona no componente atual mas nao faz sentido em outro lugar
+**Cause:** O nome descreve o efeito visual (modal aberto) em vez da razao de negocio
+**Fix:** Pergunte "o que CAUSA o modal abrir?" e nomeie por isso: `hasUnsavedChanges`, `isSessionExpired`
+
+### Multiplos efeitos do mesmo booleano com nomes inconsistentes
+**Symptom:** `isButtonDisabled` controla disabled do botao E texto do botao E spinner — leitura confusa
+**Cause:** O booleano foi nomeado pelo primeiro efeito percebido, nao pela causa raiz
+**Fix:** Renomeie para a causa (`isFormSubmitting`) e derive efeitos explicitamente: `const shouldDisableButton = isFormSubmitting`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/clean-code/rs-clean-code-causa-vs-efeito/references/deep-explanation.md)
-- [Code examples](../../../data/skills/clean-code/rs-clean-code-causa-vs-efeito/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/clean-code/rs-clean-code-causa-vs-efeito/references/deep-explanation.md) — Raciocinio completo do instrutor sobre a analogia do formulario e reutilizacao
+- [code-examples.md](../../../data/skills/clean-code/rs-clean-code-causa-vs-efeito/references/code-examples.md) — Exemplos expandidos: modal, input, loading state, padrao de derivacao

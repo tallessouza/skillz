@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-roles
 description: "Applies AWS IAM Role configuration for GitHub Actions CI/CD pipelines using Terraform. Use when user asks to 'create IAM role', 'connect GitHub to AWS', 'setup OIDC role', 'configure CI/CD permissions', or 'assume role for pipeline'. Follows Web Identity federation pattern with OIDC provider. Make sure to use this skill whenever creating IAM roles for GitHub Actions or configuring trust relationships between Git and AWS. Not for EC2 instance roles, Lambda execution roles, or cross-account roles without OIDC."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: aws-iam-ci-cd
+  tags: [aws, iam, oidc, github-actions, terraform, ci-cd, web-identity]
 ---
 
 # Configurando IAM Roles para CI/CD
@@ -106,14 +112,14 @@ Organizacao e obrigatoria. Repositorio e branch sao opcionais — omitir libera 
 | Colocar ARN da Role hardcoded no workflow | Usar GitHub Secrets |
 | Assumir que Role com trust policy ja tem permissoes | Adicionar policies de acesso aos recursos necessarios |
 
+## Troubleshooting
+
+### Pipeline da erro de permissao ao assumir role
+**Symptom:** Erro `sts:AssumeRoleWithWebIdentity` no step de configure-aws-credentials
+**Cause:** Branch no Condition da trust policy nao bate com a branch do workflow em execucao
+**Fix:** Verifique que o campo `sub` no Condition corresponde ao repo e branch corretos: `repo:ORG/REPO:ref:refs/heads/BRANCH`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-roles/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-roles/references/code-examples.md)

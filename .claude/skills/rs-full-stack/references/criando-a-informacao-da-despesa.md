@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-info-despesa
 description: "Enforces cascading DOM element creation pattern when building UI components with JavaScript. Use when user asks to 'create elements', 'build a list item', 'add DOM elements', 'create expense item', or 'manipulate the DOM'. Applies nested createElement + append pattern with proper class assignment and textContent binding. Make sure to use this skill whenever generating vanilla JS DOM manipulation code. Not for React, Vue, or framework-based component creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, append, classList, textContent]
 ---
 
 # Criacao de Elementos DOM em Cascata
@@ -94,13 +100,15 @@ expenseList.append(expenseItem)
 | `document.createElement("Strong")` | `document.createElement("strong")` (minusculo) |
 | Inserir no DOM antes de configurar filhos | Configurar tudo, depois inserir no pai |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Elemento criado mas nao aparece na pagina | Esqueceu de fazer append no elemento pai | Verifique que o elemento foi adicionado ao DOM com `parent.append(child)` |
+| Classe CSS nao aplica estilo | Nome da classe no JS nao bate com o CSS | Compare o nome passado em `classList.add()` com o seletor no CSS |
+| `textContent` mostra `undefined` | Propriedade do objeto acessada com nome errado | Verifique os nomes das propriedades do objeto fonte (ex: `newExpense.expense`) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o padrao cascata e por que montar de dentro pra fora
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-informacao-da-despesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-informacao-da-despesa/references/code-examples.md)

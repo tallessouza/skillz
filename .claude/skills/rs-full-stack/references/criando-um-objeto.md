@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-um-objeto
 description: "Enforces correct JavaScript object creation patterns including empty objects, nested properties, composed properties, and methods. Use when user asks to 'create an object', 'define properties', 'add methods to object', 'nested object', or any JS object literal task. Applies rules: two-colon assignment inside objects, snake_case for object keys, camelCase for variables, nested objects for composed data. Make sure to use this skill whenever generating JavaScript objects or refactoring object structures. Not for class-based OOP, prototypes, or destructuring."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, objects, properties, methods, nested-objects]
 ---
 
 # Criando Objetos em JavaScript
@@ -103,13 +109,16 @@ const user = {
 | `street, city, state` (flat no objeto raiz) | `address: { street, city, state }` |
 | `firstName` (propriedade de objeto) | `first_name` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `SyntaxError: Unexpected token =` dentro de objeto | Usando `=` ao inves de `:` para atribuicao | Use `:` para separar chave e valor: `email: "x@y.com"` |
+| `typeof obj` retorna `"object"` para arrays | Arrays tambem sao objetos em JS | Use `Array.isArray()` para distinguir |
+| Propriedade aninhada retorna `undefined` | Acessando nivel errado do objeto | Verifique a cadeia: `user.address.city` nao `user.city` |
+| Metodo do objeto nao acessa `this` | Arrow function nao tem `this` proprio | Use `function()` ao inves de `() =>` para metodos que precisam de `this` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre objetos, analogias e convencoes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto/references/code-examples.md)

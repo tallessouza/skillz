@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-gerando-token-jwt
 description: "Applies RSA256 JWT token generation pattern when building authentication in NestJS applications. Use when user asks to 'implement JWT auth', 'generate token', 'setup authentication', 'configure JWT module', or 'create login endpoint' in NestJS. Enforces RS256 with PEM key pairs stored as base64 in env vars, Buffer.from decode, and JwtService injection. Make sure to use this skill whenever implementing JWT authentication in NestJS projects. Not for session-based auth, OAuth flows, or frontend token handling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: jwt-rs256
+  tags: [jwt, rs256, authentication, nestjs, openssl, pem, security]
 ---
 
 # Gerando Token JWT com RS256 no NestJS
@@ -133,14 +139,14 @@ JwtModule.registerAsync({
 | Registrar JwtModule sem `global: true` | `global: true` para reutilizar em multiplos controllers |
 | Gerar chaves via ferramentas online em producao | OpenSSL local para chaves de producao |
 
+## Troubleshooting
+
+### JwtModule falha com erro de chave invalida
+**Symptom:** Erro secretOrPrivateKey must be an asymmetric key ao tentar gerar token
+**Cause:** A string base64 da chave PEM foi passada diretamente sem decodificar com Buffer.from
+**Fix:** Decodifique com Buffer.from(privateKey, 'base64') antes de passar ao JwtModule
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-gerando-token-jwt-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-gerando-token-jwt-1/references/code-examples.md)

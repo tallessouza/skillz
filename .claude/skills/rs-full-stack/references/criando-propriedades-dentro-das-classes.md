@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-propriedades-classes
 description: "Enforces correct use of 'this' keyword and class properties when writing JavaScript/TypeScript classes. Use when user asks to 'create a class', 'define properties', 'use this keyword', 'write a constructor', or any OOP code generation task. Applies rules: always assign constructor params via this, use this to reference class context, create separate instances for separate data. Make sure to use this skill whenever generating class-based code. Not for functional programming, React hooks, or module-level code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-oop
+  tags: [javascript, classes, this-keyword, constructor, oop]
 ---
 
 # Propriedades em Classes JavaScript
@@ -84,13 +90,16 @@ console.log(product.name) // "Teclado"
 | Propriedade criada fora do construtor | Declare todas as propriedades no construtor |
 | `product = Product("Teclado")` (sem new) | `product = new Product("Teclado")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `product.name` retorna `undefined` | Parametro nao atribuido via `this` no construtor | Adicione `this.name = name` dentro do constructor |
+| `TypeError: Product is not a constructor` | Falta `new` na instanciacao | Use `new Product("nome")` em vez de `Product("nome")` |
+| Duas instancias compartilham o mesmo valor | Reutilizando a mesma variavel em vez de criar nova instancia | Crie instancias separadas com `new` para cada objeto |
+| Propriedade existe dentro do construtor mas nao fora | Atribuida como variavel local sem `this` | Troque `let name = name` por `this.name = name` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre this, contexto e instancias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-propriedades-dentro-das-classes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-propriedades-dentro-das-classes/references/code-examples.md)

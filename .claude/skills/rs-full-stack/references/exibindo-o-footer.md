@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exibindo-o-footer
 description: "Applies DOM class toggling patterns to show/hide elements dynamically with classList.add/remove. Use when user asks to 'show an element', 'toggle visibility', 'hide a section', 'display results', or 'manipulate CSS classes via JavaScript'. Enforces try-catch around DOM manipulation with graceful show/hide on success/error. Make sure to use this skill whenever toggling element visibility with JavaScript classList API. Not for CSS-only solutions, animations, or framework-specific conditional rendering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, classList, visibility, toggle, try-catch]
 ---
 
 # Exibindo Elementos Dinamicamente com classList
@@ -94,13 +100,16 @@ form.onsubmit = (event) => {
 | Manipulacao DOM sem try-catch | Envolva em try-catch com fallback visual |
 | `footer.className = "show-result"` | `footer.classList.add("show-result")` (preserva outras classes) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elemento nao aparece apos `classList.add` | Classe CSS nao tem regra de visibilidade definida | Verificar se o CSS tem `display: block` ou similar para a classe adicionada |
+| `classList.add` nao funciona, erro no console | Elemento e `null` (seletor errado) | Verificar seletor: usar `"main footer"` para especificidade |
+| Elemento pisca e some | Erro no processamento dispara o catch que remove a classe | Verificar a logica dentro do try antes do classList.add |
+| Classe anterior removida ao adicionar nova | Uso de `className =` em vez de `classList.add` | Substituir por `classList.add()` que preserva classes existentes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre classList vs style direto, analogias do instrutor e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-o-footer/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-o-footer/references/code-examples.md)

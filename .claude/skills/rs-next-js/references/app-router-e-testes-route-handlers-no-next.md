@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-route-handlers
 description: "Applies Next.js Route Handler patterns when creating API routes inside the app directory. Use when user asks to 'create an API route', 'add a route handler', 'build a BFF endpoint', 'return JSON from Next.js', or 'add server-side API to Next app'. Enforces route.ts conventions, Response.json() usage, and BFF-over-full-API philosophy. Make sure to use this skill whenever generating Next.js API routes or discussing backend-for-frontend patterns. Not for Express/Fastify standalone APIs, middleware, or Server Actions."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, route-handlers, api-routes, bff, response-json, rest]
 ---
 
 # Route Handlers no Next.js
@@ -90,14 +97,19 @@ export async function GET() {
 | Colocar `route.ts` na raiz do `app/` | Criar dentro de `app/api/` por convencao |
 | Exportar funcao com nome customizado | Exportar com nome do metodo HTTP: `GET`, `POST`, etc |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-route-handlers-no-next/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-route-handlers-no-next/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-route-handlers-no-next/references/deep-explanation.md) — O instrutor explica que a funcionalidade de renderizacao server-side do Next.js implica que toda apl
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-route-handlers-no-next/references/code-examples.md) — app/

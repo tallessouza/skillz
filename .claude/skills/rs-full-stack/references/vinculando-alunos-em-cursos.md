@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-vinculando-alunos-cursos
 description: "Applies many-to-many relationship patterns when writing SQL inserts for junction tables. Use when user asks to 'insert into junction table', 'link two entities', 'many-to-many relationship', 'vincular registros', or 'matricular aluno em curso'. Enforces foreign key validation, auto-increment awareness, and proper insert syntax for associative tables. Make sure to use this skill whenever creating or populating junction/pivot tables in SQL. Not for SELECT queries, schema creation (CREATE TABLE), or one-to-many relationships."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-database
+  tags: [sql, many-to-many, junction-table, foreign-key, insert]
 ---
 
 # Vinculando Registros em Tabelas Associativas (Many-to-Many)
@@ -86,6 +92,15 @@ VALUES (1, 2);
 | Inserir sem verificar se os IDs existem | SELECT nas tabelas de origem antes do INSERT |
 | Assumir que qualquer ID e valido | Testar com ID inexistente para confirmar a constraint |
 | Colocar dados de dominio na junction table | Junction table so tem FKs (e opcionalmente timestamps) |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `FOREIGN KEY constraint failed` | ID referenciado nao existe na tabela de origem | Execute SELECT na tabela de origem para confirmar que o ID existe |
+| `NOT NULL constraint failed: id` | Incluiu coluna `id` no INSERT com valor NULL | Omita a coluna `id` — auto-incremento gera automaticamente |
+| Registro duplicado na junction table | Inseriu o mesmo par (FK1, FK2) duas vezes | Adicione UNIQUE constraint no par de FKs ou verifique antes de inserir |
+| INSERT nao retorna erro mas dados nao aparecem | Transacao nao commitada | Verifique se o banco esta em modo auto-commit ou execute COMMIT |
 
 ## Deep reference library
 

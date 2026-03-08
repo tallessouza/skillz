@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-gestao-dependencias
 description: "Enforces dependency security management practices when setting up projects, adding packages, or auditing vulnerabilities. Use when user asks to 'add a dependency', 'check vulnerabilities', 'audit packages', 'setup dependency tracking', or 'secure dependencies'. Applies SBOM generation, Dependency Track setup, language-specific audit tools, and continuous monitoring patterns. Make sure to use this skill whenever installing packages or reviewing project security posture. Not for static code analysis, authentication, or infrastructure hardening."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, dependencies, npm-audit, sbom]
 ---
 
 # Gestao de Dependencias Seguras
@@ -103,14 +109,14 @@ pip-audit
 | Confiar que "hoje esta seguro" | Assumir que vulnerabilidades serao descobertas amanha |
 | Ter so ferramenta local OU so centralizada | Ter ambas: local para feedback rapido, centralizada para monitoramento continuo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-em-gestao-de-dependencias/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-em-gestao-de-dependencias/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-em-gestao-de-dependencias/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-em-gestao-de-dependencias/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-status-ticket
 description: "Applies pattern of reusing existing database methods to update entity status in Node.js APIs. Use when user asks to 'update status', 'close a ticket', 'change record state', 'patch an entity', or 'reuse existing db methods'. Enforces minimal-code approach: leverage existing update methods instead of creating new ones. Make sure to use this skill whenever implementing status transitions or partial updates in REST APIs. Not for creating new CRUD methods, database schema design, or frontend status UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, rest-api, status-update, code-reuse, partial-update]
 ---
 
 # Atualizando Status Reutilizando Metodos Existentes
@@ -84,8 +90,11 @@ database.update('tickets', id, { status: 'closed' })
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre reutilizacao de metodos e design de APIs REST
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0419-atualizando-o-status-do-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0419-atualizando-o-status-do-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Status nao muda no banco | Metodo `update` nao esta sendo chamado corretamente | Verifique se os parametros sao `(table, id, data)` na ordem correta |
+| Criou metodo especifico desnecessario | Nao verificou se `update` generico resolve | Use `database.update('tickets', id, { status: 'closed' })` |
+| Response retorna corpo quando nao deveria | Usando `response.json()` em vez de `response.end()` | Use `response.writeHead(204).end()` para respostas sem corpo |
+| Typo no valor do status | Status como string livre | Considere usar constantes: `const STATUS = { OPEN: 'open', CLOSED: 'closed' }` |

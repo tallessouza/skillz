@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-explorando-parametros-api
 description: "Applies correct OpenAI API parameter configuration when writing chat completion calls. Use when user asks to 'call OpenAI API', 'configure GPT parameters', 'set temperature', 'create chat completion', 'limit tokens', or 'set up messages array'. Enforces proper message roles (user/developer/assistant), max_completion_tokens usage, temperature vs topP selection, and response extraction patterns. Make sure to use this skill whenever writing OpenAI chat.completions.create() calls. Not for streaming, function calling, embeddings, or image generation APIs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: fundamentos
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Parametros da API OpenAI — Chat Completions
@@ -102,14 +108,14 @@ console.log(completion.choices[0].message.content)
 | `console.log(completion)` | `console.log(completion.choices[0].message.content)` |
 | Historico do GPT com `role: "user"` | Historico do GPT com `role: "assistant"` |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-explorando-parametros-da-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-explorando-parametros-da-api/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-delete-6
 description: "Applies Prisma delete pattern when writing record deletion endpoints in Node.js APIs. Use when user asks to 'delete a record', 'remove from database', 'create delete endpoint', or 'implement CRUD delete'. Enforces ID extraction from route params and prisma.model.delete() with where clause. Make sure to use this skill whenever implementing delete operations with Prisma ORM. Not for soft-delete logic, bulk deletion, or cascade configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-database
+  tags: [Prisma, DELETE, CRUD, REST, route-params, ORM]
 ---
 
 # Prisma Delete — Remover Registros
@@ -73,13 +79,16 @@ app.delete('/questions/:id', async (request, reply) => {
 | Body na requisicao DELETE | ID apenas na URL via params |
 | `request.body.id` para delete | `request.params.id` (padrao REST) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Record to delete does not exist` | ID nao encontrado no banco | Trate o erro no error handler global ou verifique antes |
+| Foreign key constraint violation | Registro tem dependencias em outras tabelas | Configure `onDelete: Cascade` no schema Prisma |
+| `request.params.id` retorna `undefined` | Rota sem parametro dinamico `/:id` | Adicione `:id` no path da rota |
+| Delete retorna 200 mas registro ainda existe | Await faltando no `prisma.delete()` | Adicione `await` antes da chamada |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre delete no Prisma e fluxo REST
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-delete-6/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-delete-6/references/code-examples.md)

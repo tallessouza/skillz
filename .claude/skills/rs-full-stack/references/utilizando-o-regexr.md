@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-o-regexr
 description: "Applies regex testing workflow using regexr.com when writing or debugging regular expressions in JavaScript. Use when user asks to 'test a regex', 'validate a pattern', 'extract text with regex', 'debug regular expression', or 'match characters'. Covers flags (g), character classes (\\D), quantifiers (+), and step-by-step debugging. Make sure to use this skill whenever building or troubleshooting regex patterns. Not for string manipulation without regex or general JavaScript syntax questions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, regex, regular-expressions, regexr, pattern-matching]
 ---
 
 # Utilizando o RegExr para Testar Expressoes Regulares
@@ -82,6 +88,14 @@ console.log(resultado) // ["abc", "def"] — todas as sequencias de texto
 | Tentar decorar todas as combinacoes de regex | Pesquise quando precisar, entenda a logica |
 | Usar `/\D/` esperando pegar todas as letras | Use `/\D/g` com flag global |
 | Usar `/\D/g` esperando sequencias agrupadas | Use `/\D+/g` com quantificador |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Regex só encontra primeira ocorrência | Faltou flag `g` (global) | Adicione `g` após a barra final: `/\D/g` |
+| Caracteres aparecem separados em vez de agrupados | Faltou quantificador `+` | Use `\D+` para agrupar sequências consecutivas |
+| Regex funciona no regexr mas não no código | Diferença de sintaxe entre regexr e JavaScript | Verifique se escapou barras invertidas corretamente no JS: `\\D` em strings |
 
 ## Deep reference library
 

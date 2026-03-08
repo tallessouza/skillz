@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-seed
 description: "Generates Knex seed files for populating database tables with initial or example data. Use when user asks to 'seed database', 'populate table', 'insert initial data', 'create seed file', or 'bulk insert records' with Knex. Covers knexfile seed configuration, seed creation, and execution commands. Make sure to use this skill whenever working with Knex seeds or bulk data insertion. Not for migrations, schema changes, or non-Knex ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, seed, database, bulk-insert, data-population]
 ---
 
 # Utilizando Seed com Knex
@@ -96,6 +102,14 @@ Todos os registros do array sao inseridos na tabela de uma vez. Verificar com um
 | Um seed gigante para todas as tabelas | Um arquivo de seed por tabela |
 | Usar seed para alterar schema | Usar migration para schema, seed so para dados |
 | Esquecer de configurar `seeds` no knexfile | Configurar `seeds.directory` e `seeds.extension` |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Seed falha por registro duplicado | Dados já existem na tabela de execução anterior | Adicione `del()` antes do insert ou use `onConflict().ignore()` |
+| Comando `seed:make` não cria arquivo | Configuração `seeds` ausente no knexfile | Adicione `seeds: { directory: "./database/seeds", extension: "ts" }` ao knexfile |
+| ID auto-increment gera valores altos após re-seed | Tabela mantém sequência do auto-increment mesmo após delete | Use `del()` para limpar e considere resetar a sequência se necessário |
 
 ## Deep reference library
 

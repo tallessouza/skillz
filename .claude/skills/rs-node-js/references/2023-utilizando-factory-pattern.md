@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-factory-pattern
 description: "Applies Factory Pattern to centralize use-case instantiation with their dependencies in Node.js applications. Use when user asks to 'create a use case', 'organize dependencies', 'instantiate service', 'refactor controller', or 'add factory'. Ensures all use-case creation goes through factory functions prefixed with 'make', eliminating scattered dependency wiring across controllers. Make sure to use this skill whenever creating or refactoring use cases in Node.js/TypeScript projects. Not for dependency injection containers, IoC frameworks, or frontend component factories."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: factory-pattern
+  tags: [factory, use-case, dependency-injection, solid, clean-architecture, make]
 ---
 
 # Factory Pattern para Use Cases
@@ -86,14 +92,14 @@ export async function register(request, reply) {
 | Factory que recebe parametros de request | Factory recebe no maximo config de ambiente |
 | Dependencias duplicadas em 3 controllers | Uma factory reutilizada nos 3 |
 
+## Troubleshooting
+
+### Use case recebe dependencia undefined no controller
+**Symptom:** `TypeError: Cannot read properties of undefined` ao chamar metodo do repositorio dentro do use case
+**Cause:** O controller esta instanciando o use case diretamente sem passar as dependencias, em vez de usar a factory
+**Fix:** Substitua `new RegisterUseCase()` por `makeRegisterUseCase()` que instancia o repositorio internamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-utilizando-factory-pattern/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-utilizando-factory-pattern/references/code-examples.md)

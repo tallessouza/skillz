@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tipos-de-dados-2
 description: "Enforces correct SQLite data type selection when designing database schemas or writing CREATE TABLE statements. Use when user asks to 'create a table', 'define a schema', 'choose column types', or 'design a database' with SQLite. Applies rules: INTEGER for whole numbers and timestamps, REAL for decimals and money, TEXT for strings, BLOB for binary files, NULL for absent values. Make sure to use this skill whenever generating SQLite DDL or reviewing schema designs. Not for PostgreSQL, MySQL, or other database-specific type systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: banco-de-dados-sqlite
+  tags: [sqlite, database, tipos, schema, ddl, integer, real, text, blob]
 ---
 
 # Tipos de Dados no SQLite
@@ -85,6 +91,15 @@ CREATE TABLE students (
 | `created_at TEXT` para datas | `created_at INTEGER` (timestamp) |
 | `grade INTEGER` para notas com decimal | `grade REAL` |
 | `description BLOB` para textos longos | `description TEXT` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Valor monetario perde casas decimais | Usando INTEGER em vez de REAL para precos | Troque para `price REAL` na definicao da coluna |
+| Data armazenada como string ilegivel | Usando TEXT para datas em vez de timestamp | Use `INTEGER` com Unix timestamp para datas |
+| ID nao auto-incrementa | Faltando `PRIMARY KEY` na coluna INTEGER | Use `id INTEGER PRIMARY KEY` para auto-incremento |
+| Arquivo binario corrompido ao recuperar | Tipo da coluna incorreto para dados binarios | Use `BLOB` para armazenar arquivos e imagens |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-cache-e-memoizacao
 description: "Enforces correct cache and memoization strategies when writing Next.js App Router data fetching code. Use when user asks to 'fetch data', 'make API calls', 'configure cache', 'use revalidate', 'optimize requests', or 'avoid duplicate fetches' in Next.js. Applies rules: distinguish memoization (React, same page) from cache (Next.js, cross-page), use force-cache/no-store/revalidate correctly per use case. Make sure to use this skill whenever writing fetch calls in Next.js Server Components. Not for client-side fetching, React Query, SWR, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [cache, memoization, revalidate, force-cache, no-store, data-fetching]
 ---
 
 # Cache & Memoization no Next.js App Router
@@ -92,14 +98,19 @@ export default async function Home() {
 | `revalidate: 1` achando que e "tempo real" | `cache: 'no-store'` para tempo real de verdade |
 | Memoization manual com Map/cache em Server Components | Confie na deduplicacao automatica do React |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-cache-e-memoizacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-cache-e-memoizacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-cache-e-memoizacao/references/deep-explanation.md) — O instrutor Diego faz uma distincao fundamental:
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-cache-e-memoizacao/references/code-examples.md) — // app/(store)/(home)/page.tsx

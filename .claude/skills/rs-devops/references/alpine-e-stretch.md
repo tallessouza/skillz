@@ -1,6 +1,12 @@
 ---
 name: rs-devops-alpine-e-stretch
 description: "Enforces container image optimization by selecting the leanest base image (Alpine over Debian/Slim). Use when user asks to 'create a Dockerfile', 'optimize container', 'reduce image size', 'choose base image', or 'build Docker image'. Applies rules: Alpine over Slim over full Debian, minimal packages, no unnecessary OS tools, container runs only the application binary. Make sure to use this skill whenever writing or reviewing Dockerfiles. Not for application code, CI/CD pipelines, or Docker Compose orchestration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-images
+  tags: [docker]
 ---
 
 # Otimizacao de Imagens Docker — Alpine vs Debian
@@ -92,14 +98,14 @@ CMD ["node", "dist/main.js"]
 | **Stretch/Buster/Jessie/Bookworm** | Codinomes de releases do Debian (nao sao otimizacoes) |
 | **Bullseye** | Release atual do Debian |
 
+## Troubleshooting
+
+### Aplicacao funciona localmente mas falha no container Alpine
+**Symptom:** Erro de segfault ou library not found ao rodar aplicacao no Alpine
+**Cause:** Dependencias nativas compiladas com glibc sao incompativeis com musl libc do Alpine
+**Fix:** Use `node:18-slim` como fallback ou instale pacotes necessarios com `apk add` no Dockerfile
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-alpine-e-stretch/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-alpine-e-stretch/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-alpine-e-stretch/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-alpine-e-stretch/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

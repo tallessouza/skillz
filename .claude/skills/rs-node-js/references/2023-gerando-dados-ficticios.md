@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-gerando-dados-ficticios
 description: "Enforces use of @faker-js/faker for generating realistic test data in factory functions. Use when user asks to 'create a factory', 'write test helpers', 'generate test data', 'make fixtures', or 'setup test entities'. Applies rules: never use hardcoded repetitive data like 'example' in factories, use faker.lorem for text fields, accept optional id and override parameters. Make sure to use this skill whenever creating or editing test factories for domain entities. Not for production seed data, database migrations, or mock API responses."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: test-factories
+  tags: [faker, testing, factories, fixtures, typescript, ddd]
 ---
 
 # Gerando Dados Fictícios com Faker
@@ -95,14 +101,14 @@ export function makeQuestion(
 | Factory sem id opcional | Segundo parâmetro `id?: UniqueEntityId` |
 | `faker` em dependencies | `faker` em devDependencies |
 
+## Troubleshooting
+
+### Testes falham intermitentemente com dados gerados pelo faker
+**Symptom:** Um teste passa isolado mas falha quando executado junto com outros
+**Cause:** O teste depende de um valor especifico que o faker gera aleatoriamente a cada execucao
+**Fix:** Use o parametro override para fixar o campo relevante no teste: makeQuestion({ title: 'Titulo Especifico' })
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-gerando-dados-ficticios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-gerando-dados-ficticios/references/code-examples.md)

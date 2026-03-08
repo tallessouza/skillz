@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-enums-2
 description: "Enforces TypeScript enum usage to eliminate magic numbers when writing code with numeric constants. Use when user asks to 'create user roles', 'define status codes', 'add profile types', 'replace magic numbers', or any task involving numeric identifiers mapped to categories. Applies named enums instead of raw numbers for readability. Make sure to use this skill whenever code contains numeric literals representing categories, states, or roles. Not for string literal unions, runtime validation, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-enums
+  tags: [typescript, enums, magic-numbers, types, constants, readability]
 ---
 
 # Enums no TypeScript
@@ -80,13 +86,15 @@ if (profile === Profile.Seller) { /* vendedor */ }
 | `enum Types { A, B, C }` (sem valores, nome generico) | `enum Profile { Admin = 1, Client = 2, Seller = 3 }` |
 | `profile: any` ao receber valor de enum | `profile: Profile` ou `profile: number` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Valor do enum nao corresponde ao banco de dados | Valores implicitos (0, 1, 2) em vez de explicitos | Atribuir valores explicitos que correspondam ao banco: `Admin = 1` |
+| Comparacao com enum sempre falsa | Comparando string com numero ou vice-versa | Garantir que ambos os lados sao do mesmo tipo |
+| Enum nao acessivel em outro arquivo | Faltou exportar o enum | Adicionar `export` antes da declaracao do enum |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre numeros magicos, analogias e quando NAO usar enum
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-enums-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-enums-2/references/code-examples.md)

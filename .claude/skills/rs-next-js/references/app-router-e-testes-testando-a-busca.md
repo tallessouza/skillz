@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-testando-a-busca
 description: "Applies Cypress E2E search testing patterns when writing tests for search functionality in Next.js applications. Use when user asks to 'test search', 'write cypress tests', 'test redirect', 'e2e test form submission', or 'test navigation flow'. Covers beforeEach setup, baseUrl config, form interaction, location assertions, and suppressing Next.js redirect exceptions. Make sure to use this skill whenever writing Cypress tests for search or redirect flows. Not for unit tests, API tests, or non-Cypress testing frameworks."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, cypress, e2e-testing, search-test, baseUrl, redirect-testing]
 ---
 
 # Testando Busca com Cypress em Next.js
@@ -136,14 +143,19 @@ describe('search products', () => {
 | `cy.get('a').first().should('exist')` | `cy.get('a[href^="/product"]').should('exist')` com seletor especifico |
 | beforeEach com visit quando testes acessam rotas diferentes | cy.visit dentro de cada it() |
 
+## Troubleshooting
+
+### Teste Cypress falha ao encontrar elemento
+**Symptom:** `cy.get()` retorna timeout — elemento nao encontrado
+**Cause:** Elemento ainda nao renderizou (loading state), ou seletor incorreto
+**Fix:** Usar `cy.contains()` para texto visivel ou `data-testid` para seletores estaveis. Adicionar assertions que esperam o elemento aparecer
+
+### Testes passam localmente mas falham no CI
+**Symptom:** Suite verde localmente, vermelha no GitHub Actions
+**Cause:** Dependencias de ambiente (banco, API), timeouts curtos, ou falta de build antes do teste
+**Fix:** Garantir que `npm run build` roda antes dos testes E2E. Configurar variaveis de ambiente no CI. Aumentar timeouts para ambientes mais lentos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-testando-a-busca/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-testando-a-busca/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-testando-a-busca/references/deep-explanation.md) — O instrutor explica que enquanto os testes rodam na maquina local, a URL sera `localhost:3000`. Mas 
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-testando-a-busca/references/code-examples.md) — import { defineConfig } from 'cypress'

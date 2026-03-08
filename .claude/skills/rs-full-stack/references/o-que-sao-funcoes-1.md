@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-sao-funcoes-1
 description: "Applies JavaScript function fundamentals when writing or explaining functions. Use when user asks to 'create a function', 'write a function', 'explain functions', 'organize code', or 'refactor into functions'. Enforces single responsibility, descriptive naming, and reusability principles. Make sure to use this skill whenever creating new functions or refactoring code into functions. Not for async patterns, closures, or advanced function composition."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-javascript
+  tags: [javascript, funcoes, reutilizacao, responsabilidade-unica, beginner]
 ---
 
 # O que são Funções
@@ -77,6 +83,15 @@ greetUser('Ana')     // "Olá, Ana!"
 
 - Esta skill cobre o conceito fundamental de funções, não padrões avançados como closures, higher-order functions ou composição funcional
 - Para convenções de nomenclatura detalhadas, consultar skill específica de nomenclatura
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao retorna `undefined` | Esqueceu a instrucao `return` | Adicione `return` com o valor que deseja retornar |
+| Funcao nao executa | Definiu mas nao chamou a funcao | Adicione `nomeFuncao()` com parenteses para invocar |
+| Parametro chega como `undefined` | Argumento nao foi passado na chamada | Verifique se esta passando o argumento correto na invocacao |
+| Funcao faz muitas coisas | Violacao do principio de responsabilidade unica | Divida em funcoes menores, cada uma com uma tarefa |
 
 ## Deep reference library
 

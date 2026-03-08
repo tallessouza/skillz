@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-let
 description: "Enforces correct usage of let for variable declarations in JavaScript. Use when user asks to 'declare a variable', 'create a variable', 'write JavaScript code', or any JS code generation task. Applies rules: prefer let over var, never redeclare with same name, reassign instead of redeclare. Make sure to use this skill whenever generating JavaScript variable declarations. Not for const usage, TypeScript type declarations, or advanced scoping discussions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, variables, let, var, declaration, scope]
 ---
 
 # Declaracao de Variaveis com Let
@@ -73,13 +79,15 @@ console.log(user); // "João"
 | `let user = "A"; let user = "B";` | `let user = "A"; user = "B";` |
 | Redeclarar para "atualizar" | Reatribuir com `=` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `SyntaxError: Identifier has already been declared` | Tentou redeclarar variável com `let` no mesmo escopo | Use reatribuição (`x = novoValor`) em vez de redeclaração (`let x = novoValor`) |
+| `ReferenceError: x is not defined` | Variável declarada em escopo diferente (bloco `if`, `for`) | Declare a variável no escopo onde será usada ou em escopo pai |
+| Valor da variável não muda | Usando `const` quando deveria usar `let` | Troque `const` por `let` se o valor precisa ser reatribuído |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Modelo mental de memoria, analogia do armario, diferenca var vs let
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-let/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-let/references/code-examples.md)

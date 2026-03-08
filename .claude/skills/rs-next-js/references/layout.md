@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-layout
 description: "Applies shared layout pattern in Next.js Pages Router when creating page structures with header, main content, and footer. Use when user asks to 'create a layout', 'add header and footer', 'share components between pages', 'wrap pages in layout', or 'structure Next.js app'. Ensures layout goes in _app.tsx with children prop pattern. Make sure to use this skill whenever building Next.js Pages Router applications that need shared UI. Not for App Router layouts, CSS-only styling, or individual component creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: layout
+  tags: [layout, pages-router, _app, children-prop, header, footer, next-js, barrel-export]
 ---
 
 # Layout Pattern no Next.js Pages Router
@@ -108,14 +114,19 @@ export default function Home() {
 | `import { Layout } from './Layout/Layout'` | `import { Layout } from './Layout'` (barrel) |
 | Duplicar header no blog e na home | Um Layout compartilhado via `_app.tsx` |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-layout/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-layout/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-layout/references/deep-explanation.md) — O instrutor conecta diretamente com as aulas anteriores sobre arquivos especiais do Next.js. O `_app
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-layout/references/code-examples.md) — // components/Layout/Layout.tsx

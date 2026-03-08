@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-client-e-server-components
 description: "Enforces correct separation of Client and Server Components in Next.js App Router projects. Use when user asks to 'create a component', 'add interactivity', 'build a page', 'refactor components', or any Next.js App Router code generation. Applies rules: isolate useClient to smallest possible component, never make async components client-side, extract interactive parts into leaf components. Make sure to use this skill whenever generating Next.js App Router components, even if the user doesn't mention server/client separation. Not for Pages Router, API routes, or non-Next.js React projects."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: fundamentos-app-router
+  tags: [server-components, client-components, use-client, next-js, app-router, react]
 ---
 
 # Client e Server Components no Next.js App Router
@@ -132,14 +138,19 @@ export function Header() {
 | Um componente gigante com `"use client"` | Quebre em server component pai + client components filhos |
 | Colocar `"use client"` "por seguranca" | So adicione quando ha hook ou event listener |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-client-e-server-components/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-client-e-server-components/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-client-e-server-components/references/deep-explanation.md) — No Next.js com App Router, **todo componente e server component por padrao**. Isso e uma mudanca fun
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-client-e-server-components/references/code-examples.md) — // components/header.tsx

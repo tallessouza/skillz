@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-numeros-magicos
 description: "Eliminates magic numbers by enforcing named constants and unit-in-name conventions when writing TypeScript/JavaScript code. Use when user asks to 'write a calculation', 'set a timeout', 'handle dates', 'work with prices', or any code involving numeric literals. Applies rules: no raw numeric literals in logic, always name the unit (priceInCents, timeoutInMs), use inline arithmetic instead of pre-calculated values. Make sure to use this skill whenever generating code with numeric constants, timeouts, intervals, date calculations, or price handling. Not for string formatting, CSS values, or array indices."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: numeros-magicos
+  tags: [magic-numbers, constants, naming, units, typescript, javascript, clean-code]
 ---
 
 # Numeros Magicos
@@ -91,6 +97,13 @@ function getTotal(priceInCents: number, discountInPercent: number) {
 | `function calc(price, discount)` | `function calc(priceInCents, discountInPercent)` |
 | `1000000` | `1_000_000` |
 | `if (month === 0)` sem comentario | `if (month === 0) // January (JS months are 0-indexed)` |
+
+## Troubleshooting
+
+### Valor numerico pre-calculado dificulta verificacao
+**Symptom:** Um numero como `2592000000` aparece no codigo e ninguem sabe de onde veio ou se esta correto
+**Cause:** O desenvolvedor calculou o valor fora do codigo e colou o resultado final
+**Fix:** Substitua pelo calculo inline: `1000 * 60 * 60 * 24 * 30` — cada fator documenta a intencao (ms * s * min * h * dias)
 
 ## Deep reference library
 

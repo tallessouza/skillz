@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-acessando-um-objeto
 description: "Enforces correct object property and method access patterns in JavaScript. Use when user asks to 'access object properties', 'read nested objects', 'call object methods', 'use dot notation', or 'use bracket notation'. Applies rules: dot notation as default, bracket notation for dynamic keys, chained dots for nested objects, parentheses for method calls. Make sure to use this skill whenever generating code that reads or navigates object properties. Not for object creation, destructuring, or spread operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, objects, dot-notation, bracket-notation, properties]
 ---
 
 # Acessando Propriedades e Métodos de Objetos
@@ -80,13 +86,16 @@ user.message()
 | `user.message` (querendo executar) | `user.message()` |
 | `console.log(user["message"]())` | `user.message()` (se já tem console.log interno) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `undefined` ao acessar propriedade | Propriedade nao existe ou nome esta errado | Verifique o nome exato com `console.log(Object.keys(obj))` |
+| `TypeError: Cannot read properties of undefined` | Tentando acessar propriedade de objeto aninhado inexistente | Use optional chaining: `obj?.nivel1?.nivel2` |
+| Metodo nao executa, retorna a funcao | Esqueceu os parenteses | Use `obj.metodo()` com parenteses |
+| Notacao de colchetes retorna `undefined` | Variavel da chave esta `undefined` ou com valor errado | Verifique o valor da variavel usada como chave |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando usar cada notação e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-acessando-um-objeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-acessando-um-objeto/references/code-examples.md)

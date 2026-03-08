@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-lista-de-rotas
 description: "Enforces route organization patterns when building Node.js APIs with manual routing. Use when user asks to 'create routes', 'organize API endpoints', 'add a new route', 'structure a Node.js server', or 'separate routes by resource'. Applies rules: one file per resource domain, index.js aggregates all route files, each route is an object with method/path/controller, export as named arrays. Make sure to use this skill whenever creating or refactoring routes in vanilla Node.js APIs without frameworks. Not for Express/Fastify/Hapi router configuration or frontend routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, routes, api, organization, esm]
 ---
 
 # Criando Lista de Rotas
@@ -105,13 +111,16 @@ const server = http.createServer((request, response) => {
 | `module.exports = [...]` em projeto ESM | `export const tickets = [...]` |
 | Um unico arquivo routes.js com todos os dominios | Um arquivo por dominio + index.js aggregador |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `ERR_MODULE_NOT_FOUND` | Import sem extensão `.js` em projeto ESM | Adicione `.js` em todos os imports |
+| Rota retorna 404 | Rota não foi adicionada ao array ou não foi spread no index.js | Verifique se a rota está no array e se o spread foi adicionado no aggregador |
+| Controller não executa | Propriedade `controller` com nome errado no objeto de rota | Confira se o objeto tem `method`, `path` e `controller` |
+| Nova rota não aparece | Servidor não foi reiniciado após adicionar arquivo | Reinicie o servidor com `node --watch` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao por dominio e escalabilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0405-criando-a-lista-de-rotas-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0405-criando-a-lista-de-rotas-mp-4/references/code-examples.md)

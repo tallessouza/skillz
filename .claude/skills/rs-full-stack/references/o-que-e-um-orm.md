@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-um-orm
 description: "Applies ORM concepts and decision frameworks when designing database access layers. Use when user asks to 'connect to database', 'create a model', 'choose between ORM and query builder', 'setup Prisma/Drizzle/TypeORM', or 'map tables to objects'. Make sure to use this skill whenever deciding on database abstraction strategy or explaining ORM vs query builder tradeoffs. Not for writing raw SQL, database administration, or schema migration commands."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: banco-de-dados
+  tags: [orm, banco-de-dados, prisma, mapeamento, query-builder]
 ---
 
 # ORM — Object Relational Mapper
@@ -73,6 +79,15 @@ Ambos servem o mesmo proposito: manipular dados no banco sem SQL puro. A diferen
 - ORM adiciona overhead de abstracao — queries geradas podem ser menos eficientes
 - Para operacoes bulk ou queries analiticas complexas, SQL direto pode ser necessario
 - O mapeamento objeto-relacional tem impedance mismatch (nem tudo mapeia 1:1)
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| ORM gera query lenta (N+1) | Relacionamentos carregados sem eager loading | Use `include` ou `join` para carregar relacionamentos junto |
+| Erro ao trocar de banco (Postgres para MySQL) | Features especificas do banco no codigo | Revise queries que usam funcoes exclusivas do banco anterior |
+| Modelo nao reflete colunas do banco | Schema do ORM desatualizado | Execute migration ou sincronize o schema com o banco |
+| Tipos do ORM nao batem com os dados | Mapeamento de tipos incorreto | Verifique o mapeamento de tipos na configuracao do ORM |
 
 ## Deep reference library
 

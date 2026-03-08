@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-aplicando-ssg-no-blog
 description: "Applies getStaticProps pattern for static data fetching in Next.js Pages Router when user asks to 'create a blog page', 'list posts statically', 'use getStaticProps', 'fetch data at build time', or 'optimize static content delivery'. Enforces correct SSG data flow: fetch in getStaticProps, sort server-side, type props, pass to component. Make sure to use this skill whenever implementing static pages with Pages Router. Not for App Router, server components, dynamic routes with getStaticPaths, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: static-site-generation
+  tags: [SSG, getStaticProps, pages-router, blog, static-generation, build-time]
 ---
 
 # Aplicando SSG no Blog (Pages Router)
@@ -102,14 +108,19 @@ export default function BlogPage({ posts }: BlogListProps) {
 | Props sem tipagem (`any`) | Type dedicado: `BlogListProps` |
 | `return { posts }` sem wrapper props | `return { props: { posts } }` |
 
+## Troubleshooting
+
+### Dados nao atualizam apos modificacao (SSG/ISR)
+**Symptom:** Pagina mostra dados antigos mesmo apos atualizar no banco de dados
+**Cause:** Em SSG, a pagina e gerada apenas no build. Em ISR, existe um intervalo de revalidacao
+**Fix:** Para SSG, rodar `next build` novamente. Para ISR, aguardar o intervalo de `revalidate` expirar. Para dados que precisam ser sempre frescos, usar SSR com `getServerSideProps`
+
+### getServerSideProps/getStaticProps nao executa
+**Symptom:** Funcao de data fetching parece nao ser chamada, dados nao aparecem
+**Cause:** Essas funcoes so funcionam em arquivos dentro de `pages/`, nao em componentes ou arquivos fora do diretorio pages
+**Fix:** Mover a funcao para o arquivo de pagina dentro de `pages/`. Em App Router, usar fetch direto no Server Component com async/await
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-blog/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-blog/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-blog/references/deep-explanation.md) — O instrutor explica que um blog tem conteudo essencialmente estatico. Nao muda a cada request. Porta
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-blog/references/code-examples.md) — import { allPosts, type Post } from 'contentlayer/generated'

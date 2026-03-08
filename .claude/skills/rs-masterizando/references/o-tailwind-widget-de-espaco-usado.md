@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-widget-espaco-usado
 description: "Applies Tailwind CSS layout patterns for sidebar widgets, progress bars, and spacing strategies. Use when user asks to 'build a sidebar', 'create a progress bar', 'push content to bottom', 'fix mt-auto not working', or 'use fractional widths in Tailwind'. Covers space-y vs flex+gap conflict, text-size/line-height shorthand, and fractional width utilities. Make sure to use this skill whenever building sidebar layouts or progress indicators with Tailwind. Not for JavaScript logic, state management, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, flexbox]
 ---
 
 # Widget de Sidebar com Tailwind — Layout e Spacing
@@ -104,15 +110,19 @@ description: "Applies Tailwind CSS layout patterns for sidebar widgets, progress
 | `w-[50%]` | `w-1/2` |
 | `<button>` sem type em contexto misto | `<button type="button">` |
 | Barra de progresso com border/outline | Duas divs aninhadas com rounded-full |
+## Troubleshooting
+
+### mt-auto nao empurra conteudo para baixo
+**Symptom:** Elemento com `mt-auto` fica no meio em vez de no final do container.
+**Cause:** Container usa `space-y` que injeta margin-top nos filhos, sobrescrevendo `mt-auto`.
+**Fix:** Troque `space-y-*` por `flex flex-col gap-*` no container pai.
+
+### Barra de progresso nao aparece
+**Symptom:** Container da barra visivel mas preenchimento interno invisivel.
+**Cause:** Div interna sem altura ou cor de fundo.
+**Fix:** Garanta que ambas as divs tem `h-2 rounded-full` e a interna tem `bg-violet-600` com largura definida.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-widget-de-espaco-usado/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-widget-de-espaco-usado/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-widget-de-espaco-usado/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-widget-de-espaco-usado/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

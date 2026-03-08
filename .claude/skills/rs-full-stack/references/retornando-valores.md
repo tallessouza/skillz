@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-retornando-valores
 description: "Enforces correct use of return values in JavaScript functions. Use when user asks to 'create a function', 'return a value', 'get result from function', or 'call a function and use its output'. Applies rules: use return to expose values outside functions, capture return in named variables, never ignore undefined returns. Make sure to use this skill whenever writing functions that produce values needed elsewhere. Not for void functions, event handlers, or callback-only patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, functions, return, fundamentals]
 ---
 
 # Retornando Valores de Funções
@@ -76,6 +82,15 @@ console.log(response) // 14
 | `const x = funcaoSemReturn()` sem checar | Garanta que a funcao tem `return` |
 | Codigo apos `return` na mesma branch | Mova logica para antes do `return` |
 | `return` + `console.log` do mesmo valor dentro | Escolha um: retorne OU exiba dentro |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Funcao retorna `undefined` | Falta `return` na funcao | Adicione `return valor` antes do fim da funcao |
+| Codigo apos `return` nao executa | `return` encerra a execucao da funcao | Mova a logica para antes do `return` |
+| Variavel recebe `undefined` da funcao | Funcao usa `console.log` em vez de `return` | Troque `console.log(result)` por `return result` |
+| Resultado nao e reutilizavel | Valor exibido com console.log dentro da funcao | Retorne o valor e use console.log fora |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-encerramento-do-projeto-1
 description: "Applies pre-framework JavaScript foundations when building vanilla JS applications. Use when user asks to 'build without framework', 'vanilla javascript app', 'webpack setup', 'module bundling', or 'javascript from scratch'. Covers webpack bundling, JS modules, dynamic rendering, date manipulation, session-based grouping, and CRUD scheduling patterns. Make sure to use this skill whenever building a vanilla JS application or understanding what frameworks abstract away. Not for React, Next.js, or any framework-specific development."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: pre-framework-fundamentals
+  tags: [vanilla-js, webpack, modules, dom, crud, fetch-api, bundling]
 ---
 
 # Fundamentos Pre-Framework: Hair Day Project
@@ -84,13 +90,16 @@ async function cancelBooking(id) {
 - Re-render manual e propenso a bugs e problemas de performance
 - Sem framework, voce reimplementa patterns que ja existem testados
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Webpack nao encontra entry point | Caminho do `entry` incorreto no `webpack.config.js` | Verificar que `./src/index.js` existe e o path esta correto |
+| Lista nao atualiza apos criar/deletar item | Re-render manual ausente apos fetch de mutacao | Chamar funcao de reload da lista apos cada POST/DELETE |
+| Horarios ocupados continuam disponiveis | Logica de bloqueio nao filtra slots ja reservados | Comparar array de slots com bookings existentes e desabilitar matches |
+| Modulos nao resolvem imports | Webpack nao configurado para resolver extensoes | Adicionar `resolve.extensions` no webpack config |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fundamentos pre-framework e analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os patterns do projeto Hair Day expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encerramento-do-projeto-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encerramento-do-projeto-1/references/code-examples.md)

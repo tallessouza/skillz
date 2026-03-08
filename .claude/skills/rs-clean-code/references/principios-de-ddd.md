@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-principios-de-ddd
 description: "Applies Domain-Driven Design thinking when structuring backend applications. Use when user asks to 'design a system', 'create entities', 'model a domain', 'structure a backend', or 'name entities'. Enforces correct identification of domains, subdomains, entities, and use cases. Ensures context-specific entity naming instead of generic 'user' everywhere. Make sure to use this skill whenever designing or restructuring backend domain models. Not for infrastructure, deployment, frontend components, or database schema details."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: principios-de-ddd
+  tags: [ddd, domain-driven-design, entities, use-cases, subdomains, modeling, backend]
 ---
 
 # Princípios de DDD
@@ -108,6 +114,13 @@ class EmitirNotaFiscal { execute(pedido: Pedido, contribuinte: ContribuinteFisca
 | `function processData(data)` | `function emitirNotaFiscal(ordemDePedido)` (ação + entidade do domínio) |
 | Modelar domínio pela estrutura do banco | Modelar domínio pela conversa com domain experts |
 | Começar pela arquitetura de pastas | Começar pelo desenho do domínio |
+
+## Troubleshooting
+
+### Entidade generica "User" usada em todos os subdominios
+**Symptom:** A mesma classe `User` aparece no checkout, logistica, faturamento e suporte com campos misturados de todos os contextos
+**Cause:** O desenvolvedor modelou pela tabela do banco (uma tabela `users`) em vez de modelar pelo papel da pessoa em cada subdominio
+**Fix:** Renomeie a entidade pelo papel no subdominio: `Comprador` (checkout), `Destinatario` (logistica), `ContribuinteFiscal` (faturamento) — cada um com apenas os campos relevantes ao seu contexto
 
 ## Deep reference library
 

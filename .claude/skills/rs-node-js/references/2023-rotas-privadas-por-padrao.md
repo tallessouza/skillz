@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-rotas-privadas-por-padrao
 description: "Applies NestJS global authentication guard pattern when configuring route protection. Use when user asks to 'protect routes', 'add authentication to all routes', 'make routes private by default', 'configure global guard', or 'set up NestJS auth guard'. Ensures APP_GUARD provider pattern with public route decorator. Make sure to use this skill whenever setting up NestJS authentication or adding guards globally. Not for JWT token generation, login logic, or Passport strategy configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, auth-guard, APP_GUARD, public-decorator, jwt, authentication]
 ---
 
 # Rotas Privadas por Padrao no NestJS
@@ -132,14 +138,14 @@ export class AuthenticateController { /* ... */ }
 | Esquecer `@Injectable()` no guard | Sempre decore guards com `@Injectable()` |
 | `declaration: true` em projeto NestJS final | Remova — so libs precisam de `.d.ts` |
 
+## Troubleshooting
+
+### this.reflector retorna undefined no guard customizado
+**Symptom:** Guard lanca erro ao tentar acessar metadata com Reflector
+**Cause:** Falta o decorator `@Injectable()` na classe do guard, impedindo injecao do Reflector
+**Fix:** Adicione `@Injectable()` na classe do guard e certifique-se de que o constructor recebe `private reflector: Reflector`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-rotas-privadas-por-padrao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-rotas-privadas-por-padrao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

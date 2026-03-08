@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-hash-senha-validacao
 description: "Enforces password hashing with bcryptjs and email uniqueness validation when implementing user registration in Node.js. Use when user asks to 'create user registration', 'hash passwords', 'implement signup', 'validate unique email', or 'register endpoint'. Applies bcrypt hash with rounds, unique email check before insert, proper HTTP status codes. Make sure to use this skill whenever building authentication or user creation flows in Node.js. Not for login/session management, JWT tokens, or authorization middleware."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: password-validation
+  tags: [bcrypt, password, hash, validation, unique-email, prisma, http-status]
 ---
 
 # Hash de Senha e Validação de Unicidade
@@ -104,14 +110,14 @@ app.post('/users', async (request, reply) => {
 | `hash(password, 20)` para cadastro comum | `hash(password, 6)` |
 | Comparar strings de hash diretamente | Usar `compare()` do bcryptjs |
 
+## Troubleshooting
+
+### Erro 500 ao cadastrar email duplicado em vez de 409
+**Symptom:** O banco retorna erro de constraint violation com status 500 generico
+**Cause:** O codigo nao verifica unicidade com findUnique antes de tentar o create
+**Fix:** Adicione findUnique({ where: { email } }) antes do create e retorne reply.status(409).send() se ja existir
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-hash-da-senha-e-validacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-hash-da-senha-e-validacao/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-futuro-das-animacoes-03
 description: "Applies CSS animation-range property patterns when writing scroll-driven animations with View Timeline. Use when user asks to 'animate on scroll', 'scroll animation', 'view timeline animation', 'animation range', or 'entry exit animation'. Covers animation-range start/end, contain, cover, entry, exit keywords and shorthand syntax. Make sure to use this skill whenever generating scroll-based CSS animations or working with animation-timeline: view(). Not for general CSS keyframes, hover transitions, or JavaScript scroll libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animation-range, scroll, view-timeline, entry, exit, contain, cover]
 ---
 
 # CSS Animation Range
@@ -126,13 +132,16 @@ description: "Applies CSS animation-range property patterns when writing scroll-
 | `animation-range: exit` sem keyframe de saida dedicado | Crie um `@keyframes out` especifico para o efeito de saida |
 | Adivinhar valores de pixel sem testar | Teste visualmente, cada layout tem scroll diferente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Animacao de entrada e saida identicas | Uma unica animacao para ambos | Use duas animacoes separadas com `animation-range: entry, exit` |
+| `animation-range: exit` sem efeito visivel | Falta keyframe dedicado de saida | Crie `@keyframes out` especifico para o efeito de saida |
+| Valores de pixel nao produzem resultado esperado | Cada layout tem scroll diferente | Teste visualmente e ajuste valores incrementalmente |
+| Animacao nao inicia quando elemento aparece | Usando `cover` (padrao) em vez de `entry` | Troque para `animation-range: entry` para animar na entrada |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada keyword, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-03/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-03/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fluxo-html
 description: "Applies HTML block vs inline flow rules when writing or reviewing HTML markup. Use when user asks to 'create a page', 'write HTML', 'fix layout', 'add elements', or 'structure HTML'. Enforces correct understanding of block elements (full width, stack vertically) vs inline elements (content width, flow horizontally). Make sure to use this skill whenever generating HTML structure or debugging layout issues. Not for CSS styling, JavaScript, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, block, inline, flow, layout]
 ---
 
 # Fluxo HTML — Block vs Inline
@@ -89,13 +95,16 @@ O navegador renderiza elementos HTML seguindo um fluxo padrao (normal flow). Cad
 | Usar `<br>` para separar block elements | Block elements ja empilham naturalmente |
 | Confundir posicao no codigo com posicao visual | Analise o tipo da tag (block vs inline) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elementos inline nao ficam lado a lado | CSS externo esta aplicando `display: block` | Inspecione no DevTools e verifique estilos computados |
+| Espaco misterioso entre elementos inline | Whitespace no HTML entre as tags | Remova espacos/quebras de linha entre tags inline ou use flexbox |
+| Elemento block nao ocupa 100% da largura | `width` esta definida explicitamente no CSS | Remova a largura fixa para restaurar o comportamento block padrao |
+| Layout muda sem CSS aplicado | Tag tem comportamento nativo diferente do esperado | Consulte se a tag e block ou inline por padrao no MDN |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fluxo HTML, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fluxo-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fluxo-html/references/code-examples.md)

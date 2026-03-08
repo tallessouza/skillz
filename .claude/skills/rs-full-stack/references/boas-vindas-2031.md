@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-boas-vindas-2031
-description: "Guides the approach of adding JavaScript interactivity to existing HTML and CSS projects. Use when user asks to 'add JavaScript to a page', 'make a static page interactive', 'add behavior to HTML', or 'bring a page to life with JS'. Enforces the pattern of keeping HTML/CSS structure separate and layering JavaScript on top. Make sure to use this skill whenever adding JS to a pre-existing static project. Not for creating projects from scratch, not for CSS-only animations, not for backend JavaScript or Node.js."
+description: "Demonstrates the approach of adding JavaScript interactivity to existing HTML and CSS projects. Use when user asks to 'add JavaScript to a page', 'make a static page interactive', 'add behavior to HTML', or 'bring a page to life with JS'. Enforces the pattern of keeping HTML/CSS structure separate and layering JavaScript on top. Make sure to use this skill whenever adding JS to a pre-existing static project. Not for creating projects from scratch, not for CSS-only animations, not for backend JavaScript or Node.js."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, html, css, interactivity, dom, events, separation-of-concerns]
 ---
 
 # Adicionando JavaScript a Projetos HTML/CSS
@@ -79,13 +85,16 @@ toggleButton.addEventListener('click', () => {
 | Adicionar jQuery para tarefas simples | Usar JavaScript puro para DOM basico |
 | Colocar `<script>` no `<head>` sem defer | `<script src="main.js" defer>` ou antes de `</body>` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **JavaScript file not loading** | Verify the `<script>` tag uses `defer` or is placed before `</body>`, and the `src` path matches the actual file location. |
+| **Event listener not firing** | Confirm the DOM element exists when the script runs — use `defer` or `DOMContentLoaded` to ensure the DOM is ready. |
+| **Styles break after adding JS** | Ensure JavaScript only toggles CSS classes instead of modifying inline styles directly, preserving the existing stylesheet. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e abordagem incremental
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de adicionar JS a projetos estaticos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2031/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2031/references/code-examples.md)

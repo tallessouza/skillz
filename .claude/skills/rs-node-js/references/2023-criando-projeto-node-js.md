@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-projeto-node-js
-description: "Generates initial Node.js project structure with TypeScript, Fastify, and proper build pipeline. Use when user asks to 'create a node project', 'setup typescript node', 'init fastify project', 'start a new API', or 'scaffold node backend'. Applies separation of app/server files, TSX for dev, tsup for build, and correct Fastify host binding. Make sure to use this skill whenever bootstrapping a new Node.js TypeScript API project. Not for frontend projects, Deno/Bun setups, or adding features to existing projects."
+name: 2023-criando-projeto-node-js
+description: "Sets up a Node.js project with TypeScript and Fastify, separating app instance from server startup, with TSX for development and tsup for production builds. Use when user asks to 'create Node.js project', 'setup Fastify with TypeScript', 'initialize backend project', or 'configure development and build scripts'. Enforces: separate app.ts from server.ts, use TSX with watch for dev, tsup for production build, host 0.0.0.0 for external access. Make sure to use this skill whenever bootstrapping a new Node.js backend project with TypeScript and Fastify. Not for NestJS projects, frontend setups, or JavaScript-only projects."
+category: workflow
+tags: [deploy, fastify, modules, testing, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: project-setup
+  tags: [fastify, typescript, tsx, tsup, project-setup, node-js]
 ---
 
 # Criando Projeto Node.js com TypeScript e Fastify
@@ -104,14 +113,14 @@ Projeto funcional com:
 | Omitir `host: '0.0.0.0'` no listen | Sempre passar, porque sem isso frontends podem nao conseguir conectar |
 | Rodar `tsx` em producao | Usar `tsup` para build e `node` para executar, porque TSX e apenas para desenvolvimento |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-projeto-node-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-projeto-node-js/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

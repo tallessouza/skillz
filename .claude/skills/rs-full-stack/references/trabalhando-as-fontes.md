@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-trabalhando-as-fontes
 description: "Applies Google Fonts integration and CSS font configuration when building HTML/CSS pages. Use when user asks to 'add a font', 'integrate Google Fonts', 'configure typography', 'set line-height', or 'style headings'. Covers font import via link tag, root-level font-family, line-height defaults, font-size per heading, and color tokens. Make sure to use this skill whenever setting up typography for a new page or adjusting fonts. Not for JavaScript font loading, variable fonts, or font-face declarations from local files."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-tipografia
+  tags: [css, google-fonts, font-family, line-height, typography, headings]
 ---
 
 # Trabalhando as Fontes
@@ -105,6 +111,15 @@ h2 {
 | `line-height: 24px` (valor fixo) | `line-height: 150%` (proporcional) |
 | `font-weight: 400` quando e o unico peso | Omitir `font-weight` (400 e padrao) |
 | Cor definida individualmente em cada `<p>` | Cor geral no `:root`, sobrescrever nos headings |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fonte do Google Fonts nao carrega | Link tag posicionada antes do stylesheet | Coloque o link do Google Fonts DEPOIS do link do seu CSS |
+| Fonte nao aplica em todos os elementos | `font-family` declarada em seletor especifico | Aplique `font-family` no `:root` para heranca global |
+| Line-height desproporcional ao mudar font-size | Usando valor fixo em pixels | Use porcentagem (`150%`) ou multiplicador sem unidade |
+| Cor do texto inconsistente entre elementos | Cor definida individualmente em cada seletor | Defina cor geral no `:root` e sobrescreva apenas nos headings |
 
 ## Deep reference library
 

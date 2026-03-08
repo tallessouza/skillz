@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-id
 description: "Enforces correct HTML id attribute usage when writing markup. Use when user asks to 'create an element', 'add an id', 'write HTML', 'build a page', or any HTML generation task. Applies rules: unique ids per document, start with letters, use hyphens as separators, no special characters, no leading numbers. Make sure to use this skill whenever generating HTML elements with ids. Not for CSS class naming, JavaScript variable naming, or database identifiers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, id, attributes, selectors, dom]
 ---
 
 # Atributo ID no HTML
@@ -75,13 +81,16 @@ description: "Enforces correct HTML id attribute usage when writing markup. Use 
 | Dois elementos com `id="header"` | Ids unicos: `id="header-topo"`, `id="header-nav"` |
 | `id="div1"` | `id="banner-principal"` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `document.getElementById` retorna null | Id nao existe ou contem erro de digitacao | Verifique o id no HTML e no JS — case-sensitive |
+| CSS com `#id` nao aplica estilo | Id comeca com numero ou contem caracteres invalidos | Use id que comeca com letra, sem espacos ou caracteres especiais |
+| Dois elementos com mesmo id causam bug | Ids duplicados no documento | Garanta unicidade — use ids descritivos como `header-nav`, `header-hero` |
+| Ancora `#secao` nao funciona | Elemento alvo nao tem `id="secao"` | Adicione o atributo `id` correspondente no elemento destino |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogia do RG e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-id/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-id/references/code-examples.md)

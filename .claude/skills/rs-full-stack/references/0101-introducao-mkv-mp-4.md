@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-0101-introducao
 description: "Applies the mental model of front-end vs back-end separation when designing Node.js applications. Use when user asks to 'create an API', 'build a backend', 'start a Node project', or 'separate front-end from back-end'. Reinforces that back-end focuses on business rules and logic, not visual elements. Make sure to use this skill whenever starting a new Node.js back-end project or explaining architecture boundaries. Not for front-end component design, CSS styling, or UI layout decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [frontend, backend, separation, node, architecture, mental-model]
 ---
 
 # Front-end vs Back-end — Modelo Mental
 
 > Back-end foca em regras de negocio, funcionalidades e logica da aplicacao — nunca em elementos visuais.
 
-## Key concept
+## Key concepts
 
 A separacao front-end/back-end nao e apenas organizacional — e uma separacao de **responsabilidades fundamentais**:
 
@@ -37,6 +43,17 @@ Pergunte: "Estou lidando com regra de negocio ou apresentacao visual?" Se a resp
 
 Logica que **valida**, **transforma**, **persiste** ou **protege** dados vai no back-end. Logica que **exibe**, **anima** ou **coleta input** do usuario vai no front-end.
 
+## Exemplo pratico
+
+```javascript
+// Back-end: regra de negocio (validacao de dados)
+function validateRefund(amount, receipt) {
+  if (amount <= 0) throw new Error('Valor invalido')
+  if (!receipt) throw new Error('Comprovante obrigatorio')
+  return { amount, receipt, status: 'pending' }
+}
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -55,13 +72,13 @@ Logica que **valida**, **transforma**, **persiste** ou **protege** dados vai no 
 
 Este modelo mental e a base. Projetos reais tem nuances como SSR (Server-Side Rendering) e BFF (Backend for Frontend) que borram a linha entre front e back.
 
+## Troubleshooting
+
+### Problem: Business logic placed in the frontend instead of the backend
+- **Cause**: Confusing data formatting (frontend) with data validation/transformation (backend)
+- **Fix**: Apply the rule — if it validates, transforms, persists, or protects data, it belongs in the backend; if it displays, animates, or collects input, it belongs in the frontend
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao front-end/back-end
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de codigo back-end vs front-end
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0101-introducao-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0101-introducao-mkv-mp-4/references/code-examples.md)

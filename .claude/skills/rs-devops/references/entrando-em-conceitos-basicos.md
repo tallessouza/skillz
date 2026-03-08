@@ -1,91 +1,72 @@
 ---
 name: rs-devops-entrando-em-conceitos-basicos
-description: "Applies Service Mesh concepts when designing microservice architectures in Kubernetes. Use when user asks to 'design microservice communication', 'add mTLS between services', 'implement retry/timeout strategy', 'improve observability', or 'control traffic in a cluster'. Guides decisions on when Service Mesh is justified vs overengineering. Make sure to use this skill whenever architecting inter-service communication in clusters with 50+ services. Not for specific tool configuration (Istio, Linkerd) or application-level code patterns."
+description: "Applies service mesh fundamental concepts when designing microservice communication in Kubernetes clusters. Use when user asks to 'setup service mesh', 'configure mTLS', 'add retry policies', 'implement circuit breaker', or 'secure inter-service communication'. Covers mTLS, retry/timeout delegation to infrastructure, and service mesh adoption criteria. Make sure to use this skill whenever evaluating service mesh necessity or configuring inter-service resilience patterns. Not for application-level HTTP clients, API gateway configuration, or ingress controller setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh
+  tags: [service-mesh, mtls, circuit-breaker, retry, timeout, microservices, kubernetes]
 ---
 
 # Service Mesh — Conceitos Fundamentais
 
-> Ao projetar comunicacao entre microservicos em cluster, delegue seguranca, resiliencia e observabilidade para a camada de infraestrutura (Service Mesh), mantendo a aplicacao focada no dominio de negocio.
+> Ao projetar comunicacao entre microservicos em cluster, delegue seguranca, resiliencia e observabilidade para a camada de infraestrutura (Service Mesh).
 
 ## Rules
 
-1. **Chamadas intra-cluster sao HTTP por padrao** — sem TLS, qualquer servico pode chamar qualquer outro sem validacao de identidade, porque o Kubernetes nao adiciona criptografia nas chamadas internas automaticamente
-2. **Use mTLS para validar identidade entre servicos** — o servico B precisa saber que quem chamou foi o servico A, e implementar isso na camada da aplicacao e extremamente complicado
-3. **Separe responsabilidades: aplicacao vs infraestrutura** — retry, timeout, circuit breaker, rate limit e balanceamento pertencem a infraestrutura, nao ao codigo da aplicacao, porque isso elimina replicacao de codigo em centenas de servicos
-4. **Service Mesh so faz sentido em escala** — com poucos servicos (monolito ou 10-20 servicos), e overengineering; a partir de 50+ servicos comeca a justificar
-5. **Nao use Service Mesh apenas para mTLS** — existem ferramentas mais simples para resolver apenas mTLS; Service Mesh justifica-se quando voce precisa de multiplas capacidades (seguranca + resiliencia + observabilidade + controle de trafego)
-6. **O sidecar amplia observabilidade automaticamente** — como roda ao lado da aplicacao, extrai metricas de toda a malha sem instrumentacao manual
+1. **Chamadas intra-cluster sao HTTP por padrao** — sem TLS, sem validacao de identidade
+2. **Use mTLS para validar identidade entre servicos**
+3. **Separe responsabilidades: aplicacao vs infraestrutura** — retry, timeout, circuit breaker pertencem a infra
+4. **Service Mesh so faz sentido em escala** — a partir de 50+ servicos
+5. **Nao use Service Mesh apenas para mTLS** — justifique com multiplas capacidades
+6. **O sidecar amplia observabilidade automaticamente**
 
 ## Decision Framework
 
 | Situacao | Decisao |
 |----------|---------|
-| < 20 microservicos, sem requisitos complexos de seguranca | Nao usar Service Mesh — overengineering |
-| Precisa apenas de mTLS entre servicos | Usar ferramenta dedicada de mTLS, nao Service Mesh completo |
-| 50+ microservicos com necessidade de observabilidade | Forte candidato a Service Mesh |
-| Retry/timeout implementado manualmente em cada servico | Sinal de necessidade — delegar para infra |
-| Sem circuit breaker e falha local propaga para toda rede | Service Mesh resolve com circuit breaker automatizado |
-| Chamadas entre servicos no mesmo cluster saem para DNS externo | Usar chamadas intra-cluster + mTLS via Service Mesh |
+| < 20 microservicos | Nao usar Service Mesh |
+| Precisa apenas de mTLS | Ferramenta dedicada, nao Service Mesh completo |
+| 50+ microservicos | Forte candidato a Service Mesh |
+| Retry duplicado em muitos servicos | Sinal de necessidade |
+| Falha local propaga para toda rede | Precisa de circuit breaker |
 
-## Capacidades do Service Mesh
+## Capacidades
 
 ### Seguranca (mTLS)
 ```
-Servico A ---[HTTP sem TLS]---> Servico B    # SEM Service Mesh: sem validacao
-Servico A ---[mTLS via sidecar]---> Servico B # COM Service Mesh: identidade validada
+Sem SM: Servico A ---[HTTP]---> Servico B
+Com SM: Servico A ---[mTLS via sidecar]---> Servico B
 ```
 
-### Resiliencia (retry, timeout, circuit breaker)
+### Resiliencia
 ```yaml
-# Configurado na camada de infraestrutura, nao na aplicacao
 retry:
   attempts: 3
   perTryTimeout: 2s
 timeout: 10s
 circuitBreaker:
   maxConnections: 100
-  maxPendingRequests: 50
 ```
-
-### Observabilidade
-```
-[Sidecar A] --metricas--> [Coletor] --dashboard--> visibilidade da malha inteira
-```
-
-### Controle de trafego
-- Rate limiting
-- Roteamento inteligente
-- Balanceamento de carga
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Implementar retry/timeout em cada microservico individualmente | Configurar na camada do Service Mesh |
-| Sair do cluster para resolver DNS entre servicos no mesmo cluster | Usar chamadas intra-cluster |
-| Adotar Service Mesh para 5 servicos | Avaliar se a complexidade justifica |
-| Usar Service Mesh apenas para mTLS | Usar ferramenta dedicada ou justificar com multiplas capacidades |
-| Ignorar observabilidade em ambiente com 100+ servicos | Service Mesh amplia observabilidade automaticamente |
-| Deixar chamadas intra-cluster sem criptografia em producao | Habilitar mTLS via Service Mesh |
+| Retry/timeout em cada microservico | Configurar no Service Mesh |
+| DNS externo entre servicos no mesmo cluster | Chamadas intra-cluster |
+| Service Mesh para 5 servicos | Avaliar se complexidade justifica |
+| Chamadas intra-cluster sem criptografia em producao | mTLS via Service Mesh |
 
-## Heuristics
+## Troubleshooting
 
-| Sinal | Acao |
-|-------|------|
-| Codigo de retry duplicado em muitos servicos | Candidato forte para Service Mesh |
-| Falha em um servico derruba outros em cascata | Precisa de circuit breaker — Service Mesh resolve |
-| Nao sabe quais servicos chamam quais | Precisa de observabilidade — Service Mesh resolve |
-| Equipe pequena, poucos servicos | Nao adote — complexidade nao compensa |
-| Ambiente regulado exige auditoria de comunicacao | mTLS + observabilidade do Service Mesh atende |
+### Service Mesh adicionado mas comunicacao entre servicos falha
+**Symptom:** Requests entre microservicos retornam connection refused ou timeout apos instalar Service Mesh
+**Cause:** Sidecar proxy nao foi injetado nos pods — namespace sem label de injecao automatica
+**Fix:** Adicione `istio-injection: enabled` no namespace e faca rollout restart dos deployments: `kubectl rollout restart deployment -n <namespace>`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-entrando-em-conceitos-basicos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-entrando-em-conceitos-basicos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-filtrando-pelo-status
 description: "Applies query parameter filtering patterns when building Node.js API endpoints with in-memory or JSON-based databases. Use when user asks to 'filter results', 'add query params', 'filter by status', 'search by field', or 'add filters to endpoint'. Implements optional filter objects, Array.filter with Object.entries, and .some() for multi-key matching. Make sure to use this skill whenever implementing list endpoints with optional filtering. Not for SQL/ORM queries, pagination, or full-text search."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, filter, query-params, array, object-entries, includes]
 ---
 
 # Filtrando Resultados por Query Parameters
@@ -101,13 +107,16 @@ select(table, filters) {
 | `data = data.filter(...)` sem checar se filtro existe | `if (filters) { data = data.filter(...) }` |
 | Filtros hardcoded por campo | `Object.entries(filters).some(...)` generico |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Filtro não encontra registros | Comparação case-sensitive | Aplique `toLowerCase()` em ambos os lados da comparação |
+| `TypeError: row[key].toLowerCase is not a function` | Valor do campo não é string (número, boolean) | Converta com `String(row[key])` antes do `toLowerCase()` |
+| Filtro retorna todos os registros | Objeto de filtros é `null` e select não filtra | Verifique se o query param está sendo capturado corretamente |
+| Múltiplos filtros não funcionam juntos | Usando `some` quando deveria usar `every` | `some` = OR (qualquer filtro bate), `every` = AND (todos devem bater) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Object.entries, some e includes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0414-filtrando-pelo-status-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0414-filtrando-pelo-status-mkv-mp-4/references/code-examples.md)

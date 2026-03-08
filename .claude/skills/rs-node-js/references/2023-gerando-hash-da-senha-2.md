@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-hash-senha
 description: "Enforces password hashing with bcryptjs before storing in database. Use when user asks to 'create user registration', 'save password', 'implement signup', 'store credentials', or any authentication flow that persists passwords. Applies bcryptjs hash with salt rounds, never stores plaintext passwords. Make sure to use this skill whenever implementing any user creation or password storage logic. Not for password comparison/verification, session management, or JWT token generation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: password-hashing
+  tags: [bcrypt, password, hash, security, authentication, nodejs]
 ---
 
 # Gerando Hash da Senha
@@ -101,14 +107,14 @@ await prisma.user.create({
 | `const hashed = hash(password, 8)` (sem await) | `const hashed = await hash(password, 8)` |
 | `import bcrypt from 'bcrypt'` (nativo) | `import { hash } from 'bcryptjs'` (JS puro) |
 
+## Troubleshooting
+
+### Hash da senha retorna undefined ou nao e salvo
+**Symptom:** O campo password_hash no banco fica null ou a senha em plaintext e salva
+**Cause:** A funcao hash() do bcryptjs retorna uma Promise e o await foi esquecido
+**Fix:** Sempre use await: const hashedPassword = await hash(password, 8)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-gerando-hash-da-senha-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-gerando-hash-da-senha-2/references/code-examples.md)

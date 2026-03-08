@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estruturando-secao-destaques
 description: "Enforces CSS Grid layout patterns for image gallery sections with proper image fitting and utility class organization. Use when user asks to 'create an image grid', 'build a featured section', 'layout images in columns', 'fix image overflow', or 'organize CSS files'. Applies object-fit cover for image cropping, utility-first CSS classes, and Grid template columns. Make sure to use this skill whenever building image-heavy sections or grid layouts with mixed column counts. Not for CSS animations, responsive breakpoints, or JavaScript interactivity."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, grid, object-fit, utility-classes, image-gallery]
 ---
 
 # Estruturando Secoes de Destaque com CSS Grid
@@ -144,13 +150,16 @@ img { max-width: 100%; }
 | Imagem sem restricao de largura maxima | `img { max-width: 100%; }` no global |
 | Espacamento com margin em cada item | `gap: 16px` no container grid |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Scroll horizontal apareceu | Imagem transbordando o container | Adicionar `img { max-width: 100%; }` no global.css |
+| Imagem esticada/distorcida | `height: 100%` sem `object-fit` | Adicionar `object-fit: cover` junto com `height: 100%` |
+| Espaco vazio ao redor da imagem | Imagem nao preenche o container | Combinar `height: 100%` + `object-fit: cover` |
+| Grid nao divide em colunas | Falta `grid-template-columns` | Adicionar classe `grid-cols-2` com `grid-template-columns: 1fr 1fr` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre object-fit, transbordamento e organizacao CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-a-secao-de-destaques/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-a-secao-de-destaques/references/code-examples.md)

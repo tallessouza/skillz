@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-continuando-o-appointment-card
 description: "Enforces code organization patterns and conditional Tailwind styling in Next.js projects. Use when user asks to 'refactor components', 'organize utils', 'add conditional styles', 'use cn function', or 'move functions to utils'. Applies rules: utils vs lib separation, cn() for conditional classes, avoid premature optimization, mock data in constants. Make sure to use this skill whenever reorganizing Next.js project files or applying conditional Tailwind classes. Not for API routes, database queries, or server-side data fetching."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: appointment-card
+  tags: [next-js, tailwind, cn, utils, code-organization, conditional-styles, refactoring]
 ---
 
 # Organizacao de Codigo e Estilos Condicionais no Next.js
@@ -123,14 +129,19 @@ import { groupAppointmentsByPeriod, MOCK_APPOINTMENTS } from "@/utils"
 | `const mockData = [...]` | `const MOCK_DATA = [...]` |
 | `isFirstInSection: boolean` (obrigatoria) | `isFirstInSection?: boolean` (opcional com default) |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-continuando-o-appointment-card/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-continuando-o-appointment-card/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-continuando-o-appointment-card/references/deep-explanation.md) — O instrutor faz uma distincao clara entre as duas pastas:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-continuando-o-appointment-card/references/code-examples.md) — // app/page.tsx

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-media-queries
 description: "Applies CSS Media Queries patterns when building responsive layouts. Use when user asks to 'make responsive', 'adapt for mobile', 'add breakpoints', 'media query', 'responsive design', or 'mobile first'. Enforces viewport meta tag, correct @media syntax, and breakpoint conventions. Make sure to use this skill whenever generating CSS that needs to work across screen sizes. Not for CSS Grid, Flexbox layout, or JavaScript-based responsive logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-responsivo
+  tags: [css, media-queries, responsive, mobile-first, breakpoints, viewport]
 ---
 
 # CSS Media Queries
@@ -118,13 +124,16 @@ description: "Applies CSS Media Queries patterns when building responsive layout
 | `@import url("screen.css") screen` | `@media screen and (min-width: ...) {}` inline |
 | Estilos desktop-first com max-width | Mobile-first com min-width |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Media queries nao funcionam no celular | Falta meta viewport no HTML | Adicione `<meta name="viewport" content="width=device-width, initial-scale=1.0">` |
+| Estilos mobile aparecem no desktop | Usando `max-width` ao inves de `min-width` | Adote mobile-first com `min-width` para adicionar complexidade progressivamente |
+| Breakpoint nao ativa na largura esperada | Valor exato ao inves de range | Use `min-width: 768px` (range) ao inves de `width: 768px` (exato) |
+| Media queries espalhadas dificultam manutencao | Regras responsivas misturadas com estilos base | Agrupe regras responsivas por breakpoint no final do arquivo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre viewport, at-rules e tres formas de aplicar media queries
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-media-queries/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-media-queries/references/code-examples.md)

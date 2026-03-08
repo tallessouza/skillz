@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-font-style-font-weight
 description: "Applies correct CSS font-style and font-weight properties when styling text. Use when user asks to 'style text', 'make text bold', 'add italic', 'change font weight', 'customize typography', or any CSS text styling task. Enforces numeric weight values, font-dependent awareness, and proper use of italic vs oblique. Make sure to use this skill whenever generating CSS that involves text appearance or typography. Not for font-family selection, font-size, or text-decoration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-tipografia
+  tags: [css, font-style, font-weight, italic, bold, typography]
 ---
 
 # Font Style e Font Weight
@@ -97,13 +103,16 @@ h1 {
 | `font-style: normal` em texto ja normal | Remova a declaracao |
 | `font-weight: lighter` sem contexto | `font-weight: 300` com valor explicito |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `font-weight: 300` nao funciona | Fonte nao possui o peso 300 disponivel | Verifique quais pesos a fonte suporta e importe-os |
+| Heading continua bold apos aplicar `font-weight: normal` | Seletor CSS com menor especificidade | Aumente a especificidade do seletor ou use `font-weight: 400` |
+| `font-style: oblique 40deg` nao funciona | Fonte nao suporta oblique com angulacao | Use `font-style: italic` como alternativa pratica |
+| Peso visual parece igual entre 400 e 500 | Fonte arredonda para o peso disponivel mais proximo | Confira os pesos importados da fonte; use pesos que a fonte realmente oferece |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-font-style-font-weight/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-font-style-font-weight/references/code-examples.md)

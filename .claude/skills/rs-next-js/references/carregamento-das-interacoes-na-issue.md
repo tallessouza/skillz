@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-carregamento-interacoes-issue
 description: "Enforces patterns for loading authenticated interactions (likes, reactions) in Next.js apps using React Query and Suspense. Use when user asks to 'load likes', 'fetch interactions', 'add like button', 'implement reactions', 'use React Query with Suspense', or 'handle authenticated fetch'. Applies rules: credentials include for client-side auth, manual headers for server components, useSuspenseQuery over useQuery+isLoading, reusable components with initial props pattern, data attributes for conditional styling. Make sure to use this skill whenever implementing any interaction loading or like/reaction feature in Next.js. Not for server actions, form submissions, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: interacoes-e-cache
+  tags: [react-query, suspense, likes, interactions, useSuspenseQuery, credentials, next-js]
 ---
 
 # Carregamento de Interacoes em Next.js
@@ -176,14 +182,19 @@ function IssueLikeButton({ issueId }: { issueId: string }) {
 | Duas funcoes HTTP para single/batch | Uma funcao que recebe `issueIds: string[]` |
 | `fetch(url)` sem credentials em rota autenticada | `fetch(url, { credentials: 'include' })` |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-carregamento-das-interacoes-na-issue/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-carregamento-das-interacoes-na-issue/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-carregamento-das-interacoes-na-issue/references/deep-explanation.md) — O instrutor explica que a API ja tem uma unica rota que recebe um array de IDs das issues para carre
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-carregamento-das-interacoes-na-issue/references/code-examples.md) — // http/get-issue-interactions.ts

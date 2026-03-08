@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-display-inline
 description: "Enforces correct CSS display inline behavior when styling inline elements like span, a, strong, em. Use when user asks to 'style a span', 'add margin to inline element', 'fix inline element spacing', or 'why width not working on span'. Applies rules: no width/height on inline, only horizontal margin/padding/border push elements, vertical padding/border renders but does not push. Make sure to use this skill whenever debugging inline element layout issues. Not for flexbox, grid, or display block topics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [CSS, display-inline, span, inline-elements, box-model, margin]
 ---
 
 # Display Inline
@@ -86,13 +92,16 @@ span {
 | `span { margin-top: 20px; }` esperando empurrar | Use `display: block` ou `inline-block` se precisa de margin vertical |
 | Padding vertical em inline esperando layout correto | Aceite sobreposicao ou mude o display |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `width` e `height` nao funcionam no span | Elementos inline ignoram width/height | Mude para `display: inline-block` ou `block` |
+| `margin-top` nao empurra elemento | Margin vertical nao funciona em inline | Use `display: inline-block` se precisa de margin vertical |
+| Padding vertical causa sobreposicao | Padding renderiza mas nao empurra no fluxo vertical | Aceite o comportamento ou mude para `inline-block` |
+| Elementos inline nao ficam lado a lado | Pode haver `display: block` aplicado | Verifique no DevTools se o display foi sobrescrito |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre comportamento inline, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-display-inline/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-display-inline/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-refatorando-providers
 description: "Applies the abstract provider pattern when integrating multiple LLM or API providers in NestJS. Use when user asks to 'add a new provider', 'support multiple APIs', 'switch between OpenAI and Gemini', 'make provider configurable', or 'refactor to support multiple implementations'. Enforces module encapsulation, abstract service classes, and factory-based provider selection via environment config. Make sure to use this skill whenever creating swappable service implementations in NestJS. Not for single-provider setups, frontend code, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: multi-provider
+  tags: [openai, ia-node, node-js, nestjs]
 ---
 
 # Refatorando Para Integrar Outros Providers
@@ -140,14 +146,14 @@ export class CatalogModule {}
 | Compartilhar prompts entre providers | Copiar prompts — modelos diferentes precisam de adaptacoes |
 | Exportar implementacao concreta do modulo | Exportar a classe abstrata (`exports: [LLMService]`) |
 
+## Troubleshooting
+
+### Rota retorna 404 mesmo existindo
+**Symptom:** Endpoint retorna 404 Not Found apesar de estar definido no controller
+**Cause:** Modulo nao registrado no AppModule, ou @Param sem decorator no handler
+**Fix:** Verifique se o modulo esta no `imports` do AppModule e que @Param('name') decora o parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-refatorando-para-integrar-outros-providers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-refatorando-para-integrar-outros-providers/references/code-examples.md)

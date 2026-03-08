@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-delecao-agendamento
 description: "Applies the Next.js Server Action delete pattern with Alert Dialog confirmation when implementing delete functionality in Next.js apps. Use when user asks to 'delete a record', 'remove an item', 'add delete button', 'implement exclusion', or 'create delete confirmation dialog'. Enforces revalidatePath after mutation, loading states, error handling with toast, and Alert Dialog UX. Make sure to use this skill whenever adding delete operations to Next.js Server Components or Client Components. Not for GET requests, read-only pages, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: delete-operations
+  tags: [next-js, server-actions, delete, alert-dialog, revalidatePath, loading-state, toast]
 ---
 
 # Funcionalidade de Delecao com Server Actions e Alert Dialog
@@ -118,14 +124,19 @@ async function handleDelete() {
 | window.confirm() | AlertDialog do shadcn/ui |
 | Catch vazio na Action | Catch com console.error + return error |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-delecao-de-um-agendamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-delecao-de-um-agendamento/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-delecao-de-um-agendamento/references/deep-explanation.md) — O instrutor destaca que a funcao `deleteAppointments` recebe apenas um `id: string` — nao precisa de
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-funcionalidade-de-delecao-de-um-agendamento/references/code-examples.md) — // app/actions.ts (ou arquivo de actions do modulo)

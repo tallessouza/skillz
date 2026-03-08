@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-tratamento-excecoes
 description: "Enforces Express error handling middleware pattern with custom AppError class and centralized exception handling. Use when user asks to 'create error handling', 'add middleware', 'handle exceptions', 'treat errors in API', or 'create AppError class'. Applies pattern: custom error class with statusCode + global error middleware that differentiates app errors from generic errors. Make sure to use this skill whenever building Express/Node APIs that need centralized error handling. Not for frontend error boundaries, logging systems, or validation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-error-handling
+  tags: [express, middleware, error-handling, AppError, nodejs]
 ---
 
 # Middleware de Tratamento de Exceções
@@ -135,8 +141,12 @@ app.get("/orders", (req, res, next) => {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre instanceof, camadas e pipeline Express
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-middleware-de-tratamento-de-excecoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-middleware-de-tratamento-de-excecoes/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Middleware de erro nao captura excecoes | Middleware registrado com 3 parametros em vez de 4 | Use exatamente 4 parametros: `(error, req, res, next)` |
+| Erro retorna HTML em vez de JSON | Middleware de erro registrado antes das rotas | Mova `app.use(errorHandling)` para depois de todas as rotas |
+| `instanceof AppError` sempre retorna false | AppError importado de caminho diferente | Verifique se o import aponta para o mesmo arquivo em todos os lugares |
+| Erro nao propaga do controller | Usando `catch` sem `next(error)` | Substitua `catch (e) { res.status(500)... }` por `catch (e) { next(e) }` |
+| Status code sempre 500 | Erro lancado como `new Error()` em vez de `new AppError()` | Use `throw new AppError("msg", statusCode)` para erros tratados |

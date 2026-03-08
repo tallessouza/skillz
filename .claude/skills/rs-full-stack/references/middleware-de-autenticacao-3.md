@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-de-autenticacao-3
 description: "Enforces JWT authentication middleware patterns when building Express/Fastify APIs with token validation. Use when user asks to 'create middleware', 'validate token', 'authenticate request', 'protect route', or 'add auth to API'. Applies patterns: verify token with jsonwebtoken, extract user ID from sub claim, attach user to request, create custom Express typings. Make sure to use this skill whenever implementing authentication middleware or route protection in Node.js APIs. Not for frontend auth, OAuth flows, or session-based authentication."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-authentication
+  tags: [express, jwt, middleware, authentication, token]
 ---
 
 # Middleware de Autenticação
@@ -104,13 +110,16 @@ app.get("/products", ensureAuthenticated, (request, response) => {
 | `sub` usado direto sem converter | `String(sub)` — garante tipo consistente |
 | Tipagem com `any` no request | `declare namespace Express` com interface tipada |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `JsonWebTokenError: invalid token` | Token malformado ou secret errada | Verifique se o token esta no formato `Bearer <token>` e a secret confere |
+| `request.user` e `undefined` na rota | Middleware de autenticacao nao foi aplicado na rota | Adicione `ensureAuthenticated` antes do handler |
+| TypeScript reclama `Property 'user' does not exist` | Falta declaration merging do Express | Crie `src/types/express.d.ts` com a interface estendida |
+| `TokenExpiredError: jwt expired` | Token expirou | Implemente refresh token ou solicite novo login |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre JWT claims, subject, e merge de interfaces TypeScript
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-middleware-de-autenticacao-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-middleware-de-autenticacao-3/references/code-examples.md)

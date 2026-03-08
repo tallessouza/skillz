@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-parametros-rotas
 description: "Applies query parameter extraction patterns when building Node.js HTTP routes from scratch. Use when user asks to 'parse query params', 'extract route parameters', 'handle URL parameters', 'build HTTP server', or 'create route handler' in vanilla Node.js. Enforces proper query string parsing with slice, split, and reduce. Make sure to use this skill whenever writing raw Node.js HTTP parameter handling without frameworks. Not for Express.js req.query, path params with :id syntax, or framework-based routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, query-params, url-parsing, reduce, routing]
 ---
 
 # Obtendo Parâmetros das Rotas
@@ -89,13 +95,16 @@ console.log(params) // { status: "open", page: "2" }
 | `for` loop para montar objeto | `reduce` — funcional e conciso |
 | Acessar params sem verificar existência | Ternário: `query ? extract(query) : {}` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `request.query` é `undefined` | Query params não foram extraídos antes do controller | Atribua `request.query = query ? extractQueryParams(query) : {}` |
+| `extractQueryParams` retorna objeto vazio | Query string não tem `?` no início ou está vazia | Verifique se `slice(1)` está removendo o `?` corretamente |
+| Valor do param vem como `undefined` | Chave ou valor com caracteres especiais | Verifique se `split('=')` está parseando corretamente |
+| `groups` é `undefined` no match | Regex da rota não tem named groups | Confirme que `parseRoutePath` gera regex com `(?<query>...)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre regex groups, o pipeline slice→split→reduce e por que separar em módulo
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e walkthrough passo a passo
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0413-obtendo-parametros-das-rotas-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0413-obtendo-parametros-das-rotas-mkv-mp-4/references/code-examples.md)

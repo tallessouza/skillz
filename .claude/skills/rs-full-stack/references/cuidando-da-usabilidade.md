@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-cuidando-da-usabilidade
 description: "Enforces form reset and focus management patterns after user actions in JavaScript/HTML forms. Use when user asks to 'create a form', 'add item to list', 'submit form', 'handle form submission', or 'improve UX'. Applies rules: clear all inputs after successful action, reset selects to default, set focus on first input for continuous workflow. Make sure to use this skill whenever building forms with repeated submissions. Not for form validation, styling, or backend processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, forms, UX, focus, reset, usability]
 ---
 
 # Usabilidade em Formulários: Reset e Foco
@@ -92,13 +98,16 @@ function expenseAdd() {
 | Usar `form.reset()` sem testar selects customizados | Limpar cada campo explicitamente |
 | Esquecer de resetar o select | `select.value = ""` volta ao placeholder |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Select nao volta ao placeholder apos limpar | `select.value = ""` nao funciona para todos os selects | Verifique se existe um `<option value="">` como placeholder no HTML |
+| `.focus()` nao funciona | Elemento pode estar oculto ou desabilitado | Verifique se o input esta visivel e `disabled` nao esta ativo |
+| `form.reset()` nao reseta selects customizados | `reset()` restaura o valor do HTML, nao o estado JS | Limpe cada campo explicitamente com `campo.value = ""` |
+| Formulario submete mesmo com campos vazios | `formClear()` chamada antes da validacao | Valide os campos antes de adicionar o item e antes de chamar `formClear()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre UX de formulários e fluxo de produtividade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-cuidando-da-usabilidade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-cuidando-da-usabilidade/references/code-examples.md)

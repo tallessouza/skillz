@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-parallel-intercepting-routes
 description: "Applies Next.js Parallel Routes and Intercepting Routes patterns when building layouts with simultaneous content, modals, sheets, or drawers. Use when user asks to 'create a modal route', 'show content without navigation', 'open a sheet over the page', 'implement a drawer', 'parallel routes', or 'intercepting routes'. Make sure to use this skill whenever building overlay UI patterns in Next.js App Router. Not for API routes, middleware, or client-side state management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: parallel-intercepting-routes
+  tags: [next-js, parallel-routes, intercepting-routes, modal, sheet, drawer, app-router, slots]
 ---
 
 # Parallel e Intercepting Routes no Next.js
@@ -118,14 +124,19 @@ export default async function IssueModal({
 | Estrutura diferente dentro do slot | Espelhe exatamente a estrutura da rota real |
 | `(..)` quando a rota esta no mesmo nivel | `(.)` para mesmo nivel, `(..)` para um nivel acima |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-parallel-e-intercepting-routes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-parallel-e-intercepting-routes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-parallel-e-intercepting-routes/references/deep-explanation.md) — Parallel Routes permitem renderizar **duas paginas ao mesmo tempo** no Next.js. Normalmente, o layou
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-parallel-e-intercepting-routes/references/code-examples.md) — O instrutor criou uma pasta `@banana` para demonstrar o conceito:

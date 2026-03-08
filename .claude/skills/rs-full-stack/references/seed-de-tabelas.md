@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-seed-de-tabelas
 description: "Generates database seed files to populate tables with example data using Drizzle ORM. Use when user asks to 'create a seed', 'populate tables', 'insert example data', 'seed the database', or 'add test data'. Follows the pattern: create seed file, define insert values with only required fields, run seed command. Make sure to use this skill whenever generating seed scripts for Drizzle ORM projects. Not for migrations, schema changes, or production data imports."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Drizzle ORM Seeds"
+  tags: ['drizzle', 'orm', 'database', 'seeds', 'typescript']
 ---
 
 # Seed de Tabelas com Drizzle ORM
@@ -73,6 +79,15 @@ npm run connect-seed 2.run
 
 - Apos executar o seed, consulte a tabela no banco para confirmar que os registros foram inseridos
 - Verifique que campos com default (`id`, `createdAt`) foram preenchidos automaticamente
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Erro ao inserir com campos auto-gerados | Enviando `id` ou `createdAt` manualmente | Omita campos com default — o banco gera automaticamente |
+| Seed falha com "column not found" | Nome do campo no seed diferente do schema | Verifique os nomes no schema Drizzle e use os mesmos no `.values()` |
+| Comando `connect-seed` nao reconhecido | Script nao configurado no package.json | Adicione o script de seed no package.json conforme documentacao do Drizzle |
+| Registros nao aparecem apos seed | Seed executou mas sem commit | Verifique se a conexao faz auto-commit ou adicione commit explicito |
 
 ## Deep reference library
 

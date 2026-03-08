@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-ajustes-finais-8
 description: "Applies Next.js layout polishing patterns when finalizing a project for deploy. Use when user asks to 'add a header', 'fix layout width', 'limit max-width', 'add glassmorphism header', 'prepare for deploy', or 'final adjustments'. Enforces fixed header with backdrop blur, max-width container for desktop, and mobile-first responsive structure. Make sure to use this skill whenever building layout shells or headers in Next.js with Tailwind. Not for API routes, data fetching, or authentication logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: layout-polish
+  tags: [header, glassmorphism, max-width, layout, backdrop-blur, deploy-prep]
 ---
 
 # Ajustes Finais — Layout e Header Next.js
@@ -112,14 +118,19 @@ export default function RootLayout({ children }) {
 | Body sem tag `<main>` semantica | Envolva conteudo em `<main>` com flex |
 | Copiar e colar sem revisar textos | Revise labels apos duplicar componentes (ex: "manha" em vez de "noite") |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-ajustes-finais-8/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-ajustes-finais-8/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-ajustes-finais-8/references/deep-explanation.md) — O instrutor enfatiza que esta e a "reta final" antes do deploy. Os ajustes parecem pequenos mas sao 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-ajustes-finais-8/references/code-examples.md) — // components/header/header.tsx

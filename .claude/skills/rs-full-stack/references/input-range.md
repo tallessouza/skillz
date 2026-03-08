@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-range
 description: "Applies HTML input range (slider) patterns when building forms with numeric selection. Use when user asks to 'create a slider', 'add a range input', 'build a volume control', 'numeric selector', or 'form with range'. Configures min, max, step, and value attributes correctly. Make sure to use this skill whenever generating HTML forms that need numeric range selection. Not for text inputs, dropdowns, or JavaScript slider libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, range, slider, min-max, step, forms]
 ---
 
 # Input Range
@@ -61,13 +67,16 @@ description: "Applies HTML input range (slider) patterns when building forms wit
 | Range sem label visivel | `<label>` + `<output>` mostrando valor |
 | Confiar no default 0-100 sem declarar | Declarar min e max explicitamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Valor do slider nao envia no form | Atributo `name` ausente | Adicionar `name="campo"` ao input |
+| Slider comeca no meio sem querer | `value` nao definido | Definir `value` explicitamente para o valor inicial desejado |
+| Usuario nao ve o valor selecionado | Nenhum feedback visual | Adicionar `<output>` ou label dinamico com JS |
+| Step permite valores quebrados | `step` nao definido ou muito pequeno | Ajustar `step` para o incremento desejado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre comportamento padrao do range e analogia com input number
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo com variacoes de configuracao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-range/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-range/references/code-examples.md)

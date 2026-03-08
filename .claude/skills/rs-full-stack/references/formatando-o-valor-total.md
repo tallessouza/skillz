@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatando-o-valor-total
 description: "Enforces BRL currency formatting patterns when writing JavaScript DOM manipulation code. Use when user asks to 'format currency', 'display money', 'show total value', 'format BRL', or any task involving monetary values in Brazilian Real. Applies rules: separate currency symbol into its own DOM element, reuse formatter functions, handle decimal comma correctly in replace operations. Make sure to use this skill whenever generating code that displays formatted prices or totals in Brazilian currency. Not for backend currency calculations, internationalization setup, or non-BRL currencies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, currency, brl, formatting]
 ---
 
 # Formatando Valores Monetários (BRL)
@@ -69,13 +75,16 @@ const cleaned = formatted.toUpperCase().replace("R$", "")
 | Formatar manualmente com template literal | Reutilizar `formatCurrencyBRL()` existente |
 | `element.textContent = newValue` (sem limpar) | `element.innerHTML = ""; element.append(...)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Valor `45,60` vira `4560` apos replace | Regex `[^0-9]` remove a virgula junto | Use `.replace("R$", "")` para manter a virgula |
+| Simbolo R$ aparece duplicado | Layout ja tem R$ e o valor formatado tambem inclui | Remova com `.replace("R$", "").trim()` |
+| `append()` adiciona conteudo duplicado | `innerHTML` nao foi limpo antes do append | Adicione `element.innerHTML = ""` antes de `append()` |
+| Elemento `<small>` nao renderiza o simbolo | `textContent` nao foi atribuido | Verifique `symbolBRL.textContent = "R$"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação de símbolo, bug da vírgula e padrões de reuso
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatando-o-valor-total/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatando-o-valor-total/references/code-examples.md)

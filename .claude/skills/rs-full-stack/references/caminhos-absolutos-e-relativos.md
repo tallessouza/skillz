@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caminhos-absolutos-relativos
 description: "Enforces correct usage of absolute and relative file paths in HTML projects. Use when user asks to 'link a file', 'add an image', 'reference a stylesheet', 'create href', 'fix broken link', or 'include a script'. Applies rules: ./ for same directory, ../ to go up levels, protocol for external URLs, never hardcode absolute local paths. Make sure to use this skill whenever generating HTML that references other files. Not for URL routing in frameworks, API endpoints, or server-side path resolution."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, paths, relative-path, absolute-path, href, src]
 ---
 
 # Caminhos Absolutos e Relativos
@@ -81,13 +87,16 @@ description: "Enforces correct usage of absolute and relative file paths in HTML
 | `../../../../../../arquivo.html` (muitos niveis) | Reorganize a estrutura do projeto |
 | `/Users/mike/Desktop/projeto/page.html` | `page.html` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Link quebra ao mover para outro computador | Caminho absoluto local hardcoded | Substitua por caminho relativo |
+| Imagem/CSS nao carrega | Caminho relativo com nivel errado de `../` | Conte os niveis de diretorio e ajuste |
+| Link externo abre como arquivo local | Falta protocolo `https://` no href | Adicione `https://` antes do dominio |
+| `../` demais resulta em 404 | Subiu alem da raiz do projeto | Reorganize a estrutura ou ajuste o numero de `../` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos-e-relativos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos-e-relativos/references/code-examples.md)

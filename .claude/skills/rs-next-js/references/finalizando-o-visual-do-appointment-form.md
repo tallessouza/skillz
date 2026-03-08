@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-finalizando-visual-appointment-form
 description: "Enforces responsive form layout patterns and submit button UX when building forms in Next.js with React Hook Form. Use when user asks to 'create a form', 'add a submit button', 'make form responsive', 'handle form submission', or 'add loading state to button'. Applies rules: grid layout for desktop with stacked mobile fallback, submit button with spinner and disabled state during submission, always initialize defaultValues for all fields. Make sure to use this skill whenever building forms with React Hook Form in Next.js. Not for API route logic, server actions implementation, or form validation rules."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: formularios-e-componentes
+  tags: [form, responsive, react-hook-form, loading-state, isSubmitting, grid-layout, next-js]
 ---
 
 # Formulario Responsivo com Loading State
@@ -106,14 +112,19 @@ const { formState: { isSubmitting } } = form
 | Spinner customizado com CSS | `<Loader2 className="animate-spin" />` do Lucide |
 | Botao de submit sem feedback visual | `{isSubmitting && <Loader2 />}` antes do texto |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-finalizando-o-visual-do-appointment-form/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-finalizando-o-visual-do-appointment-form/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-finalizando-o-visual-do-appointment-form/references/deep-explanation.md) — O instrutor mostra um erro que acontecia porque o campo `time` nao estava inicializado no `defaultVa
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-finalizando-o-visual-do-appointment-form/references/code-examples.md) — // Campos time e scheduleAt agrupados

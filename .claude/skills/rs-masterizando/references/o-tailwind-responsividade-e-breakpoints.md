@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-responsividade-breakpoints
 description: "Enforces Tailwind CSS Mobile First responsive patterns when writing responsive layouts. Use when user asks to 'make responsive', 'add breakpoints', 'mobile first', 'adapt for screen sizes', or any Tailwind responsive styling task. Applies rules: no-prefix means mobile, progressive enhancement sm/md/lg/xl/2xl, never desktop-first. Make sure to use this skill whenever generating Tailwind responsive code. Not for CSS media queries outside Tailwind, or non-responsive styling tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: responsividade
+  tags: [tailwind, responsive, css-grid]
 ---
 
 # Responsividade e Breakpoints no Tailwind
@@ -91,15 +97,19 @@ description: "Enforces Tailwind CSS Mobile First responsive patterns when writin
 | `sm:text-3xl md:text-3xl lg:text-3xl` (redundante) | `text-3xl` (sem prefixo ja cobre tudo) |
 | `w-full sm:w-full md:w-full lg:w-1/2` (redundante) | `w-full lg:w-1/2` |
 | Todos os 5 breakpoints em cada classe | 2-3 breakpoints no maximo |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-e-breakpoints/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-responsividade-e-breakpoints/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-e-breakpoints/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-responsividade-e-breakpoints/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

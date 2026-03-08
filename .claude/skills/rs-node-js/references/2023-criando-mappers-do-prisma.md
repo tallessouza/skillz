@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-mappers-do-prisma
-description: "Enforces Prisma mapper patterns when converting between domain entities and persistence layer in NestJS/Clean Architecture projects. Use when user asks to 'create a mapper', 'convert entity to prisma', 'map domain to database', 'create repository', or 'implement persistence layer'. Applies rules: one mapper per entity, toDomain/toPrisma methods, validate nullable foreign keys with throw, domain entities do not mirror tables 1:1. Make sure to use this skill whenever creating or modifying mappers between domain and Prisma layers. Not for business logic, domain entity creation, or Prisma schema/migration work."
+name: 2023-criando-mappers-do-prisma
+description: "Creates Prisma mapper classes with static toDomain and toPrisma methods to convert between persistence and domain layers in NestJS/DDD applications. Use when user asks to 'create a mapper', 'convert Prisma types to domain entities', 'map database records', or 'implement data mapping layer'. Enforces: one mapper per domain entity, static methods only, validate nullable FKs with throw, omit toPrisma when write is unnecessary. Make sure to use this skill whenever bridging Prisma database records with domain entities in clean architecture. Not for simple DTOs, API response formatting, or ORM-less applications."
+category: coding-lens
+tags: [attachments, entities, error-handling, migrations, nestjs, prisma]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-integration
+  tags: [prisma, mappers, nestjs, domain-driven-design, entities, data-mapping]
 ---
 
 # Criando Mappers do Prisma
@@ -160,14 +169,14 @@ export class PrismaAnswerCommentMapper {
 | `raw.answerId!` (non-null assertion) | Validacao explicita com throw |
 | Logica de negocio dentro do mapper | Apenas conversao de dados |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-mappers-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-mappers-do-prisma/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-melhorando-seo-landing-page
 description: "Applies Next.js static metadata and Open Graph configuration when building landing pages or improving SEO. Use when user asks to 'add SEO', 'configure metadata', 'add open graph', 'improve page ranking', or 'add meta tags' in a Next.js project. Ensures correct metadata export, OG image setup, and robots configuration. Make sure to use this skill whenever creating or editing Next.js pages that need SEO. Not for dynamic metadata generation, sitemap creation, or structured data/JSON-LD."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo
+  tags: [seo, metadata, open-graph, robots, landing-page, next-js, meta-tags]
 ---
 
 # SEO com Metadata Estatica no Next.js
@@ -113,14 +119,19 @@ export default function Home() {
 | Metadata sem tipagem | `import type { Metadata } from "next"` para autocomplete |
 | Commit direto na main em projetos reais | Crie branch, abra PR |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-landing-page/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-landing-page/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-landing-page/references/deep-explanation.md) — O instrutor enfatiza a simplicidade da API do Next.js: em vez de adicionar manualmente dezenas de `<
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-landing-page/references/code-examples.md) — O codigo final da landing page (`src/app/page.tsx`) com metadata:

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tipos-primitivos
 description: "Enforces correct TypeScript primitive type annotations when declaring variables. Use when user asks to 'create a variable', 'declare a type', 'write TypeScript code', or 'annotate types'. Applies string for text, number for integers and decimals, boolean for true/false. Make sure to use this skill whenever writing TypeScript variable declarations. Not for complex types, interfaces, generics, or type utilities."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentos
+  tags: [typescript, primitivos, string, number, boolean, anotacao]
 ---
 
 # Tipos Primitivos do TypeScript
@@ -72,6 +78,15 @@ username = "rodrigo"
 | `let nome = "rodrigo"` sem contexto de tipo | `let nome: string = "rodrigo"` quando a intencao precisa ser explicita |
 | `7,5` (virgula como decimal) | `7.5` (ponto como decimal) |
 | `let isActive: number` (0/1 como flag) | `let isActive: boolean` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeScript aceita qualquer valor na variavel | Faltando anotacao de tipo (any implicito) | Adicione tipo explicito: `let nome: string` |
+| Erro ao atribuir decimal a variavel `number` | Nenhum — `number` aceita inteiros e decimais | Verifique se nao ha outra restricao; `7.5` e `number` valido |
+| Virgula como separador decimal causa erro | JavaScript usa ponto, nao virgula | Use `7.5` em vez de `7,5` |
+| Flag de estado aceita valores alem de true/false | Usando `number` (0/1) em vez de `boolean` | Troque para `let isActive: boolean` |
 
 ## Deep reference library
 

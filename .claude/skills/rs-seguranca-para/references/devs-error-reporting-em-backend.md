@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-error-reporting
 description: "Enforces secure error reporting practices in backend applications. Use when user asks to 'handle errors', 'configure error pages', 'setup production environment', 'deploy application', or 'create API error responses'. Ensures stack traces, file paths, and framework versions are never exposed to end users. Make sure to use this skill whenever configuring error handling, deploying to production, or building API error responses. Not for application logic errors, input validation, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, error-handling, production, stack-trace]
 ---
 
 # Error Reporting Seguro em Backend
@@ -114,14 +120,14 @@ app.use((err, req, res, next) => {
 | Confiar que "ninguem vai ver" | Testar com erro proposital apos deploy |
 | Retornar detalhes de erro na API para "ajudar o frontend" | Usar codigos de erro internos e documentacao separada |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-error-reporting-em-backend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-error-reporting-em-backend/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-error-reporting-em-backend/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-error-reporting-em-backend/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

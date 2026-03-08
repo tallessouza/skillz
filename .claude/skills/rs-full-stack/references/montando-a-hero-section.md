@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-montando-a-hero-section
 description: "Applies hero section construction patterns when building landing page hero areas with HTML and CSS. Use when user asks to 'create a hero section', 'build a landing page', 'make a hero banner', 'add a call to action section', or 'responsive hero layout'. Enforces mobile-first approach, semantic HTML structure, CSS attribute selectors for images, and background image containment. Make sure to use this skill whenever constructing hero or above-the-fold sections. Not for navigation headers, footers, or non-hero page sections."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-css-layout
+  tags: [html, css, hero-section, mobile-first, responsive]
 ---
 
 # Montando a Hero Section
@@ -140,13 +146,16 @@ img[src*="music"] {
 | `background-size: 100% 100%` (distorce) | `background-size: contain` (proporcional) |
 | Escrever CSS desktop e depois sobrescrever mobile | Escrever CSS mobile e expandir para desktop |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Imagem de fundo nao aparece | Caminho relativo errado ou `background-size` inadequado | Verifique o caminho e use `background-size: contain` ou `cover` |
+| Layout diferente no mobile | CSS escrito desktop-first | Reescreva com mobile-first: CSS base para mobile, `@media (min-width)` para desktop |
+| Seletor `img[src*="keyword"]` nao funciona | Keyword nao corresponde ao nome do arquivo | Verifique o valor exato do `src` da imagem |
+| Resultado visual difere entre navegadores | Motores de renderizacao diferentes | Teste no Edge/Chrome primeiro e ajuste para Safari/Firefox depois |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre mobile-first, seletores de atributo e estrategias de background
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-montando-a-hero-section/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-montando-a-hero-section/references/code-examples.md)

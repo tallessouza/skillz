@@ -1,6 +1,12 @@
 ---
 name: rs-devops-tf-provider-gcp
 description: "Applies Terraform GCP provider configuration patterns when writing infrastructure-as-code for Google Cloud Platform. Use when user asks to 'configure GCP provider', 'setup terraform for google cloud', 'create GCP resources', 'provision VM on GCP', or 'multi-cloud terraform'. Enforces project-based organization, separate repositories per provider, and correct provider block structure. Make sure to use this skill whenever generating Terraform code targeting GCP. Not for AWS, Azure, or application-level code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-providers
+  tags: [terraform, gcp, google-cloud, provider, compute-instance, hcl, iac]
 ---
 
 # Terraform Provider — GCP
@@ -138,14 +144,14 @@ resource "google_compute_instance" "vm" {
 | Zona fixa no provider block | Zona declarada em cada recurso |
 | Omitir `version` no required_providers | Sempre fixar versao do provider |
 
+## Troubleshooting
+
+### Terraform cria recurso duplicado no GCP
+**Symptom:** Erro de nome duplicado ao rodar `terraform apply` no GCP
+**Cause:** Usando o nome legivel do projeto (`"Skillz"`) ao inves do ID unico (`"skillz-438714"`)
+**Fix:** Use o Project ID (string alfanumerica unica) no campo `project` do provider, nunca o nome
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-e-configurando-provider/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-e-configurando-provider/references/code-examples.md)

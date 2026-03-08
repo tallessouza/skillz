@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-teste-e-2-e
 description: "Applies E2E testing patterns with SuperTest when writing Node.js/Express API tests. Use when user asks to 'write e2e test', 'test an endpoint', 'test API route', 'create integration test', or 'setup supertest'. Enforces app/server separation, proper response format handling, and async test patterns. Make sure to use this skill whenever creating HTTP endpoint tests in Node.js projects. Not for unit tests, frontend tests, or browser-based E2E tests like Playwright/Cypress."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing
+  tags: [testing, e2e, supertest, express, api]
 ---
 
 # Executando Testes E2E com SuperTest
@@ -114,13 +120,16 @@ describe("Products", () => {
 | `res.send(data)` sem Content-Type | `res.json(data)` |
 | `supertest` em dependencies | `supertest` em devDependencies (`-D`) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Conflito de porta ao rodar testes | Importando `server` em vez de `app` | Importar apenas `app` (instancia Express sem listen) |
+| `response.body` vazio | Rota sem Content-Type JSON | Usar `res.json(data)` em vez de `res.send()` |
+| Tipos nao reconhecidos para SuperTest | Falta `@types/supertest` | `npm i @types/supertest -D` |
+| Teste passa mas nao deveria | Sem assertions no teste | Adicionar `expect()` com verificacoes reais |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao app/server e por que SuperTest precisa disso
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-executando-teste-e-2-e/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-executando-teste-e-2-e/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-verificando-conteudo-array
 description: "Applies Array.includes() for checking item existence in arrays when writing JavaScript/TypeScript. Use when user asks to 'check if array contains', 'verify item in list', 'find if value exists in array', or 'search array for element'. Enforces includes() over indexOf and highlights case-sensitivity. Make sure to use this skill whenever generating code that checks array membership. Not for searching objects by property, filtering arrays, or finding index positions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-arrays
+  tags: [javascript, array, includes, membership, search]
 ---
 
 # Verificando Conteúdo no Array com includes()
@@ -70,6 +76,15 @@ if (fruits.includes("apple")) {
 | `arr.indexOf(x) >= 0` | `arr.includes(x)` |
 | `arr.includes(x) === true` | `arr.includes(x)` |
 | `arr.includes("Apple")` (quando o array tem `"apple"`) | Normalize case antes de comparar |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `includes` retorna `false` mesmo com item presente | Case sensitivity — `"Apple"` vs `"apple"` | Normalize com `.toLowerCase()` antes de comparar |
+| `includes` nao funciona com objetos | Compara por referencia, nao por valor | Use `.find()` ou `.some()` com predicado para objetos |
+| `includes is not a function` | Variavel nao e um array | Verifique o tipo com `Array.isArray()` antes de chamar |
+| `includes` nao encontra `NaN` | `indexOf` nao acha NaN, mas `includes` sim | `includes` e correto para NaN — verifique se o problema e outro |
 
 ## Deep reference library
 

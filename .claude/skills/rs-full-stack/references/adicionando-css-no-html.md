@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-css-no-html
 description: "Enforces correct CSS integration patterns when linking stylesheets to HTML files. Use when user asks to 'add CSS', 'link a stylesheet', 'style an HTML page', 'create a new HTML project', or 'setup a web page'. Applies rules: external stylesheet over inline/embedded, correct link tag attributes, proper relative paths. Make sure to use this skill whenever setting up HTML+CSS projects or reviewing how styles are connected. Not for CSS properties, selectors, or layout techniques."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, link, stylesheet, setup]
 ---
 
 # Adicionando CSS no HTML
@@ -88,13 +94,16 @@ h1 {
 | `<link href="style.css">` sem rel | `<link rel="stylesheet" href="style.css">` |
 | Caminho errado: `href="style.css"` quando esta em `css/` | `href="css/style.css"` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao aplica no HTML | Atributo `rel="stylesheet"` ausente na tag `<link>` | Adicione `rel="stylesheet"` na tag link |
+| Estilos nao carregam | Caminho do `href` incorreto | Verifique o caminho relativo do arquivo CSS em relacao ao HTML |
+| Estilos aplicam parcialmente | Conflito de especificidade com inline styles | Remova atributos `style` inline do HTML |
+| CSS funciona local mas nao no servidor | Case sensitivity no nome do arquivo | Verifique maiusculas/minusculas no nome do arquivo CSS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre especificidade e separacao de responsabilidades
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-css-no-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-css-no-html/references/code-examples.md)

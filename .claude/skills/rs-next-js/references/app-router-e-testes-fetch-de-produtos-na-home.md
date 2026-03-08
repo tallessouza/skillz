@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-fetch-produtos-home
 description: "Applies Next.js App Router server-side data fetching patterns when building pages that load data from an API. Use when user asks to 'fetch data in Next.js', 'load products on homepage', 'create server component with API call', 'display API data in Next.js page', or 'fetch in App Router'. Enforces async server components, proper typing, URL construction with base URL, and locale-aware price formatting. Make sure to use this skill whenever implementing data fetching in Next.js App Router server components. Not for client components, React Query, SWR, or client-side fetching patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, server-components, data-fetching, product-listing, locale-formatting, destructuring]
 ---
 
 # Fetch de Dados em Server Components (Next.js App Router)
@@ -146,14 +152,19 @@ export default async function Home() {
 | Dados sem tipagem | `Promise<Product[]>` no retorno da funcao |
 | Um `<Link>` copiado para cada produto | `.map()` com `key={product.id}` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-produtos-na-home/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-produtos-na-home/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-produtos-na-home/references/deep-explanation.md) — O instrutor demonstra um ponto fundamental: ao desabilitar JavaScript no navegador, a pagina continu
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-produtos-na-home/references/code-examples.md) — // @/data/api.ts

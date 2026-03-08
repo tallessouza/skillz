@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-imagens-e-estilos
 description: "Applies correct image export and integration workflow when building HTML/CSS pages with assets from Figma. Use when user asks to 'add images', 'export from Figma', 'organize assets', 'set up project images', or 'add border-radius to images'. Enforces JPG-over-PNG for performance, proper asset folder structure, and CSS border-radius instead of baked-in rounding. Make sure to use this skill whenever integrating images from design tools into web projects. Not for SVG icon systems, image optimization pipelines, or responsive images with srcset."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, images, figma, assets, border-radius, accessibility]
 ---
 
 # Adicionando Imagens e Estilos
@@ -89,13 +95,16 @@ projeto/
 | Commit sem .gitignore | Criar .gitignore com `.DS_Store` antes do primeiro commit |
 | `<link rel="stylesheet" href="./styles/main.css">` sem necessidade | `<link rel="stylesheet" href="style.css">` simples na raiz |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem nao carrega no HTML | Caminho `src` incorreto | Verifique o caminho relativo: `assets/imagem.jpg` |
+| Bordas arredondadas com fundo branco visivel | Border-radius exportado na imagem PNG | Exporte JPG sem bordas e aplique `border-radius` via CSS |
+| Imagem muito pesada | Exportou como PNG em vez de JPG | Re-exporte como JPG (exceto quando precisa de transparencia) |
+| `.DS_Store` aparece no repositorio | `.gitignore` nao configurado | Crie `.gitignore` com `.DS_Store` antes do primeiro commit |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre JPG vs PNG, workflow de exportacao Figma e decisoes de border-radius
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-imagens-e-estilos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-imagens-e-estilos/references/code-examples.md)

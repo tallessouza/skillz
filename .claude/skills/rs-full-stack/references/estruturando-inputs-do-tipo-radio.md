@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inputs-tipo-radio
 description: "Applies correct HTML radio input structure when building forms with radio buttons. Use when user asks to 'create radio buttons', 'build a form with options', 'add radio inputs', 'structure radio groups', or 'create selection options in HTML'. Enforces fieldset/legend grouping, proper name/value/id attributes, label association, and semantic wrapper patterns. Make sure to use this skill whenever generating HTML forms with radio selection. Not for checkboxes, select dropdowns, or CSS styling of radios."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, forms, radio, fieldset, accessibility]
 ---
 
 # Estruturando Inputs do Tipo Radio
@@ -99,13 +105,16 @@ description: "Applies correct HTML radio input structure when building forms wit
 | Radios fora de fieldset | Sempre dentro de `<fieldset>` com `<legend>` |
 | `id` repetido entre radios | Cada radio com `id` unico |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Multiplos radios selecionaveis ao mesmo tempo | Atributo `name` diferente entre eles | Usar o mesmo `name` em todos os radios do grupo |
+| Clicar no label nao seleciona o radio | `for` do label nao bate com `id` do radio | Verificar `for="morning"` e `id="morning"` identicos |
+| Valor nao e enviado no formulario | Falta atributo `value` no radio | Adicionar `value="morning"` em cada radio |
+| Leitor de tela nao anuncia o grupo | Radios fora de fieldset | Envolver em `<fieldset>` com `<legend>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre semantica de radio groups e acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-inputs-do-tipo-radio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-inputs-do-tipo-radio/references/code-examples.md)

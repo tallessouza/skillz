@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-fazendo-o-deploy-1
 description: "Guides Next.js application deployment to Vercel when user asks to 'deploy next app', 'publish to vercel', 'put my site online', 'deploy to production', or 'ship my next.js project'. Covers repository preparation, Vercel import, environment variables, build logs, and runtime logs verification. Make sure to use this skill whenever deploying a Next.js project to Vercel or discussing Vercel deployment workflow. Not for other hosting providers like AWS, Netlify, or Railway, and not for CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: deploy
+  tags: [vercel, deploy, production, build, environment-variables, next-js]
 ---
 
 # Deploy Next.js na Vercel
@@ -88,14 +94,19 @@ Apos deploy bem-sucedido:
 - [ ] Build Logs sem erros
 - [ ] Runtime Logs registrando acessos
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-fazendo-o-deploy-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-fazendo-o-deploy-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-fazendo-o-deploy-1/references/deep-explanation.md) — A Vercel e a empresa que criou o Next.js, entao a integracao e nativa e otimizada. O instrutor desta
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-fazendo-o-deploy-1/references/code-examples.md) — git status

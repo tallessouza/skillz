@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-e2e-rotas-academias
 description: "Applies E2E testing patterns for authenticated API routes using Vitest and Supertest in Node.js. Use when user asks to 'write e2e tests', 'test API routes', 'create test utilities', 'test authenticated endpoints', or 'refactor test helpers'. Enforces reusable auth helpers, query parameter coercion with Zod, and proper test isolation. Make sure to use this skill whenever writing integration or e2e tests for Fastify/Express routes. Not for unit tests, use case tests, or frontend testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-e2e-rotas
+  tags: [e2e, testing, supertest, vitest, fastify, zod, authentication, query-params]
 ---
 
 # Testes E2E de Rotas com Autenticacao
@@ -162,14 +168,14 @@ it('should create gym', async () => {
 | Testar busca com apenas 1 item | Criar items que matcham e nao matcham |
 | Ignorar registro de rotas no app | Verificar que todas as rotas estao registradas |
 
+## Troubleshooting
+
+### Query parameter numerico retorna erro 400 de validacao
+**Symptom:** Rota com latitude/longitude retorna `ZodError` com mensagem "Expected number, received string"
+**Cause:** Query parameters sempre chegam como string via HTTP, mas o schema Zod espera `z.number()`
+**Fix:** Use `z.coerce.number()` em vez de `z.number()` no schema de validacao dos query parameters
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-rotas-de-academias/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-rotas-de-academias/references/code-examples.md)

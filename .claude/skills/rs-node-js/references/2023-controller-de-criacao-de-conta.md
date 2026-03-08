@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controller-criacao-conta
+name: rs-node-js-2023-controller-de-criacao-de-conta
 description: "Enforces NestJS one-controller-per-route pattern when creating controllers, routes, or endpoints. Use when user asks to 'create a route', 'add an endpoint', 'create a controller', 'implement CRUD', or 'add a NestJS route'. Applies rules: one file per route, @Controller prefix on class, @Body decorator for request data, ConflictException for duplicates, strict TypeScript config. Make sure to use this skill whenever generating NestJS controller code. Not for frontend components, database schemas, or non-NestJS backends."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller por Rota no NestJS
@@ -110,14 +117,14 @@ export class AddUserToGroupController {
 | Catch generico retornando 500 | Exceptions tipadas do NestJS (`ConflictException`, `NotFoundException`) |
 | Metodo nomeado `createAccount()` | Metodo `handle()` (uma rota por controller) |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-conta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-conta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-conta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-conta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

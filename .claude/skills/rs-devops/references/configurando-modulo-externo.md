@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-modulo-externo
 description: "Applies Terraform external module usage patterns when configuring infrastructure with third-party registry modules. Use when user asks to 'use a terraform module', 'add SQS', 'use registry module', 'configure external module', or 'add terraform dependency from registry'. Enforces source referencing, version pinning, DLQ best practices, and tag standards. Make sure to use this skill whenever importing modules from registry.terraform.io. Not for creating custom local modules, writing providers, or application-level queue consumption code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modulos
+  tags: [terraform, iac, modules, sqs, registry, dlq]
 ---
 
 # Módulos Externos do Terraform
@@ -89,14 +95,14 @@ module "sqs" {
 | Recriar módulo que já existe no registry | Buscar no registry.terraform.io primeiro |
 | Editar tipo de fila (FIFO↔Standard) | Deletar e recriar com tipo correto |
 
+## Troubleshooting
+
+### Modulo do Terraform Registry nao e encontrado
+**Symptom:** Erro 'Module not found' ao rodar terraform init
+**Cause:** O source do modulo esta incorreto ou a versao especificada nao existe no registry
+**Fix:** Verifique o source em registry.terraform.io, copie o bloco de uso exato e rode `terraform init` novamente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-modulo-externo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-modulo-externo/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-modulo-externo/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-modulo-externo/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

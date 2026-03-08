@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-futuro-das-animacoes-01
 description: "Applies CSS Animation Timeline with scroll-driven animations when writing CSS/HTML code. Use when user asks to 'animate on scroll', 'scroll-based animation', 'animation timeline', 'fade on scroll', or 'scroll-driven CSS'. Enforces correct usage of animation-timeline: scroll() with proper axis arguments and keyframes setup. Make sure to use this skill whenever implementing scroll-controlled animations in CSS. Not for JavaScript scroll libraries, Intersection Observer, or viewport-based animation-timeline (view)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animation, scroll, animation-timeline, keyframes]
 ---
 
 # CSS Animation Timeline — Scroll
@@ -82,13 +88,16 @@ article img {
 | `animation-timeline: scroll(inline)` sem overflow horizontal | `animation-timeline: scroll()` (vertical padrao) |
 | Usar em producao sem checar caniuse | Verificar suporte e adicionar fallback |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Animacao nao dispara ao scrollar | Pagina sem scroll suficiente ou eixo errado | Verifique se ha conteudo suficiente para scroll e use `scroll(y)` para vertical |
+| Animacao completa instantaneamente | Duracao definida na animation shorthand | Remova a duracao: use `animation: fade linear` sem tempo |
+| Nao funciona no Safari/Firefox | Suporte limitado a animation-timeline | Verifique caniuse.com e adicione fallback com Intersection Observer |
+| Animacao nao progride suavemente | Keyframes mal definidos | Verifique se `@keyframes` tem 0% e 100% bem definidos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-01/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-futuro-das-animacoes-01/references/code-examples.md)

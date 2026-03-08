@@ -1,15 +1,29 @@
 ---
 name: rs-devops-como-executar-cluster-kubernetes
 description: "Applies Kubernetes cluster execution knowledge when designing or discussing K8s infrastructure. Use when user asks to 'create a cluster', 'deploy to kubernetes', 'choose between EKS GKE AKS', 'run kubernetes locally', or 'set up k8s environment'. Guides decisions between managed vs self-managed clusters and local development setups. Make sure to use this skill whenever planning Kubernetes infrastructure or choosing execution strategy. Not for container image building, Docker-only setups, or application code patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-execucao
+  tags: [kubernetes, cluster, eks, gke, aks, minikube, kind]
 ---
 
 # Como Executar um Cluster Kubernetes
 
 > Antes de criar um cluster, decida o modelo de execucao: gerenciado (cloud provider), auto-gerenciado (on-premise), ou local (estudo/desenvolvimento).
 
-## Key concept
+## Key concepts
 
 Kubernetes e open source e 100% portavel — nao esta acoplado a nenhum cloud provider. O custo nunca e pelo Kubernetes em si, mas pelo **gerenciamento** do cluster. Essa distincao e fundamental para decisoes de infraestrutura.
+
+```bash
+# Diagnostic: verify local cluster tools
+docker --version          # Container runtime required
+kind --version            # Local cluster tool
+kubectl version --client  # K8s CLI
+kubectl config get-contexts  # List available clusters
+```
 
 ## Decision framework
 
@@ -66,14 +80,14 @@ Execucao local e para aprendizado e desenvolvimento. Permite subir containers, t
 - A escolha entre gerenciado e auto-gerenciado depende de contexto organizacional, nao ha resposta universal
 - Este skill cobre a decisao de modelo de execucao, nao a configuracao detalhada de cada provider
 
+## Troubleshooting
+
+### Cluster local nao sobe ou fica em estado NotReady
+**Symptom:** `kind create cluster` falha ou `kubectl get nodes` mostra status NotReady
+**Cause:** Docker nao esta rodando ou nao tem recursos suficientes alocados (CPU/memoria)
+**Fix:** Verifique se Docker esta ativo com `docker ps`, aumente recursos no Docker Desktop (minimo 2 CPUs, 4GB RAM), e tente novamente com `kind delete cluster && kind create cluster`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-como-executar-um-cluster-kubernetes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-como-executar-um-cluster-kubernetes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-como-executar-um-cluster-kubernetes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-como-executar-um-cluster-kubernetes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

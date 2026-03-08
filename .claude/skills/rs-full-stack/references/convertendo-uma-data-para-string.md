@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-convertendo-data-para-string
 description: "Applies JavaScript Date-to-string conversion methods when formatting dates or times. Use when user asks to 'format a date', 'convert date to string', 'display only time', 'show only date', or 'format datetime output'. Covers toString, toDateString, and toTimeString methods with correct usage patterns. Make sure to use this skill whenever generating code that displays dates or times as text. Not for date parsing, date arithmetic, Intl.DateTimeFormat, or locale-specific formatting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, date, string-conversion, formatting, toDateString, toTimeString]
 ---
 
 # Convertendo Data para String em JavaScript
@@ -74,13 +80,15 @@ document.getElementById("date").textContent = event.toDateString()
 | `date.toString().split(" ").slice(0,4).join(" ")` | `date.toDateString()` |
 | `date.toString().split(" ")[4]` | `date.toTimeString()` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `toDateString()` retorna dia da semana em ingles | Metodo nao aceita locale — usa o padrao do runtime | Use `Intl.DateTimeFormat('pt-BR')` se precisar de portugues |
+| `toTimeString()` mostra timezone inesperada | Reflete o fuso do sistema, nao UTC | Use `toISOString()` para UTC ou configure o ambiente |
+| `Invalid Date` ao criar Date com string | Formato da string nao e ISO 8601 | Use `new Date("YYYY-MM-DDTHH:mm:ss")` sempre |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-convertendo-uma-data-para-string/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-convertendo-uma-data-para-string/references/code-examples.md)

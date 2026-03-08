@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-copiando-camada-de-dominio
 description: "Applies domain layer migration and TypeScript error fixing patterns when copying code between projects, setting up NestJS clean architecture, or fixing TypeScript strict mode errors. Use when user asks to 'migrate domain layer', 'copy code from another project', 'fix TypeScript errors after migration', 'setup clean architecture in NestJS', or 'fix eslint errors after copying files'. Make sure to use this skill whenever migrating existing domain code into a new project structure. Not for creating domain entities from scratch or writing new business logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [migration, clean-architecture, typescript, domain-layer]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Migracao de Camada de Dominio
@@ -121,14 +128,14 @@ set content(value: string) {
 | `new` usado para side effect | Desativar `no-new` no ESLint |
 | Testes divididos (unit/e2e) | `pnpm test` = unitarios, `pnpm test:e2e` = end-to-end |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-copiando-camada-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-copiando-camada-de-dominio/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-copiando-camada-de-dominio/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-copiando-camada-de-dominio/references/code-examples.md) — Todos os exemplos de código expandidos com variações

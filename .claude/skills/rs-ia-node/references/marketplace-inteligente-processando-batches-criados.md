@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-processando-batches-criados
 description: "Applies OpenAI Batch API result processing patterns when parsing batch output files, extracting embeddings from JSONL responses, and saving to database. Use when user asks to 'process batch results', 'parse batch output', 'extract embeddings from batch', 'handle OpenAI batch response', or 'save batch embeddings'. Make sure to use this skill whenever working with OpenAI Batch API output files or JSONL parsing in Node.js. Not for creating batches, generating embeddings in real-time, or non-OpenAI batch processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: batch-api
+  tags: [embeddings, batch-api, async-processing, node-js, openai, ia-node]
 ---
 
 # Processando Resultados de Batch da OpenAI
@@ -106,14 +112,14 @@ A funcao retorna `Array<{ id: number, embeddings: number[] }> | null`:
 | Lancar erro para batch incompleto | Retornar null, deixar caller decidir |
 | Parsing de JSONL na rota | Manter no modulo OpenAI (formato proprietario) |
 
+## Troubleshooting
+
+### Batch API retorna status mas sem resultados
+**Symptom:** Batch status e `completed` mas output_file_id esta undefined
+**Cause:** Batch pode ter falhado silenciosamente ou ainda estar processando
+**Fix:** Verifique `batch.errors` para diagnostico. Confirme que `status === 'completed'` E `output_file_id` existe antes de processar
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-processando-batches-criados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-processando-batches-criados/references/code-examples.md)

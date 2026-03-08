@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-a-li
 description: "Generates dynamic HTML list items using document.createElement and classList.add when building expense lists, todo lists, or any dynamic UI list. Use when user asks to 'create list items', 'add items dynamically', 'build a dynamic list', 'generate li elements', or 'render a list from data'. Make sure to use this skill whenever generating JavaScript that creates DOM elements for lists. Not for static HTML markup, CSS styling, or framework-based rendering (React, Vue)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, list, dynamic-rendering]
 ---
 
 # Criando Elementos de Lista Dinamicamente com JavaScript
@@ -111,13 +117,15 @@ list.append(expenseItem)
 | Lista com itens estaticos no HTML | Lista vazia + HTML comentado como referencia |
 | Inserir cada filho individualmente no DOM | Montar a arvore completa, depois inserir o pai |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Lista duplica itens ao re-renderizar | Itens anteriores nao sao limpos antes de adicionar novos | Limpe a lista com `expenseList.innerHTML = ""` antes de re-popular |
+| Estilos CSS nao aplicam nos itens dinamicos | Nome da classe no JS diferente do seletor CSS | Verifique que `classList.add("classe")` usa exatamente o mesmo nome do CSS |
+| Imagem do icone nao carrega | Caminho `src` incorreto ou asset nao copiado para dist | Verifique o path relativo e confirme que o arquivo existe no diretorio servido |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre createElement vs innerHTML, workflow estatico-para-dinamico
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-li/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-li/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-iframe-sandbox
 description: "Enforces iframe sandbox security patterns when embedding external or user-generated content. Use when user asks to 'embed iframe', 'load user content', 'sandbox iframe', 'restrict iframe', or 'show user HTML safely'. Applies sandbox attribute with granular allow-* permissions. Make sure to use this skill whenever iframes display untrusted or user-generated content. Not for same-origin trusted iframes, video embeds from YouTube/Vimeo, or CSP header configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, iframe, sandbox]
 ---
 
 # Iframe Sandbox
@@ -68,14 +74,14 @@ description: "Enforces iframe sandbox security patterns when embedding external 
 | `sandbox="allow-scripts allow-same-origin"` | `sandbox="allow-scripts"` (nunca combine os dois) |
 | `sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-top-navigation"` | `sandbox="allow-scripts"` (libere apenas o necessario) |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-iframe-atributo-sandbox/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-iframe-atributo-sandbox/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-iframe-atributo-sandbox/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-iframe-atributo-sandbox/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

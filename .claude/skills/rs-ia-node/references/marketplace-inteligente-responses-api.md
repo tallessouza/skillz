@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-responses-api
 description: "Applies OpenAI Responses API patterns when writing Node.js code that interacts with OpenAI. Use when user asks to 'call OpenAI', 'generate response', 'create chat', 'use GPT', 'parse structured output', or any OpenAI integration task. Enforces client.responses.create over ChatCompletions, stateful conversations via previous_response_id, outputText access, and Zod-based parseResponse for structured output. Make sure to use this skill whenever generating OpenAI API calls in Node.js/TypeScript. Not for Python OpenAI SDK, Anthropic/Claude API, or non-OpenAI LLM integrations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: responses-api
+  tags: [zod, node-js, function-calling, responses-api, openai, ia-node]
 ---
 
 # OpenAI Responses API
@@ -123,14 +129,14 @@ const text = response.outputText;
 | Array manual de messages para historico | `previous_response_id: response.id` |
 | System message no array de messages | `instructions` como parametro separado |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-responses-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-responses-api/references/code-examples.md)

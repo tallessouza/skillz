@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-tratando-env-com-zod
 description: "Enforces environment variable validation with Zod schemas in Node.js/TypeScript projects. Use when user asks to 'setup env variables', 'validate environment', 'create env config', 'configure dotenv', or 'add environment variables'. Applies Zod schema validation with type inference, safeParse error handling, and centralized env export. Make sure to use this skill whenever setting up or modifying environment variables in any Node.js backend project. Not for frontend env configs, Docker env files, or CI/CD environment setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: variaveis-ambiente
+  tags: [zod, env, dotenv, validation, typescript, environment, safeParse]
 ---
 
 # Tratando Variáveis Ambiente com Zod
@@ -97,14 +103,14 @@ app.listen({ port: env.PORT }) // number, com default 3333
 | `z.string()` para PORT (vem como string do env) | `z.coerce.number()` para converter automaticamente |
 | `.env.example` sem `NODE_ENV` | Sempre incluir `NODE_ENV=development` no example |
 
+## Troubleshooting
+
+### Aplicacao falha no boot com "Invalid environment variables" sem detalhes
+**Symptom:** Erro generico ao iniciar a aplicacao, sem indicar qual variavel esta faltando
+**Cause:** Uso de `envSchema.parse()` em vez de `envSchema.safeParse()`, que lanca ZodError sem formatacao legivel
+**Fix:** Use `safeParse` e logue `_env.error.format()` antes de lancar o erro para ver exatamente quais variaveis falharam
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-tratando-env-com-zod/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-tratando-env-com-zod/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-footer-2
 description: "Applies footer layout patterns using CSS Grid and Flexbox when building page footers or multi-column layouts. Use when user asks to 'create a footer', 'build a site footer', 'layout footer columns', 'responsive footer', or 'footer with navigation links'. Enforces grid-based top/bottom section split, even-columns nav pattern, and smooth scroll behavior. Make sure to use this skill whenever generating footer HTML/CSS structure. Not for header navigation, hero sections, or JavaScript functionality."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, footer, grid, flexbox, layout, responsive]
 ---
 
 # Footer Layout com Grid e Flexbox
@@ -182,13 +188,16 @@ html {
 | Scroll instantâneo entre seções | `scroll-behavior: smooth` no html |
 | Padding fixo em todos os breakpoints | Padding responsivo com media query |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Nav do footer nao alinha a direita | Falta `margin-left: auto` no nav | Adicione `footer .top nav { margin-left: auto; }` |
+| Listas de links tem gaps verticais estranhos | Grid distribui espaco vertical igualmente | Adicione `align-content: start` nas listas |
+| `scroll-behavior: smooth` nao funciona | Propriedade aplicada no elemento errado | Aplique em `html`, nao no body ou container |
+| Footer nao fica no fundo da pagina | Conteudo da pagina nao preenche a viewport | Use `min-height: 100vh` no body com flexbox ou grid |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre decisões de layout Grid vs Flex no footer
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-footer-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-footer-2/references/code-examples.md)

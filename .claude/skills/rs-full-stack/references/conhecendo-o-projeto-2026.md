@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-projeto-2026
 description: "Applies CSS animation and transition patterns when building landing pages with scroll animations, hover transitions, and entrance effects. Use when user asks to 'animate on scroll', 'add hover transition', 'create entrance animation', 'build an animated landing page', or 'CSS keyframes for LP'. Make sure to use this skill whenever implementing CSS animations on landing pages or product showcase sites. Not for JavaScript animation libraries, React motion, or SVG animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animations
+  tags: [css, animations, transitions, keyframes, landing-page]
 ---
 
 # CSS Animations & Transitions — Projeto LP de Patins
@@ -91,13 +97,16 @@ description: "Applies CSS animation and transition patterns when building landin
 | Mesmo codigo de animacao para mobile e desktop | Media queries com animacoes adaptadas |
 | `animation` sem `forwards` em entrada | `animation: name 0.6s ease forwards` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Animacao de entrada nao aparece | Faltou `forwards` no `animation` | Adicione `animation: name 0.6s ease forwards` |
+| Hover nao funciona em mobile | Touch devices nao tem hover nativo | Use media query `@media (hover: hover)` para hover effects |
+| Scroll animation nao dispara | IntersectionObserver nao configurado ou classe CSS nao definida | Verifique que o JS adiciona a classe `.visible` e que o CSS tem a transicao correspondente |
+| Animacao pisca ao carregar | Elemento visivel antes da animacao iniciar | Defina `opacity: 0` no estado inicial do elemento |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar cada tipo de animacao CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2026/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2026/references/code-examples.md)

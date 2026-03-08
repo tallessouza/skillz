@@ -1,6 +1,12 @@
 ---
 name: rs-nodejs-finalizando-testes-app
 description: "Applies end-to-end testing patterns for Node.js REST APIs when writing tests for specific routes, summaries, or CRUD endpoints. Use when user asks to 'write tests', 'test this route', 'add e2e tests', 'test the API', or 'create integration tests'. Enforces test-adapts-to-code principle, cookie-based auth chaining, and proper response shape assertions. Make sure to use this skill whenever generating or reviewing API route tests. Not for unit tests, frontend tests, or mocking strategies."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: e2e-testing
+  tags: [testing, e2e, api, rest, cookies, integration, vitest]
 ---
 
 # Finalizando Testes E2E de API REST
@@ -133,14 +139,14 @@ it('should get the summary', async () => {
 | Alterar a API para facilitar o teste | Adaptar o teste ao comportamento real da API |
 | `expect(res.body).toBe(3000)` | `expect(res.body.summary).toEqual({ amount: 3000 })` |
 
+## Troubleshooting
+
+### Teste E2E retorna 404 inesperado
+**Symptom:** O teste falha com status 404 mesmo com a rota existindo no codigo
+**Cause:** O path usado no teste nao corresponde ao path completo da rota (ex: `/summary` em vez de `/transactions/summary`)
+**Fix:** Verifique o path completo da rota no arquivo de rotas e use-o exatamente no teste
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-finalizando-testes-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-finalizando-testes-da-aplicacao/references/code-examples.md)

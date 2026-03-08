@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-web-application-firewall
 description: "Applies Web Application Firewall (WAF) configuration knowledge when setting up ModSecurity, adjusting firewall rules, or troubleshooting blocked requests. Use when user asks to 'configure WAF', 'setup ModSecurity', 'fix blocked request', 'whitelist URL in firewall', or 'remove security rule'. Make sure to use this skill whenever dealing with web application firewall configuration or debugging false positives in WAF rules. Not for network firewalls (iptables/ufw), TLS configuration, or application-level input validation code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security]
 ---
 
 # Web Application Firewall (WAF)
@@ -108,14 +114,14 @@ SecRuleRemoveById 932160
 | Ignorar o WAF porque "a aplicacao ja valida" | Seguranca em camadas: WAF + validacao na app |
 | Ler o log de cima pra baixo procurando a causa | Ler de baixo pra cima, focar em "Matched Phrase" |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-web-application-firewall/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-web-application-firewall/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-web-application-firewall/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-web-application-firewall/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

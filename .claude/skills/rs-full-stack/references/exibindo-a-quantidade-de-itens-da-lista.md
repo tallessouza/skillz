@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exibindo-qtd-itens-lista
 description: "Applies dynamic list count update patterns when writing JavaScript DOM manipulation code. Use when user asks to 'update a counter', 'show item count', 'display list total', 'sync UI with list changes', or 'pluralize text dynamically'. Enforces children property for counting, template literals for plural/singular text, and calling update functions after DOM mutations. Make sure to use this skill whenever building lists with visible counters or totals. Not for React/Vue state management, CSS styling, or backend pagination."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, children, counter, pluralization, template-literals]
 ---
 
 # Atualizacao Dinamica de Quantidade de Itens na Lista
@@ -123,13 +129,16 @@ function expenseAdd(newExpense) {
 | Atualizar contador dentro do event listener | Extrair para funcao `updateTotals()` reutilizavel |
 | Selecionar elemento dentro da funcao de update | Selecionar no topo do script, reutilizar referencia |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Contador mostra 0 mesmo com itens na lista | Seletor CSS nao encontra o elemento correto | Inspecionar o DOM e ajustar o querySelector |
+| Pluralizacao incorreta (ex: "1 despesas") | Condicao do ternario invertida ou sem `>` | Usar `items.length > 1 ? "despesas" : "despesa"` |
+| Contador nao atualiza ao adicionar item | `updateTotals()` nao e chamado apos `append` | Adicionar chamada a `updateTotals()` como ultima linha do try |
+| `children` retorna 0 inesperadamente | Elementos foram adicionados via `innerHTML` e nao como DOM nodes | Usar `createElement` + `append` em vez de `innerHTML` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre children vs querySelectorAll, navegacao CSS selectors, e try/catch em funcoes de UI
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-a-quantidade-de-itens-da-lista/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-a-quantidade-de-itens-da-lista/references/code-examples.md)

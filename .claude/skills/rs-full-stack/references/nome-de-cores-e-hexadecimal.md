@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-nome-cores-hexadecimal
 description: "Applies CSS color value conventions when writing stylesheets or UI code. Use when user asks to 'style a component', 'change colors', 'set background', 'add transparency', or any CSS color task. Enforces correct hex notation (3, 4, 6, 8 digits), named colors usage, and alpha channel patterns. Make sure to use this skill whenever generating CSS color values. Not for JavaScript color manipulation libraries or design token architecture."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, colors, hexadecimal, named-colors, transparency]
 ---
 
 # Cores CSS: Named Colors e RGB Hexadecimal
@@ -87,13 +93,16 @@ color: #FD059A80; /* 50% de opacidade */
 | `opacity: 0.5` para cor unica | `#FD059A80` (alfa no hex) |
 | Memorizar named colors | Usar o color picker do editor |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Cor nao aparece como esperado | Hex com digitos errados ou invertidos | Verifique a ordem RR GG BB e use o color picker do editor |
+| Transparencia nao funciona | Usando `opacity` em vez de canal alfa no hex | Use hex 8 digitos (`#FD059A80`) ou `rgba()` |
+| Named color diferente do esperado | Named colors tem valores fixos que podem nao corresponder ao design | Use hex 6 digitos para cores exatas do Figma |
+| Hex de 3 digitos da cor errada | Cada digito duplica (F=FF, 0=00) | Use 6 digitos para controle preciso |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre sistema hexadecimal, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-nome-de-cores-e-hexadecimal/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-nome-de-cores-e-hexadecimal/references/code-examples.md)

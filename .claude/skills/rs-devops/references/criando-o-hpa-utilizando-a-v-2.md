@@ -1,6 +1,12 @@
 ---
 name: rs-devops-hpa-v2
 description: "Applies Kubernetes HPA v2 configuration patterns when writing autoscaling manifests. Use when user asks to 'create HPA', 'configure autoscaling', 'scale pods', 'horizontal pod autoscaler', or 'auto scale kubernetes'. Enforces v2 API with combined CPU/memory metrics, average utilization targets, and proper scaleTargetRef. Make sure to use this skill whenever generating Kubernetes autoscaling manifests. Not for Vertical Pod Autoscaler, KEDA, or cluster-level autoscaling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-autoscaling
+  tags: [kubernetes, hpa, autoscaling, horizontal-pod-autoscaler, cpu, memory, metrics]
 ---
 
 # HPA v2 — Horizontal Pod Autoscaler
@@ -122,14 +128,14 @@ spec:
 | Esperar que HPA olhe para `limits` | HPA calcula porcentagem sobre `requests` |
 | Colocar `maxReplicas` sem considerar custo | Definir max com base na capacidade real do cluster |
 
+## Troubleshooting
+
+### HPA escala pods apos deploy mesmo sem carga
+**Symptom:** Apos um novo deploy, o numero de replicas sobe acima do minimo mesmo sem trafego significativo.
+**Cause:** O deploy causa pico temporario de memoria nos pods novos, e o HPA interpreta isso como demanda real.
+**Fix:** Ajuste o `averageUtilization` de memoria para 70-80% (nao 50%) para acomodar picos de inicializacao, ou revise os `requests` de memoria no Deployment para valores mais realistas.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-o-hpa-utilizando-a-v-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-o-hpa-utilizando-a-v-2/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-spread
 description: "Applies JavaScript/TypeScript spread operator patterns when writing code that manipulates arrays, objects, or iterables. Use when user asks to 'merge arrays', 'copy objects', 'expand elements', 'combine data', or 'spread operator'. Enforces correct spread usage for expanding iterables, cloning, and merging. Make sure to use this skill whenever generating code that combines or expands arrays/objects. Not for rest parameters, destructuring assignment, or function parameter definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [javascript, spread-operator, arrays, objects, immutability]
 ---
 
 # Spread Operator
@@ -93,13 +99,16 @@ const configFinal = { ...defaults, ...overrides }
 | `arr.slice()` para clonar | `[...arr]` |
 | `apply(null, args)` para expandir | `fn(...args)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Objeto aninhado ainda compartilha referencia | Spread faz copia rasa (shallow copy) | Para objetos aninhados, faca spread em cada nivel ou use `structuredClone()` |
+| Ordem do merge esta errada | Propriedades posteriores sobrescrevem anteriores | Coloque defaults primeiro: `{ ...defaults, ...overrides }` |
+| Spread em non-iterable causa erro | Tentando spread em `null`, `undefined` ou numero | Verifique o tipo antes: `...(arr ?? [])` |
+| Array clonado modifica o original | Elementos do array sao objetos (referencia compartilhada) | Use `.map(item => ({ ...item }))` para clonar objetos internos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-spread/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-spread/references/code-examples.md)

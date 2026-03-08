@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-o-que-e-ser-dev
 description: "Applies the developer mindset of problem-solving through code when approaching any programming task. Use when user asks 'what is programming', 'what does a developer do', 'how to think like a programmer', or needs guidance on approaching a problem. Reinforces that development equals solving real-world problems with code, not just writing syntax. Make sure to use this skill whenever a beginner asks foundational questions about programming or needs a problem-solving framework. Not for specific coding patterns, syntax help, or debugging."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [programacao, mentalidade, resolucao-problemas, carreira, beginner]
 ---
 
 # O Que É Ser Dev e O Que É Programar
 
 > Programar é resolver problemas do mundo real através de linhas de código — a mentalidade de resolução de problemas vem antes da sintaxe.
 
-## Key concept
+## Key concepts
 
 Ser desenvolvedor significa ter a capacidade de se comunicar com o computador usando linguagens que ele entende, dando ordens para que ele execute tarefas e resolva problemas reais. A habilidade central não é memorizar sintaxe — é desenvolver uma mentalidade orientada a problemas. Cada aplicativo que existe (Instagram, iFood, Uber) nasceu de alguém identificando um problema real e resolvendo com código.
 
@@ -34,6 +40,20 @@ Durante os estudos você vai encontrar problemas. No mercado de trabalho as pess
 
 Instagram: pessoas queriam compartilhar fotos. iFood: pessoas queriam pedir comida sem sair de casa. Uber: pessoas precisavam de transporte acessível. Quando olhar para qualquer software, pergunte: "qual problema do mundo real isso resolve?"
 
+### Exemplo: problema real traduzido em codigo
+
+```javascript
+// Problema: pessoas querem dividir a conta do restaurante
+// Solucao: funcao que divide o total pelo numero de pessoas
+
+function splitBill(total, numberOfPeople) {
+  const perPerson = total / numberOfPeople
+  return perPerson.toFixed(2)
+}
+
+console.log(splitBill(150, 3)) // "50.00"
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -55,6 +75,15 @@ Instagram: pessoas queriam compartilhar fotos. iFood: pessoas queriam pedir comi
 - Este modelo mental é fundacional — não substitui conhecimento técnico específico
 - Saber que "programar é resolver problemas" não ensina COMO resolver cada problema
 - A mentalidade precisa ser combinada com prática deliberada de código
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Nao sabe por onde comecar um problema | Tentando resolver tudo de uma vez | Decomponha em passos menores e resolva um de cada vez |
+| Frustacao com erros constantes | Expectativa de codigo funcionar na primeira vez | Erros sao normais — leia a mensagem de erro e investigue |
+| Codigo funciona mas nao entende por que | Copiou codigo sem entender o problema | Volte ao problema original e trace a logica passo a passo |
+| Sensacao de nao estar evoluindo | Foco em decorar sintaxe ao inves de resolver problemas | Pratique projetos reais que resolvem problemas concretos |
 
 ## Deep reference library
 

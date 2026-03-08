@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-eslint-prettier-nestjs
+name: rs-node-js-2023-configurando-es-lint-e-prettier-1
 description: "Applies ESLint and Prettier configuration for NestJS projects using Skillz conventions. Use when user asks to 'setup eslint', 'configure prettier', 'add linting to nestjs', 'configure code style', or 'setup skillz eslint'. Follows Skillz eslint-config with Node preset, handles TypeScript-specific rule overrides, and configures ignore patterns. Make sure to use this skill whenever setting up linting in a NestJS or Node.js TypeScript project. Not for frontend React/Next.js eslint configs or custom eslint rule authoring."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-rest-fastify
+  tags: [eslint, linting, code-style, typescript, tooling]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Configurando ESLint e Prettier no NestJS
@@ -104,14 +111,14 @@ export class AppController {
 | Desabilitar ESLint inteiro por causa de construtores DI | Desabilite apenas `no-useless-constructor` |
 | Corrigir arquivos um por um manualmente | Use `pnpm run lint` com `--fix` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-configurando-es-lint-e-prettier-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-configurando-es-lint-e-prettier-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-es-lint-e-prettier-1/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-es-lint-e-prettier-1/references/code-examples.md) — Todos os exemplos de código expandidos com variações

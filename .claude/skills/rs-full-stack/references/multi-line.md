@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-multi-line
 description: "Applies CSS flex-wrap multi-line layout patterns when writing CSS/HTML code. Use when user asks to 'create a grid', 'wrap elements', 'multi-line layout', 'flex-wrap', or 'align content'. Enforces correct mental model: each wrapped line creates a new sub-container with its own main axis. Covers flex-wrap, wrap-reverse, and align-content interactions. Make sure to use this skill whenever generating flexbox layouts with wrapping elements. Not for CSS Grid, single-line flex layouts, or JavaScript logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, flex-wrap, align-content, multi-line]
 ---
 
 # Flex Wrap — Multilinhas com Flexbox
@@ -99,13 +105,16 @@ description: "Applies CSS flex-wrap multi-line layout patterns when writing CSS/
 | Width fixo em itens flex sem wrap | Adicione `flex-wrap: wrap` ou use `min-width` |
 | `flex-wrap: wrap` sem altura no container para align-content | Defina height no container para align-content ter espaco |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Itens nao quebram linha e encolhem | `flex-wrap` nao esta ativo | Adicione `flex-wrap: wrap` ao container |
+| `align-content` nao funciona | Falta `flex-wrap: wrap` ou container sem altura definida | Ative `flex-wrap` e defina `height` no container |
+| `align-items` nao afeta todas as linhas como bloco | `align-items` atua em cada linha individualmente | Use `align-content` para controlar o bloco de linhas |
+| Itens com width fixo nao respeitam a largura | `flex-shrink: 1` e o padrao e comprime os itens | Adicione `flex-wrap: wrap` para respeitar a largura |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Modelo mental dos sub-containers, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-multi-line/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-multi-line/references/code-examples.md)

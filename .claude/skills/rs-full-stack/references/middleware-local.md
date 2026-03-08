@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-local
 description: "Applies local middleware patterns in Express/Fastify route definitions. Use when user asks to 'add middleware to a route', 'protect a specific endpoint', 'validate request on one route', or 'apply middleware selectively'. Covers inline middleware placement, chaining multiple middlewares, next() flow, and global vs local middleware strategy. Make sure to use this skill whenever adding route-specific middleware logic. Not for global middleware setup, error handling middleware, or authentication system design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-middleware
+  tags: [express, middleware, local, route-specific, chaining]
 ---
 
 # Middleware Local
@@ -83,13 +89,16 @@ app.post('/products', validateBody, createProduct)  // so aqui valida
 | Esquecer `next()` no middleware | Sempre chame `next()` para passar ao proximo |
 | Colocar middleware depois do handler | Middleware vai ANTES do handler na lista de argumentos |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Middleware local nao executa | Middleware colocado depois do handler na lista de argumentos | Mova para antes do handler: `app.post('/x', middleware, handler)` |
+| Requisicao trava sem resposta | Middleware nao chama `next()` | Adicione `return next()` no final do middleware |
+| Middleware executa em rotas erradas | Usando `app.use()` em vez de inline | Aplique diretamente na rota especifica |
+| Encadeamento de middlewares falha | Um middleware intermediario nao chama `next()` | Verifique que todos os middlewares da cadeia chamam `next()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre next(), cadeia de execucao e estrategias de posicionamento
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-middleware-local/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-middleware-local/references/code-examples.md)

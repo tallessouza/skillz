@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-hook-compartilhamento-pt1
 description: "Enforces patterns for creating social sharing hooks in React/Next.js applications. Use when user asks to 'create a share hook', 'add social sharing', 'share on social media', 'copy link button', or 'social providers component'. Applies rules: separate TSX providers from TS hook logic, use encodeURIComponent for URLs, conditional object spreading for optional params, clipboard timeout feedback pattern. Make sure to use this skill whenever building share/social features in React. Not for backend APIs, SEO meta tags, or Open Graph configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: social-sharing-setup
+  tags: [react, next-js, social-sharing, encodeURIComponent, hooks, conditional-spreading, providers]
 ---
 
 # Hook de Compartilhamento Social
@@ -161,14 +167,19 @@ export function ShareButtons({ url, title }: ShareConfig) {
 | Array de providers `[{}, {}]` | Objeto nomeado `{ linkedin: {}, facebook: {} }` |
 | Icones inline no hook | Providers separados com icones em arquivo TSX |
 
+## Troubleshooting
+
+### Estado nao atualiza na tela
+**Symptom:** Chamou setState mas o componente nao re-renderiza
+**Cause:** Mutacao direta do estado (push em array, modificacao de objeto) ao inves de criar nova referencia
+**Fix:** Sempre criar novo objeto/array: `setItems([...items, newItem])` ao inves de `items.push(newItem)`. React compara por referencia
+
+### Context nao disponivel em componente filho
+**Symptom:** useContext retorna undefined ou valor padrao
+**Cause:** Componente esta fora do Provider ou Provider esta em nivel errado da arvore
+**Fix:** Verificar que o Provider envolve o componente que consome o contexto. Em App Router, Provider com "use client" deve estar no layout
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-hook-para-compatilhamento-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-hook-para-compatilhamento-parte-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-hook-para-compatilhamento-parte-1/references/deep-explanation.md) — O instrutor demonstra uma decisao arquitetural importante: ao perceber que o arquivo do hook precisa
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-hook-para-compatilhamento-parte-1/references/code-examples.md) — src/

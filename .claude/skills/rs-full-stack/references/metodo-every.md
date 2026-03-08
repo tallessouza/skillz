@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-every
 description: "Applies Array.every() method correctly when checking if all elements satisfy a condition in JavaScript/TypeScript. Use when user asks to 'check all items', 'validate every element', 'verify all entries match', or 'test if entire array passes condition'. Ensures proper boolean return handling and callback structure. Make sure to use this skill whenever code needs to confirm ALL elements meet a criteria. Not for filtering, finding, or transforming arrays — use filter/find/map skills instead."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-metodos-array
+  tags: [javascript, array, every, validation, boolean]
 ---
 
 # Método every()
@@ -78,13 +84,16 @@ const allEligibleForLicense = ages.every(age => age >= 18)
 | `arr.every(x => { if(x > 0) return true; return false })` | `arr.every(x => x > 0)` |
 | `let allOk = true; for(...) { if(!cond) allOk = false }` | `const allOk = arr.every(item => cond)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `every()` retorna true para array vazio | Vacuous truth — `[].every(fn)` e sempre true | Valide `array.length > 0` antes do every |
+| Resultado inesperado com objetos | Comparando referencia em vez de valor | Use comparacao de propriedade: `item.prop === value` |
+| every() nao para no primeiro false | Confusao com filter/forEach | every() ja faz short-circuit — verifique a condicao do callback |
+| Callback verboso com if/else | Retornando true/false manualmente | Simplifique: `arr.every(item => item > 0)` — comparacao ja e booleana |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases do every()
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-every/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-every/references/code-examples.md)

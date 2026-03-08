@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-aplicacao-com-otel
 description: "Applies OpenTelemetry auto-instrumentation setup for Node.js/NestJS applications. Use when user asks to 'add observability', 'configure OpenTelemetry', 'setup OTEL', 'instrument application', 'send logs and metrics to Grafana', or 'configure tracing'. Enforces vendor-agnostic instrumentation via OTEL Collector pattern, correct SDK initialization order, and resource attribute conventions. Make sure to use this skill whenever setting up observability in Node.js applications. Not for Prometheus configuration, Grafana dashboard setup, or manual instrumentation of custom metrics."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-instrumentacao
+  tags: [opentelemetry, otel, node-js, nestjs, auto-instrumentation, tracing]
 ---
 
 # Configurando Aplicacao com OpenTelemetry
@@ -108,14 +114,14 @@ import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentation
 | Deixar `service.name` generico ou ausente | Definir nome descritivo: `app-skillz` |
 | Instalar dependencias com npm quando projeto usa yarn | Usar `yarn add` consistentemente |
 
+## Troubleshooting
+
+### Auto-instrumentacao nao captura spans da aplicacao
+**Symptom:** Nenhum trace aparece no Grafana/Jaeger apos configurar OpenTelemetry
+**Cause:** O sdk.start() nao foi chamado antes dos imports do framework, impedindo a interceptacao dos modulos
+**Fix:** Mova `import { sdk } from './tracer'; sdk.start();` para o topo absoluto do main.ts, antes de qualquer outro import
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-aplicacao-com-otel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-aplicacao-com-otel/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-aplicacao-com-otel/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-aplicacao-com-otel/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

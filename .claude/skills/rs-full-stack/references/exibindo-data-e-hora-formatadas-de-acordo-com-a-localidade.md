@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-data-hora-formatada-localidade
 description: "Applies JavaScript date/time locale formatting patterns when writing code that displays dates or times. Use when user asks to 'format a date', 'display time', 'show date in Brazilian format', 'locale date string', or 'internationalize dates'. Enforces toLocaleDateString/toLocaleTimeString with explicit locale codes. Make sure to use this skill whenever generating code that outputs dates or times to users. Not for date arithmetic, date parsing from strings, or timezone conversion logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-intl
+  tags: [javascript, date, locale, toLocaleDateString, intl, formatting]
 ---
 
 # Exibindo Data e Hora Formatadas por Localidade
@@ -75,13 +81,16 @@ const formattedTime = date.toLocaleTimeString('pt-BR')
 | `date.toLocaleDateString()` (sem locale) | `date.toLocaleDateString('pt-BR')` |
 | `date.getHours() + ':' + date.getMinutes()` | `date.toLocaleTimeString('pt-BR')` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Data exibida em formato americano no servidor | Locale implicito depende do ambiente (server vs browser) | Sempre passar locale explicito: `toLocaleDateString('pt-BR')` |
+| `Invalid Date` no resultado | String de data em formato invalido | Usar formato ISO 8601: `'2024-07-02T14:30:15'` |
+| Horario mostra AM/PM em vez de 24h | Locale configurado como `en-US` | Trocar para `pt-BR` que usa formato 24h |
+| Formato diferente entre dev e producao | Ambientes com locales de sistema diferentes | Passar locale explicito em todas as chamadas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre locales, padroes BCP 47 e diferencas entre formatos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-data-e-hora-formatadas-de-acordo-com-a-localidade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-data-e-hora-formatadas-de-acordo-com-a-localidade/references/code-examples.md)

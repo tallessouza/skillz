@@ -1,6 +1,12 @@
 ---
 name: rs-devops-focando-no-valor-e-errando-rapido
 description: "Applies Lean thinking to software delivery decisions, prioritizing high-value low-complexity work and small iterative releases. Use when user asks to 'plan a feature', 'scope an MVP', 'prioritize backlog', 'slice a story', or 'decide what to build next'. Ensures experimental mindset with fast feedback loops and fail-fast recovery. Make sure to use this skill whenever making scope or prioritization decisions in product or feature development. Not for CI/CD pipeline setup, infrastructure automation, or code implementation details."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: devops-cultura
+  tags: [lean, mvp, prioritization, fail-fast, feedback-loops, value-delivery, iteration]
 ---
 
 # Lean no DevOps — Foco no Valor e Errar Rapido
@@ -82,14 +88,14 @@ Resultado: erros pequenos, correcao rapida, feedback real guiando decisoes
 | Tratar descontinuacao como fracasso | Tratar como aprendizado barato |
 | Planejar todas as iteracoes antecipadamente | Planejar so a proxima com base em feedback |
 
+## Troubleshooting
+
+### Stakeholder insiste em escopo completo antes de lancar
+**Symptom:** Feature fica meses em desenvolvimento sem validacao porque stakeholder exige "tudo pronto"
+**Cause:** Mentalidade de projeto waterfall ao inves de entregas iterativas — falta de confianca no processo de feedback
+**Fix:** Demonstre o conceito de MVP com a matriz valor x complexidade, identifique o core da feature e proponha lancamento parcial com metricas de validacao
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-focando-no-valor-e-errando-rapido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-focando-no-valor-e-errando-rapido/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

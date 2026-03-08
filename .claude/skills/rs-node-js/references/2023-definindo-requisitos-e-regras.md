@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-definindo-requisitos-e-regras
-description: "Applies structured requirements definition using RFs, RNs, and RNFs when planning a new backend application or API. Use when user asks to 'define requirements', 'plan an API', 'start a new project', 'list features', 'define business rules', or 'plan application architecture'. Enforces separation between functional requirements, business rules, and non-functional requirements. Make sure to use this skill whenever starting a new backend project from scratch or documenting what an application should do. Not for implementing code, writing tests, or database schema design."
+name: 2023-definindo-requisitos-e-regras
+description: "Separates application requirements into Functional Requirements (RFs), Business Rules (RNs), and Non-Functional Requirements (RNFs) before writing code. Use when user asks to 'define requirements', 'write business rules', 'plan a feature', or 'document what the app should do'. Make sure to use this skill whenever starting a new feature or module to ensure proper requirement classification before implementation. Not for code implementation, testing, or architectural decisions."
+category: coding-lens
+tags: [jwt, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: requirements
+  tags: [requirements, business-rules, functional-requirements, non-functional-requirements, domain-modeling]
 ---
 
 # Definindo Requisitos e Regras de Negocio
@@ -109,14 +118,14 @@ description: "Applies structured requirements definition using RFs, RNs, and RNF
 | Misturar decisoes tecnicas nos RFs | Separe em RNFs (banco, paginacao, auth) |
 | Especificar implementacao no RF | RF descreve capacidade, nao endpoint |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-definindo-requisitos-e-regras/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-definindo-requisitos-e-regras/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

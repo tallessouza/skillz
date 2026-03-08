@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-gitignore
 description: "Enforces .gitignore best practices for Node.js projects when setting up repositories or pushing to GitHub. Use when user asks to 'init a repo', 'push to GitHub', 'create .gitignore', 'setup a Node project', or 'prepare project for GitHub'. Ensures node_modules is never committed and package.json is preserved for dependency recreation. Make sure to use this skill whenever initializing a git repo in a Node/JS/TS project. Not for Python, Go, or non-Node project setups."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git
+  tags: [git, gitignore, node-modules, github, repository]
 ---
 
 # .gitignore para Projetos Node.js
@@ -81,13 +87,16 @@ git push
 | Enviar node_modules e pedir pra ignorar depois | Criar `.gitignore` antes do primeiro commit |
 | Recriar dependencias manualmente | Executar `npm i` (ou `npm install`) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `node_modules` ja foi commitado | `.gitignore` criado depois do primeiro commit | Remova do tracking: `git rm -r --cached node_modules` e commite |
+| VS Code mostra node_modules "apagada" | Git esta ignorando a pasta corretamente | Comportamento normal — pasta existe localmente mas e ignorada pelo Git |
+| `npm i` falha apos clonar | `package.json` ou `package-lock.json` ausente | Verifique se ambos estao no repositorio (nao foram ignorados) |
+| `.gitignore` nao funciona para arquivos ja rastreados | Git so ignora arquivos nao rastreados | Use `git rm --cached arquivo` para parar de rastrear |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que node_modules nao vai pro GitHub
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de .gitignore e fluxo Git
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-gitignore/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-gitignore/references/code-examples.md)

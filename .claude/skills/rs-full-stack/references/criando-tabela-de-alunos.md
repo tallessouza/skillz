@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela-de-alunos
 description: "Applies correct SQL table creation patterns when writing CREATE TABLE statements in SQLite. Use when user asks to 'create a table', 'define a schema', 'add a database table', or 'setup the database'. Enforces proper column types, PRIMARY KEY with AUTOINCREMENT, and NOT NULL constraints. Make sure to use this skill whenever generating SQL DDL statements for SQLite databases. Not for queries (SELECT/INSERT/UPDATE/DELETE), migrations, or ORM model definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, sqlite, create-table, ddl, primary-key, autoincrement]
 ---
 
 # Criando Tabelas SQL (SQLite)
@@ -74,13 +80,16 @@ CREATE TABLE students (
 | `name TEXT` (sem constraint em campo obrigatório) | `name TEXT NOT NULL` |
 | Vírgula após última coluna | Sem vírgula na última coluna |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `near ")": syntax error` | Virgula apos a ultima coluna | Remova a virgula da ultima definicao de coluna |
+| `AUTOINCREMENT is only allowed on an INTEGER PRIMARY KEY` | Tipo da coluna id nao e INTEGER | Use `id INTEGER PRIMARY KEY AUTOINCREMENT` |
+| Registros inseridos sem nome | Coluna `name` sem constraint NOT NULL | Adicione `NOT NULL` na definicao da coluna |
+| `AUTO INCREMENT` nao reconhecido | Espaco entre AUTO e INCREMENT | Escreva junto: `AUTOINCREMENT` (sem espaco) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre autoincrement, sqlite_sequence e constraints
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-alunos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-alunos/references/code-examples.md)

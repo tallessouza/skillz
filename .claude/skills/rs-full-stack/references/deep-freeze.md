@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-deep-freeze
 description: "Enforces deep freeze (immutabilidade profunda) pattern when writing JavaScript/TypeScript code that needs truly immutable objects. Use when user asks to 'freeze an object', 'make object immutable', 'prevent object mutation', 'deep immutability', or 'recursive freeze'. Applies recursive Object.freeze to all nested properties. Make sure to use this skill whenever user needs immutable objects with nested properties, even if they only mention Object.freeze. Not for shallow freezing simple flat objects, Immer/Immutable.js libraries, or Object.seal/Object.preventExtensions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-advanced
+  tags: [JavaScript, immutability, Object.freeze, deep-freeze, Reflect, recursion]
 ---
 
 # Deep Freeze — Congelamento Profundo de Objetos
@@ -90,13 +96,16 @@ console.log(book.author.name) // "Rodrigo" — imutabilidade garantida
 | `deepFreeze` sem verificar se valor existe | `if (value && typeof value === "object")` |
 | Mutar objeto e depois congelar | Congelar ANTES de expor para consumidores |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Objeto aninhado ainda e mutavel apos `Object.freeze` | `Object.freeze` e raso, nao recursivo | Use `deepFreeze` para congelar todos os niveis |
+| `TypeError: Cannot assign to read only property` | Freeze funcionou — tentativa de mutacao bloqueada | Crie uma copia do objeto se precisa alterar valores |
+| Symbols nao estao sendo congelados | Usando `Object.keys()` que ignora Symbols | Use `Reflect.ownKeys()` para incluir Symbols |
+| Performance ruim com objetos enormes | deepFreeze percorre toda a arvore | Considere Immer ou spread para objetos muito grandes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre imutabilidade rasa vs profunda, recursão e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-deep-freeze/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-deep-freeze/references/code-examples.md)

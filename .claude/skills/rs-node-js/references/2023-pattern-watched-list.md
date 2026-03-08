@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-pattern-watched-list
 description: "Applies the WatchedList pattern when implementing edit operations on entities with child collections in DDD. Use when user asks to 'edit an entity with related items', 'track added and removed items', 'update attachments/tags list', 'optimize database operations for collections', or 'implement aggregate child management'. Ensures only necessary DB operations (insert new, delete removed, skip unchanged). Make sure to use this skill whenever editing entities that have one-to-many relationships like attachments, tags, or answers. Not for simple CRUD without collection tracking, or for read-only operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-patterns
+  tags: [watched-list, ddd, aggregate, collections, edit-operations, diff-tracking, typescript]
 ---
 
 # Pattern: WatchedList
@@ -105,14 +111,14 @@ async editQuestion(question: Question, newAttachmentIds: string[]) {
 | Comparar itens por referencia | Implementar `compareItems` comparando por ID |
 | Manter lista de removidos manualmente | Deixar WatchedList rastrear automaticamente |
 
+## Troubleshooting
+
+### WatchedList nao detecta itens novos ou removidos
+**Symptom:** `getNewItems()` e `getRemovedItems()` retornam arrays vazios apos editar a colecao
+**Cause:** A lista foi manipulada diretamente via `currentItems` ao inves de usar os metodos `update()`, `add()` ou `remove()`
+**Fix:** Use `question.attachments.update(newList)` para substituir a lista, ou `add()`/`remove()` para operacoes individuais
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-pattern-watched-list/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-pattern-watched-list/references/code-examples.md)

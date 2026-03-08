@@ -1,6 +1,12 @@
 ---
 name: rs-devops-injetando-istio-deployment
 description: "Applies Istio sidecar injection patterns when configuring Kubernetes deployments with service mesh. Use when user asks to 'inject Istio', 'add sidecar proxy', 'configure service mesh', 'enable Istio namespace', or 'create Kubernetes service'. Covers namespace labeling, ClusterIP services, sidecar injection lifecycle, and multi-namespace control. Make sure to use this skill whenever working with Istio or service mesh on Kubernetes. Not for Istio virtual services, traffic routing, or addon configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-sidecar-injection
+  tags: [istio, sidecar, kubernetes, namespace, clusterip, service-mesh]
 ---
 
 # Injetando Istio no Deployment
@@ -106,14 +112,14 @@ kubectl get pods -n app
 | Usar NodePort/LoadBalancer sem necessidade | Usar ClusterIP como padrao para acesso interno |
 | Esquecer de mapear `selector` com labels do deployment | Garantir que selector do service bate com labels do pod template |
 
+## Troubleshooting
+
+### Pods continuam com 1/1 apos rotular namespace
+**Symptom:** `kubectl get pods` mostra READY 1/1 mesmo apos `kubectl label namespace app istio-injection=enabled`
+**Cause:** A injecao so ocorre no momento da admissao (criacao do pod). Pods existentes nao recebem sidecar automaticamente
+**Fix:** Delete e recrie os pods: `kubectl delete -f k8s/ -n app && kubectl apply -f k8s/ -n app`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-injetando-o-istio-no-nosso-deployment/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-injetando-o-istio-no-nosso-deployment/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0217-separando-parametros
 description: "Enforces query parameter parsing patterns when building Node.js HTTP servers from scratch. Use when user asks to 'parse query string', 'extract query params', 'handle URL parameters', 'build HTTP router', or 'parse request URL'. Applies manual query string splitting with slice, split, and reduce to build param objects. Make sure to use this skill whenever implementing raw Node.js HTTP request handling without frameworks. Not for Express/Fastify/Hono route params, nor for path parameters or route pattern matching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [query-string, parsing, reduce, slice-split, nodejs]
 ---
 
 # Separando Parâmetros de Query String
@@ -87,13 +93,13 @@ console.log(request.query) // { categoria: 'computador', preco: '500' }
 | `if (url.includes('?')) { parse... }` | `request.query = query ? extractQueryParams(query) : {}` |
 | Parsing inline no handler da rota | Função utilitária separada |
 
+## Troubleshooting
+
+### Problem: First query parameter includes `?` in the key name
+- **Cause**: The `?` was not removed before splitting by `&`, so the first key becomes `?category` instead of `category`
+- **Fix**: Use `query.slice(1)` to remove the leading `?` before calling `.split('&')`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre slice vs split, reduce como padrão de transformação, e por que query params são opcionais
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e edge cases
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0217-separando-parametros-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0217-separando-parametros-mp-4/references/code-examples.md)

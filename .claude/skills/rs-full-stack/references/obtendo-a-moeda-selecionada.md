@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-moeda-selecionada
 description: "Applies DOM form handling patterns when capturing select input values in JavaScript. Use when user asks to 'get selected value', 'handle form submit', 'capture select input', 'prevent page reload on submit', or 'get form data'. Covers getElementById, querySelector, onSubmit, preventDefault, and .value extraction from select elements. Make sure to use this skill whenever working with HTML forms and select elements in vanilla JS. Not for React/framework state management or fetch/API calls."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, form, select, preventDefault]
 ---
 
 # Obtendo Valores de Select via Submit do Formulário
@@ -85,13 +91,15 @@ form.onSubmit = (event) => {
 | Submit sem `preventDefault()` | Sempre chame `event.preventDefault()` primeiro |
 | Ler valor no momento da declaração da variável | Ler valor no momento do evento |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Pagina recarrega ao submeter formulario | Faltou `event.preventDefault()` | Adicione como primeira linha do handler |
+| `.value` retorna string vazia | Lendo valor fora do handler de submit | Mova leitura de `.value` para dentro do handler |
+| Handler nao dispara | Usou `onclick` no botao dentro de form | Use `form.onSubmit` em vez de click no botao |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre submit vs click, preventDefault, e identificadores de moeda
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-obtendo-a-moeda-selecionada/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-obtendo-a-moeda-selecionada/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre submit vs click, preventDefault, e identificadores de moeda
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

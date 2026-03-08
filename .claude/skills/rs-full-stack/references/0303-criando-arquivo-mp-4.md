@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-arquivo
 description: "Applies Node.js file persistence patterns when creating database files, using fs/promises, constructors, and dynamic paths. Use when user asks to 'save data to file', 'create a JSON database', 'persist data in Node', 'write file with fs', or 'setup file-based storage'. Ensures correct use of import.meta.url for dynamic paths, fs/promises for async file ops, and constructor-based initialization. Make sure to use this skill whenever implementing file-based persistence in Node.js. Not for database ORMs, SQL, or browser-side file APIs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, fs, file-persistence, json, esmodules, constructor]
 ---
 
 # Criando Arquivo com Node.js
@@ -104,13 +110,17 @@ export class Database {
 | `__dirname + '/db.json'` | `new URL('db.json', import.meta.url)` (ESM nao tem __dirname) |
 | Chamar `persist()` manualmente apos criar instancia | Chamar `this.#persist()` no constructor |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `TypeError: import.meta.url is not defined` | Usando CommonJS em vez de ESModules | Adicionar `"type": "module"` no package.json |
+| Arquivo `db.json` nao e criado | Constructor nao esta chamando `#persist()` | Verificar que `this.#persist()` esta no constructor |
+| `TypeError: fs.writeFile is not a function` | Import incorreto do fs | Usar `import fs from 'node:fs/promises'` |
+| Path absoluto hardcoded quebra em outro ambiente | Usando string literal como path | Usar `new URL('db.json', import.meta.url)` |
+| `__dirname is not defined` | ESModules nao suporta `__dirname` | Substituir por `import.meta.url` com `new URL()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre constructor, import.meta.url e fs/promises
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0303-criando-arquivo-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0303-criando-arquivo-mp-4/references/code-examples.md)

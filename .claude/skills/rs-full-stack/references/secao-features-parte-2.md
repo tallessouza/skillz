@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-secao-features-parte-2
 description: "Applies CSS Grid card positioning, overflow control, and filter effects when building feature section layouts. Use when user asks to 'create a features section', 'position cards in a grid', 'add drop shadow to images', 'arrange cards with CSS Grid', or 'build a product landing page section'. Covers grid-column/grid-row placement, overflow hidden for contained elements, position absolute inside cards, and CSS filter drop-shadow. Make sure to use this skill whenever positioning cards in grid layouts or applying image filter effects. Not for JavaScript logic, animations, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Grid Cards"
+  tags: ['css', 'grid', 'cards', 'filter', 'drop-shadow', 'position']
 ---
 
 # Seção Features — Grid Cards com Filtros e Posicionamento
@@ -133,6 +139,15 @@ description: "Applies CSS Grid card positioning, overflow control, and filter ef
 | `float: right` para empurrar conteúdo | `margin-left: auto` |
 | Grid implícito para layouts complexos de cards | `grid-column` e `grid-row` explícitos |
 | `width: 15rem` fixo em imagens decorativas | `max-width: 15rem` para flexibilidade |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Imagem decorativa vazando do card | Card sem `overflow: hidden` | Adicione `overflow: hidden` no container do card |
+| Sombra aparece como retangulo em imagem PNG | Usando `box-shadow` em vez de `filter` | Use `filter: drop-shadow(...)` que respeita a forma real da imagem |
+| Card posicionado na celula errada do grid | Valores de `grid-column`/`grid-row` incorretos | Revise as grid lines — linha 1 = topo, linha 2 = entre rows |
+| Conteudo nao empurra para a direita | Usando `float` ou `position` para alinhar | Use `margin-left: auto` para empurrar conteudo para a direita |
 
 ## Deep reference library
 

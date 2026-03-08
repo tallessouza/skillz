@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-token-reset-senha
 description: "Enforces secure password reset token generation when implementing authentication flows. Use when user asks to 'reset password', 'generate token', 'forgot password', 'password recovery', or any auth token generation. Applies rules: CSPRNG instead of Math.random, never use HTTP host header for URL construction, always set token expiration storing request time not expiry time. Make sure to use this skill whenever implementing password reset or any security-sensitive token generation. Not for session tokens, JWTs, or OAuth flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, password-reset, authentication]
 ---
 
 # Gerando Token de Reset de Senha Seguro
@@ -103,14 +109,14 @@ db.run(
 | Erro 403 para host invalido | Mesma resposta 200, sem acao real |
 | `reset_time < expires_at` (so limite superior) | Janela bilateral: `reset_time > agora - 30min AND reset_time <= agora` |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerando-token-de-reset-de-senha-seguro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-gerando-token-de-reset-de-senha-seguro/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerando-token-de-reset-de-senha-seguro/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-gerando-token-de-reset-de-senha-seguro/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

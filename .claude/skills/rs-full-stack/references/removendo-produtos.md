@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-produtos
 description: "Enforces correct delete endpoint implementation with existence verification in Node.js APIs using Knex. Use when user asks to 'delete a record', 'remove endpoint', 'implement DELETE route', or 'add removal method'. Applies patterns: always verify existence before delete/update, always use await on DB queries, return proper error responses. Make sure to use this skill whenever implementing delete or update operations that need existence checks. Not for frontend code, authentication, or file deletion."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest-express
+  tags: [express, knex, delete, api, crud, error-handling]
 ---
 
 # Removendo Produtos (Delete com Verificação)
@@ -106,6 +112,15 @@ async remove(request: Request, response: Response, next: NextFunction) {
 | `products.select().where({ id })` acessando como objeto | `.select().where({ id }).first()` para obter objeto |
 | `return response.json()` após delete sem verificar | Verificar existência, lançar AppError se não encontrar |
 | Verificação só no delete mas não no update | Aplicar mesma verificação em ambos |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| DELETE retorna 200 para ID inexistente | Falta verificacao de existencia antes do delete | Adicione `select().where({ id }).first()` antes do delete |
+| Verificacao de existencia sempre passa | Falta `await` na query do select | Adicione `await` antes de `knex(...)` |
+| "Product not found" nunca e lancado | `.first()` nao esta sendo usado, retorna array (truthy) | Adicione `.first()` para obter objeto ou undefined |
+| Erro nao chega ao error handler | Falta `next(error)` no catch | Passe o erro para `next()` no bloco catch |
 
 ## Deep reference library
 

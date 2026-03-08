@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-desestruturacao-de-array
 description: "Enforces correct array destructuring patterns when writing JavaScript/TypeScript code. Use when user asks to 'extract values from array', 'destructure array', 'unpack array', 'get specific items from array', or any code that accesses array elements by index. Applies rules: named variables over index access, skip positions with commas, partial destructuring. Make sure to use this skill whenever generating code that reads from arrays. Not for object destructuring, spread operator, or rest parameters."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [JavaScript, destructuring, array, ES6, assignment]
 ---
 
 # Desestruturação de Array
@@ -75,13 +81,16 @@ const [,, orange] = ["banana", "maçã", "laranja"]
 | `const [a, b, c] = arr` (quando só precisa de `c`) | `const [,, c] = arr` |
 | `const [_, second] = arr` (underline como variável) | `const [, second] = arr` (vírgula vazia) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel retorna `undefined` | Array tem menos elementos que as variaveis declaradas | Verifique o tamanho do array antes de desestruturar |
+| Valor errado na variavel | Atribuicao e posicional — posicao errada | Conte as posicoes: primeiro elemento = primeira variavel |
+| `_` como variavel gera warning de lint | Usando underscore para pular posicao | Use virgula vazia `, ` em vez de `_` |
+| Desestruturacao de string em vez de array | Passou string onde esperava array | Verifique o tipo do dado antes de desestruturar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-desestruturacao-de-array/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-desestruturacao-de-array/references/code-examples.md)

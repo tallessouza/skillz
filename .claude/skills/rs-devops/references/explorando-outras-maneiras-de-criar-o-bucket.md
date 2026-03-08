@@ -1,6 +1,12 @@
 ---
 name: rs-devops-minio-bucket-docker
 description: "Applies MinIO bucket creation patterns in Docker Compose environments. Use when user asks to 'configure MinIO', 'create buckets in Docker', 'setup object storage container', 'MinIO health check', or 'Docker entrypoint for MinIO'. Covers three approaches: MC client, entrypoint mkdir, and volume persistence. Make sure to use this skill whenever setting up MinIO in docker-compose or debugging MinIO container startup issues. Not for AWS S3 configuration, Kubernetes MinIO operators, or MinIO cluster/distributed mode."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-infra
+  tags: [minio, docker-compose, object-storage, bucket, health-check, entrypoint, volumes]
 ---
 
 # MinIO Bucket Creation em Docker
@@ -138,14 +144,14 @@ volumes:
 | `https://` em MinIO local sem SSL | `http://` para ambiente local |
 | `docker restart` manual para resolver timing | Health check + depends_on condition |
 
+## Troubleshooting
+
+### MC client falha com "connection refused" ao tentar criar bucket
+**Symptom:** Container MC inicia mas retorna "connection refused" ao tentar conectar ao MinIO
+**Cause:** `depends_on` sem `condition: service_healthy` nao garante que MinIO esta pronto para conexoes
+**Fix:** Adicione health check no servico MinIO e use `depends_on: { minio: { condition: service_healthy } }` no MC
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-outras-maneiras-de-criar-o-bucket/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-outras-maneiras-de-criar-o-bucket/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

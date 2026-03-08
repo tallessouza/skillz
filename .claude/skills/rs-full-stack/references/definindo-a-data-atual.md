@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-definindo-a-data-atual
 description: "Applies form data capture and date input initialization patterns when building HTML forms with JavaScript. Use when user asks to 'capture form data', 'set default date', 'block past dates', 'prevent form reload', 'organize code in modules', or 'submit form to API'. Enforces module-based file organization, preventDefault on submit, current date preloading, and minimum date constraints. Make sure to use this skill whenever creating forms that interact with date inputs or APIs. Not for backend API implementation, database operations, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-forms
+  tags: [JavaScript, forms, date-input, preventDefault, dayjs, modules]
 ---
 
 # Captura de Formulario e Inicializacao de Data
@@ -114,13 +120,16 @@ selectedDate.min = inputToday
 | Input de data com placeholder vazio | `.value = dayjs().format("YYYY-MM-DD")` |
 | Permitir selecao de datas passadas | `.min = inputToday` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pagina recarrega ao submeter formulario | Falta `event.preventDefault()` no handler | Adicione como primeira linha do `onsubmit` |
+| Input de data mostra "dd/mm/aaaa" | Valor nao foi pre-carregado | Defina `input.value = dayjs().format("YYYY-MM-DD")` |
+| Usuario consegue selecionar data passada | `input.min` nao definido | Adicione `input.min = inputToday` |
+| Modulo JS nao carrega | Import nao adicionado no `main.js` | Adicione `import "./modules/form/submit.js"` no entry point |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre modularizacao, preventDefault e restricoes de data
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-definindo-a-data-atual/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-definindo-a-data-atual/references/code-examples.md)

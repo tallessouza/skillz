@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-prisma-repository
 description: "Enforces Prisma repository implementation patterns with mappers, pagination, and CRUD operations in Clean Architecture NestJS projects. Use when user asks to 'implement repository', 'create prisma repository', 'add pagination', 'map entity to prisma', or 'implement CRUD with prisma'. Applies bidirectional mapper pattern (toDomain/toPrisma), skip/take pagination, and UncheckedCreateInput typing. Make sure to use this skill whenever implementing persistence layer with Prisma in DDD/Clean Architecture. Not for in-memory repositories, raw SQL queries, or Prisma schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-repository-mapper
+  tags: [prisma, repository, mapper, pagination, clean-architecture, nestjs, typescript]
 ---
 
 # Implementando Repositories Prisma com Clean Architecture
@@ -157,14 +163,14 @@ async create(question: Question): Promise<void> {
 | `question.slug` direto no data do Prisma | `question.slug.value` |
 | `question.id` direto no data do Prisma | `question.id.toString()` |
 
+## Troubleshooting
+
+### Metodo findMany retorna resultados em ordem inconsistente
+**Symptom:** A listagem de perguntas aparece em ordem diferente a cada requisicao
+**Cause:** O findMany do Prisma nao tem orderBy definido, resultando em ordem indeterminada
+**Fix:** Sempre inclua orderBy com direcao explicita: findMany({ orderBy: { createdAt: 'desc' }, take: 20, skip: (page - 1) * 20 })
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementando-questions-repository/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementando-questions-repository/references/code-examples.md)

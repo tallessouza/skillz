@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-campos-de-endereco
 description: "Applies HTML form address field patterns with fieldset, disabled inputs, flex layout, and CSS utility classes. Use when user asks to 'create a form', 'add address fields', 'build registration form', 'configure form layout', or 'style disabled inputs'. Covers fieldset grouping, flex utility classes, disabled state styling with opacity and has-selector, and CSS custom properties for theming. Make sure to use this skill whenever building multi-section forms with mixed enabled/disabled fields. Not for JavaScript form validation, API submission, or backend processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-css-forms
+  tags: [fieldset, disabled-inputs, flex-layout, css-has-selector, form-styling, address-fields]
 ---
 
 # Configurando Campos de Endereço em Formulários HTML
@@ -125,13 +131,16 @@ input:disabled {
 | Estilizar só o input disabled, ignorando o label | Estilizar o wrapper inteiro via `:has([disabled])` |
 | Criar `width: 66%` e `width: 33%` para proporções | `flex: 2` e `flex: 1` para proporções flexíveis |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `:has([disabled])` nao funciona | Navegador nao suporta `:has()` | Verificar compatibilidade (Chrome 105+, Safari 15.4+, Firefox 121+) |
+| Campos disabled sem estilo visual diferente | Variavel `--surface-disabled` nao definida | Adicionar no `:root` do CSS global |
+| Flex layout nao alinha campos lado a lado | Classe `.flex` ausente no container | Adicionar `class="flex"` no div pai dos campos |
+| Label e input com `for/id` desalinhados | Atributos `for`, `id` e `name` nao coincidem | Usar multi-cursor (Ctrl+D) para renomear em lote |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre layout flex, seletor :has(), e design de campos disabled
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-os-campos-de-endereco/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-os-campos-de-endereco/references/code-examples.md)

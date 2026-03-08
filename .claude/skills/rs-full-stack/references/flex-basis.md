@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-flex-basis
 description: "Applies correct flex-basis usage when writing CSS Flexbox layouts. Use when user asks to 'create a layout', 'style with flexbox', 'set item sizes', 'make responsive grid', or any CSS sizing task. Enforces flex-basis over width in flex contexts, axis-aware sizing, and understanding flex-basis as desired/ideal size. Make sure to use this skill whenever generating flexbox CSS code. Not for CSS Grid, non-flex positioning, or JavaScript logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, flex-basis, layout, sizing]
 ---
 
 # Flex Basis — Sizing no Flexbox
@@ -97,13 +103,16 @@ description: "Applies correct flex-basis usage when writing CSS Flexbox layouts.
 | Confiar que flex-basis = tamanho final | Lembrar que e o tamanho *desejado* |
 | Mudar height quando eixo invertido | Usar flex-basis que se adapta ao eixo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `flex-basis` nao tem efeito visivel | `flex-grow` ou `flex-shrink` esta redistribuindo o espaco | Verifique os valores de grow/shrink nos itens |
+| Item flex nao respeita o tamanho definido | `flex-shrink` padrao (1) esta encolhendo o item | Use `flex-shrink: 0` para manter o tamanho exato |
+| Tamanho muda ao trocar `flex-direction` | `flex-basis` controla o eixo principal, que muda com direction | Isso e esperado; ajuste o valor para o novo eixo |
+| `width` e `flex-basis` conflitam | Ambos estao definidos no mesmo item | Remova `width` e use apenas `flex-basis` em flex items |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre sizing, analogia do desejável vs real, e interação com grow/shrink
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações de eixo e unidades
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-flex-basis/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-flex-basis/references/code-examples.md)

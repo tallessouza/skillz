@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-dom-clobbering-js
 description: "Guards against DOM Clobbering vulnerabilities when writing front-end JavaScript code. Use when user asks to 'inject HTML', 'load scripts dynamically', 'set window or document variables', 'use getElementById', 'sanitize HTML input', or 'use DOMPurify'. Applies rules: never store config in document/window properties, never trust HTML injection even without JS, restrict form/id/name attributes in user content. Make sure to use this skill whenever generating code that reads from document or window properties, or allows any HTML injection. Not for backend security, SQL injection, or authentication topics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, dom-clobbering, global-scope, window]
 ---
 
 # DOM Clobbering
@@ -92,14 +98,14 @@ document.head.appendChild(s)
 | `DOMPurify.sanitize(input)` (sem opcoes) | `DOMPurify.sanitize(input, { FORBID_ATTR: ['name','id','form'] })` |
 | Permitir `<input form="x">` em conteudo injetado | Bloquear atributo `form` na sanitizacao |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-dom-clobbering-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-dom-clobbering-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-dom-clobbering-js/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-dom-clobbering-js/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

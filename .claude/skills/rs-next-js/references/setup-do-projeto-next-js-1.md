@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-setup-do-projeto-next-js-1
 description: "Applies Next.js App Router project setup conventions when scaffolding or configuring a Next.js application. Use when user asks to 'create a next app', 'setup next.js project', 'configure next.js', 'start a new next project', or 'initialize next app router'. Covers pnpm setup with --empty flag, React Compiler, Biome config, layout structure, and metadata API. Make sure to use this skill whenever creating a new Next.js 14+ project from scratch. Not for page routing, API routes, data fetching, or deployment configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: project-setup
+  tags: [next-js, app-router, pnpm, react-compiler, biome, metadata-api, project-scaffold]
 ---
 
 # Setup do Projeto Next.js (App Router)
@@ -138,14 +144,19 @@ src/app/
 | Commit apos varias features | Commit da estrutura base primeiro |
 | Manter README padrao do template | Apagar e criar o seu |
 
+## Troubleshooting
+
+### Erro ao iniciar projeto Next.js
+**Symptom:** `npm run dev` falha com erros de modulo ou dependencia
+**Cause:** Dependencias nao instaladas, versao do Node incompativel, ou conflito de pacotes
+**Fix:** Rodar `npm install` para garantir dependencias. Verificar versao do Node (`node -v`, minimo 18+). Deletar `node_modules` e `package-lock.json` e reinstalar
+
+### TypeScript errors no projeto novo
+**Symptom:** Erros de tipo em arquivos recem-criados
+**Cause:** tsconfig.json nao inclui os paths corretos ou falta `@types` de dependencias
+**Fix:** Verificar `include` no tsconfig.json. Instalar types necessarios: `npm i -D @types/react @types/node`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-setup-do-projeto-next-js-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-setup-do-projeto-next-js-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-setup-do-projeto-next-js-1/references/deep-explanation.md) — O instrutor destaca que a App Folder (App Router) e "a estrutura mais atual" para criar aplicacoes N
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-setup-do-projeto-next-js-1/references/code-examples.md) — pnpm create next-app --empty board

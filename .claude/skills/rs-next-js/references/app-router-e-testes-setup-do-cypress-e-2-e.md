@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-setup-cypress-e2e
 description: "Applies Cypress E2E test setup and configuration for Next.js projects. Use when user asks to 'setup cypress', 'add e2e tests', 'configure end-to-end testing', 'install cypress', or 'create cypress config'. Covers installation, tsconfig fixes for Next.js compatibility, and first spec creation. Make sure to use this skill whenever setting up Cypress in a Next.js App Router project. Not for component testing, unit testing, or Playwright setup."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, cypress, e2e-testing, tsconfig, test-setup, devDependency]
 ---
 
 # Setup do Cypress (E2E) em Next.js
@@ -99,14 +106,19 @@ describe('Home Page', () => {
 | Esquecer `baseUrl` quando usa `paths` | Adicionar `"baseUrl": "."` |
 | Criar specs sem extensao `.cy.ts` | Sempre usar `nome.cy.ts` |
 
+## Troubleshooting
+
+### Teste Cypress falha ao encontrar elemento
+**Symptom:** `cy.get()` retorna timeout — elemento nao encontrado
+**Cause:** Elemento ainda nao renderizou (loading state), ou seletor incorreto
+**Fix:** Usar `cy.contains()` para texto visivel ou `data-testid` para seletores estaveis. Adicionar assertions que esperam o elemento aparecer
+
+### Testes passam localmente mas falham no CI
+**Symptom:** Suite verde localmente, vermelha no GitHub Actions
+**Cause:** Dependencias de ambiente (banco, API), timeouts curtos, ou falta de build antes do teste
+**Fix:** Garantir que `npm run build` roda antes dos testes E2E. Configurar variaveis de ambiente no CI. Aumentar timeouts para ambientes mais lentos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-setup-do-cypress-e-2-e/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-setup-do-cypress-e-2-e/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-setup-do-cypress-e-2-e/references/deep-explanation.md) — Teste end-to-end simula um usuario navegando na aplicacao. E o mesmo teste que uma pessoa de QA fari
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-setup-do-cypress-e-2-e/references/code-examples.md) — pnpm add -D cypress

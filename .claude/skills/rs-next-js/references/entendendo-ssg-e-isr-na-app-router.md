@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-ssg-isr-app-router
 description: "Applies Static Site Generation (SSG) and Incremental Static Regeneration (ISR) patterns when building Next.js App Router pages. Use when user asks to 'generate static params', 'pre-render dynamic routes', 'revalidate pages', 'cache static pages', or 'convert server-side to static'. Enforces generateStaticParams, revalidate export, and dynamicParams conventions. Make sure to use this skill whenever creating dynamic routes in Next.js App Router that need static generation or periodic revalidation. Not for Pages Router, client components, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-fundamentos
+  tags: [ssg, isr, generateStaticParams, revalidate, dynamicParams, static-generation, next-js]
 ---
 
 # SSG e ISR na App Router do Next.js
@@ -106,14 +112,19 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 | `export const revalidate = true` | `export const revalidate = 60` (deve ser numero em segundos) |
 | `getStaticProps` no App Router | Exporte `revalidate` como constante |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-ssg-e-isr-na-app-router/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-ssg-e-isr-na-app-router/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-ssg-e-isr-na-app-router/references/deep-explanation.md) — No Pages Router, a geracao estatica usava duas funcoes separadas:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-ssg-e-isr-na-app-router/references/code-examples.md) — Estrutura de pastas:

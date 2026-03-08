@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-modulos-servicos-controllers
 description: "Enforces NestJS module-service-controller architecture when scaffolding or reviewing Nest applications. Use when user asks to 'create a NestJS app', 'add a route', 'create a controller', 'add a service', 'setup dependency injection in Nest', or 'organize NestJS modules'. Applies correct decorator usage, provider registration, and DI patterns. Make sure to use this skill whenever generating NestJS code involving controllers, services, or modules. Not for Express.js, Fastify standalone, or non-Nest Node.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-fundamentals
+  tags: [nestjs, module, controller, service, injectable, dependency-injection, decorators]
 ---
 
 # Módulos, Serviços e Controllers no NestJS
@@ -122,14 +128,14 @@ export class UserModule {}
 | Provider fora do `providers[]` do module | Registre no array `providers` do `@Module()` |
 | Nome do método como definidor de rota | Use `@Get('/path')`, `@Post('/path')` etc. |
 
+## Troubleshooting
+
+### Erro de dependencia nao encontrada ao injetar service no controller
+**Symptom:** NestJS lanca erro dizendo que nao consegue resolver dependencia do controller
+**Cause:** O service/provider nao foi registrado no array `providers[]` do `@Module()`
+**Fix:** Adicione a classe `@Injectable()` no array `providers` do modulo correspondente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-modulos-servicos-e-controllers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-modulos-servicos-e-controllers/references/code-examples.md)

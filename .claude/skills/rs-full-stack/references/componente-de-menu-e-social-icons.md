@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-menu-social-icons
 description: "Applies gradient text links and SVG social icon patterns when building navigation menus or social link components. Use when user asks to 'create a menu', 'add social icons', 'make gradient text links', 'build navigation with icons', or 'style SVG icons with hover effects'. Covers CSS linear-gradient text clipping, SVG fill replacement for hover states, and CSS custom properties for background-image swapping. Make sure to use this skill whenever creating navigation or social media link sections in HTML/CSS projects. Not for JavaScript interactivity, icon library setup (Font Awesome, Lucide), or React/Vue component architecture."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, gradient, svg, navigation, social-icons, background-clip]
 ---
 
 # Menu e Social Icons com Degradê CSS
@@ -132,13 +138,17 @@ a:hover {
 | `aria-label` escrito como `arial-label` | Atenção ao typo — é `aria-label` |
 | Aplicar gradient text clip em elementos com background-image | Resete `background-clip: initial` no seletor específico |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Gradiente no texto não aparece | Faltou um dos 3 passos: gradient, background-clip, color transparent | Verifique que os 3 estão presentes no seletor |
+| Ícone social não aparece | `background-image` não carregando o SVG | Verifique o caminho relativo do SVG e que o arquivo existe |
+| Ícone social com dimensão zero | Faltou `width`, `height` e `display: block` | Adicione dimensões explícitas e `display: block` ao `.social` |
+| Gradiente do link afeta o ícone social | `background-clip: text` global interfere | Adicione `background-clip: initial` e `-webkit-background-clip: initial` no `.social` |
+| Hover do ícone não troca a imagem | Custom property `--bg-image` não redefinida no `:hover` | Verifique o seletor `:hover` com `[aria-label="nome"]` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre degradê em texto, SVG fills e estratégia de CSS custom properties
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-componente-de-menu-e-social-icons/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-componente-de-menu-e-social-icons/references/code-examples.md)

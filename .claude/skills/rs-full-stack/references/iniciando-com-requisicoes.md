@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-com-requisicoes
 description: "Applies fetch API patterns when writing JavaScript HTTP requests. Use when user asks to 'fetch data', 'call an API', 'make a request', 'consume an API', or 'send data to API'. Enforces modern fetch usage with proper error handling, async/await, response parsing, and both GET and POST patterns. Make sure to use this skill whenever generating code that communicates with an HTTP API in JavaScript. Not for WebSocket connections, GraphQL clients, or server-side route handlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, fetch, api, async-await, http-requests]
 ---
 
 # Requisições HTTP com Fetch
@@ -102,13 +108,16 @@ console.log(products)
 | POST sem `Content-Type` header | `headers: { 'Content-Type': 'application/json' }` |
 | Ignorar `response.ok` | `if (!response.ok) throw new Error(...)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Fetch nao lanca erro para status 404/500 | Fetch so rejeita em falhas de rede, nao em erros HTTP | Verifique `response.ok` e lance erro manualmente: `if (!response.ok) throw new Error(...)` |
+| POST envia corpo vazio | Falta `Content-Type` header ou `JSON.stringify` | Adicione `headers: { 'Content-Type': 'application/json' }` e `body: JSON.stringify(data)` |
+| Erro CORS ao chamar API | Servidor nao permite requisicoes do dominio do frontend | Configure CORS no backend ou use proxy no dev server |
+| `await` fora de funcao async gera erro | `await` so funciona dentro de funcoes `async` | Envolva o codigo em uma funcao `async` ou use top-level await (ES modules) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre fetch, promessas e ciclo de requisição HTTP
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações GET, POST, PUT, DELETE
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-com-requisicoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-com-requisicoes/references/code-examples.md)

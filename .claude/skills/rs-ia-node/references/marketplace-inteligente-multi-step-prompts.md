@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-multi-step-prompts
 description: "Applies multi-step prompt technique when building AI-powered features that require breaking complex tasks into separate sequential LLM calls. Use when user asks to 'chain prompts', 'split into steps', 'multi-step AI', 'sequential prompts', or builds features where one LLM output feeds into the next call. Make sure to use this skill whenever designing prompt pipelines or when a single prompt produces poor results due to task complexity. Not for single-prompt optimization, chain-of-thought within one prompt, or non-AI code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: prompt-engineering
+  tags: [prompt-engineering, ia-node, node-js, responses-api]
 ---
 
 # Multi-Step Prompts
@@ -112,14 +118,14 @@ const cart = await client.responses.create({
 | Ignorar queda de qualidade entre strategies | Teste multi-step vs chain-of-thought vs single-prompt e compare |
 | Hardcodar numero de steps | Ajuste quantidade de steps conforme resultado observado |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-multi-step-prompts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-multi-step-prompts/references/code-examples.md)

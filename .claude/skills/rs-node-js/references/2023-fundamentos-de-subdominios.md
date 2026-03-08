@@ -1,13 +1,19 @@
 ---
 name: rs-node-js-2023-fundamentos-subdominios
 description: "Applies DDD subdomain classification (core, supporting, generic) when designing system architecture or splitting monoliths. Use when user asks to 'design domains', 'split application', 'identify bounded contexts', 'classify subdomains', or 'plan microservices'. Guides prioritization of development effort based on business value. Make sure to use this skill whenever structuring a new backend project or discussing domain separation. Not for code-level patterns, entity design, or value objects."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-subdomains
+  tags: [ddd, subdomains, core, supporting, generic, bounded-context, domain-events]
 ---
 
 # Fundamentos de Subdomínios (DDD)
 
 > Divida o domínio do problema em subdomínios classificados por valor de negócio, focando esforço no core e terceirizando o genérico.
 
-## Conceito central
+## Key concepts
 
 Subdomínios são divisões do **problema de negócio**, não do código. Tudo que o software toca — incluindo fornecedores externos e processos fora da empresa — pode ser um subdomínio. Um setor da empresa pode conter vários subdomínios, e coisas fora da empresa também podem ser subdomínios.
 
@@ -84,14 +90,14 @@ compra.addDomainEvent(new CompraRealizada(compra))
 | Assumir que subdomínio = microserviço | Subdomínios funcionam em monolitos também |
 | Definir classificação sozinho como dev | Validar com o stakeholder do negócio |
 
+## Troubleshooting
+
+### Subdominio A quebra quando subdominio B e removido
+**Symptom:** Remover codigo de um subdominio causa erros de compilacao em outro
+**Cause:** Existe import direto entre subdominios em vez de comunicacao via domain events
+**Fix:** Substitua imports diretos por domain events: o subdominio A emite o evento, o subdominio B escuta e reage
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fundamentos-de-subdominios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fundamentos-de-subdominios/references/code-examples.md)

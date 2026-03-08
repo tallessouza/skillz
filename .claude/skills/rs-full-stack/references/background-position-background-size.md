@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-bg-position-size
 description: "Applies CSS background-position and background-size patterns when styling elements with background images. Use when user asks to 'add a background image', 'style a hero section', 'center a background', 'cover background', or any CSS background task. Enforces correct axis order (X then Y), proper use of contain vs cover, and shorthand syntax. Make sure to use this skill whenever working with CSS background images. Not for CSS colors, gradients without images, or JavaScript image manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, background, background-position, background-size, responsive]
 ---
 
 # Background-Position e Background-Size
@@ -83,13 +89,16 @@ description: "Applies CSS background-position and background-size patterns when 
 | `background-position: bottom center;` (Y antes de X) | `background-position: center bottom;` |
 | Usar position sem `no-repeat` | Sempre declarar `background-repeat: no-repeat` antes |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem cortada de forma estranha com cover | Ponto focal da imagem fora do centro | Ajuste `background-position` para alinhar o ponto focal |
+| Espacos vazios com contain | Imagem menor que o container | Use `cover` se quiser preencher sem espacos, ou aceite os espacos com contain |
+| Position nao funciona | Faltou `background-repeat: no-repeat` | Adicione `no-repeat` antes de usar position |
+| Size em pixels quebra em telas menores | Valor fixo nao e responsivo | Use `cover`, `contain` ou porcentagens |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre eixos X/Y, inteligência do browser, e diferenças contain vs cover
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações responsivas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-background-position-background-size/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-background-position-background-size/references/code-examples.md)

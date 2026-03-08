@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-fundamentos-do-prisma-orm
 description: "Applies Prisma ORM patterns and conventions when setting up database access in Node.js/TypeScript projects. Use when user asks to 'setup prisma', 'connect database', 'create a model', 'add prisma to project', 'configure ORM', or 'create database schema'. Enforces correct model naming, field typing, UUID defaults, unique constraints, and proper client instantiation. Make sure to use this skill whenever generating Prisma schema files or database setup code. Not for raw SQL queries, Knex/Sequelize/TypeORM code, or frontend database access."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-fundamentals
+  tags: [prisma, orm, database, postgresql, typescript, schema, migration]
 ---
 
 # Fundamentos do Prisma ORM
@@ -93,14 +99,14 @@ const users = await prisma.user.findMany({
 | Tipagem manual duplicando o schema | `prisma generate` e importe os tipos |
 | `string` (minusculo) no schema | `String` (maiusculo) — Prisma nao aceita minusculo |
 
+## Troubleshooting
+
+### Tipos do Prisma nao atualizam apos alterar o schema
+**Symptom:** TypeScript nao reconhece novos campos ou models adicionados ao schema.prisma
+**Cause:** O prisma generate nao foi executado apos a alteracao do schema
+**Fix:** Execute npx prisma generate para regenerar os tipos em node_modules/.prisma/client/
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fundamentos-do-prisma-orm/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fundamentos-do-prisma-orm/references/code-examples.md)

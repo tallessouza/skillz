@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-substituindo-fatiando-texto
 description: "Applies JavaScript string manipulation methods (replace, slice, trim) when writing code that transforms, extracts, or cleans text. Use when user asks to 'replace text', 'extract substring', 'slice a string', 'clean whitespace', 'trim input', or 'manipulate strings'. Ensures correct usage of replace for substitution, slice with positive/negative indexes for extraction, and trim for whitespace cleanup. Make sure to use this skill whenever generating code that processes user input or transforms string content. Not for regex patterns, template literals, or string interpolation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-strings
+  tags:
+    - javascript
+    - string
+    - replace
+    - slice
+    - trim
 ---
 
 # Substituindo e Fatiando Texto em JavaScript
@@ -104,6 +115,15 @@ const name = formData.name.trim()
 | `input.trim().trim()` redundante | `input.trim()` uma vez basta |
 | `str.replace("a", "b")` quando quer trocar todos | `str.replaceAll("a", "b")` |
 | Calcular posicao manual do final | `str.slice(-n)` com negativo |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `replace()` so troca a primeira ocorrencia | Comportamento padrao do replace | Use `replaceAll()` ou regex com flag `g` |
+| String original parece ter mudado | Variavel reatribuida sem perceber | Strings sao imutaveis — armazene o retorno em nova variavel |
+| `slice()` retorna substring errada | Segundo parametro e posicao absoluta, nao comprimento | Use `slice(start, end)` com posicoes absolutas |
+| `trim()` nao remove espacos no meio | Comportamento correto — trim so afeta bordas | Use `replace(/\s+/g, " ")` para espacos internos |
 
 ## Deep reference library
 

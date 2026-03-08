@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-ci-cypress
 description: "Generates GitHub Actions CI workflows for Cypress E2E tests in Next.js projects. Use when user asks to 'setup CI', 'run cypress in CI', 'create github actions workflow', 'automate e2e tests', or 'configure continuous integration for Next.js'. Covers build caching with pnpm, API separation for SSR builds, and Cypress GitHub Action. Make sure to use this skill whenever setting up E2E test automation in CI for Next.js apps. Not for unit test CI, deployment pipelines, or Cypress test writing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [ci, github-actions, cypress, e2e, pnpm, next-js, continuous-integration]
 ---
 
 # Workflow de CI com Cypress no Next.js
@@ -120,14 +126,19 @@ Declarar as variaveis ambiente no step do Cypress, porque o build e start precis
 | Usar `ubuntu-latest` | Especificar versao (`ubuntu-22.04`) para ambiente reproduzivel |
 | Rodar `pnpm install` no step do pnpm | Usar `run_install: false` e instalar depois do cache |
 
+## Troubleshooting
+
+### Teste Cypress falha ao encontrar elemento
+**Symptom:** `cy.get()` retorna timeout — elemento nao encontrado
+**Cause:** Elemento ainda nao renderizou (loading state), ou seletor incorreto
+**Fix:** Usar `cy.contains()` para texto visivel ou `data-testid` para seletores estaveis. Adicionar assertions que esperam o elemento aparecer
+
+### Testes passam localmente mas falham no CI
+**Symptom:** Suite verde localmente, vermelha no GitHub Actions
+**Cause:** Dependencias de ambiente (banco, API), timeouts curtos, ou falta de build antes do teste
+**Fix:** Garantir que `npm run build` roda antes dos testes E2E. Configurar variaveis de ambiente no CI. Aumentar timeouts para ambientes mais lentos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-workflow-de-ci-com-cypress/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-workflow-de-ci-com-cypress/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-workflow-de-ci-com-cypress/references/deep-explanation.md) — O Diego explica o problema central: quando a aplicacao Next.js tem route handlers internos (`app/api
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-workflow-de-ci-com-cypress/references/code-examples.md) — name: Run End-to-End Tests

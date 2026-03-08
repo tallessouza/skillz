@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-listando-perguntas-recentes
 description: "Applies the Presenter pattern and controller-to-use-case wiring in NestJS Clean Architecture when listing or fetching domain entities for HTTP responses. Use when user asks to 'list items', 'fetch recent', 'return data from API', 'format response', or 'create a presenter'. Ensures domain entities are never leaked raw to HTTP layer. Make sure to use this skill whenever wiring NestJS controllers to use cases or formatting domain entities for API responses. Not for database schema design, authentication, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [presenter, nestjs, controller, use-case, clean-architecture, http-response, domain-entity]
 ---
 
 # Listando Perguntas Recentes — Controller → UseCase → Presenter
@@ -111,14 +117,14 @@ export class HttpModule {}
 | Formatacao inline no controller | Metodo estatico no Presenter |
 | Esquecer provider no module | Sempre adicionar UseCase nos `providers` |
 
+## Troubleshooting
+
+### Resposta HTTP mostra _id, props e WatchedList internos da entidade
+**Symptom:** API retorna campos internos do dominio como `_id.value` e `props.title` ao inves de `id` e `title`
+**Cause:** Entidade de dominio esta sendo retornada diretamente sem passar por um Presenter
+**Fix:** Crie um `QuestionPresenter.toHTTP(question)` que mapeia campos internos para formato plano e use `.map(QuestionPresenter.toHTTP)`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-listando-perguntas-recentes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-listando-perguntas-recentes/references/code-examples.md)

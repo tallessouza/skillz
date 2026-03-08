@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela-de-mesas
 description: "Generates Knex migration files for restaurant table management schemas. Use when user asks to 'create a migration', 'add a tables table', 'create mesa schema', 'restaurant table management', or 'knex migration for tables'. Applies patterns: incremental primary key, not-null constraints, timestamps with defaultTo(knex.fn.now()), and proper rollback with dropTable. Make sure to use this skill whenever generating Knex migrations for entity tables with numeric identifiers. Not for seed files, query building, or non-Knex ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, migration, database, schema, restaurant]
 ---
 
 # Criando Migration de Tabelas (Mesas)
@@ -85,13 +91,15 @@ export async function down(knex) {
 | `created_at` sem valor default | `.defaultTo(knex.fn.now())` |
 | `table_number` sem `.notNullable()` | `.notNullable()` em campos obrigatorios |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `table already exists` ao rodar migration | Migration ja foi aplicada anteriormente | Execute `npx knex migrate:rollback` antes ou verifique com `migrate:status` |
+| `table_number` aceita null mesmo com `.notNullable()` | Migration antiga ainda aplicada sem a restricao | Rollback e re-execute a migration atualizada |
+| `knex.fn.now()` gera formato de data inesperado | Comportamento varia por banco (SQLite vs PostgreSQL) | Verifique a documentacao do driver do banco em uso |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre migrations, timestamps e rollback
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-tabela-de-mesas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-tabela-de-mesas/references/code-examples.md)

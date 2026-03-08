@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-map
 description: "Applies correct Array.map() patterns when transforming arrays in JavaScript/TypeScript. Use when user asks to 'transform an array', 'convert array items', 'format array elements', 'create new array from existing', or 'map over a list'. Enforces return-new-array semantics, singular/plural naming, concise arrow syntax, and object construction patterns. Make sure to use this skill whenever code involves .map() or array transformation. Not for filtering (use filter), aggregation (use reduce), or side-effects-only iteration (use forEach)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-array-methods
+  tags: [javascript, array, map, transformation, iteration]
 ---
 
 # Método map()
@@ -92,13 +98,16 @@ products.map(product => product.toUpperCase())
 | `data.map(d => ...)` (generico) | `users.map(user => ...)` (semantico) |
 | `items.map(i => ({ id: i }))` sem armazenar | `const mapped = items.map(item => ({ id: item }))` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `map()` retorna array de `undefined` | Esqueceu o `return` dentro das chaves | Use sintaxe reduzida sem chaves ou adicione `return` explicito |
+| Array de objetos retorna `[object Object]` | Tentou retornar objeto sem parenteses na arrow function | Envolva em parenteses: `item => ({ key: value })` |
+| Resultado do `map()` nao e usado | Usando `map()` para side-effects | Substitua por `forEach()` se nao precisa do array retornado |
+| Array original foi modificado | Mutou o objeto dentro do callback | Crie um novo objeto no retorno em vez de modificar o original |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do map()
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-map/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-map/references/code-examples.md)

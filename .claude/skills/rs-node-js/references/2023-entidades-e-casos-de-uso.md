@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entidades-e-casos-de-uso
-description: "Enforces DDD entity and use case identification patterns when designing domain layers in Node.js/TypeScript. Use when user asks to 'create an entity', 'define a use case', 'start a domain layer', 'model a domain', or 'implement DDD'. Applies rules: entities from nouns in domain conversations, use cases from verbs, zero external dependencies in domain layer, no database/framework coupling. Make sure to use this skill whenever structuring a new domain or modeling business logic. Not for HTTP controllers, database schemas, or infrastructure setup."
+name: 2023-entidades-e-casos-de-uso
+description: "Defines DDD fundamentals: entities as nouns from domain expert conversations, use cases as verbs connecting entities, with zero external dependencies in the domain layer. Use when user asks to 'create an entity', 'write a use case', 'model domain objects', 'start DDD structure', or 'separate domain from infrastructure'. Make sure to use this skill whenever creating the initial domain layer structure with entities and use cases in a Node.js/TypeScript project. Not for infrastructure code, HTTP controllers, or database repository implementations."
+category: coding-lens
+tags: [ddd, entities, prisma, typescript, use-cases]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-fundamentos
+  tags: [ddd, entities, use-cases, domain, linguagem-ubiqua, typescript]
 ---
 
 # Entidades e Casos de Uso (DDD)
@@ -112,14 +121,14 @@ export class CreateQuestionUseCase {
 | Criar entidade sem conversar sobre o dominio | Extrair entidades da linguagem ubiqua |
 | Misturar entities e use-cases na mesma pasta | Separar em `entities/` e `use-cases/` |
 
+## Troubleshooting
+
+### Entidade importa Prisma ou outro ORM diretamente
+**Symptom:** Entidade de dominio tem `import { PrismaClient }` ou dependencia de framework
+**Cause:** Mistura da camada de dominio com camada de infraestrutura — entidade deve ser pura
+**Fix:** Remova todas as importacoes de frameworks/ORMs da pasta `domain/` — acesso a banco fica em repositorios na camada de infraestrutura
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entidades-e-casos-de-uso/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entidades-e-casos-de-uso/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

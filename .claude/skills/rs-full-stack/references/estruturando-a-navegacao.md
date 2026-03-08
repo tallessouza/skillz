@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estruturando-a-navegacao
 description: "Enforces structured HTML navigation patterns when building navbars, menus, or headers. Use when user asks to 'create a navbar', 'build navigation', 'structure a header', 'add a menu', or 'create nav links'. Applies rules: plan structure mentally before coding, use semantic nav/header hierarchy, wrap clickable logos in anchor tags, organize assets in subfolders, use Emmet shortcuts for repeated structures. Make sure to use this skill whenever generating HTML navigation components. Not for CSS styling, JavaScript interactivity, or backend routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-layout
+  tags: [html, navigation, semantic-html, navbar, header]
 ---
 
 # Estruturando a Navegação HTML
@@ -94,13 +100,16 @@ Gera 3 `<li>` com `<a>` dentro de cada um — use o asterisco para multiplicar e
 | Assets todos soltos em uma pasta | Subpastas: `assets/images/`, `assets/icons/` |
 | `<ul class="menu">` (genérico) | `<ul id="primary-menu">` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Logo nao e clicavel | `<img>` sem `<a>` envolvendo | Envolver logo em `<a href="#" id="logo">` |
+| Icone do menu nao aparece | Caminho do `src` errado | Verificar caminho relativo: `./assets/icons/nome.svg` |
+| Multiplos menus com mesmo estilo conflitam | IDs genericos como `id="menu"` | Usar IDs descritivos: `id="primary-menu"`, `id="secondary-menu"` |
+| Emmet nao gera lista | Sintaxe incorreta | Usar `li*3>a` e pressionar Tab |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre hierarquia semântica e organização de assets
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-a-navegacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-a-navegacao/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-customizando-inputs-radio
 description: "Enforces custom radio input styling patterns using CSS grid, absolute positioning, and SVG backgrounds. Use when user asks to 'style radio buttons', 'customize radio inputs', 'create custom radio group', 'CSS radio design', or 'accessible radio buttons'. Applies rules: CSS file organization by component, grid auto-fit for responsive radio groups, absolute-positioned invisible inputs for full clickable area, SVG background swap for states. Make sure to use this skill whenever styling radio inputs or creating custom selection UI components. Not for checkbox styling, toggle switches, or general form validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-css-formularios
+  tags: [css, radio-input, grid, accessibility, SVG, custom-inputs]
 ---
 
 # Customizando Inputs do Tipo Radio
@@ -144,13 +150,16 @@ description: "Enforces custom radio input styling patterns using CSS grid, absol
 | `opacity: 0` no input sem position | `position: absolute` + `inset: 0` — garante area clicavel total |
 | Estilos de radio inline no CSS principal | Arquivo separado `radial.css` importado na ordem correta |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Radio nao responde a cliques | `display: none` esconde o input completamente | Use `all: unset; position: absolute; inset: 0` para manter acessibilidade |
+| `:has(:checked)` nao funciona | Browser nao suporta `:has()` ou selector invalido | Verifique suporte do browser; Firefox suporta a partir da v121 |
+| Grid nao se adapta ao tamanho da tela | Usando colunas fixas ao inves de `auto-fit` | Use `repeat(auto-fit, minmax(7.5rem, 1fr))` para responsividade automatica |
+| Estilos genericos de input sobrescrevem radios | Ordem de importacao CSS incorreta | Importe `input.css` antes de `radial.css` para respeitar a cascata |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao CSS, auto-fit vs auto-fill, e por que position absolute funciona para acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e anotacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-customizando-inputs-do-tipo-radio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-customizando-inputs-do-tipo-radio/references/code-examples.md)

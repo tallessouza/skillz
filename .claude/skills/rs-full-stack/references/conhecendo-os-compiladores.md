@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-os-compiladores
 description: "Applies JavaScript compiler and transpilation concepts when discussing build tools, Babel, SWC, or browser compatibility. Use when user asks to 'setup a build pipeline', 'support older browsers', 'configure Babel', 'transpile code', or 'explain how bundlers work'. Covers parser-transformer-generator pipeline and why transpilation enables modern JS usage. Make sure to use this skill whenever build tooling or browser compatibility is discussed. Not for runtime debugging, CSS preprocessing, or TypeScript type-checking specifics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [babel, swc, transpilation, compilers, build-tools, ecmascript]
 ---
 
 # Compiladores e Transpilacao em JavaScript
@@ -67,13 +73,16 @@ Compiladores permitem que a comunidade adote features novas do ECMAScript imedia
 - O codigo gerado pode ser mais verboso e ligeiramente mais lento que o original
 - Nem toda feature moderna tem equivalente perfeito em versoes antigas
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Sintaxe moderna causa erro no navegador | Transpilacao nao configurada ou target muito alto | Ajuste o `target` no bundler/tsconfig para a versao minima do browser suportado |
+| Polyfill ausente para API (ex: fetch, Promise) | Transpilacao so converte sintaxe, nao APIs | Adicione polyfills separadamente (ex: core-js, whatwg-fetch) |
+| Build muito lento com Babel | Babel processa arquivos desnecessarios | Configure `exclude: /node_modules/` e considere migrar para SWC |
+| Codigo transpilado muito grande | Target muito antigo gerando codigo verboso | Aumente o target para versao mais recente se o publico-alvo permitir |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre parser/transformer/generator, analogias e motivacao historica
 - [code-examples.md](references/code-examples.md) — Exemplos de transpilacao entre versoes do ECMAScript
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-os-compiladores/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-os-compiladores/references/code-examples.md)

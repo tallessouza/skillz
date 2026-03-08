@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-organizando-os-assets
 description: "Applies asset organization conventions when setting up project images, icons, and logos from design tools like Figma. Use when user asks to 'organize assets', 'export from Figma', 'structure images folder', 'setup project assets', or 'create assets directory'. Enforces folder hierarchy (assets/images, assets/icons), correct naming with state suffixes (-hover), and format selection (SVG for logos/icons, PNG for photos). Make sure to use this skill whenever creating or reorganizing frontend asset directories. Not for CSS styling, image optimization, or build tool configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: projeto-frontend
+  tags: [assets, figma, imagens, icones, organizacao]
 ---
 
 # Organizando os Assets
@@ -84,6 +90,15 @@ projeto/
 | Misturar icones e fotos na mesma pasta | Separar em `icons/` e `images/` |
 | Exportar hover e default no mesmo arquivo | Arquivos separados com sufixo de estado |
 | Comecar a codar sem todos os assets | Exportar e organizar tudo antes |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem nao aparece na pagina | Caminho relativo incorreto no `src` | Verifique o caminho do arquivo relativo ao HTML/componente |
+| SVG aparece cortado ou distorcido | Viewbox incorreto na exportacao | Re-exporte do Figma verificando o frame de exportacao |
+| Asset faltando no meio do desenvolvimento | Nao exportou todos os assets antes de codar | Use Ctrl+Shift+E no Figma para exportar batch e compare com o Style Guide |
+| Icone de hover nao funciona | Nome do arquivo nao segue convencao de estado | Renomeie para `nome-hover.svg` e atualize a referencia no CSS |
 
 ## Deep reference library
 

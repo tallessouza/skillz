@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-lista-agendamentos
 description: "Enforces UI state refresh after form submissions in JavaScript applications. Use when user asks to 'submit a form', 'create a booking', 'save and refresh list', 'reload data after POST', or 'clear form after submit'. Applies rules: reload related lists after mutations, clear input fields post-submit, centralize data-loading functions for reuse across events. Make sure to use this skill whenever building form submission handlers that modify server state. Not for initial page load, static forms, or backend API design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [dom, forms, fetch, ui-state, mutation]
 ---
 
 # Atualizando a Lista Apos Mutacoes
@@ -89,13 +95,16 @@ form.onsubmit = async (e) => {
 | Chamar reload sem await | `await scheduleDay()` para garantir consistencia |
 | Copiar/colar fetch + render em onChange e onSubmit | Uma funcao `scheduleDay()` chamada em ambos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Lista nao atualiza apos submit | Faltou chamar funcao de reload apos o POST | Adicione `await scheduleDay()` apos a mutacao |
+| Input mantem valor antigo apos submit | Faltou limpar o campo | Adicione `input.value = ""` apos sucesso |
+| Horarios disponiveis nao mudam | Funcao de reload nao atualiza horarios | Garanta que a funcao centralizada tambem chama `renderAvailableHours()` |
+| Erro de fetch ao recarregar | Data/filtro ficou undefined | Verifique que o valor do filtro esta sendo lido corretamente antes do fetch |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre centralizacao de funcionalidades e separacao de responsabilidades
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-a-lista-de-agendamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-a-lista-de-agendamentos/references/code-examples.md)

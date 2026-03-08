@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-testes-e-2-e
 description: "Enforces Factory pattern in NestJS E2E tests, replacing direct PrismaService usage with dedicated Factory classes. Use when user asks to 'write e2e test', 'create integration test', 'refactor test', 'test NestJS controller', or 'setup test factories'. Applies rules: inject factories via providers, use DatabaseModule import, remove direct Prisma manipulation, use makePrismaEntity methods. Make sure to use this skill whenever writing or reviewing NestJS E2E tests. Not for unit tests, mock-based tests, or non-NestJS testing frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: e2e-test-factories
+  tags: [e2e-test, factory-pattern, nestjs, prisma, test-module, database-module, integration-test]
 ---
 
 # Refatorando Testes E2E com Factories
@@ -112,14 +118,14 @@ await questionFactory.makePrismaQuestion({
 | Factory sem declarar em `providers` | `providers: [StudentFactory, QuestionFactory]` |
 | `user.id` como objeto em vez de string | `user.id.toString()` onde necessário |
 
+## Troubleshooting
+
+### E2E test falha com "Cannot find module 'DatabaseModule'"
+**Symptom:** O modulo de teste nao consegue resolver `DatabaseModule` ao compilar
+**Cause:** `DatabaseModule` nao foi adicionado ao array `imports` do `Test.createTestingModule`
+**Fix:** Adicione `DatabaseModule` nos imports: `imports: [AppModule, DatabaseModule]` e declare as Factories nos `providers`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-testes-e-2-e/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-testes-e-2-e/references/code-examples.md)

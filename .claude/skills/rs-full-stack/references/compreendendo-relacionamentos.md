@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compreendendo-relacionamentos
 description: "Applies relational database relationship patterns when designing schemas or writing SQL. Use when user asks to 'create a table', 'design a schema', 'add a foreign key', 'connect tables', or 'model relationships'. Enforces primary key and foreign key conventions, naming patterns like table_name_id for FKs, and referential integrity. Make sure to use this skill whenever creating or modifying database tables that reference other tables. Not for NoSQL databases, application code, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [database, sql, relationships, foreign-key, primary-key]
 ---
 
 # Relacionamentos em Banco de Dados Relacional
@@ -84,13 +90,17 @@ CREATE TABLE livros (
 | Criar tabela sem PK | Toda tabela deve ter `id` como PK |
 | Guardar lista separada por virgula numa coluna | Crie tabela intermediaria com FKs |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro ao deletar registro referenciado | Existe FK apontando para o registro | Delete registros dependentes primeiro ou configure CASCADE na FK |
+| FK nao aceita valor inserido | Valor nao existe na tabela referenciada | Insira o registro na tabela pai antes de referenciar via FK |
+| Dados duplicados entre tabelas | FK nao utilizada — dados copiados manualmente | Crie FK referenciando a tabela de origem em vez de copiar dados |
+| Consulta nao retorna dados relacionados | JOIN nao utilizado na query | Use INNER JOIN ou LEFT JOIN para combinar tabelas relacionadas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-relacionamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-relacionamentos/references/code-examples.md)

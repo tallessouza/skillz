@@ -1,6 +1,12 @@
 ---
 name: rs-devops-entendendo-o-recreate
-description: "Applies Kubernetes Recreate deployment strategy knowledge when writing or reviewing K8s manifests. Use when user asks to 'deploy to kubernetes', 'change deployment strategy', 'configure k8s deployment', 'write a deployment yaml', or 'avoid downtime'. Warns against Recreate for user-facing services and recommends alternatives. Make sure to use this skill whenever generating Kubernetes Deployment manifests or discussing deployment strategies. Not for Docker Compose, Helm chart authoring, or CI/CD pipeline configuration."
+description: "Applies Kubernetes deployment strategy selection between Recreate and RollingUpdate. Use when user asks to 'choose deployment strategy', 'configure Recreate strategy', 'understand RollingUpdate vs Recreate', or 'deploy without downtime'. Enforces RollingUpdate as default for user-facing services, Recreate only for fault-tolerant workloads, and removal of incompatible fields when switching strategies. Make sure to use this skill whenever choosing or configuring Kubernetes deployment strategies. Not for canary deployments (use entendendo-e-configurando-o-canary-deployment) or blue-green."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-deploy-strategies
+  tags: [kubernetes, deployment, recreate, rolling-update, strategy, zero-downtime, canary]
 ---
 
 # Estrategia Recreate no Kubernetes
@@ -9,73 +15,29 @@ description: "Applies Kubernetes Recreate deployment strategy knowledge when wri
 
 ## Rules
 
-1. **Nunca use Recreate para servicos user-facing** — APIs, frontends, e qualquer servico que responde diretamente a clientes, porque Recreate mata TODOS os pods antes de subir os novos, causando downtime total
-2. **Rolling Update e o default por um motivo** — o Kubernetes usa `RollingUpdate` como estrategia padrao do Deployment porque garante zero-downtime, so mude se tiver razao explicita
-3. **Recreate so para workloads tolerantes a indisponibilidade** — cronjobs, consumidores de fila, workers de background que podem ficar offline temporariamente
-4. **Deployment puro so suporta duas estrategias** — `RollingUpdate` e `Recreate`. Para blue-green ou canary, precisa de frameworks adicionais (Argo Rollouts, Istio, Flagger)
-5. **Ao trocar estrategia, remova campos incompativeis** — `maxSurge` e `maxUnavailable` so existem em `RollingUpdate`, nao funcionam com `Recreate`
+1. **Nunca use Recreate para servicos user-facing** — causa downtime total
+2. **Rolling Update e o default por um motivo** — garante zero-downtime
+3. **Recreate so para workloads tolerantes a indisponibilidade** — cronjobs, consumers de fila
+4. **Deployment puro so suporta duas estrategias** — RollingUpdate e Recreate
+5. **Ao trocar estrategia, remova campos incompativeis** — `maxSurge` so existe em RollingUpdate
 
-## Como configurar
+## How to write
 
 ### Recreate
-
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-worker
 spec:
-  replicas: 3
   strategy:
     type: Recreate
-    # Nao aceita rollingUpdate config aqui
-  template:
-    # ...
 ```
 
-### Rolling Update (default — preferir)
-
+### Rolling Update (preferir)
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-api
 spec:
-  replicas: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
-  template:
-    # ...
-```
-
-## Example
-
-**Before (erro comum — Recreate em API):**
-```yaml
-kind: Deployment
-metadata:
-  name: api-gateway
-spec:
-  replicas: 5
-  strategy:
-    type: Recreate  # ERRADO: vai derrubar todas as 5 replicas de uma vez
-```
-
-**After (corrigido):**
-```yaml
-kind: Deployment
-metadata:
-  name: api-gateway
-spec:
-  replicas: 5
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0  # Zero downtime
 ```
 
 ## Heuristics
@@ -83,29 +45,26 @@ spec:
 | Situacao | Estrategia |
 |----------|-----------|
 | API REST / GraphQL | RollingUpdate (maxUnavailable: 0) |
-| Frontend / SSR | RollingUpdate |
-| Consumer de fila (SQS, RabbitMQ) | Recreate e aceitavel |
+| Consumer de fila (SQS) | Recreate e aceitavel |
 | CronJob / batch worker | Recreate e aceitavel |
-| Precisa de deploy gradual (10%, 20%...) | Canary (requer Argo Rollouts ou similar) |
-| Precisa de duas versoes simultaneas | Blue-Green (requer framework adicional) |
+| Deploy gradual (10%, 20%) | Canary (requer Argo Rollouts) |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
 | `type: Recreate` em API de producao | `type: RollingUpdate` com `maxUnavailable: 0` |
-| Deixar `maxSurge`/`maxUnavailable` com `Recreate` | Remover bloco `rollingUpdate` ao usar `Recreate` |
-| Assumir que K8s puro faz canary | Usar Argo Rollouts, Istio ou Flagger para canary |
-| Usar Recreate "porque e mais simples" | Rolling Update e o default e igualmente simples |
+| `maxSurge`/`maxUnavailable` com Recreate | Remover bloco `rollingUpdate` |
+| Assumir que K8s puro faz canary | Usar Argo Rollouts, Istio ou Flagger |
+
+## Troubleshooting
+
+### Erro "unknown field maxSurge" apos trocar para Recreate
+**Symptom:** `kubectl apply` falha com campo desconhecido no spec.strategy
+**Cause:** Campos `maxSurge` e `maxUnavailable` so existem em RollingUpdate, nao em Recreate
+**Fix:** Remover o bloco `rollingUpdate` inteiro ao mudar `type` para `Recreate`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-entendendo-o-recreate/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-entendendo-o-recreate/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

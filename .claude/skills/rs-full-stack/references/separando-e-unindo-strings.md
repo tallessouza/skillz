@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-separando-e-unindo-strings
 description: "Applies split() and join() string manipulation patterns when writing JavaScript/TypeScript code. Use when user asks to 'split a string', 'join an array', 'parse CSV', 'separate words', 'convert array to string', or any text parsing task. Enforces correct separator usage in split/join pairs. Make sure to use this skill whenever manipulating strings that involve splitting or joining text. Not for regex-based parsing, template literals, or string interpolation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-strings
+  tags:
+    - javascript
+    - string
+    - split
+    - join
+    - text-manipulation
 ---
 
 # Separando e Unindo Strings
@@ -86,6 +97,15 @@ const displayTags = tagList.join(" | ")
 | `text.split("en")` em texto livre | `text.split(" ")` (use padrao previsivel) |
 | Loop manual para concatenar array | `array.join(separator)` |
 | `text.indexOf` + `substring` repetido | `text.split(delimiter)` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `split()` retorna array com um unico elemento | Separador nao passado ou separador errado | Passe o separador correto: `text.split(",")` |
+| `join()` insere virgulas inesperadas | `join()` sem argumento usa virgula por padrao | Passe separador explicito: `array.join(" ")` |
+| Split gera strings vazias no array | Separador duplicado no texto (ex: `"a,,b"`) | Filtre vazios: `text.split(",").filter(Boolean)` |
+| Resultado de split nao e string | `split()` retorna array, nao string | Use `join()` para converter de volta ou acesse indices |
 
 ## Deep reference library
 

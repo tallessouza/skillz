@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-navegando-commits-github
-description: "Guides navigation of commit history through GitHub's web interface. Use when user asks to 'view commits on GitHub', 'check commit history', 'browse old versions', 'see file changes', or 'navigate project history'. Maps git CLI commands to their GitHub UI equivalents: git log, git checkout, git diff. Make sure to use this skill whenever explaining GitHub interface navigation or commit exploration. Not for git CLI commands, local repository operations, or branch management strategies."
+description: "Navigates commit history through GitHub's web interface. Use when user asks to 'view commits on GitHub', 'check commit history', 'browse old versions', 'see file changes', or 'navigate project history'. Maps git CLI commands to their GitHub UI equivalents: git log, git checkout, git diff. Make sure to use this skill whenever explaining GitHub interface navigation or commit exploration. Not for git CLI commands, local repository operations, or branch management strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags: [github, commits, history, diff, web-interface]
 ---
 
 # Navegando Pelos Commits na Interface do GitHub
 
 > Use a interface web do GitHub para explorar historico de commits, visualizar alteracoes e navegar entre momentos do projeto sem digitar comandos no terminal.
 
-## Key concept
+## Key concepts
 
 A interface do GitHub replica os comandos git mais usados para navegacao. Cada acao na UI corresponde a um comando CLI, mas sem necessidade de terminal. Isso facilita a compreensao do historico, especialmente quando multiplas pessoas contribuem.
 
@@ -49,6 +55,22 @@ Ao clicar em "Browse files" em um commit, voce esta fazendo o equivalente a `git
 
 Quando voce navega para um commit antigo na interface, nao existe botao "proximo commit" — voce so volta no tempo. O caminho de volta e sempre pelo seletor de branch (main).
 
+### Equivalentes no terminal
+
+```bash
+# Ver historico de commits (equivalente a clicar em "Commits")
+git log --oneline
+
+# Ver o que mudou em um commit especifico
+git show abc1234
+
+# Navegar para o estado do projeto em um commit
+git checkout abc1234
+
+# Voltar para o estado atual
+git checkout main
+```
+
 ## Common misconceptions
 
 | Pensam que | Realidade |
@@ -71,13 +93,16 @@ Quando voce navega para um commit antigo na interface, nao existe botao "proximo
 - Branches e tags sao visiveis mas a navegacao e limitada ao que existe no remote
 - Para operacoes complexas de diff (entre branches, ranges de commits), o terminal oferece mais flexibilidade
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Nao encontra botao "Commits" | Repositorio vazio ou sem commits | Faca pelo menos um commit e push para o repositorio |
+| Botao "Browse files" nao aparece | Interface do GitHub mudou | Procure pelo icone `<>` ao lado do SHA do commit |
+| Nao consegue voltar ao presente | Navegou para commit antigo e nao encontra "next" | Selecione "main" no seletor de branch para voltar |
+| Diff mostra muitas linhas vermelhas/verdes para pequena mudanca | Git detecta qualquer caractere diferente como bloco novo | Comportamento normal — uma modificacao aparece como remocao + adicao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-navegando-pelos-commits-atraves-da-interface-do-github/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-navegando-pelos-commits-atraves-da-interface-do-github/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tipo-any
 description: "Enforces careful usage of TypeScript's any type when writing or reviewing TypeScript code. Use when user asks to 'create a variable', 'fix type errors', 'add TypeScript types', 'type a function', or any TypeScript code generation task. Applies rules: avoid implicit any, never use any as convenience escape, prefer unknown over any, always annotate explicit types. Make sure to use this skill whenever generating TypeScript code with untyped variables. Not for JavaScript-only projects, runtime type checking libraries, or Zod/io-ts schema validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentos
+  tags: [typescript, any, unknown, tipos, type-safety]
 ---
 
 # Tipo Any no TypeScript
@@ -80,6 +86,15 @@ message = "Esse é um texto"
 | `const result: any = fetch(...)` | `const result: Response = await fetch(...)` |
 | `any` em todo lugar por preguica | Tipos explicitos — e a essencia do TypeScript |
 | `(item: any) => item.name` | `(item: User) => item.name` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeScript nao reclama de nenhum erro de tipo | Variavel com `any` implicito (sem anotacao) | Adicione tipo explicito: `let data: string` |
+| Erro ao acessar propriedade de variavel `unknown` | `unknown` exige type narrowing antes do uso | Use `typeof` ou type guard antes de acessar propriedades |
+| Migracao de JS para TS com muitos erros | Tentando tipar tudo de uma vez | Use `any` temporario com comentario e crie issues para tipar depois |
+| `any` se propagando para todo o codigo | Funcao publica retornando `any` | Defina tipo de retorno explicito em funcoes publicas |
 
 ## Deep reference library
 

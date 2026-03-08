@@ -1,13 +1,19 @@
 ---
 name: rs-devops-adotando-a-cultura-dev-ops
 description: "Applies the CALMS cultural diagnostic framework when evaluating or implementing DevOps practices. Use when user asks to 'assess DevOps maturity', 'diagnose team culture', 'implement DevOps', 'post-mortem process', or 'blameless culture'. Guides cultural diagnosis before tooling decisions. Make sure to use this skill whenever discussing DevOps adoption, incident response culture, or team process failures. Not for CI/CD pipeline configuration, container orchestration, or infrastructure-as-code implementation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: devops-culture
+  tags: [devops]
 ---
 
 # Diagnostico Cultural DevOps com CALMS
 
 > Antes de adotar ferramentas DevOps, diagnostique a cultura — CALMS mede a capacidade de transformacao da organizacao.
 
-## Key concept
+## Key concepts
 
 CALMS e um framework do livro "The DevOps Handbook" que mede e acompanha a implementacao da cultura DevOps. Cada letra representa uma dimensao: Culture, Automation, Lean, Measurement, Sharing. O diagnostico cultural (C) e o primeiro passo obrigatorio antes de qualquer implementacao.
 
@@ -42,6 +48,23 @@ Sem post-mortem, tempo e investido repetidamente corrigindo o mesmo tipo de falh
 1. **Como resolvemos problemas?** — Se busca culpado → longe de DevOps. Se resolve como time → sinal positivo.
 2. **O que fazemos depois de corrigir?** — Se nada → longe de DevOps. Se post-mortem com acoes → sinal positivo.
 
+## Diagnostic checklist
+
+```
+# DevOps Culture Diagnostic — run mentally for your team
+1. How do we handle incidents?
+   [ ] Blame individual  → FAR from DevOps
+   [x] Fix as a team     → Positive signal
+
+2. What happens after fixing?
+   [ ] Move on           → FAR from DevOps
+   [x] Post-mortem       → Positive signal
+
+3. Are post-mortems blameless?
+   [ ] Focus on person   → Anti-pattern
+   [x] Focus on process  → DevOps culture
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -73,14 +96,14 @@ Sem post-mortem, tempo e investido repetidamente corrigindo o mesmo tipo de falh
 - Esta aula cobre apenas o C (Culture) — as demais dimensoes (A, L, M, S) sao tratadas em aulas seguintes
 - Cada organizacao tem contexto unico; as perguntas diagnosticas sao ponto de partida, nao checklist definitivo
 
+## Troubleshooting
+
+### Equipe resiste a adocao de post-mortems
+**Symptom:** Time ve post-mortem como perda de tempo ou busca de culpados
+**Cause:** A cultura de blame esta enraizada e post-mortems sao confundidos com interrogatorios
+**Fix:** Comece com post-mortems blameless focados em processo (o que falhou no fluxo) e nao em pessoas, documentando acoes concretas de melhoria
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adotando-a-cultura-dev-ops/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adotando-a-cultura-dev-ops/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adotando-a-cultura-dev-ops/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adotando-a-cultura-dev-ops/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

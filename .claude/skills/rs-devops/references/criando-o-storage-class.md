@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-o-storage-class
 description: "Generates Kubernetes StorageClass manifests when configuring persistent storage. Use when user asks to 'create a StorageClass', 'configure storage in Kubernetes', 'setup persistent storage', or 'write a storage manifest'. Applies correct apiVersion, provisioner, reclaimPolicy, and volumeBindingMode fields. Make sure to use this skill whenever generating Kubernetes storage configuration manifests. Not for PersistentVolume, PersistentVolumeClaim, or application deployment manifests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-storage
+  tags: [kubernetes, storageclass, provisioner, reclaim-policy, persistent-storage]
 ---
 
 # Kubernetes StorageClass
@@ -95,14 +101,14 @@ kubectl apply -f storage-class.yaml
 kubectl get storageclass
 ```
 
+## Troubleshooting
+
+### StorageClass rejeitado pelo kubectl com erro de provisioner
+**Symptom:** `kubectl apply` falha com erro indicando que o provisioner nao e valido ou nao foi encontrado.
+**Cause:** O campo `provisioner` esta ausente ou referencia um provisioner nao instalado no cluster.
+**Fix:** Verifique quais provisioners estao disponiveis com `kubectl get storageclass` no cluster. Para desenvolvimento local com Kind, use `rancher.io/local-path`. Para clusters sem provisionamento automatico, use `kubernetes.io/no-provisioner`.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-o-storage-class/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-o-storage-class/references/code-examples.md)

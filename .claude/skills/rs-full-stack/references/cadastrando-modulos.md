@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-cadastrando-modulos
 description: "Applies SQLite foreign key enforcement and Knex module registration patterns when building Node.js APIs with SQLite. Use when user asks to 'create a route', 'register modules', 'add foreign key constraint', 'configure knex pool', or 'fix SQLite relationships'. Ensures PRAGMA foreign_keys is enabled and NOT NULL constraints are set. Make sure to use this skill whenever working with SQLite foreign keys or Knex pool configuration. Not for PostgreSQL, MySQL, or non-relational database work."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database
+  tags: [sqlite, knex, foreign-keys, migrations, node-js, database]
 ---
 
 # Cadastrando Módulos com Knex e SQLite
@@ -100,13 +106,16 @@ export async function up(knex: Knex): Promise<void> {
 | Criar nova migration só para adicionar NOT NULL em tabela nova | Desfazer migration, editar, rodar novamente |
 | Ignorar teste com dados inválidos | Testar com IDs inexistentes para validar constraints |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Foreign key constraint not enforced** | SQLite disables foreign keys by default — add `PRAGMA foreign_keys = ON` in the Knex pool `afterCreate` callback. |
+| **NULL accepted in foreign key column** | Add `.notNullable()` to the column definition in the migration — SQLite allows NULL even with references. |
+| **Migration down fails with file not found** | Include the full filename with `.ts` extension when running `knex migrate:down` for a specific migration. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre PRAGMA foreign_keys e comportamento padrão do SQLite
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-cadastrando-modulos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-cadastrando-modulos/references/code-examples.md)

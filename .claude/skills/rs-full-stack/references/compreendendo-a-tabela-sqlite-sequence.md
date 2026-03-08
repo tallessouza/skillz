@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-sqlite-sequence
-description: "Explains the sqlite_sequence internal table and its role in SQLite auto-increment tracking. Use when user asks about 'sqlite_sequence', 'auto increment sequence', 'last inserted id in SQLite', 'how SQLite tracks IDs', or 'internal SQLite tables'. Make sure to use this skill whenever working with SQLite auto-increment columns or debugging ID sequence issues. Not for PostgreSQL sequences, MySQL auto_increment, or general primary key design."
+description: "Documents the sqlite_sequence internal table and its role in SQLite auto-increment tracking. Use when user asks about 'sqlite_sequence', 'auto increment sequence', 'last inserted id in SQLite', 'how SQLite tracks IDs', or 'internal SQLite tables'. Make sure to use this skill whenever working with SQLite auto-increment columns or debugging ID sequence issues. Not for PostgreSQL sequences, MySQL auto_increment, or general primary key design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sqlite, database, auto-increment, sql]
 ---
 
 # Tabela sqlite_sequence no SQLite
 
 > Consulte a tabela `sqlite_sequence` para entender e verificar o estado do auto-incremento em qualquer tabela SQLite.
 
-## Key concept
+## Key concepts
 
 O SQLite cria automaticamente uma tabela interna chamada `sqlite_sequence` quando qualquer tabela usa `AUTOINCREMENT` em uma coluna. Essa tabela armazena o nome de cada tabela e o ultimo valor de sequencia atribuido, permitindo ao SQLite saber qual sera o proximo ID.
 
@@ -69,13 +75,17 @@ A `sqlite_sequence` funciona como um contador que o SQLite consulta antes de ins
 - Apenas tabelas com `AUTOINCREMENT` explicito geram entrada na `sqlite_sequence`
 - Tabelas com `INTEGER PRIMARY KEY` sem `AUTOINCREMENT` usam o rowid interno e NAO aparecem na `sqlite_sequence`
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| IDs com gaps apos deletar registros | AUTOINCREMENT nao reutiliza IDs deletados | Comportamento esperado — sqlite_sequence mantem o ultimo valor usado |
+| sqlite_sequence nao existe no banco | Nenhuma tabela usa AUTOINCREMENT explicito | Use INTEGER PRIMARY KEY AUTOINCREMENT para criar a tabela interna |
+| Reset de sequencia nao funciona | Sintaxe incorreta no UPDATE | Use `UPDATE sqlite_sequence SET seq = 0 WHERE name = 'tabela'` |
+| Confusao entre rowid e AUTOINCREMENT | INTEGER PRIMARY KEY sem AUTOINCREMENT usa rowid | Adicione AUTOINCREMENT explicitamente se precisa de sequencia garantida |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre auto-increment vs rowid e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos de consulta, reset e verificacao da sqlite_sequence
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-a-tabela-sqlite-sequence/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-a-tabela-sqlite-sequence/references/code-examples.md)

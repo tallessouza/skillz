@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-o-projeto-5
 description: "Applies project scaffolding conventions when starting a new HTML/CSS project. Use when user asks to 'create a project', 'start a new site', 'scaffold HTML/CSS', 'init a web project', or 'setup project structure'. Enforces CSS organization with separate files, global resets, git init with .gitignore, and initial commit. Make sure to use this skill whenever creating a new frontend project from scratch. Not for React/Next.js projects, backend setup, or existing project refactoring."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: project-setup
+  tags: [html, css, project-init, git, gitignore, scaffolding]
 ---
 
 # Iniciando Projeto HTML/CSS
@@ -113,13 +119,16 @@ Projeto com estrutura limpa, CSS modular via imports, git inicializado com prime
 | Esquecer o reset global | `* { margin: 0; padding: 0; box-sizing: border-box; }` |
 | `box-sizing: content-box` (padrao) | `box-sizing: border-box` — calculo pela borda e mais intuitivo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao carrega na pagina | Path incorreto no `<link>` | Verificar que `href="styles/index.css"` esta correto relativamente ao HTML |
+| Reset global nao funciona | `@import` no `index.css` com path errado | Confirmar `@import url("global.css")` sem path de pasta |
+| `.DS_Store` aparece no git | `.gitignore` criado depois do primeiro commit | Executar `git rm --cached .DS_Store` e re-commitar |
+| `git init` falha | Git nao instalado | Verificar com `git --version` e instalar se necessario |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre CSS modular e organizacao de projeto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-5/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-5/references/code-examples.md)

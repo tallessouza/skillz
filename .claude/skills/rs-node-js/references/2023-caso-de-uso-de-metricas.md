@@ -1,6 +1,12 @@
 ---
 name: rs-node-2023-caso-de-uso-de-metricas
 description: "Applies the metrics use case pattern when creating count/aggregation use cases in Node.js with SOLID principles. Use when user asks to 'create a metrics use case', 'count records by user', 'get user statistics', 'implement dashboard data', or 'add aggregation use case'. Follows pattern: repository count method, simple use case without pagination, return typed count. Make sure to use this skill whenever building count-based queries or metrics endpoints in SOLID architecture. Not for complex analytics, time-series data, or chart rendering."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [metrics, count, aggregation, repository-pattern, solid, use-case]
 ---
 
 # Caso de Uso de Metricas
@@ -98,14 +104,19 @@ async execute({ userId }) {
 | Criar repositorio separado para metricas | Adicionar metodo count no repositorio existente |
 | Nomear retorno como `count` ou `data` | Nomear pelo dominio: `checkInsCount` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-metricas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-metricas/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-metricas/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-metricas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

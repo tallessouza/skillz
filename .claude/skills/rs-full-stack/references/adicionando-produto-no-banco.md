@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-produto-no-banco
 description: "Enforces Knex insert patterns with typed repositories when writing database insert operations in Node.js/TypeScript. Use when user asks to 'insert into database', 'create a record', 'add to table', 'knex insert', or 'cadastrar no banco'. Applies rules: typed table generics, global .d.ts type files, validate before insert, return 201 status. Make sure to use this skill whenever generating Knex database operations. Not for SELECT queries, migrations, or schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [knex, insert, typescript, database, repository]
 ---
 
 # Adicionando Produto no Banco com Knex
@@ -84,13 +90,16 @@ await knect<ProductRepository>("products").insert({
 | Tipo chamado `ProductType` ou `IProduct` | `ProductRepository` (convenção da aplicação) |
 | Insert sem validação prévia | Validar campos antes de chamar `.insert()` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Insert aceita campos inexistentes sem erro | Faltou Generic no `knect()` | Adicione `knect<ProductRepository>("products")` |
+| Tipo não encontrado sem import | Arquivo `.d.ts` não está em pasta reconhecida | Mova para `database/types/` e verifique `tsconfig.json` include |
+| Erro "column does not exist" no banco | Nome do campo no código difere da coluna real | Compare nomes no tipo com as colunas da migration |
+| Response retorna 200 após insert | Status padrão do Express é 200 | Use `response.status(201).json()` explicitamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre .d.ts global, padrão Repository e fluxo validate-then-insert
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-produto-no-banco/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-produto-no-banco/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-listando-pacotes-antigos
 description: "Applies Node.js dependency auditing with retire.js when user asks to 'check outdated packages', 'audit dependencies', 'find vulnerabilities in node_modules', 'scan npm packages', or 'secure my Node project'. Guides detection of outdated and vulnerable JavaScript packages using retire.js. Make sure to use this skill whenever reviewing Node.js project security or dependency health. Not for general code review, Python/Ruby dependency management, or application logic security."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, npm, retire-js, vulnerability-scanning]
 ---
 
 # Auditoria de Pacotes Node.js com Retire.js
@@ -83,14 +89,14 @@ retire 2>&1 > security-report.txt
 | Rodar auditoria uma unica vez | Integrar no pipeline de CI/CD ou rodar periodicamente |
 | Confiar que poucos pacotes instalados = poucas dependencias | Verificar — poucos pacotes diretos geram centenas de transitivos |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-listando-pacotes-antigos-do-node-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-listando-pacotes-antigos-do-node-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-listando-pacotes-antigos-do-node-js/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-listando-pacotes-antigos-do-node-js/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

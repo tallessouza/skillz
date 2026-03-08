@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-table-de-perguntas
 description: "Enforces Prisma model creation patterns when defining database tables. Use when user asks to 'create a model', 'add a table', 'define schema', 'prisma model', or 'new entity in Prisma'. Applies rules: camelCase properties with @map for snake_case DB columns, @default(now()) for createdAt, @updatedAt for automatic timestamps, @@map for table naming. Make sure to use this skill whenever generating Prisma schema code. Not for raw SQL migrations, query building, or Prisma Client usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, schema, model, camelcase, map, timestamps]
 ---
 
 # Criando Tabelas com Prisma
@@ -88,13 +94,16 @@ model Question {
 | Setar updatedAt manualmente no codigo | Usar `@updatedAt` — Prisma gerencia automaticamente |
 | Nome da tabela sem @@map | Sempre usar `@@map("nome_tabela")` para controlar o nome no banco |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Coluna `created_at` nao gerada no banco | Propriedade usa camelCase sem `@map` | Use `createdAt DateTime @map("created_at")` |
+| `updatedAt` nao atualiza automaticamente | Usando `@default(now())` em vez de `@updatedAt` | Troque para `@updatedAt` no campo updatedAt |
+| Model name no plural causa erro | Prisma espera PascalCase singular | Use `model Question { ... @@map("questions") }` |
+| Migration falha com `relation not found` | Foreign key referencia model inexistente | Crie o model referenciado antes ou na mesma migration |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre mapeamento camelCase/snake_case e comportamento do Prisma
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-table-de-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-table-de-perguntas/references/code-examples.md)

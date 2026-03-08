@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-argumentos-e-parametros-1
 description: "Enforces correct use of function parameters, arguments, default values, and parameter ordering in JavaScript/TypeScript. Use when user asks to 'create a function', 'add parameters', 'set default values', 'write a helper', or any function definition task. Applies rules: parameter order matters, use default values for optional params, understand scope of parameters. Make sure to use this skill whenever defining functions with multiple parameters. Not for class constructors, TypeScript generics, or advanced patterns like decorators."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, functions, parameters, arguments, default-values]
 ---
 
 # Argumentos e Parâmetros
@@ -90,13 +96,16 @@ joinText("Rodrigo")
 | `joinText("Santana", "Rodrigo", "Gonçalves")` esperando reordenação | Respeite a ordem ou use objeto |
 | Acessar parâmetro fora da função | Retorne o valor se precisar dele fora |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Parametro recebe `undefined` | Argumento nao foi passado na chamada da funcao | Defina valor padrao com `=` ou verifique a chamada |
+| Argumentos na ordem errada | JavaScript usa posicao, nao nome, para matching | Respeite a ordem ou use destructuring de objeto como parametro |
+| Valor padrao nao e aplicado | Argumento foi passado como `undefined` explicitamente | Passe `undefined` para ativar default, ou omita o argumento |
+| Variavel externa com mesmo nome do parametro causa confusao | Shadowing de escopo | Nomeie parametros de forma unica e explicita |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre escopo, precedência e mental model de parâmetros
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-argumentos-e-parametros-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-argumentos-e-parametros-1/references/code-examples.md)

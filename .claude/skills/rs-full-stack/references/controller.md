@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-controller
 description: "Enforces REST API controller pattern with max 5 methods (index, show, create, update, remove) when structuring Express/Node.js applications. Use when user asks to 'create a route', 'add an endpoint', 'organize API', 'separate concerns', or 'create a controller'. Ensures route files only handle routing while controllers handle action logic. Make sure to use this skill whenever creating or refactoring Express routes. Not for frontend components, database models, or middleware logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest
+  tags: [express, controller, rest-api, separation-of-concerns, routes]
 ---
 
 # Controller Pattern para REST API
@@ -107,13 +113,16 @@ productsRoutes.post("/", productsController.create)
 | Controller com 6+ metodos | Crie um segundo controller |
 | Instanciar controller dentro de cada rota | Instancie uma vez no topo do arquivo de rotas |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `this` undefined dentro do metodo do controller | Metodo passado como callback perde contexto | Use arrow function na rota: `(req, res) => controller.index(req, res)` ou bind |
+| Controller com mais de 5 metodos | Recurso com acoes demais em um unico controller | Crie um segundo controller para as acoes extras |
+| Request/Response sem autocomplete | Faltou tipagem dos parametros | Importe e tipe: `(request: Request, response: Response)` do Express |
+| Rota nao encontra o metodo do controller | Controller nao instanciado ou metodo com nome errado | Verifique a instanciacao no topo do arquivo de rotas e o nome do metodo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e padronizacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-controller/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-controller/references/code-examples.md)

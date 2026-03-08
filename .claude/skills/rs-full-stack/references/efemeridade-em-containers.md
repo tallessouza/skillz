@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-efemeridade-em-containers
 description: "Enforces container ephemerality principles when designing Docker architectures or writing Dockerfiles. Use when user asks to 'create a container', 'write a Dockerfile', 'store data in Docker', 'persist container data', or 'design container architecture'. Ensures data is never stored inside containers without external volumes. Make sure to use this skill whenever working with Docker containers or container orchestration. Not for host OS storage, cloud storage services, or non-containerized applications."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, containers, efemeridade, volumes, persistencia]
 ---
 
 # Efemeridade em Containers
@@ -39,6 +45,18 @@ O Dockerfile contem todas as definicoes para recriar o container. Isso torna a s
 3. **Separe estado de computacao** — dados (estado) vivem em volumes ou servicos externos, logica (computacao) vive no container, porque isso permite escalar e substituir independentemente
 4. **Use volumes nomeados para dados criticos** — `docker volume create` para bancos de dados, uploads e qualquer dado que nao pode ser perdido
 
+## Example
+
+```bash
+# Container SEM volume — dados perdidos ao remover
+docker run --name db postgres
+docker rm db  # dados perdidos
+
+# Container COM volume — dados persistem
+docker run --name db -v pgdata:/var/lib/postgresql/data postgres
+docker rm db  # dados preservados no volume pgdata
+```
+
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
@@ -58,13 +76,16 @@ O Dockerfile contem todas as definicoes para recriar o container. Isso torna a s
 | docker-compose sem `volumes:` para servico de banco | BLOCK — banco sem volume = perda de dados garantida |
 | Container stateless (API, worker) | OK sem volume — e efemero por natureza |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dados do banco perdidos apos restart | Container sem volume montado para o diretorio de dados | Adicione `-v pgdata:/var/lib/postgresql/data` ao `docker run` |
+| `docker run` sem `-v` para app com estado | Esqueceu de montar volume para dados persistentes | Adicione volume antes de rodar: `-v volume:/path` |
+| Uploads desaparecem apos `docker rm` | Arquivos salvos dentro do container sem bind mount | Monte volume externo: `-v ./uploads:/app/uploads` |
+| Logs inacessiveis apos container parar | Logs salvos apenas no filesystem do container | Use logging driver ou monte volume em `/var/log` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre efemeridade, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de Docker com e sem volumes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-efemeridade-em-containers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-efemeridade-em-containers/references/code-examples.md)

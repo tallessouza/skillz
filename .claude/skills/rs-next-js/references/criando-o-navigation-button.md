@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-o-navigation-button
 description: "Enforces component extraction patterns when creating reusable navigation buttons with tooltips in Next.js. Use when user asks to 'create a button component', 'add tooltip to button', 'extract component', 'navigation button', or 'separate component'. Applies rules: proper prop typing, TooltipProvider wrapping, asChild on triggers, variant/size styling, onClick forwarding. Make sure to use this skill whenever extracting interactive button components with tooltips in React/Next.js. Not for form buttons, submit handlers, or link navigation components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: navigation-button
+  tags: [react, next-js, tooltip, shadcn-ui, component-extraction, asChild, button-component]
 ---
 
 # Criando o Navigation Button
@@ -119,14 +125,19 @@ export const NavigationButton = ({
 | Hardcodar texto do tooltip | Passar `tooltipText` via props |
 | Logica de onClick dentro do componente wrapper | Receber onClick via props e repassar |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-navigation-button/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-navigation-button/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-navigation-button/references/deep-explanation.md) — O instrutor identifica que dentro do DatePicker existem botoes de navegacao (dia anterior/proximo di
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-navigation-button/references/code-examples.md) — // navigation-button.tsx (dentro da pasta do DatePicker)

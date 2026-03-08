@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-manipulando-conteudo
 description: "Enforces correct DOM content manipulation patterns when writing JavaScript that modifies element text or HTML. Use when user asks to 'change element text', 'update DOM content', 'modify innerHTML', 'manipulate DOM', or 'select and change elements'. Applies rules: textContent for full replacement, innerText for visible-only, innerHTML for HTML strings, querySelector chaining for nested targets. Make sure to use this skill whenever generating DOM manipulation code. Not for React/Vue virtual DOM, server-side rendering, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, textContent, innerHTML, innerText]
 ---
 
 # Manipulando Conteudo no DOM
@@ -82,13 +88,16 @@ document.querySelector('#guest span').textContent = 'João'
 | `innerText` para leitura em batch (lento) | `textContent` para leitura em batch (rapido) |
 | `innerHTML = userInput` sem sanitizacao | `textContent = userInput` (seguro contra XSS) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| textContent removeu elementos filhos | textContent substitui toda a subarvore | Use seletor encadeado para alvo preciso: `querySelector('#id span')` |
+| innerText retorna texto diferente do textContent | innerText respeita CSS (display:none) | Use textContent para texto bruto incluindo oculto |
+| innerHTML com input do usuario causa XSS | HTML injetado executa scripts | Use textContent para input do usuario (seguro contra XSS) |
+| Conteudo atualizado nao aparece na tela | Elemento selecionado errado | Verifique o seletor e inspecione com DevTools |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre visivel vs oculto, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-manipulando-conteudo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-manipulando-conteudo/references/code-examples.md)

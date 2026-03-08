@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-env-vars
 description: "Enforces correct environment variable separation between client and server in Next.js App Router projects using t3-env. Use when user asks to 'add env variables', 'configure environment', 'setup t3-env', 'create env file', or any Next.js project setup involving process.env. Validates NEXT_PUBLIC_ prefix usage and Zod schemas for both contexts. Make sure to use this skill whenever setting up or modifying environment variables in Next.js projects. Not for generic Node.js env configuration, Docker env files, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [env-variables, t3-env, next-js, zod, NEXT_PUBLIC, client-server, environment]
 ---
 
 # Variaveis Ambiente: Client e Server no Next.js
@@ -119,14 +125,19 @@ export const env = createEnv({
 | Usar variavel server em Client Component | Mover para `client` com prefixo NEXT_PUBLIC_ |
 | Criar multiplos arquivos env por contexto | Um unico `env.ts` com createEnv separando contextos |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-variaveis-ambiente-client-e-server/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-variaveis-ambiente-client-e-server/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-variaveis-ambiente-client-e-server/references/deep-explanation.md) — O Next.js faz uma distincao fundamental entre codigo que roda no servidor e codigo que roda no brows
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-variaveis-ambiente-client-e-server/references/code-examples.md) — npm install @t3-oss/env-nextjs

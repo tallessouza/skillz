@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilitarios-do-type-script
 description: "Applies TypeScript built-in utility types when writing or refactoring TypeScript code. Use when user asks to 'create a type', 'transform a type', 'make properties optional', 'pick fields', 'omit fields', or any type manipulation task. Enforces Partial, Required, Pick, Omit, Record, Readonly, ReturnType, Parameters, Extract, Exclude usage. Make sure to use this skill whenever manipulating or reusing types in TypeScript. Not for runtime logic, JavaScript-only projects, or validation libraries like Zod."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-advanced
+  tags: [typescript, utility-types, partial, pick, omit, record, readonly]
 ---
 
 # Utilitários do TypeScript
@@ -131,6 +137,14 @@ type UserPublic = Omit<User, 'password'>
 | `{ [key: string]: Value }` para mapas | `Record<string, Value>` |
 | Tipo separado copiando retorno de funcao | `ReturnType<typeof myFunction>` |
 | Interface sem password copiando User | `Omit<User, 'password'>` |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `Type 'X' does not satisfy the constraint` ao usar Pick/Omit | Chave passada não existe no tipo original | Verifique que as chaves em `Pick<T, 'key'>` existem em `T` |
+| `Partial<T>` não aceita campos extras | Partial torna campos opcionais mas não adiciona novos | Use intersection: `Partial<T> & { newField: string }` |
+| `Readonly` não previne mutação em objetos aninhados | Readonly é shallow, não afeta propriedades nested | Use `Readonly` recursivo ou bibliotecas como `ts-essentials` para DeepReadonly |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-sso-na-aws
-description: "Guides AWS SSO (IAM Identity Center) setup for Terraform authentication. Use when user asks to 'configure AWS SSO', 'setup IAM Identity Center', 'connect Terraform to AWS', 'generate AWS tokens securely', or 'aws configure sso'. Walks through enabling Identity Center, creating users, permission sets, and local CLI configuration. Make sure to use this skill whenever setting up AWS authentication for IaC workflows. Not for Azure/GCP auth, IAM policies, or Terraform resource creation."
+description: "Configures AWS SSO (IAM Identity Center) for secure Terraform authentication with rotatable tokens. Use when user asks to 'configure AWS SSO', 'setup IAM Identity Center', 'connect Terraform to AWS', 'generate AWS tokens securely', or 'aws configure sso'. Enforces SSO over static access keys, permission set scoping, and MFA configuration for Identity Center users. Make sure to use this skill whenever setting up AWS authentication for IaC workflows. Not for Azure/GCP auth, IAM policies, or Terraform resource creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: aws-authentication
+  tags: [aws, sso, iam-identity-center, terraform, authentication, mfa, cli]
 ---
 
 # Configurando SSO na AWS para Terraform
@@ -107,14 +113,14 @@ aws sts get-caller-identity
 
 Deve retornar Account, UserId e ARN do usuario SSO.
 
+## Troubleshooting
+
+### aws configure sso falha ao iniciar
+**Symptom:** Comando `aws configure sso` retorna erro ou nao abre browser
+**Cause:** AWS CLI v1 instalada ao inves da v2 — SSO requer CLI v2
+**Fix:** Instale AWS CLI v2 seguindo a documentacao oficial da AWS
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-sso-na-aws/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-sso-na-aws/references/code-examples.md)

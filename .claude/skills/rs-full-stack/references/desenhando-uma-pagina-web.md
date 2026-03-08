@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-desenhando-uma-pagina-web
 description: "Enforces semantic HTML page structure when building web pages. Use when user asks to 'create a page', 'build a layout', 'structure HTML', 'add a header', 'add a footer', or any HTML scaffolding task. Applies correct semantic elements: header, nav, main, section, aside, footer in their proper positions. Make sure to use this skill whenever generating HTML page structure, even for quick prototypes. Not for CSS styling, JavaScript logic, or component-level markup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [HTML, semantic-elements, header, nav, main, section, aside, footer]
 ---
 
 # Estrutura Semantica de Paginas HTML
@@ -113,13 +119,16 @@ description: "Enforces semantic HTML page structure when building web pages. Use
 | `<div class="main">` | `<main>` |
 | `<div class="section">` | `<section>` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Leitor de tela nao identifica secoes | Usando `<div>` em vez de tags semanticas | Substitua por `<header>`, `<main>`, `<footer>`, etc. |
+| Multiplos `<main>` na pagina | Mais de um elemento main | Use apenas um `<main>` por pagina |
+| `<nav>` dentro de `<footer>` nao aparece | Nao e erro — `<nav>` pode existir em qualquer lugar | Verifique CSS; semanticamente esta correto |
+| Layout nao muda ao trocar div por section | Tags semanticas nao mudam visual por padrao | Adicione CSS para estilizar; semantica e para significado, nao aparencia |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre semantica HTML e acessibilidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-desenhando-uma-pagina-web/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-desenhando-uma-pagina-web/references/code-examples.md)

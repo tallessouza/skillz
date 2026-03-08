@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-add-remove-array
 description: "Applies correct array mutation methods (push, unshift, shift, pop) when manipulating arrays in JavaScript/TypeScript. Use when user asks to 'add item to array', 'remove from array', 'append to list', 'prepend element', or any array manipulation task. Ensures positional correctness: push/pop for end, unshift/shift for beginning. Make sure to use this skill whenever generating code that adds or removes elements from arrays. Not for array searching, filtering, sorting, or transformation methods like map/filter/reduce."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, arrays, push, pop, shift, unshift, mutation]
 ---
 
 # Adicionando e Removendo Itens do Array
@@ -84,13 +90,16 @@ items.pop()
 | `arr.splice(0, 1)` para remover primeiro | `arr.shift()` |
 | `arr.splice(arr.length - 1, 1)` para remover ultimo | `arr.pop()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Item adicionado no lugar errado | Usando `push` em vez de `unshift` (ou vice-versa) | `push` = final, `unshift` = inicio |
+| `pop()` retorna `undefined` | Array esta vazio | Verifique `array.length > 0` antes de remover |
+| Array nao muda apos operacao | Trabalhando com copia do array (imutabilidade) | Verifique se esta operando no array original |
+| `shift()` remove o item errado | Confundiu `shift` (inicio) com `pop` (final) | `shift` = remove primeiro, `pop` = remove ultimo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-e-removendo-um-item-do-array/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-e-removendo-um-item-do-array/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-incluir-o-css
 description: "Applies Webpack CSS bundling configuration when setting up CSS loaders in a Webpack project. Use when user asks to 'configure webpack for css', 'add css to webpack', 'bundle css with javascript', 'setup css-loader', or 'style-loader configuration'. Ensures correct loader order, module rules, and exclude patterns. Make sure to use this skill whenever configuring Webpack to handle CSS files. Not for CSS-in-JS solutions, PostCSS, Sass/LESS configuration, or Vite/esbuild setups."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [webpack, css, css-loader, style-loader, bundling, build]
 ---
 
 # Como Incluir CSS no Webpack
@@ -97,13 +103,17 @@ module.exports = {
 | Instalar loaders como dependencies normais | `npm install -D` — sao devDependencies |
 | Criar regra sem `test` com regex | Sempre use `test: /\.css$/i` com flag case-insensitive |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Module parse failed` ao importar .css | Loaders CSS nao instalados ou configurados | Instale `css-loader` e `style-loader` e adicione a rule |
+| CSS nao aparece na pagina | Import do CSS ausente no JS entry point | Adicione `import './css/styles.css'` no arquivo de entrada |
+| Ordem dos loaders invertida causa erro | `css-loader` antes de `style-loader` no array | Use `["style-loader", "css-loader"]` — style primeiro |
+| CSS de biblioteca nao processado | `exclude: /node_modules/` bloqueia o CSS externo | Crie regra separada sem exclude para CSS de node_modules |
+| Estilos inline em vez de arquivo separado | `style-loader` injeta via `<style>` tag | Use `mini-css-extract-plugin` para gerar arquivo CSS separado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre como Webpack processa CSS e por que o CSS fica dentro do JS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-css/references/code-examples.md)

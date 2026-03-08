@@ -1,149 +1,65 @@
 ---
-name: rs-redux-zustand-loading-interface
-description: "Applies loading state patterns in Redux/Zustand stores when implementing async data fetching. Use when user asks to 'add loading state', 'show spinner while fetching', 'handle pending state', 'create loading UI', or 'add isLoading to store'. Enforces pattern: boolean flag in store toggled by pending/fulfilled actions, conditional rendering with spinner or skeleton. Make sure to use this skill whenever adding async operations to Redux or Zustand stores. Not for error handling, optimistic updates, or caching strategies."
+name: rs-redux-zustand-criando-interface-de-loading
+description: "Applies loading state patterns in Redux/Zustand stores when implementing async data fetching with visual feedback. Use when user asks to 'add loading state', 'show spinner while fetching', 'handle pending state', 'create loading UI', 'add isLoading to store', or 'skeleton screen with tailwind'. Enforces boolean isLoading flag toggled by pending/fulfilled, conditional rendering, and animate-spin/animate-pulse patterns. Make sure to use this skill whenever adding async operations to Redux or Zustand stores. Not for error handling patterns, optimistic updates, or caching strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: redux-zustand
+  module: loading-interface
+  tags: [loading, isLoading, spinner, skeleton, pending, fulfilled, async]
 ---
 
 # Loading State em Redux/Zustand
 
-> Toda operacao assincrona na store deve ter um campo `isLoading` que controla a interface de carregamento.
+> Toda operacao assincrona na store deve ter um campo `isLoading` que controla a interface.
 
 ## Rules
 
-1. **Adicione `isLoading` ao state** — campo booleano no estado inicial, porque a UI precisa de uma flag deterministica para decidir o que renderizar
-2. **Pending seta `true`, fulfilled seta `false`** — nunca confie apenas no fulfilled, porque o pending pode ser disparado multiplas vezes (recarregamentos)
-3. **Inicialize como `true` se o dado e essencial** — se a tela nao faz sentido sem o dado, comece carregando, porque evita flash de conteudo vazio
-4. **Renderize condicionalmente no componente** — `isLoading ? <Spinner /> : <Content />`, porque loading e responsabilidade da UI, nao da store
-5. **Atualize testes ao adicionar campos** — todo campo novo no state precisa estar no estado inicial dos testes, porque testes quebram silenciosamente
+1. **`isLoading` no state** — campo booleano para decidir o que renderizar
+2. **Pending seta true, fulfilled seta false** — nao confie apenas no fulfilled
+3. **Inicialize como `true` se dado e essencial** — evita flash de conteudo vazio
+4. **Renderize condicionalmente** — `isLoading ? <Spinner /> : <Content />`
+5. **Atualize testes** — novo campo no state precisa estar no initialState dos testes
 
 ## How to write
 
-### Campo no state (Redux Toolkit)
-
 ```typescript
-interface PlayerState {
-  // ... campos existentes
-  isLoading: boolean
-}
+// State
+interface PlayerState { course: Course | null; isLoading: boolean }
+const initialState: PlayerState = { course: null, isLoading: true }
 
-const initialState: PlayerState = {
-  // ... valores existentes
-  isLoading: true,
-}
-```
-
-### Cases no extraReducers
-
-```typescript
-builder.addCase(loadCourse.pending, (state) => {
-  state.isLoading = true
-})
-
+// extraReducers
+builder.addCase(loadCourse.pending, (state) => { state.isLoading = true })
 builder.addCase(loadCourse.fulfilled, (state, action) => {
-  state.isLoading = false
-  // ... atribuir dados do payload
+  state.isLoading = false; state.course = action.payload
 })
-```
 
-### Componente com loading condicional
-
-```tsx
-const isCourseLoading = useAppSelector(
-  (state) => state.player.isLoading
-)
-
-return isCourseLoading ? (
-  <div className="flex h-full items-center justify-center">
-    <Loader className="w-6 h-6 text-zinc-400 animate-spin" />
-  </div>
-) : (
-  <VideoPlayer lesson={currentLesson} />
-)
+// Componente
+if (isCourseLoading) return <Loader className="animate-spin" />
+return <VideoPlayer lesson={currentLesson} />
 ```
 
 ## Example
 
-**Before (sem loading — flash de conteudo vazio):**
-
-```tsx
-// Store sem isLoading
-const initialState = {
-  course: null,
-  currentModuleIndex: 0,
-  currentLessonIndex: 0,
-}
-
-// Componente renderiza null enquanto carrega
-export function Video() {
-  const lesson = useAppSelector(/* ... */)
-  return <ReactPlayer url={lesson?.videoUrl} /> // undefined no primeiro render
-}
-```
-
-**After (com loading state):**
-
-```tsx
-// Store com isLoading
-const initialState = {
-  course: null,
-  currentModuleIndex: 0,
-  currentLessonIndex: 0,
-  isLoading: true,
-}
-
-// extraReducers
-builder.addCase(loadCourse.pending, (state) => {
-  state.isLoading = true
-})
-builder.addCase(loadCourse.fulfilled, (state, action) => {
-  state.isLoading = false
-  state.course = action.payload
-})
-
-// Componente com feedback visual
-export function Video() {
-  const isCourseLoading = useAppSelector(state => state.player.isLoading)
-  const lesson = useAppSelector(/* ... */)
-
-  if (isCourseLoading) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        <Loader className="w-6 h-6 text-zinc-400 animate-spin" />
-      </div>
-    )
-  }
-
-  return <ReactPlayer url={lesson?.videoUrl} />
-}
-```
-
-## Heuristics
-
-| Situation | Do |
-|-----------|-----|
-| Dado essencial para a tela | `isLoading: true` no initial state |
-| Dado opcional/secundario | `isLoading: false` no initial state |
-| Multiplos recursos async | Um `isLoading` por recurso, nao um global |
-| Sidebar/header tambem dependem do dado | Reutilize o mesmo selector `state.player.isLoading` |
-| Quer skeleton screen ao inves de spinner | Use `animate-pulse` do Tailwind em divs placeholder |
+**Before:** `if (!course) return null` — flash de vazio, sem feedback visual
+**After:** `if (isLoading) return <Loader className="animate-spin" />` — spinner enquanto carrega
 
 ## Anti-patterns
 
 | Never write | Write instead |
 |-------------|---------------|
-| Checar `if (!course)` como proxy de loading | Usar `isLoading` explicito na store |
-| Setar loading apenas no fulfilled | Setar no pending (`true`) E no fulfilled (`false`) |
-| Loading global para toda a app | Loading por slice/feature |
-| Esquecer de atualizar testes com novo campo | Adicionar `isLoading` no initialState dos testes |
-| Optional chaining como substituto de loading | Optional chaining + loading state juntos |
+| `if (!course)` como proxy de loading | `isLoading` explicito |
+| Loading apenas no fulfilled | Setar no pending E no fulfilled |
+| Loading global para toda app | Loading por slice/feature |
+
+## Troubleshooting
+
+### Testes quebram apos adicionar isLoading
+**Symptom:** Testes existentes falham com propriedade faltando.
+**Cause:** `isLoading` nao esta no initialState dos testes.
+**Fix:** Adicione `isLoading: false` (ou true) no estado de teste.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/redux-zustand/rs-redux-zustand-criando-interface-de-loading/references/deep-explanation.md)
-- [Code examples](../../../data/skills/redux-zustand/rs-redux-zustand-criando-interface-de-loading/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-interface-de-loading/references/deep-explanation.md) — Pending E fulfilled, inicializar true, impacto nos testes, skeleton screens
+- [code-examples.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-interface-de-loading/references/code-examples.md) — State, extraReducers, Video loading, Header loading, skeleton sidebar

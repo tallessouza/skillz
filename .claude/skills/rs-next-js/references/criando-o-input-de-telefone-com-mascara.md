@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-input-telefone-mascara
 description: "Applies phone input masking with React iMask when building form fields in React/Next.js. Use when user asks to 'create a phone input', 'add phone mask', 'format phone field', 'input with mask', or 'masked input'. Configures IMaskInput with Brazilian phone format, integrates with form libraries, and applies consistent styling. Make sure to use this skill whenever generating phone or formatted input fields in React projects. Not for date masks, currency masks, or general form validation logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: phone-input-mask
+  tags: [react, next-js, react-imask, phone-mask, input-formatting, react-hook-form]
 ---
 
 # Input de Telefone com Máscara (React iMask)
@@ -115,14 +121,19 @@ import { IMaskInput } from 'react-imask'
 | Input com altura diferente dos demais | Mesma classe `h-12` (ou a altura padrao do form) |
 | Instalar `inputmask` ou `cleave.js` em projeto React | `react-imask` — feito para React, suporta refs |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-input-de-telefone-com-mascara/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-input-de-telefone-com-mascara/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-input-de-telefone-com-mascara/references/deep-explanation.md) — O instrutor destaca que existem varias formas de implementar mascaras: libs dedicadas, regex manual,
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-input-de-telefone-com-mascara/references/code-examples.md) — pnpm add react-imask

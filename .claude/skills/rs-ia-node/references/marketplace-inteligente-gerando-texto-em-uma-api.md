@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-gerando-texto-api
 description: "Applies Express + OpenAI text generation API integration patterns when building Node.js endpoints that call LLMs. Use when user asks to 'create an AI endpoint', 'integrate OpenAI with Express', 'generate text from API', 'build a chat route', or 'add AI to my backend'. Covers client initialization, route structure, developer/user message separation, and body parsing. Make sure to use this skill whenever creating Express routes that call OpenAI or similar LLM APIs. Not for frontend UI, streaming responses, or structured data output (use structured output skill instead)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: fundamentos
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Gerando Texto em Uma API com Express + OpenAI
@@ -137,14 +143,14 @@ export { app }
 | Import dotenv depois do app | `import "dotenv/config"` como primeiro import no index |
 | Tudo no `index.ts` | Separe `app.ts` (config) e `index.ts` (entrada) |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gerando-texto-em-uma-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-gerando-texto-em-uma-api/references/code-examples.md)

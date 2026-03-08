@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-objetos-5
 description: "Enforces TypeScript object typing patterns when defining variables, function parameters, and optional properties. Use when user asks to 'type an object', 'create a typed function', 'add optional properties', 'destructure parameters', or writes inline object types. Applies rules: inline object annotation, optional with ?, destructured typed params, named object params over positional. Make sure to use this skill whenever writing TypeScript objects or function signatures with object parameters. Not for interfaces, type aliases, classes, or generics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, objects, typing, destructuring, optional-properties]
 ---
 
 # Tipagem em Objetos TypeScript
@@ -82,13 +88,15 @@ signIn({ email: "rodrigo@email.com", password: "123" })
 | `avatarUrl: string` quando opcional | `avatarUrl?: string` |
 | `user.password` sem declarar no tipo | Adicione `password` ao tipo do objeto |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro ao acessar propriedade do objeto | Propriedade nao declarada no tipo | Adicione a propriedade ao tipo inline |
+| Erro ao omitir propriedade | Propriedade obrigatoria por padrao | Adicione `?` antes de `:` para tornar opcional |
+| Parametros trocados na chamada da funcao | Parametros posicionais do mesmo tipo | Use objeto desestruturado como parametro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre inferencia, opcionais e desestruturacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-objetos-5/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-objetos-5/references/code-examples.md)

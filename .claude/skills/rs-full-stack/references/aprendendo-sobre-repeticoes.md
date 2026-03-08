@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aprendendo-sobre-repeticoes
 description: "Applies loop structure patterns when writing JavaScript repetition logic. Use when user asks to 'create a loop', 'iterate over', 'repeat code', 'write a for/while', or any task requiring repeated execution. Enforces condition-first thinking, proper counter management, and avoids code duplication. Make sure to use this skill whenever generating loops or refactoring duplicated code blocks. Not for array methods like map/filter/reduce or recursion patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, loops, for, while, iteration, control-flow]
 ---
 
 # Estruturas de Repetição
@@ -109,13 +115,16 @@ marioPular()
 | Precisa executar pelo menos 1 vez antes de verificar | Use `do...while` |
 | Código duplicado apareceu durante desenvolvimento | Refatore para loop imediatamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Loop infinito trava o programa | Falta de atualizacao do estado (incremento) ou condicao que nunca se torna falsa | Adicione `step++` ou equivalente e verifique a condicao de parada |
+| Loop nao executa nenhuma vez | Condicao ja e falsa na primeira verificacao (`while`) | Verifique o valor inicial e a condicao; use `do...while` se precisa executar ao menos uma vez |
+| Loop executa uma vez a mais | Condicao usa `<=` em vez de `<` | Ajuste o operador de comparacao conforme o range desejado |
+| Variavel do loop acessivel fora do bloco | Declarada com `var` em vez de `let` | Use `let` para escopo de bloco no `for` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogia do Mário detalhada, e edge cases de loops
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-repeticoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-repeticoes/references/code-examples.md)

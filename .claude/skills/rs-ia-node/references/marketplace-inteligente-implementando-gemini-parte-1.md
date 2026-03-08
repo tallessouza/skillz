@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-implementando-gemini-1
 description: "Applies Google Gemini SDK integration patterns when building LLM services in Node.js/NestJS. Use when user asks to 'integrate Gemini', 'add Google AI', 'implement LLM provider', 'generate embeddings with Gemini', or 'parse JSON from LLM response'. Covers client setup, text generation, embedding, JSON extraction from markdown-wrapped responses, and multi-provider abstraction. Make sure to use this skill whenever implementing Gemini as an LLM provider alongside OpenAI. Not for OpenAI-only implementations, frontend AI features, or prompt engineering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: multi-provider
+  tags: [google-ai, embeddings, gemini, node-js, nestjs, openai, ia-node]
 ---
 
 # Implementando Gemini como Provider LLM
@@ -139,14 +145,14 @@ const validated = schema.parse(parsed);
 | `embedContent({ contents: [input] })` | `embedContent({ contents: input })` (string direto) |
 | Embedding sem `outputDimensionality` | Sempre configure para match com o banco |
 
+## Troubleshooting
+
+### JSON.parse falha na resposta do Gemini
+**Symptom:** `SyntaxError: Unexpected token` ao parsear resposta do Gemini
+**Cause:** Gemini retorna JSON wrapped em markdown (triple backticks), nao JSON puro
+**Fix:** Extraia com regex `text.match(/```json\s*([\s\S]*?)```/)` antes de parsear
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-implementando-gemini-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-implementando-gemini-parte-1/references/code-examples.md)

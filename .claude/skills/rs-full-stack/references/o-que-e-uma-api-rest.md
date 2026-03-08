@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-uma-api-rest
 description: "Applies REST architectural principles when designing or reviewing APIs. Use when user asks to 'create an API', 'design endpoints', 'build a REST API', 'review API design', or 'structure routes'. Enforces client-server separation, stateless requests, resource-based routing, JSON representations, layered architecture, and caching. Make sure to use this skill whenever building or evaluating HTTP APIs. Not for frontend components, database schema design, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest
+  tags: [rest, api, http, arquitetura, stateless]
 ---
 
 # API RESTful — Principios Arquiteturais
@@ -81,6 +87,15 @@ Incentive o frontend a reutilizar recursos ja obtidos em vez de repetir requisic
 
 - REST nao resolve tudo: real-time (use WebSockets), operacoes complexas em batch, ou GraphQL para queries flexiveis
 - Nem toda API precisa ser 100% RESTful — pragmatismo sobre purismo
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| API retorna HTML ao inves de JSON | Header `Accept: application/json` ausente | Adicione header `Accept` na requisicao ou configure o servidor para retornar JSON |
+| Estado perdido entre requisicoes | Servidor guardando estado na sessao | Torne a API stateless — envie tokens/credenciais em cada request |
+| Rota com verbo no nome (`/getProducts`) | Design nao segue REST | Use substantivos: `GET /products` em vez de `GET /getProducts` |
+| Cache nao funciona como esperado | Headers de cache nao configurados | Configure `Cache-Control` e `ETag` nas respostas do servidor |
 
 ## Deep reference library
 

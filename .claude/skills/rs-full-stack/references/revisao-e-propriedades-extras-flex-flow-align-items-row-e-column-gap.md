@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-flexbox-review-extras
 description: "Enforces correct Flexbox property usage when writing CSS layouts. Use when user asks to 'create a layout', 'align items', 'use flexbox', 'add gap between elements', or 'make responsive grid'. Applies rules: flex-flow shorthand over separate properties, row-gap/column-gap awareness, align-content requires flex-wrap, align-self for individual item alignment. Make sure to use this skill whenever generating CSS flex layouts. Not for CSS Grid, animations, or non-layout styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Flexbox"
+  tags: ['css', 'flexbox', 'layout', 'flex-flow', 'gap']
 ---
 
 # Flexbox — Propriedades de Container e Filhos
@@ -96,6 +102,15 @@ description: "Enforces correct Flexbox property usage when writing CSS layouts. 
 | `align-content` sem `flex-wrap` | Adicione `flex-wrap: wrap` ou use `align-items` |
 | `align-items` no filho individual | `align-self` no filho especifico |
 | `gap` quando precisa de valores diferentes por eixo | `row-gap` + `column-gap` separados |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| `align-content` nao tem efeito | `flex-wrap` nao esta ativado | Adicione `flex-wrap: wrap` ao container para habilitar multiplas linhas |
+| Item esticando sem querer | `flex-grow` ativo sem intencao | Remova `flex-grow` ou defina `flex-grow: 0` no item |
+| `align-self` nao funciona | Aplicado no container em vez do filho | Mova `align-self` para o elemento filho especifico |
+| Gap diferente entre linhas e colunas nao funciona | Usando `gap` shorthand | Use `row-gap` e `column-gap` separadamente |
 
 ## Deep reference library
 

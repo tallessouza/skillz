@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fieldset
 description: "Enforces correct HTML fieldset usage for grouping related form fields. Use when user asks to 'create a form', 'group form fields', 'organize form inputs', 'add fieldset', or 'disable form section'. Applies rules: always use legend as first child, use fieldset for semantic grouping, understand disable propagation and data submission behavior. Make sure to use this skill whenever building HTML forms with multiple logical sections. Not for CSS form styling, form validation logic, or JavaScript form handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, fieldset, legend, forms, accessibility, disabled]
 ---
 
 # Fieldset — Agrupamento de Campos em Formulários
@@ -99,13 +105,16 @@ description: "Enforces correct HTML fieldset usage for grouping related form fie
 | Esperar que dados de fieldset disabled sejam enviados | Remover disabled ou usar inputs hidden separados |
 | Um único fieldset envolvendo todo o formulário | Fieldsets por grupo lógico de campos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dados do fieldset nao chegam no submit | Fieldset tem atributo `disabled` | Remover `disabled` antes do submit ou usar hidden inputs fora do fieldset |
+| Botao submit nao funciona | Botao esta dentro de um fieldset disabled | Mover o botao para fora do fieldset desabilitado |
+| Leitor de tela nao anuncia o grupo | `<legend>` ausente ou nao e o primeiro filho | Adicionar `<legend>` como primeiro elemento dentro do fieldset |
+| Estilo padrao do fieldset com borda indesejada | Estilo default do browser | Resetar com CSS: `fieldset { border: none; padding: 0; }` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre acessibilidade, comportamento do disabled e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fieldset/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fieldset/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre acessibilidade, comportamento do disabled e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-promises-1
 description: "Enforces correct Promise creation and consumption patterns in JavaScript/TypeScript. Use when user asks to 'create a promise', 'handle async', 'use then/catch', 'write async function', or any asynchronous code task. Applies rules: always return new Promise with resolve/reject, chain .then/.catch/.finally, never use raw promise result without awaiting or chaining. Make sure to use this skill whenever writing or reviewing asynchronous JavaScript code. Not for async/await syntax (separate skill), Node.js streams, or event emitters."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, promises, async, then-catch, error-handling]
 ---
 
 # Conhecendo Promises
@@ -90,13 +96,16 @@ asyncOperation()
 | `new Promise` sem resolve nem reject | Sempre chame pelo menos um dos dois |
 | `.then(x => console.log(x))` | `.then(response => console.log(response))` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `console.log` mostra `Promise { <pending> }` | Resultado da Promise nao aguardado | Use `.then(result => console.log(result))` ou `await` |
+| UnhandledPromiseRejection no terminal | Faltou `.catch()` na cadeia de Promises | Adicione `.catch(error => console.error(error))` |
+| `.then()` recebe `undefined` | `resolve()` chamado sem argumento | Passe o valor: `resolve(data)` |
+| Promise nunca resolve nem rejeita | Caminho do codigo nao chama `resolve` nem `reject` | Garanta que todos os caminhos do callback chamam um dos dois |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Promise lifecycle, estados e non-blocking
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-promises-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-promises-1/references/code-examples.md)

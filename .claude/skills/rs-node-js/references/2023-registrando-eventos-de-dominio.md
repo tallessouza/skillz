@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-registrando-eventos-de-dominio
 description: "Applies domain event registration patterns when wiring NestJS modules with clean architecture subdomains. Use when user asks to 'create event module', 'connect domain events', 'wire subscribers in NestJS', 'register domain notifications', or 'create Prisma repository for notifications'. Follows pattern: create module, add @Injectable to subscribers/use-cases, import DatabaseModule, register in AppModule. Make sure to use this skill whenever connecting domain event subscribers to NestJS infrastructure layer. Not for creating the domain events themselves, nor for HTTP controllers or authentication setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events-nestjs
+  tags: [domain-events, nestjs, subscribers, events-module, injectable, notifications, prisma-mapper]
 ---
 
 # Registrando Eventos de Domínio no NestJS
@@ -194,14 +200,14 @@ imports: [/* ...existing */, EventsModule],
 - Todos os providers do EventsModule resolvem suas dependências
 - Migration criada e aplicada com sucesso
 
+## Troubleshooting
+
+### NestJS nao dispara eventos de dominio ao salvar entidade
+**Symptom:** O subscriber `OnAnswerCreated` nunca e chamado quando uma resposta e criada
+**Cause:** O `EventsModule` nao foi importado no `AppModule`, ou o subscriber nao tem `@Injectable()` e nao foi registrado como provider
+**Fix:** Adicione `EventsModule` nos imports do `AppModule` e verifique que todos os subscribers e use cases no EventsModule tem `@Injectable()` e estao listados em `providers`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-registrando-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-registrando-eventos-de-dominio/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-contexto-mundo-sem-devops
 description: "Applies DevOps cultural principles when designing systems, teams, or workflows. Use when user asks to 'set up a team', 'improve deployment process', 'reduce bottlenecks', 'automate tasks', or 'break knowledge silos'. Enforces knowledge decentralization, continuous feedback, and automation-first thinking. Make sure to use this skill whenever discussing team organization, process improvement, or automation decisions. Not for specific tool configuration, CI/CD pipeline syntax, or infrastructure provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: devops-culture
+  tags: [devops, culture, automation, silos, feedback, knowledge-sharing, teams]
 ---
 
 # Contexto de um Mundo sem DevOps
@@ -26,6 +32,24 @@ description: "Applies DevOps cultural principles when designing systems, teams, 
 | Processo funciona mas é repetitivo | Candidato a automatização, independente do domínio (back-end, infra, dados) |
 | Time não consegue experimentar novas tecnologias | Sinal de gargalo cultural — reduzir barreiras para experimentação |
 
+## Automation readiness diagnostic
+
+```bash
+# Quick team automation assessment
+# For each process, ask:
+# 1. Is it manual?         → Candidate for automation
+# 2. Is it repetitive?     → High priority automation
+# 3. How long does it take? → Calculate at scale
+# 4. Who knows how to do it? → If 1 person → knowledge silo risk
+
+# Example: manual deploy check
+echo "Deploy process:"
+echo "  Manual steps: $(wc -l < deploy-checklist.txt)"
+echo "  Frequency: daily"
+echo "  Time per run: 15min"
+echo "  Monthly cost: $((15 * 22))min = 330min = 5.5h"
+```
+
 ## Anti-patterns
 
 | Nunca faça | Faça isso |
@@ -47,14 +71,14 @@ description: "Applies DevOps cultural principles when designing systems, teams, 
 | Times não têm argumentos para discutir entre si | Falta de conhecimento cruzado dev/ops |
 | Equipe sem tempo para inovar | Tempo consumido por trabalho repetitivo (toil) — automatizar para liberar |
 
+## Troubleshooting
+
+### Conhecimento centralizado em uma unica pessoa do time
+**Symptom:** Projetos param quando uma pessoa especifica esta ausente ou de ferias
+**Cause:** Centralizacao de conhecimento — processo ou sistema depende exclusivamente de um individuo
+**Fix:** Documente processos, implemente pair programming e rotacao de tarefas para distribuir conhecimento
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-contexto-de-um-mundo-sem-dev-ops/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-contexto-de-um-mundo-sem-dev-ops/references/code-examples.md)

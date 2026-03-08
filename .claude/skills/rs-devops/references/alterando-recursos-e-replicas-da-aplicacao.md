@@ -1,6 +1,12 @@
 ---
 name: rs-devops-alterando-recursos-replicas
 description: "Applies Kubernetes HPA resource and replica tuning strategies when scaling applications. Use when user asks to 'configure HPA', 'scale pods', 'tune CPU limits', 'stress test kubernetes', 'increase request throughput', or 'adjust replicas'. Covers CPU request/limit sizing, HPA min/max replicas, average utilization triggers, and interpreting stress test results. Make sure to use this skill whenever configuring horizontal pod autoscaling or optimizing k8s application performance. Not for node-level autoscaling, cluster setup, or Kubernetes installation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes]
 ---
 
 # Alterando Recursos e Réplicas da Aplicação
@@ -117,14 +123,14 @@ kubectl run fortio --rm -i --image=fortio/fortio -- \
 | Escalar pods sem verificar capacidade do nó | Confirmar recursos disponíveis no nó com `kubectl top nodes` |
 | Configurar e esquecer | Iterar: configurar → testar → comparar → ajustar |
 
+## Troubleshooting
+
+### HPA nao escala mesmo com CPU alta
+**Symptom:** Pods atingem 100% CPU mas HPA nao cria novas replicas
+**Cause:** O targetCPUUtilizationPercentage esta muito alto (90-100%) e o pod satura antes de escalar
+**Fix:** Reduza o target para 75-80% e verifique se o Metrics Server esta instalado com `kubectl top pods`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-alterando-recursos-e-replicas-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-alterando-recursos-e-replicas-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-alterando-recursos-e-replicas-da-aplicacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-alterando-recursos-e-replicas-da-aplicacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

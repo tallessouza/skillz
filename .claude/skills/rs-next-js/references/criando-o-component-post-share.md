@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-o-component-post-share
 description: "Enforces client/server component separation pattern in Next.js App Router when writing React components. Use when user asks to 'create a component', 'refactor component', 'add interactivity', 'use client', or 'split server and client code'. Applies the boundary isolation pattern: extract browser-dependent code into small client components, keep the rest as server components. Make sure to use this skill whenever creating or refactoring Next.js App Router components that mix server and client concerns. Not for Pages Router, API routes, or server actions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: client-server-separation
+  tags: [next-js, app-router, server-components, client-components, use-client, boundary-isolation]
 ---
 
 # Separacao de Client e Server Components no App Router
@@ -140,14 +146,19 @@ export default async function PostPage({ params }) {
 | Esquecer `'use client'` em componente com hooks de browser | Adicionar `'use client'` na primeira linha do arquivo |
 | `export default` em barrel files | `export { ComponentName } from './component-name'` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-component-post-share/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-component-post-share/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-component-post-share/references/deep-explanation.md) — No Next.js App Router, todo componente e server component por padrao. Isso significa que o React ren
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-component-post-share/references/code-examples.md) — // app/posts/[slug]/page.tsx

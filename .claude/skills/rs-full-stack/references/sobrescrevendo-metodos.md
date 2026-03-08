@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-sobrescrevendo-metodos
 description: "Applies JavaScript class method overriding patterns when writing OOP code with inheritance. Use when user asks to 'create a class', 'extend a class', 'override a method', 'customize inherited behavior', or 'implement polymorphism'. Ensures child classes override parent methods correctly and class-specific methods are properly scoped. Make sure to use this skill whenever generating class hierarchies with shared behavior. Not for functional programming, composition patterns, or TypeScript interfaces."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-oop
+  tags:
+    - javascript
+    - classes
+    - inheritance
+    - method-overriding
+    - polymorphism
 ---
 
 # Sobrescrita de Métodos em Classes JavaScript
@@ -111,6 +122,15 @@ cat.makeNoise() // "Miau! Miau!" ← comportamento específico
 | Colocar método específico de uma filha na classe pai | Definir o método apenas na classe que o usa |
 | Mudar a assinatura do método ao sobrescrever | Manter mesmos parâmetros |
 | Criar `if/else` no pai para cada tipo de filha | Sobrescrever em cada filha |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Classe filha usa comportamento generico do pai | Metodo nao foi sobrescrito na classe filha | Defina o metodo com mesmo nome na classe filha |
+| Metodo do pai perdido apos sobrescrita | Sobrescrita substitui completamente o metodo | Use `super.metodo()` dentro da sobrescrita para estender |
+| Todas as filhas tem acesso a metodo especifico | Metodo definido na classe pai quando deveria ser apenas de uma filha | Mova o metodo para a classe especifica que o utiliza |
+| Assinatura do metodo mudou ao sobrescrever | Parametros diferentes do metodo pai | Mantenha mesma assinatura (nome e parametros) |
 
 ## Deep reference library
 

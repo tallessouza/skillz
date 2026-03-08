@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-manipulando-valor-do-input
 description: "Applies input value manipulation patterns using regex, events, and validation in JavaScript. Use when user asks to 'validate form input', 'use regex in JS', 'manipulate input value', 'filter characters from input', or 'handle form submit'. Covers match, test, replace methods with regex, input/submit events, and conditional validation flows. Make sure to use this skill whenever working with form inputs, regex validation, or character filtering in vanilla JS. Not for React/Vue form handling, server-side validation, or complex regex pattern design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, regex, forms, input, validation, events]
 ---
 
 # Manipulando Valor do Input com Regex
@@ -109,13 +115,16 @@ form.addEventListener("submit", (event) => {
 | `if (value.match(regex))` para validacao simples | `if (regex.test(value))` — test retorna booleano direto |
 | Manipular `input.value` sem guardar em variavel | `const value = input.value` antes de usar |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Pagina recarrega ao submeter formulario | Falta `event.preventDefault()` no submit | Adicione `event.preventDefault()` como primeira linha do handler |
+| Regex so captura primeira ocorrencia | Falta flag `g` (global) | Adicione `g` ao final da regex: `/\D+/g` |
+| `regex.test()` retorna resultado inconsistente | Regex com flag `g` mantem estado entre chamadas | Crie nova instancia da regex ou use `match` |
+| Replace nao remove todos os caracteres | Falta flag `g` no replace | Use `/pattern/g` para substituir todas as ocorrencias |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eventos input vs submit, match vs test vs replace
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-manipulando-valor-do-input/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-manipulando-valor-do-input/references/code-examples.md)

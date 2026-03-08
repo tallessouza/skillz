@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-beekeeper-sqlite
-description: "Guides SQLite database connection setup in Beekeeper Studio when user asks to 'connect to database', 'open SQLite file', 'setup Beekeeper', 'view database tables', or 'run SQL queries'. Covers connection configuration, testing, saving, and basic UI navigation. Make sure to use this skill whenever setting up a database GUI client for SQLite development. Not for database schema design, SQL query writing, or production database administration."
+description: "Configures SQLite database connection setup in Beekeeper Studio when user asks to 'connect to database', 'open SQLite file', 'setup Beekeeper', 'view database tables', or 'run SQL queries'. Covers connection configuration, testing, saving, and basic UI navigation. Make sure to use this skill whenever setting up a database GUI client for SQLite development. Not for database schema design, SQL query writing, or production database administration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sqlite, beekeeper, database, gui, sql, connection]
 ---
 
 # Conectando SQLite ao Beekeeper Studio
@@ -62,13 +68,16 @@ description: "Guides SQLite database connection setup in Beekeeper Studio when u
 - Banco aparece conectado com nome e tipo SQLite no painel
 - Editor SQL acessivel e botao Run funcional
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Teste de conexao falha | Arquivo `.db` inexistente ou corrompido | Verifique se o arquivo existe e recrie se necessario |
+| Tabelas nao aparecem no painel | Banco vazio ou conexao com arquivo errado | Confirme o path do arquivo e verifique se migrations rodaram |
+| Botao Run nao executa SQL | Nenhuma query selecionada no editor | Selecione o texto SQL antes de clicar em Run |
+| Beekeeper mostra "Upgrade" | Feature da versao paga | Ignore — a versao Community atende para desenvolvimento |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre interface do Beekeeper e conceitos de entidade vs tabela
 - [code-examples.md](references/code-examples.md) — Exemplos de configuracao e navegacao passo a passo
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abrindo-o-banco-de-dados-e-conhecendo-o-beekeeper/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abrindo-o-banco-de-dados-e-conhecendo-o-beekeeper/references/code-examples.md)

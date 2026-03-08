@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-testando-carrinho
 description: "Enforces Cypress E2E test patterns for shopping cart functionality in Next.js apps. Use when user asks to 'write cypress tests', 'test add to cart', 'e2e test shopping cart', 'create spec file', or 'test user navigation flow'. Applies patterns: cy.visit for navigation, cy.get with CSS selectors, cy.contains for text-based selection, cy.location for URL assertions, .first() for multiple matches, .parent().submit() for form submission. Make sure to use this skill whenever writing Cypress specs for e-commerce or cart features. Not for unit tests, API tests, or non-Cypress testing frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [cypress, e2e, shopping-cart, next-js, testing, cy-visit, cy-get, cy-contains]
 ---
 
 # Testando o Carrinho com Cypress
@@ -110,14 +116,19 @@ it('should be able to search for a product and add it to the cart', () => {
 | `cy.get('#product-1')` com ID hardcoded | `cy.get('a[href^="/product"]').first()` |
 | Teste sem `cy.visit()` no inicio | Sempre comece com `cy.visit()` em cada `it()` |
 
+## Troubleshooting
+
+### Teste Cypress falha ao encontrar elemento
+**Symptom:** `cy.get()` retorna timeout — elemento nao encontrado
+**Cause:** Elemento ainda nao renderizou (loading state), ou seletor incorreto
+**Fix:** Usar `cy.contains()` para texto visivel ou `data-testid` para seletores estaveis. Adicionar assertions que esperam o elemento aparecer
+
+### Testes passam localmente mas falham no CI
+**Symptom:** Suite verde localmente, vermelha no GitHub Actions
+**Cause:** Dependencias de ambiente (banco, API), timeouts curtos, ou falta de build antes do teste
+**Fix:** Garantir que `npm run build` roda antes dos testes E2E. Configurar variaveis de ambiente no CI. Aumentar timeouts para ambientes mais lentos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-testando-o-carrinho/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-testando-o-carrinho/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-testando-o-carrinho/references/deep-explanation.md) — O instrutor enfatiza que cada `it()` block reseta o estado da aplicacao. Isso significa que o carrin
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-testando-o-carrinho/references/code-examples.md) — Arquivo: `cypress/e2e/add-product-to-cart.cy.ts`

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tratando-requisicao
 description: "Enforces request validation patterns in Node.js REST APIs using custom AppError class. Use when user asks to 'validate request', 'check required fields', 'handle bad request', 'create endpoint', or 'add input validation'. Applies rules: validate before processing, use custom AppError with default status codes, distinguish app errors from server errors, combine related validations. Make sure to use this skill whenever creating or modifying API endpoints that receive user input. Not for authentication middleware, database validation, or frontend form validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express-validacao
+  tags: [express, validation, AppError, request, api, error-handling, rest]
 ---
 
 # Tratando Requisicao — Validacao de Input em APIs REST
@@ -102,6 +108,15 @@ async create(request: Request, response: Response) {
 | Um if separado para cada campo obrigatorio | `if (!name \|\| !price)` agrupado |
 | Retornar 200 para criacao bem sucedida | Retornar 201 (created) |
 | Retornar mensagem generica "erro interno" para input invalido | Retornar mensagem especifica do campo |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| AppError retorna status 500 em vez de 400 | Middleware de erro nao verifica `instanceof AppError` | Adicione verificacao: `if (error instanceof AppError)` para retornar status correto |
+| Mensagem de erro generica no frontend | Middleware retornando "erro interno" para todos os erros | Distinga AppError (erro tratado) de Error generico (500) |
+| Validacao nao bloqueia requisicao invalida | Throw sem re-throw ou sem middleware de captura | Verifique que o throw esta dentro de um fluxo capturado pelo error handler |
+| Multiplos ifs desnecessarios para campos obrigatorios | Validando cada campo separadamente | Agrupe com `\|\|`: `if (!name \|\| !price)` |
 
 ## Deep reference library
 

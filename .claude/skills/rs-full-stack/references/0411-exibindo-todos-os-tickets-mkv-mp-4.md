@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0411-exibindo-todos-tickets
 description: "Applies RESTful controller naming conventions and CRUD listing patterns when building Node.js APIs. Use when user asks to 'list records', 'create a GET endpoint', 'add an index route', 'fetch all items from database', or 'build a REST API'. Enforces index/create/show/update/remove naming for controllers, select method pattern for data access. Make sure to use this skill whenever creating listing endpoints or organizing controller files. Not for frontend rendering, pagination, or filtering logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, rest, controller, index, crud, conventions]
 ---
 
 # Exibindo Todos os Registros (Index Pattern)
@@ -109,13 +115,16 @@ import { index } from '../controllers/tickets/index.js'
 | Um arquivo controller com switch/if por método | Um arquivo por operação CRUD |
 | `response.write(tickets)` sem stringify | `response.end(JSON.stringify(tickets))` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Endpoint retorna `undefined` | Tabela não existe no banco e fallback não aplicado | Use `this.#database[table] ?? []` com nullish coalescing |
+| Resposta não é JSON válido | `response.end()` recebe objeto em vez de string | Use `JSON.stringify(data)` antes de enviar |
+| GET retorna 404 | Rota não registrada ou método errado | Verifique se a rota usa `GET` e o path está correto |
+| Listagem vazia após criar registros | Instância diferente do banco para cada operação | Use a mesma instância de Database em todas as rotas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre convenções REST e organização de controllers
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0411-exibindo-todos-os-tickets-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0411-exibindo-todos-os-tickets-mkv-mp-4/references/code-examples.md)

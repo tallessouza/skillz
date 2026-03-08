@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-persistindo-banco-de-dados
 description: "Applies JSON file persistence patterns when writing Node.js database layers or local storage. Use when user asks to 'persist data', 'save to file', 'create a JSON database', 'read/write files in Node', or 'use fs module'. Enforces fs/promises over callbacks, correct ESM path resolution with import.meta.url and URL constructor, and JSON serialize/deserialize patterns. Make sure to use this skill whenever implementing file-based persistence in Node.js. Not for real databases (PostgreSQL, MongoDB), streaming file operations, or browser localStorage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: node-fundamentals
+  tags: [fs-promises, json-database, file-persistence, import-meta-url, esm, node-fs, serialization]
 ---
 
 # Persistindo Banco de Dados com Arquivos JSON
@@ -125,14 +131,14 @@ export class Database {
 | `const data = fs.readFileSync(...)` | `fs.readFile(..., 'utf8').then(...)` |
 | `const __dirname = ...` (hack em ESM) | `new URL('./', import.meta.url)` |
 
+## Troubleshooting
+
+### Arquivo db.json e criado no diretorio errado
+**Symptom:** O arquivo JSON aparece na raiz do projeto ou onde o terminal foi aberto, nao junto ao arquivo fonte
+**Cause:** Caminho relativo simples como `'db.json'` resolve relativo ao CWD de execucao, nao ao arquivo
+**Fix:** Use `new URL('../db.json', import.meta.url)` para resolver o caminho relativo ao arquivo fonte
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-persistindo-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-persistindo-banco-de-dados/references/code-examples.md)

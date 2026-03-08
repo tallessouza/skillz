@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-select-4
 description: "Applies Knex.js query builder SELECT patterns when writing database queries in Node.js. Use when user asks to 'list records', 'fetch data', 'query database', 'select from table', 'order results', or any read operation with Knex. Covers raw SQL vs method chaining, select(), orderBy() with asc/desc. Make sure to use this skill whenever generating Knex select queries or listing endpoints. Not for insert, update, delete operations, or non-Knex ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Knex Query Builder"
+  tags: ['knex', 'database', 'select', 'query-builder', 'rest-api']
 ---
 
 # Select com Query Builder (Knex.js)
@@ -82,6 +88,15 @@ app.get("/courses", async (request, response) => {
 | `.orderBy("name")` sem direção explícita | `.orderBy("name", "asc")` |
 | Callback síncrono em rota com banco | `async (request, response) => {}` |
 | `response.send(courses)` para dados estruturados | `response.json(courses)` |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Query retorna dados em formato inesperado | Usando `knex.raw()` que retorna wrapper com metadata | Use method chaining `knex("tabela").select()` que retorna array limpo |
+| Ordenacao nao funciona como esperado | Direcao de ordenacao nao explicita | Defina explicitamente: `.orderBy("name", "asc")` em vez de `.orderBy("name")` |
+| Rota de listagem trava sem resposta | Handler sincrono em vez de async | Use `async (request, response) => {}` com `await` nas queries |
+| Dados retornados como texto em vez de JSON | Usando `response.send()` | Use `response.json(data)` para retornar dados estruturados |
 
 ## Deep reference library
 

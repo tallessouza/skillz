@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-funcionalidade-de-like
 description: "Applies optimistic UI update patterns with React Query mutations when implementing like/toggle features in Next.js applications. Use when user asks to 'add a like button', 'implement optimistic updates', 'toggle feature with React Query', 'handle mutation rollback', or 'update UI before server response'. Ensures correct cache manipulation, error rollback, and hydration-safe data fetching. Make sure to use this skill whenever building interactive toggle features that need instant feedback. Not for server-side data fetching, static pages, or non-interactive UI components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: react-query-e-mutacoes
+  tags: [optimistic-update, react-query, useMutation, like, toggle, cache, rollback, next-js]
 ---
 
 # Funcionalidade de Like com Interface Otimista
@@ -138,14 +144,19 @@ const { mutate, isPending } = useMutation({
 | Mutation sem `disabled={isPending}` no botao | Sempre extraia isPending e passe para disabled |
 | `setQueryData` sem salvar previousData | Sempre salve e retorne previousData para rollback |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-funcionalidade-de-like/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-funcionalidade-de-like/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-funcionalidade-de-like/references/deep-explanation.md) — O instrutor demonstra que sem interface otimista, o usuario clica no botao de like e precisa esperar
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-funcionalidade-de-like/references/code-examples.md) — // http/toggle-like.ts

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comentarios-4
 description: "Applies CSS comment syntax and best practices when writing or organizing stylesheets. Use when user asks to 'comment CSS', 'disable CSS code', 'organize stylesheet', 'add notes to CSS', or 'temporarily remove styles'. Enforces correct /* */ syntax and comment conventions. Make sure to use this skill whenever adding comments or disabling blocks in CSS files. Not for HTML comments, JavaScript comments, or documentation generation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, comments, organization, debugging, stylesheet]
 ---
 
 # Comentários em CSS
@@ -89,13 +95,16 @@ p {
 | Comentário sem fechar `/* ...` | `/* ... */` sempre fechado |
 | Comentários óbvios: `/* cor azul */` antes de `color: blue` | Comentários que explicam o PORQUÊ, não o quê |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `// comentário` quebra o CSS | CSS não suporta sintaxe `//` | Use `/* comentário */` sempre |
+| Comentário não fecha e desativa todo o CSS abaixo | Faltou `*/` de fechamento | Adicione `*/` ao final do comentário |
+| Estilos desaparecem misteriosamente | Comentário `/*` aberto acidentalmente sem fechar | Procure por `/*` sem `*/` correspondente no arquivo |
+| Comentário aparece no CSS minificado | Minificador não configurado para remover comentários | Configure o minificador para strip comments |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando e como usar comentários CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comentarios-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comentarios-4/references/code-examples.md)

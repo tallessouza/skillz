@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-resolver-bugs-com-ia
 description: "Applies AI-assisted debugging workflow when fixing bugs or troubleshooting code errors. Use when user says 'fix this bug', 'not working', 'getting an error', 'debug this', or 'help me find the issue'. Enforces context-rich problem descriptions, screenshot usage, and file referencing for effective AI interaction. Make sure to use this skill whenever helping users debug or when teaching debugging practices. Not for writing new features, refactoring, or code review."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [debugging, ai, troubleshooting, bugs, workflow, best-practices]
 ---
 
 # Como Resolver Bugs com IA
@@ -91,13 +97,17 @@ A IA e probabilistica — para a mesma entrada, pode dar respostas diferentes. E
 - Ela tende a acertar (puxa pro mais provavel) mas nao garante
 - Quanto melhor o contexto, maior a probabilidade de acerto
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| IA da resposta generica ou irrelevante | Contexto insuficiente na descricao do problema | Adicione arquivos relevantes, screenshots e descreva o sintoma especifico |
+| IA indica linha errada | Natureza probabilistica da IA | Busque indicadores visuais (sublinhado vermelho) proximo da area indicada |
+| Mesma pergunta gera respostas diferentes | IA e nao-deterministica | Refine o prompt com mais contexto para convergir na resposta correta |
+| IA sugere solucao que nao funciona | Falta de contexto sobre versao/framework | Especifique versoes das dependencias e framework usado |
+| Problema visual que texto nao descreve bem | Descricao textual insuficiente | Tire screenshot e cole na conversa com a IA |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre IA nao-deterministica, analogias e modelo mental
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de debugging com IA e tecnicas de contexto
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-resolver-bugs-com-ia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-resolver-bugs-com-ia/references/code-examples.md)

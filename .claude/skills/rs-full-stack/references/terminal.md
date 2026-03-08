@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-terminal
 description: "Configures terminal environment for cross-platform development workflows. Use when user asks to 'setup terminal', 'configure VS Code terminal', 'install git bash', 'setup dev environment', or mentions terminal issues on Windows/Linux/Mac. Guides correct terminal selection per OS and VS Code integration. Make sure to use this skill whenever helping with initial environment setup or terminal configuration. Not for shell scripting, CLI tool development, or advanced terminal customization like themes/plugins."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ambiente-desenvolvimento
+  tags: [terminal, git-bash, vscode, ambiente, setup, windows, linux, mac]
 ---
 
 # Terminal — Configuracao de Ambiente
@@ -53,6 +59,15 @@ Terminal integrado do VS Code rodando Git Bash (Windows), Bash (Linux) ou ZSH (M
 - Rodar `ls` e ver listagem de arquivos no formato Unix
 - Rodar `pwd` e ver o path com barras normais (`/`)
 - Verificar no canto do terminal do VS Code que mostra "bash" ou "zsh"
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Git Bash nao aparece no dropdown do VS Code | Git nao adicionado ao PATH durante instalacao | Reinstale Git marcando "Add to PATH", reinicie VS Code |
+| Comando `ls` nao funciona | Terminal ativo e PowerShell ou CMD | Troque para Git Bash no dropdown do terminal |
+| Barras invertidas (`\`) nos paths | Usando terminal Windows nativo | Mude para Git Bash que usa barras normais (`/`) |
+| Terminal abre mas fecha imediatamente | Configuracao de shell incorreta no VS Code | Verifique settings.json e corrija o path do shell |
 
 ## Deep reference library
 

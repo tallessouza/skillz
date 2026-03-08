@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-finalizando-o-search
 description: "Applies Next.js Pages Router search component patterns when building search with clear/reset, responsive sizing, dynamic titles from URL state, and template refactoring. Use when user asks to 'create a search component', 'add clear button to input', 'update page title dynamically', 'use URL state between components', or 'refactor pages to templates'. Make sure to use this skill whenever implementing search functionality in Next.js Pages Router. Not for App Router, server components, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: pages-router-fundamentos
+  tags: [search, query-params, shallow-routing, pages-router, responsive, url-state, next-js]
 ---
 
 # Finalizando o Search — Next.js Pages Router
@@ -144,14 +150,19 @@ export default function BlogPage() {
 | `router.push('/blog')` sem options | `router.push('/blog', undefined, { shallow: true, scroll: false })` |
 | Toda logica dentro de `pages/` | Extrair para `templates/`, importar em `pages/` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-finalizando-o-seach/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-finalizando-o-seach/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-finalizando-o-seach/references/deep-explanation.md) — O instrutor destaca um padrao poderoso do Next.js Pages Router: usar query params da URL como estado
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-finalizando-o-seach/references/code-examples.md) — // Antes — largura fixa quebra no mobile

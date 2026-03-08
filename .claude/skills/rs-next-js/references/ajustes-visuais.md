@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-ajustes-visuais
 description: "Applies visual polish patterns for Next.js components using Tailwind CSS grid/spacing utilities. Use when user asks to 'fix layout', 'align components', 'adjust spacing', 'polish UI', 'clean up card layout', or 'setup Prisma client'. Enforces responsive grid alignment, margin/padding discipline, and clean component structure. Make sure to use this skill whenever refining Tailwind layouts or initializing Prisma in Next.js. Not for design system creation, complex animations, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: visual-adjustments
+  tags: [tailwind, grid, spacing, responsive, prisma-client, layout-polish]
 ---
 
 # Ajustes Visuais — Next.js + Tailwind
@@ -110,14 +116,19 @@ export default async function Home() {
 | Info extra "porque pode ser util" | Apenas o que o design especifica |
 | Espacamentos ad-hoc por secao | Valor padrao consistente (`mb-8`) |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-ajustes-visuais/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-ajustes-visuais/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-ajustes-visuais/references/deep-explanation.md) — O instrutor mostrou um caso concreto: ao usar `m-4` (margin generico), o espacamento era aplicado no
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-ajustes-visuais/references/code-examples.md) — // components/AppointmentCard.tsx

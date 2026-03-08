@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-ouvindo-evento-dominio
 description: "Applies Domain Event subscriber pattern when implementing cross-subdomain communication in DDD Node.js applications. Use when user asks to 'create a subscriber', 'listen to domain events', 'notify on entity creation', 'connect subdomains', or 'implement event handler'. Enforces subscriber placement in Application layer, proper bind usage for handler context, and bridge-role pattern between bounded contexts. Make sure to use this skill whenever implementing event-driven communication between DDD subdomains. Not for CQRS event sourcing, message queues, or infrastructure-level pub/sub systems."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [domain-events, subscriber, ddd, event-handler, bounded-context, application-layer, bind]
 ---
 
 # Ouvindo Eventos de Dominio (Domain Event Subscribers)
@@ -154,14 +160,14 @@ export class OnAnswerCreated implements EventHandler {
 | Um único método `execute` para tudo | Métodos nomeados: `sendNewAnswerNotification` |
 | Subscriber sem `setupSubscriptions` no construtor | Sempre chame no construtor para auto-registro |
 
+## Troubleshooting
+
+### Handler do subscriber perde o contexto this e lanca undefined error
+**Symptom:** `this.sendNotification` e `undefined` quando o handler e chamado pelo DomainEvents
+**Cause:** A referencia ao metodo foi passada sem `.bind(this)`, entao o contexto `this` muda para a classe chamadora
+**Fix:** Use `this.sendNewAnswerNotification.bind(this)` ao registrar o handler em `DomainEvents.register()`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-ouvindo-um-evento-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-ouvindo-um-evento-de-dominio/references/code-examples.md)

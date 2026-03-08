@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-group-by-1
 description: "Applies SQL GROUP BY patterns when writing queries that aggregate data by categories. Use when user asks to 'count by category', 'group results', 'aggregate per type', 'sum by group', or any SQL query needing grouping. Enforces correct clause order (SELECT, FROM, WHERE, GROUP BY, ORDER BY), alias usage in ORDER BY, and multi-line formatting for readability. Make sure to use this skill whenever generating SQL with aggregate functions like COUNT, SUM, AVG combined with categories. Not for single-row aggregations without grouping, JOIN operations, or HAVING clause filtering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, group-by, aggregation, count, sum]
 ---
 
 # GROUP BY — Agrupando Registros em SQL
@@ -90,13 +96,16 @@ ORDER BY
 | `... FROM products GROUP BY category WHERE price > 100` | `... FROM products WHERE price > 100 GROUP BY category` |
 | `ORDER BY COUNT(*)` repetindo a funcao | `COUNT(*) AS total ... ORDER BY total` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro "column must appear in GROUP BY clause" | Coluna no SELECT nao esta no GROUP BY nem em funcao de agregacao | Adicione a coluna ao GROUP BY ou envolva com COUNT/SUM/AVG |
+| Resultado retorna apenas uma linha | GROUP BY ausente com funcao de agregacao | Adicione `GROUP BY coluna_de_agrupamento` |
+| ORDER BY nao reconhece alias | Alguns bancos nao suportam alias no ORDER BY | Use a posicao numeral (`ORDER BY 2 DESC`) ou repita a expressao |
+| WHERE apos GROUP BY gera erro de sintaxe | Ordem de clausulas incorreta | WHERE vem antes de GROUP BY: `WHERE ... GROUP BY ...` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que GROUP BY existe e como o banco processa sem ele
 - [code-examples.md](references/code-examples.md) — Todos os exemplos SQL da aula com variacoes e cenarios adicionais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-group-by-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-group-by-1/references/code-examples.md)

@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-prioridade-ordem-execucao
 description: "Applies JavaScript event loop execution order knowledge when writing or reviewing async code. Use when user asks to 'debug async code', 'understand execution order', 'fix race condition', 'write promises', 'use setTimeout', or 'explain event loop'. Enforces correct mental model: sync first, then microtasks (queueMicrotask, resolved promises), then macrotasks (setTimeout, setInterval). Make sure to use this skill whenever reviewing or generating code mixing sync and async patterns. Not for Node.js streams, web workers, or service workers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags:
+    - javascript
+    - event-loop
+    - async
+    - promises
+    - microtasks
 ---
 
 # Prioridade e Ordem de Execução no Event Loop
@@ -76,6 +87,14 @@ Promise.resolve(true).then(() => {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre o event loop, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| setTimeout(fn, 0) executa depois do esperado | setTimeout e macrotask, sempre roda apos microtasks | Use `queueMicrotask()` se precisa de prioridade maior |
+| Promise.then executa antes do setTimeout | Comportamento correto — microtasks tem prioridade | Revise se a ordem desejada esta correta no seu modelo mental |
+| Ordem de logs nao corresponde a ordem no codigo | Codigo mistura sync e async sem classificar | Classifique cada operacao (sync/micro/macro) antes de prever a ordem |
 
 ---
 

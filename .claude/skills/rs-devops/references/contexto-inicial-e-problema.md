@@ -1,6 +1,12 @@
 ---
 name: rs-devops-contexto-inicial-e-problema
 description: "Applies Kubernetes problem-awareness lens when designing container architectures. Use when user asks to 'deploy containers', 'run in production', 'scale application', 'container orchestration', or 'kubernetes setup'. Evaluates whether workload actually needs orchestration by checking for replica needs, elastic scaling, resource limits, and multi-app complexity. Make sure to use this skill whenever discussing container production readiness or Kubernetes adoption decisions. Not for Docker basics, image building, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-fundamentals
+  tags: [kubernetes, orchestration, scaling, containers, replicas, production, decision-framework]
 ---
 
 # Kubernetes: Contexto Inicial e Problema
@@ -27,6 +33,26 @@ description: "Applies Kubernetes problem-awareness lens when designing container
 | Tenho multiplas aplicacoes com multiplos containers? | K8s resolve | Orquestracao simples basta |
 | Preciso de recovery automatico em falha? | K8s resolve | Restart policy do Docker pode bastar |
 | Preciso controlar recursos (CPU/RAM) por container? | K8s resolve | cgroups manuais ou Docker limits |
+
+## Kubernetes readiness diagnostic
+
+```bash
+# Run these checks to determine if you need Kubernetes
+# 1. Do you need replicas?
+docker ps --format '{{.Names}}' | sort | uniq -c | sort -rn
+# If only 1 instance per service → Docker Compose may suffice
+
+# 2. Do you need auto-scaling?
+# Check traffic patterns: if constant → fixed replicas OK
+# If variable → HPA needed → Kubernetes
+
+# 3. How many applications?
+docker ps --format '{{.Image}}' | sort -u | wc -l
+# If 1-2 → Docker Compose; if 5+ → Kubernetes likely needed
+
+# 4. Resource limits defined?
+docker stats --no-stream --format "{{.Name}}: {{.MemUsage}}"
+```
 
 ## Os 5 Problemas de Execucao em Container
 
@@ -65,14 +91,14 @@ Cada container consome CPU e RAM → sem limites definidos, um container pode de
 | Ignorar limites de recursos nos containers | Defina requests e limits de CPU/memoria |
 | Tratar container como servidor permanente | Projete para efemero: container pode morrer a qualquer momento |
 
+## Troubleshooting
+
+### Kubernetes adotado sem necessidade real de escala
+**Symptom:** Complexidade operacional alta sem beneficio proporcional, equipe sobrecarregada com infra K8s
+**Cause:** Adocao de Kubernetes sem ter problema real de escala, replicas ou multi-app
+**Fix:** Avalie se Docker Compose ou Docker Swarm resolve o caso — K8s so se justifica com problemas reais de orquestracao
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-contexto-inicial-e-problema/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-contexto-inicial-e-problema/references/code-examples.md)

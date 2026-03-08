@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-login-fido
 description: "Applies FIDO/WebAuthn passwordless login patterns when implementing authentication flows. Use when user asks to 'implement login', 'add passwordless auth', 'use FIDO', 'WebAuthn login', 'passkey authentication', or 'remove password from login'. Enforces correct challenge flow, credential verification, and security-level decisions for sensitive operations. Make sure to use this skill whenever building authentication that involves WebAuthn or passkeys. Not for password-based auth, OAuth/OIDC flows, or JWT token management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, webauthn, fido, passkey]
 ---
 
 # Login Sem Senha com FIDO/WebAuthn
@@ -127,14 +133,14 @@ const options = await generateAuthenticationOptions({
 | Ignorar signCount em producao | Persistir e validar counter no banco |
 | Mesmo challenge do registro no login | Challenge novo e independente por fluxo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-login-sem-senha-com-fido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-login-sem-senha-com-fido/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-login-sem-senha-com-fido/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-login-sem-senha-com-fido/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-modificando-data-hora
 description: "Applies JavaScript Date mutation methods when modifying date or time values. Use when user asks to 'change a date', 'set the year', 'modify the time', 'update month', or any Date object manipulation task. Enforces correct usage of setFullYear, setMonth (0-indexed), setDate, setHours, setMinutes, setSeconds. Make sure to use this skill whenever mutating existing Date objects in JavaScript. Not for date formatting, parsing, or date library usage like dayjs/luxon."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-date-time
+  tags: [javascript, date, mutation, setMonth, setFullYear]
 ---
 
 # Modificando Data e Hora em JavaScript
@@ -69,13 +75,16 @@ date.setMonth(6) // Julho = indice 6 (0-indexed)
 | `date.setDay(10)` | `date.setDate(10)` |
 | `const newDate = date.setFullYear(2030)` | `date.setFullYear(2030)` (retorna timestamp, nao Date) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Mes setado errado (1 a mais) | `setMonth()` e 0-indexed | Janeiro = 0, julho = 6: subtraia 1 do mes desejado |
+| `setYear()` nao funciona como esperado | Metodo deprecated | Use `setFullYear()` que aceita 4 digitos |
+| `setDay()` nao existe | Nao ha metodo para setar dia da semana | Use `setDate()` para dia do mes |
+| Data original foi alterada indesejavelmente | Metodos `set*` mutam o objeto | Clone antes: `const clone = new Date(date.getTime())` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-modificando-uma-data-e-uma-hora/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-modificando-uma-data-e-uma-hora/references/code-examples.md)

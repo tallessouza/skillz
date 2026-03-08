@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-anatomia-documento-html
 description: "Enforces correct HTML document structure when creating HTML files or boilerplate. Use when user asks to 'create an HTML page', 'start a new HTML file', 'write HTML boilerplate', 'scaffold a webpage', or 'set up an HTML document'. Ensures doctype, root tag, head with meta charset and viewport, and body are correctly structured. Make sure to use this skill whenever generating any new HTML file from scratch. Not for CSS, JavaScript, or modifying existing HTML content."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, document, boilerplate, doctype, structure]
 ---
 
 # Anatomia de um Documento HTML
@@ -83,13 +89,16 @@ Digitar `!` e pressionar Enter gera o boilerplate automaticamente. Ajustar `lang
 | `<title>` no body | `<title>` somente no `<head>` |
 | Omitir meta charset | Sempre incluir `<meta charset="UTF-8">` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Caracteres especiais aparecem quebrados | Faltou `<meta charset="UTF-8">` no head | Adicione a meta charset como primeira tag do head |
+| Layout quebrado no celular | Faltou meta viewport | Adicione `<meta name="viewport" content="width=device-width, initial-scale=1.0">` |
+| Navegador entra em quirks mode | Faltou `<!DOCTYPE html>` no início | Sempre inicie o arquivo com `<!DOCTYPE html>` |
+| Título não aparece na aba do navegador | `<title>` está no body ou ausente | Mova `<title>` para dentro do `<head>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia HTML, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-anatomia-de-um-documento-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-anatomia-de-um-documento-html/references/code-examples.md)

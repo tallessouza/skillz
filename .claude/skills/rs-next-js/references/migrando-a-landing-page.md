@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-migrando-a-landing-page
 description: "Applies Next.js App Router migration patterns when moving code from Pages Router to App Router. Use when user asks to 'migrate to app router', 'convert pages router', 'create app router route', 'add use client', or 'fix server component error'. Covers page.tsx routing, layout.tsx structure, usePathname hook, and use client directive. Make sure to use this skill whenever migrating Next.js projects from Pages Router to App Router. Not for creating new Next.js projects from scratch or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: migracao-app-router
+  tags: [app-router, migration, pages-router, use-client, usePathname, layout, server-components, next-js]
 ---
 
 # Migrando de Pages Router para App Router
@@ -136,14 +142,19 @@ export function ActiveLink({ href, children }) {
 | Importar CSS global no `page.tsx` | Importe no `layout.tsx` |
 | Esquecer `export default` no page.tsx | Sempre exporte a funcao como default |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-migrando-a-landing-page/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-migrando-a-landing-page/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-migrando-a-landing-page/references/deep-explanation.md) — O Next.js permite que Pages Router e App Router coexistam no mesmo projeto. Isso é um facilitador en
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-migrando-a-landing-page/references/code-examples.md) — src/

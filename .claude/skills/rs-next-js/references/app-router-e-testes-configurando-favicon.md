@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-configurando-favicon
 description: "Applies Next.js App Router favicon and metadata file conventions when setting up or configuring a Next.js project. Use when user asks to 'add a favicon', 'configure metadata', 'setup opengraph image', 'add icons to Next.js app', or 'configure robots.txt'. Covers special filenames in the app directory for favicon, icon, opengraph-image, twitter-image, robots.txt, sitemap.xml. Make sure to use this skill whenever working with Next.js App Router metadata or favicon configuration. Not for React meta tags in non-Next.js projects or HTML head manipulation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [favicon, metadata, opengraph, sitemap, robots-txt, app-router]
 ---
 
 # Configurando Favicon e Metadata Files no Next.js App Router
@@ -82,14 +88,19 @@ src/app/
 | Configurar favicon manualmente no `<head>` | Deixe o Next.js detectar automaticamente pelo nome do arquivo |
 | Criar imagens de OG manualmente para cada pagina | Use `opengraph-image.tsx` para gerar via codigo |
 
+## Troubleshooting
+
+### Erro ao iniciar projeto Next.js
+**Symptom:** `npm run dev` falha com erros de modulo ou dependencia
+**Cause:** Dependencias nao instaladas, versao do Node incompativel, ou conflito de pacotes
+**Fix:** Rodar `npm install` para garantir dependencias. Verificar versao do Node (`node -v`, minimo 18+). Deletar `node_modules` e `package-lock.json` e reinstalar
+
+### TypeScript errors no projeto novo
+**Symptom:** Erros de tipo em arquivos recem-criados
+**Cause:** tsconfig.json nao inclui os paths corretos ou falta `@types` de dependencias
+**Fix:** Verificar `include` no tsconfig.json. Instalar types necessarios: `npm i -D @types/react @types/node`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-configurando-favicon/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-configurando-favicon/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-configurando-favicon/references/deep-explanation.md) — O instrutor destaca que uma das funcionalidades mais interessantes do App Router e que ele usa **nom
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-configurando-favicon/references/code-examples.md) — src/app/

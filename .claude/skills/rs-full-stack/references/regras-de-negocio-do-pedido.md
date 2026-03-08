@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-regras-de-negocio-do-pedido
 description: "Enforces sequential validation pattern for API business rules before persisting data. Use when user asks to 'create an endpoint', 'add validation', 'write business rules', 'validate before saving', or 'check if exists before insert'. Applies guard-clause pattern: verify existence, verify state, verify dependencies, then persist. Make sure to use this skill whenever building API routes that modify data with dependencies on other entities. Not for frontend validation, schema validation, or authentication/authorization middleware."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-validation
+  tags:
+    - api
+    - validation
+    - business-rules
+    - guard-clause
+    - error-handling
 ---
 
 # Regras de Negócio — Validação Sequencial antes de Persistir
@@ -123,6 +134,14 @@ async function createOrder({ table_session_id, product_id, quantity }) {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre ordem de validações e uso de colunas de estado
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código com variações para diferentes entidades
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeError "Cannot read property of undefined" | Acessou propriedade de entidade sem validar existencia | Adicione `if (!entity) throw new AppError(...)` antes de acessar propriedades |
+| Validacao de estado falha com erro inesperado | Verificou estado antes de verificar existencia | Reordene: existencia primeiro, estado depois |
+| Mensagem de erro generica "Internal Server Error" | Usando `throw new Error()` em vez de `AppError` | Use `throw new AppError('mensagem descritiva')` para erros de negocio |
 
 ---
 

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-cli-do-terraform
 description: "Applies Terraform CLI workflow commands when setting up or managing infrastructure as code. Use when user asks to 'init terraform', 'create infrastructure', 'setup IaC project', 'run terraform plan', 'destroy resources', or any Terraform CLI task. Covers the 5 main commands (init, validate, plan, apply, destroy), provider configuration, and project naming conventions. Make sure to use this skill whenever working with Terraform CLI commands or initializing IaC repositories. Not for Terraform module authoring, state backend configuration, or cloud-specific resource design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-cli
+  tags: [terraform, iac]
 ---
 
 # Terraform CLI — Comandos Principais e Setup
@@ -113,14 +119,14 @@ Deleta recursos previamente criados. Mostra preview antes de executar.
 | Rodar `destroy` sem revisar o plan | Revise o output do destroy antes de confirmar |
 | Ignorar o `.terraform.lock.hcl` no git | Commite o lock file para consistencia de versoes |
 
+## Troubleshooting
+
+### terraform plan falha com erro de autenticacao no provider
+**Symptom:** `terraform plan` retorna erro de credenciais invalidas ou expiradas
+**Cause:** As credenciais do provider (AWS SSO, token) nao estao configuradas ou expiraram
+**Fix:** Configure autenticacao via AWS CLI (`aws sso login`) ou exporte variaveis de ambiente (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) antes de rodar plan
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-cli-do-terraform/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-cli-do-terraform/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-cli-do-terraform/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-cli-do-terraform/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-dados
 description: "Enforces safe SQL UPDATE patterns when writing database queries. Use when user asks to 'update a record', 'change a value in the database', 'modify a row', 'write an UPDATE query', or any SQL data modification task. Applies rules: always use WHERE clause, use primary key ID for targeting, never update without specifying which record. Make sure to use this skill whenever generating UPDATE statements, even in migrations or seed scripts. Not for SELECT queries, INSERT operations, or DELETE statements."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, update, where, database]
 ---
 
 # Atualizando Dados com UPDATE
@@ -79,13 +85,16 @@ WHERE id = 1;
 | `UPDATE ... SET col1 = val1, col2 = val2,` (virgula pendente) | `UPDATE ... SET col1 = val1, col2 = val2` |
 | UPDATE sem verificar resultado depois | UPDATE seguido de SELECT para confirmar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| UPDATE afetou todos os registros | Faltou clausula WHERE | Sempre use `WHERE id = valor` no UPDATE |
+| "0 rows affected" apos UPDATE | ID nao existe na tabela | Verifique o ID com `SELECT * FROM tabela WHERE id = valor` antes |
+| Erro de sintaxe no SET | Virgula pendente ou faltando entre colunas | Confira separacao por virgula sem virgula final |
+| Valor nao mudou apos UPDATE | Coluna atualizada com o mesmo valor anterior | Execute SELECT para confirmar o valor atual vs desejado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-dados/references/code-examples.md)

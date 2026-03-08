@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-titulos-e-paragrafos-1
 description: "Enforces correct HTML heading hierarchy and paragraph structure when writing HTML content. Use when user asks to 'create a page', 'write HTML', 'structure content', 'add headings', or 'organize text'. Applies rules: one H1 per page, heading levels follow hierarchy (no skipping), paragraphs wrap text blocks. Make sure to use this skill whenever generating HTML with text content. Not for CSS styling, JavaScript, or non-HTML markup languages."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, headings, paragrafos, h1, h2, h3, semantica, hierarquia]
 ---
 
 # Títulos e Parágrafos HTML
@@ -75,6 +81,15 @@ minha carga horária é flexível e meu estilo de vida é saudável
 | Texto solto sem tag | `<p>Texto aqui</p>` |
 | `<br><br>` para separar blocos | Parágrafos `<p>` separados |
 | Heading usado só para texto grande | Use CSS para tamanho, heading para semântica |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SEO penaliza a pagina por headings | Multiplos `<h1>` na mesma pagina | Mantenha apenas UM `<h1>` por pagina |
+| Leitor de tela pula secoes | Niveis de heading pulados (H1 direto para H3) | Siga a hierarquia: H1, H2, H3 sem pular |
+| Texto aparece sem espacamento entre blocos | Texto solto sem tags `<p>` | Envolva cada bloco de texto em `<p>` |
+| Heading usado so para estilizar texto grande | Confusao entre semantica e aparencia visual | Use CSS para tamanho; headings sao para hierarquia de conteudo |
 
 ## Deep reference library
 

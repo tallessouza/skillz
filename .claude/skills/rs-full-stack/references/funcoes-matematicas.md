@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-matematicas
 description: "Applies CSS mathematical functions (calc, min, max, clamp) when writing stylesheets or responsive layouts. Use when user asks to 'create responsive typography', 'set flexible widths', 'write CSS calc', 'use clamp for font-size', or any layout sizing task. Enforces correct unit mixing rules in calc(), proper clamp() three-value syntax, and min/max comparisons. Make sure to use this skill whenever generating CSS that involves dynamic sizing or responsive values. Not for JavaScript math, server-side calculations, or CSS animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, calc, min, max, clamp, responsive, typography]
 ---
 
 # Funções Matemáticas CSS
@@ -95,13 +101,16 @@ h1 {
 | `width: 100%` quando precisa de limite | `width: min(100%, 800px)` |
 | `clamp(4rem, 7vw, 1rem)` (min > max) | `clamp(1rem, 7vw, 4rem)` — min sempre menor que max |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `calc()` nao funciona | Multiplicacao/divisao com duas unidades | Use numero puro em um dos operandos: `calc(20px * 4)` nao `calc(20px * 4px)` |
+| `clamp()` retorna valor errado | min maior que max | Garanta que o primeiro valor seja menor que o terceiro: `clamp(1rem, 7vw, 4rem)` |
+| Fonte fica minuscula ou gigante | `font-size` em `vw` sem limites | Use `clamp(min, ideal-em-vw, max)` para definir piso e teto |
+| `min()`/`max()` nao recalcula | Valor fixo em todos os argumentos | Inclua pelo menos um valor relativo (%, vw, vh) para responsividade |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre regras de unidades, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-matematicas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-matematicas/references/code-examples.md)

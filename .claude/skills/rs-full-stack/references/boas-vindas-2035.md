@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-boas-vindas-2035
 description: "Provides foundational mental model for relational databases and SQL before diving into implementation. Use when user asks 'what is a database', 'introduce me to SQL', 'where to start with databases', or 'database fundamentals'. Frames the learning path: concepts first, then application. Make sure to use this skill whenever a user is beginning database studies or needs orientation on what to learn first. Not for writing SQL queries, creating tables, or any hands-on database operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database
+  tags: [database, sql, relational, learning-path, fundamentals]
 ---
 
 # Banco de Dados — Mapa de Aprendizado
 
 > Domine os fundamentos de banco de dados relacional e SQL antes de integrar com aplicações.
 
-## Key concept
+## Key concepts
 
 Banco de dados relacional exige aprendizado isolado antes da integração com aplicações. Tentar usar banco de dados dentro de uma aplicação sem entender os fundamentos causa bugs silenciosos, queries ineficientes e modelos de dados frágeis. O caminho correto: conceitos → prática SQL pura → integração com aplicação.
 
@@ -43,6 +49,17 @@ Banco de dados relacional exige aprendizado isolado antes da integração com ap
 - Conectar aplicação ao banco
 - ORMs e query builders
 
+## Example
+
+```sql
+-- Operacoes basicas de SQL (CRUD)
+CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE);
+INSERT INTO users (name, email) VALUES ('Ana', 'ana@email.com');
+SELECT * FROM users WHERE name = 'Ana';
+UPDATE users SET email = 'ana@novo.com' WHERE id = 1;
+DELETE FROM users WHERE id = 1;
+```
+
 ## Common misconceptions
 
 | Pensam que | Realidade |
@@ -61,13 +78,16 @@ Banco de dados relacional exige aprendizado isolado antes da integração com ap
 
 Esta skill é orientação de aprendizado, não ensina SQL. Para operações práticas, consulte as skills específicas de SQL, criação de tabelas, queries e relacionamentos.
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Confused about where to start with databases** | Follow the learning path in order: concepts first, then SQL CRUD, then relationships, then integration with application code. |
+| **ORM errors that are hard to debug** | Go back to raw SQL to understand what the ORM generates — use logging or query inspection to see the actual SQL being executed. |
+| **Query returns unexpected results** | Review fundamentals: data types, WHERE filters, and JOIN conditions before adding complexity. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio do instrutor sobre por que separar o estudo de banco de dados
 - [code-examples.md](references/code-examples.md) — Mapa de tópicos e exemplos introdutórios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2035/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-boas-vindas-2035/references/code-examples.md)

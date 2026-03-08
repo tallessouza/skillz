@@ -1,15 +1,28 @@
 ---
 name: rs-devops-conhecendo-escala-vertical
 description: "Applies vertical scaling concepts when designing Kubernetes infrastructure or discussing scaling strategies. Use when user asks to 'scale an application', 'increase server resources', 'handle more traffic', 'choose scaling strategy', or 'configure VPA'. Explains tradeoffs of vertical vs horizontal scaling including redundancy risks, downtime, and hardware limits. Make sure to use this skill whenever the user is deciding between scaling approaches or configuring resource limits in Kubernetes. Not for horizontal scaling (HPA), pod autoscaling, or cluster node scaling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, vertical-scaling, vpa, scaling, infrastructure, resources]
 ---
 
 # Escala Vertical no Kubernetes
 
 > Escala vertical aumenta os recursos de uma maquina existente — mais CPU, memoria e armazenamento — ao inves de adicionar novas instancias.
 
-## Conceito central
+## Key concepts
 
 Escala vertical significa aumentar o tamanho da maquina onde a aplicacao executa. Quando a aplicacao atinge o limite de CPU/memoria disponivel, voce adiciona mais hardware a mesma maquina ao inves de criar novas.
+
+```bash
+# Diagnostic: check current resource usage before scaling decision
+kubectl top nodes                    # Node CPU/Memory usage
+kubectl top pods -n my-namespace     # Pod resource consumption
+kubectl describe node <node-name>   # Allocatable vs capacity
+```
 
 ## Quando usar
 
@@ -59,14 +72,14 @@ Apos escalar verticalmente para um pico, executar o **downsize** e essencial:
 | Escalar vertical em horario comercial | Agende para janelas de manutencao |
 | Instalar VPA sem entender HPA primeiro | Domine escala horizontal (nativa) antes de usar VPA |
 
+## Troubleshooting
+
+### Aplicacao fica indisponivel durante scale up vertical
+**Symptom:** Downtime ao aumentar recursos de CPU/memoria da maquina
+**Cause:** Escala vertical requer parar a maquina para alterar hardware/recursos, causando indisponibilidade
+**Fix:** Planeje janelas de manutencao ou migre para escala horizontal (HPA) que nao requer downtime
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-a-escala-vertical/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-a-escala-vertical/references/code-examples.md)

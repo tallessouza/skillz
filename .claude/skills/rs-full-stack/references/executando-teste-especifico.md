@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-teste-especifico
-description: "Guides execution of specific Jest test files in TypeScript projects. Use when user asks to 'run a test', 'execute specific test', 'create test file', 'setup Jest with TypeScript', or 'run jest on a file'. Covers test file naming conventions (.test/.spec), ts-node dependency, and npx jest execution. Make sure to use this skill whenever setting up or running individual Jest tests in TypeScript. Not for test assertion logic, mocking, or CI/CD pipeline configuration."
+description: "Executes specific Jest test files in TypeScript projects with proper naming conventions. Use when user asks to 'run a test', 'execute specific test', 'create test file', 'setup Jest with TypeScript', or 'run jest on a file'. Covers test file naming conventions (.test/.spec), ts-node dependency, and npx jest execution. Make sure to use this skill whenever setting up or running individual Jest tests in TypeScript. Not for test assertion logic, mocking, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing
+  tags: [testing, jest, typescript, ts-node, test-execution]
 ---
 
 # Executando Teste Específico com Jest
@@ -82,13 +88,16 @@ npx jest src/sum.test.ts
 | Subir a aplicacao para rodar testes | Execute testes diretamente — sao independentes |
 | Instalar `ts-node` como dependencia de producao | `npm i ts-node -D` (devDependency) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `ts-node is required` ao rodar Jest | `ts-node` nao instalado | `npm i ts-node -D` |
+| Jest nao encontra arquivo de teste | Nome sem `.test.ts` ou `.spec.ts` | Renomear para convencao Jest: `modulo.test.ts` |
+| Teste passa mas nao deveria | Sem assertions reais no teste | Adicionar `expect()` com verificacoes — teste vazio sempre passa |
+| `npx jest` roda todos os testes | Falta caminho especifico | Usar `npx jest src/arquivo.test.ts` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre convencoes de teste e ts-node
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-executando-teste-especifico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-executando-teste-especifico/references/code-examples.md)

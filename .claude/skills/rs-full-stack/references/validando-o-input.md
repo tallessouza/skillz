@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-validando-o-input
 description: "Enforces numeric-only input validation using regex replace pattern in JavaScript. Use when user asks to 'validate input', 'restrict input to numbers', 'remove letters from input', 'sanitize form field', or 'filter non-numeric characters'. Applies regex /\D+/g with replace to strip non-numeric chars from input values in real-time. Make sure to use this skill whenever implementing numeric input validation in vanilla JS. Not for complex form validation libraries, mask libraries, or server-side validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, regex, input-validation, dom, forms]
 ---
 
 # Validando Input — Somente Números com Regex
@@ -62,6 +68,15 @@ amount.addEventListener("input", () => {
 | `if (isNaN(value)) alert("só números")` | Remova silenciosamente os caracteres inválidos |
 | Regex sem flag `g` (`/\D/` sem global) | Sempre use `/\D+/g` para pegar todos os caracteres |
 | Validar só no submit | Valide em tempo real no evento `input` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Regex nao remove todos os caracteres | Faltou flag `g` no regex | Use `/\D+/g` com flag global |
+| Input aceita ponto ou virgula | `\D` so bloqueia nao-digitos, ponto e nao-digito | Para decimais, use `/[^0-9.,]+/g` |
+| Cursor pula para o final ao digitar | Reatribuicao do `value` reseta a posicao do cursor | Salve e restaure `selectionStart`/`selectionEnd` |
+| Validacao nao dispara ao colar texto | Evento `keydown` nao captura paste | Use evento `input` que cobre digitacao e paste |
 
 ## Deep reference library
 

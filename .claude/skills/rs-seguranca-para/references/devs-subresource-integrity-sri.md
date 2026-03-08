@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-subresource-integrity-sri
 description: "Enforces Subresource Integrity (SRI) when including third-party scripts or CSS from CDNs. Use when user asks to 'add a CDN script', 'include external library', 'add script tag', 'use a CDN', or 'include third-party JavaScript'. Applies integrity attribute with SHA-256/384/512 hash, requires versioned URLs, and flags missing SRI on external resources. Make sure to use this skill whenever generating HTML that loads external scripts or stylesheets. Not for bundled dependencies via npm/yarn, inline scripts, or same-origin resources."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, sri, cdn, integrity]
 ---
 
 # Subresource Integrity (SRI)
@@ -89,14 +95,14 @@ curl -s https://cdn.example.com/lib@1.0.0/lib.min.js | openssl dgst -sha384 -bin
 | Confiar cegamente em CDN conhecida | Auditar codigo + SRI + versao fixa |
 | Gerar hash sem ler o codigo fonte | Ler codigo original no GitHub, depois gerar hash |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-subresource-integrity-sri/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-subresource-integrity-sri/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-subresource-integrity-sri/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-subresource-integrity-sri/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

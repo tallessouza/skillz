@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-ao-docker
 description: "Applies Docker container concepts and architecture decisions when user asks to 'dockerize an app', 'create a Dockerfile', 'set up containers', 'deploy with Docker', or discusses virtualization vs containers. Enforces correct mental models for images, containers, kernel isolation (cgroups/namespaces), and Docker Hub usage. Make sure to use this skill whenever Docker or containerization is mentioned in any development context. Not for Kubernetes orchestration, Docker Compose multi-service setups, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-fundamentals
+  tags: [docker, containers, images, dockerfile, virtualization]
 ---
 
 # Introdução ao Docker
@@ -86,13 +92,15 @@ Dockerfile → Image → Container
 - Isolamento de containers não é tão forte quanto VMs para workloads de segurança crítica
 - Não substitui orquestração (Kubernetes) para ambientes multi-container em produção
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `docker: command not found` | Docker não instalado ou não no PATH | Instale Docker Desktop (Windows/Mac) ou Docker Engine (Linux) e reinicie o terminal |
+| Container não inicia e sai imediatamente | Processo principal do container finalizou (sem CMD ou erro no entrypoint) | Verifique o Dockerfile para garantir que CMD/ENTRYPOINT mantêm o processo rodando |
+| Imagem não encontrada ao rodar `docker run` | Nome ou tag da imagem incorretos | Confira o nome exato no Docker Hub e use `docker pull` antes de `docker run` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre virtualização vs containers, analogias e mecanismos de isolamento
 - [code-examples.md](references/code-examples.md) — Exemplos práticos de Dockerfile, imagens e containers
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-ao-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-ao-docker/references/code-examples.md)

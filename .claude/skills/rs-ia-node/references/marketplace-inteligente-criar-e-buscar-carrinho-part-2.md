@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-criar-buscar-carrinho-2
 description: "Enforces cart creation and retrieval patterns using PostgreSQL JSON aggregation in Node.js. Use when user asks to 'create a shopping cart', 'add items to cart', 'fetch cart with items', 'aggregate SQL joins into JSON', or 'nest related rows as arrays'. Applies two-step insert (cart then cart_items), JSON_AGG with JSON_BUILD_OBJECT for nested responses, and GROUP BY to collapse joins. Make sure to use this skill whenever building cart endpoints or aggregating one-to-many SQL results into JSON arrays. Not for NoSQL databases, ORM-based queries, or frontend cart state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, ia-node, postgresql, node-js]
 ---
 
 # Criar e Buscar Carrinho com Agregacao JSON
@@ -105,14 +111,14 @@ GROUP BY c.id
 | Criar cart_item sem validar se produto existe | `SELECT store_id FROM products WHERE id = $1` antes |
 | JSON_AGG sem GROUP BY | Sempre adicionar `GROUP BY` na coluna da entidade pai |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho-part-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho-part-2/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-o-projeto-7
-description: "Guides responsive landing page project setup with HTML/CSS structure, Figma asset export, and Responsively App configuration for multi-device preview. Use when user asks to 'create a landing page', 'start a responsive project', 'setup responsive preview', or 'configure multi-device testing'. Make sure to use this skill whenever starting a new responsive web project from a Figma design. Not for React/framework projects, backend setup, or deployment."
+description: "Scaffolds responsive landing page project setup with HTML/CSS structure, Figma asset export, and Responsively App configuration for multi-device preview. Use when user asks to 'create a landing page', 'start a responsive project', 'setup responsive preview', or 'configure multi-device testing'. Make sure to use this skill whenever starting a new responsive web project from a Figma design. Not for React/framework projects, backend setup, or deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: responsive-design
+  tags: [html, css, responsive, figma, responsively-app, assets]
 ---
 
 # Setup de Projeto Responsivo com Landing Page
@@ -109,13 +115,16 @@ Projeto funcional com:
 | Design tem apenas mobile-first | Comecar com tela de 375px como base |
 | Assets do Figma tem nomes ruins | Renomear para kebab-case descritivo antes de commitar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Responsively App nao mostra a pagina | URL do Live Preview incorreta ou servidor parado | Copiar a URL correta do Live Preview e confirmar que esta rodando |
+| Assets do Figma exportam sem cor | SVGs podem precisar de fill via CSS | Aplicar `fill` ou `color` via CSS nos icones SVG |
+| Live Preview nao atualiza automaticamente | Extensao desatualizada ou conflito | Reinstalar Live Preview e verificar conflitos com Live Server |
+| Fontes nao carregam | Link do Google Fonts incorreto ou sem `preconnect` | Verificar os links `preconnect` e o link da fonte no `<head>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre organizacao de projeto responsivo e ferramentas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-7/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-7/references/code-examples.md)

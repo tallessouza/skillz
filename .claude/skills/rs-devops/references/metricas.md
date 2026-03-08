@@ -1,6 +1,12 @@
 ---
 name: rs-devops-metricas
 description: "Applies observability metrics patterns when instrumenting applications with counters, histograms, gauges, and timers. Use when user asks to 'add metrics', 'instrument code', 'monitor performance', 'track latency', 'add observability', or 'measure response time'. Covers metric types, percentiles (P99/P95), anomaly detection, SLI/SLO, and Golden Signals. Make sure to use this skill whenever implementing application monitoring or observability instrumentation. Not for log implementation, distributed tracing, or infrastructure provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-metricas-conceitos
+  tags: [metrics, observability, counter, histogram, gauge, percentile, golden-signals]
 ---
 
 # Métricas — Segundo Pilar da Observabilidade
@@ -104,14 +110,14 @@ async function registerUser(data: CreateUserInput) {
 | Deletar métricas antigas por espaço | Manter histórico — custo de armazenamento é baixo |
 | Monitorar apenas erros técnicos | Incluir Golden Signals: saturação, erro, latência, tráfego |
 
+## Troubleshooting
+
+### Counter de erros mostra valores negativos
+**Symptom:** Dashboard mostra valores negativos para contadores de erro
+**Cause:** O counter esta sendo decrementado em vez de usar contadores separados para sucesso e erro
+**Fix:** Crie contadores independentes (`success_total` e `error_total`) e nunca decremente um counter — contadores so incrementam
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-metricas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-metricas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

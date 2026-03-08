@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-criando-select-radix
 description: "Applies Radix UI Select component patterns with Tailwind CSS styling when building custom select/dropdown inputs. Use when user asks to 'create a select', 'build a dropdown', 'custom select component', 'Radix select', or 'styled dropdown with Tailwind'. Covers composition pattern, CSS variables for width sync, data attributes for states, and Portal usage. Make sure to use this skill whenever creating select/dropdown components with Radix and Tailwind. Not for native HTML selects, React Select library, or headless UI selects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, radix-ui, nextjs, flexbox]
 ---
 
 # Criando Select com Radix UI + Tailwind
@@ -101,15 +107,19 @@ O Tailwind interpreta `--radix-select-trigger-width` como `var(--radix-select-tr
 | `var(--radix-select-trigger-width)` no Tailwind | `--radix-select-trigger-width` (Tailwind entende `--` como var) |
 | Estilos hover com CSS `:hover` | Data attributes `data-[highlighted]:` do Radix |
 | Select direto em Server Component (Next.js) | Componente separado com `'use client'` |
+## Troubleshooting
+
+### Componente Radix nao funciona no Next.js App Router
+**Symptom:** Erro de hydration ou componente nao interativo.
+**Cause:** Componentes Radix usam hooks client-side mas estao em Server Component.
+**Fix:** Adicione `'use client'` no topo do arquivo que usa componentes Radix.
+
+### Dropdown aparece atras de outros elementos
+**Symptom:** O conteudo do select fica escondido atras de outros componentes.
+**Cause:** Falta de Portal ou z-index insuficiente.
+**Fix:** Use `SelectPrimitive.Portal` para renderizar no body e adicione `z-10` ou superior no Content.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-select-de-pais/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-criando-select-de-pais/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-select-de-pais/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-criando-select-de-pais/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-loki-1
 description: "Generates Loki configuration files for Docker Compose observability stacks. Use when user asks to 'configure Loki', 'setup log aggregation', 'add Loki to docker-compose', 'configure log storage with S3/MinIO', or 'setup observability stack'. Applies Loki YAML config patterns with S3-compatible storage, member list for ring balancing, and schema config. Make sure to use this skill whenever setting up Loki or log pipelines in containerized environments. Not for Prometheus metrics, Grafana dashboards, or application-level logging libraries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-loki-storage
+  tags: [loki, log-aggregation, docker-compose, minio, s3, observability]
 ---
 
 # Configurando o Loki
@@ -127,14 +133,14 @@ docker logs loki
 | `replication_factor: 3` sem replicas | Mantenha `1` para single-instance |
 | Ignorar erro de startup do Loki | Verificar logs — geralmente e race condition com MinIO |
 
+## Troubleshooting
+
+### Loki falha ao subir com erro de conexao ao MinIO
+**Symptom:** Logs do Loki mostram erro 'send request' ao tentar conectar com o MinIO
+**Cause:** Race condition — Loki subiu antes do MinIO estar pronto para aceitar conexoes
+**Fix:** Rode `docker restart loki` e verifique com `docker logs loki`. Use `depends_on` com `condition: service_healthy` se possivel
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-loki-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-loki-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-loki-1/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-loki-1/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

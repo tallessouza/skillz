@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-editar-pergunta
 description: "Applies NestJS controller patterns for edit/update endpoints when building REST APIs with NestJS Clean Architecture. Use when user asks to 'create an edit controller', 'update endpoint', 'PUT route in NestJS', 'edit resource controller', or 'CRUD update operation'. Covers PUT routes with param extraction, 204 responses, abstract class repositories for DI, and DatabaseModule provider registration. Make sure to use this skill whenever implementing edit/update controllers in NestJS clean architecture projects. Not for GET/POST/DELETE controllers, authentication, or file upload handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Editar Pergunta (NestJS Clean Architecture)
@@ -145,14 +152,14 @@ export class EditQuestionController {
 | Provider direto: `PrismaQuestionsRepository` | `{ provide: QuestionsRepository, useClass: PrismaQuestionsRepository }` |
 | `Promise.all` em teste onde ordem importa | Criar sequencialmente ou usar `expect.arrayContaining()` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-editar-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-editar-pergunta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-editar-pergunta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-editar-pergunta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

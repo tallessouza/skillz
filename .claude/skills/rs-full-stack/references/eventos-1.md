@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-eventos-1
 description: "Applies JavaScript DOM event handling patterns when writing frontend code. Use when user asks to 'add a click handler', 'listen for events', 'handle form submit', 'prevent default', 'add event listener', or any DOM interaction task. Covers addEventListener, event object, target, preventDefault, and event delegation. Make sure to use this skill whenever writing browser-side JavaScript that responds to user actions. Not for Node.js server events, WebSocket events, or framework-specific event systems like React synthetic events."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, events, addEventListener, preventDefault]
 ---
 
 # Eventos no JavaScript
@@ -93,13 +99,16 @@ submitButton.addEventListener('click', (event) => {
 | Logica antes de `preventDefault()` | `preventDefault()` como primeira linha |
 | `addEventListener` antes do DOM existir | Wrapping em `load` ou `DOMContentLoaded` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Evento nao dispara | Elemento nao existe no DOM quando listener e registrado | Envolver em `DOMContentLoaded` ou mover script para final do body |
+| Pagina recarrega ao clicar botao | Falta `event.preventDefault()` em botao dentro de form | Adicionar `preventDefault()` no inicio do handler |
+| Multiplos clicks registrados | Listener adicionado dentro de loop/callback que re-executa | Registrar listener uma unica vez fora de loops |
+| `event.target` retorna elemento filho | Click propagou do filho para o pai | Usar `event.currentTarget` ou verificar `event.target.closest()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eventos, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-eventos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-eventos-1/references/code-examples.md)

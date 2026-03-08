@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-search-parameters-com-nuqs
 description: "Enforces URL state management with nuqs library in Next.js applications. Use when user asks to 'add search', 'filter products', 'manage URL params', 'share state via URL', 'add query string', or 'implement search with debounce'. Applies rules: use nuqs instead of useState for shareable state, configure NuqsAdapter in layout, add debounce for text inputs, type searchParams as Promise in server components. Make sure to use this skill whenever implementing filters, search, sorting, or any user selection that should persist in the URL. Not for server-side data fetching, database queries, or authentication state."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: url-state-management
+  tags: [nuqs, search-params, url-state, next-js, useQueryState, debounce, filters]
 ---
 
 # URL State com nuqs no Next.js
@@ -122,14 +128,19 @@ export function ProductPage() {
 | `searchParams.q` direto (sem await) | `const { q } = await searchParams` |
 | NuqsAdapter ausente no layout | Envolver children com `<NuqsAdapter>` |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-search-parameters-com-nuqs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-search-parameters-com-nuqs/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-search-parameters-com-nuqs/references/deep-explanation.md) — O instrutor compartilha uma experiencia pessoal: "Antigamente eu nao utilizava e eu nao percebia o g
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-search-parameters-com-nuqs/references/code-examples.md) — npm install nuqs

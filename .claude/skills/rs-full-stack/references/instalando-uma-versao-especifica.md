@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-versao-especifica
 description: "Applies specific npm package version installation using the @ syntax when user asks to 'install a package', 'add a dependency', 'npm install', 'setup project dependencies', or 'pin package version'. Ensures version pinning with npm install package@version syntax. Make sure to use this skill whenever installing npm packages in a learning or tutorial context. Not for yarn, pnpm, or general Node.js runtime configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: npm-versioning
+  tags: [npm, versioning, packages, installation, dependencies]
 ---
 
 # Instalando Versao Especifica de Pacotes NPM
@@ -70,13 +76,16 @@ npm install json-server@1.0.0-alpha.23
 | Ignorar diferenca de versao quando algo quebra | Verificar e alinhar versao primeiro |
 | Assumir que versao mais nova funciona igual | Testar com a versao documentada |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Versao instalada difere da especificada | Cache do npm desatualizado | Limpar cache com `npm cache clean --force` e reinstalar |
+| Versao com rotulo nao encontrada | Rotulo incorreto ou versao removida do registry | Verificar versoes disponiveis com `npm view pacote versions` |
+| Pacote quebra apos atualizar versao | Breaking changes entre versoes | Reinstalar a versao original: `npm i pacote@versao-anterior` |
+| package.json mostra `^` antes da versao | npm adiciona range por padrao | Usar `--save-exact` ou editar manualmente para versao exata |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre versionamento e por que pacotes quebram entre versoes
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de instalacao com npm, verificacao e troubleshooting
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-uma-versao-especifica/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-uma-versao-especifica/references/code-examples.md)

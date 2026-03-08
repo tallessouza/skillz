@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-heranca-com-classes
 description: "Applies JavaScript/TypeScript class inheritance patterns using extends keyword when writing OOP code. Use when user asks to 'create a class', 'extend a class', 'implement inheritance', 'reuse methods across classes', or 'build class hierarchy'. Enforces proper extends usage, constructor inheritance, and method reuse. Make sure to use this skill whenever generating class hierarchies or OOP structures. Not for functional programming, composition patterns, or React component inheritance."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, typescript, classes, inheritance, extends, oop]
 ---
 
 # Herança com Classes (JavaScript/TypeScript)
@@ -122,13 +128,17 @@ class Cat extends Animal {
 | `extends` sem propriedades/métodos compartilhados | Classes independentes (herança sem motivo) |
 | Hierarquia com mais de 2-3 níveis | Composição para hierarquias profundas |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `ReferenceError: Must call super constructor` | Construtor da filha sem `super()` | Adicione `super(args)` como primeira linha do construtor |
+| Método da classe pai não disponível na filha | `extends` não declarado ou typo no nome da classe | Verifique `class Child extends Parent` |
+| `this` undefined no construtor da filha | `super()` não chamado antes de acessar `this` | Chame `super()` antes de qualquer uso de `this` |
+| Hierarquia com 4+ níveis difícil de manter | Over-engineering com herança profunda | Considere composição em vez de herança |
+| Override acidental de método do pai | Mesmo nome de método na filha sem intenção | Renomeie o método ou use `super.method()` para chamar o original |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-aplicar-heranca-com-classes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-aplicar-heranca-com-classes/references/code-examples.md)

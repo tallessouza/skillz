@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-inserindo-dados-1
 description: "Applies SQL INSERT INTO patterns when writing database insertion queries. Use when user asks to 'insert data', 'add records', 'create SQL insert', 'populate table', or 'write INSERT query'. Enforces correct column-value mapping, DEFAULT handling, auto-increment omission, and proper quoting. Make sure to use this skill whenever generating SQL INSERT statements or teaching SQL basics. Not for SELECT queries, table creation, migrations, or ORM-based inserts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, insert, auto-increment, default, data-manipulation]
 ---
 
 # Inserindo Dados com SQL
@@ -86,13 +92,16 @@ VALUES ('Teclado', 550, 'Acessório');
 | 3 valores para 2 colunas | Alinhar quantidade de colunas e valores |
 | `INSERT INTO products VALUES ('Mouse', 50)` (sem listar colunas) | `INSERT INTO products (name, price) VALUES ('Mouse', 50)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de mismatch de colunas e valores | Quantidade de colunas diferente da quantidade de valores | Alinhar colunas listadas com valores no VALUES |
+| ID duplicado ao inserir | Passando ID manualmente em coluna auto-increment | Omitir coluna ID do INSERT |
+| Valor DEFAULT nao aplicado | Coluna listada no INSERT com valor NULL | Omitir a coluna do INSERT para usar o DEFAULT |
+| Erro de tipo em string | Texto sem aspas simples | Envolver strings com aspas simples: `'texto'` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre auto-increment, DEFAULT values, e erros de mismatch
-- [code-examples.md](references/code-examples.md) — Todos os exemplos SQL da aula expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-inserindo-dados-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-inserindo-dados-1/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre auto-increment, DEFAULT values, e erros de mismatch
+- [code-examples.md](references/code-examples.md) — Todos os exemplos SQL da aula expandidos com variacoes

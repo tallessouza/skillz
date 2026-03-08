@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-conhecendo-o-javascript
 description: "Applies foundational JavaScript knowledge when explaining JS concepts, choosing JS runtimes, or distinguishing JS from Java. Use when user asks 'what is JavaScript', 'JS vs Java', 'where does JavaScript run', 'client-side vs server-side', or 'JavaScript use cases'. Make sure to use this skill whenever answering beginner questions about JavaScript's nature, execution model, or ecosystem scope. Not for writing actual JavaScript code, frameworks setup, or specific API usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, client-side, interpreted-language, web-development, nodejs, ecosystem]
 ---
 
 # Conhecendo o JavaScript
 
 > JavaScript e uma linguagem de programacao que adiciona interatividade e funcionalidade a aplicacoes web, interpretada pelo navegador (client-side), mas hoje utilizada em multiplos contextos.
 
-## Key concept
+## Key concepts
 
 JavaScript foi criado para ser executado e interpretado pelo navegador do usuario (client-side). O navegador le o codigo JavaScript linha a linha para entender o que fazer quando o usuario interage com elementos HTML. Essa natureza interpretada e o que diferencia JS de linguagens compiladas.
 
@@ -64,6 +70,17 @@ O navegador **interpreta** JavaScript — le o codigo e entende o que cada linha
 3. **Comunicar com servidores** — enviar e receber dados sem recarregar a pagina
 4. **Executar funcionalidades** — logica de negocio, validacoes, calculos
 
+## Exemplo basico
+
+```html
+<button id="btn">Clique aqui</button>
+<script>
+  document.getElementById('btn').addEventListener('click', () => {
+    alert('JavaScript detectou o clique!')
+  })
+</script>
+```
+
 ## When to apply
 
 - Ao responder perguntas conceituais sobre JavaScript para iniciantes
@@ -77,13 +94,16 @@ O navegador **interpreta** JavaScript — le o codigo e entende o que cada linha
 - O ecossistema JS muda rapidamente — frameworks e ferramentas especificas podem estar desatualizados
 - Para escrever codigo JS real, consultar skills especificas de sintaxe e patterns
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Confusao entre JavaScript e Java | Nomes similares mas linguagens diferentes | Esclarecer que sao linguagens completamente distintas — abreviar como JS |
+| JS nao executa no navegador | Script nao linkado no HTML ou erro de sintaxe | Verificar tag `<script>` no HTML e console do navegador |
+| Duvida sobre onde JS roda | Visao limitada ao browser | Explicar que JS roda no browser, servidor (Node.js), desktop (Electron) e mobile (React Native) |
+| Escolha de tecnologia para projeto novo | Incerteza sobre escopo do JS | JS cobre frontend, backend, desktop e mobile — avaliar stack completa |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do instrutor
 - [code-examples.md](references/code-examples.md) — Exemplos praticos e cenarios de aplicacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-javascript/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-javascript/references/code-examples.md)

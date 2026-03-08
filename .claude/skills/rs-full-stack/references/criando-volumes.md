@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-volumes
 description: "Applies Docker volume creation and mounting patterns when writing docker commands or configuring containers. Use when user asks to 'create a volume', 'persist data', 'run container with volume', 'docker volume', or any container data persistence task. Ensures correct volume lifecycle: create, inspect, mount with -v flag, and verify via container inspect. Make sure to use this skill whenever setting up Docker containers that need persistent storage. Not for Dockerfile authoring, docker-compose files, or bind mounts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, volumes, persistence, containers, storage]
 ---
 
 # Docker Volumes — Persistencia de Dados em Containers
@@ -84,13 +90,16 @@ docker run -v api-volume:/usr/src/app -p 3333:3333 -d api
 | Recriar container sem parar o anterior | `docker stop <id>` antes de `docker run` |
 | Confiar que o volume esta montado sem verificar | `docker container inspect <id>` → checar Mounts |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Dados perdidos ao recriar container | Container foi criado sem flag `-v` | Recrie com `docker run -v nome-volume:/caminho ...` |
+| `Mounts: []` no inspect | Volume nao foi montado corretamente | Verifique se o nome do volume e o caminho estao corretos no `-v` |
+| Conflito de porta ao executar novo container | Container anterior ainda esta rodando na mesma porta | Pare com `docker stop <id>` antes de executar o novo |
+| Dados nao aparecem no container novo | Caminho de montagem diferente do WORKDIR | Verifique o WORKDIR no Dockerfile e use o mesmo caminho no `-v` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre isolamento de dados, ciclo de vida de volumes e analogias
 - [code-examples.md](references/code-examples.md) — Todos os comandos expandidos com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-volumes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-volumes/references/code-examples.md)

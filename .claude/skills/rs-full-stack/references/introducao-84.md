@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-84
 description: "Applies CSS Value Functions knowledge when writing stylesheets. Use when user asks to 'style a component', 'add CSS transforms', 'use calc()', 'apply filters', 'create gradients', or any CSS property that accepts function values. Categorizes functions into transform, math, filters, colors, gradients, shapes, and reference functions. Make sure to use this skill whenever generating CSS that involves function-based values. Not for pseudo-functions like :not() or :is(), nor for @import url() syntax."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, functions, calc, transform, filter, gradient]
 ---
 
 # CSS Value Functions
@@ -55,13 +61,15 @@ CSS Value Functions sao funcoes usadas como **valores de propriedades CSS** (nao
 | Cor precisa de transparencia | Use funcao de cor com canal alpha (`rgb()`, `hsl()`) |
 | Propriedade aceita funcao | Sempre verifique quantos argumentos sao necessarios |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `calc()` não funciona | Faltam espaços ao redor do operador (ex: `calc(100%-2rem)`) | Sempre use espaços: `calc(100% - 2rem)` |
+| `blur()` não aparece visualmente | Valor de blur muito pequeno ou elemento sem background | Aumente o valor (ex: `blur(8px)`) e verifique se o elemento tem conteúdo visível |
+| `var()` retorna valor inesperado | Custom property não definida ou escopo incorreto | Verifique se a variável está definida no `:root` ou no ancestral correto |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre categorias e distincoes entre tipos de funcoes CSS
 - [code-examples.md](references/code-examples.md) — Exemplos de cada categoria de CSS function com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-84/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-84/references/code-examples.md)

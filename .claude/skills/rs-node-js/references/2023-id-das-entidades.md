@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-id-das-entidades
 description: "Enforces UniqueEntityID value object pattern when creating domain entities in DDD/Clean Architecture. Use when user asks to 'create an entity', 'implement a domain model', 'generate an ID', 'setup base entity class', or any DDD entity work. Applies rules: IDs wrapped in UniqueEntityID value object, never raw strings/UUIDs in entities, optional ID in constructor for rehydration. Make sure to use this skill whenever generating domain entities or base entity classes. Not for database IDs, ORM primary keys, or infrastructure-layer identifiers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: entity-identity
+  tags: [ddd, entity, unique-id, value-object, uuid, typescript]
 ---
 
 # ID das Entidades — UniqueEntityID Value Object
@@ -130,14 +136,14 @@ export class Entity<Props> {
 | Comparar IDs com `===` direto entre objetos | `id.toValue() === otherId.toValue()` |
 | Gerar ID na camada de infra/repositorio | Gerar na camada de dominio via UniqueEntityID |
 
+## Troubleshooting
+
+### Comparacao de IDs entre entidades sempre retorna false
+**Symptom:** entity.id === otherEntity.id retorna false mesmo quando os IDs sao iguais
+**Cause:** UniqueEntityID e um objeto e === compara referencia em memoria, nao o valor interno
+**Fix:** Compare usando id.toValue() === otherId.toValue() ou implemente um metodo equals() no UniqueEntityID
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-id-das-entidades/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-id-das-entidades/references/code-examples.md)

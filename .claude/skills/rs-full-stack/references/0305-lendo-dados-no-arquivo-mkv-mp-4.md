@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0305-lendo-dados-arquivo
 description: "Applies file-based data persistence pattern when reading JSON data from files in Node.js. Use when user asks to 'read a file', 'load data from disk', 'persist data', 'restore state', 'in-memory database with file backup', or 'fs readFile'. Ensures proper UTF-8 encoding, JSON.parse for deserialization, error handling with catch for file read failures, and constructor-based hydration of in-memory state. Make sure to use this skill whenever implementing file-based persistence or data recovery in Node.js. Not for database ORMs, streaming large files, or CSV/binary file parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, fs, readfile, json-parse, file-persistence, error-handling]
 ---
 
 # Lendo Dados de Arquivo no Node.js
@@ -103,13 +109,17 @@ class Database {
 | Confiar que o arquivo sempre existe | Fallback para estado vazio no catch |
 | `readFileSync` no construtor | `readFile` assincrono com `.then` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: Unexpected token` no JSON.parse | Arquivo corrompido ou vazio | Adicionar `.catch()` que recria o banco vazio com `#persist()` |
+| Dados nao aparecem apos restart | `readFile` nao esta sendo chamado no constructor | Verificar que o constructor chama `fs.readFile` com `.then` |
+| Buffer retornado em vez de string | Faltou encoding no readFile | Passar `'utf8'` como segundo argumento |
+| Estado em memoria vazio apesar de arquivo existir | readFile assincrono nao completou antes do select | Aceitar que a hidratacao e assincrona — dados aparecem apos o `.then` |
+| Arquivo lido mas dados nao populam o banco | `JSON.parse` nao atribui ao `#database` | Verificar `this.#database = JSON.parse(data)` dentro do `.then` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre persistencia em arquivo, ciclo de vida dos dados
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0305-lendo-dados-no-arquivo-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0305-lendo-dados-no-arquivo-mkv-mp-4/references/code-examples.md)

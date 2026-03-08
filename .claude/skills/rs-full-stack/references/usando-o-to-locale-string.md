@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-usando-o-to-locale-string
 description: "Applies toLocaleString() formatting patterns when working with dates, times, and currency in JavaScript/TypeScript. Use when user asks to 'format a date', 'display currency', 'format money', 'show date in Portuguese', or 'localize numbers'. Covers dateStyle options (short/medium/long/full), granular day/month/hour/minute config, and currency formatting with style:'currency'. Make sure to use this skill whenever generating code that displays dates or monetary values to users. Not for date arithmetic, parsing, or timezone conversion logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dates
+  tags: [javascript, toLocaleString, date-formatting, currency, internationalization]
 ---
 
 # Formatacao com toLocaleString()
@@ -100,6 +106,14 @@ const price = amount.toLocaleString("pt-BR", { style: "currency", currency: "BRL
 | `padStart(2, "0")` para formatar data | `toLocaleString("pt-BR", { day: "2-digit" })` |
 | `date.toLocaleString()` sem locale | `date.toLocaleString("pt-BR")` |
 | `{ dateStyle: "short", day: "2-digit" }` | Use dateStyle OU opcoes granulares, nunca ambos |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `RangeError: invalid dateStyle` ao usar opções granulares junto | `dateStyle` e opções como `day`/`month` são mutuamente exclusivos | Use `dateStyle` OU opções granulares, nunca ambos |
+| Formato de data muda entre servidor e browser | Locale padrão difere entre ambientes | Sempre passe o locale explicitamente: `toLocaleString("pt-BR")` |
+| Moeda exibe símbolo errado | `currency` não corresponde ao locale | Use `currency: "BRL"` com locale `"pt-BR"` para Real brasileiro |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-content-type-headers
 description: "Enforces correct Content-Type and X-Content-Type-Options headers when building HTTP responses or configuring web servers. Use when user asks to 'serve files', 'handle uploads', 'configure headers', 'set up Express/Fastify responses', 'build an API endpoint', or 'configure Nginx/Apache'. Applies rules: always set Content-Type with charset, always enable X-Content-Type-Options nosniff, never trust file extensions alone. Make sure to use this skill whenever generating server-side code that serves files or builds HTTP responses. Not for client-side fetch calls, CSS styling, or frontend component logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: http-security
+  tags: [security, content-type, headers, mime]
 ---
 
 # Headers HTTP: Content-Type e X-Content-Type-Options
@@ -95,14 +101,14 @@ app.get('/uploads/:file', (req, res) => {
 | Habilitar nosniff apenas em algumas rotas | Habilitar globalmente via middleware, desabilitar por excecao |
 | Servir uploads de usuario sem Content-Type | Forcar Content-Type baseado no tipo esperado (thumbnail = image/*) |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-headers-http-para-o-content-type/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-headers-http-para-o-content-type/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-headers-http-para-o-content-type/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-headers-http-para-o-content-type/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

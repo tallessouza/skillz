@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exibindo-curso-no-modulo
 description: "Applies SQL INNER JOIN patterns with proper column aliasing when writing queries that join multiple tables. Use when user asks to 'join tables', 'query related data', 'show data from multiple tables', 'write a SELECT with JOIN', or 'combine database tables'. Enforces rules: no SELECT *, always alias tables, rename columns to avoid ambiguity, use ON clause correctly. Make sure to use this skill whenever generating SQL queries that involve more than one table. Not for single-table queries, schema design, or migration scripts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-queries
+  tags: [sql, inner-join, alias, select, database]
 ---
 
 # INNER JOIN com Alias de Tabelas
@@ -75,13 +81,16 @@ INNER JOIN courses c ON c.id = m.course_id;
 | `SELECT name FROM modules INNER JOIN courses` | `SELECT m.name, c.name FROM modules m INNER JOIN courses c` |
 | `FROM modules INNER JOIN courses ON courses.id = course_id` | `FROM modules m INNER JOIN courses c ON c.id = m.course_id` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `ambiguous column name` | Coluna existe em ambas as tabelas sem qualificacao | Prefixar com alias: `m.name` em vez de `name` |
+| JOIN retorna 0 resultados | ON clause com colunas erradas ou valores inexistentes | Verificar se FK e PK correspondem: `ON c.id = m.course_id` |
+| Colunas duplicadas no resultado | `SELECT *` em query com JOIN | Listar colunas explicitamente com alias |
+| Erro de sintaxe no alias | Alias com espaco ou caractere especial | Usar alias simples de 1-2 letras sem espacos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ambiguidade e alias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-curso-no-modulo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-curso-no-modulo/references/code-examples.md)

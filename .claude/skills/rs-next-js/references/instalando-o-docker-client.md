@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-instalando-o-docker-client
 description: "Applies Docker and Docker Compose workflow commands when setting up local development containers. Use when user asks to 'start docker', 'run docker compose', 'setup containers', 'start database container', or 'manage docker containers'. Covers client selection (OrbStack vs Docker Desktop), docker compose up/down lifecycle, and detached mode. Make sure to use this skill whenever configuring or running Docker Compose in a project. Not for Dockerfile authoring, multi-stage builds, or production Docker deployment."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: docker-setup
+  tags: [docker, docker-compose, containers, orbstack, local-development, next-js]
 ---
 
 # Docker Client e Comandos Docker Compose
@@ -84,14 +90,19 @@ docker compose down
 | Rodar comandos fora da raiz do projeto | Certifique-se de estar na pasta com `docker-compose.yml` |
 | Ignorar o cliente visual | Use OrbStack ou Docker Desktop para visualizar containers, volumes e imagens |
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-instalando-o-docker-client/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-instalando-o-docker-client/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-instalando-o-docker-client/references/deep-explanation.md) — O instrutor destaca que, apos entender Docker e Docker Compose conceitualmente, o proximo passo e te
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-instalando-o-docker-client/references/code-examples.md) — cd ~/projetos/pet-shop

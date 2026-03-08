@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-classes-utilitarias-pt1
 description: "Enforces responsive CSS container patterns using min(), calc(), and custom properties. Use when user asks to 'create a container', 'add responsive layout', 'build utility classes', 'set max-width responsively', or 'handle lateral spacing'. Applies CSS min() function for fluid width, CSS custom properties for breakpoint swaps, and margin-inline auto centering. Make sure to use this skill whenever building responsive containers or utility classes in CSS. Not for JavaScript logic, backend code, or CSS Grid/Flexbox alignment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, responsive, container, min, custom-properties, utility-classes]
 ---
 
 # Classes Utilitárias CSS — Container Responsivo
@@ -97,13 +103,16 @@ description: "Enforces responsive CSS container patterns using min(), calc(), an
 | Hardcoded `24px` / `32px` nos calculos | Custom properties `--px-lg` trocadas via media query |
 | Media queries do container em arquivo separado do container | Media query co-localizado no mesmo arquivo utility |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Container nao centraliza | Faltou `margin-inline: auto` | Adicione `margin-inline: auto` ao `.container` |
+| Espacamento lateral pela metade | Esqueceu `* 2` no calculo | Use `var(--px-lg) * 2` para cobrir ambos os lados |
+| Custom property nao muda no breakpoint | Media query com sintaxe errada | Verifique `@media (width >= 80em)` ou `@media (min-width: 80em)` |
+| `min()` nao funciona | Browser muito antigo | Verifique suporte — `min()` e suportado em todos browsers modernos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre min() vs max-width+width, analogia visual e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-classes-utilitarias-parte-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-classes-utilitarias-parte-1/references/code-examples.md)

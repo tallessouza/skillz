@@ -1,6 +1,12 @@
 ---
 name: rs-devops-conhecendo-service-mesh
 description: "Applies Service Mesh concepts when designing microservices infrastructure on Kubernetes. Use when user asks to 'setup service mesh', 'configure istio', 'improve service communication', 'add sidecar proxy', or designs microservices networking. Enforces understanding that Service Mesh is infrastructure-layer, not application code. Make sure to use this skill whenever discussing inter-service communication patterns in Kubernetes clusters. Not for application-level HTTP clients, API gateway routing, or monolithic architectures."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh-fundamentals
+  tags: [service-mesh, istio, microservices, sidecar, kubernetes, mtls, infrastructure]
 ---
 
 # Service Mesh — Conceitos Fundamentais
@@ -53,14 +59,14 @@ Microservicos → implementa na infraestrutura via Service Mesh
 | Ignorar Kubernetes ao adotar Service Mesh | Usar Service Mesh dentro de clusters K8s (cenario mais comum) |
 | Modificar codigo da aplicacao para integrar com a malha | Manter aplicacoes agnosticas — Service Mesh roda ao lado |
 
+## Troubleshooting
+
+### Retry e circuit breaker implementados em cada microservico
+**Symptom:** Codigo de resiliencia duplicado em N microservicos, dificil de manter e atualizar
+**Cause:** Logica de resiliencia implementada na camada de aplicacao ao inves da infraestrutura
+**Fix:** Delegue retry, circuit breaker e mTLS para o Service Mesh (ex: Istio VirtualService/DestinationRule)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-service-mesh/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-service-mesh/references/code-examples.md)

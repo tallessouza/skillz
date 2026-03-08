@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-nodejs-http-requests
 description: "Applies Node.js HTTP request body handling patterns using streams and chunks when writing server code. Use when user asks to 'create an API', 'handle POST request', 'parse request body', 'read body in Node', or builds HTTP servers with native Node.js. Enforces stream-based chunk collection, proper body reconstruction, and explains why body isn't immediately available. Make sure to use this skill whenever writing native Node.js HTTP server code that processes request bodies. Not for Express/Fastify body parsing, file upload libraries, or frontend HTTP clients."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, streams, chunks, buffer, request-body]
 ---
 
 # Como o Node.js Lida com Requisicoes HTTP
@@ -104,13 +110,13 @@ const server = http.createServer((req, res) => {
 | Processar dados dentro do `data` event | Processar apenas dentro do `end` event |
 | Ignorar o evento `error` na stream | `req.on('error', (err) => { ... })` |
 
+## Troubleshooting
+
+### Problem: `JSON.parse` throws "Unexpected end of JSON input"
+- **Cause**: The body is being parsed before all chunks have been received (processing inside `data` event instead of `end` event)
+- **Fix**: Collect all chunks in an array and only call `JSON.parse(Buffer.concat(chunks).toString())` inside the `end` event handler
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre streams, chunks e o modelo de I/O do Node
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0208-como-o-nodejs-lida-com-requisicoes-http-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0208-como-o-nodejs-lida-com-requisicoes-http-mkv-mp-4/references/code-examples.md)

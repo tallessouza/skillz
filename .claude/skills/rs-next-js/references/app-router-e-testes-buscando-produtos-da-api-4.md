@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-busca-api
 description: "Applies Next.js App Router search page patterns when building product search, filtering, or query-based pages. Use when user asks to 'create a search page', 'fetch products by query', 'use searchParams', 'redirect if no query', or 'server component URL params'. Covers searchParams props vs useSearchParams, redirect for missing params, and API fetching with revalidation. Make sure to use this skill whenever implementing search or filter pages in Next.js App Router. Not for client-side state management, pagination, or static page generation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [searchParams, search-page, redirect, server-component, revalidate, app-router]
 ---
 
 # Buscando Produtos da API — Search Page no Next.js App Router
@@ -135,14 +141,19 @@ export default async function Search({ searchParams }: SearchProps) {
 | Hardcodar texto de busca | Usar o valor de `query` dinamicamente |
 | Fetch sem revalidate em pagina de busca | `next: { revalidate: 3600 }` explicito |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-buscando-produtos-da-api-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-buscando-produtos-da-api-4/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-buscando-produtos-da-api-4/references/deep-explanation.md) — O instrutor Diego explica que por padrao todo componente no Next.js App Router e um Server Component
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-buscando-produtos-da-api-4/references/code-examples.md) — // app/search/page.tsx

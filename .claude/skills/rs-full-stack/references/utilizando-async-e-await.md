@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-async-e-await
 description: "Applies async/await patterns when writing JavaScript/TypeScript fetch requests and asynchronous code. Use when user asks to 'fetch data', 'make API call', 'handle promises', 'write async function', or any HTTP request task. Enforces proper await on both fetch and .json(), async function declaration, and sequential async step chaining. Make sure to use this skill whenever generating code with promises or API calls. Not for sync code, error handling strategies, or AbortController patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, async-await, promises, fetch, asynchronous]
 ---
 
 # Async/Await em Requisicoes
@@ -78,6 +84,14 @@ fetchProducts()
 | `async () => { ... }` sem chamar a funcao | Declare e chame: `fetchProducts()` |
 | `const data = fetch(url)` (sem await) | `const response = await fetch(url)` |
 | `async function getData()` | `async function fetchProducts()` (nome especifico) |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `Promise { <pending> }` no console.log | Faltou `await` antes da chamada assíncrona | Adicione `await` e garanta que a função é `async` |
+| `SyntaxError: await is only valid in async functions` | Usou `await` fora de função async | Envolva o código em `async function` ou use `.then()` |
+| `response.json()` retorna Promise em vez de dados | Faltou `await` no `response.json()` | Use `const data = await response.json()` |
 
 ## Deep reference library
 

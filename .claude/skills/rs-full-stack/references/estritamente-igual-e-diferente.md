@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estritamente-igual-diferente
 description: "Enforces strict equality (===) and inequality (!==) operators in JavaScript/TypeScript code. Use when user asks to 'compare values', 'check equality', 'write conditionals', 'fix comparison bug', or any code with == or != operators. Applies rule: always use === and !== instead of == and !=, because loose comparison ignores type and causes silent bugs like concatenation instead of addition. Make sure to use this skill whenever generating conditionals or comparisons. Not for mathematical operations, assignment, or string formatting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, comparison, operators, equality, conditionals]
 ---
 
 # Operadores de Comparação Estrita (=== e !==)
@@ -75,13 +81,16 @@ if (parsedQuantity === 5) {
 | `if (value == null)` | `if (value === null \|\| value === undefined)` |
 | `if (count == "0")` | `if (count === 0)` (converta o tipo antes) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `1 == "1"` retorna `true` inesperadamente | Comparacao solta ignora tipo | Trocar para `===` |
+| Soma retorna string concatenada (`"12"` em vez de `3`) | Variavel e string, comparacao com `==` nao detectou | Usar `===` e converter tipo com `Number()` antes |
+| `null == undefined` retorna `true` | Comparacao solta trata ambos como equivalentes | Usar `=== null` e `=== undefined` separadamente |
+| Linter reporta erro em `==` | ESLint regra `eqeqeq` ativada | Substituir por `===` em todo o codigo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre coerção de tipos e por que comparação estrita é preferível
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estritamente-igual-e-diferente/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estritamente-igual-e-diferente/references/code-examples.md)

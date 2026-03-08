@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-de-registro
 description: "Enforces controller layer separation in Node.js/Fastify applications following SOLID principles. Use when user asks to 'create a route', 'add an endpoint', 'register controller', 'separate concerns', or 'organize API layers'. Applies rules: controllers only handle HTTP request/response, business logic lives in use cases, routes registered as Fastify plugins. Make sure to use this skill whenever creating or refactoring API endpoints in Node.js. Not for frontend components, database schema design, or authentication strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller de Registro — Separacao em Camadas
@@ -132,14 +139,14 @@ app.register(appRoutes)
 | Plugin de rotas sincrono | Sempre `async function appRoutes(...)` |
 | Nomear controller genericamente (`handler.ts`) | Nomeie pelo dominio: `register.ts`, `authenticate.ts` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-registro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-registro/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-registro/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-registro/references/code-examples.md) — Todos os exemplos de código expandidos com variações

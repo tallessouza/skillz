@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-json-web-token
 description: "Applies JWT setup and configuration patterns when installing and configuring JSON Web Token in Node.js/TypeScript projects. Use when user asks to 'setup JWT', 'configure authentication', 'install jsonwebtoken', 'add token auth', or 'configure token expiration'. Follows pattern: install package + types, create config file with secret from env + fallback + expiration. Make sure to use this skill whenever setting up JWT in a Node.js backend. Not for token validation logic, middleware implementation, or refresh token strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: authentication-jwt
+  tags: [jwt, authentication, jsonwebtoken, nodejs, security, config]
 ---
 
 # Configuração de JSON Web Token
@@ -73,13 +79,15 @@ const decoded = jwt.verify(token, authConfig.jwt.secret)
 | Omitir `expiresIn` | Sempre definir expiração explícita |
 | Instalar `@types/jsonwebtoken` como dep normal | Instalar com `-D` (devDependency) |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `jwt.sign` retorna erro de tipo no TypeScript | Tipagem `@types/jsonwebtoken` não instalada | Instale com `npm install -D @types/jsonwebtoken` |
+| Token gerado é inválido ao verificar | Secret usado no `sign` difere do usado no `verify` | Centralize o secret em `authConfig.jwt.secret` e use em ambos |
+| Token expira imediatamente | Valor de `expiresIn` inválido (ex: string sem unidade) | Use formato válido: `"1d"`, `"2h"`, `"30m"` ou número em segundos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre fallback de env vars, expiração de tokens e estrutura de config
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-json-web-token/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-json-web-token/references/code-examples.md)

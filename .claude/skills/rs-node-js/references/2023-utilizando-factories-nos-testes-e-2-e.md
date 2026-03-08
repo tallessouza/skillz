@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-factories-testes-e2e
 description: "Enforces the Factory pattern for creating test entities in NestJS E2E tests with Prisma. Use when user asks to 'write e2e test', 'create test factory', 'setup test data', 'test with database', or 'NestJS testing'. Applies injectable factories that bridge domain entities to persistence layer, imports DatabaseModule in test modules, and uses mappers for Prisma conversion. Make sure to use this skill whenever creating or refactoring NestJS E2E tests that need database entities. Not for unit tests, domain-layer factories, or mock-based testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: factories-e2e-nestjs
+  tags: [factory, e2e, testing, nestjs, prisma, injectable, mapper, database-module]
 ---
 
 # Factories nos Testes E2E (NestJS + Prisma)
@@ -108,14 +114,14 @@ const question = await questionFactory.makePrismaQuestion({
 | Duplicar logica de criacao na factory de persistencia | Chamar `makeStudent(data)` + mapper |
 | Confiar em valores aleatorios quando o teste valida valor especifico | Passar override: `{ slug: Slug.create('my-slug') }` |
 
+## Troubleshooting
+
+### PrismaService nao encontrado ao usar factory no teste E2E
+**Symptom:** `Nest can't resolve dependencies of StudentFactory (?)` ao compilar o modulo de teste
+**Cause:** O `DatabaseModule` nao foi importado no `createTestingModule`, e o `PrismaService` nao esta disponivel para injecao
+**Fix:** Adicione `DatabaseModule` no array de imports: `Test.createTestingModule({ imports: [AppModule, DatabaseModule], providers: [StudentFactory] })`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-utilizando-factories-nos-testes-e-2-e/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-utilizando-factories-nos-testes-e-2-e/references/code-examples.md)

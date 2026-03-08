@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-try-catch-finally
 description: "Enforces proper try/catch/finally error handling patterns when writing JavaScript/TypeScript code. Use when user asks to 'handle errors', 'add error handling', 'catch exceptions', 'throw errors', 'wrap in try catch', or any code that interacts with external resources like APIs, databases, or file systems. Applies structured exception handling with user-friendly messages, custom exceptions via throw, and finally for cleanup. Make sure to use this skill whenever generating code that can fail at runtime. Not for validation logic, type checking, or compile-time error prevention."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-excecoes
+  tags: [javascript, try, catch, finally, throw, error-handling, cleanup]
 ---
 
 # Try / Catch / Finally
@@ -104,6 +110,15 @@ try {
 | Expor `error.stack` ao usuario | Mensagem amigavel: "Tente novamente mais tarde" |
 | `finally {}` vazio | Remova o finally se nao ha cleanup |
 | `throw "algo deu errado"` (string) | `throw new Error("algo deu errado")` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Finally nao executa | Nunca acontece — finally SEMPRE executa | Verifique se o codigo esta realmente dentro do bloco finally |
+| Catch vazio esconde erros silenciosamente | `catch (e) {}` sem tratamento | Sempre logue o erro: `catch (error) { console.error(error) }` |
+| `throw "mensagem"` nao tem stack trace | Lancando string em vez de Error | Use `throw new Error("mensagem")` para ter stack trace |
+| Conexao nao fecha apos erro | Cleanup fora do finally | Mova fechamento de conexao para o bloco `finally` |
 
 ## Deep reference library
 

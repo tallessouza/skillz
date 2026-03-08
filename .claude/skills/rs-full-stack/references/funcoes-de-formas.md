@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-de-formas
 description: "Applies CSS clip-path shape functions when styling elements with custom shapes. Use when user asks to 'clip an element', 'create a shape', 'cut element into circle', 'make a polygon shape', 'use clip-path', or any CSS shape clipping task. Enforces correct circle() and polygon() syntax, recommends visual generators for complex polygons. Make sure to use this skill whenever generating CSS that involves non-rectangular element shapes. Not for CSS transforms, border-radius rounding, or SVG shape creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, clip-path, shapes, circle, polygon, clipping]
 ---
 
 # CSS Clip-Path — Funcoes de Formas
@@ -89,13 +95,16 @@ description: "Applies CSS clip-path shape functions when styling elements with c
 | Usar clip-path so para arredondar cantos | Usar `border-radius` |
 | Animar entre polygons com numeros diferentes de pontos | Manter mesmo numero de pontos nas duas formas |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Sombra nao aparece no elemento com clip-path | `box-shadow` e cortada pelo clip-path | Aplique `filter: drop-shadow()` no elemento PAI |
+| Animacao entre formas "pula" | Numero de pontos do polygon diferente entre estados | Mantenha o mesmo numero de pontos nas duas formas |
+| Borda nao aparece no elemento recortado | clip-path corta bordas tambem | Use outline ou aplique borda no elemento pai |
+| Texto cortado pelo clip-path | Conteudo ultrapassa a area recortada | Ajuste padding ou tamanho do elemento para caber na forma |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre como clip-path funciona internamente e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-de-formas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-de-formas/references/code-examples.md)

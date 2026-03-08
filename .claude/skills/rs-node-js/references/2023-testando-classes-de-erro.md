@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-classes-de-erro
 description: "Enforces Either pattern testing and TypeScript type narrowing when writing error handling with Left/Right classes. Use when user asks to 'test either', 'test error handling', 'write tests for use case', 'type narrow either', or 'isRight isLeft'. Applies rules: test both success and error paths, use isRight/isLeft for type guards, leverage TypeScript this-is narrowing for value inference. Make sure to use this skill whenever testing functional error handling or implementing Either type guards. Not for general unit testing, try/catch patterns, or exception-based error handling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [either, left, right, type-narrowing, error-handling, testing]
 ---
 
 # Testando Classes de Erro (Either Pattern)
@@ -113,14 +119,14 @@ if (result.isRight()) {
 | `class Right<R>` (um generic so) | `class Right<L, R>` (ambos os generics) |
 | Testar so o caminho de sucesso | Testar sucesso E erro em testes separados |
 
+## Troubleshooting
+
+### TypeScript nao infere o tipo correto apos isRight()
+**Symptom:** result.value continua como union type mesmo apos check com isRight()
+**Cause:** Metodo isRight() nao usa `this is Right<L, R>` como return type
+**Fix:** Adicione `isRight(): this is Right<L, R>` e `isLeft(): this is Left<L, R>` nos metodos das classes Either
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-classes-de-erro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-classes-de-erro/references/code-examples.md)

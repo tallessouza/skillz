@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-domain-events-structure
 description: "Enforces Domain Events structure patterns when implementing DDD in Node.js/TypeScript. Use when user asks to 'implement domain events', 'create aggregate root', 'add event dispatching', 'setup pub/sub in domain', or 'structure DDD events'. Applies patterns: static DomainEvents class with HandlersMap and MarkedAggregates, pre-dispatch via addDomainEvent on AggregateRoot, equals method on entities and value objects. Make sure to use this skill whenever building event-driven domain layers or aggregate roots. Not for application-level messaging, HTTP webhooks, or infrastructure event buses like RabbitMQ/Kafka."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [domain-events, aggregate-root, ddd, equals, entity, dispatch, typescript]
 ---
 
 # Estrutura de Domain Events
@@ -116,14 +122,14 @@ compareItems(a: AnswerAttachment, b: AnswerAttachment): boolean {
 | Disparar evento dentro do metodo de dominio | Pre-registrar com addDomainEvent, disparar apos persistencia |
 | Esquecer `clearEvents()` apos dispatch | Sempre limpar no `dispatchEventsForAggregate` |
 
+## Troubleshooting
+
+### WatchedList nao detecta itens iguais como duplicados
+**Symptom:** `compareItems` retorna false para itens que deveriam ser iguais, causando duplicatas
+**Cause:** Usando `===` para comparar objetos UniqueEntityID ao inves de `.equals()`
+**Fix:** Implemente `equals()` em Entity e UniqueEntityID, e use `a.attachmentId.equals(b.attachmentId)` no `compareItems`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-estrutura-de-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-estrutura-de-eventos-de-dominio/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

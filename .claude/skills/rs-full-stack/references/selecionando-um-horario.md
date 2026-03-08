@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-selecionando-um-horario
 description: "Applies form data preparation and validation patterns before sending to API in JavaScript/HTML projects. Use when user asks to 'submit form data', 'send data to API', 'validate form fields', 'prepare booking data', or 'handle form submission'. Enforces field validation with early return, DOM element selection for form values, date-time composition with dayjs, and unique ID generation. Make sure to use this skill whenever building form-to-API submission flows. Not for backend API handling, database operations, or React/framework form libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Form Data Validation"
+  tags: ['javascript', 'forms', 'validation', 'dayjs', 'dom']
 ---
 
 # Preparando Dados do Formulário para Envio à API
@@ -119,6 +125,15 @@ function handleSubmit() {
 | `dayjs().hour(19)` (sobrescreve hora) | `dayjs(date).add(hour, 'hour')` (adiciona hora à data) |
 | `Math.random()` para IDs | `new Date().getTime()` para IDs temporários |
 | Múltiplos alerts no final da função | Early return com alert em cada validação |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Formulario envia dados vazios | Falta validacao com early return | Adicione `if (!value) { alert(...); return }` para cada campo obrigatorio |
+| Erro ao acessar `.innerText` de null | `querySelector` retorna null quando nada selecionado | Verifique `if (!element)` antes de acessar propriedades |
+| Data e hora combinadas incorretamente | Usando `dayjs().hour()` que sobrescreve | Use `dayjs(date).add(hour, 'hour')` para compor corretamente |
+| Espacos extras no nome do cliente | Input sem tratamento de whitespace | Aplique `.trim()` ao recuperar `input.value` |
 
 ## Deep reference library
 

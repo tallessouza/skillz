@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-escopo-de-funcao
 description: "Applies JavaScript function scoping and hoisting rules when writing or reviewing JS/TS code. Use when user asks to 'write a function', 'debug scope error', 'fix ReferenceError', 'nested functions', or 'function hoisting'. Ensures correct function declaration placement, nested function scoping, and hoisting awareness. Make sure to use this skill whenever generating JavaScript functions or debugging scope-related errors. Not for variable hoisting (var/let/const), module scope, or class methods."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-functions
+  tags: [javascript, functions, scope, hoisting, nested, ReferenceError]
 ---
 
 # Escopo de Função e Hoisting
@@ -100,13 +106,15 @@ formatPrice(99.9) // "R$ 99.90" — agora acessível
 | Assumir que arrow/expression é hoisted | Usar function declaration se precisa de hoisting |
 | Declarar função auxiliar no escopo global sem necessidade | Manter como nested function se só é usada internamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| ReferenceError: function is not defined | Chamando funcao fora do escopo onde foi declarada | Mover a funcao para o escopo onde sera usada ou exportar |
+| Funcao retorna undefined inesperadamente | Hoisting de expression (const/let) nao eleva o corpo | Usar function declaration ou mover chamada para apos a declaracao |
+| Funcao interna nao acessivel em teste | Funcao aninhada nao exportada | Mover para escopo de modulo e exportar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre hoisting, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-escopo-de-funcao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-escopo-de-funcao/references/code-examples.md)

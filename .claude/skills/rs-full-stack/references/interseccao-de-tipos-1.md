@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-interseccao-de-tipos-1
 description: "Enforces TypeScript type intersection patterns when composing or extending types. Use when user asks to 'create a type', 'extend a type', 'combine types', 'reuse type properties', or 'share common fields between types'. Applies the & operator to compose base types with specific properties instead of duplicating fields. Make sure to use this skill whenever defining related types that share common properties. Not for union types (|), generics, or class inheritance with extends."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, types, intersection, composition, reuse]
 ---
 
 # Intersecção de Tipos
@@ -99,13 +105,15 @@ type Student = Person & {
 | `type Teacher = { id: number, name: string, subjects: string[] }` duplicando Person | `type Teacher = Person & { subjects: string[] }` |
 | Interface vazia só para "herdar" | Intersecção direta com `&` sem intermediários vazios |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Tipo resultante da intersecção tem campos `never` | Campos com tipos incompatíveis entre os tipos combinados (ex: `string & number`) | Verifique se os tipos base não têm campos com o mesmo nome mas tipos diferentes |
+| Autocomplete não mostra campos do tipo base | IDE pode não resolver `&` automaticamente em todos os contextos | Extraia o tipo interseccionado em um `type` alias e use-o explicitamente |
+| Erro "Type is not assignable" ao atribuir objeto literal | Objeto literal tem campos extras que não existem na intersecção | Remova campos extras ou use `as` assertion se necessário |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre intersecção vs duplicação e quando usar `&` vs `extends`
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-interseccao-de-tipos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-interseccao-de-tipos-1/references/code-examples.md)

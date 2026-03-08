@@ -1,6 +1,12 @@
 ---
-name: rs-devops-multiplos-datasources
-description: "Applies Terraform data source and output patterns when writing IaC modules. Use when user asks to 'create a datasource', 'add terraform output', 'configure data source', 'read existing resource', or 'expose module outputs'. Enforces rules: datasources inside modules not root, dynamic references never hardcoded IDs, depends_on for resource dependencies, separate root outputs from module outputs. Make sure to use this skill whenever generating Terraform module code with data sources or outputs. Not for Terraform state management, backend configuration, or provider setup."
+name: rs-devops-trabalhando-com-multiplos-datasources
+description: "Applies Terraform data source patterns for reading existing resource attributes and configuring module outputs. Use when user asks to 'read existing resource data', 'create data source', 'configure terraform outputs', 'use depends_on', or 'output not showing in console'. Enforces data sources inside modules, dynamic ID references, and root-level outputs for console visibility. Make sure to use this skill whenever creating Terraform data sources or configuring module output visibility. Not for resource creation, state management, or provider configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modules
+  tags: [terraform, data-source, outputs, depends-on, modules, cloudfront, s3, dynamic-references]
 ---
 
 # Trabalhando com Múltiplos Datasources no Terraform
@@ -148,14 +154,205 @@ output "cdn_domain" {
 | Output só no módulo esperando ver no console | Output na raiz com `module.x.output_name` |
 | Criar datasource sem recurso existente | Primeiro `apply` o recurso, depois adicione datasource |
 
+
+## Troubleshooting
+
+### Output nao aparece no terraform plan/apply
+**Symptom:** Outputs definidos no modulo nao aparecem no console
+**Cause:** Outputs do modulo sao saidas internas — para aparecer no console, precisa de output na raiz referenciando `module.x.output_name`
+**Fix:** Crie `outputs.tf` na raiz do projeto com `value = module.<nome>.output_name`
+
+### Data source falha com "resource not found"
+**Symptom:** `terraform plan` falha dizendo que o recurso referenciado pelo data source nao existe
+**Cause:** O recurso ainda nao foi criado no provider — data source consulta a API real
+**Fix:** Rode `terraform apply` primeiro para criar o recurso, depois adicione o data source
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
+---
+
+# Deep Explanation: Trabalhando com Múltiplos Datasources
+
+## Por que datasources moram no módulo?
+
+O instrutor enfatiza a questão de **responsabilidade**. O datasource poderia tecnicamente ficar na raiz do projeto, mas isso quebraria o encapsulamento do módulo. Cada módulo deve ser auto-contido — seus data sources, seus outputs, suas variáveis. Isso permite reutilização e evita acoplamento.
+
+## Datasource precisa de recurso existente
+
+Um ponto crítico ressaltado: o data source **consulta o provider real** (AWS, GCP, etc.). Ele não trabalha com estado local apenas. Se o recurso não existir no cloud provider, o datasource falha.
+
+Sequência correta:
+1. `terraform apply` para criar o recurso
+2. Adicionar o datasource
+3. `terraform plan` para validar
+
+Se tentar criar recurso e datasource juntos na primeira execução, o datasource não encontrará o recurso no provider e falhará.
+
+## A diferença entre outputs de módulo e outputs de projeto
+
+Esta é uma confusão muito comum. O instrutor demonstra que ao criar outputs dentro de `modules/cloudfront/outputs.tf`, o `terraform plan` **não mostra nada no console**. Por quê?
+
+- Outputs do módulo são **saídas internas** — expostas para outros módulos ou para a raiz
+- Outputs na raiz (`outputs.tf` no diretório principal) são **saídas do console** — aparecem no `terraform plan/apply`
+
+Para que uma informação do módulo apareça no console, é preciso criar um "relay":
+```
+módulo output → raiz output (module.x.var) → console
+```
+
+## O atributo ID do CloudFront
+
+O CloudFront, diferente do S3, não tem um "nome único" (bucket name). Ele é identificado por um **ID** — uma sequência alfanumérica gerada pela AWS (ex: `E1ABCDEF123456`). Este ID está disponível como atributo do recurso após criação e pode ser visto no `terraform.tfstate`.
+
+## Alias repetido entre resource e data source
+
+O instrutor usa `bucket` como alias tanto no `aws_s3_bucket.bucket` quanto no `data.aws_s3_bucket.bucket`. Isso funciona porque são namespaces separados no Terraform:
+- `aws_s3_bucket.bucket` → recurso
+- `data.aws_s3_bucket.bucket` → data source
+
+Não há sobrescrita. O instrutor menciona que é como um "merge de informações" — ambos coexistem e cada um expõe seus próprios atributos.
+
+## depends_on — dependência explícita
+
+O `aws_s3_bucket_website_configuration` só pode ser aplicado a um bucket que já existe. O Terraform normalmente infere dependências implícitas (quando um recurso referencia outro), mas `depends_on` torna isso **explícito e seguro**.
+
+Dentro do módulo, a referência é ao recurso diretamente: `depends_on = [aws_s3_bucket.bucket]`. Na raiz, quando se fala do módulo inteiro, seria `module.s3`.
+
+## Website Configuration como exemplo de múltiplos recursos
+
+O instrutor usa o `aws_s3_bucket_website_configuration` não apenas pelo valor prático, mas para demonstrar como um módulo pode conter **vários recursos relacionados**. O módulo S3 não precisa ter apenas o bucket — pode ter configuração de website, políticas, versionamento, etc. Cada um como um `resource` separado com dependências bem definidas.
 
 ---
 
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-trabalhando-com-multiplos-datasources/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-trabalhando-com-multiplos-datasources/references/code-examples.md)
+# Code Examples: Trabalhando com Múltiplos Datasources
+
+## Estrutura de arquivos completa
+
+```
+project/
+├── main.tf                    # Declaração dos módulos
+├── outputs.tf                 # Outputs do projeto (aparecem no console)
+├── modules/
+│   ├── cloudfront/
+│   │   ├── main.tf            # Resource aws_cloudfront_distribution
+│   │   ├── datasources.tf     # Data source do CloudFront
+│   │   ├── outputs.tf         # Outputs do módulo CloudFront
+│   │   └── variables.tf
+│   └── s3/
+│       ├── main.tf            # Resource aws_s3_bucket + website config
+│       ├── datasources.tf     # Data source do S3
+│       ├── outputs.tf         # Outputs do módulo S3
+│       └── variables.tf
+```
+
+## Datasource CloudFront completo
+
+```hcl
+# modules/cloudfront/datasources.tf
+data "aws_cloudfront_distribution" "cloudfront" {
+  id = aws_cloudfront_distribution.cloudfront.id
+}
+```
+
+O `id` é obtido dinamicamente do recurso `aws_cloudfront_distribution.cloudfront` que está definido no `main.tf` do mesmo módulo.
+
+## Datasource S3 completo
+
+```hcl
+# modules/s3/datasources.tf
+data "aws_s3_bucket" "bucket" {
+  bucket = aws_s3_bucket.bucket.bucket
+}
+```
+
+O atributo `bucket` (nome do bucket) é pego diretamente do recurso criado.
+
+## Outputs do módulo CloudFront
+
+```hcl
+# modules/cloudfront/outputs.tf
+output "cdn_id" {
+  value       = data.aws_cloudfront_distribution.cloudfront.id
+  sensitive   = false
+  description = "ID do CloudFront"
+}
+
+output "cdn_domain_name" {
+  value       = data.aws_cloudfront_distribution.cloudfront.domain_name
+  sensitive   = false
+  description = "Nome de domínio do CloudFront"
+}
+```
+
+Note o uso de `data.aws_cloudfront_distribution` — está pegando do **data source**, não do resource diretamente. Ambos funcionariam, mas usar o data source é consistente com o padrão.
+
+## Outputs na raiz do projeto
+
+```hcl
+# outputs.tf (raiz)
+output "s3_bucket_name" {
+  value       = module.s3.bucket_domain_name
+  sensitive   = false
+  description = "Nome do bucket S3"
+}
+
+output "cdn_domain" {
+  value       = module.cloudfront.cdn_domain_name
+  sensitive   = false
+  description = "Nome de domínio do CloudFront"
+}
+```
+
+Estes outputs referenciam `module.<nome_modulo>.<output_do_modulo>`. São eles que aparecem no console ao executar `terraform plan` ou `terraform apply`.
+
+## S3 com Website Configuration e depends_on
+
+```hcl
+# modules/s3/main.tf
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.bucket_name
+}
+
+resource "aws_s3_bucket_website_configuration" "bucket" {
+  bucket = aws_s3_bucket.bucket.bucket
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "index.html"
+  }
+
+  depends_on = [aws_s3_bucket.bucket]
+}
+```
+
+### Pontos importantes:
+- O alias `"bucket"` é usado tanto no `aws_s3_bucket` quanto no `aws_s3_bucket_website_configuration` — isso é válido porque são tipos de recurso diferentes
+- O `depends_on` garante que o website config só roda após o bucket existir
+- `index.html` e `error.html` são configurações — os arquivos não precisam existir no momento do `apply`
+- O `bucket` é passado dinamicamente via `aws_s3_bucket.bucket.bucket`
+
+## Saída do terraform plan
+
+Após configurar outputs na raiz, o `terraform plan` mostra:
+
+```
+Changes to Outputs:
+  + cdn_domain     = "d1234abcdef.cloudfront.net"
+  + s3_bucket_name = "my-bucket.s3.amazonaws.com"
+```
+
+Sem outputs na raiz, mesmo com outputs no módulo, **nada aparece no console**.
+
+## Verificando atributos disponíveis
+
+Para descobrir quais atributos um recurso expõe (como `id`, `domain_name`, `bucket`):
+
+1. **terraform.tfstate** — contém todos os atributos após `apply`
+2. **Terraform Registry** — documentação oficial do provider lista todos os atributos exportados
+3. **terraform state show** — `terraform state show aws_cloudfront_distribution.cloudfront`

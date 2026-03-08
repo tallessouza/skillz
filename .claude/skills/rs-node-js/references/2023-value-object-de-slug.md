@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-value-object-de-slug
 description: "Applies Value Object pattern for properties with independent business rules in DDD entities. Use when user asks to 'create a slug', 'normalize a string', 'implement value object', 'extract property logic', or designs domain entities with complex field validation. Enforces separation of field-specific business rules into dedicated classes with factory methods and direct constructors. Make sure to use this skill whenever implementing DDD entities with properties that have their own validation or transformation logic. Not for simple DTOs, database schemas, or generic string utilities."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: value-objects-slug
+  tags: [value-object, slug, ddd, normalization, factory-method, regex, typescript]
 ---
 
 # Value Object de Slug
@@ -126,14 +132,14 @@ export class Question extends Entity<QuestionProps> {
 | Value Object para campos triviais sem regras | Manter como tipo primitivo |
 | Um unico caminho de criacao para dados novos e persistidos | Factory method + constructor separados |
 
+## Troubleshooting
+
+### Slug gerado contem caracteres acentuados ou especiais
+**Symptom:** `Slug.createFromText('Cafe com Leite')` gera `cafe-com-leite` mas `'Programacao Avancada'` gera `programacao-avancada` com caracteres estranhos
+**Cause:** A normalizacao NFKD nao esta sendo aplicada antes do `.replace()`, entao acentos nao sao decompostos
+**Fix:** Garanta que `.normalize('NFKD')` e a primeira operacao na cadeia de transformacao, antes de `toLowerCase()` e dos replaces
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-value-object-de-slug/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-value-object-de-slug/references/code-examples.md)

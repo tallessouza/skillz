@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-evento-resposta-criada
 description: "Applies Domain Event creation pattern when implementing event-driven architectures in Node.js/TypeScript. Use when user asks to 'create a domain event', 'dispatch event on entity creation', 'implement DDD events', 'add event to aggregate', or 'notify when entity is created'. Enforces: event class per domain action, aggregate dispatching, conditional firing only for new entities. Make sure to use this skill whenever creating domain events or making entities emit events. Not for event subscribers, message queues, or infrastructure-level pub/sub."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [domain-events, aggregate-root, event-creation, conditional-dispatch, ddd, typescript]
 ---
 
 # Domain Events — Evento de Criacao de Entidade
@@ -103,14 +109,14 @@ static create(props: AnswerProps, id?: UniqueEntityID) {
 | `if (!id)` sem variavel semantica | `const isNewAnswer = !id` para clareza |
 | Evento sem `occurredAt` | Sempre inicialize `this.occurredAt = new Date()` |
 
+## Troubleshooting
+
+### Evento dispara ao hidratar entidade existente do banco
+**Symptom:** Eventos de criacao sao disparados toda vez que a entidade e carregada do repositorio, causando notificacoes duplicadas
+**Cause:** O `addDomainEvent` esta sendo chamado incondicionalmente no `create`, sem verificar se a entidade ja existe
+**Fix:** Adicione `const isNewEntity = !id; if (isNewEntity) { entity.addDomainEvent(...) }` no metodo `create`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-evento-resposta-criada/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-evento-resposta-criada/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

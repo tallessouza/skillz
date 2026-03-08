@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-metadados-das-paginas
 description: "Applies Next.js page metadata patterns when configuring titles, descriptions, and SEO tags. Use when user asks to 'add page title', 'configure metadata', 'set SEO tags', 'add OpenGraph', 'dynamic metadata', or any Next.js head/meta configuration task. Enforces template pattern with %s placeholder, default titles, and generateMetadata for dynamic pages. Make sure to use this skill whenever creating or editing Next.js layouts or pages that need metadata. Not for React Helmet, plain HTML meta tags, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo
+  tags: [metadata, title-template, generateMetadata, seo, open-graph, app-router, next-js]
 ---
 
 # Metadados de Paginas no Next.js
@@ -114,14 +120,19 @@ export const metadata: Metadata = {
 | Ambos `const metadata` e `generateMetadata` no mesmo arquivo | Escolha um: estatico OU dinamico |
 | Deixar o default "Create Next App" | Substitua pelo nome real do projeto |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-metadados-das-paginas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-metadados-das-paginas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-metadados-das-paginas/references/deep-explanation.md) — O Next.js usa um sistema de merge hierarquico para metadata. O `layout.tsx` raiz define a base, e ca
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-metadados-das-paginas/references/code-examples.md) — O ponto de partida — o que o `create-next-app` gera por padrao:

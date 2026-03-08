@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-anatomia-1
 description: "Enforces correct CSS declaration anatomy when writing stylesheets. Use when user asks to 'style an element', 'write CSS', 'add styles', 'create a CSS rule', or any styling task. Applies structure: selector, curly braces context, property-value pairs with correct syntax. Make sure to use this skill whenever generating CSS code, even for simple styling. Not for CSS layout strategies, responsive design, or CSS architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, anatomy, selector, declaration, syntax]
 ---
 
 # Anatomia de uma Declaracao CSS
@@ -82,13 +88,16 @@ h1 {
 | `h1 { color: blue }` (sem ponto e virgula) | `h1 { color: blue; }` |
 | Propriedades soltas sem seletor | Sempre dentro de `seletor { }` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Estilo não aplica | Faltou `:` entre propriedade e valor | Use sintaxe correta: `color: blue;` |
+| Apenas o primeiro estilo funciona | Faltou `;` no final de uma declaração | Termine cada par com ponto e vírgula |
+| Estilo aplica a todos os elementos do tipo | Usou seletor de tag (`h1`) que afeta todos | Use seletor de classe (`.titulo`) para especificidade |
+| Propriedade com camelCase não funciona | CSS usa hífens, não camelCase | Use `font-size` em vez de `fontSize` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre anatomia CSS, analogias e contexto de aprendizado
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-anatomia-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-anatomia-1/references/code-examples.md)

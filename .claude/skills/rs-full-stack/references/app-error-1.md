@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-app-error-1
 description: "Enforces AppError class pattern to differentiate client errors from server errors in Node.js/Express APIs. Use when user asks to 'handle errors', 'create error handling', 'add validation errors', 'throw exceptions in controllers', or 'setup error middleware'. Applies custom error class with message and statusCode, instanceof checking in global handler. Make sure to use this skill whenever building REST API error handling or exception middleware. Not for frontend error boundaries, logging infrastructure, or monitoring setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [error-handling, express, nodejs, api, middleware, exceptions]
 ---
 
 # AppError — Diferenciando Erros de Cliente vs Servidor
@@ -107,13 +113,16 @@ app.use((error, req, res, next) => {
 | `catch (e) { res.status(500)... }` em cada rota | Um único error handler global com `instanceof AppError` |
 | Status 500 para erros de validação | AppError com 400 (padrão) para erros do cliente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Todos os erros retornam 500 | Usando `throw new Error()` em vez de `throw new AppError()` | Substitua por `throw new AppError("mensagem", statusCode)` |
+| Error handler nao captura o erro | Middleware de erro registrado antes das rotas | Registre o error handler APOS todas as rotas |
+| `instanceof AppError` retorna false | AppError importado de caminhos diferentes (duplicacao de modulo) | Verifique se ha apenas uma instancia do modulo AppError |
+| Mensagem de erro interna exposta ao cliente | Erro generico (Error) caindo no handler sem filtro | Use `instanceof AppError` para separar erros conhecidos dos internos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre a separação cliente vs servidor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-app-error-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-app-error-1/references/code-examples.md)

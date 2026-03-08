@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-font-size-1
 description: "Applies CSS font-size best practices when writing stylesheets or component styles. Use when user asks to 'style text', 'change font size', 'set typography', 'create CSS', or 'adjust text size'. Enforces correct use of rem, em, px, and percentage units with clear reasoning for each choice. Make sure to use this skill whenever generating CSS that involves text sizing, even if the user doesn't mention font-size. Not for layout spacing, box model, or non-typography CSS properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-tipografia
+  tags: [css, font-size, rem, em, px, typography, units]
 ---
 
 # Font Size no CSS
@@ -79,13 +85,16 @@ p  { font-size: 0.875rem; }
 | `em` sem saber o font-size do pai | `rem` quando o contexto do pai e incerto |
 | Misturar px e rem sem razao | Escolha uma unidade padrao e mantenha |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `rem` nao resulta no tamanho esperado | Root element tem font-size diferente de 16px | Verifique se ha `html { font-size: ... }` alterando o base |
+| `em` acumula tamanhos inesperados | Aninhamento de elementos com `em` causa multiplicacao | Use `rem` para evitar heranca cumulativa |
+| Texto nao escala quando usuario aumenta zoom | Usando `px` em vez de unidades relativas | Substitua `px` por `rem` para respeitar preferencias do usuario |
+| `font-size: large` renderiza diferente entre navegadores | Valores nomeados nao sao padronizados | Use valores numericos com `rem` para controle preciso |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre heranca de font-size, cadeia em vs rem, e valor padrao do root
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-font-size-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-font-size-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atributos-booleanos
 description: "Enforces correct usage of HTML boolean attributes when writing markup. Use when user asks to 'create HTML', 'write a template', 'add an attribute', 'hide an element', or 'build a form'. Applies rules: boolean attributes need no value, hidden removes element from page, redundant value syntax is valid but unnecessary. Make sure to use this skill whenever generating HTML with boolean attributes like hidden, disabled, required, checked, readonly. Not for CSS visibility, JavaScript DOM manipulation, or ARIA attributes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, boolean-attributes, forms, hidden, disabled, required]
 ---
 
 # Atributos Booleanos em HTML
@@ -70,13 +76,16 @@ description: "Enforces correct usage of HTML boolean attributes when writing mar
 | `required="yes"` | `required` |
 | `checked="checked"` | `checked` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `hidden="false"` nao mostra o elemento | HTML interpreta qualquer valor presente como verdadeiro | Remova o atributo completamente para desativar |
+| `disabled="true"` funciona mas gera warning | Valor redundante em atributo booleano | Escreva apenas `disabled` sem valor |
+| Elemento escondido com `hidden` ainda ocupa espaco | Confusao com `visibility: hidden` do CSS | `hidden` remove da renderizacao; `visibility: hidden` mantem o espaco |
+| Checkbox nao vem marcado por padrao | Falta do atributo `checked` | Adicione `checked` ao input: `<input type="checkbox" checked>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre booleanos HTML e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atributos-booleanos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atributos-booleanos/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-route-params-2
 description: "Applies Express.js route parameter patterns when building REST API endpoints. Use when user asks to 'create a route', 'add an endpoint', 'get URL parameters', 'build REST API', or 'extract route params'. Enforces :param syntax, request.params destructuring, and multi-parameter routes. Make sure to use this skill whenever creating Express routes that need dynamic segments. Not for query strings, request body parsing, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Express Route Params"
+  tags: ['express', 'route-params', 'rest-api', 'url-parameters']
 ---
 
 # Route Params no Express
@@ -72,6 +78,15 @@ app.get("/products/:id", (request, response) => {
 | `const id = request.params.id` | `const { id } = request.params` |
 | `app.get("/products/:1", ...)` | `app.get("/products/:id", ...)` |
 | Regex manual para extrair segmentos | Route params do Express |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| `request.params` retorna objeto vazio | Faltam dois pontos na definicao da rota | Use `:id` na rota: `app.get("/products/:id", ...)` |
+| Parametro retorna `undefined` | Nome do parametro na rota diferente do usado no codigo | Nomes devem coincidir: `:userId` na rota = `params.userId` no codigo |
+| Rota com parametro nao e encontrada (404) | Rota sem parametro definida depois e captura primeiro | Ordene rotas estaticas antes de rotas com parametro |
+| Multiplos parametros parcialmente undefined | Desestruturacao incompleta | Desestruture todos: `const { id, userId } = request.params` |
 
 ## Deep reference library
 

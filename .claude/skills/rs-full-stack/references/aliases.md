@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aliases
 description: "Applies SQL alias conventions when writing SELECT queries with AS keyword, column renaming, and aggregate labeling. Use when user asks to 'write a query', 'select from database', 'rename column', 'use COUNT', or any SQL query task. Ensures aliases use AS explicitly, quotes for compound names, and descriptive labels for aggregates. Make sure to use this skill whenever generating SQL queries with computed columns or unclear column names. Not for table creation, migrations, or ORM model definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sql, alias, select, aggregate, query]
 ---
 
 # SQL Aliases
@@ -88,13 +94,16 @@ SELECT COUNT(*) AS total_de_produtos FROM products;
 | `id` em query com JOIN sem contexto | `id AS product_id` |
 | `AS x` ou `AS t` (abreviacoes) | `AS total_products` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Erro de sintaxe com nome composto | Alias com espaço sem aspas | Use aspas duplas: `AS "total de produtos"` |
+| Coluna retorna nome como `COUNT(*)` | Faltou alias na função agregada | Adicione `AS total` após a função |
+| Alias não funciona no WHERE | SQL processa WHERE antes do SELECT | Use subquery ou HAVING para filtrar por alias |
+| Ambiguidade em JOIN | Duas tabelas com coluna `id` | Renomeie com alias: `users.id AS user_id` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aliases/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aliases/references/code-examples.md)

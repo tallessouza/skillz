@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-setup-api-hono-drizzle-betterauth
 description: "Applies Hono + Drizzle + BetterAuth API setup pattern inside Next.js App Router projects. Use when user asks to 'setup API in Next.js', 'integrate Hono with Next', 'configure BetterAuth', 'add Drizzle ORM', or 'create catch-all route handler'. Follows wildcard route handler pattern, env validation with Zod, Docker Postgres setup, and OAuth configuration. Make sure to use this skill whenever scaffolding a full-stack Next.js project with separate API layer. Not for standalone backend projects, serverless functions outside Next.js, or Prisma-based setups."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: api-setup
+  tags: [hono, drizzle, better-auth, next-js, catch-all-route, zod, docker, postgres, oauth]
 ---
 
 # Setup de API Hono com Drizzle e Better Auth no Next.js
@@ -151,14 +157,19 @@ Apos completar o setup:
 | Instalar deps sem fixar versao | Fixar versoes de libs em evolucao rapida |
 | Criar API estatica sem banco | Usar API real para exercitar cache do Next.js |
 
+## Troubleshooting
+
+### Session undefined em Server Component
+**Symptom:** `getServerSession()` retorna null mesmo com usuario logado
+**Cause:** AuthOptions nao esta configurado corretamente ou cookies nao estao sendo passados
+**Fix:** Verificar que `authOptions` esta exportado e importado corretamente. Em App Router, usar `cookies()` do next/headers para acessar session
+
+### Redirect loop apos login
+**Symptom:** Apos fazer login, pagina redireciona infinitamente
+**Cause:** Middleware de autenticacao redireciona para login, e login redireciona de volta
+**Fix:** Adicionar excecao no middleware para a rota de login/callback. Verificar a logica de redirect apos autenticacao bem-sucedida
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-setup-da-api-hono-com-drizzle-e-better-auth/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-setup-da-api-hono-com-drizzle-e-better-auth/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-setup-da-api-hono-com-drizzle-e-better-auth/references/deep-explanation.md) — O instrutor escolheu o Hono porque ele funciona independente do runtime. Roda no Node, Bun, Cloudfla
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-setup-da-api-hono-com-drizzle-e-better-auth/references/code-examples.md) — // src/app/api/[...route]/route.ts

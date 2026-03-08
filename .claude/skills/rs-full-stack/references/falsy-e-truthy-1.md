@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-falsy-e-truthy-1
 description: "Enforces correct falsy/truthy evaluation when writing JavaScript/TypeScript conditionals and boolean checks. Use when user asks to 'write a condition', 'check if value exists', 'validate input', 'handle empty state', or any conditional logic. Applies rules: empty objects/arrays are truthy, use explicit checks for them, space-only strings are truthy, -0 and NaN are falsy. Make sure to use this skill whenever writing if/else, ternaries, or boolean coercion. Not for type checking, schema validation, or formal boolean algebra."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, falsy, truthy, conditionals, boolean, nullish-coalescing]
 ---
 
 # Falsy e Truthy em JavaScript
@@ -102,13 +108,16 @@ function processOrder(cart) {
 | `name \|\| "Anonimo"` quando "" e valido | `name ?? "Anonimo"` |
 | `if (text)` para conteudo util | `if (text?.trim())` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `if (obj)` passa mesmo com objeto vazio `{}` | Objetos vazios sao truthy em JS | Usar `Object.keys(obj).length > 0` |
+| Valor 0 e ignorado no fallback `\|\|` | `0` e falsy, `\|\|` substitui por fallback | Usar `??` (nullish coalescing) que so substitui `null`/`undefined` |
+| String com espacos passa na validacao | `" "` e truthy porque contem caractere | Usar `.trim()` antes da verificacao: `if (str?.trim())` |
+| Array vazio entra no bloco if | `[]` e truthy em JS | Verificar `.length > 0` explicitamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre coercao booleana, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-falsy-e-truthy-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-falsy-e-truthy-1/references/code-examples.md)

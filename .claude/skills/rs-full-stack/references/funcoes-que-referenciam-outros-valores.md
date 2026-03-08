@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-funcoes-referencia-css
 description: "Applies CSS reference functions (var(), url(), attr()) when writing stylesheets. Use when user asks to 'style a component', 'add background image', 'use CSS variables', 'create pseudo-element content', or 'write CSS'. Enforces correct usage contexts: var() for reusing custom properties, url() for backgrounds, attr() only inside content property of ::before/::after. Make sure to use this skill whenever generating CSS that involves variables, background images, or pseudo-elements. Not for JavaScript, HTML structure, or CSS layout/grid skills."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, var, url, attr, custom-properties, pseudo-elements]
 ---
 
 # Funções CSS de Referência
@@ -117,13 +123,16 @@ description: "Applies CSS reference functions (var(), url(), attr()) when writin
 | `background-image` + `background-position` + `background-size` separados | `background: url(...) center/contain no-repeat` |
 | `var(size)` sem `--` | `var(--size)` — custom properties exigem prefixo `--` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `var()` retorna valor vazio | Custom property nao definida ou fora de escopo | Verifique se `--nome` esta declarada em `:root` ou no escopo correto |
+| `attr()` nao funciona fora de `content` | Limitacao da spec CSS atual | Use `attr()` apenas dentro de `content` em `::before`/`::after` |
+| `var(size)` sem efeito | Falta prefixo `--` | Use `var(--size)` — custom properties exigem `--` |
+| Background image nao aparece | Caminho relativo errado ou falta `url()` | Verifique o caminho e use `background: url("caminho/imagem.jpg")` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre contextos de uso e limitações de cada função
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-que-referenciam-outros-valores/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-que-referenciam-outros-valores/references/code-examples.md)

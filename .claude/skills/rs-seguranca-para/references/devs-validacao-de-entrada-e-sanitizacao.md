@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-validacao-entrada
 description: "Enforces input validation and sanitization patterns when writing backend code that handles user input. Use when user asks to 'create an endpoint', 'handle form data', 'write a login route', 'query database with user input', or any code receiving external data. Applies rules: always use prepared queries, validate all inputs before processing, never concatenate user data into SQL strings, treat cookies/headers/params as untrusted. Make sure to use this skill whenever generating backend code that touches user-supplied data, even if the user doesn't mention security. Not for frontend-only validation, UI styling, or cryptography/hashing concerns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, input-validation, sanitization]
 ---
 
 # Validacao de Entrada e Sanitizacao
@@ -97,14 +103,14 @@ def login():
 | Escapar aspas manualmente com `.replace("'", "")` | Usar prepared queries da biblioteca |
 | Validar so o form field e ignorar cookies/headers | Validar TUDO que vem do usuario |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-validacao-de-entrada-e-sanitizacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-validacao-de-entrada-e-sanitizacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-validacao-de-entrada-e-sanitizacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-validacao-de-entrada-e-sanitizacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

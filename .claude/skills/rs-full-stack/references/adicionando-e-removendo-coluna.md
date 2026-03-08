@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-removendo-coluna
 description: "Applies correct ALTER TABLE syntax when adding or removing columns in SQL databases. Use when user asks to 'add a column', 'remove a column', 'alter table', 'modify table structure', or 'change database schema'. Enforces ADD with type/constraints and DROP COLUMN syntax, plus safe execution practices. Make sure to use this skill whenever generating SQL DDL that modifies existing tables. Not for CREATE TABLE, INSERT, UPDATE, or SELECT queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sql, alter-table, ddl, columns, database, schema]
 ---
 
 # Adicionando e Removendo Colunas com ALTER TABLE
@@ -77,13 +83,16 @@ ALTER TABLE products ADD quantity INTEGER NOT NULL;
 | Rodar script inteiro com ADD e DROP juntos | Selecionar e executar cada comando separadamente |
 | `ADD quantity` (sem tipo) | `ADD quantity INTEGER` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `NOT NULL constraint failed` ao adicionar coluna | Tabela ja tem dados e coluna NOT NULL sem DEFAULT | Adicione `DEFAULT valor` na definicao da coluna |
+| `no such column` apos DROP | Coluna ja foi removida anteriormente | Verifique a estrutura atual com `PRAGMA table_info(table)` |
+| ADD e DROP executaram juntos, efeito zero | Script inteiro foi executado de uma vez | Selecione e execute cada ALTER TABLE separadamente |
+| `near "DROP": syntax error` | Sintaxe incorreta do DROP COLUMN | Use `ALTER TABLE table DROP COLUMN column` com nome completo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ALTER TABLE e praticas seguras de execucao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-e-removendo-coluna/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-e-removendo-coluna/references/code-examples.md)

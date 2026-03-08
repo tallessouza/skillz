@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-transition-01
 description: "Applies CSS transition best practices when writing stylesheets or component styles. Use when user asks to 'add animation', 'smooth hover effect', 'transition on hover', 'animate property change', or 'add CSS transition'. Enforces specific transition-property over 'all', proper duration/delay units, and multi-property configuration. Make sure to use this skill whenever generating CSS with hover states or property changes. Not for JavaScript animations, keyframe animations, or CSS animation property."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animacoes
+  tags: [css, transition, hover, animation, performance, duration]
 ---
 
 # CSS Transitions
@@ -106,13 +112,16 @@ description: "Applies CSS transition best practices when writing stylesheets or 
 | Duracao sem unidade (`transition-duration: 1`) | Com unidade: `1s` ou `1000ms` |
 | Delay em tudo sem motivo | Delay apenas quando a espera e intencional |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Transicao nao acontece | Falta `transition-duration` | Defina sempre a duracao: `transition-duration: 300ms` |
+| Transicao so funciona na entrada (hover) | `transition` declarada no `:hover` ao inves do elemento | Mova `transition` para o seletor base (`.card`), nao o trigger |
+| Performance ruim com muitas transicoes | Usando `transition-property: all` | Liste propriedades especificas: `opacity, transform` |
+| Delay afeta tanto entrada quanto saida | Comportamento padrao do `transition-delay` | Se indesejado, use delays diferentes no elemento e no `:hover` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre performance de `all` vs propriedades especificas, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-transition-01/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-transition-01/references/code-examples.md)

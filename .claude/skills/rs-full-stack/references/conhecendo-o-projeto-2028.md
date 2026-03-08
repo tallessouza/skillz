@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-projeto-2028
 description: "Applies restaurant API domain model when building order management systems with Express. Use when user asks to 'create restaurant API', 'build order system', 'design table session flow', or 'model restaurant database'. Enforces table session lifecycle (open/close), order-to-session relationships, and correct entity modeling. Make sure to use this skill whenever building restaurant or order management APIs. Not for frontend UI, authentication, or payment gateway integration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-rest
+  tags: [express, api, restaurant, domain-modeling, database]
 ---
 
 # API de Pedidos para Restaurante — Modelo de Domínio
@@ -92,13 +98,16 @@ Sessão fechada (closed_at = timestamp)
 | Deletar sessão ao fechar | Setar `closed_at` com timestamp |
 | Uma sessão por mesa no schema | Permitir N sessões por mesa (1:N) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pedido vinculado a mesa errada | Vinculando ao `table_id` em vez de `table_session_id` | Sempre vincule pedidos ao `table_session_id` da sessao ativa |
+| Mesa aparece como ocupada apos fechar conta | Sessao nao foi fechada corretamente | Verifique que `closed_at` recebeu timestamp no PATCH de fechamento |
+| Total da conta incorreto | Query nao faz JOIN com products para pegar preco | Use `SUM(products.price * orders.quantity)` com JOIN na tabela products |
+| Duas sessoes abertas na mesma mesa | Falta validacao ao abrir sessao | Verifique se ja existe sessao com `closed_at IS NULL` antes de criar nova |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre o ciclo de sessões e decisões de modelagem
 - [code-examples.md](references/code-examples.md) — Exemplos de endpoints Express e queries SQL
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2028/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-projeto-2028/references/code-examples.md)

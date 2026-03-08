@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-variavel-de-ambiente
 description: "Enforces environment variable best practices when configuring Node.js/NestJS applications for Kubernetes deployment. Use when user asks to 'add env vars', 'configure environment', 'setup .env', 'prepare app for kubernetes', or 'configure configmap'. Applies rules: never commit .env to git, use @nestjs/config for loading, separate config per environment, never hardcode secrets in code. Make sure to use this skill whenever setting up application configuration for containerized or Kubernetes environments. Not for Kubernetes manifest writing, ConfigMap/Secret YAML creation, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-configuracao
+  tags: [environment-variables, dotenv, nestjs, configmodule, kubernetes, twelve-factor, gitignore]
 ---
 
 # Variaveis de Ambiente na Aplicacao
@@ -106,14 +112,14 @@ console.log(process.env.APP); // "SkillzApp"
 | Acessar `process.env` sem carregar ConfigModule | Adicionar `ConfigModule.forRoot()` no AppModule |
 | Colocar .env dentro do Dockerfile/imagem | Injetar via ConfigMap/Secret do Kubernetes em runtime |
 
+## Troubleshooting
+
+### process.env retorna undefined para variaveis do .env
+**Symptom:** `console.log(process.env.APP)` retorna `undefined` mesmo com .env configurado
+**Cause:** `ConfigModule.forRoot()` nao foi adicionado nos imports do AppModule (NestJS) ou dotenv nao foi carregado
+**Fix:** Adicione `ConfigModule.forRoot()` no array de imports do `AppModule` e verifique que `@nestjs/config` esta instalado
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-variavel-de-ambiente-na-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-variavel-de-ambiente-na-aplicacao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

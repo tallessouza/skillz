@@ -1,6 +1,12 @@
 ---
 name: rs-node-2023-erros-use-case
 description: "Enforces custom error class pattern for use case error handling in Node.js/TypeScript APIs. Use when user asks to 'handle errors', 'create error handling', 'throw errors in use case', 'return different status codes', or builds controllers with try/catch. Applies pattern: one class per error type extending native Error, instanceof checks in controller for specific status codes. Make sure to use this skill whenever creating use cases, services, or controllers that need error differentiation. Not for global error middleware, validation libraries, or logging configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: error-handling
+  tags: [error-handling, custom-errors, instanceof, use-case, controller, status-codes, typescript]
 ---
 
 # Erros Personalizados em Use Cases
@@ -106,14 +112,14 @@ catch (err) {
 | Status HTTP dentro da classe de erro | Status HTTP apenas no controller |
 | Erro generico com código: `new Error('409:exists')` | Classe tipada + instanceof |
 
+## Troubleshooting
+
+### Controller retorna 409 para todos os erros independente do tipo
+**Symptom:** Qualquer erro no use case retorna status 409 Conflict
+**Cause:** O catch no controller nao diferencia tipos de erro, tratando todos da mesma forma
+**Fix:** Use `if (err instanceof UserAlreadyExistsError)` para cada tipo de erro e re-throw erros desconhecidos para o handler global
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-lidando-com-erros-do-use-case/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-lidando-com-erros-do-use-case/references/code-examples.md)

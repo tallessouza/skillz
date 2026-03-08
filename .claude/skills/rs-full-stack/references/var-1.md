@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-var-1
 description: "Applies JavaScript var declaration patterns when writing beginner JS code. Use when user asks to 'declare a variable', 'create a var', 'assign a value', or works with basic JavaScript variable creation. Covers declaration without value, with value, and reassignment. Make sure to use this skill whenever teaching or generating introductory JavaScript variable code. Not for let/const, scoping rules, hoisting, or advanced variable patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, variables, var, declaration, assignment]
 ---
 
 # Declaracao de Variaveis com var
@@ -74,6 +80,15 @@ console.log(email); // "outro@email.com"
 | `var email = rodrigo@email.com` | `var email = "rodrigo@email.com"` |
 | `var x = "valor"; var x = "outro";` | `var x = "valor"; x = "outro";` |
 | `console.log(y);` (sem declarar y) | `var y; console.log(y);` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `ReferenceError: x is not defined` | Variavel usada antes de ser declarada com `var` | Declare a variavel antes de usa-la |
+| `SyntaxError` ao atribuir string | Faltaram aspas ao redor do valor de texto | Use `"valor"` ou `'valor'` |
+| Variavel retorna `undefined` | Declarada sem valor ou valor nao atribuido | Atribua um valor: `var x = "valor"` |
+| Valor antigo permanece apos reatribuicao | Usou `var` novamente em vez de reatribuir direto | Reatribua sem `var`: `x = "novo"` |
 
 ## Deep reference library
 

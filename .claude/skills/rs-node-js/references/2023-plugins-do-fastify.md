@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-plugins-do-fastify
 description: "Enforces Fastify plugin architecture when structuring Node.js APIs with Fastify. Use when user asks to 'create a route', 'add an endpoint', 'organize fastify app', 'separate routes', or 'register a plugin'. Applies rules: routes in separate files as async plugins, typed with FastifyInstance, registered via app.register, order-aware. Make sure to use this skill whenever creating or refactoring Fastify route files. Not for Express, Hapi, or non-Fastify frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fastify-architecture
+  tags: [fastify, plugin, routes, register, fastify-instance, typescript, api-structure]
 ---
 
 # Plugins do Fastify
@@ -112,14 +118,14 @@ app.listen({ port: 3333 })
 | Chamar rotas diretamente sem register | `app.register(myPlugin)` |
 | Todas as rotas no server.ts | Um plugin por dominio em `routes/` |
 
+## Troubleshooting
+
+### TypeScript nao sugere metodos como get, post no parametro app do plugin
+**Symptom:** Autocomplete nao funciona e TypeScript mostra erro ao usar `app.get()` dentro do plugin
+**Cause:** O parametro `app` nao esta tipado com `FastifyInstance`
+**Fix:** Tipe o parametro explicitamente: `export async function myRoutes(app: FastifyInstance)`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-plugins-do-fastify/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-plugins-do-fastify/references/code-examples.md)

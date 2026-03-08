@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-categorizando-testes
 description: "Enforces test organization with describe blocks and 'it should be able to' naming convention when writing Vitest or Jest tests. Use when user asks to 'write tests', 'create test file', 'add test cases', 'organize tests', or any test generation task. Applies rules: group related tests in describe blocks, use 'it' over 'test', name tests as 'should be able to {action}', one file per domain. Make sure to use this skill whenever generating test code. Not for production code, documentation, or non-test files."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testing
+  tags: [testing, describe, it, vitest, jest, naming-convention, organization]
 ---
 
 # Categorizando Testes
@@ -119,14 +125,19 @@ describe('Transactions routes', () => {
 | Nome em portugues no teste | Nome em ingles: "should be able to {action}" |
 | Um arquivo com testes de varios dominios | Um arquivo por dominio: `transactions.spec.ts` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-categorizando-os-testes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-categorizando-os-testes/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-categorizando-os-testes/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-categorizando-os-testes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

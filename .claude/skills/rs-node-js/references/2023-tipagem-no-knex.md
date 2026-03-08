@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-tipagem-no-knex
 description: "Enforces Knex TypeScript table typing setup when working with Knex query builder in Node.js projects. Use when user asks to 'setup knex', 'add knex types', 'knex autocomplete', 'type knex tables', or 'configure knex typescript'. Applies the declare module pattern for knex/types/tables to enable column autocomplete and type safety. Make sure to use this skill whenever creating or modifying Knex configurations in TypeScript projects. Not for Prisma, TypeORM, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: knex-e-tipagem
+  tags: [knex, typescript, types, autocomplete, declare-module, database]
 ---
 
 # Tipagem no Knex
@@ -94,14 +100,14 @@ await knex('transactions').insert({
 | `any` como tipo da tabela | Objeto com cada coluna tipada |
 | Modulo errado `knex/tables` | Modulo correto `knex/types/tables` |
 
+## Troubleshooting
+
+### Autocomplete do Knex nao funciona apos criar o arquivo .d.ts
+**Symptom:** `knex('transactions')` nao sugere colunas no VS Code, apesar de ter criado o `knex.d.ts`
+**Cause:** O arquivo foi criado com extensao `.ts` em vez de `.d.ts`, ou o import do Knex esta faltando no topo do arquivo de definicao
+**Fix:** Renomeie para `knex.d.ts` e adicione `import { Knex } from 'knex'` antes do `declare module 'knex/types/tables'`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-tipagem-no-knex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-tipagem-no-knex/references/code-examples.md)

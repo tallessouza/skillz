@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-eventos-em-input
 description: "Applies correct JavaScript input event handling patterns when working with form inputs. Use when user asks to 'handle input events', 'capture keypress', 'detect typing', 'listen for input changes', 'validate on type', or any form interaction task. Enforces choosing between keydown, keypress, and change events based on use case. Make sure to use this skill whenever implementing input event listeners or form field interactions. Not for click events, form submission, or non-input DOM events."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, events, input, keydown, keypress]
 ---
 
 # Eventos em Input
@@ -82,13 +88,16 @@ input.addEventListener("keypress", (event) => {
 | `input.onchange = fn1; input.onchange = fn2` | `addEventListener("change", fn1)` + `addEventListener("change", fn2)` |
 | `event.keyCode === 13` | `event.key === "Enter"` — legivel e nao deprecated |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Shift/Ctrl disparam validacao de caractere | Usando `keydown` em vez de `keypress` | Trocar para `keypress` que ignora modificadores |
+| Atalho Ctrl+S nao e capturado | Usando `keypress` que ignora modificadores | Trocar para `keydown` que captura tudo |
+| Handler dispara so ao sair do campo | Usando `change` em vez de `keypress`/`input` | Usar `keypress` ou `input` para feedback em tempo real |
+| `event.keyCode` retorna deprecated warning | Usando API antiga | Trocar para `event.key` que retorna string legivel |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar cada evento, analogia da caixa de ferramentas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos da aula com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-eventos-em-input/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-eventos-em-input/references/code-examples.md)

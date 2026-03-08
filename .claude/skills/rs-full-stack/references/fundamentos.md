@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fundamentos-css-texto
 description: "Enforces CSS font and text layout best practices when styling typography in HTML/CSS. Use when user asks to 'style text', 'change font', 'align text', 'set line-height', 'adjust letter-spacing', or any CSS typography task. Applies separation between font properties (family, size, weight, style) and text layout properties (line-height, letter-spacing, text-align). Make sure to use this skill whenever writing CSS that involves text or font styling. Not for CSS layout (flexbox, grid), colors, or animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, typography, font, text, line-height, letter-spacing]
 ---
 
 # Fundamentos de CSS: Fontes e Textos
@@ -100,13 +106,16 @@ description: "Enforces CSS font and text layout best practices when styling typo
 | `line-height: 20px` (valor absoluto) | `line-height: 1.6` (valor sem unidade, relativo ao font-size) |
 | Misturar font props e text layout props sem separacao | Agrupar e comentar por categoria |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fonte nao muda apesar de declarar `font-family` | Fonte nao carregada ou nome incorreto | Verifique se a fonte esta importada (@import ou link) e o nome corresponde |
+| `line-height` em px nao escala com font-size | Usando valor absoluto | Use valor sem unidade: `line-height: 1.6` (relativo ao font-size) |
+| Parte do texto nao aceita estilo diferente | CSS se aplica a elementos, nao a trechos soltos | Envolva o trecho em `<span>` e aplique CSS no span |
+| `font-size: 16px` nao acessivel | Valor fixo impede escalonamento do usuario | Use `font-size: 1rem` para respeitar configuracoes do usuario |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a separacao fonte vs layout e direcionalidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fundamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fundamentos/references/code-examples.md)

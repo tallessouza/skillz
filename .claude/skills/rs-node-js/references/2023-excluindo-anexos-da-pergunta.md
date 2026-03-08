@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-excluindo-anexos-pergunta
 description: "Enforces cascade deletion pattern through repository dependency injection in DDD aggregates. Use when user asks to 'delete an entity with children', 'cascade delete', 'remove parent and related entities', 'clean up attachments on delete', or implements aggregate root deletion. Applies repository-depends-on-repository pattern for consistent data cleanup. Make sure to use this skill whenever implementing delete operations on aggregate roots that own child entities. Not for simple CRUD without relationships, database-level cascade configs, or ORM cascade annotations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: entidades-dominio
+  tags: [cascade-delete, repository, dependency-injection, aggregate-root, ddd, typescript]
 ---
 
 # Cascade Delete via Repository Dependency Injection
@@ -98,14 +104,14 @@ async delete(question: Question) {
 | Duplicar logica de cascade em cada caso de uso | Centralizar no metodo `delete` do repositorio pai |
 | Esquecer de atualizar outros testes ao adicionar dependencia | Buscar todos os `new InMemoryQuestionsRepository` e passar o novo param |
 
+## Troubleshooting
+
+### Anexos orfaos permanecem apos deletar a pergunta
+**Symptom:** Registros de QuestionAttachment continuam no banco apos deletar a Question
+**Cause:** O repositorio de questions nao faz cascade delete nos repositorios filhos
+**Fix:** Injete `QuestionAttachmentsRepository` no construtor de `QuestionsRepository` e chame `deleteManyByQuestionId` dentro do metodo `delete`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-excluindo-anexos-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-excluindo-anexos-da-pergunta/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

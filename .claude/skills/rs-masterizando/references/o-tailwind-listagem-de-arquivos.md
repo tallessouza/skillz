@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-listagem-de-arquivos
 description: "Applies Tailwind CSS patterns for building file upload list components with progress indicators. Use when user asks to 'create a file list', 'build upload UI', 'show uploaded files', 'file upload component', or 'progress bar with Tailwind'. Enforces icon badge styling, progress bar structure, and file metadata display patterns. Make sure to use this skill whenever building file upload interfaces or file listing UIs with Tailwind CSS. Not for drag-and-drop logic, actual upload APIs, or server-side file handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, flexbox]
 ---
 
 # Listagem de Arquivos com Tailwind CSS
@@ -130,15 +136,19 @@ export function formatBytes(bytes: number): string {
 | `items-center` para lista com icone e texto multi-linha | `items-start` para alinhar ao topo |
 | `setFiles(newFiles)` sempre | Checar `multiple` para decidir concatenar ou sobrescrever |
 | Icone solto sem badge | Sempre envolva em div com `rounded-full border-4 p-2` |
+## Troubleshooting
+
+### Classes Tailwind nao aplicam
+**Symptom:** Classe adicionada mas sem efeito visual.
+**Cause:** O arquivo nao esta incluido no `content` do tailwind.config, ou a classe esta sendo sobrescrita por especificidade.
+**Fix:** Verifique que o path do arquivo esta em `content: ['./src/**/*.tsx']` no tailwind.config. Use DevTools para inspecionar se outra classe sobrescreve.
+
+### Autocomplete do Tailwind nao funciona
+**Symptom:** VS Code nao sugere classes Tailwind.
+**Cause:** Extensao Tailwind CSS IntelliSense nao instalada ou configurada.
+**Fix:** Instale a extensao "Tailwind CSS IntelliSense" no VS Code e recarregue a janela.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-listagem-de-arquivos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-listagem-de-arquivos/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-listagem-de-arquivos/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-listagem-de-arquivos/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

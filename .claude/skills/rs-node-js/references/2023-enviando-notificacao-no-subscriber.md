@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-enviando-notificacao-subscriber
-description: "Enforces domain event subscriber implementation patterns when writing DDD Node.js applications. Use when user asks to 'create a subscriber', 'send notification on event', 'test domain events', 'implement pub/sub', or 'connect subdomains'. Applies rules: subscribers can use cross-subdomain repositories, use spy to verify event-triggered side effects, use waitFor for async event assertions. Make sure to use this skill whenever implementing event-driven communication between bounded contexts. Not for CRUD operations, REST endpoints, or synchronous service calls."
+name: 2023-enviando-notificacao-no-subscriber
+description: "Implements cross-domain subscribers that react to domain events by injecting repositories from other subdomains, with spy-based testing using waitFor for async event assertions. Use when user asks to 'send notification on event', 'create a subscriber', 'test domain events', 'react to events across subdomains', or 'use waitFor in tests'. Make sure to use this skill whenever implementing event-driven cross-domain communication or testing asynchronous domain event handlers. Not for synchronous event handling, frontend event listeners, or message broker consumers."
+category: coding-lens
+tags: [ddd, domain-events, repository, testing, typescript, use-cases]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [subscriber, domain-events, cross-domain, notification, spy, waitFor, testing]
 ---
 
 # Enviando Notificacao no Subscriber
@@ -123,14 +132,14 @@ await waitFor(() => {
 | `let spy: any` | `let spy: MockInstance<[Request], Promise<Response>>` |
 | Testar subscriber sem criar a entidade relacionada | Criar question E answer no teste |
 
+## Troubleshooting
+
+### Teste de subscriber falha com spy nao chamado
+**Symptom:** `expect(spy).toHaveBeenCalled()` falha mesmo quando o subscriber esta configurado corretamente
+**Cause:** Domain events sao assincronos — a assertion roda antes do evento ser disparado
+**Fix:** Use `await waitFor(() => { expect(spy).toHaveBeenCalled() })` para polling automatico ate o evento disparar
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-enviando-notificacao-no-subscriber/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-enviando-notificacao-no-subscriber/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

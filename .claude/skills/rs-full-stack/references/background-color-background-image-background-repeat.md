@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-background-color-image-repeat
 description: "Applies CSS background properties (background-color, background-image, background-repeat) when styling HTML elements. Use when user asks to 'add background', 'set background color', 'add background image', 'style element background', or any CSS background task. Enforces correct usage of color formats, URL function syntax, and repeat control. Make sure to use this skill whenever generating CSS that involves element backgrounds. Not for CSS layout, positioning, or non-background styling properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, background, background-color, background-image, background-repeat]
 ---
 
 # Background Color, Background Image, Background Repeat
@@ -90,13 +96,16 @@ body {
 | Imagem de fundo sem controlar repeat | Adicione `background-repeat: no-repeat` se não quer tiling |
 | `url(path com espaços.png)` | `url("path com espaços.png")` — use aspas |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem de fundo nao aparece | Caminho da URL incorreto ou aspas faltando | Verifique o caminho e use `url("caminho")` com aspas |
+| Imagem repete indesejavelmente | Comportamento padrao do CSS e `repeat` | Adicione `background-repeat: no-repeat` |
+| Cor de fundo nao aparece | Elemento sem dimensoes (width/height) | Defina dimensoes ou adicione conteudo ao elemento |
+| Background nao preenche toda a area | Elemento sem `width: 100%` ou `height` definidos | Ajuste as dimensoes do elemento via CSS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-background-color-background-image-background-repeat/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-background-color-background-image-background-repeat/references/code-examples.md)

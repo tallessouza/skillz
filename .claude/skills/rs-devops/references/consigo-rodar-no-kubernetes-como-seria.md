@@ -1,13 +1,19 @@
 ---
 name: rs-devops-minio-kubernetes-integracao
 description: "Applies MinIO integration patterns when deploying object storage on Kubernetes clusters. Use when user asks to 'deploy MinIO on k8s', 'setup object store in cluster', 'persistent volume management', 'internalize S3 storage', or 'run MinIO as StatefulSet'. Covers StatefulSet deployment, persistent volume management, backup strategies with Velero, and bucket organization. Make sure to use this skill whenever designing object storage architecture for Kubernetes environments. Not for MinIO local development setup, Loki log configuration, or general S3/AWS usage outside Kubernetes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-storage
+  tags: [minio, kubernetes, statefulset, persistent-volume, velero, object-storage, backup]
 ---
 
 # MinIO no Kubernetes
 
 > MinIO roda como StatefulSet dentro do cluster para internalizar object storage com gerenciamento visual completo e volumes persistentes.
 
-## Conceito central
+## Key concepts
 
 MinIO funciona como um Object Store open source, compativel com S3, que pode rodar dentro de um cluster Kubernetes. Ele serve tanto para armazenar logs (via Loki) quanto para dados de aplicacoes que normalmente iriam para S3 na AWS — internalizando esse storage com controle total.
 
@@ -85,14 +91,14 @@ MinIO fornece UI com:
 | Usar S3 externo quando pode internalizar | MinIO open source dentro do cluster |
 | Ignorar monitoramento de capacidade | Usar UI do MinIO para acompanhar storage |
 
+## Troubleshooting
+
+### Dados do MinIO perdidos apos restart do pod
+**Symptom:** Buckets e objetos desaparecem quando o pod MinIO reinicia
+**Cause:** MinIO deployado como Deployment (stateless) sem volumeClaimTemplates
+**Fix:** Use StatefulSet com `volumeClaimTemplates` para garantir volumes persistentes atrelados a cada replica
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-consigo-rodar-no-kubernetes-como-seria/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-consigo-rodar-no-kubernetes-como-seria/references/code-examples.md)

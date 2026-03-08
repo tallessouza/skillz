@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-set-interval
 description: "Applies setInterval and clearInterval patterns when writing JavaScript timer code. Use when user asks to 'create a timer', 'run something repeatedly', 'make a countdown', 'execute at intervals', or 'schedule recurring execution'. Enforces proper cleanup with clearInterval to prevent memory leaks. Make sure to use this skill whenever generating code with repeated execution or polling. Not for one-time delays (use setTimeout), cron jobs, or server-side scheduling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [javascript, setInterval, clearInterval, timers, memory-leak]
 ---
 
 # setInterval e clearInterval
@@ -89,13 +95,16 @@ const interval = setInterval(() => {
 | `setTimeout` em loop manual para repetir | `setInterval` com `clearInterval` |
 | `clearTimeout` para parar interval | `clearInterval` para interval, `clearTimeout` para timeout |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Interval nunca para | Faltou `clearInterval` com condicao de parada | Adicione `if (condition) clearInterval(intervalId)` dentro do callback |
+| Memory leak em componente React | Interval nao limpo ao desmontar componente | Use `clearInterval` no return do `useEffect` |
+| Interval executa mais rapido que o esperado | Multiplos intervals criados sem limpar os anteriores | Limpe o interval anterior antes de criar um novo |
+| Callback executa com valores desatualizados | Closure captura valor antigo da variavel | Use `useRef` em React ou variavel mutavel fora do callback |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-set-interval/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-set-interval/references/code-examples.md)

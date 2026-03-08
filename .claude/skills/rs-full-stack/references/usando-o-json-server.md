@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-usando-o-json-server
 description: "Configures json-server as a local mock API for frontend development projects. Use when user asks to 'create a mock API', 'simulate backend', 'setup json-server', 'create local API', or 'mock REST endpoints'. Guides installation, script setup, route definition, and development workflow. Make sure to use this skill whenever setting up json-server or a fake REST API for prototyping. Not for real backend development, Express servers, or production API design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: frontend-tooling
+  tags: [json-server, mock-api, rest, frontend, prototyping]
 ---
 
 # Configurando json-server como API Local
@@ -84,6 +90,14 @@ project/
 
 - Acessar `http://localhost:3333/{rota}` retorna os dados do `server.json`
 - Adicionar um objeto no array do `server.json`, salvar, e recarregar o navegador — dados atualizados aparecem automaticamente
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Erro "too many open files" | Limite de file watchers do sistema atingido | Recarregue o VS Code e execute novamente |
+| Requisição retorna 404 | Nome da rota não corresponde à chave no `server.json` | Verifique se a chave no JSON corresponde exatamente ao endpoint |
+| Dados não persistem entre restarts | `server.json` não foi alterado pelo json-server | Verifique permissões de escrita no arquivo e que `--watch` está ativo |
 
 ## Deep reference library
 

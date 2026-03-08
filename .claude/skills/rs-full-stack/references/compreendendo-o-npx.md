@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compreendendo-o-npx
 description: "Applies correct npx vs npm usage when setting up Node.js projects or running package binaries. Use when user asks to 'run a package', 'execute typescript compiler', 'setup node project', 'use npx or npm', or any task involving package execution vs installation. Ensures npx for execution and npm for installation. Make sure to use this skill whenever running CLI tools from node_modules. Not for package publishing, npm scripts configuration, or package.json authoring."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, npm, npx, cli, tooling]
 ---
 
 # NPX vs NPM — Execucao vs Instalacao
@@ -62,13 +68,17 @@ npx prisma init
 | `npm tsc file.ts` | `npx tsc file.ts` |
 | Instalar globalmente so para executar uma vez | `npx <pacote>` sem instalar |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Comando npx nao encontrado | Node.js muito antigo ou npx nao instalado | Atualize Node.js para versao 8+ que inclui npx por padrao |
+| npx executa versao errada do pacote | Versao em cache diferente da desejada | Use `npx --yes pacote@versao` para forcar versao especifica |
+| Erro 'command not found' ao executar binario | Pacote nao instalado localmente | Instale com `npm install pacote` antes de usar `npx` |
+| npx baixa pacote toda vez | Pacote nao esta instalado localmente | Instale como devDependency para evitar download repetido |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre npm vs npx, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-o-npx/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-o-npx/references/code-examples.md)

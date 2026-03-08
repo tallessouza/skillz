@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-linguagem-de-programacao
 description: "Applies foundational programming language concepts when explaining code to beginners. Use when user asks to 'explain programming', 'what is a programming language', 'how computers work', 'binary', 'input output', 'code vs program', or 'which language to choose'. Make sure to use this skill whenever teaching or explaining fundamental programming concepts to newcomers. Not for writing actual code, debugging, or advanced architecture decisions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [programming, fundamentals, beginner, binary, languages]
 ---
 
 # Linguagem de Programacao — Fundamentos
@@ -71,13 +77,16 @@ Micro-ondas, semaforos, roteadores, avioes — qualquer eletronico com comportam
 - A escolha de linguagem depende de contexto profissional e mercado, nao apenas de dominio tecnico
 - Linguagens evoluem e seus dominios de adequacao mudam com o tempo
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Iniciante nao sabe qual linguagem escolher | Falta de contexto sobre objetivos | Pergunte o objetivo (web, mobile, IA) e recomende com base no dominio |
+| Confusao entre codigo e programa | Terminologia nao explicada | Use analogia: codigo = instrucao individual, programa = conjunto de codigos |
+| Medo do ingles como barreira | Crenca de que precisa fluencia antes | Explique que ingles basico se aprende junto com programacao |
+| Dificuldade em entender binario | Conceito abstrato demais | Use analogia de interruptor: 0 = desligado, 1 = ligado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-linguagem-de-programacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-linguagem-de-programacao/references/code-examples.md)

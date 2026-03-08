@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-targets
 description: "Applies Babel preset-env targets configuration when setting up JavaScript build tooling. Use when user asks to 'configure babel', 'set browser targets', 'setup build pipeline', 'add browser support', or 'configure preset-env'. Ensures correct babel.config.js structure with targets, polyfills, and script separation. Make sure to use this skill whenever configuring Babel or defining browser compatibility. Not for ESLint, Webpack, or Vite configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [babel, preset-env, browser-targets, transpilation, polyfills, build-pipeline]
 ---
 
 # Configurando Targets no Babel
@@ -89,13 +95,16 @@ module.exports = {
 | Copiar targets de outro projeto | Definir targets conforme necessidade real |
 | Decorar todas as opcoes do preset | Consultar docs do Babel quando precisar |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Safari target causa erro com numero decimal | Versao passada como numero em vez de string | Usar `safari: "11.1"` (string, nao numero) |
+| Preset-env nao transpila features modernas | Targets muito recentes (Chrome 120+) | Ajustar targets para versoes mais antigas conforme necessidade |
+| `--watch` trava o terminal | Usando script `build` com watch | Separar em scripts `build` e `dev` com `--watch` apenas no dev |
+| Polyfills nao injetados | `useBuiltIns` e `corejs` nao configurados | Adicionar `useBuiltIns: "usage"` e `corejs: 3` ao preset-env |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre configuracao do Babel, polyfills e CoreJS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-targets/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-targets/references/code-examples.md)

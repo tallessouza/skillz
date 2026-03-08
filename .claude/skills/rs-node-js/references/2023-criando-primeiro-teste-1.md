@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-primeiro-teste
-description: "Enforces Vitest setup and first test structure when writing automated tests for Node.js/TypeScript applications. Use when user asks to 'create a test', 'setup testing', 'add vitest', 'write my first test', or 'configure test runner'. Applies rules: use Vitest over Jest for TypeScript projects, structure tests with enunciado-operacao-validacao pattern, use .spec.ts convention, add test script to package.json. Make sure to use this skill whenever setting up a test environment or writing initial tests in a Node.js TypeScript project. Not for React component testing, E2E testing with Playwright/Cypress, or test architecture decisions on large projects."
+name: 2023-criando-primeiro-teste-1
+description: "Creates the first unit test with Vitest following the three-part structure: description, operation, and validation (expect). Use when user asks to 'write first test', 'setup Vitest', 'create unit test', 'configure testing in TypeScript', or 'structure test files'. Enforces: Vitest over Jest for TypeScript projects, three-part test structure, at least one expect per test, consistent file extension (.spec.ts), test script in package.json. Make sure to use this skill whenever setting up testing infrastructure or writing initial tests in a Node.js TypeScript project. Not for E2E tests, integration tests with databases, or browser testing."
+category: coding-lens
+tags: [testing, typescript, vitest]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testing
+  tags: [vitest, testing, typescript, unit-tests, test-structure]
 ---
 
 # Criando Primeiro Teste com Vitest
@@ -93,14 +102,14 @@ test('usuario consegue criar uma nova transacao', async () => {
 | Misturar `.spec.ts` e `.test.ts` no mesmo projeto | Escolha um padrao e mantenha |
 | Teste com nome generico como `'test 1'` | Descreva o comportamento: `'usuario consegue criar transacao'` |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-primeiro-teste-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-primeiro-teste-1/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

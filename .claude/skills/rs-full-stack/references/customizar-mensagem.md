@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-customizar-mensagem
 description: "Applies Zod custom validation error messages when writing schema validation in TypeScript/Node.js. Use when user asks to 'validate input', 'add validation', 'customize error message', 'zod schema', or 'required field message'. Enforces readable, user-friendly error messages instead of Zod defaults. Make sure to use this skill whenever creating Zod schemas with required fields. Not for general error handling, try/catch blocks, or HTTP error responses."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-api
+  tags: [zod, validation, error-messages, typescript, schema]
 ---
 
 # Customizar Mensagens de Validação com Zod
@@ -70,13 +76,16 @@ const schema = z.object({
 | `{ required_error: "Required" }` | `{ required_error: "price is required" }` (nome do campo) |
 | `{ required_error: "Erro" }` | `{ required_error: "email is required" }` (descritivo) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Mensagem padrao "Required" aparece ao inves da customizada | Falta `required_error` no schema | Passe `{ required_error: "campo is required" }` no tipo Zod |
+| `.email()` nao mostra mensagem customizada | Mensagem nao passada como argumento | Use `.email("email must be valid")` com a string como parametro |
+| Erro de validacao nao chega ao cliente | ZodError nao tratado no handler | Capture `ZodError` e retorne `error.issues` com status 400 |
+| Mensagem generica "Invalid input" | Usando `.parse()` sem `required_error` | Defina mensagens especificas em cada campo do schema |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre customizacao de mensagens Zod
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-customizar-mensagem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-customizar-mensagem/references/code-examples.md)

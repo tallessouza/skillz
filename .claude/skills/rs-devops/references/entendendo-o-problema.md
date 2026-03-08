@@ -1,79 +1,64 @@
 ---
 name: rs-devops-entendendo-o-problema
-description: "Enforces ephemeral log management patterns when designing container or Kubernetes architectures. Use when user asks to 'configure logging', 'persist logs', 'setup Loki', 'manage container logs', or 'store logs in Kubernetes'. Applies rule: never use local volumes for logs, always use external storage backends. Make sure to use this skill whenever designing observability stacks or configuring log persistence in containerized environments. Not for application-level logging libraries, log formatting, or metrics/tracing configuration."
+description: "Applies ephemeral log management patterns for containerized environments. Use when user asks to 'persist logs in Kubernetes', 'configure log storage for containers', 'choose between PV and external storage for logs', or 'handle high-volume logs'. Enforces external storage over local volumes, container ephemerality, volumetry-aware storage decisions, and separation of ingestion vs persistence. Make sure to use this skill whenever deciding on log storage strategy for containerized workloads. Not for application logging configuration (use logando-informacoes-da-aplicacao) or Loki setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-logs
+  tags: [containers, logs, storage, ephemeral, s3, minio, kubernetes, persistent-volume]
 ---
 
-# Gerenciamento Efêmero de Logs em Containers
+# Gerenciamento Efemero de Logs em Containers
 
 > Logs em containers devem ser persistidos em ferramentas externas de storage, nunca em volumes locais, preservando a efemeridade do container.
 
 ## Rules
 
-1. **Nunca persista logs em volumes locais do container** — porque containers sao efemeros e dados locais sao perdidos quando o container morre
-2. **Use ferramentas externas de storage para logs** — assim como voce manda arquivos para S3 em vez de salvar no container, logs seguem o mesmo principio
-3. **Mantenha o container efemero** — o container faz ingestao e repassa, nunca armazena; porque efemeridade e o principio fundamental de containers
-4. **Considere a volumetria antes de escolher PV** — volumes persistentes funcionam para alguns contextos, mas logs tem volumetria muito grande e sao dados sensiveis
-5. **Separe responsabilidades** — o servico de log (ex: Loki) faz ingestao, a ferramenta de storage persiste; cada componente tem uma unica responsabilidade
+1. **Nunca persista logs em volumes locais do container** — containers sao efemeros
+2. **Use ferramentas externas de storage para logs** — S3, MinIO, object storage
+3. **Mantenha o container efemero** — ingestao e repasse, nunca armazenamento
+4. **Considere a volumetria antes de escolher PV** — logs tem volumetria muito grande
+5. **Separe responsabilidades** — servico de log faz ingestao, ferramenta de storage persiste
 
 ## Decision framework
 
 | Situacao | Abordagem |
 |----------|-----------|
-| Log em ambiente local (docker-compose) | Volume no container da ferramenta de storage e aceitavel para dev |
-| Log em Kubernetes producao | Ferramenta externa de storage (S3, object storage), nunca PV para logs |
+| Log em ambiente local | Volume no container de storage e aceitavel para dev |
+| Log em Kubernetes producao | Ferramenta externa de storage, nunca PV para logs |
 | Dados pequenos e nao-sensiveis | PV com claim pode ser aceitavel |
-| Dados sensiveis ou alta volumetria (logs) | Sempre storage externo descentralizado |
+| Dados sensiveis ou alta volumetria | Sempre storage externo |
 
-## How to configure
+## Diagnostic commands
 
-### Anti-pattern: Volume direto no Loki
+```bash
+# Check disk usage on Kubernetes nodes
+kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.conditions[?(@.type=="DiskPressure")].status}{"\n"}{end}'
 
-```yaml
-# docker-compose.yml — ERRADO para producao
-services:
-  loki:
-    image: grafana/loki
-    volumes:
-      - loki-data:/loki  # Dados presos ao host, perde efemeridade
+# Check PV usage in the cluster
+kubectl get pv -o wide
+
+# Verify log volume size in a pod
+kubectl exec -it <pod-name> -- du -sh /var/log/
 ```
-
-### Pattern correto: Storage externo
-
-```yaml
-# docker-compose.yml — CORRETO
-services:
-  loki:
-    image: grafana/loki
-    # Sem volume local para dados de log
-    # Loki configurado para enviar para storage externo (S3, MinIO, etc)
-```
-
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| Configurando logging stack | Sempre planejar storage externo desde o inicio |
-| Container precisa salvar algo | Mande para S3, banco externo, ou object storage |
-| Ambiente local de desenvolvimento | Volume no container de storage e aceitavel, mas Loki continua efemero |
-| Migrando para Kubernetes | Substitua volumes locais por storage backends descentralizados |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Volume persistente direto no Loki | Configure storage backend externo (S3, MinIO) |
-| Salvar logs dentro do container | Ingestao no container, persistencia em ferramenta externa |
-| Assumir que PV resolve tudo em K8s | Avaliar volumetria e sensibilidade antes de escolher PV |
-| Tratar logs como dados simples | Reconhecer alta volumetria e sensibilidade dos logs |
+| Volume persistente direto no Loki | Configure storage backend externo |
+| Salvar logs dentro do container | Ingestao no container, persistencia externa |
+| Assumir que PV resolve tudo em K8s | Avaliar volumetria e sensibilidade |
+
+## Troubleshooting
+
+### Disco do node Kubernetes cheio por causa de logs
+**Symptom:** Node entra em DiskPressure e pods sao evicted
+**Cause:** Logs sendo persistidos em PersistentVolume local com volumetria alta
+**Fix:** Migrar persistencia de logs para storage externo (S3, MinIO) e manter container apenas com ingestao e repasse
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-entendendo-o-problema/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-entendendo-o-problema/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

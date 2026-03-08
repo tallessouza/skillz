@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-cadastrando-perguntas
 description: "Applies Prisma ORM create patterns when building POST endpoints for related entities. Use when user asks to 'create an endpoint', 'insert data with Prisma', 'build a POST route', or 'register a record with foreign key'. Enforces proper body extraction, Prisma create with relations, and controller structure. Make sure to use this skill whenever creating POST endpoints that insert records with foreign keys using Prisma. Not for queries, updates, deletes, or schema/migration definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: backend
+  tags: [prisma, post, create, api, controllers, node-js]
 ---
 
 # Cadastrando Registros com Prisma (Create com Relações)
@@ -96,13 +102,16 @@ async create(request, reply) {
 | `userId` quando schema usa `user_id` | Use exatamente o nome do campo no schema |
 | `new PrismaClient()` no controller | Importe instancia centralizada de `@prisma` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Prisma create fails with unknown field** | Ensure field names in `data` match the Prisma schema exactly — run `npx prisma generate` after schema changes. |
+| **Auto-generated fields conflict** | Do not pass `id`, `created_at`, or `updated_at` in the `data` object — let Prisma and the database handle them. |
+| **Multiple PrismaClient instances warning** | Import Prisma from a centralized module (`@prisma`) instead of creating `new PrismaClient()` in each controller. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-cadastrando-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-cadastrando-perguntas/references/code-examples.md)

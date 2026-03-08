@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testando-criacao-transacao
 description: "Applies E2E testing patterns with Supertest and Vitest for Fastify/Express APIs. Use when user asks to 'write e2e tests', 'test an API route', 'setup supertest', 'test HTTP endpoints', or 'create integration tests' in Node.js. Enforces app/server separation, beforeAll/afterAll lifecycle, and proper Supertest usage. Make sure to use this skill whenever creating or reviewing API test files. Not for unit tests, frontend tests, or non-HTTP testing scenarios."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-rest-com-nodejs
+  tags: [e2e-testing, supertest, vitest, fastify, app-server-separation]
 ---
 
 # Testes E2E com Supertest
@@ -112,14 +118,14 @@ it('user can create a new transaction', async () => {
 | `request('http://localhost:3333')` | `request(app.server)` |
 | Validacao manual `expect(res.statusCode).toBe(201)` | `.expect(201)` encadeado no SuperTest |
 
+## Troubleshooting
+
+### Teste e2e retorna 404 para todas as rotas
+**Symptom:** SuperTest nao encontra nenhuma rota registrada
+**Cause:** Falta `await app.ready()` no beforeAll — plugins Fastify sao assincronos e as rotas ainda nao existem
+**Fix:** Adicione `beforeAll(async () => { await app.ready() })` antes dos testes
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testando-criacao-de-transacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testando-criacao-de-transacao/references/code-examples.md)

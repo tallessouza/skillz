@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-o-arquivo-compilado
 description: "Enforces Babel compilation workflow when working with JavaScript projects that need browser compatibility. Use when user asks to 'compile JavaScript', 'build with Babel', 'generate dist folder', 'support older browsers', or 'setup JS build pipeline'. Ensures compiled output is always referenced in HTML and recompiled after changes. Make sure to use this skill whenever setting up Babel or troubleshooting stale compiled output. Not for TypeScript compilation, Webpack bundling, or framework-specific build tools like Vite or Next.js."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: build-tooling
+  tags: [babel, compilation, dist, build-pipeline, browser-compatibility]
 ---
 
 # Utilizando o Arquivo Compilado (Babel)
@@ -92,6 +98,14 @@ npm run build   # recompila o fonte para dist/
 
 - Abra o DevTools (F12) → Console → verifique se a saída reflete as últimas alterações do fonte
 - Compare o conteúdo de `dist/main.js` com o fonte para confirmar que está atualizado
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Alteração no código fonte não aparece no navegador | Faltou recompilar com `npm run build` após a alteração | Execute `npm run build` e recarregue o navegador |
+| Pasta `dist/` não existe | Build nunca foi executado | Execute `npm run build` para gerar a pasta |
+| HTML carrega versão antiga do script | HTML aponta para o fonte em vez do compilado | Altere o `<script src>` para apontar para `./dist/main.js` |
 
 ## Deep reference library
 

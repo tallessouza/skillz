@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-url-da-requisicao
 description: "Applies HTTP request URL routing patterns when building Node.js APIs with native http module. Use when user asks to 'create routes', 'handle requests', 'build an API', 'add endpoints', or 'route URLs' in Node.js without frameworks. Combines method + URL to route requests, returns proper status codes. Make sure to use this skill whenever creating raw Node.js HTTP servers with route handling. Not for Express, Fastify, or any framework-based routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, routing, url, http-server, manual-routing]
 ---
 
 # URL da Requisição e Roteamento Manual
@@ -93,13 +99,13 @@ const server = http.createServer((request, response) => {
 | `/product` (singular) | `/products` (plural, representa a coleção) |
 | Cadeia de else-if gigante sem return | Use `return response.end()` para sair cedo |
 
+## Troubleshooting
+
+### Problem: All requests return 404 even though the route is defined
+- **Cause**: The route comparison checks only `url` without checking `method`, or the method/URL combination does not match exactly (case sensitivity, trailing slash)
+- **Fix**: Always compare both `method === 'GET'` and `url === '/products'` together, and ensure the URL in Insomnia matches exactly (no trailing slash unless defined)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre Base URL vs path, analogias e conceito de roteamento manual
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0207-url-da-requisicao-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0207-url-da-requisicao-mkv-mp-4/references/code-examples.md)

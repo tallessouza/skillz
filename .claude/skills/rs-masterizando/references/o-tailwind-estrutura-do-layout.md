@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-estrutura-do-layout
 description: "Applies dashboard layout structure patterns using Tailwind CSS grid with sidebar and content areas. Use when user asks to 'create a layout', 'add a sidebar', 'build a dashboard', 'structure a page with grid', or 'split content into columns'. Enforces min-h-screen, grid with minmax for flexible sidebars, and tailwind.config extension over arbitrary values. Make sure to use this skill whenever building page layouts with fixed sidebar and dynamic content areas. Not for form styling, component design, or responsive breakpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: layout
+  tags: [tailwind, react, nextjs, css-grid, flexbox]
 ---
 
 # Estrutura do Layout
@@ -88,15 +94,19 @@ module.exports = {
 | Estilizar `<body>` diretamente | Wrapper `<div>` dentro do body |
 | `width: 312px` fixo na sidebar | `minmax(18rem, 20rem)` para flexibilidade |
 | Valores em pixels no config | Valores em rem (18rem = 288px, 20rem = 320px) |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-estrutura-do-layout/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-estrutura-do-layout/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-estrutura-do-layout/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-estrutura-do-layout/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

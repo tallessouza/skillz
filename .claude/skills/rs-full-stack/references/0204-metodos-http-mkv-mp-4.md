@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0204-metodos-http
 description: "Enforces correct HTTP method and status code usage when building Node.js APIs or REST endpoints. Use when user asks to 'create an API', 'add a route', 'build an endpoint', 'handle requests', or 'return a response'. Applies rules: GET for reading, POST for creating, PUT for full update, PATCH for partial update, DELETE for removing, correct status codes per action. Make sure to use this skill whenever designing or reviewing API routes. Not for frontend HTTP client code, WebSocket, or GraphQL."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [http-methods, status-codes, rest-api, nodejs, routing]
 ---
 
 # Métodos HTTP
@@ -104,13 +110,13 @@ app.delete('/products/:id', (req, res) => {
 | `200` com body vazio após delete | `204` sem body |
 | Rota sem nenhuma resposta | Sempre retornar status code, mesmo sem body |
 
+## Troubleshooting
+
+### Problem: POST request returns 200 instead of 201
+- **Cause**: The route handler does not explicitly set the status code, defaulting to 200
+- **Fix**: Use `res.status(201).json(data)` or `response.writeHead(201)` for resource creation endpoints
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre relação cliente-servidor e semântica HTTP
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0204-metodos-http-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0204-metodos-http-mkv-mp-4/references/code-examples.md)

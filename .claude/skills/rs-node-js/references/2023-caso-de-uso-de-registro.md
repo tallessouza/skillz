@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-caso-de-uso-de-registro
 description: "Enforces Use Case pattern separation when writing Node.js backend code. Use when user asks to 'create an endpoint', 'add a route', 'implement a feature', 'register user', or any server-side logic. Applies rules: business logic in use cases not controllers, no framework objects (reply/req/res) in use cases, throw errors instead of HTTP responses, controller wraps use case in try/catch. Make sure to use this skill whenever creating backend features, even simple CRUD. Not for frontend components, database schema design, or infrastructure setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [register, use-case-pattern, separation-of-concerns, controller, fastify, solid]
 ---
 
 # Use Case Pattern — Separacao de Logica de Negocio
@@ -138,14 +144,19 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 | Use case recebendo `FastifyReply` como parametro | Use case recebe apenas dados primitivos |
 | Um arquivo gigante controller+logica | `use-cases/register.ts` + `controllers/register.ts` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-registro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-registro/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-registro/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-registro/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

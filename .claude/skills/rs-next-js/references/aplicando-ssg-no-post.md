@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-aplicando-ssg-no-post
 description: "Applies Next.js Pages Router static generation patterns using getStaticProps, getStaticPaths, and ISR when writing dynamic routes. Use when user asks to 'create a dynamic page', 'add SSG to Next.js', 'pre-render pages', 'use getStaticPaths', or 'configure static generation'. Enforces correct fallback strategy, slug-based routing, and incremental static regeneration. Make sure to use this skill whenever generating Next.js Pages Router code with dynamic routes. Not for App Router, API routes, or client-side-only rendering."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: static-site-generation
+  tags: [SSG, getStaticPaths, getStaticProps, ISR, dynamic-routes, pages-router, fallback]
 ---
 
 # SSG em Rotas Dinamicas — Next.js Pages Router
@@ -118,14 +124,19 @@ export default function PostPage({ post }: PostPageProps) {
 | `getServerSideProps` para dados que raramente mudam | `getStaticProps` + `revalidate` (ISR) |
 | Acessar `router.query` para logica de servidor | Usar `context.params` dentro de getStaticProps |
 
+## Troubleshooting
+
+### Dados nao atualizam apos modificacao (SSG/ISR)
+**Symptom:** Pagina mostra dados antigos mesmo apos atualizar no banco de dados
+**Cause:** Em SSG, a pagina e gerada apenas no build. Em ISR, existe um intervalo de revalidacao
+**Fix:** Para SSG, rodar `next build` novamente. Para ISR, aguardar o intervalo de `revalidate` expirar. Para dados que precisam ser sempre frescos, usar SSR com `getServerSideProps`
+
+### getServerSideProps/getStaticProps nao executa
+**Symptom:** Funcao de data fetching parece nao ser chamada, dados nao aparecem
+**Cause:** Essas funcoes so funcionam em arquivos dentro de `pages/`, nao em componentes ou arquivos fora do diretorio pages
+**Fix:** Mover a funcao para o arquivo de pagina dentro de `pages/`. Em App Router, usar fetch direto no Server Component com async/await
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-post/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-post/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-post/references/deep-explanation.md) — Quando o Next.js executa o build, ele precisa saber antecipadamente quais paginas gerar para rotas d
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-aplicando-ssg-no-post/references/code-examples.md) — import { allPosts, Post } from "contentlayer/generated"

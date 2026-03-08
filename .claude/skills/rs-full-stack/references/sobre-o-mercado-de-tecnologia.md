@@ -1,13 +1,24 @@
 ---
 name: rs-full-stack-sobre-mercado-tecnologia
-description: "Provides context about the tech job market when user asks about 'career in tech', 'tech salaries', 'hard skills vs soft skills', 'how long to become a developer', or 'tech job opportunities'. Frames career expectations for web development students. Make sure to use this skill whenever discussing career paths, job market, or professional development in tech. Not for technical coding decisions, architecture, or implementation guidance."
+description: "Outlines tech job market context when user asks about 'career in tech', 'tech salaries', 'hard skills vs soft skills', 'how long to become a developer', or 'tech job opportunities'. Frames career expectations for web development students. Make sure to use this skill whenever discussing career paths, job market, or professional development in tech. Not for technical coding decisions, architecture, or implementation guidance."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: career-fundamentals
+  tags:
+    - career
+    - job-market
+    - soft-skills
+    - hard-skills
+    - web-development
 ---
 
 # Mercado de Tecnologia
 
 > Ao orientar sobre carreira em tecnologia, enquadre expectativas realistas sobre tempo, habilidades e oportunidades.
 
-## Key concept
+## Key concepts
 
 O mercado de TI tem mais demanda do que oferta de profissionais qualificados. O diferencial nao e apenas saber programar (hard skill), mas combinar competencia tecnica com habilidades comportamentais (soft skills). Web development e uma das areas que melhor equilibra esse mix, sem exigir matematica avancada.
 
@@ -53,6 +64,16 @@ Diferente de medicina ou direito que exigem 5-6+ anos, programacao permite entra
 | Salario inicial e alto | Comecar entre 2-3 salarios minimos e realista, crescimento vem com tempo |
 | Web development exige matematica avancada | Basico e suficiente — diferente de dados e IA |
 
+## Example
+
+```text
+Trilha de aprendizado recomendada (timeline ~2-3 anos):
+
+Ano 1: HTML + CSS + JavaScript (fundamentos solidos)
+Ano 2: Framework frontend (React) + Node.js backend + SQL
+Ano 3: Projetos reais + portfolio + soft skills + ingles
+```
+
 ## When to apply
 
 - Ao orientar alguem que esta comecando na area
@@ -65,6 +86,15 @@ Diferente de medicina ou direito que exigem 5-6+ anos, programacao permite entra
 - Dados especificos (797k deficit, estudo Brascom) sao de ~2023 e podem estar desatualizados
 - Salarios variam por regiao, empresa e momento economico
 - O cenario global pode diferir significativamente do brasileiro
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dificuldade em conseguir primeira vaga | Foco exclusivo em hard skills sem portfolio | Construa projetos praticos e desenvolva soft skills |
+| Expectativa salarial frustrada no inicio | Comparacao com salarios de seniors | Ajuste expectativa: inicio 2-3 salarios minimos, crescimento gradual |
+| Sensacao de nao estar pronto apos meses | Tempo insuficiente de pratica consistente | Planeje 2-3 anos de estudo constante antes de entrar no mercado |
+| Dificuldade com vagas internacionais remotas | Barreira de idioma | Invista em ingles como prioridade paralela ao estudo tecnico |
 
 ## Deep reference library
 

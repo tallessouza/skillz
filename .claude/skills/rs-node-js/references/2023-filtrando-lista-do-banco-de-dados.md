@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-filtrando-lista-db
 description: "Applies in-memory filtering patterns for JavaScript/Node.js database lists using Object.entries, Array.some, and Array.filter. Use when user asks to 'filter a list', 'add search to an endpoint', 'implement query params filtering', 'search across multiple fields', or 'case-insensitive search'. Make sure to use this skill whenever implementing search/filter logic over in-memory collections or simple databases. Not for SQL queries, ORM filters, or full-text search engines like Elasticsearch."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [filter, search, in-memory, object-entries, array-some, case-insensitive, query-params]
 ---
 
 # Filtrando Listas do Banco de Dados
@@ -109,14 +115,14 @@ const users = database.select('users', search
 | Iterar objeto com `for...in` para filtro | `Object.entries(search).some(...)` |
 | Passar campos hardcoded no database | Passar objeto search generico do controller |
 
+## Troubleshooting
+
+### Busca retorna lista vazia quando search esta vazio
+**Symptom:** Endpoint sem query param `search` retorna `[]` ao inves de todos os registros
+**Cause:** Condicao de filtro esta ativa mesmo quando search e undefined/null
+**Fix:** Adicione guard `if (search)` antes de aplicar o filtro — quando search e falsy, retorne todos os registros sem filtrar
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-filtrando-lista-do-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-filtrando-lista-do-banco-de-dados/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

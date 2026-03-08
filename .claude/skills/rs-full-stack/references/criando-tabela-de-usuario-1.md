@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela-usuario
 description: "Applies Prisma model definition patterns when creating database tables with Prisma ORM. Use when user asks to 'create a table', 'define a model', 'add a prisma model', 'setup user table', or 'write a schema'. Enforces correct column types, decorators (@id, @default, @unique, @@map), and migration workflow. Make sure to use this skill whenever generating Prisma schema code or discussing Prisma migrations. Not for raw SQL, Drizzle, TypeORM, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, schema, model, migrations, uuid, postgresql]
 ---
 
 # Criando Tabelas com Prisma
@@ -91,13 +97,16 @@ model User {
 | Migration sem nome descritivo | Nomeie: `create table users`, `add column phone` |
 | Esquecer `@unique` em email | `email String @unique` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `prisma migrate dev` falha com conexao | DATABASE_URL incorreta ou banco nao rodando | Verifique `.env` e confirme que o PostgreSQL esta ativo |
+| Email duplicado aceito no banco | Falta `@unique` no campo email | Adicione `@unique` na definicao do campo |
+| Tabela criada com nome PascalCase | Model sem `@@map` | Adicione `@@map("users")` ao final do model |
+| `Error: Migration failed` | Schema com erro de sintaxe | Verifique a sintaxe do model e rode `npx prisma validate` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre decoradores Prisma, migrations e conexão com banco
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-usuario-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-usuario-1/references/code-examples.md)

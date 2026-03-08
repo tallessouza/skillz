@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-conhecendo-o-projeto-2036
 description: "Applies Pet Shop dashboard project conventions when building Next.js scheduling apps. Use when user asks to 'create a dashboard', 'build a scheduling system', 'setup Next.js with Prisma and Postgres', or 'create an appointment app'. Enforces stack: Next.js App Router, Tailwind, ShadCN, TypeScript, Prisma, Postgres, Docker, Server Actions. Make sure to use this skill whenever scaffolding a Next.js CRUD dashboard with time-based scheduling. Not for API-only backends, static sites, or non-Next.js frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: setup-projeto
+  tags: [dashboard, prisma, postgres, server-actions, app-router, next-js, tailwind]
 ---
 
 # Pet Shop Dashboard — Visao Geral do Projeto
@@ -69,14 +75,19 @@ interface Appointment {
 | Usar apenas componentes ShadCN sem customizar | Crie componentes na mao quando necessario |
 | Implementar Server Actions complexas de inicio | Comece simples e avance gradualmente |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2036/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2036/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2036/references/deep-explanation.md) — O instrutor enfatiza que, apesar do dashboard parecer simples visualmente, ele serve como veiculo pa
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2036/references/code-examples.md) — Esta aula e introdutoria e nao contem exemplos de codigo diretos do instrutor. Os exemplos abaixo sa

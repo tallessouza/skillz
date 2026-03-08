@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-row
 description: "Applies CSS grid-row positioning when writing grid layouts. Use when user asks to 'create a layout', 'position grid items', 'use grid-row', 'build a page layout with CSS Grid', or any grid item placement task. Enforces grid-row-start/end and shorthand, virtual line understanding, and implicit row creation awareness. Make sure to use this skill whenever positioning grid children vertically. Not for grid container setup, grid-template-columns, or Flexbox layouts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, grid-row, positioning, virtual-lines, implicit-grid]
 ---
 
 # Grid Row — Posicionamento Vertical de Items no Grid
@@ -99,13 +105,16 @@ description: "Applies CSS grid-row positioning when writing grid layouts. Use wh
 | Confundir linhas virtuais de row com column | Identificar separadamente: rows = horizontais, columns = verticais |
 | Criar rows no template só para posicionar 1 item | Usar grid-row no item filho diretamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Rows extras inesperadas aparecem no grid | Items sem configuracao criaram linhas implicitas | Comportamento normal — configure apenas items que precisam de posicao explicita |
+| Item nao ocupa multiplas rows | Usando `grid-row-start` e `grid-row-end` separados | Use shorthand: `grid-row: 1 / 4` |
+| Confusao entre linhas virtuais de row e column | Row e column tem linhas virtuais independentes | Rows = linhas horizontais delimitando faixas verticais |
+| Posicionamento manual de todos os items | Engenharia excessiva | Configure apenas items que cruzam multiplas rows — deixe o auto-placement resolver o resto |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre linhas virtuais, grid implícito e auto-placement
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-row/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-row/references/code-examples.md)

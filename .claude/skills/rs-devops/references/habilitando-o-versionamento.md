@@ -1,6 +1,12 @@
 ---
 name: rs-devops-habilitando-o-versionamento
 description: "Applies S3 bucket versioning configuration for Terraform state files when user asks to 'enable versioning', 'protect terraform state', 'version s3 bucket', 'configure state backend', or 'secure remote state'. Enforces correct resource dependencies, backup strategy (local backup, remote state), and aws_s3_bucket_versioning usage. Make sure to use this skill whenever configuring Terraform remote state storage or S3 bucket versioning. Not for general S3 operations, application data buckets, or non-Terraform versioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-estado-remoto
+  tags: [terraform, s3, versioning, state, aws, backup, iac]
 ---
 
 # Habilitando Versionamento do Estado Terraform
@@ -84,14 +90,14 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 | Versionamento inline no recurso do bucket (deprecated) | Use recurso separado `aws_s3_bucket_versioning` |
 | Omitir `depends_on` no versionamento | Adicione dependencia explicita no bucket |
 
+## Troubleshooting
+
+### Terraform plan mostra mudancas apos habilitar versionamento
+**Symptom:** `terraform plan` mostra resources "to change" mesmo apos apply bem-sucedido
+**Cause:** O versionamento inline (deprecated) esta no recurso do bucket ao mesmo tempo que o recurso separado `aws_s3_bucket_versioning`
+**Fix:** Remova qualquer configuracao de versionamento inline do `aws_s3_bucket` e use apenas o recurso separado `aws_s3_bucket_versioning`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-habilitando-o-versionamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-habilitando-o-versionamento/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

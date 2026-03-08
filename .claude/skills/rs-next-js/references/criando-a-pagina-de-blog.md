@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-a-pagina-de-blog
 description: "Applies Next.js Pages Router file-based routing patterns when creating new pages or routes. Use when user asks to 'create a page', 'add a route', 'create blog page', 'setup pages router', or 'add a new section' in Next.js. Enforces folder-based routing with index.tsx, proper page structure with semantic HTML, and Tailwind layout patterns. Make sure to use this skill whenever scaffolding new pages in Next.js Pages Router projects. Not for App Router, API routes, or dynamic routing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: pages-router
+  tags: [next-js, pages-router, file-based-routing, semantic-html, tailwind, page-structure]
 ---
 
 # Criando Paginas no Next.js Pages Router
@@ -88,14 +94,19 @@ pages/
 | Colocar todo o conteudo sem container | Envolver em div com classe container e spacing |
 | Estilizar inline sem sistema de design | Usar classes Tailwind consistentes com o projeto |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-pagina-de-blog/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-pagina-de-blog/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-pagina-de-blog/references/deep-explanation.md) — O instrutor demonstra que o Pages Router do Next.js mapeia diretamente a estrutura de pastas para UR
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-pagina-de-blog/references/code-examples.md) — O instrutor comeca com o minimo para validar que a rota funciona:

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-estrutura-projeto
 description: "Enforces Express API project structure with routes and controllers separation when scaffolding a Node.js/Express backend. Use when user asks to 'create an API', 'setup express project', 'organize routes', 'create controller', or 'structure backend folders'. Applies pattern: routes/ for path mapping, controllers/ for business logic as classes, index.ts as route aggregator. Make sure to use this skill whenever creating or restructuring an Express API project. Not for frontend structure, database schema, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-api
+  tags: [express, project-structure, routes, controllers, typescript]
 ---
 
 # Estrutura de Projeto Express: Rotas e Controllers
@@ -132,13 +138,15 @@ app.listen(3333)
 | Importar cada rota no server.ts | Importe apenas o `index.ts` agregador |
 | Arquivo `.tsx` para backend | Use `.ts` — não há JSX no backend |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Rota retorna 404 mesmo existindo | Prefixo nao registrado no index.ts ou typo no path | Verifique `routes.use("/prefixo", dominioRoutes)` no index |
+| Erro assincrono nao cai no error handler | Controller async sem `try/catch` chamando `next(error)` | Adicione `try/catch` com `next(error)` em todo metodo async |
+| Import do controller falha | Path relativo incorreto entre routes/ e controllers/ | Use `../controllers/nome-controller` no import |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação rotas/controllers e tratamento de erros assíncronos
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-estrutura-do-projeto-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-estrutura-do-projeto-1/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao rotas/controllers e tratamento de erros assincronos
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

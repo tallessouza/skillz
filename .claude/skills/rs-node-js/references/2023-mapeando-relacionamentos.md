@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-mapeando-relacionamentos
 description: "Enforces correct entity relationship mapping in DDD when writing domain entities or modeling a system. Use when user asks to 'create an entity', 'model a domain', 'map relationships', 'design entities', or 'implement DDD'. Applies rules: relate by ID only, never assume DB structure from domain, separate similar entities by ubiquitous language, resist premature DRY. Make sure to use this skill whenever designing domain layers or creating entity classes. Not for database schema design, ORM configuration, or infrastructure layer code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-relationships
+  tags: [ddd, entity-relationships, ubiquitous-language, domain-modeling, typescript, props-interface]
 ---
 
 # Mapeando Relacionamentos entre Entidades (DDD)
@@ -128,14 +134,14 @@ export class AnswerQuestionByStudent {
 | Construtor com N parametros posicionais | Interface `Props` com objeto nomeado |
 | Modelar entidade pensando nas tabelas do banco | Modelar pela linguagem ubiqua do dominio |
 
+## Troubleshooting
+
+### Entidade referencia objeto completo ao inves de ID
+**Symptom:** Entidade `Question` tem `public author: Student` criando acoplamento entre agregados
+**Cause:** Relacionamento modelado por referencia direta em vez de por ID
+**Fix:** Troque para `public authorId: string` — entidades se relacionam exclusivamente por ID no dominio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-mapeando-relacionamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-mapeando-relacionamentos/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-testes-comandos-personalizados
 description: "Enforces Cypress custom command patterns and fixture-based mocking strategy when writing E2E tests. Use when user asks to 'create cypress command', 'add custom command', 'write e2e test', 'mock api in cypress', or 'use fixtures'. Applies rules: prefer real API calls over mocks, use fixtures only for unstable external APIs, create parent/child/dual commands correctly, declare types via namespace Cypress. Make sure to use this skill whenever creating or refactoring Cypress E2E tests. Not for unit tests, integration tests, or non-Cypress testing frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [cypress, custom-commands, e2e-testing, fixtures, intercept, typescript]
 ---
 
 # Comandos Personalizados no Cypress
@@ -106,14 +112,19 @@ it('should add searched product to cart', () => {
 | Criar comando para acao unica simples | Use `cy.get().click()` diretamente |
 | Usar `Cypress.Commands.overwrite` sem necessidade | Crie um comando novo com nome descritivo |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-comandos-personalizados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-comandos-personalizados/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-comandos-personalizados/references/deep-explanation.md) — O instrutor enfatiza um ponto critico que muitos devs (e ate instrutores) erram: **mocks em testes E
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-comandos-personalizados/references/code-examples.md) — /// <reference types="cypress" />

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-integrando-carrinho-frontend
 description: "Applies cart-frontend integration patterns when building e-commerce with Next.js and SWR. Use when user asks to 'integrate cart', 'add to cart frontend', 'optimistic update', 'useSWR mutate', or 'shopping cart UI'. Enforces optimistic data updates, proper cache mutation, and cart API module structure. Make sure to use this skill whenever implementing cart functionality in a React/Next.js frontend with SWR. Not for backend cart logic, payment processing, or checkout flow."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, next-js, frontend, node-js, ia-node, swr]
 ---
 
 # Integrando Carrinho com Frontend
@@ -120,14 +126,14 @@ async function handleUpdate(productId: string, qty: number) {
 | Chamar API direto no onClick | Crie `handleAddToCart` / `handleUpdateQuantity` |
 | Ignorar guarda de cart nulo | `if (!cart) return` no inicio da funcao |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-carrinho-com-frontend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-integrando-carrinho-com-frontend/references/code-examples.md)

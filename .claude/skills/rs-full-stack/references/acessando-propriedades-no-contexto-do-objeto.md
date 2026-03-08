@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-this-objeto
 description: "Enforces correct property access within JavaScript object context using 'this' keyword. Use when user asks to 'create an object', 'access object properties', 'write a method', 'use this keyword', or 'fix this undefined'. Applies rules: prefer this over hardcoded object name, never use arrow functions for object methods that need this, use template literals for interpolation. Make sure to use this skill whenever writing JavaScript/TypeScript object methods. Not for class inheritance, prototype chains, or React component this binding."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, this, objects, methods, context]
 ---
 
 # Acessando Propriedades no Contexto do Objeto
@@ -84,13 +90,16 @@ const user = {
 | `"Ola " + this.name` | `` `Ola ${this.name}` `` |
 | Valor hardcoded que existe como propriedade | `this.propriedade` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `this.name` retorna `undefined` | Metodo definido como arrow function | Troque para `function()` ou shorthand `metodo() {}` |
+| `this` aponta para `window`/`global` | Funcao chamada fora do contexto do objeto | Verifique se esta chamando como `obj.metodo()`, nao `const fn = obj.metodo; fn()` |
+| Template literal nao interpola | Usando aspas simples/duplas em vez de backticks | Use backticks: `` `Ola ${this.name}` `` |
+| Metodo funciona mas e fragil | Usando nome do objeto hardcoded em vez de `this` | Substitua `nomeDoObjeto.prop` por `this.prop` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre this, arrow functions e contexto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-acessando-propriedades-no-contexto-do-objeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-acessando-propriedades-no-contexto-do-objeto/references/code-examples.md)

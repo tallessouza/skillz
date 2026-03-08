@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-token-automatico
 description: "Applies automatic token extraction from session responses in HTTP clients like Insomnia or Postman. Use when user asks to 'configure authentication', 'chain API requests', 'auto update token', 'setup Insomnia environment', or 'avoid copying tokens manually'. Makes token always current by referencing session response dynamically. Make sure to use this skill whenever setting up API testing workflows with authentication. Not for JWT implementation in code, token refresh logic in applications, or backend auth middleware."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api
+  tags: [insomnia, authentication, token, http-client, api-testing]
 ---
 
 # Atualizando Token Automático
@@ -67,13 +73,16 @@ Token sempre atualizado: basta dar Send na sessão e todas as requisições usam
 | Hardcode do token no header | Referência dinâmica à resposta da sessão |
 | Ignorar erro 401 sem checar sessão | Execute a request de sessão antes de testar endpoints |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Request autenticada retorna 401 | Sessao nao foi executada antes | De Send na request de sessao primeiro |
+| Referencia dinamica aparece em vermelho | Normal — valor nao resolvido ainda | Execute a request de sessao para resolver o valor |
+| Token nao atualiza entre requests | Filter apontando para campo errado | Verifique que o filter e `$.token` (ou o campo correto do body) |
+| Caractere `$` extra no header | Texto residual junto da referencia dinamica | Remova qualquer caractere fora do placeholder |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre chaining de requests e por que token manual é problemático
 - [code-examples.md](references/code-examples.md) — Passo a passo visual completo e variações para diferentes clientes HTTP
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-token-automatico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-token-automatico/references/code-examples.md)

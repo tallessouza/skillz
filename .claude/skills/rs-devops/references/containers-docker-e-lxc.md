@@ -1,6 +1,12 @@
 ---
 name: rs-devops-containers-docker-e-lxc
 description: "Applies container fundamentals when designing infrastructure, writing Dockerfiles, or choosing between VMs and containers. Use when user asks to 'containerize an app', 'create a Dockerfile', 'deploy with Docker', 'compare VMs vs containers', or discusses isolation and portability. Make sure to use this skill whenever container architecture decisions arise. Not for Kubernetes orchestration, Docker Compose multi-service setups, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: container-fundamentals
+  tags: [docker, containers, lxc, namespaces, cgroups, vm, isolation, portability]
 ---
 
 # Containers, Docker e LXC
@@ -87,14 +93,14 @@ Operacao NAO para como um todo
 | Ignorar versionamento de imagens | Versionar imagens para rastreabilidade e rollback |
 | Assumir que Docker e a unica opcao de container | Conhecer LXC e outras alternativas |
 
+## Troubleshooting
+
+### Container funciona localmente mas falha em producao
+**Symptom:** Aplicacao roda corretamente no Docker local mas apresenta erros no servidor de producao
+**Cause:** Dependencias instaladas manualmente no host local que nao estao declaradas no Dockerfile
+**Fix:** Declare TODAS as dependencias no Dockerfile — o container deve ser auto-suficiente, sem depender de configuracao do host
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-containers-docker-e-lxc/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-containers-docker-e-lxc/references/code-examples.md)

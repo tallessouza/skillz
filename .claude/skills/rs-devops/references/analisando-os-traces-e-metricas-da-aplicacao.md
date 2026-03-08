@@ -1,6 +1,12 @@
 ---
 name: rs-devops-analisando-traces-metricas
-description: "Guides analysis of distributed traces and metrics using OpenTelemetry, Grafana Tempo, and Mimir. Use when user asks to 'debug a request', 'analyze traces', 'check metrics', 'correlate services', 'find slow endpoints', or 'investigate latency'. Applies distributed tracing with Trace IDs, auto-instrumentation interpretation, and metric exploration via Mimir. Make sure to use this skill whenever debugging request flows across services or validating observability pipelines. Not for setting up OpenTelemetry instrumentation, configuring collectors, or writing custom metrics code."
+description: "Analyzes distributed traces and metrics using OpenTelemetry, Grafana Tempo, and Mimir for request debugging. Use when user asks to 'debug a request', 'analyze traces', 'check metrics', 'correlate services', 'find slow endpoints', or 'investigate latency'. Enforces pipeline validation before investigation, Trace ID correlation across services, and auto-instrumentation interpretation before custom metrics. Make sure to use this skill whenever debugging request flows across services or validating observability pipelines. Not for setting up OpenTelemetry instrumentation, configuring collectors, or writing custom metrics code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-analysis
+  tags: [observability]
 ---
 
 # Analisando Traces e Metricas da Aplicacao
@@ -95,14 +101,14 @@ curl http://localhost:3000/help
 | Interpretar duration em segundos quando e milissegundos | Atente-se a unidade: 0.5 no bucket pode ser 0.5ms, nao 0.5s |
 | Montar dashboards antes de validar que dados chegam | Primeiro confirme no Explore que metricas existem no Mimir |
 
+## Troubleshooting
+
+### Traces nao aparecem no Grafana Tempo apos fazer requisicoes
+**Symptom:** Requisicoes sao feitas mas nenhum trace aparece no Tempo
+**Cause:** O pipeline de coleta (OTEL Collector) pode estar com erro ou o exporter nao esta configurado corretamente
+**Fix:** Verifique `docker logs` do OTEL Collector procurando erros de conexao ou configuracao, e confirme que o exporter do Tempo esta no service.pipelines
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-analisando-os-traces-e-metricas-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-analisando-os-traces-e-metricas-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-analisando-os-traces-e-metricas-da-aplicacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-analisando-os-traces-e-metricas-da-aplicacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

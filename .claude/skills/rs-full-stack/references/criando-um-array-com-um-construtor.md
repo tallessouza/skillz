@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-array-construtor
 description: "Applies Array constructor patterns when writing JavaScript/TypeScript code that creates arrays. Use when user asks to 'create an array', 'initialize a list', 'preallocate array', 'fixed size array', or 'new Array'. Enforces correct usage of Array constructor vs literal syntax, length property, and preallocated arrays. Make sure to use this skill whenever generating code that initializes arrays with specific sizes. Not for array manipulation methods, iteration, or sorting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, array, constructor, data-structures, initialization]
 ---
 
 # Criando Arrays com Construtor
@@ -86,13 +92,16 @@ const size = slots.length  // propriedade, sem parenteses
 | `array.length()` | `array.length` |
 | `typeof myArray === "array"` | `Array.isArray(myArray)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `new Array(3)` retorna `[empty x 3]` ao inves de `[3]` | Argumento unico numerico cria array com N posicoes vazias | Use `[3]` para array com o valor 3, ou `new Array(3)` apenas para pre-alocacao |
+| `array.length()` lanca TypeError | `length` e propriedade, nao metodo | Use `array.length` sem parenteses |
+| `typeof []` retorna `"object"` | Arrays sao objetos em JavaScript | Use `Array.isArray(valor)` para verificar se e array |
+| `new Array(3).map(x => 0)` nao preenche | Slots `empty` nao sao iterados por `map` | Use `new Array(3).fill(0)` ou `Array.from({ length: 3 }, () => 0)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-um-array-com-um-construtor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-um-array-com-um-construtor/references/code-examples.md)

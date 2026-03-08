@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-expressoes-e-operadores-1
 description: "Enforces correct usage of JavaScript expressions and operators when writing arithmetic, logical, or assignment operations. Use when user asks to 'calculate a value', 'write an expression', 'use operators', 'do math in JS', or 'compare values'. Applies mental model: operands are values/variables, operators are symbols, expressions combine both to produce a value. Make sure to use this skill whenever generating JavaScript expressions or explaining operator precedence. Not for DOM manipulation, async code, or framework-specific patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, expressions, operators, arithmetic, comparison, assignment]
 ---
 
 # Expressoes e Operadores em JavaScript
@@ -69,13 +75,16 @@ const average = sum / 3
 | `(5 + 3 + 7) / 3` inline sem contexto | `const sum = 5 + 3 + 7; const average = sum / 3` — nomeie etapas intermediarias |
 | Expressoes longas sem quebra | Decomponha em variaveis com nomes descritivos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Resultado inesperado em expressao aritmetica | Precedencia de operadores nao considerada | Usar parenteses para explicitar a ordem: `(5 + 3) / 2` |
+| Comparacao retorna `false` quando deveria ser `true` | Uso de `==` em vez de `===` com tipos diferentes | Sempre usar `===` para comparacao estrita |
+| `NaN` como resultado de calculo | Operando e string em vez de numero | Converter com `Number()` ou `parseFloat()` antes da operacao |
+| Expressao longa dificil de debugar | Muitas operacoes inline sem variaveis intermediarias | Decompor em variaveis nomeadas: `const sum = a + b; const avg = sum / 2` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-expressoes-e-operadores-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-expressoes-e-operadores-1/references/code-examples.md)

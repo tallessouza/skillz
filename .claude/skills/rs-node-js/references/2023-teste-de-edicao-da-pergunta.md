@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-teste-edicao-pergunta
 description: "Enforces testing patterns for edit use cases with WatchedList and relationship repositories in DDD. Use when user asks to 'test edit', 'test update use case', 'write tests for editing entities with attachments', or 'test watched list behavior'. Applies rules: pre-populate relationship repositories, verify add/remove operations via ids, test unauthorized edits with empty relations. Make sure to use this skill whenever writing tests for edit/update use cases that involve sub-entity lists (attachments, tags, items). Not for testing create use cases, unit testing domain entities, or testing delete operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [testing, edit-use-case, watched-list, attachments, ddd]
 ---
 
 # Teste de Edição com WatchedList
@@ -151,14 +157,14 @@ it('should edit a question', async () => {
 | Testar permissão com attachments complexos | `attachmentsIds: []` — o foco é o erro de autorização |
 | Criar repositório in-memory sem `findManyByQuestionId` | Implementar filter por questionId (sem paginação para attachments) |
 
+## Troubleshooting
+
+### Teste de edicao nao detecta attachments removidos
+**Symptom:** Apos editar, todos os attachments antigos continuam no repositorio
+**Cause:** Repositorio de relacionamentos nao foi pre-populado com estado inicial antes da edicao
+**Fix:** Use `inMemoryQuestionAttachmentsRepository.items.push()` para criar estado inicial antes de executar o caso de uso de edicao
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-teste-de-edicao-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-teste-de-edicao-da-pergunta/references/code-examples.md)

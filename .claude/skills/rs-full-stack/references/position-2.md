@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-position-2
 description: "Enforces correct CSS position usage when writing layouts. Use when user asks to 'position an element', 'create a modal', 'make sticky header', 'fix element on screen', 'overlay elements', or 'use z-index'. Applies rules for relative, absolute, fixed, sticky positioning with containing block awareness. Make sure to use this skill whenever generating CSS that involves positioning, overlays, modals, or stacking. Not for flexbox, grid layout, or general spacing with margin/padding."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags:
+    - css
+    - position
+    - layout
+    - z-index
+    - sticky
 ---
 
 # CSS Position
@@ -127,6 +138,14 @@ description: "Enforces correct CSS position usage when writing layouts. Use when
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre containing block, stacking context, normal flow e writing mode
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo com variacoes para cada tipo de position
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elemento absolute posiciona relativo a pagina toda | Pai nao tem `position` definido (nenhum containing block) | Adicione `position: relative` no pai |
+| Sticky nao gruda durante scroll | Pai nao tem overflow ou altura definida | Verifique se o container pai tem mecanismo de scroll |
+| z-index nao funciona | Elemento nao tem `position` definido (static ignora z-index) | Defina `position: relative` ou outro valor antes de usar z-index |
 
 ---
 

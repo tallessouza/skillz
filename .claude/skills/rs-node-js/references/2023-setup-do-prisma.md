@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-setup-do-prisma
 description: "Applies Prisma ORM setup conventions when configuring Prisma in a NestJS or Node.js project. Use when user asks to 'setup prisma', 'configure database', 'create prisma schema', 'add prisma to nest', or 'initialize ORM'. Enforces naming conventions: lowercase plural table names with @@map, snake_case column mapping for camelCase fields, proper relationship setup, and correct migration workflow. Make sure to use this skill whenever setting up Prisma from scratch or creating new models. Not for query optimization, advanced Prisma features, or non-Prisma ORMs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [prisma, orm, schema, migration, database, naming-conventions]
 ---
 
 # Setup do Prisma
@@ -127,14 +133,14 @@ model Question {
 | `prisma` como dependency normal | `prisma` como devDependency (`-D`) |
 | `updatedAt` sem `@updatedAt` | Usar decorator `@updatedAt` para auto-fill |
 
+## Troubleshooting
+
+### Coluna created_at aparece como createdAt no banco
+**Symptom:** Nomes de colunas no banco nao seguem convencao snake_case
+**Cause:** Falta `@map("snake_case")` nos campos camelCase do schema Prisma
+**Fix:** Adicione `@map("created_at")` em campos como createdAt e `@@map("table_name")` em todo model
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-setup-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-setup-do-prisma/references/code-examples.md)

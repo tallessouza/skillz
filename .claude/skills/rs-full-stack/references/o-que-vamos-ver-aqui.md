@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-vamos-ver-aqui
 description: "Enforces immutability principles when writing JavaScript/TypeScript code for React applications. Use when user asks to 'update state', 'modify an array', 'change object properties', 'manage React state', or any state manipulation task. Applies rules: never mutate original data, always create new references, use spread/map/filter instead of push/splice. Make sure to use this skill whenever generating React state logic or transforming data structures. Not for backend-only code, database operations, or non-React vanilla JS where mutation is acceptable."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: react-fundamentos
+  tags: [react, imutabilidade, state, spread, useState]
 ---
 
 # Imutabilidade no JavaScript para React
@@ -82,6 +88,15 @@ function addItem(newItem) {
 | `state.sort()` | `setState(prev => [...prev].sort())` |
 | `state.name = 'x'` | `setState(prev => ({ ...prev, name: 'x' }))` |
 | `delete state.prop` | `setState(({ prop, ...rest }) => rest)` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| React nao re-renderiza apos atualizar state | Mutou o array/objeto original ao inves de criar nova referencia | Use spread `[...arr]` ou `{...obj}` para criar nova referencia |
+| `push` no state nao atualiza a UI | `push` muta o array sem mudar a referencia | Use `setState(prev => [...prev, newItem])` |
+| Ordenacao do state nao reflete na tela | `sort()` muta in-place sem criar referencia | Use `setState(prev => [...prev].sort())` |
+| Objeto no state perde propriedades apos update | Spread parcial sem incluir propriedades existentes | Use `{ ...prevObj, propAlterada: novoValor }` |
 
 ## Deep reference library
 

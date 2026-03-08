@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-componente-header
 description: "Applies Tailwind CSS layout patterns when building page headers and navigation components in Next.js. Use when user asks to 'create a header', 'build a navbar', 'style a layout', 'add navigation', or 'create a search input'. Enforces grid-based page layout, justify-between header structure, Next.js Image optimization, and external domain configuration. Make sure to use this skill whenever building top-level layout structures with Tailwind in Next.js. Not for footer components, sidebar navigation, or mobile-responsive menu logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [header, navbar, tailwind, grid-layout, next-image, search-input]
 ---
 
 # Componente Header com Tailwind CSS no Next.js
@@ -155,14 +161,19 @@ const nextConfig = {
 | Input com background e borda propria quando tem icone | Container estilizado + input `bg-transparent` |
 | `<Image>` sem width/height props | Sempre passe width/height para otimizacao |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-componente-header-7/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-componente-header-7/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-componente-header-7/references/deep-explanation.md) — O instrutor explica que grid e "uma das melhores estruturas para trabalhar layout de maneira macro".
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-componente-header-7/references/code-examples.md) — // app/layout.tsx - configuracao do body

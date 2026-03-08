@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-mfa
 description: "Applies multi-factor authentication design patterns when implementing auth systems. Use when user asks to 'add authentication', 'implement MFA', 'add 2FA', 'secure login', 'add OTP', or 'implement WebAuthn'. Guides factor selection (knowledge, possession, inherence, location, behavior), combines factors for exponential security gain, and matches security level to risk context. Make sure to use this skill whenever designing or reviewing authentication flows. Not for password hashing, session management, or authorization/RBAC."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security]
 ---
 
 # Multiplos Fatores de Autenticacao
@@ -99,14 +105,14 @@ await verifyTotp(user.totpSecret, totpCode)
 | Mesmo nivel de MFA para tudo | Escale conforme o risco do recurso |
 | Bloquear usuario sem fallback | Oferecer codigos de recuperacao no setup do MFA |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-em-multiplos-fatores-de-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-em-multiplos-fatores-de-autenticacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-em-multiplos-fatores-de-autenticacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-em-multiplos-fatores-de-autenticacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

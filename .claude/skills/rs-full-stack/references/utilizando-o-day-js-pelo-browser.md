@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-o-day-js-pelo-browser
 description: "Applies day.js library usage patterns when working with dates in browser JavaScript projects. Use when user asks to 'format a date', 'add a date library', 'use dayjs', 'display date and time', or 'include a JS library via CDN'. Covers CDN import order, dayjs() initialization, format tokens, and documentation-first approach. Make sure to use this skill whenever adding day.js or formatting dates in frontend code. Not for Node.js module imports, date-fns, Moment.js, or server-side date handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dates
+  tags: [dayjs, date-formatting, cdn, browser, javascript]
 ---
 
 # Utilizando o day.js pelo Browser
@@ -83,6 +89,14 @@ console.log(now.format('DD/MM/YYYY - HH:mm'))
 | `new Date().toLocaleDateString()` para formatos custom | `dayjs().format('DD/MM/YYYY')` |
 | Decorar todos os tokens de cor | Consultar a documentacao |
 | Reimplementar `padStart` para datas | Usar day.js format tokens |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `dayjs is not defined` | Script do day.js não carregou antes do seu código | Coloque o `<script>` do CDN ANTES do seu `main.js` |
+| Formato exibe tokens literais (DD/MM) em vez de valores | Usou `format` sem parênteses ou tokens incorretos | Verifique a sintaxe: `dayjs().format('DD/MM/YYYY')` |
+| Mês exibe valor errado (MM vs mm) | Confusão entre `MM` (mês) e `mm` (minutos) | Use `MM` maiúsculo para mês e `mm` minúsculo para minutos |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-o-projeto-4
 description: "Enforces correct HTML project initialization and immediate git versioning workflow. Use when user asks to 'start a project', 'create an HTML file', 'init a repo', 'setup a new website', or 'begin a frontend project'. Applies rules: always index.html, Emmet for structure, lang pt-br, git init immediately after first file. Make sure to use this skill whenever scaffolding a new HTML/frontend project from scratch. Not for React/Next.js/framework projects, nor for git branching or advanced workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: project-setup
+  tags: [html, project-init, git, emmet, scaffolding]
 ---
 
 # Iniciando Projeto HTML com Git
@@ -90,13 +96,16 @@ projeto/
 | Esperar projeto ficar grande para iniciar git | `git init .` apos primeiro arquivo |
 | Usar PowerShell/CMD para git no Windows | Git Bash |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `git: command not found` | Git nao instalado | Instalar Git de https://git-scm.com |
+| Emmet nao expande com `!` + Tab | Arquivo nao salvo com extensao `.html` | Salvar o arquivo como `.html` primeiro |
+| `lang="en"` permanece apos Emmet | Emmet gera template padrao em ingles | Alterar manualmente para `lang="pt-br"` |
+| Terminal nao reconhece `git init` no Windows | Usando PowerShell ou CMD | Trocar para Git Bash no VS Code |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que versionar cedo e convencoes de index.html
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de inicializacao com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-o-projeto-4/references/code-examples.md)

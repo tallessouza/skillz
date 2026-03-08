@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-where-com-like
 description: "Applies SQL LIKE operator patterns when writing database queries with text search. Use when user asks to 'search by name', 'filter by text', 'find records containing', 'implement search functionality', or 'query with partial match'. Enforces correct % wildcard placement for starts-with, ends-with, and contains patterns. Make sure to use this skill whenever generating SQL queries that involve text matching or building search features. Not for exact equality filters, numeric comparisons, or full-text search engines like Elasticsearch."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-database
+  tags: [sql, like, wildcard, text-search, partial-match, filtering]
 ---
 
 # WHERE com LIKE
@@ -74,6 +80,15 @@ SELECT * FROM products WHERE name LIKE '%cam%';
 | `WHERE name = userInput` (para busca parcial) | `WHERE name LIKE '%' \|\| userInput \|\| '%'` |
 | `LIKE 'texto'` (sem %) | `= 'texto'` (se quer exato) ou `LIKE '%texto%'` (se quer parcial) |
 | `LIKE '%a%'` em tabelas enormes sem indice | Full-text search ou indice trigram para performance |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| LIKE nao encontra resultado esperado | Case sensitivity no PostgreSQL | Use `ILIKE` em vez de `LIKE` no PostgreSQL |
+| `LIKE 'texto'` se comporta como `=` | Faltou `%` no padrao | Adicione `%` conforme a intencao: `'%texto%'`, `'texto%'` ou `'%texto'` |
+| Query com LIKE muito lenta | `%texto%` nao usa indices B-tree | Considere indice trigram (`pg_trgm`) ou full-text search |
+| SQL injection via input do usuario | Concatenacao direta de input no LIKE | Use prepared statements com parametros: `WHERE name LIKE ?` |
 
 ## Deep reference library
 

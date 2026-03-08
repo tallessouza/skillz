@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-babel-webpack-setup
 description: "Applies Babel configuration within Webpack projects for browser compatibility. Use when user asks to 'setup Babel', 'configure Webpack loaders', 'add browser compatibility', 'transpile JavaScript', or 'configure preset-env'. Follows correct loader hierarchy, preset naming, and exclusion patterns. Make sure to use this skill whenever setting up Babel in a Webpack project or debugging Babel loader errors. Not for Vite, esbuild, SWC, or non-Webpack bundlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling-webpack
+  tags: [babel, webpack, transpilation, preset-env, loaders]
 ---
 
 # Configuracao do Babel no Webpack
@@ -89,13 +95,16 @@ rule {
 | Omitir `exclude: /node_modules/` | Sempre excluir `node_modules` da transpilacao |
 | Instalar sem `--save-dev` | Babel e ferramenta de build, sempre devDependency |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "Cannot find package @babel/presets-env" | Nome do preset com plural errado | Use `@babel/preset-env` (singular), nao `@babel/presets-env` |
+| "Cannot find module babel-loader" | Pacote nao instalado como devDependency | Execute `npm install --save-dev babel-loader @babel/core @babel/preset-env` |
+| Build extremamente lento | `exclude: /node_modules/` ausente na rule | Adicione `exclude: /node_modules/` para nao transpilar dependencias |
+| Options nao sao aplicadas | `options` no mesmo nivel de `use` em vez de dentro | Mova `options` para dentro de `use: { loader, options }` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia de loaders e leitura de erros
 - [code-examples.md](references/code-examples.md) — Configuracao completa do webpack.config.js com Babel
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-incluindo-o-babel-na-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-incluindo-o-babel-na-aplicacao/references/code-examples.md)

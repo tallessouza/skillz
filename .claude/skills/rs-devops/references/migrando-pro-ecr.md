@@ -1,6 +1,12 @@
 ---
 name: rs-devops-migrando-pro-ecr
 description: "Applies AWS ECR migration patterns when configuring CI/CD pipelines to push Docker images to Amazon ECR. Use when user asks to 'push to ECR', 'migrate from DockerHub', 'configure ECR in GitHub Actions', 'build and push Docker image to AWS', or 'setup container registry CI'. Enforces output variables over hardcoded URIs, proper registry/repository separation, and OpenID Connect auth. Make sure to use this skill whenever building CI pipelines that target ECR. Not for Kubernetes deployments, ECS task definitions, or Dockerfile authoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-ecr-migracao
+  tags: [ecr, docker, ci-cd, github-actions, aws, oidc, container-registry]
 ---
 
 # Migrando Build de Imagens para o ECR
@@ -112,14 +118,14 @@ description: "Applies AWS ECR migration patterns when configuring CI/CD pipeline
 | Hardcode da tag no comando docker | Passar tag via env gerada em step anterior |
 | Build e push no mesmo comando inline | Separar em dois comandos com pipe `\|` |
 
+## Troubleshooting
+
+### Push para ECR falha com "repository does not exist"
+**Symptom:** `docker push` retorna erro de repositorio nao encontrado
+**Cause:** O URI esta usando o registry (conta + regiao) como repository, ou o ECR repository nao foi criado na mesma regiao
+**Fix:** Separe registry (output do login) de repository (nome do repo no ECR) e verifique que o repositorio existe na regiao configurada
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-migrando-pro-ecr/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-migrando-pro-ecr/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

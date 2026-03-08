@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-abstraindo-client-components
 description: "Enforces minimal Client Component boundaries in Next.js App Router projects. Use when user asks to 'create a page', 'add interactivity', 'fetch data in Next.js', 'convert to client component', or 'optimize bundle size'. Applies rules: never use async in Client Components, isolate interactivity into small dedicated Client Components, keep parent components as Server Components for data fetching. Make sure to use this skill whenever generating Next.js App Router code with any interactive elements. Not for React SPA projects without Next.js, or API route handlers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [client-component, server-component, use-client, bundle-optimization, app-router]
 ---
 
 # Abstraindo Client Components
@@ -159,14 +165,19 @@ export function AddToCartButton({ productId }: { productId: string }) {
 | `await fetch()` dentro de Client Component | `useEffect` + `fetch` ou React Query/SWR |
 | Componente enorme com `use client` | Quebrar em Server Component pai + Client Components minimos |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-abstraindo-client-components/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-abstraindo-client-components/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-abstraindo-client-components/references/deep-explanation.md) — O instrutor Diego demonstra o problema com um exemplo pratico. Quando voce coloca `async` em um Clie
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-abstraindo-client-components/references/code-examples.md) — Codigo que gera warning do ESLint e causa re-fetches:

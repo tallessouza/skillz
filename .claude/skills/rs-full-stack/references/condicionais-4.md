@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-condicionais
 description: "Applies conditional structure patterns when writing JavaScript/TypeScript control flow. Use when user asks to 'add an if statement', 'check a condition', 'handle login validation', 'control program flow', or 'make decisions in code'. Enforces clear boolean test extraction, early returns, and structured true/false branching. Make sure to use this skill whenever generating conditional logic, even for simple checks. Not for loops, error handling strategies, or async flow control."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, conditionals, if-else, logic, control-flow]
 ---
 
 # Estrutura de Condição
@@ -101,13 +107,17 @@ if (canProceed) {
 | `if (!isNotValid)` | `if (isValid)` — evite dupla negação |
 | Condicionais aninhados 3+ níveis | Refatore com early returns ou extraia funções |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Condicional sempre executa o mesmo caminho | Condicao mal formulada ou sempre true/false | Teste a condicao isoladamente com `console.log` para verificar o valor |
+| Dupla negacao dificulta leitura | Uso de `!isNotValid` em vez de `isValid` | Renomeie a variavel para forma positiva: `isValid` |
+| Muitos niveis de aninhamento | Condicionais encadeadas sem early return | Refatore com early returns para reduzir aninhamento |
+| Else nao tratado causa bug silencioso | Caminho falso ignorado | Sempre trate ambos os caminhos ou use early return |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-condicionais-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-condicionais-4/references/code-examples.md)

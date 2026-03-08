@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-suspense-api
 description: "Applies React Suspense API patterns when building Next.js pages with multiple async components. Use when user asks to 'add loading states', 'show skeleton while loading', 'load components independently', 'avoid blocking the whole page', or 'use Suspense'. Wraps slow async Server Components in Suspense boundaries with fallback UI instead of blocking entire page render. Make sure to use this skill whenever a Next.js page contains multiple async components or fetch calls. Not for client-side loading states, React.lazy code-splitting, or global page-level loading.tsx files."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, react-suspense, streaming, progressive-rendering, async-components, loading]
 ---
 
 # Suspense API no React (Next.js App Router)
@@ -118,14 +125,19 @@ export default function Home() {
 | Deixar conteudo estatico dentro de componente async | Mova conteudo estatico para fora, so o fetch fica async |
 | Usar loading.tsx para loading granular por secao | Use Suspense para secoes, loading.tsx para pagina inteira |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-suspense-api-no-react/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-suspense-api-no-react/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-suspense-api-no-react/references/deep-explanation.md) — O Next.js, por padrao, quando tem componentes assincronos dentro de uma pagina, **aguarda TODOS fina
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-suspense-api-no-react/references/code-examples.md) — O instrutor cria `components/github-profile.tsx`:

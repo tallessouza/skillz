@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-estados-do-container
 description: "Applies Docker container state management commands when working with containers. Use when user asks to 'pause container', 'stop container', 'start container', 'check container status', 'docker ps', or any container lifecycle task. Covers pause/unpause/stop/start states and resource implications. Make sure to use this skill whenever managing Docker container states or debugging unavailable containers. Not for Dockerfile creation, image building, or container networking."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-containers
+  tags: [docker, containers, pause, stop, start, states, lifecycle]
 ---
 
 # Estados do Container Docker
 
 > Gerenciar o ciclo de vida de containers Docker requer entender os tres estados (running, paused, stopped) e seus impactos em recursos.
 
-## Key concept
+## Key concepts
 
 Um container Docker transita entre tres estados principais, cada um com impacto diferente no consumo de recursos da maquina host. Entender esses estados evita desperdicio de recursos e permite diagnosticar rapidamente por que um servico esta indisponivel.
 
@@ -29,6 +35,24 @@ Um container Docker transita entre tres estados principais, cada um com impacto 
 | Running | `Up X minutes` | Sim | Sim | Sim |
 | Paused | `Up X minutes (Paused)` | Nao | Sim | Sim |
 | Stopped | `Exited (0)` | Nao | Nao | Apenas com `-a` |
+
+## Example
+
+```bash
+# Verificar containers em execucao
+docker ps
+
+# Verificar todos os containers (incluindo parados)
+docker ps -a
+
+# Pausar e retomar
+docker pause my-container
+docker unpause my-container
+
+# Parar e reiniciar
+docker stop my-container
+docker start my-container
+```
 
 ## How to think about it
 
@@ -61,13 +85,16 @@ Quando um servico dentro do container nao responde (requisicao fica pendente ate
 | Deixar containers pausados indefinidamente consumindo memoria | Usar `docker stop` se nao vai retomar em breve |
 | Investigar codigo da aplicacao quando servico nao responde | Verificar estado do container primeiro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Container nao aparece em `docker ps` | Container esta parado (Exited) | Usar `docker ps -a` para ver todos os containers |
+| Servico nao responde (timeout) | Container pausado — processos congelados | Executar `docker unpause <id>` para retomar |
+| Conexao recusada ao servico | Container parado completamente | Executar `docker start <id>` para reiniciar |
+| Container consome muita memoria parado | Container pausado mantem memoria alocada | Usar `docker stop` em vez de `docker pause` para liberar memoria |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre estados, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os comandos demonstrados com output esperado
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estados-do-container/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estados-do-container/references/code-examples.md)

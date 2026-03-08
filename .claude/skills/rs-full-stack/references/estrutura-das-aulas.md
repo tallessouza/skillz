@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-das-aulas
 description: "Generates the standard Skillz classroom project structure with index.html and script.js for JavaScript practice. Use when user asks to 'setup classroom', 'create practice environment', 'start JS exercises', or 'prepare for Skillz lessons'. Sets up HTML+JS with Live Server workflow. Make sure to use this skill whenever creating a new JavaScript practice workspace. Not for React, Node.js, or framework project scaffolding."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, html, project-setup, classroom, live-server]
 ---
 
 # Estrutura de Aulas — Classroom Setup
@@ -69,13 +75,21 @@ classroom/
 | Precisa ver output | Usar `console.log()` no script, verificar no Console do navegador |
 | Pagina nao atualiza | Live Server recarrega automaticamente ao salvar — verificar se extensao esta ativa |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Live Server nao abre o navegador | Extensao nao ativa ou porta em uso | Reinstalar extensao ou mudar porta nas configuracoes |
+| Console vazio apos salvar | `script.js` nao linkado no HTML | Verificar `<script src="script.js">` no `index.html` |
+| Alteracoes nao refletem no navegador | Arquivo nao salvo (bolinha no tab do VS Code) | Salvar com Ctrl+S |
+| Extensao Live Server nao encontrada | Nome errado na busca | Buscar "Live Server" por Ritwick Dey nas Extensions |
+
 ## Verification
 
 - Live Server abre o navegador automaticamente ao clicar "Open with Live Server"
 - Adicionar `console.log("teste")` em `script.js`, salvar, e verificar que aparece no Console sem recarregar manualmente
 
----
+## Deep reference library
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-das-aulas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-das-aulas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre estrutura de aulas e workflow com Live Server
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-mkt-estruturacao-dados
 description: "Enforces structured output patterns when integrating OpenAI completions into backend applications. Use when user asks to 'parse AI response', 'get JSON from GPT', 'integrate LLM output', 'structured output', or 'function calling'. Applies JSONMode and StructuredOutputs instead of naive prompt-based JSON. Make sure to use this skill whenever code sends OpenAI completions to a database or API integration. Not for prompt engineering, embeddings, or RAG pipelines."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: structured-outputs
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Estruturação de Dados com OpenAI
@@ -119,14 +125,14 @@ app.post("/generate", async (req, res) => {
 | Regex para extrair dados de texto do LLM | StructuredOutputs com schema definido |
 | Confiar que o formato será o mesmo entre chamadas | Definir schema explícito |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-a-estruturacao-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-a-estruturacao-de-dados/references/code-examples.md)

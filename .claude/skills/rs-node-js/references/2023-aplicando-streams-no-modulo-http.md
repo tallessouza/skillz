@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-streams-http
 description: "Applies Node.js Streams within HTTP servers when building request/response pipelines. Use when user asks to 'create an HTTP server', 'process uploads', 'stream request body', 'pipe request to response', or 'handle large payloads in Node'. Enforces req as ReadableStream, res as WritableStream, and pipe chaining with transforms. Make sure to use this skill whenever building Node.js HTTP handlers that process incoming data incrementally. Not for file system streams, WebSocket implementations, or frontend-only fetch usage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: streams-http
+  tags: [nodejs, streams, http, pipe, transform, readable, writable, fetch]
 ---
 
 # Streams no Modulo HTTP do Node.js
@@ -102,14 +108,14 @@ const server = http.createServer((req, res) => {
 | `req.on('data', (chunk) => { allData += chunk })` | `req.pipe(transform).pipe(res)` |
 | Criar ReadableStream e WritableStream manuais no server | Usar `req` e `res` que ja sao streams nativas |
 
+## Troubleshooting
+
+### fetch com stream lanca erro de duplex
+**Symptom:** `TypeError: RequestInit: duplex option is required when sending a body`
+**Cause:** Node.js moderno exige `duplex: 'half'` quando body e uma stream
+**Fix:** Adicione `duplex: 'half'` nas opcoes do fetch
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-aplicando-streams-no-modulo-http/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-aplicando-streams-no-modulo-http/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aplicando-streams-no-modulo-http/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aplicando-streams-no-modulo-http/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

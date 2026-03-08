@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-de-autenticacao
 description: "Applies NestJS authentication controller patterns when building login endpoints, JWT token generation, or credential validation. Use when user asks to 'create login route', 'authenticate user', 'generate JWT token', 'validate credentials', or 'build auth endpoint' in NestJS. Enforces consistent error responses, bcrypt comparison, and JWT sub convention. Make sure to use this skill whenever implementing authentication in NestJS applications. Not for registration, authorization guards, or role-based access control."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller de Autenticação NestJS
@@ -118,14 +125,14 @@ async handle(@Body() body: AuthenticateBodySchema) {
 | `return { accessToken: token }` | `return { access_token: token }` |
 | `async login(@Body() body: any)` | `async handle(@Body() body: AuthenticateBodySchema)` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-autenticacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-autenticacao/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-autenticacao/references/code-examples.md) — Todos os exemplos de código expandidos com variações

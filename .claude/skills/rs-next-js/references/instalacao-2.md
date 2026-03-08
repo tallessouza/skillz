@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-instalacao-2
 description: "Guides Next.js Pages Router project setup and installation when user asks to 'create a next app', 'setup next.js project', 'install next', 'start a new next project', or 'configure pages router'. Follows official Next.js docs with TypeScript, Tailwind, and src directory. Make sure to use this skill whenever scaffolding a new Next.js project with Pages Router. Not for App Router setup, deployment, or Next.js runtime configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: instalacao
+  tags: [next-js, pages-router, create-next-app, typescript, tailwind, project-setup]
 ---
 
 # Instalacao Next.js com Pages Router
@@ -79,14 +85,19 @@ Projeto Next.js funcional com Pages Router, pronto para desenvolvimento de rotas
 | Ignorar a pasta `src/` | Sempre habilitar para manter organizacao |
 | Editar arquivos de config antes de verificar se roda | Rodar `npm run dev` primeiro, confirmar que funciona |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-instalacao-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-instalacao-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-instalacao-2/references/deep-explanation.md) — O instrutor enfatiza que aprender Pages Router antes da App Router e estrategico. A Pages Router ain
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-instalacao-2/references/code-examples.md) — npx create-next-app@latest site-blog

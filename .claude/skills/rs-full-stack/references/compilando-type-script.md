@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compilando-type-script
 description: "Applies TypeScript compilation workflow when setting up or configuring TypeScript in Node.js projects. Use when user asks to 'add TypeScript', 'setup TypeScript', 'compile ts', 'convert ts to js', or 'run TypeScript with Node'. Covers renaming files to .ts, adding type annotations, compiling with tsc, and understanding the TS-to-JS pipeline. Make sure to use this skill whenever configuring TypeScript compilation in a Node.js backend project. Not for frontend bundler setups, tsconfig deep tuning, or runtime type validation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, compilation, tsc, node, type-annotations, build]
 ---
 
 # Compilando TypeScript
@@ -79,13 +85,17 @@ console.log(`Resultado da soma: ${result}`) // 8
 | Commitar arquivos .js gerados pelo tsc | Adicionar `*.js` (na pasta src) ao `.gitignore` |
 | Deixar parametros com tipo `any` implicito | Definir tipo explicito em cada parametro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: Unexpected token ':'` ao rodar .ts com Node | Node nao entende tipagens TypeScript | Compile com `npx tsc` antes e execute o .js gerado |
+| `Cannot find name 'console'` no editor | Falta `@types/node` instalado | `npm install @types/node -D` |
+| `npx tsc` nao gera arquivo .js | Erros de compilacao impedem a geracao | Corrija os erros listados pelo tsc antes |
+| Parametro com tipo `any` implicito | TypeScript em modo strict sem tipo declarado | Adicione tipo explicito em cada parametro |
+| Arquivo .js gerado commitado acidentalmente | `.gitignore` nao configurado para .js gerados | Adicione `src/**/*.js` ao `.gitignore` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que Node nao executa TypeScript e o papel do compilador
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compilando-type-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compilando-type-script/references/code-examples.md)

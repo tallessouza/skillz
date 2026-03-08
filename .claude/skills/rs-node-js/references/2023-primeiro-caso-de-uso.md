@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-primeiro-caso-de-uso
 description: "Enforces DDD entity and use case implementation patterns in TypeScript/Node.js projects. Use when user asks to 'create an entity', 'implement a use case', 'write a domain class', 'add a new feature with DDD', or 'structure domain layer'. Applies rules: entities are not database tables, IDs optional in constructors for reference vs creation, use cases as classes with single execute method, named parameters via interfaces, tests from the start. Make sure to use this skill whenever implementing domain layer code in Node.js/TypeScript. Not for infrastructure, database schemas, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-entities-use-cases
+  tags: [ddd, entity, use-case, domain, typescript, solid, srp, uuid]
 ---
 
 # Primeiro Caso de Uso — Entidades e Use Cases em DDD
@@ -119,14 +125,14 @@ export class AnswerQuestionUseCase {
 | ID sempre obrigatorio no constructor | ID opcional: omitido = novo, passado = referencia |
 | Implementar sem teste | Escreva o teste junto com a implementacao |
 
+## Troubleshooting
+
+### Use case com multiplos metodos publicos
+**Symptom:** A classe do use case tem metodos como `create()`, `validate()`, `notify()` alem de `execute()`
+**Cause:** Violacao do SRP — cada use case deve ter apenas um metodo publico
+**Fix:** Mantenha apenas `execute()` como metodo publico. Metodos auxiliares devem ser privados ou extraidos para outros use cases
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-primeiro-caso-de-uso/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-primeiro-caso-de-uso/references/code-examples.md)

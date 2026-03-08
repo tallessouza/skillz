@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-arquivo-js
 description: "Applies Node.js project structure conventions when setting up a new Node.js project or creating entry point files. Use when user asks to 'create a node project', 'setup express server', 'initialize backend', 'create server file', or 'run javascript with node'. Enforces src/ folder separation, server.js entry point, and package.json main field configuration. Make sure to use this skill whenever scaffolding Node.js projects from scratch. Not for frontend projects, browser JavaScript, or Deno/Bun runtimes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, project-structure, entry-point, server, package-json]
 ---
 
 # Executando Arquivo JavaScript com Node.js
@@ -78,13 +84,13 @@ node src/server.js
 | Executar `node server.js` sem path | Executar `node src/server.js` |
 | Rodar sem salvar o arquivo | Salvar (Ctrl+S) e depois executar |
 
+## Troubleshooting
+
+### Problem: Code changes not reflected when running `node src/server.js`
+- **Cause**: File was not saved before executing the command — Node reads from disk, not from the editor buffer
+- **Fix**: Save the file (Ctrl+S) before running the node command, or use `node --watch src/server.js` for auto-restart
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0106-executando-um-arquivo-javascript-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0106-executando-um-arquivo-javascript-mkv-mp-4/references/code-examples.md)

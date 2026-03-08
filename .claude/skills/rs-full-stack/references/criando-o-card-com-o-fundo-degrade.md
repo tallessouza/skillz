@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-card-fundo-degrade
 description: "Applies CSS gradient overlay techniques using pseudo-elements and linear-gradient when building card components. Use when user asks to 'create a card', 'add gradient overlay', 'darken image background', 'fade effect on image', or 'linear-gradient on card'. Covers ::before pseudo-element creation, position absolute/relative pairing, overflow hidden, and linear-gradient function. Make sure to use this skill whenever creating cards with background images that need gradient overlays. Not for CSS animations, grid/flexbox layout, or JavaScript interactions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-styling
+  tags: [css, gradient, pseudo-element, card, linear-gradient]
 ---
 
 # Card com Fundo Degradê via CSS
@@ -109,8 +115,12 @@ background: linear-gradient(180deg, transparent 0%, #1a1a1a 100%);
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre pseudo-elementos, overflow e linear-gradient
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-card-com-o-fundo-degrade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-card-com-o-fundo-degrade/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pseudo-elemento nao aparece | Faltou `content: ""` no `::before` | Adicione `content: ""` — sem isso o pseudo-elemento nao renderiza |
+| Degradê cobre a imagem inteira sem transparencia | Angulacao ou cores incorretas no `linear-gradient` | Use `transparent 0%` no inicio e a cor solida no final |
+| Border-radius nao funciona na imagem | `overflow: hidden` faltando no container pai | Adicione `overflow: hidden` no card pai |
+| Pseudo-elemento posicionado fora do card | Faltou `position: relative` no pai | Adicione `position: relative` no card e `position: absolute` no `::before` |
+| Degradê aparece atras da imagem | `z-index` do pseudo-elemento menor que da imagem | Ajuste `z-index` ou reordene os elementos |

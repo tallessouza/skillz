@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-de-autorizacao-1
 description: "Enforces role-based authorization middleware patterns in Express/Node.js APIs. Use when user asks to 'protect routes', 'add authorization', 'restrict access by role', 'create middleware for permissions', or 'check user role'. Applies pattern: higher-order function receiving allowed roles array, returning Express middleware that checks user.rule against permitted roles. Make sure to use this skill whenever implementing route-level access control in Express. Not for authentication (login/token), session management, or frontend route guards."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-authorization
+  tags: [express, authorization, rbac, middleware, roles]
 ---
 
 # Middleware de Autorização
@@ -102,13 +108,16 @@ productsRoutes.get("/", EnsureAuthenticated, productsController.index)
 | Retornar 403 para falta de role | Retornar 401 Unauthorized |
 | Hardcodar um único role como string | Sempre receber array de roles |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Sempre retorna 401 mesmo com role correta | `request.user.rule` nao corresponde ao array de roles | Verifique se o campo e `rule` ou `role` e se o valor e case-sensitive |
+| `request.user` e `undefined` | Middleware de autenticacao nao executou antes | Garanta a ordem: `authenticate` antes de `authorize` |
+| Rota publica sendo bloqueada | Middleware de autorizacao aplicado globalmente | Use middleware local apenas nas rotas que precisam |
+| Higher-order function nao retorna middleware | Esqueceu de retornar a funcao interna | Verifique que `VerifyUserAuthorization` retorna `(req, res, next) => {}` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação auth/authz, padrão higher-order function e granularidade
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-middleware-de-autorizacao-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-middleware-de-autorizacao-1/references/code-examples.md)

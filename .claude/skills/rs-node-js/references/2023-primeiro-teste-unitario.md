@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-primeiro-teste-unitario
 description: "Enforces unit testing patterns with dependency inversion and fake repositories when writing Node.js tests. Use when user asks to 'write a unit test', 'test a use case', 'create test for service', 'mock repository', or 'test without database'. Applies rules: never use real database in unit tests, create in-memory fake repositories, test one unit in isolation, return named objects from use cases. Make sure to use this skill whenever generating unit tests for use cases or services with repository dependencies. Not for end-to-end tests, integration tests, or API route testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: unit-testing
+  tags: [unit-test, vitest, fake-repository, dependency-inversion, testing, isolation]
 ---
 
 # Primeiro Teste Unitario
@@ -142,14 +148,14 @@ it('should register user', async () => {
 | `const res = await compare(...)` | `const isPasswordCorrectlyHashed = await compare(...)` |
 | Rodar teste unitario contra banco real | Fake repository que retorna dados ficticios |
 
+## Troubleshooting
+
+### Teste unitario lento ou falhando intermitentemente
+**Symptom:** Testes demoram segundos para rodar ou passam/falham dependendo da ordem de execucao
+**Cause:** O teste esta usando repositorio real (Prisma, banco de dados) em vez de fake, ou compartilhando estado entre testes
+**Fix:** Substitua o repositorio real por um objeto fake que implementa a interface. Recrie instancias no `beforeEach` para isolar estado
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-primeiro-teste-unitario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-primeiro-teste-unitario/references/code-examples.md)

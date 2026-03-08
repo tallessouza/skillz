@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-botoes-da-secao-hero
 description: "Applies CSS button styling with box-shadow, scale hover effects, and transitions when building interactive hero sections. Use when user asks to 'create buttons', 'style a hero section', 'add hover effects', 'add box-shadow', or 'make interactive buttons'. Covers multiple box-shadows, scale transitions, flexbox button layout, and browser compatibility. Make sure to use this skill whenever styling CTA buttons or hero section interactive elements. Not for JavaScript click handlers, form validation, or backend logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, buttons, box-shadow, transitions, hover, flexbox, hero-section]
 ---
 
 # Botões Interativos com CSS — Hero Section
@@ -122,13 +128,16 @@ description: "Applies CSS button styling with box-shadow, scale hover effects, a
 | `margin-right: 20px` entre botões | Container com `display: flex; gap: 2rem` |
 | Ícone circular com width/height fixo | Span com `padding + border-radius: 50% + display: flex` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Hover scale effect is abrupt** | Add `transition: scale 350ms` (or `transition: transform 350ms` for older browsers) to the base state, not just the hover state. |
+| **Box-shadow looks flat** | Use 3-4 comma-separated shadow layers with decreasing opacity to create natural depth. |
+| **Selector `.button .button-buy` not working** | Remove the space — `.button.button-buy` (no space) targets an element with both classes on the same element. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre múltiplas sombras, compatibilidade de browsers e seletores compostos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-botoes-da-secao-hero/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-botoes-da-secao-hero/references/code-examples.md)

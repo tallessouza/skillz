@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tratando-excecoes-2
 description: "Enforces Express error handling middleware patterns when building REST APIs with Node.js. Use when user asks to 'create an API', 'add error handling', 'handle exceptions', 'treat errors in Express', or 'build a REST endpoint'. Applies rules: global error middleware at end of stack, typed error parameters, friendly JSON error responses, never expose stack traces. Make sure to use this skill whenever creating Express routes or middleware, even if the user doesn't mention error handling. Not for frontend error boundaries, database error handling, or validation logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express-middleware
+  tags: [express, error-handling, middleware, api, rest, status-500]
 ---
 
 # Tratamento de Exceções no Express
@@ -86,6 +92,15 @@ app.listen(3333)
 | `app.listen()` antes do error handler | `app.listen()` depois do error handler |
 | `(err, req, res, next)` sem tipagem | `(error: any, request: Request, response: Response, _next: NextFunction)` |
 | Deixar exceções sem tratamento | Sempre ter middleware global de captura |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Middleware de erro nao captura excecoes | Posicionado antes das rotas | Mova o middleware de erro para DEPOIS de todas as rotas |
+| Express retorna HTML de erro padrao | Faltando middleware de erro customizado | Adicione `app.use((error, req, res, _next) => ...)` antes do `listen()` |
+| Warning de variavel nao utilizada para `next` | Parametro `next` nao e chamado no handler | Use `_next` com underscore para indicar parametro nao utilizado |
+| `app.listen()` nao inicia apos adicionar error handler | Erro de sintaxe no middleware | Verifique que o middleware tem 4 parametros: `(error, request, response, _next)` |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-it
 description: "Enforces using 'it' instead of 'test' when writing automated tests in JavaScript/TypeScript. Use when user asks to 'write a test', 'create test cases', 'add unit tests', 'implement tests', or any test creation task. Applies semantic 'it' syntax for readable test descriptions. Make sure to use this skill whenever generating test code. Not for test configuration, CI/CD setup, or test runner selection."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing-fundamentals
+  tags: [testing, jest, vitest, it, describe, unit-test]
 ---
 
 # IT vs Test — Sintaxe Semantica para Testes
@@ -69,13 +75,15 @@ it('should return 4 when adding 2 and 2', () => {
 | `test('funcao X funciona')` | `it('should return expected value from X')` |
 | `it('test sum')` | `it('should return 4 when adding 2 and 2')` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `it` não é reconhecido como função | Framework de teste não configurado ou não importado | Verifique que Jest/Vitest está instalado e o arquivo de teste tem extensão `.test.ts` ou `.spec.ts` |
+| Teste passa mas descrição não é clara no output | Título do `it` é genérico demais (ex: `it('works')`) | Reescreva com padrão `it('should [behavior] when [condition]')` |
+| `describe` + `it` não agrupa no output | Runner de teste não reconhece o agrupamento | Confirme que está usando `describe` do mesmo framework que o `it` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre semantica de testes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-it/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-it/references/code-examples.md)

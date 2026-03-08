@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compreendendo-escopos
 description: "Applies JavaScript scope rules when writing or reviewing code with variables and blocks. Use when user asks to 'declare a variable', 'fix scope issue', 'debug undefined variable', 'refactor to block scope', or any variable declaration task. Enforces correct use of let/const over var, block scoping, and context awareness. Make sure to use this skill whenever generating JavaScript/TypeScript code with variable declarations. Not for naming conventions, typing, or function design patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, scope, variables, let, const, var]
 ---
 
 # Compreendendo Escopos em JavaScript
@@ -80,13 +86,17 @@ console.log(usuario) // "Maria" — preservado
 | Variavel global e conveniente | Variavel global causa efeitos colaterais imprevisiveis em codebases grandes |
 | Escopo so importa em funcoes | Blocos `if`, `for`, `while` criam escopo para `let`/`const` |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel aparece como `undefined` | Acesso fora do escopo de declaracao | Verifique se a variavel foi declarada no escopo correto com let/const |
+| Loop `for` com comportamento inesperado | Uso de `var` no iterador | Troque `var i` por `let i` no loop for |
+| Variavel sobrescrita inesperadamente | Uso de `var` que vaza escopo de bloco | Use `const` ou `let` para escopo de bloco |
+| Erro 'variable is not defined' | Variavel declarada em outro bloco/funcao | Declare no escopo onde sera usada ou passe como parametro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Analogias completas (comodos da casa, Brasil/estados), raciocinio sobre contexto vs escopo, e hierarquia de escopos
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de var vs let/const, closures em loops, e shadowing
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-escopos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-escopos/references/code-examples.md)

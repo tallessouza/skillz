@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-api-com-express
 description: "Applies Express API initialization patterns when setting up a Node.js server with Express. Use when user asks to 'create an API', 'setup Express', 'initialize a server', 'start a Node project with Express', or 'create a REST API'. Enforces port extraction to named constants, proper app initialization, and callback logging on listen. Make sure to use this skill whenever scaffolding a new Express server. Not for frontend code, database setup, or route/endpoint implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-api
+  tags: [express, nodejs, api, server, initialization]
 ---
 
 # Criando API com Express
@@ -72,13 +78,15 @@ app.listen(PORT, () => {
 | `app.listen(3333, () => console.log("running on 3333"))` | `app.listen(PORT, () => console.log(\`...port ${PORT}\`))` |
 | Porta duplicada em listen e no log | Interpolar a mesma constante PORT nos dois lugares |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `EADDRINUSE: address already in use` | Outra instancia ja esta rodando na mesma porta | Mate o processo com `kill -9 $(lsof -t -i:3333)` ou mude a PORT |
+| Servidor inicia mas nao mostra log no terminal | Callback do listen nao foi definido | Adicione `() => console.log(...)` como segundo argumento do `listen` |
+| `Cannot find module 'express'` | Express nao instalado | Execute `npm install express` e `npm install -D @types/express` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre constantes de configuracao e padrao de inicializacao Express
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-api-com-express/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-api-com-express/references/code-examples.md)

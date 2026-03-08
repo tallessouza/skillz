@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-header-9
 description: "Applies Next.js Pages Router header component patterns when building navigation layouts. Use when user asks to 'create a header', 'add navigation', 'build a navbar', 'highlight active link', or 'organize components' in Next.js Pages Router projects. Enforces barrel export pattern, useRouter active link detection with pathname, and fixed header styling with backdrop blur. Make sure to use this skill whenever creating navigation components in Next.js Pages Router. Not for App Router, server components, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-navegacao
+  tags: [header, navigation, useRouter, barrel-export, pages-router, next-js, tailwind]
 ---
 
 # Componente Header — Next.js Pages Router
@@ -150,14 +156,19 @@ export { Header } from './header'
 | Classes condicionais com ternario inline longo | `cn('base', condition ? 'active' : 'inactive')` |
 | `position: sticky` sem z-index | `fixed top-0 z-50` com z-index explicito |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-header-9/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-header-9/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-header-9/references/deep-explanation.md) — O instrutor apresenta um padrao de organizacao que ele usa em seus projetos: em vez de criar um `ind
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-header-9/references/code-examples.md) — // components/header/index.ts

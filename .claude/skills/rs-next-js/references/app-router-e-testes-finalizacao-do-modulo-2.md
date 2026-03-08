@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-react-vs-next
 description: "Applies the distinction between React fundamentals and Next.js-specific features when building with App Router. Use when user asks to 'create a Next.js app', 'use server components', 'add caching', 'setup App Router', or discusses frontend architecture decisions. Ensures correct attribution of concepts to React vs Next.js, guiding portable code decisions. Make sure to use this skill whenever discussing or implementing App Router patterns. Not for API routes, database queries, or deployment configuration."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, react, server-components, client-components, portability, architecture]
 ---
 
 # React Fundamentals vs Next.js Específicos
@@ -57,14 +64,19 @@ Código em Server Components (fetch, transformação de dados, renderização) m
 - Nem todo framework adota Server Components no mesmo ritmo
 - Server Actions ainda estão em adoção inicial no mercado
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-finalizacao-do-modulo-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-finalizacao-do-modulo-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-finalizacao-do-modulo-2/references/deep-explanation.md) — O ponto mais importante da aula é que **o aprendizado de Server Components não é um investimento esp
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-finalizacao-do-modulo-2/references/code-examples.md) — // app/products/page.tsx

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-o-docker-compose
 description: "Applies Docker Compose execution workflow when running multi-container setups. Use when user asks to 'run docker compose', 'start containers', 'docker compose up', 'spin up services', or 'run the database and API together'. Guides correct flags, container naming, and verification steps. Make sure to use this skill whenever executing docker-compose files or troubleshooting container startup. Not for writing Dockerfiles, building single images, or Kubernetes orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-fundamentals
+  tags: [docker, docker-compose, containers, multi-container, orchestration]
 ---
 
 # Executando o Docker Compose
@@ -100,13 +106,16 @@ def456         postgres   "docker-entrypoint..."   Up 2 minutes   0.0.0.0:5432->
 | Testar so a API e ignorar o banco | Testar cada servico individualmente |
 | `docker run` manual para cada servico | `docker compose up -d` para orquestrar tudo junto |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Porta ja em uso ao subir containers | Container anterior ainda rodando | `docker ps -a` para encontrar, `docker stop <id>` para liberar |
+| Container reinicia em loop | Erro na aplicacao dentro do container | `docker logs <container_name>` para diagnosticar |
+| Build falha durante `docker compose up` | Dockerfile com erro | Verificar Dockerfile referenciado no servico |
+| Banco nao aceita conexao | Container do banco ainda inicializando | Aguardar status `Up` no `docker ps` e tentar novamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre orquestracao de containers e boas praticas
 - [code-examples.md](references/code-examples.md) — Todos os comandos expandidos com variacoes e cenarios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-executando-o-docker-compose/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-executando-o-docker-compose/references/code-examples.md)

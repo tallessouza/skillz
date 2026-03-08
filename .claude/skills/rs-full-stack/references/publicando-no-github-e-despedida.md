@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-publicando-github-despedida
-description: "Guides publishing static projects to GitHub and deploying with GitHub Pages. Use when user asks to 'publish to GitHub', 'deploy with GitHub Pages', 'host my static site', or 'make my project live'. Covers git commit workflow, GitHub Pages configuration from settings, and repository best practices like README and descriptions. Make sure to use this skill whenever deploying a simple static frontend project. Not for CI/CD pipelines, custom domains, or server-side deployments."
+description: "Configures publishing static projects to GitHub and deploying with GitHub Pages. Use when user asks to 'publish to GitHub', 'deploy with GitHub Pages', 'host my static site', or 'make my project live'. Covers git commit workflow, GitHub Pages configuration from settings, and repository best practices like README and descriptions. Make sure to use this skill whenever deploying a simple static frontend project. Not for CI/CD pipelines, custom domains, or server-side deployments."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags:
+    - git
+    - github
+    - github-pages
+    - deploy
 ---
 
 # Publicando no GitHub com GitHub Pages
@@ -95,6 +105,14 @@ curl -I https://usuario.github.io/nome-do-projeto
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre GitHub Pages e boas praticas de publicacao
 - [code-examples.md](references/code-examples.md) — Exemplos completos de README e configuracoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| GitHub Pages nao aparece em Settings | Repositorio esta privado | Mude para publico em Settings → Danger Zone → Change visibility |
+| Site mostra 404 apos habilitar Pages | Deploy ainda nao completou | Aguarde 2-3 minutos e atualize a pagina |
+| CSS nao carrega no deploy | Caminhos absolutos no HTML (comecando com `/`) | Use caminhos relativos: `./styles.css` em vez de `/styles.css` |
 
 ---
 

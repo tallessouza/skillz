@@ -1,6 +1,12 @@
 ---
 name: rs-devops-garantindo-prontidao-da-aplicacao
 description: "Enforces correct Kubernetes probe configuration (Startup, Liveness, Readiness) when writing pod specs or deployment manifests. Use when user asks to 'create a deployment', 'configure health checks', 'add probes', 'kubernetes manifest', or 'ensure pod readiness'. Applies startup/readiness/liveness probe patterns with correct endpoints and timing. Make sure to use this skill whenever generating Kubernetes deployment YAML that runs application containers. Not for Docker Compose health checks, cloud-provider-specific health checks, or application-level error handling code."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-probes
+  tags: [kubernetes, probes, startup, liveness, readiness, health-check, self-healing, deployment]
 ---
 
 # Kubernetes Probes — Startup, Liveness e Readiness
@@ -118,14 +124,14 @@ spec:
 | Ignorar CrashLoopBackOff recorrente | Configurar alarmes e investigar causa raiz |
 | Liveness com periodSeconds muito baixo | Minimo 10s para evitar restarts desnecessarios |
 
+## Troubleshooting
+
+### Pod fica em CrashLoopBackOff com probes configuradas
+**Symptom:** Pod reinicia repetidamente e mostra status CrashLoopBackOff
+**Cause:** StartupProbe falha porque a aplicacao demora mais para inicializar do que `failureThreshold * periodSeconds` permite
+**Fix:** Aumente o `failureThreshold` do startupProbe (ex: de 30 para 60) para dar mais tempo ao bootstrap da aplicacao
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-garantindo-prontidao-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-garantindo-prontidao-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

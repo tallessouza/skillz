@@ -1,6 +1,12 @@
 ---
 name: rs-devops-acessando-container-cluster
 description: "Applies Kubernetes port-forward techniques when user asks to 'access a pod', 'expose container port', 'port forward kubernetes', 'connect to cluster app', or 'kubectl port-forward'. Covers GUI (Lens) and CLI approaches for redirecting local ports to pod containers. Make sure to use this skill whenever working with Kubernetes pod networking or container access. Not for Kubernetes Service/Ingress configuration, network policies, or production traffic routing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-pods-networking
+  tags: [kubernetes, port-forward, kubectl, pods, networking]
 ---
 
 # Acessando Container Dentro do Cluster Kubernetes
@@ -89,14 +95,19 @@ kubectl port-forward pod/nginx 8080:80 -n primeira-app
 | Assumir que port-forward sobrevive a delete do Pod | Verifique o Pod antes de acessar |
 | Ignorar erro NOT FOUND no port-forward | Recrie o Pod com `kubectl apply -f` |
 
+## Troubleshooting
+
+### Port-forward retorna "pod not found" mesmo com pod existente
+**Symptom:** `kubectl port-forward pod/nginx 8080:80` retorna erro "pod not found"
+**Cause:** O pod esta em um namespace diferente do default e o flag `-n` nao foi passado
+**Fix:** Sempre especifique o namespace: `kubectl port-forward pod/nginx 8080:80 -n primeira-app`
+
+### Port-forward desconecta inesperadamente
+**Symptom:** Conexao port-forward cai com erro NOT FOUND durante uso
+**Cause:** O pod foi deletado ou recriado pelo controller (Deployment/ReplicaSet)
+**Fix:** Verifique se o pod ainda existe com `kubectl get pods -n <ns>` e reconecte apontando para o novo pod
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-acessando-container-dentro-do-cluster/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-acessando-container-dentro-do-cluster/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-acessando-container-dentro-do-cluster/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-acessando-container-dentro-do-cluster/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

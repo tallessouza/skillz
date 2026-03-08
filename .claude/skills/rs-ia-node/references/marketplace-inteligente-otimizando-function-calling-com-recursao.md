@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-function-calling-recursao
 description: "Applies recursive function calling pattern when implementing OpenAI tool_calls loops in Node.js. Use when user asks to 'implement function calling', 'handle tool calls', 'create AI agent with tools', 'recursive completion', or builds any LLM chat completion that uses tools/functions. Ensures tool_calls are processed in a recursive loop instead of sequential completions. Make sure to use this skill whenever generating code that handles OpenAI function calling or tool use patterns. Not for prompt engineering, embedding, or non-tool LLM completions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: function-calling
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Otimizando Function Calling com Recursão
@@ -101,14 +107,14 @@ const parsed = finalCompletion.choices[0].message.parsed;
 | `if/else` chain para selecionar função | `availableFunctions[toolCall.function.name](args)` com mapa de handlers |
 | Assumir que uma tool_call resolve tudo | Loop recursivo que verifica `tool_calls` a cada completion |
 
+## Troubleshooting
+
+### Modelo nao chama a funcao esperada
+**Symptom:** completion retorna content direto em vez de tool_calls
+**Cause:** Description da tool muito vaga, ou prompt do usuario nao indica necessidade de dados reais
+**Fix:** Melhore a description da tool com casos de uso claros. Adicione no prompt instrucoes explicitas como "considere apenas produtos em estoque" 
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-otimizando-function-calling-com-recursao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-otimizando-function-calling-com-recursao/references/code-examples.md)

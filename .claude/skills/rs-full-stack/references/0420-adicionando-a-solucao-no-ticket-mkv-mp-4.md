@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-solucao-ticket
 description: "Applies pattern of combining route params with request body data in PATCH/PUT endpoints when updating resources. Use when user asks to 'close a ticket', 'update with additional data', 'add fields to patch request', 'combine params and body', or 'enrich update endpoint'. Ensures update operations spread body data into the persisted object. Make sure to use this skill whenever building REST update endpoints that need both identifier params and payload body. Not for GET requests, query filtering, or creating new resources."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, rest-api, patch, params-body, spread-operator]
 ---
 
 # Combinando Params e Body em Endpoints de Update
@@ -86,8 +92,11 @@ app.patch("/tickets/:id/close", (req, res) => {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao params/body e propagacao de propriedades
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0420-adicionando-a-solucao-no-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0420-adicionando-a-solucao-no-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Body retorna `undefined` no PATCH | Content-Type nao configurado no cliente | Configure `Content-Type: application/json` no header da requisicao |
+| Campo `solution` nao persiste | Body nao esta sendo desestruturado | Extraia com `const { solution } = req.body` antes do update |
+| Dados antigos sobrescritos | Update sem spread operator | Use `{ ...dadosAtuais, ...novosDados }` para merge parcial |
+| console.log aparece em producao | Log de debug nao removido | Remova todos os `console.log` temporarios antes do commit |

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-aggregates-watched-lists
 description: "Applies Aggregate and Watched List patterns when modeling domain entities with child collections in DDD applications. Use when user asks to 'create an entity with children', 'edit a list of related items', 'model an order with items', 'handle attachments on a parent entity', or 'track additions and removals in a collection'. Ensures correct identification of aggregates (entities persisted together) and implements Watched Lists for efficient diffing on edit operations. Make sure to use this skill whenever implementing parent-child entity relationships that require create/update/delete tracking. Not for simple CRUD without nested entities, nor for event sourcing or domain events."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-aggregates
+  tags: [ddd, aggregate, watched-list, entity, collection, parent-child, domain-model]
 ---
 
 # Aggregates & Watched Lists
@@ -116,14 +122,19 @@ async editQuestion(questionId: string, data: EditQuestionInput) {
 | Array simples `T[]` para listas editaveis em agregados | `WatchedList<T>` que rastreia novo/removido/editado |
 | Ignorar performance no save de listas | Operacoes cirurgicas por tipo de mudanca |
 
+## Troubleshooting
+
+### Edicao de lista gera registros duplicados
+**Symptom:** Apos editar, existem registros duplicados no banco
+**Cause:** Delete-all + recreate gera novos IDs para itens que nao mudaram
+**Fix:** Use Watched List para identificar apenas novos itens e criar somente esses
+
+### Watched List sempre vazia apos carregar do banco
+**Symptom:** `getNewItems()` e `getRemovedItems()` retornam vazio mesmo apos mudancas
+**Cause:** A lista inicial nao foi populada com os itens do banco
+**Fix:** Instancie a WatchedList com os itens existentes antes de aplicar mudancas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-aggregates-and-watched-lists/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-aggregates-and-watched-lists/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aggregates-and-watched-lists/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aggregates-and-watched-lists/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

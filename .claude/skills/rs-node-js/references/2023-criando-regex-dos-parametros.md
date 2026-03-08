@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-regex-route-params
-description: "Applies dynamic route parameter extraction using RegEx when building Node.js HTTP servers from scratch. Use when user asks to 'parse route parameters', 'build a router', 'extract params from URL', 'create route matching', or 'implement dynamic routes in Node'. Generates RegEx-based path matching with named capture groups for route params like :id. Make sure to use this skill whenever implementing raw Node.js routing without frameworks. Not for Express/Fastify/Nest route handling or general regex tutorials."
+name: 2023-criando-regex-dos-parametros
+description: "Builds regex patterns with capture groups to extract dynamic route parameters from URL paths in manual Node.js routing implementations. Use when user asks to 'parse route parameters', 'extract URL params', 'build route path regex', 'implement manual routing', or 'handle dynamic segments in paths'. Enforces: global flag for multiple params, capture groups for clean names, Array.from for matchAll iterators, utility function in src/utils/. Make sure to use this skill whenever implementing custom URL routing with dynamic parameters in raw Node.js HTTP servers. Not for Express/Fastify/NestJS routing, frontend URL parsing, or query string handling."
+category: coding-lens
+tags: [fastify, nestjs, regex, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: routing
+  tags: [regex, routing, route-params, matchAll, node-js, http]
 ---
 
 # Criando RegEx dos Parâmetros de Rota
@@ -92,14 +101,14 @@ const result = buildRoutePath('/users/:id/groups/:groupId')
 | `/:(.+)/g` (greedy demais) | `/:([a-zA-Z]+)/g` — apenas letras, sem caracteres especiais |
 | RegEx sem grupo de captura `:/[a-zA-Z]+/g` | `/:([a-zA-Z]+)/g` — parênteses extraem o nome limpo |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-regex-dos-parametros/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-regex-dos-parametros/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

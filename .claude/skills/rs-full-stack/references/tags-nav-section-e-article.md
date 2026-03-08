@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tags-nav-section-article
 description: "Enforces correct usage of HTML semantic structural tags nav, section, and article when writing HTML markup. Use when user asks to 'create a page', 'build a layout', 'write HTML structure', 'add navigation', or 'create an article page'. Applies rules: nav for navigation links, section with named id and heading, article for self-contained content. Make sure to use this skill whenever generating HTML page structure or layout markup. Not for CSS styling, JavaScript logic, or non-HTML templating."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, semantic, nav, section, article, structure]
 ---
 
 # Tags Estruturais: nav, section e article
@@ -130,6 +136,15 @@ description: "Enforces correct usage of HTML semantic structural tags nav, secti
 | `<article>` sem heading | `<article><h1>Titulo</h1>...` |
 | `<div class="post">` para artigo | `<article>` |
 | `<section>` como div generica | `<div>` para containers sem significado |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `<section>` nao comunica significado ao leitor de tela | Faltando atributo `id` e heading interno | Adicione `id` e um `<h2>` dentro de cada `<section>` |
+| Navegacao nao detectada por ferramentas de acessibilidade | Links de navegacao dentro de `<div>` em vez de `<nav>` | Envolva links de navegacao com `<nav>` |
+| `<article>` sem contexto autonomo | Conteudo depende de elementos externos para fazer sentido | Garanta que o `<article>` tenha `<h1>` proprio e faca sentido isolado |
+| SEO nao identifica estrutura da pagina | Tags semanticas usadas como `<div>` generico | Use cada tag apenas para seu proposito semantico correto |
 
 ## Deep reference library
 

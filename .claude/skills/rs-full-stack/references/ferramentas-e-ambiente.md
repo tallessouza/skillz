@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ferramentas-e-ambiente
 description: "Applies VS Code setup with Zen Mode and GitHub Copilot configuration for focused coding environments. Use when user asks to 'setup vscode', 'configure copilot', 'zen mode settings', 'clean coding environment', or 'vscode for learning'. Ensures optimal font sizes, distraction-free mode, and AI assistant integration. Make sure to use this skill whenever setting up a new VS Code environment for programming study. Not for terminal emulator setup, Neovim config, or non-VS Code editors."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: dev-environment
+  tags: [vscode, zen-mode, copilot, setup, editor, font-size]
 ---
 
 # Ferramentas e Ambiente — VS Code + GitHub Copilot
@@ -72,13 +78,16 @@ Ctrl+P (ou Cmd+P no Mac) → digitar "> settings user" → selecionar "Open User
 | Ficar trocando modelos de IA no Copilot | Deixe no "Auto" e foque no aprendizado |
 | Tentar entender todas as opcoes do Copilot de uma vez | Aprenda o basico pratico primeiro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Copilot Chat nao abre | Login GitHub ausente ou extensao desativada | Verificar login e status da extensao em Extensions |
+| Zen Mode esconde demais (ex: terminal) | Configuracoes de Zen Mode muito restritivas | Ajustar `zenMode.*` no settings.json conforme necessidade |
+| Fonte muito pequena ou grande | Configuracao de fontSize nao aplicada | Verificar `editor.fontSize` no User Settings JSON |
+| "Use AI Features" nao aparece | Copilot nao instalado ou versao do VS Code antiga | Atualizar VS Code e reinstalar extensao Copilot |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre VS Code Insiders vs estavel, filosofia de ambiente limpo
 - [code-examples.md](references/code-examples.md) — Configuracoes JSON completas e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-ferramentas-e-ambiente/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-ferramentas-e-ambiente/references/code-examples.md)

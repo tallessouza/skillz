@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-executando-ts-com-tsx
 description: "Configures tsx to execute TypeScript directly without manual transpilation. Use when user asks to 'run typescript', 'execute ts file', 'setup tsx', 'configure dev script', or 'avoid tsc compile step'. Applies tsx installation, watch mode setup, and package.json dev script configuration. Make sure to use this skill whenever setting up a new Node.js + TypeScript project dev environment. Not for production builds, bundling, or tsconfig configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-tooling
+  tags: [typescript, tsx, watch-mode, dev-script, node-js]
 ---
 
 # Executando TypeScript com tsx
@@ -74,13 +80,16 @@ Apos configuracao, o workflow do desenvolvedor e:
 | Rodar `tsx` sem `watch` no desenvolvimento | Sempre usar `watch` para hot reload |
 | Deixar arquivos `.js` transpilados junto com `.ts` | Apagar `.js` gerados, usar apenas `.ts` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `tsx: command not found` | Pacote nao instalado ou node_modules ausente | Rodar `npm install` e verificar `node_modules/.bin/tsx` |
+| Watch mode nao reinicia | Path do arquivo no script esta errado | Verificar se `src/server.ts` existe no path indicado |
+| Erro de sintaxe TypeScript ao rodar | Versao do tsx incompativel com features TS usadas | Atualizar tsx ou verificar compatibilidade com a versao do TypeScript |
+| Arquivos `.js` antigos conflitando | Transpilacao anterior com `tsc` deixou arquivos residuais | Apagar todos os `.js` gerados e usar apenas `.ts` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Por que tsx existe, como funciona por baixo, e quando nao usar
 - [code-examples.md](references/code-examples.md) — Exemplos completos de configuracao com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-executando-typescript-com-tsx/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-executando-typescript-com-tsx/references/code-examples.md)

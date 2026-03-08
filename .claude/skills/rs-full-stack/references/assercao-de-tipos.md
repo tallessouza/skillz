@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-assercao-de-tipos
 description: "Applies TypeScript type assertion patterns when writing code that consumes APIs, handles unknown types, or converts object types. Use when user asks to 'fetch from API', 'consume endpoint', 'type this response', 'assert type', or 'convert object type'. Enforces correct 'as' syntax, requires type definitions before assertion, and guides when assertion is appropriate vs unsafe. Make sure to use this skill whenever handling API responses or unknown typed objects in TypeScript. Not for type guards, type narrowing, generics, or runtime validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, type-assertion, api, typing, type-safety]
 ---
 
 # Asserção de Tipos (Type Assertion)
@@ -88,13 +94,16 @@ let userResponse = {} as UserResponse
 | `as unknown as OutroTipo` (double assertion) | Corrija a arquitetura de tipos |
 | Assertion para mutar tipo existente | Type guard com `if`/`in` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Autocomplete nao funciona apos assertion | Type nao foi definido antes de usar `as` | Defina o `type` ou `interface` com todas as propriedades primeiro |
+| Erro de tipo em runtime apesar de assertion | Assertion e compile-time only, nao valida em runtime | Adicione validacao runtime com Zod ou checagem manual |
+| `<Type>{}` causa erro em arquivo `.tsx` | Sintaxe angle-bracket conflita com JSX | Use `{} as Type` em vez de `<Type>{}` |
+| Double assertion `as unknown as Type` necessaria | Tipos realmente incompativeis na arquitetura | Corrija a arquitetura de tipos em vez de forcar com double assertion |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-assercao-de-tipos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-assercao-de-tipos/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-in
 description: "Applies SQL IN clause for multi-value filtering when writing SELECT queries. Use when user asks to 'filter by multiple values', 'select where column matches several options', 'query with a list of values', or 'use IN in SQL'. Ensures correct syntax for both numeric and text values. Make sure to use this skill whenever generating SQL with multiple value conditions that would otherwise require chained OR clauses. Not for JOIN operations, subqueries with IN, or single-value WHERE clauses."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, in-clause, where, filtering, select]
 ---
 
 # SQL IN — Filtro com Múltiplos Valores
@@ -67,13 +73,16 @@ WHERE price IN (800, 550, 1200);
 | `WHERE price IN ('800', '550')` (numérico com aspas) | `WHERE price IN (800, 550)` |
 | `WHERE category IN (image, audio)` (texto sem aspas) | `WHERE category IN ('image', 'audio')` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro de sintaxe com IN | Texto sem aspas simples | Envolver valores de texto com aspas simples: `'valor'` |
+| Resultado vazio inesperado | Valores na lista nao existem na tabela | Verificar com `SELECT DISTINCT coluna FROM tabela` |
+| Tipo incorreto no filtro | Numeros entre aspas ou texto sem aspas | Usar aspas apenas para texto, numeros sem aspas |
+| Virgula extra no final da lista | Virgula apos ultimo valor dentro do IN | Remover virgula apos o ultimo valor |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-in/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

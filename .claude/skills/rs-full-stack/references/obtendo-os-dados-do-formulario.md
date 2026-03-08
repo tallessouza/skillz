@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-dados-formulario
 description: "Applies form data extraction patterns when writing JavaScript form handling code. Use when user asks to 'handle form submit', 'get form data', 'capture form input', 'prevent page reload on submit', or 'select form elements'. Enforces getElementById for inputs, querySelector for form, onsubmit with preventDefault, and arrow function event handlers. Make sure to use this skill whenever implementing form submission handling in vanilla JavaScript. Not for React/Vue forms, FormData API, or fetch/AJAX submission."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, form, submit, preventDefault]
 ---
 
 # Obtendo Dados do Formulário
@@ -85,13 +91,15 @@ form.onsubmit = (event) => {
 | `document.querySelector("#expense")` para id | `document.getElementById("expense")` |
 | Seleções de elementos dentro do handler | Seleções no topo do script, fora do handler |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Pagina recarrega ao submeter | Faltou `event.preventDefault()` | Adicione como primeira linha do handler de submit |
+| `getElementById` retorna `null` | Script carrega antes do HTML ou id incorreto | Mova script para final do body ou use `defer` |
+| Handler nao recebe evento | Usou `() => {}` sem parametro | Use `(event) => {}` para acessar o evento |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre submit, preventDefault e seleção de elementos
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-obtendo-os-dados-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-obtendo-os-dados-do-formulario/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre submit, preventDefault e selecao de elementos
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

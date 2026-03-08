@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-build-dockerfile
 description: "Applies Docker image build commands and workflows when working with Dockerfiles and container images. Use when user asks to 'build a docker image', 'create a container', 'run docker build', 'list docker images', or 'check running containers'. Enforces correct flag usage (-t for naming, -f for file, dot for default Dockerfile), tagging for versioning, and build verification steps. Make sure to use this skill whenever generating Docker build commands or troubleshooting image creation. Not for Docker Compose, orchestration, Kubernetes, or runtime container execution."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, build, images, tags, dockerfile, containers]
 ---
 
 # Docker Build — Construir Imagens Docker
@@ -93,13 +99,16 @@ docker image ls
 | Nao verificar apos build | `docker image ls` para confirmar |
 | Sempre usar `latest` sem versionar | Usar tags: `api:1.0`, `api:2.0` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Image has no name after build** | Always use the `-t` flag: `docker build -t my-app .` — without it, the image gets `<none>` as repository name. |
+| **Docker cannot find Dockerfile** | Ensure you are in the correct directory, or use `-f` to specify the Dockerfile path explicitly. |
+| **Build cache causing stale results** | Use `docker build --no-cache -t my-app .` to force a fresh build without cached layers. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre build, cache, e fluxo de etapas do Dockerfile
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de comandos Docker expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-build-dockerfile/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-build-dockerfile/references/code-examples.md)

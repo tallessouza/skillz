@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-completando-uma-string
 description: "Applies padStart and padEnd string methods when formatting or masking strings in JavaScript/TypeScript. Use when user asks to 'mask a credit card', 'pad a string', 'hide digits', 'format card number', 'complete a string', or any string padding task. Ensures correct usage of padStart/padEnd with dynamic length and fill characters. Make sure to use this skill whenever generating code that masks, pads, or formats fixed-length strings. Not for general string manipulation like split, replace, or regex operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, string, padStart, padEnd, masking, formatting]
 ---
 
 # Completando Strings com padStart e padEnd
@@ -76,13 +82,17 @@ const masked = lastDigits.padStart(card.length, "x")
 | `while (str.length < 10) str += "#"` | `str.padEnd(10, "#")` |
 | `card.substring(12, 16)` para ultimos 4 | `card.slice(-4)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| padStart nao preenche nada | String ja tem o tamanho alvo ou maior | Verifique que `targetLength` e maior que `string.length` |
+| Mascara com tamanho errado | Usando numero hardcoded em vez de `original.length` | Use `originalString.length` como targetLength |
+| `slice(-4)` retorna string vazia | String original tem menos de 4 caracteres | Valide o tamanho da string antes de aplicar slice |
+| Fill character truncado de forma inesperada | Fill string multi-caractere e cortada no limite | Comportamento esperado — padStart/padEnd trunca automaticamente |
+| padStart/padEnd nao existe | Ambiente JavaScript muito antigo (pre-ES2017) | Atualize o runtime ou use polyfill |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre padStart/padEnd, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-completando-uma-string/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-completando-uma-string/references/code-examples.md)

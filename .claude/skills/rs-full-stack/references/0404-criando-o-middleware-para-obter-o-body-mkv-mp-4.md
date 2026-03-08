@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-body-parser
 description: "Applies Node.js middleware pattern for parsing request body from streams when writing HTTP servers without frameworks. Use when user asks to 'create a server', 'parse request body', 'handle POST request', 'build middleware', or 'read body from request' in pure Node.js. Enforces buffer collection via for-await, JSON.parse with try-catch, and body injection into request object. Make sure to use this skill whenever building raw Node.js HTTP servers that need body parsing. Not for Express, Fastify, or any framework that has built-in body parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, middleware, body-parser, streams, buffer, json]
 ---
 
 # Middleware para Obter o Body da Requisição
@@ -90,13 +96,16 @@ const server = http.createServer(async (request, response) => {
 | Body parsing duplicado em cada rota | Um middleware centralizado chamado uma vez |
 | Função síncrona para ler stream | `async function` com `await` no caller |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `request.body` é `undefined` | Middleware não foi chamado com `await` antes do handler | Adicione `await jsonHandler(request, response)` antes de acessar body |
+| `request.body` é `null` | Body enviado não é JSON válido | Verifique o Content-Type da requisição e o formato do body |
+| Body vazio em requisições GET | GET não envia body — comportamento esperado | Verifique se o método HTTP está correto |
+| `SyntaxError: Unexpected token` | JSON malformado no body da requisição | Valide o JSON com um linter antes de enviar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre streams, buffers e o padrão middleware
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0404-criando-o-middleware-para-obter-o-body-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0404-criando-o-middleware-para-obter-o-body-mkv-mp-4/references/code-examples.md)

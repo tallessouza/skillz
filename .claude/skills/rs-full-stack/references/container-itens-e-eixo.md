@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-container-itens-e-eixo
 description: "Enforces correct Flexbox container/items and axis mental model when writing CSS layouts. Use when user asks to 'create a layout', 'align elements', 'use flexbox', 'put items side by side', or 'change flex direction'. Applies rules: container has display:flex, items are direct children, main axis vs cross axis awareness, flex-direction controls axis orientation. Make sure to use this skill whenever generating CSS flex layouts. Not for Grid layout, positioning, or non-layout CSS properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, flexbox, layout, container, axis, flex-direction]
 ---
 
 # Flexbox: Container, Itens e Eixo
@@ -86,13 +92,16 @@ description: "Enforces correct Flexbox container/items and axis mental model whe
 | Usar `float` para colocar itens lado a lado | `display: flex` no container |
 | Assumir que main axis e sempre horizontal | Verificar `flex-direction` — com `column`, main axis e vertical |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Itens nao ficam lado a lado | `display: flex` aplicado no item em vez do container | Aplique `display: flex` no elemento pai (container) |
+| `justify-content` alinha no eixo errado | `flex-direction: column` inverte os eixos | Com `column`, `justify-content` age no eixo vertical |
+| Netos nao respondem ao flex do avo | Flex so afeta filhos diretos | Aplique `display: flex` tambem no elemento pai intermediario |
+| Itens encolhem demais | Flex shrink padrao e 1, itens diminuem para caber | Use `flex-shrink: 0` ou `min-width` nos itens que nao devem encolher |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eixos, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-container-itens-e-eixo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-container-itens-e-eixo/references/code-examples.md)

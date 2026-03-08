@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-atualizacao-cache-likes
 description: "Applies optimistic cache update patterns for TanStack Query mutations in Next.js when user asks to 'add like', 'implement favorite', 'optimistic update', 'invalidate cache', or 'update query cache'. Enforces prefix-based query matching with getQueriesData/setQueriesData to update all related queries simultaneously. Make sure to use this skill whenever implementing mutations that affect data shown in multiple views. Not for server-side caching, HTTP cache headers, or static page revalidation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: interacoes-e-cache
+  tags: [tanstack-query, optimistic-update, cache, likes, useMutation, react-query, next-js]
 ---
 
 # Atualizacao de Cache dos Likes
@@ -108,14 +114,19 @@ for (const [queryKey, data] of context.previousData) {
 | `onClick={onToggleLike}` direto em botao dentro de link | `onClick={handleToggleLike}` com stopPropagation |
 | Rollback com `setQueryData` unico apos `setQueriesData` | `for...of` iterando `context.previousData` |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-atualizacao-de-cache-dos-likes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-atualizacao-de-cache-dos-likes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-atualizacao-de-cache-dos-likes/references/deep-explanation.md) — Quando voce tem a mesma informacao (ex: contagem de likes) exibida em multiplos lugares — um board c
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-atualizacao-de-cache-dos-likes/references/code-examples.md) — O componente recebe `onToggleLike` como prop e cria um handler local para tratar o evento:

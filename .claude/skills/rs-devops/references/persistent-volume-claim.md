@@ -1,6 +1,12 @@
 ---
 name: rs-devops-persistent-volume-claim
-description: "Applies Kubernetes PersistentVolumeClaim patterns when writing pod/deployment manifests. Use when user asks to 'create a PVC', 'mount volume in pod', 'configure storage in k8s', 'persistent storage kubernetes', or any Kubernetes storage task. Enforces the hierarchy: StorageClass → PersistentVolume → PVC → Pod. Make sure to use this skill whenever generating Kubernetes manifests that involve storage or volumes. Not for Docker volumes, host-only storage, or non-Kubernetes container orchestration."
+description: "Applies Kubernetes PersistentVolumeClaim patterns when configuring persistent storage for pods. Use when user asks to 'create PVC', 'persist data in Kubernetes', 'configure storage class', 'mount volume in pod', or 'setup PersistentVolume'. Enforces StorageClass-PV-PVC hierarchy, WaitForFirstConsumer binding, and pod-to-PVC abstraction. Make sure to use this skill whenever writing Kubernetes storage manifests or debugging PVC binding issues. Not for Docker volumes, cloud-native storage services, or ephemeral container storage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-storage
+  tags: [kubernetes, pvc, persistent-volume, storage-class, storage, stateful]
 ---
 
 # PersistentVolumeClaim no Kubernetes
@@ -137,9 +143,206 @@ volumes:
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
+---
+
+# Deep Explanation: PersistentVolumeClaim
+
+## Modelo mental: o disco e o requerimento
+
+O instrutor usa uma analogia clara: o PersistentVolume e como reservar um disco fisico. Voce pega um espaco (ex: 10Gi) e reserva para o cluster. Mas a aplicacao nao fala diretamente com esse disco — ela fala com o PVC, que e quem faz o "requerimento" de uma parcela desse disco.
+
+Pense assim:
+- **PV** = disco fisico reservado (10Gi)
+- **PVC** = "eu quero 1Gi desse disco"
+- **Pod** = "eu uso o que o PVC reservou pra mim"
+
+## StorageClass e o provisionador
+
+O StorageClass e o objeto que conversa com o provisionador do cluster. No exemplo da aula, o provisionador e o `local-path` (padrao do k3d/Rancher). Em ambientes cloud, seria `gp2` (AWS), `pd-standard` (GCP), etc.
+
+O StorageClass define:
+- Qual provisionador usar
+- Politica de binding (`WaitForFirstConsumer` vs `Immediate`)
+- Parametros especificos do provisionador
+
+## WaitForFirstConsumer — por que importa
+
+Com `volumeBindingMode: WaitForFirstConsumer`, o binding entre PV e PVC so acontece quando um Pod consumidor e criado. Isso significa:
+
+1. Voce cria StorageClass → ok
+2. Voce cria PV → status `Available`
+3. Voce cria PVC → status `Pending` (nao `Bound`!)
+4. Voce cria Pod referenciando o PVC → agora o PVC fica `Bound`
+
+O instrutor enfatiza: "todos ainda vao ficar com Wait for First Consumer. Voce so vai ter de fato o bound disso quando voce tiver uma aplicacao consumindo."
+
+Isso e diferente de `Immediate`, onde o PVC tenta fazer bind assim que e criado — o que pode causar problemas em clusters multi-zona.
+
+## Fluxo completo de comunicacao
+
+```
+StorageClass ←→ Provisionador (local-path, gp2, etc.)
+     ↑
+PersistentVolume (reserva espaco: 10Gi)
+     ↑
+PersistentVolumeClaim (requer parcela: 1Gi)
+     ↑
+Pod/Deployment (consome via volumeMount)
+```
+
+A chave e: **o Pod nunca sabe sobre o PV**. Ele so conhece o PVC. Isso permite trocar a implementacao de storage sem mudar os manifests dos Pods.
+
+## Por que nao conectar Pod direto ao volume?
+
+O PVC serve como camada de abstracao. Beneficios:
+- **Desacoplamento**: Pod nao precisa saber detalhes do storage
+- **Portabilidade**: mesmo PVC funciona em local-path ou cloud
+- **Controle de acesso**: PVC pode limitar quanto cada app usa
+- **Lifecycle independente**: PVC pode sobreviver ao Pod
 
 ---
 
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-persistent-volume-claim/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-persistent-volume-claim/references/code-examples.md)
+# Code Examples: PersistentVolumeClaim
+
+## Exemplo completo: StorageClass + PV + PVC + Deployment
+
+### 1. StorageClass
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: rancher.io/local-path
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Delete
+```
+
+### 2. PersistentVolume (10Gi)
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: app-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /data/app
+```
+
+### 3. PersistentVolumeClaim (1Gi do PV de 10Gi)
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+```
+
+### 4. Deployment usando o PVC
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: app
+          image: app:latest
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /app/data
+              name: app-storage
+      volumes:
+        - name: app-storage
+          persistentVolumeClaim:
+            claimName: app-pvc
+```
+
+## Verificacao dos objetos
+
+```bash
+# Ver StorageClass
+kubectl get storageclass
+
+# Ver PV e status
+kubectl get pv
+
+# Ver PVC e status (Pending ate ter Pod consumidor com WaitForFirstConsumer)
+kubectl get pvc
+
+# Verificar binding apos criar Pod
+kubectl get pvc app-pvc -o yaml | grep phase
+# Esperado: phase: Bound
+
+# Descrever PVC para ver eventos
+kubectl describe pvc app-pvc
+```
+
+## Cenario: provisionamento dinamico (cloud)
+
+Em cloud, o PV e criado automaticamente pelo provisionador. Basta criar StorageClass + PVC:
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gp2-storage
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: gp2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: gp2-storage
+```
+
+Nesse caso, ao criar um Pod que referencia `app-pvc`, o provisionador cria o PV automaticamente com 5Gi.
+
+## Troubleshooting comum
+
+```bash
+# PVC stuck em Pending
+kubectl describe pvc app-pvc
+# Causas comuns:
+# - Nenhum PV compativel (capacidade/accessMode/storageClass)
+# - WaitForFirstConsumer sem Pod consumidor
+# - StorageClass nao existe
+
+# PV stuck em Released (nao volta pra Available)
+kubectl patch pv app-pv -p '{"spec":{"claimRef": null}}'
+# Cuidado: so faca isso se tiver certeza que os dados nao sao necessarios
+```

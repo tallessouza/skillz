@@ -1,6 +1,13 @@
 ---
-name: rs-node-2023-delete-question-comment-ctrl
+name: rs-node-js-2023-controller-deletar-comentario-da-pergunta
 description: "Generates NestJS DELETE controller for question comments following Clean Architecture. Use when user asks to 'create delete controller', 'delete comment endpoint', 'remove question comment route', or 'NestJS comment controller'. Applies pattern: copy similar controller, adapt route/use-case/params, register in module, write e2e test. Make sure to use this skill whenever creating DELETE endpoints in NestJS Clean Architecture projects. Not for business logic, use case implementation, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Deletar Comentario da Pergunta
@@ -111,14 +118,14 @@ test('[DELETE] /questions/comments/:commentId', async () => {
 | Testar sem factory dedicada | Criar factory (ex: `QuestionCommentFactory`) para o recurso |
 | Rota `/comments/:id` sem contexto | Rota `/questions/comments/:id` com prefixo do pai |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-comentario-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-comentario-da-pergunta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-comentario-da-pergunta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-comentario-da-pergunta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

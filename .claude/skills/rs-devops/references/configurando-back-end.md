@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-back-end
 description: "Applies Terraform S3 backend configuration when setting up remote state storage. Use when user asks to 'configure terraform backend', 'setup remote state', 'use S3 for terraform state', 'fix terraform state issues', or 'migrate local state to S3'. Guides bucket, key, and region config, terraform init migration, and IAM permissions. Make sure to use this skill whenever working with Terraform state management or CI/CD pipelines that need shared state. Not for S3 bucket creation, general AWS config, or application-level storage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-state
+  tags: [terraform, iac, s3, backend, remote-state]
 ---
 
 # Configurando Back-end do Terraform com S3
@@ -115,14 +121,14 @@ terraform init
 | Guardar estado na raiz do bucket sem path | Use `key = "state/terraform.tfstate"` com diretorio |
 | Commitar tfstate no git | Configure backend remoto e adicione `*.tfstate` no `.gitignore` |
 
+## Troubleshooting
+
+### Pipeline CI/CD falha com resource already exists
+**Symptom:** Terraform tenta recriar recursos que ja existem na AWS
+**Cause:** Backend remoto nao esta configurado — terraform usa estado local que nao persiste entre execucoes da pipeline
+**Fix:** Configure o bloco `backend "s3"` no terraform e rode `terraform init` para migrar o estado
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-back-end/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-back-end/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-back-end/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-back-end/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

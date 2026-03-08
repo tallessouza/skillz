@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-cluster-multiplos-nos
 description: "Applies Kind multi-node Kubernetes cluster configuration when user asks to 'create a cluster', 'configure Kind', 'setup Kubernetes locally', 'add worker nodes', or 'multi-node Kind'. Enforces declarative YAML manifests over imperative commands, correct node role separation (control-plane vs worker), and redundancy patterns. Make sure to use this skill whenever creating or modifying Kind cluster configurations. Not for production cloud cluster setup (EKS/GKE/AKS), Helm charts, or application deployment manifests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-kind
+  tags: [kubernetes, kind, multi-node, cluster, control-plane, worker]
 ---
 
 # Configurando Cluster Kind com Multiplos Nos
@@ -97,14 +103,14 @@ kind create cluster --config kind.yaml --name meu-app
 | Deletar apenas o no quando quer remover tudo | `kind delete cluster --name X` |
 | Criar YAML sem `apiVersion` e `kind` | Sempre inclua ambos no topo do manifesto |
 
+## Troubleshooting
+
+### Cluster Kind criado sem worker nodes
+**Symptom:** `kubectl get nodes` mostra apenas o control-plane, sem workers
+**Cause:** Cluster foi criado sem arquivo de configuracao YAML ou o YAML nao declara nodes com role worker
+**Fix:** Crie um kind.yaml com nodes de role worker e recrie o cluster: `kind delete cluster --name X && kind create cluster --config kind.yaml`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-cluster-com-multiplos-nos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-cluster-com-multiplos-nos/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-cluster-com-multiplos-nos/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-cluster-com-multiplos-nos/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

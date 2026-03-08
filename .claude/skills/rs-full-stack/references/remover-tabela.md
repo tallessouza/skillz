@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-remover-tabela
 description: "Applies DROP TABLE syntax and safety practices when user asks to 'delete a table', 'remove a table', 'drop table', 'clean up schema', or 'reset database tables'. Enforces caution patterns and IF EXISTS usage. Make sure to use this skill whenever generating SQL that removes database structures. Not for deleting rows (DELETE), truncating data, or dropping columns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, drop-table, ddl, schema, database]
 ---
 
 # DROP TABLE — Remover Tabelas
@@ -64,6 +70,15 @@ DROP TABLE IF EXISTS foods;
 | DROP sem verificar dependencias | Checar foreign keys antes |
 | DROP em producao sem backup | `pg_dump` antes de DROP |
 | DROP CASCADE sem entender impacto | Listar dependencias primeiro |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "table does not exist" ao executar DROP | Tabela ja foi removida ou nome errado | Use `DROP TABLE IF EXISTS` para evitar erro |
+| "cannot drop table because other objects depend on it" | Foreign keys de outras tabelas referenciam esta | Remova tabelas dependentes primeiro ou use `CASCADE` |
+| Dados perdidos apos DROP em producao | DROP e irreversivel sem backup | Sempre faca `pg_dump` ou backup antes de DROP em producao |
+| DROP CASCADE removeu tabelas inesperadas | CASCADE propaga a remocao para dependentes | Liste dependencias antes de usar CASCADE |
 
 ## Deep reference library
 

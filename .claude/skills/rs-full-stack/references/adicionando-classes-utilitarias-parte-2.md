@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-classes-utilitarias-pt2
 description: "Enforces CSS utility class patterns for responsive layouts including dynamic padding, visibility toggles, and equal-column grids. Use when user asks to 'create utility classes', 'make responsive layout', 'hide elements on mobile', 'equal columns', 'even columns grid', or 'mobile first CSS'. Applies mobile-first strategy with CSS custom properties for padding-block/inline and display toggling. Make sure to use this skill whenever building responsive utility CSS or grid layouts. Not for JavaScript logic, component architecture, or CSS-in-JS solutions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, responsive, grid, mobile-first, utility-classes, padding, visibility]
 ---
 
 # Classes Utilitárias Responsivas — Padding, Visibilidade e Colunas
@@ -126,13 +132,17 @@ description: "Enforces CSS utility class patterns for responsive layouts includi
 | Media query desktop-first (`max-width`) | Media query mobile-first (`min-width`) |
 | Valores mágicos repetidos no CSS | Variáveis CSS na `:root` que mudam por breakpoint |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Elemento nao aparece no desktop | `display: initial` nao foi definido no media query | Adicione o media query com `display: initial` para `.desktop-only` |
+| Colunas nao ficam lado a lado | Media query nao ativou | Verifique o breakpoint — `min-width: 768px` e o padrao |
+| `display: block` quebra em `<span>` | Usando `block` em vez de `initial` | Troque para `display: initial` que respeita o display nativo da tag |
+| Padding nao muda entre breakpoints | Variavel CSS nao redefinida no media query | Adicione a redefinicao da variavel dentro do `@media` no `:root` |
+| Grid com colunas desiguais | Usando `auto` em vez de `1fr` | Use `grid-auto-columns: 1fr` para distribuicao uniforme |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre mobile-first, padding lógico e estratégia de planejamento prévio
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e aplicação HTML
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-classes-utilitarias-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-classes-utilitarias-parte-2/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-class
 description: "Applies correct HTML class attribute usage when writing markup. Use when user asks to 'create HTML', 'add a class', 'classify elements', 'style elements', or 'write a component template'. Enforces multiple class syntax with spaces, no special characters, and semantic class naming for CSS/JS selection. Make sure to use this skill whenever generating HTML with class attributes. Not for CSS selectors, JavaScript DOM manipulation, or CSS-in-JS class generation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, class, attributes, selectors, semantic-naming]
 ---
 
 # Atributo Class no HTML
@@ -61,13 +67,16 @@ description: "Applies correct HTML class attribute usage when writing markup. Us
 | `class="item_número-1!"` | `class="item destaque"` |
 | Sem class em elementos repetidos | `class="nome-semantico"` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao aplica na classe | Nome da classe com caractere especial (acento, cedilha) | Use apenas letras sem acento, numeros e hifens |
+| `querySelector` nao encontra elemento | Seletor de classe sem ponto (`.`) | Use `.nome-classe` no seletor CSS/JS |
+| Classe CSS aplica em elementos errados | Mesmo nome de classe em elementos nao relacionados | Use nomes mais especificos ou combine classes |
+| Duas classes no atributo nao funcionam | Separador errado (virgula em vez de espaco) | Separe classes com espaco: `class="a b"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre classificacao e selecao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-class/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-class/references/code-examples.md)

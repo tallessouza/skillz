@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-select-de-data-parte-02
 description: "Applies time/hour Select component pattern with React Hook Form integration in Next.js. Use when user asks to 'create a time picker', 'add hour selection', 'build a select with icons', 'implement time slot selector', or 'integrate Select with react-hook-form'. Generates Select with trigger, icon, placeholder, and mapped time options. Make sure to use this skill whenever building time/hour selection UI in Next.js with shadcn/radix Select components. Not for date pickers, calendar components, or native HTML select elements."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: formularios-e-componentes
+  tags: [select, react-hook-form, shadcn-ui, radix, time-picker, next-js, form-field]
 ---
 
 # Select de Horario com React Hook Form
@@ -109,14 +115,19 @@ const timeOptions = Array.from({ length: 13 }, (_, i) => {
 | Icone e placeholder soltos no trigger | `<div className="flex items-center gap-2">` |
 | `<option>` dentro de Select component | `<SelectItem>` |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-02/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-02/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-02/references/deep-explanation.md) — O componente Select do Radix UI (base do shadcn/ui) nao e um input HTML nativo. Ele nao dispara even
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-select-de-data-parte-02/references/code-examples.md) — import { Clock } from "lucide-react"

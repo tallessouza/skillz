@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-footer-do-projeto
 description: "Applies CSS footer layout patterns using flexbox and nth-child selectors when building page footers or multi-section inline layouts. Use when user asks to 'create a footer', 'build a footer component', 'layout footer elements', 'use nth-child', or 'distribute items in a row with margin-right auto'. Make sure to use this skill whenever generating footer HTML/CSS or using nth-child pseudo-selectors. Not for header navigation, grid layouts, or JavaScript interactivity."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [css, flexbox, footer, nth-child, layout]
 ---
 
 # Footer Layout com Flexbox e nth-child
@@ -89,8 +95,12 @@ footer span:nth-child(1) {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre nth-child vs nth-of-type e margin auto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-footer-do-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-footer-do-projeto/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| nth-child seleciona o elemento errado | Contagem inclui TODOS os filhos, nao so os do mesmo tipo | Conte todos os filhos do container, incluindo elementos de tipos diferentes |
+| margin-right: auto nao empurra elementos | Container nao e flex | Adicione `display: flex` no container pai |
+| Copyright aparece como texto `&copy;` | Entidade HTML usada fora do HTML (ex: JS string) | Em HTML use `&copy;`, em JS use `\u00A9` ou o caractere direto |
+| Gap nao funciona entre elementos | Browser muito antigo sem suporte a `gap` em flex | Use margin como fallback ou atualize o browser |
+| Footer nao fica no final da pagina | Conteudo insuficiente para empurrar o footer | Use `min-height: 100vh` no body com flex column |

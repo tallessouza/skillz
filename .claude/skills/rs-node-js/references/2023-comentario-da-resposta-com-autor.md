@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-comentario-resposta-autor
 description: "Applies the pattern of reusing value objects across similar domain contexts when extending NestJS Clean Architecture features. Use when user asks to 'add author to comments', 'reuse value object', 'extend feature to similar entity', 'replicate functionality for answers', or 'apply same pattern to related entity'. Ensures consistent repository methods, mappers, presenters, and test patterns across question and answer domains. Make sure to use this skill whenever replicating an existing feature from one aggregate to a sibling aggregate. Not for creating new value objects from scratch or unrelated NestJS features."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [value-object, reuse, mapper, presenter, nestjs, clean-architecture, comments]
 ---
 
 # Replicar Funcionalidade Entre Agregados Irmãos
@@ -116,14 +122,19 @@ const comments = result.value.comments.map(CommentWithAuthorPresenter.toHTTP)
 | Criar comentários no teste sem Student associado | Criar Student primeiro, passar `authorId` |
 | Duplicar presenter com mesma estrutura | Reutilizar `CommentWithAuthorPresenter` |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-comentario-da-resposta-com-autor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-comentario-da-resposta-com-autor/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-comentario-da-resposta-com-autor/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-comentario-da-resposta-com-autor/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

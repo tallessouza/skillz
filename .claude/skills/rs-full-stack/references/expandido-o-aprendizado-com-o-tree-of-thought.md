@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tree-of-thought-aprendizado
 description: "Applies Tree of Thought prompting technique to expand learning beyond base knowledge. Use when user asks to 'learn alternatives', 'compare implementations', 'explore options', 'understand trade-offs', or 'deepen understanding' of a technical choice. Guides AI to explain its choices, suggest alternatives with pros/cons, and open focused deep-dive chats. Make sure to use this skill whenever the user wants to understand WHY a particular implementation was chosen over alternatives. Not for code generation, debugging, or project setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ai-learning
+  tags: [ai, prompting, tree-of-thought, learning, alternatives, trade-offs]
 ---
 
 # Tree of Thought no Aprendizado
@@ -88,13 +94,16 @@ detalhes dos pontos positivos e negativos de cada escolha.
 | Selecionar todo o codigo do projeto | Selecionar apenas o trecho relevante da implementacao |
 | Aceitar a primeira implementacao sem questionar | Sempre perguntar "por que essa e nao outra?" |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| IA retorna resposta generica sem alternativas | Prompt muito vago, sem codigo selecionado | Selecionar o trecho de codigo especifico antes de perguntar |
+| Alternativas sugeridas sao irrelevantes | Contexto insuficiente no prompt | Incluir stack, restricoes e objetivo no prompt |
+| Deep-dive perde contexto do problema original | Pergunta feita no mesmo chat | Abrir novo chat limpo para deep-dive de conceitos |
+| Sobrecarga de informacao | Tentando estudar todas alternativas de uma vez | Ler trade-offs, anotar, seguir em frente — voltar quando precisar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Tree of Thought, analogias e quando nao usar
 - [code-examples.md](references/code-examples.md) — Exemplos completos de prompts e respostas esperadas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-expandido-o-aprendizado-com-o-tree-of-thought/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-expandido-o-aprendizado-com-o-tree-of-thought/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-data-hora-fuso-horario
 description: "Applies timezone offset patterns when creating JavaScript Date objects with specific timezones. Use when user asks to 'create a date with timezone', 'handle timezone offset', 'format date with timezone', 'work with UTC offset', or 'manipulate timezones in JS'. Ensures correct ISO 8601 format with offset notation instead of Z suffix. Make sure to use this skill whenever generating code that creates dates with specific timezone offsets. Not for date libraries like dayjs/luxon, nor for Intl.DateTimeFormat configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-moderno
+  tags: [javascript, date, timezone, ISO-8601, UTC, offset]
 ---
 
 # Criando Data e Hora com Fuso Horário
@@ -77,13 +83,16 @@ console.log(dateWithTimezone.toLocaleString()) // hora ajustada pelo offset
 | Somar horas manualmente para simular fuso | Use o offset na string ISO |
 | Ignorar fuso em apps multi-região | Sempre armazene com offset ou em UTC |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Data mostra hora errada apos adicionar offset | Offset inclui o `Z` junto com `+HH:MM` | Remova o `Z` antes de concatenar o offset: `isoString.replace("Z", "")` |
+| `Invalid Date` ao criar com offset | Formato do offset incorreto (ex: `+3` ao inves de `+03:00`) | Use sempre formato `±HH:MM` com dois digitos e minutos |
+| `toLocaleString()` mostra hora diferente do esperado | O browser converte para o fuso local do sistema | Use `toLocaleString("pt-BR", { timeZone: "UTC" })` para forcar exibicao em UTC |
+| Datas comparadas incorretamente entre fusos | Comparacao direta de strings ISO com offsets diferentes | Converta ambas para timestamp com `getTime()` antes de comparar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre como o JS interpreta offsets e a inversão de direção
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-uma-data-e-hora-com-fuso-horario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-uma-data-e-hora-com-fuso-horario/references/code-examples.md)

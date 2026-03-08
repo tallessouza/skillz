@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-scripts-personalizados
 description: "Generates and configures custom npm scripts in package.json for Node.js projects. Use when user asks to 'create a script', 'add npm script', 'configure package.json scripts', 'setup dev command', or 'run project with npm'. Ensures correct use of 'start' for production and 'dev' for development, applies npm run vs npm start conventions. Make sure to use this skill whenever setting up or modifying package.json scripts. Not for shell scripting, bash aliases, or Makefile configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [npm, scripts, package-json, dev, start, conventions]
 ---
 
 # Scripts Personalizados no package.json
@@ -69,13 +75,13 @@ Executar com: `npm start` (sem `run`)
 - `npm start` deve iniciar o projeto sem watch
 - `npm run` (sem argumentos) lista todos os scripts disponiveis
 
+## Troubleshooting
+
+### Problem: `npm dev` returns "Unknown command: dev"
+- **Cause**: Custom scripts require the `run` prefix — only standard scripts like `start`, `test`, `stop` work without it
+- **Fix**: Use `npm run dev` instead of `npm dev` for custom script names
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre convencoes npm e scripts padrao vs customizados
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de configuracao de scripts para diferentes cenarios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0110-criando-scripts-personalizados-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0110-criando-scripts-personalizados-mkv-mp-4/references/code-examples.md)

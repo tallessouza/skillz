@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caminhos-relativos-pastas
 description: "Enforces correct relative path usage when referencing files across different folders in HTML projects. Use when user asks to 'link to a file', 'add an image', 'reference a stylesheet', 'navigate between pages', or 'fix broken path'. Applies rules: ./ or direct name for subfolders, ../ to go up levels, works for all asset types (HTML, CSS, JS, images). Make sure to use this skill whenever generating href, src, or any file path in HTML projects. Not for absolute URLs, CDN links, or server-side routing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, paths, relative-path, directory-structure, href, src]
 ---
 
 # Caminhos Relativos em Pastas Diferentes
@@ -79,13 +85,16 @@ description: "Enforces correct relative path usage when referencing files across
 | `<a href="/subpasta/second.html">` (absoluto desnecessario) | `<a href="subpasta/second.html">` (relativo) |
 | Caminho inventado sem conferir estrutura | Verificar com `ls` ou explorador a estrutura real |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo nao encontrado ao usar `../` | Numero insuficiente ou excessivo de `../` | Conte os niveis de diretorio entre origem e destino |
+| CSS/JS carrega localmente mas nao no deploy | Case sensitivity diferente entre OS | Use exatamente o case correto nos nomes de pastas e arquivos |
+| Imagem quebrada apos mover arquivo HTML | Caminho relativo mudou com a nova posicao | Recalcule o caminho relativo a partir da nova localizacao |
+| `file not found` para recurso em subpasta | Barra invertida `\` usada no caminho | Use sempre `/` como separador em HTML |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caminhos-relativos-em-pastas-diferentes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caminhos-relativos-em-pastas-diferentes/references/code-examples.md)

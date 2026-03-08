@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tratando-dados-do-pedido
 description: "Enforces Zod request body validation pattern in Express controllers when creating API endpoints. Use when user asks to 'create a controller', 'add validation', 'create an endpoint', 'handle request body', or 'add a route'. Applies pattern: Zod schema parse on req.body, try/catch with next(error), proper route wiring. Make sure to use this skill whenever building Express API endpoints with input validation. Not for frontend form validation, database queries, or authentication middleware."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express-validacao
+  tags: [express, zod, validation, controller, routes, api, request-body]
 ---
 
 # Validacao de Dados com Zod em Controllers Express
@@ -121,6 +127,15 @@ async create(request: Request, response: Response, next: NextFunction) {
 | `if (!tableSessionId) throw new Error(...)` (validacao manual) | `z.object({ tableSessionId: z.number() }).parse(request.body)` |
 | `ordersRoutes.post("/", (req, res) => { ... })` (inline handler) | `ordersRoutes.post("/", ordersController.create)` (controller method) |
 | `routes.use("/order", ...)` (singular) | `routes.use("/orders", ...)` (plural, consistente) |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| ZodError nao e capturado pelo middleware | Faltando `next(error)` no catch | Adicione `catch (error) { next(error) }` no controller |
+| Campos do body sao `undefined` apos parse | Tipo errado no schema (ex: `z.string()` para campo numerico) | Ajuste os tipos no schema para corresponder ao payload real |
+| Rota retorna 404 | Prefixo incorreto no `routes.use()` | Verifique se o prefixo e plural: `/orders` nao `/order` |
+| Request body vazio no controller | Faltando `express.json()` como middleware | Adicione `app.use(express.json())` antes das rotas |
 
 ## Deep reference library
 

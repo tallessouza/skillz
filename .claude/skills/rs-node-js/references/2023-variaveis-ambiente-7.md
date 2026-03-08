@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-variaveis-ambiente
 description: "Applies environment variable configuration patterns when setting up Node.js projects with dotenv. Use when user asks to 'configure env', 'setup environment variables', 'connect database', 'manage secrets', or 'setup dotenv'. Ensures .env/.env.example separation, process.env validation, and gitignore rules. Make sure to use this skill whenever creating or configuring Node.js applications that need environment-specific values. Not for frontend env vars, Docker env configuration, or CI/CD secrets management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: environment-configuration
+  tags: [dotenv, environment-variables, process-env, gitignore, secrets, node-js, configuration]
 ---
 
 # Variáveis de Ambiente no Node.js
@@ -108,14 +114,14 @@ const connection = knex({
 | Ignorar variável undefined | `throw new Error('X env not found')` |
 | Importar dotenv em cada arquivo | Importar uma vez no entry point ou no arquivo de config |
 
+## Troubleshooting
+
+### Variaveis de ambiente retornam undefined mesmo com .env configurado
+**Symptom:** `process.env.DATABASE_URL` retorna `undefined` apesar do valor estar no arquivo `.env`.
+**Cause:** O `import 'dotenv/config'` nao foi adicionado antes do acesso a `process.env`, ou o arquivo `.env` nao esta na raiz do projeto (onde o processo Node.js foi iniciado).
+**Fix:** Adicione `import 'dotenv/config'` no topo do arquivo entry point (antes de qualquer acesso a `process.env`) e confirme que o `.env` esta no diretorio raiz do projeto com `ls -la .env`.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-variaveis-ambiente-7/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-variaveis-ambiente-7/references/code-examples.md)

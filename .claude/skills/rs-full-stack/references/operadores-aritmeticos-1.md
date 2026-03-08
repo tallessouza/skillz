@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operadores-aritmeticos-1
 description: "Applies JavaScript arithmetic operator conventions when writing calculations or numeric logic. Use when user asks to 'calculate', 'do math', 'check even odd', 'divide', 'multiply', or any numeric operation in JavaScript. Enforces correct operator usage, warns about string concatenation traps with +, and applies modulo for parity checks. Make sure to use this skill whenever generating JavaScript code with numeric operations. Not for comparison operators, logical operators, or assignment operators."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, arithmetic, operators, modulo, concatenation]
 ---
 
 # Operadores Aritméticos em JavaScript
@@ -69,13 +75,15 @@ const total = price + quantity // 20 — soma correta
 | `if (n / 2 === Math.floor(n/2))` | `if (n % 2 === 0)` |
 | `Number(a) + Number(b)` sem necessidade | Use tipos numericos desde o inicio |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `"12" + 8` retorna `"128"` | Operador `+` concatena quando um operando e string | Converta para numero com `Number()` antes de somar |
+| `Math.pow(3, 3)` funciona mas e verboso | Usando funcao antiga de exponenciacao | Use `3 ** 3` (ES2016+) |
+| Verificacao de par/impar nao funciona | Usando divisao e comparacao com floor | Use `n % 2 === 0` para par |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre coercao de tipo e armadilhas do operador +
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operadores-aritmeticos-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operadores-aritmeticos-1/references/code-examples.md)

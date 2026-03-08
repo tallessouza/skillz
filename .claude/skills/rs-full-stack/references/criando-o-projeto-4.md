@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-projeto-4
 description: "Generates Node.js API project scaffolding when user asks to 'create a new project', 'init a node project', 'start an API', 'setup express project', or 'scaffold a backend'. Applies conventions: descriptive package.json, clean defaults, proper folder naming with kebab-case. Make sure to use this skill whenever initializing a new Node.js/Express API project from scratch. Not for frontend projects, monorepo setup, or Docker/infrastructure configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-setup
+  tags: [nodejs, npm-init, project-setup, api, package-json]
 ---
 
 # Criando Projeto Node.js API
@@ -82,8 +88,12 @@ api-restaurant/
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre convencoes de setup
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de configuracao
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-projeto-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-projeto-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm init -y` gera campos indesejados | Comportamento default do npm | Edite manualmente removendo `keywords`, `test` script placeholder |
+| Nome da pasta tem espacos ou caracteres especiais | Nao seguiu convencao kebab-case | Renomeie a pasta para kebab-case: `api-restaurant` |
+| `description` vazio no package.json | Deixou o default do `npm init` | Edite com descricao do proposito do projeto |
+| `scripts.test` contem placeholder inutl | Default do `npm init -y` | Remova ate configurar um test runner real |
+| `npm init` abre modo interativo | Faltou flag `-y` | Use `npm init -y` para aceitar defaults automaticamente |

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-text
 description: "Applies correct HTML input text attributes and form patterns when writing HTML forms. Use when user asks to 'create a form', 'add an input field', 'build a contact form', 'make a registration page', or any HTML form task. Enforces proper use of type, name, value, placeholder, required, readonly, disabled, autofocus, autocomplete, and form attributes. Make sure to use this skill whenever generating HTML forms with text inputs. Not for CSS styling, JavaScript validation, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, text, attributes, placeholder, required, forms]
 ---
 
 # Input Text — Atributos HTML
@@ -83,13 +89,16 @@ description: "Applies correct HTML input text attributes and form patterns when 
 | `<input type="text">` sem name em form | Sempre inclua `name` se o dado sera enviado |
 | `disabled` quando quer apenas impedir edicao | `readonly` preserva envio do dado |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dado nao enviado no submit | Input sem atributo `name` | Adicionar `name="campo"` ao input |
+| Campo mostra texto mas nao envia dado | Usando `placeholder` em vez de `value` | Usar `value` para dados reais, `placeholder` apenas como dica |
+| Campo desabilitado nao envia valor | Usando `disabled` em vez de `readonly` | Trocar para `readonly` se precisa enviar o dado |
+| Multiplos autofocus na pagina | Mais de um input com `autofocus` | Manter `autofocus` em apenas um campo por pagina |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada atributo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-text/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-text/references/code-examples.md)

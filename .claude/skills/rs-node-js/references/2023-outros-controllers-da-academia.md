@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-outros-controllers
 description: "Applies pattern for creating search and nearby controllers with query params validation in Fastify/Express APIs. Use when user asks to 'create a search endpoint', 'add nearby controller', 'implement query params validation', 'list with pagination', or 'geolocation endpoint'. Enforces Zod coerce for numeric query params, default values, and use case delegation. Make sure to use this skill whenever creating GET controllers with query parameters in Node.js APIs. Not for POST/PUT body validation, authentication, or database query logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: controllers
+  tags: [controller, query-params, zod-coerce, pagination, geolocation, fastify, search]
 ---
 
 # Outros Controllers — Search e Nearby
@@ -131,14 +137,14 @@ export async function search(request: FastifyRequest, reply: FastifyReply) {
 | Um controller gigante com switch/if | Um arquivo por controller |
 | `app.get('/gyms', handleAllGymOperations)` | Rotas separadas: `/gyms/search`, `/gyms/nearby` |
 
+## Troubleshooting
+
+### Query param page chega como string ao inves de number
+**Symptom:** Paginacao nao funciona corretamente, calculo de offset retorna NaN ou resultado errado
+**Cause:** `request.query` retorna todos os valores como string, e o codigo usa o valor sem conversao
+**Fix:** Use `z.coerce.number().min(1).default(1)` no schema Zod para converter e validar automaticamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-outros-controllers-da-academia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-outros-controllers-da-academia/references/code-examples.md)

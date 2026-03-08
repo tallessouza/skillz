@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-o-que-e-ou-nao-e
 description: "Applies Clean Code mental model when user asks to 'refactor code', 'improve code quality', 'clean up code', 'make code readable', or 'review code'. Enforces the four pillars: legibilidade, manutenibilidade, previsibilidade, confianca. Guards against confusing Clean Code with folder structure, small code, architecture patterns, or performance. Make sure to use this skill whenever discussing code quality or reviewing pull requests. Not for architecture decisions, performance optimization, or folder organization."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: fundamentos
+  tags: [clean-code, readability, maintainability, predictability, reliability, code-quality]
 ---
 
 # O que e ou nao e Clean Code
@@ -48,6 +54,13 @@ description: "Applies Clean Code mental model when user asks to 'refactor code',
 | Exigir Clean Architecture para ter "codigo limpo" | Aplique os 4 pilares em qualquer arquitetura |
 | Esperar que teoria sozinha produza codigo limpo | Pratique, escreva muito codigo ruim, aplique autocritica constante |
 | Avaliar qualidade pelo numero de linhas | Avalie pela capacidade de outro dev ler e manter com confianca |
+
+## Troubleshooting
+
+### Confundir codigo curto com codigo limpo
+**Symptom:** Desenvolvedor refatora reduzindo linhas e acredita que o codigo ficou "mais limpo"
+**Cause:** Associacao errada entre tamanho do codigo e qualidade — codigo menor nao e necessariamente mais legivel ou manutenivel
+**Fix:** Avalie pelos 4 pilares (legibilidade, manutenibilidade, previsibilidade, confianca) em vez de contar linhas. Codigo maior pode ser mais limpo se for mais facil de ler e manter
 
 ## Deep reference library
 

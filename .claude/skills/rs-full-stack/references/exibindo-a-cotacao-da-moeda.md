@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exibindo-cotacao-moeda
 description: "Enforces dynamic DOM content manipulation patterns when writing vanilla JavaScript. Use when user asks to 'update page content', 'display dynamic values', 'manipulate DOM text', 'show data on screen', or 'change element text with JavaScript'. Applies getElementById selection, textContent assignment, and template literal interpolation for combining variables with static text. Make sure to use this skill whenever generating code that updates HTML content dynamically with vanilla JS. Not for React/Vue/Angular components, CSS styling, or server-side rendering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, textContent, template-literals, getElementById]
 ---
 
 # Exibindo Conteudo Dinamico no DOM
@@ -94,13 +100,16 @@ function convertCurrency(symbol, price) {
 | Exibir → calcular → atualizar | Calcular → atualizar → exibir |
 | `document.getElementById("x")` dentro de funcao chamada repetidamente | Selecionar uma vez no topo, reusar a referencia |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `textContent` nao atualiza na tela | Elemento selecionado e `null` (ID errado) | Verificar se o ID no HTML bate com o `getElementById` |
+| Template literal mostra `undefined` | Variavel nao foi inicializada antes do uso | Verificar se a variavel tem valor atribuido antes da interpolacao |
+| Conteudo anterior permanece visivel | Atribuicao ao elemento errado ou duplicado | Inspecionar o DOM para confirmar que ha apenas um elemento com aquele ID |
+| XSS ao exibir input do usuario | Uso de `innerHTML` em vez de `textContent` | Substituir `innerHTML` por `textContent` para texto puro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ordem de operacoes DOM e interpolacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-a-cotacao-da-moeda/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-a-cotacao-da-moeda/references/code-examples.md)

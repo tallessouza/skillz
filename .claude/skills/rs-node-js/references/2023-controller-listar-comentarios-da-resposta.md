@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controller-listar-comentarios-resposta
+name: rs-node-js-2023-controller-listar-comentarios-da-resposta
 description: "Applies the NestJS controller duplication pattern when creating similar CRUD endpoints by copying and adapting existing controllers. Use when user asks to 'create a new controller', 'add endpoint for comments', 'list comments', 'fetch answer comments', or 'copy controller pattern'. Follows the copy-adapt-test workflow: duplicate similar controller, swap entity references, update routes, adapt e2e tests, register in module. Make sure to use this skill whenever creating a NestJS controller that mirrors an existing one. Not for creating controllers from scratch, domain layer design, or use case implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Listar Comentarios da Resposta (Padrao Copy-Adapt-Test)
@@ -113,14 +120,14 @@ export class FetchAnswerCommentsController {
 | Rodar apenas o teste do controller novo | Rodar `pnpm run test` e `pnpm run test:e2e` completos |
 | Deixar factory nao utilizada no import | Remover imports e providers nao usados |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-listar-comentarios-da-resposta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-listar-comentarios-da-resposta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-listar-comentarios-da-resposta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-listar-comentarios-da-resposta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

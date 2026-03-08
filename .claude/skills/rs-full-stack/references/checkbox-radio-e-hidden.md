@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-checkbox-radio-e-hidden
 description: "Applies correct HTML checkbox, radio, and hidden input patterns when building forms. Use when user asks to 'create a form', 'add checkboxes', 'add radio buttons', 'build a survey', or any HTML form task. Enforces proper use of name grouping, value attributes, checked defaults, and hidden fields for data transport. Make sure to use this skill whenever generating HTML forms with selection inputs. Not for CSS styling, JavaScript validation, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, forms, checkbox, radio, hidden, input-types]
 ---
 
 # Checkbox, Radio e Hidden
@@ -87,13 +93,17 @@ description: "Applies correct HTML checkbox, radio, and hidden input patterns wh
 | `<input type="checkbox">` sem name | `<input type="checkbox" name="item" value="x">` |
 | Dados sensiveis em hidden | Hidden apenas para IDs e metadata nao-secreta |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Radio buttons permitem selecao multipla | Atributo `name` diferente entre os radios | Use o mesmo `name` para todos os radios do grupo |
+| Formulario envia `on` em vez do valor esperado | Atributo `value` ausente no input | Adicione `value="identificador"` em cada checkbox/radio |
+| Campo hidden visivel na pagina | CSS customizado exibindo inputs hidden | Verifique se nao ha CSS sobrescrevendo `display` |
+| Checkbox nao envia dados quando desmarcado | Comportamento padrao do HTML | Adicione um input hidden com mesmo name como fallback |
+| `checked` nao funciona | Atributo escrito como `checked="false"` | Use apenas `checked` (booleano) ou remova o atributo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-checkbox-radio-e-hidden/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-checkbox-radio-e-hidden/references/code-examples.md)

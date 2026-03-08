@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-o-knex-js
 description: "Generates Knex.js configuration files for Node.js projects using SQLite3. Use when user asks to 'setup knex', 'configure database', 'create knexfile', 'setup sqlite with knex', or 'initialize knex project'. Applies correct knexfile structure with client, connection, useNullAsDefault, and migrations directory. Make sure to use this skill whenever setting up Knex.js in a new project or configuring database connections with Knex. Not for Prisma, TypeORM, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database
+  tags: [knex, sqlite3, knexfile, migrations, database-config, query-builder]
 ---
 
 # Configurando o Knex.js
@@ -89,13 +95,16 @@ project-root/
 | Criar manualmente o `.db` ou pasta `migrations/` | Deixar o Knex criar automaticamente |
 | Hardcodar path absoluto no filename | Usar path relativo `./src/database/database.db` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Knex nao encontra o knexfile | Arquivo fora da raiz ou nome incorreto | Mover para raiz do projeto com nome exato `knexfile.ts` |
+| Migrations geram em `.js` em vez de `.ts` | `extension: 'ts'` ausente na config | Adicionar `extension: 'ts'` dentro de `migrations` no knexfile |
+| Erro `SQLITE_CANTOPEN` | Diretorio `src/database/` nao existe | Criar com `mkdir -p src/database` |
+| Valores undefined causam erro no SQLite | `useNullAsDefault` nao configurado | Adicionar `useNullAsDefault: true` no knexfile |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cada propriedade e analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-o-knex-js-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-o-knex-js-1/references/code-examples.md)

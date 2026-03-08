@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-introducao-103
 description: "Applies Query Builder patterns when writing database access code in Node.js/TypeScript. Use when user asks to 'query database', 'insert data', 'create migration', 'seed database', or replace raw SQL with a query builder. Enforces method-chaining over raw SQL, migrations for schema versioning, and seeds for test data. Make sure to use this skill whenever generating database interaction code that could use a query builder instead of raw SQL. Not for ORM entity modeling, raw SQL optimization, or database administration tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-query-builder
+  tags: [nodejs, database, query-builder, migrations, seeds, knex]
 ---
 
 # Query Builder — Fundamentos
@@ -75,13 +81,15 @@ const activeUsers = await db('users')
 | Inserir dados de teste manualmente | Criar um Seed |
 | SQL diferente por banco de dados | Query Builder gera SQL correto automaticamente |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Migration não roda ou falha silenciosamente | Diretório de migrations não configurado no knexfile | Verifique `migrations.directory` no arquivo de configuração do Knex |
+| Query retorna array vazio mesmo com dados no banco | Tabela ou coluna com nome errado (case-sensitive em PostgreSQL) | Confira nomes exatos das tabelas e colunas no schema |
+| Seed insere dados duplicados | Seed não limpa a tabela antes de inserir | Adicione `await db('table').del()` antes do insert no seed |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre vantagens do Query Builder e quando usar
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-introducao-103/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-introducao-103/references/code-examples.md)

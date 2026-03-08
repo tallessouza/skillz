@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-test-environment
 description: "Applies test environment isolation patterns when writing end-to-end tests with Vitest and Prisma. Use when user asks to 'create e2e tests', 'setup test database', 'isolate test suites', 'configure vitest environment', or 'separate test db'. Ensures per-suite database isolation using Test Environment concept with custom DATABASE_URL per test file. Make sure to use this skill whenever setting up end-to-end testing infrastructure for Node.js APIs with Prisma. Not for unit tests, in-memory repositories, or frontend testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: e2e-testing
+  tags: [vitest, e2e, test-environment, prisma, postgresql, database-isolation, testing]
 ---
 
 # Test Environment para Testes E2E
@@ -137,14 +143,14 @@ describe('List Gyms', () => {
 | Usar `migrate dev` no CI | Usar `migrate deploy` — nao gera migrations novas |
 | Ignorar teardown (nao dropar schema) | Sempre dropar schema no teardown para nao acumular lixo |
 
+## Troubleshooting
+
+### Migrations falham no setup do environment
+**Symptom:** `prisma migrate deploy` lanca erro durante setup
+**Cause:** DATABASE_URL aponta para schema que nao existe ainda ou migrations estao desatualizadas
+**Fix:** Verifique que o banco principal existe e que todas as migrations estao commitadas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-aprendendo-sobre-test-environment/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-aprendendo-sobre-test-environment/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aprendendo-sobre-test-environment/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-aprendendo-sobre-test-environment/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

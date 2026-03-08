@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fontes-do-projeto
 description: "Applies Google Fonts setup and CSS typography variables when configuring project fonts. Use when user asks to 'add a font', 'setup typography', 'configure Google Fonts', 'create font variables', or 'define text styles in CSS'. Enforces font shorthand pattern, CSS custom properties for text sizes, and proper preconnect ordering in HTML head. Make sure to use this skill whenever setting up fonts or typography systems in web projects. Not for icon fonts, font-face declarations, or variable fonts configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-tipografia
+  tags: [css, google-fonts, typography, custom-properties, font-shorthand]
 ---
 
 # Fontes do Projeto
@@ -116,13 +122,16 @@ h1 {
 | Colocar `<link>` da fonte antes dos preconnects | Preconnects primeiro, fonte depois |
 | Copiar CSS inteiro do Figma sem filtrar | Extrair apenas font-family, size, weight e line-height |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fonte nao carrega (fallback generico aparece) | URL do Google Fonts incorreta ou preconnect ausente | Verifique o link e adicione os dois `<link rel="preconnect">` |
+| Font shorthand nao aplica o peso | Ordem incorreta no shorthand (weight deve vir antes de size) | Use `font: bold 32px/125% var(--font-family)` |
+| Variavel CSS retorna valor invalido para font | Variavel nao definida no `:root` | Verifique se `:root` contem a variavel e se o nome confere |
+| FOUT (Flash of Unstyled Text) visivel | Fonte carrega depois do HTML renderizar | Adicione `&display=swap` na URL do Google Fonts |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre font shorthand, preconnect e observacao de projeto
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fontes-do-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fontes-do-projeto/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-array-2
 description: "Enforces correct TypeScript array typing patterns when declaring or working with arrays. Use when user asks to 'create an array', 'type a list', 'declare a collection', or writes TypeScript code involving arrays. Applies type annotation syntax (string[], number[]) and leverages type inference when values are assigned. Make sure to use this skill whenever generating TypeScript code with arrays. Not for object typing, tuple typing, or generic collection patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [typescript, arrays, type-annotation, type-inference, typing]
 ---
 
 # Tipagem em Arrays no TypeScript
@@ -64,13 +70,16 @@ users.push(42) // ERRO: Argument of type 'number' is not assignable to parameter
 | `let items = []` (sem tipo) | `let items: string[] = []` |
 | `let items: any[]` | `let items: string[]` (tipo especifico) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeScript infere `never[]` para array vazio | Nenhum tipo anotado e nenhum valor inicial | Anote o tipo: `let items: string[] = []` |
+| Erro ao fazer push de tipo diferente | Array tipado nao aceita tipos misturados | Use union type `(string \| number)[]` se precisa de multiplos tipos |
+| `Array<string>` e `string[]` geram confusao | Ambas sintaxes sao validas mas `string[]` e idiomatica | Prefira `string[]` por convencao no ecossistema TypeScript moderno |
+| Autocomplete nao funciona no array | Tipo inferido como `any[]` | Anote o tipo explicitamente ou corrija a fonte do dado |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando anotar vs inferir, analogias do instrutor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-array-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-array-2/references/code-examples.md)

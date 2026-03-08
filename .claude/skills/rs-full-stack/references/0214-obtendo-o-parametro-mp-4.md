@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-o-parametro
 description: "Applies URL route parameter extraction patterns when building Node.js HTTP servers from scratch. Use when user asks to 'parse route params', 'extract URL parameters', 'build a router', 'handle dynamic routes', or 'create HTTP server routing'. Implements regex-based path matching and named group extraction. Make sure to use this skill whenever creating raw Node.js HTTP routing without frameworks. Not for Express/Fastify/Hono route handling or query string parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [route-params, regex, named-groups, nodejs, parseOutPath]
 ---
 
 # Extração de Parâmetros de Rota no Node.js
@@ -99,13 +105,13 @@ request.params = routeParams.groups ?? {}
 | Regex sem flag `g` para múltiplos params | `/:([a-zA-Z]+)/g` com flag global |
 | `routeParams.group` (singular) | `routeParams.groups` (plural — erro comum) |
 
+## Troubleshooting
+
+### Problem: `routeParams.groups` is undefined after `.match()`
+- **Cause**: The regex does not contain named groups (`(?<name>...)`) or the URL did not match the pattern
+- **Fix**: Ensure `parseOutPath` uses `(?<$1>[a-zA-Z0-9\\-_]+)` for named groups, and add a null check: `request.params = routeParams?.groups ?? {}`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre regex, grupos nomeados e o fluxo de matching
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0214-obtendo-o-parametro-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0214-obtendo-o-parametro-mp-4/references/code-examples.md)

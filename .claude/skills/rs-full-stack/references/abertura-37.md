@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-abertura-37
-description: "Provides overview of Docker containers module covering Node containers, Postgres/SQLite databases, volumes for data persistence, and Docker Compose for multi-container orchestration. Use when user asks to 'learn Docker basics', 'understand containers overview', 'what topics does the Docker module cover', or 'containers roadmap'. Make sure to use this skill whenever someone needs orientation on the Docker learning path in this course. Not for actual Docker commands, Dockerfile creation, or hands-on container management."
+description: "Outlines Docker containers module covering Node containers, Postgres/SQLite databases, volumes for data persistence, and Docker Compose for multi-container orchestration. Use when user asks to 'learn Docker basics', 'understand containers overview', 'what topics does the Docker module cover', or 'containers roadmap'. Make sure to use this skill whenever someone needs orientation on the Docker learning path in this course. Not for actual Docker commands, Dockerfile creation, or hands-on container management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [docker, containers, volumes, docker-compose, postgres]
 ---
 
 # Abertura — Modulo de Containers
 
 > Este modulo ensina Docker de forma pratica: containers para aplicacao e banco de dados, volumes para persistencia, e Docker Compose para orquestracao.
 
-## Roadmap do modulo
+## Key concepts
 
 | Topico | O que sera coberto |
 |--------|-------------------|
@@ -15,6 +21,19 @@ description: "Provides overview of Docker containers module covering Node contai
 | **Containers de banco de dados** | Rodar Postgres (relacional, mais usado no mercado) e SQLite (alternativa relacional leve) |
 | **Volumes** | Criar volumes para persistir dados e vincular volumes a containers |
 | **Docker Compose** | Automatizar subida de multiplos containers com um unico comando |
+
+## Comandos essenciais
+
+```bash
+# Rodar container Postgres
+docker run -d --name postgres -e POSTGRES_PASSWORD=secret -p 5432:5432 postgres
+
+# Verificar containers em execucao
+docker ps
+
+# Subir multiplos containers com Docker Compose
+docker-compose up -d
+```
 
 ## Sequencia de aprendizado
 
@@ -36,8 +55,11 @@ description: "Provides overview of Docker containers module covering Node contai
 - [deep-explanation.md](references/deep-explanation.md) — Contexto completo do modulo e motivacoes
 - [code-examples.md](references/code-examples.md) — Exemplos praticos que serao explorados no modulo
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abertura-37/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abertura-37/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Docker nao instalado | Ambiente nao preparado | Instale Docker Desktop (Windows/Mac) ou Docker Engine (Linux) |
+| Container perde dados ao reiniciar | Volume nao configurado | Configure volume para persistir dados entre restarts |
+| Postgres nao aceita conexao | Porta nao mapeada corretamente | Verifique o mapeamento de portas no `docker run` ou `docker-compose.yml` |
+| Docker Compose nao sobe todos os servicos | Dependencias entre servicos | Use `depends_on` para garantir ordem de inicializacao |

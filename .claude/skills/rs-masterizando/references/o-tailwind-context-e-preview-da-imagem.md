@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-context-preview-imagem
 description: "Applies React Context pattern for compound components with shared state, useId for stable IDs, and useMemo for image preview. Use when user asks to 'create file input', 'compound component', 'image preview', 'share state between components', or 'connect label to input'. Make sure to use this skill whenever building compound components that need shared state or file upload with preview. Not for global state management, Redux, or server-side data fetching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, nextjs]
 ---
 
 # Context e Preview da Imagem
@@ -141,15 +147,19 @@ function FileInput() {
 | `event.target.files` direto no estado | `Array.from(event.target.files)` |
 | Preview URL recalculada a cada render | `useMemo(() => URL.createObjectURL(...), [files])` |
 | Componente com useContext sem 'use client' no Next.js | Adicionar diretiva no topo do arquivo |
+## Troubleshooting
+
+### Classes Tailwind nao aplicam
+**Symptom:** Classe adicionada mas sem efeito visual.
+**Cause:** O arquivo nao esta incluido no `content` do tailwind.config, ou a classe esta sendo sobrescrita por especificidade.
+**Fix:** Verifique que o path do arquivo esta em `content: ['./src/**/*.tsx']` no tailwind.config. Use DevTools para inspecionar se outra classe sobrescreve.
+
+### Autocomplete do Tailwind nao funciona
+**Symptom:** VS Code nao sugere classes Tailwind.
+**Cause:** Extensao Tailwind CSS IntelliSense nao instalada ou configurada.
+**Fix:** Instale a extensao "Tailwind CSS IntelliSense" no VS Code e recarregue a janela.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-context-e-preview-da-imagem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-context-e-preview-da-imagem/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-context-e-preview-da-imagem/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-context-e-preview-da-imagem/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

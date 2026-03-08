@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-eslint-prettier-setup
 description: "Configures ESLint and Prettier with Tailwind CSS class sorting plugin in Next.js projects. Use when user asks to 'setup eslint', 'configure prettier', 'sort tailwind classes', 'organize tailwind utilities', or 'setup linting for tailwind'. Applies automatic class ordering: structural first, then colors/fonts, then selectors (dark, hover, enabled). Make sure to use this skill whenever setting up a new Tailwind CSS project or adding linting. Not for general ESLint rule configuration, non-Tailwind projects, or runtime CSS issues."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: setup
+  tags: [tailwind, nextjs, css-grid, flexbox]
 ---
 
 # Configurando ESLint e Prettier com Tailwind CSS
@@ -83,15 +89,19 @@ Apos salvar qualquer arquivo, as classes Tailwind sao reordenadas automaticament
 | Instalar Prettier separado sem integrar ao ESLint | Usar config ESLint que ja inclui Prettier |
 | Ordenar classes manualmente | Deixar o plugin ordenar automaticamente ao salvar |
 | Ignorar erros de ordem nas classes | Confiar na ordenacao semantica do plugin |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-configurando-es-lint-e-prettier/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-configurando-es-lint-e-prettier/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-configurando-es-lint-e-prettier/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-configurando-es-lint-e-prettier/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-dependencias-externas
-description: "Enforces repository pattern contracts when implementing DDD use cases in Node.js/TypeScript. Use when user asks to 'create a use case', 'implement repository', 'add persistence layer', 'connect domain to database', or 'apply DDD patterns'. Applies interface-first design, fake repositories for testing, and dependency inversion between domain and infrastructure. Make sure to use this skill whenever creating use cases that need persistence or external dependencies. Not for ORM configuration, database migrations, or actual database implementation."
+name: 2023-dependencias-externas
+description: "Applies Dependency Inversion Principle in DDD by defining repository interfaces before implementations, injecting dependencies into use cases, and using fake repositories for testing. Use when user asks to 'abstract database access', 'inject dependencies', 'create repository interface', or 'decouple use case from ORM'. Make sure to use this skill whenever creating use cases that need to interact with external dependencies like databases, APIs, or services. Not for frontend code, HTTP controllers, or infrastructure configuration."
+category: coding-lens
+tags: [ddd, entities, migrations, prisma, repository, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-architecture
+  tags: [ddd, dependency-inversion, repository-pattern, interfaces, testing, clean-architecture]
 ---
 
 # Dependencias Externas no DDD
@@ -107,14 +116,14 @@ export class AnswerQuestionUseCase {
 | Repositorio com 1 metodo por tabela SQL | Repositorio por agregado do dominio |
 | `any` no tipo do repositorio | Interface tipada com entidades do dominio |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-dependencias-externas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-dependencias-externas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

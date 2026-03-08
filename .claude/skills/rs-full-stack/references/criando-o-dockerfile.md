@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-dockerfile
 description: "Generates Dockerfiles for Node.js applications following production best practices. Use when user asks to 'create a Dockerfile', 'dockerize my app', 'containerize this project', 'setup Docker for Node', or any container configuration task. Applies rules: alpine base images, dedicated WORKDIR, COPY then install pattern, explicit EXPOSE, CMD as array. Make sure to use this skill whenever creating or reviewing Dockerfiles for Node.js/TypeScript projects. Not for docker-compose, multi-stage builds, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, dockerfile, nodejs, alpine, containerization]
 ---
 
 # Criando o Dockerfile
@@ -97,8 +103,12 @@ CMD ["npm", "start"]
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada comando Docker, analogia da receita de bolo, e estrutura de diretorios Linux
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e anotacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-dockerfile/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-dockerfile/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Build falha com "COPY failed" | Arquivo ou diretorio referenciado nao existe | Verifique se os arquivos existem e o `.dockerignore` nao exclui algo necessario |
+| `npm install` falha dentro do container | Dependencias nativas incompativeis com Alpine | Instale dependencias de build: `RUN apk add --no-cache python3 make g++` |
+| Container inicia mas app nao responde | Porta do EXPOSE diferente da porta da app | Alinhe EXPOSE com a porta usada no codigo |
+| Imagem muito grande | Usando `node:18` em vez de alpine | Troque para `node:18-alpine3.20` |
+| `CMD` nao executa o script correto | `npm start` nao definido no package.json | Adicione `"start": "node dist/server.js"` nos scripts |

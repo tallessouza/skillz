@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-casos-uso-auth-cadastro
 description: "Enforces clean architecture use case patterns for authentication and registration in NestJS/Node.js. Use when user asks to 'create a use case', 'implement authentication', 'register user', 'login endpoint', 'sign up flow', or any auth-related feature. Applies rules: gateway contracts over direct implementations, semantic error classes per use case, Either pattern for error handling, identifier-based error messages. Make sure to use this skill whenever building auth use cases or domain logic with repository pattern. Not for controller/route layer, database schemas, or JWT configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: use-cases
+  tags: [authentication, registration, either-pattern, gateway, hash, encrypter, nestjs]
 ---
 
 # Casos de Uso: Autenticação e Cadastro
@@ -152,14 +158,19 @@ if (result.isLeft()) {
 | `prisma.user.create()` no use case | `this.studentsRepository.create(student)` via repositório |
 | `new Error('email already taken')` | `new StudentAlreadyExistsError(email)` com classe própria |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-casos-de-uso-autenticacao-e-cadastro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-casos-de-uso-autenticacao-e-cadastro/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-casos-de-uso-autenticacao-e-cadastro/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-casos-de-uso-autenticacao-e-cadastro/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

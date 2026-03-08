@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-projeto
 description: "Applies support ticket API design patterns when building CRUD REST APIs with Node.js. Use when user asks to 'create a ticket API', 'build a support system', 'design CRUD routes', or 'structure a Node.js API'. Enforces route conventions: POST create, GET list with query filters, PUT partial update with field restrictions, PATCH status transitions, DELETE removal. Make sure to use this skill whenever designing REST APIs for ticket/issue/support systems. Not for frontend, database schema design, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [rest-api, crud, http-methods, route-design, nodejs, tickets]
 ---
 
 # API de Tickets de Suporte — Design de Rotas
@@ -97,13 +103,17 @@ app.patch('/tickets/:id/status', (req, res) => {
 | Permitir alterar username no PUT | Extrair apenas `equipment` e `description` do body |
 | Usar mesmo endpoint para deletar e fechar | DELETE remove, PATCH /status fecha |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| PUT altera campos que deveriam ser imutaveis | Body aceita todos os campos | Desestruturar apenas campos permitidos: `const { equipment, description } = req.body` |
+| PATCH e PUT fazem a mesma coisa | Ambos alteram dados sem separar estado | PUT para dados editaveis, PATCH dedicado para transicao de status |
+| GET sem filtro retorna tudo mesmo quando filtrado | Query param nao esta sendo lido | Extrair `req.query.status` e filtrar condicionalmente |
+| ID gerado pelo cliente causa colisao | Cliente envia ID no body | Gerar UUID no servidor, ignorar ID do body |
+| DELETE e PATCH /status confusos | Ambos "removem" o ticket | Documentar: DELETE remove permanentemente, PATCH /status fecha (muda estado) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre decisoes de design da API
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de rotas expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0401-conhecendo-o-projeto-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0401-conhecendo-o-projeto-mkv-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-registros
 description: "Enforces safe DELETE statement patterns when writing SQL queries. Use when user asks to 'delete a record', 'remove from database', 'write DELETE query', 'drop a row', or any SQL deletion task. Applies rules: always use WHERE clause, identify by unique ID, never run bare DELETE FROM. Make sure to use this skill whenever generating DELETE statements, even in migrations or seed scripts. Not for DROP TABLE, TRUNCATE, or application-level soft-delete logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, delete, database, safety]
 ---
 
 # DELETE Seguro em SQL
@@ -70,3 +76,12 @@ DELETE FROM products WHERE id = 3;
 ## Deep dive
 - [Deep explanation](../../../data/skills/full-stack/rs-full-stack-removendo-registros/references/deep-explanation.md)
 - [Code examples](../../../data/skills/full-stack/rs-full-stack-removendo-registros/references/code-examples.md)
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Todos os registros sumiram da tabela | DELETE executado sem WHERE | Restaure backup; sempre use `WHERE id = X` |
+| ID deletado aparece novamente apos INSERT | Esperava reutilizacao de ID | Auto-incremento so avanca; aceite o proximo ID disponivel |
+| Erro de sintaxe ao executar multiplos statements | Falta ponto e virgula entre instrucoes | Termine cada statement SQL com `;` |
+| DELETE nao remove nenhum registro | WHERE aponta para ID inexistente | Verifique com `SELECT * FROM tabela WHERE id = X` antes |

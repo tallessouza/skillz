@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-resetando-variaveis-css
 description: "Applies CSS reset patterns, CSS custom properties architecture, and responsive font scaling when writing CSS for landing pages or product pages. Use when user asks to 'create a landing page', 'setup CSS variables', 'reset styles', 'make responsive fonts', or 'configure global styles'. Enforces mobile-first variable strategy with @media overrides, proper box-sizing reset including pseudo-elements, font smoothing, and accessible list resets with role attribute. Make sure to use this skill whenever setting up a new front-end project's global CSS. Not for CSS animations, layouts, grid systems, or component-specific styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, reset, custom-properties, variables, responsive, mobile-first]
 ---
 
 # Reset CSS e Variáveis CSS com Responsividade
@@ -178,6 +184,15 @@ h2 { font-size: var(--fs-xl); }
 | `ul { list-style: none; }` globalmente | `ul[role="list"] { list-style: none; }` |
 | Desktop-first com `max-width` | Mobile-first com `min-width` |
 | Repetir valor de cor em cada seletor | Variável CSS no `:root` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Variaveis CSS nao aplicam no mobile | Valores desktop definidos no `:root` sem media query | Defina valores mobile no `:root` e sobrescreva no `@media` |
+| `box-sizing` nao funciona em pseudo-elementos | Reset so aplicado em `*`, sem `*::before, *::after` | Adicione `*::before, *::after` no seletor do box-sizing |
+| Lista sem bolinhas perde semantica no leitor de tela | `list-style: none` remove semantica em alguns browsers | Adicione `role="list"` no HTML |
+| Fonte aparece diferente no macOS vs Windows | Falta font-smoothing | Adicione `-webkit-font-smoothing: antialiased` |
 
 ## Deep reference library
 

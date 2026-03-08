@@ -1,13 +1,19 @@
 ---
 name: rs-devops-git-ops
 description: "Applies Infrastructure as Code and GitOps principles when designing cloud infrastructure, repository strategies, or DevOps workflows. Use when user asks to 'create infrastructure', 'deploy to cloud', 'set up AWS resources', 'organize infra repo', or 'manage cloud resources'. Ensures declarative resource management, Git-based change control, and single source of truth for infrastructure. Make sure to use this skill whenever discussing cloud resource creation or infrastructure repository structure. Not for application code, Docker/container configuration, or CI/CD pipeline implementation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: gitops-e-iac
+  tags: [iac, gitops, infrastructure-as-code, terraform, cloud, declarative, git]
 ---
 
 # Infrastructure as Code e GitOps
 
 > Toda infraestrutura deve ser declarada em codigo, versionada no Git, e submetida aos mesmos fluxos de revisao que codigo de aplicacao.
 
-## Key concept
+## Key concepts
 
 IaC (Infrastructure as Code) substitui a criacao manual de recursos no console por declaracoes em codigo que sao executadas por ferramentas especializadas. GitOps complementa IaC ao aplicar fluxos Git (commits, pull requests, branch policies) ao repositorio de infraestrutura, criando uma fonte unica da verdade.
 
@@ -63,6 +69,19 @@ O repositorio Git da infraestrutura funciona como o repositorio de uma aplicacao
 | Criar recurso de teste manualmente | Usar IaC para criar E destruir quando terminar |
 | Manter infra sem versionamento | Repositorio Git dedicado com branch policies |
 
+## Diagnostic
+
+```bash
+# Verificar se repositorio de infra existe e esta atualizado
+git -C infra/ log --oneline -5
+
+# Verificar estado atual do Terraform
+terraform state list
+
+# Importar recurso criado manualmente para o state
+terraform import aws_instance.example i-1234567890abcdef0
+```
+
 ## When to apply
 
 - Ao criar qualquer recurso em cloud provider (maquinas, filas, bancos, clusters)
@@ -76,14 +95,14 @@ O repositorio Git da infraestrutura funciona como o repositorio de uma aplicacao
 - Nao cobre CI/CD pipelines — apenas a estrategia de repositorio e fluxo de mudancas
 - Nao cobre containerizacao (Docker, Kubernetes) — foca nos recursos de nuvem subjacentes
 
+## Troubleshooting
+
+### Recursos criados no console nao estao no repositorio de infra
+**Symptom:** Existem recursos na nuvem que nao aparecem no codigo de infraestrutura
+**Cause:** Alguem criou o recurso diretamente no console sem declarar no repositorio
+**Fix:** Importe o recurso para o estado do Terraform com `terraform import` e declare no codigo, ou recrie via IaC e delete o recurso manual
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-git-ops/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-git-ops/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-classe-metodo-construtor
 description: "Enforces correct JavaScript class creation with constructor methods when writing OOP code. Use when user asks to 'create a class', 'define a constructor', 'instantiate an object', 'write OOP JavaScript', or any class-based code generation. Applies rules: PascalCase for class names, constructor for initialization logic, new keyword for instantiation, parameter passing via constructor. Make sure to use this skill whenever generating JavaScript/TypeScript classes. Not for functional programming patterns, factory functions, or prototype-based inheritance."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-oop
+  tags: [javascript, classes, constructor, oop, pascalcase, instantiation]
 ---
 
 # Criando Classes com Método Construtor
@@ -86,13 +92,16 @@ const person = new Person('Rodrigo')
 | `var x = MyClass()` | `const instance = new MyClass()` |
 | `constructor(n, a)` | `constructor(name, age)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `TypeError: MyClass is not a constructor` | Chamou sem `new` ou nao e uma classe | Use `new MyClass()` para instanciar |
+| `constructor` nao executa | Erro de digitacao no nome do metodo | Verifique que e exatamente `constructor` (sem maiusculas) |
+| Propriedade retorna `undefined` apos instanciar | Parametro nao atribuido via `this` | Adicione `this.name = name` dentro do constructor |
+| Classe com nome minusculo nao da erro mas confunde | Convencao PascalCase nao seguida | Renomeie para PascalCase: `Person`, `Product` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre convencoes de nomenclatura e comportamento do constructor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-uma-classe-com-um-metodo-construtor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-uma-classe-com-um-metodo-construtor/references/code-examples.md)

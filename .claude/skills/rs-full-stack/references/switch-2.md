@@ -1,6 +1,14 @@
 ---
 name: rs-full-stack-switch-2
 description: "Applies correct switch-case structure when writing JavaScript conditional logic. Use when user asks to 'handle multiple cases', 'check different options', 'replace if-else chain', 'menu options', or 'switch statement'. Ensures proper break usage, default block inclusion, and fall-through awareness. Make sure to use this skill whenever generating switch-case code or refactoring multiple if-else into switch. Not for ternary operators, simple if-else, or pattern matching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, switch-case, conditionals]
+    - control-flow
+    - break
 ---
 
 # Switch Case em JavaScript
@@ -105,6 +113,15 @@ switch (option) {
 | switch sem default | switch com default no final |
 | case 4, case 5, case 6... para "invalido" | um unico default |
 | switch para comparacoes booleanas | if-else para true/false |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Multiplos cases executam quando so um deveria | Falta de `break` apos cada case (fall-through) | Adicione `break` ao final de cada case |
+| Nenhum case corresponde e nao ha feedback | Bloco `default` ausente | Adicione `default:` como ultimo bloco |
+| Switch nao funciona com ranges (> 10) | Switch compara igualdade estrita, nao ranges | Use if-else para comparacoes com operadores |
+| Case com string nao corresponde ao valor | Comparacao estrita (`===`) falha com tipos diferentes | Garanta que o tipo do valor e identico ao do case |
 
 ## Deep reference library
 

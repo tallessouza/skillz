@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-caso-de-uso-de-check-in
 description: "Enforces use case and in-memory repository patterns when building Node.js features with SOLID principles. Use when user asks to 'create a use case', 'write a check-in feature', 'implement repository pattern', 'write unit tests for use cases', or 'setup in-memory testing'. Applies rules: use case receives IDs and delegates to repository, in-memory repos use randomUUID, Prisma UncheckedCreateInput for existing relationships, always await expect with rejects. Make sure to use this skill whenever creating new use cases, repositories, or unit tests in a SOLID Node.js project. Not for HTTP controllers, route definitions, or database migrations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: solid-use-cases
+  tags: [use-case, repository, in-memory, prisma, solid, testing, check-in]
 ---
 
 # Caso de Uso de Check-in (Use Case + Repository + Test Pattern)
@@ -127,14 +133,19 @@ await expect(promise).rejects.toBeInstanceOf(Error)
 | Use case recebendo objeto User completo | Use case recebendo `userId: string` |
 | Todas as regras de negocio no primeiro commit | Comece simples, adicione incrementalmente |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-check-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-check-in/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-check-in/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-check-in/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

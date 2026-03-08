@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-representacao-codigo
 description: "Applies correct HTML code representation using code, pre, and HTML entity encoding when writing markup. Use when user asks to 'display code in HTML', 'show code snippet', 'render HTML tags as text', 'format code block', or 'represent source code on a page'. Ensures proper nesting of code inside pre, and escaping of angle brackets with HTML entities. Make sure to use this skill whenever generating HTML that displays source code. Not for syntax highlighting libraries, markdown rendering, or server-side code formatting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, code, pre, entities, semantic-html]
 ---
 
 # Representacao de Codigo de Computador em HTML
@@ -70,6 +76,15 @@ O browser exibe as tags como texto visivel.
 | `<code>` sozinho para bloco multi-linha | `<pre><code>...</code></pre>` |
 | `<pre>` sem `<code>` para codigo | `<pre><code>...</code></pre>` |
 | Escapar apenas `<` e ignorar `>` | Escapar ambos: `&lt;` e `&gt;` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Tags HTML aparecem como elementos em vez de texto | Falta escapar `<` e `>` com entities | Use `&lt;` e `&gt;` no lugar de `<` e `>` |
+| Indentacao/espacos colapsam no bloco de codigo | Falta tag `<pre>` envolvendo o `<code>` | Envolva com `<pre><code>...</code></pre>` |
+| Fonte do codigo igual a do texto normal | Falta tag `<code>` | Use `<code>` que aplica fonte monospace |
+| Caractere `&` aparece como entity | `&` precisa ser escapado tambem | Use `&amp;` para exibir `&` literalmente |
 
 ## Deep reference library
 

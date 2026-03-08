@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-bloqueando-horarios-agendados
 description: "Enforces time slot blocking logic when building scheduling systems in JavaScript/TypeScript. Use when user asks to 'block booked hours', 'prevent double booking', 'filter available time slots', 'build a scheduling system', or 'validate appointment availability'. Applies includes() for occupied-slot checking and isBefore() for past-time filtering with AND logic. Make sure to use this skill whenever implementing appointment or booking availability logic. Not for calendar UI rendering, date picker styling, or backend API design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, scheduling, time-slots, dayjs, includes, filtering]
 ---
 
 # Bloqueando Horários Já Agendados
@@ -86,13 +92,16 @@ function hoursLoad(date, dailySchedules) {
 | Verificar só passado sem verificar ocupação | Verificar ambas condições |
 | Hardcodar horários ocupados | Receber agendamentos da API como parâmetro |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **All time slots show as available** | Verify PRAGMA or includes check — ensure `unavailableHours` array is populated and `format('HH:mm')` matches the hour format used in the comparison. |
+| **Past hours still appear as available** | Confirm `dayjs(hour)` creates a valid date object — if `hour` is just `'HH:mm'`, combine it with the selected date before calling `isBefore`. |
+| **Double bookings still occur** | Check that `hoursLoad` receives the updated `dailySchedules` array after each new booking, not a stale copy. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre lógica booleana AND vs OR e o bug clássico
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-bloqueando-horarios-ja-agendados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-bloqueando-horarios-ja-agendados/references/code-examples.md)

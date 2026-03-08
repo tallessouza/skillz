@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-ts-playground
-description: "Guides usage of TypeScript Playground for quick prototyping and learning. Use when user asks to 'test TypeScript online', 'use TypeScript Playground', 'try TypeScript without installing', or 'prototype TypeScript code'. Applies knowledge of Playground layout, execution, and output panels. Make sure to use this skill whenever suggesting an online environment for TypeScript experimentation. Not for local TypeScript project setup, tsconfig configuration, or production builds."
+description: "Configures usage of TypeScript Playground for quick prototyping and learning. Use when user asks to 'test TypeScript online', 'use TypeScript Playground', 'try TypeScript without installing', or 'prototype TypeScript code'. Applies knowledge of Playground layout, execution, and output panels. Make sure to use this skill whenever suggesting an online environment for TypeScript experimentation. Not for local TypeScript project setup, tsconfig configuration, or production builds."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, playground, prototyping, online-editor]
 ---
 
 # TypeScript Playground
 
 > Use o TypeScript Playground como ambiente online para experimentar e validar codigo TypeScript sem instalacao local.
 
-## Quando usar
+## Key concepts
 
 | Situacao | Playground e ideal |
 |----------|-------------------|
@@ -65,6 +71,14 @@ console.log(message)
 - Apenas um arquivo por vez (sem imports entre arquivos)
 - Sem acesso a filesystem, APIs externas ou Node.js APIs
 - Nao substitui um ambiente de desenvolvimento real para projetos
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Painel de saída sumiu | Painel foi recolhido acidentalmente | Clique na seta para expandir o painel novamente |
+| Código não executa ao clicar Run | Erro de tipo impede execução | Verifique a aba "Errors" para identificar o problema |
+| Imports não funcionam no Playground | Playground não suporta múltiplos arquivos | Use declarações inline ou teste em ambiente local para código multi-arquivo |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-cookies-no-fastify
 description: "Applies Fastify cookie patterns for session tracking and user identification in Node.js APIs. Use when user asks to 'add cookies', 'track sessions', 'identify users without auth', 'use @fastify/cookie', or 'persist context between requests'. Covers session ID strategy, cookie configuration (path, maxAge), and pre-authentication user tracking. Make sure to use this skill whenever implementing cookies or session management in Fastify. Not for JWT authentication, OAuth flows, or frontend cookie handling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: cookies-e-sessoes
+  tags: [fastify, cookies, session, tracking, maxAge, preHandler]
 ---
 
 # Utilizando Cookies no Fastify
@@ -121,14 +127,14 @@ app.post('/', async (request, reply) => {
 | `app.register(routes)` antes de `app.register(cookie)` | Plugin de cookie registrado primeiro |
 | Enviar sessionId no body da request | Confiar no envio automático via cookies |
 
+## Troubleshooting
+
+### Cookie nao e enviado nas requisicoes subsequentes
+**Symptom:** `request.cookies.sessionId` retorna `undefined` em rotas GET apos ter sido setado no POST
+**Cause:** O plugin `@fastify/cookie` nao foi registrado antes das rotas, ou o `path` do cookie esta restrito a uma rota especifica
+**Fix:** Registre `app.register(cookie)` antes de `app.register(routes)` e use `path: '/'` na configuracao do cookie
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-utilizando-cookies-no-fastify/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-utilizando-cookies-no-fastify/references/code-examples.md)

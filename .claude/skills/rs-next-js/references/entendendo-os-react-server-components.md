@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-react-server-components
 description: "Enforces React Server Components patterns when building Next.js App Router applications. Use when user asks to 'create a component', 'build a page', 'fetch data in Next.js', 'add server component', or works with App Router. Applies rules: default to server components, fetch data on server, use composition pattern for mixing server/client, never use hooks in server components. Make sure to use this skill whenever generating Next.js App Router code. Not for Pages Router, pure client-side React, or API routes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-fundamentos
+  tags: [server-components, client-components, app-router, composition-pattern, use-client, next-js, ssr]
 ---
 
 # React Server Components no Next.js App Router
@@ -132,14 +138,19 @@ export default async function UsersPage() {
 | Instalar lib so para fetch client-side | Usar fetch nativo no server component |
 | Adicionar estado so para dados do servidor | Retornar dados direto do server component |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-os-react-server-components/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-os-react-server-components/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-os-react-server-components/references/deep-explanation.md) — React Server Components nao sao algo novo. Dan Abramov e o time do React comecaram a falar sobre ele
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-os-react-server-components/references/code-examples.md) — // app/page.tsx

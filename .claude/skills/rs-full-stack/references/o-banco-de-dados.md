@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-banco-de-dados
-description: "Guides PostgreSQL setup with Docker for ORM-based development. Use when user asks to 'setup postgres', 'run postgres docker', 'switch from sqlite to postgres', 'configure database for ORM', or 'connect to postgres'. Ensures Docker container is running and connection is verified via Beekeeper or ORM tooling. Make sure to use this skill whenever setting up a PostgreSQL development environment with Docker. Not for production database deployment, database optimization, or SQL query writing."
+description: "Configures PostgreSQL setup with Docker for ORM-based development. Use when user asks to 'setup postgres', 'run postgres docker', 'switch from sqlite to postgres', 'configure database for ORM', or 'connect to postgres'. Ensures Docker container is running and connection is verified via Beekeeper or ORM tooling. Make sure to use this skill whenever setting up a PostgreSQL development environment with Docker. Not for production database deployment, database optimization, or SQL query writing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-setup
+  tags: [postgresql, docker, database, orm, setup]
 ---
 
 # Setup PostgreSQL com Docker para ORM
@@ -80,13 +86,15 @@ Deve retornar `1` sem erros.
 | Pular verificacao de conexao | Sempre testar conexao antes de comecar com ORM |
 | Usar Beekeeper quando ORM tem ferramenta | Preferir a ferramenta do ORM para visualizar dados |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `docker ps` nao mostra o container | Container parado ou nao criado | `docker start postgres` ou recriar com `docker run` |
+| Conexao recusada na porta 5432 | Docker Desktop nao esta rodando ou porta ocupada | Iniciar Docker Desktop ou verificar com `lsof -i :5432` |
+| Erro de autenticacao no Beekeeper | Senha incorreta | Usar a senha definida em `-e POSTGRES_PASSWORD` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a transicao SQLite → PostgreSQL
 - [code-examples.md](references/code-examples.md) — Comandos Docker e conexao expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-banco-de-dados/references/code-examples.md)

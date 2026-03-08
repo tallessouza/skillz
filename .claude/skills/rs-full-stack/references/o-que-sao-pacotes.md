@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-sao-pacotes
 description: "Applies package and dependency management concepts when working with JavaScript/Node.js projects. Use when user asks to 'install a package', 'add a library', 'manage dependencies', 'use npm', or 'choose between writing custom code vs using a package'. Guides decisions on when to use existing packages vs building from scratch. Make sure to use this skill whenever evaluating third-party dependencies or setting up project dependencies. Not for specific package API usage, framework configuration, or deployment pipelines."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-fundamentos
+  tags: [npm, pacotes, dependencias, node, gerenciador-pacotes]
 ---
 
 # O que são Pacotes (Bibliotecas)
@@ -60,6 +66,15 @@ npm install nome-do-pacote
 | Ignorar atualizacoes de seguranca | Manter dependencias atualizadas |
 | Instalar pacote para funcionalidade trivial (ex: `is-odd`) | Implementar funcoes simples inline |
 | Usar pacote sem verificar manutencao e comunidade | Avaliar downloads, issues, ultimo commit |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm install` falha com erro de permissao | Permissoes incorretas no diretorio | Use `sudo` (Linux/Mac) ou execute terminal como admin (Windows) |
+| Pacote instalado mas `require` falha | Pacote nao listado no package.json | Execute `npm install pacote` novamente com `--save` |
+| Vulnerabilidades detectadas apos install | Dependencias desatualizadas | Execute `npm audit fix` para corrigir automaticamente |
+| `node_modules` muito grande | Muitas dependencias transitivas | Avalie se todos os pacotes sao necessarios, remova os nao usados |
 
 ## Deep reference library
 

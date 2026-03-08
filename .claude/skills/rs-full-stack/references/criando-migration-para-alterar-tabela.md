@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-migration-alterar-tabela
 description: "Applies Knex migration patterns for altering existing database tables when writing migrations, schema changes, or adding columns. Use when user asks to 'add a column', 'alter table', 'create migration', 'modify schema', or 'update database structure'. Enforces alter vs create separation, proper up/down symmetry, and column positioning. Make sure to use this skill whenever generating Knex migrations that modify existing tables. Not for creating new tables, seed files, or query building."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, migration, alter-table, schema, database]
 ---
 
 # Criando Migration para Alterar Tabela
@@ -95,8 +101,12 @@ export async function down(knex: Knex): Promise<void> {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-migration-para-alterar-tabela/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-migration-para-alterar-tabela/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Migration falha com "table already exists" | Usando `createTable` em vez de `alterTable` | Substitua por `knex.schema.alterTable()` |
+| Rollback nao desfaz a alteracao | `down` vazio ou incompleto | Implemente `dropColumn` simetrico no `down` |
+| Coluna aparece na posicao errada | Faltou `.after()` na definicao | Adicione `.after('coluna_referencia')` |
+| `knex.fn.now()` nao funciona | Versao antiga do Knex ou dialeto incompativel | Verifique a versao do Knex e o driver do banco |
+| Migration roda mas coluna nao aparece | Migration ja foi executada antes | Rode `knex migrate:rollback` e depois `knex migrate:latest` |

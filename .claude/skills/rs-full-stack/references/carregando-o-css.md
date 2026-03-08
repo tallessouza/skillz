@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-carregando-o-css
 description: "Applies Webpack CSS loading configuration when setting up style-loader and css-loader for frontend projects. Use when user asks to 'configure webpack', 'load CSS with webpack', 'add styles to webpack', 'setup css loader', or 'bundle CSS'. Ensures correct loader order, module rules, and JS-based CSS imports. Make sure to use this skill whenever configuring Webpack for CSS handling. Not for PostCSS, Sass/SCSS, CSS Modules, or Tailwind configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [webpack, css, style-loader, css-loader, bundler, configuration]
 ---
 
 # Carregando CSS com Webpack
@@ -73,13 +79,17 @@ Após `npm run build`, o Webpack lista os arquivos CSS processados no output. Ao
 2. `npm run dev` — estilização visível no browser
 3. Inspecionar HTML no browser — CSS injetado via `<style>` tags (não `<link>`)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| CSS nao aparece no browser | Ordem dos loaders invertida no array `use` | Coloque `style-loader` antes de `css-loader` |
+| `Module parse failed` no build | `css-loader` nao instalado ou nao configurado | Execute `npm install css-loader --save-dev` e adicione ao rules |
+| `@import` dentro de CSS nao resolve | `css-loader` ausente na chain | Verifique que `css-loader` esta no array `use` |
+| Estilos duplicados no browser | CSS importado em multiplos arquivos JS | Centralize imports de CSS em um unico entry point |
+| `<link>` manual no HTML conflita | Tags `<link>` manuais e Webpack injetando ao mesmo tempo | Remova tags `<link>` do HTML e use apenas imports JS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre loaders, ordem de execução e separação de responsabilidades
 - [code-examples.md](references/code-examples.md) — Configuração completa do webpack.config.js e variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-carregando-o-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-carregando-o-css/references/code-examples.md)

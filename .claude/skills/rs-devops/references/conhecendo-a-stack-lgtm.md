@@ -1,6 +1,12 @@
 ---
 name: rs-devops-conhecendo-a-stack-lgtm
 description: "Applies LGTM stack architecture knowledge when designing observability infrastructure with Grafana, Loki, Tempo, and Mimir. Use when user asks to 'setup observability', 'configure monitoring', 'add logging and tracing', 'setup Grafana stack', or 'implement LGTM'. Provides component roles, connection topology, and local Docker-based setup guidance. Make sure to use this skill whenever building observability pipelines from scratch. Not for application-level logging code, Grafana Cloud managed setup, or Kubernetes-specific orchestration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-stack
+  tags: [grafana, loki, tempo, mimir, lgtm, observability, opentelemetry, monitoring]
 ---
 
 # Stack LGTM — Arquitetura de Observabilidade
@@ -81,14 +87,14 @@ Existe a imagem `grafana/otel-lgtm` (Hotel LGTM) que traz tudo pre-configurado. 
 - Nao cobre Grafana Cloud setup
 - K6 (testes de performance) e Pyroscope (profiling) sao mencionados mas nao detalhados
 
+## Troubleshooting
+
+### Grafana nao exibe dados de nenhum datasource
+**Symptom:** Dashboards no Grafana aparecem vazios, sem logs, traces ou metricas
+**Cause:** Datasources (Loki, Tempo, Mimir) nao foram configurados no Grafana ou estao com URL incorreta
+**Fix:** Acesse Grafana > Configuration > Data Sources e adicione cada componente com a URL correta do container (ex: `http://loki:3100`)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-a-stack-lgtm/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-a-stack-lgtm/references/code-examples.md)

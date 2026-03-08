@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operador-condicional-ternario
 description: "Applies ternary operator patterns when writing JavaScript/TypeScript conditional expressions. Use when user asks to 'write a condition', 'check if value', 'return based on condition', 'inline if', or ternary-related code. Enforces three-part structure: condition ? valueIfTrue : valueIfFalse. Make sure to use this skill whenever generating inline conditional logic. Not for complex multi-branch logic, switch statements, or if/else blocks with side effects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, ternary, conditional, operator, expression]
 ---
 
 # Operador Condicional Ternário
@@ -84,13 +90,15 @@ console.log(
 | `x ? true : false` | `Boolean(x)` ou `!!x` |
 | `x ? x : defaultValue` | `x \|\| defaultValue` ou `x ?? defaultValue` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro de sintaxe no ternario | Ordem invertida (`:` antes de `?`) | Respeite: `condicao ? verdadeiro : falso` |
+| Ternario dificil de ler | Muitos ternarios aninhados | Refatore para `if/else` com early return |
+| `x ? true : false` redundante | Ternario desnecessario | Simplifique para `Boolean(x)` ou `!!x` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operador-condicional-ternario-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operador-condicional-ternario-1/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

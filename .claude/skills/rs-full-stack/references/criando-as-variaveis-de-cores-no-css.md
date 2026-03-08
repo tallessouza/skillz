@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-variaveis-cores-css
 description: "Enforces CSS custom properties setup for color systems when writing stylesheets. Use when user asks to 'create CSS variables', 'setup color tokens', 'configure design tokens', 'create a style guide in CSS', or 'setup global styles'. Applies rules: variables in :root, semantic naming from design system, global reset with asterisk selector, body applies base colors via var(). Make sure to use this skill whenever setting up a new project's color system or global CSS. Not for JavaScript theming, CSS-in-JS, or Tailwind configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags: [css, custom-properties, variables, design-tokens, colors, reset]
 ---
 
 # Variáveis de Cores no CSS
@@ -114,13 +120,15 @@ h1 {
 | `--cor-do-botao-principal` | `--brand-color` (nome do Style Guide) |
 | Reset sem `box-sizing: border-box` | Reset completo: margin + padding + box-sizing |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `var(--nome)` nao aplica a cor | Variavel declarada dentro de seletor especifico em vez de `:root` | Mova a declaracao para dentro de `:root {}` |
+| Cor aparece diferente do Figma | Valor hex copiado com caractere errado ou faltando | Clique em "Custom" no Figma para ver o hex real e compare caractere a caractere |
+| Reset com `*` nao funciona em elemento especifico | Estilo do user-agent tem especificidade maior | Aplique o reset diretamente na tag afetada |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre especificidade, reset CSS e organização de variáveis
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-as-variaveis-de-cores-no-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-as-variaveis-de-cores-no-css/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre especificidade, reset CSS e organizacao de variaveis
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

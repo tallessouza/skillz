@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-secao-feature
 description: "Applies Next.js landing page feature section patterns when building card-based UI sections with Next Image, Next Link, and Tailwind CSS. Use when user asks to 'create a features section', 'build card components', 'make responsive cards', 'add image with next/image in a card', or 'build a landing page section'. Enforces responsive mobile-first layout, duplicate button pattern for mobile/desktop, and proper image containment. Make sure to use this skill whenever creating card-based feature sections in Next.js with Tailwind. Not for API routes, data fetching, server components logic, or non-UI tasks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: landing-page-sections
+  tags: [feature-section, cards, responsive, next-image, tailwind, mobile-first, landing-page]
 ---
 
 # Secao Feature — Landing Page Cards com Next.js
@@ -125,14 +131,19 @@ fontSize: {
 | Estilo inline para tipografia recorrente | Classe customizada no tailwind.config |
 | Grid fixo sem breakpoint mobile | grid-cols-1 default + md:grid-cols-2 |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-secao-feature/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-secao-feature/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-secao-feature/references/deep-explanation.md) — O instrutor segue o padrao de criar um arquivo por secao da landing page (`feature-section.tsx`) com
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-secao-feature/references/code-examples.md) — // components/feature-section.tsx

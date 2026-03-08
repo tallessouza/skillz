@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-typeof-1
 description: "Applies TypeScript typeof operator for type extraction when writing typed code. Use when user asks to 'type a variable based on another', 'reuse types', 'extract type from existing object', 'infer type from value', or 'type from API response'. Ensures typeof is used to derive types from existing values instead of duplicating interfaces. Make sure to use this skill whenever creating variables that should share the same shape as an existing value. Not for typeof in JavaScript runtime type checking or conditional guards."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, typeof, type-extraction, type-inference]
 ---
 
 # TypeScript typeof para Extração de Tipos
@@ -79,6 +85,14 @@ const product2: typeof product1 = { id: 2, name: "Produto 2", quantity: 5 }
 | Recriar interface manual para algo que já existe tipado | `typeof existingValue` |
 | Copiar tipagem de lib externa para seu código | `typeof libResult` para manter sincronizado |
 | Usar `any` porque não sabe o tipo do retorno | `typeof` no valor retornado para extrair o tipo |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `typeof` retorna `"string"` em vez do tipo TypeScript | Confusão entre `typeof` em runtime JS e em nível de tipo TS | Use `typeof` em contexto de tipo: `type X = typeof myVar`, não em `if (typeof x === ...)` |
+| Tipo derivado não reflete mudanças da fonte | Variável fonte foi reatribuída com tipo diferente | Garanta que a fonte tenha tipagem explícita via interface ou `as const` |
+| `typeof` em função retorna o tipo da função, não do retorno | `typeof fn` captura a assinatura da função | Use `ReturnType<typeof fn>` para extrair o tipo de retorno |
 
 ## Deep reference library
 

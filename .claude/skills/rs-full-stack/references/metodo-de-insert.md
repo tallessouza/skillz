@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodo-de-insert
 description: "Applies Knex Query Builder insert patterns when writing database insertion code in Node.js/Express. Use when user asks to 'insert data', 'save to database', 'create a record', 'add to table', or 'write an insert query'. Enforces Knex connection module separation, async/await usage, and proper insert method chaining. Make sure to use this skill whenever generating code that persists data to a database using Knex. Not for raw SQL inserts, SELECT queries, migrations, or ORM-based inserts like Prisma/TypeORM."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express
+  tags: [knex, query-builder, insert, database, express]
 ---
 
 # Metodo de Insert com Query Builder (Knex)
@@ -90,13 +96,16 @@ app.post("/courses", async (request, reply) => {
 | `await knex("table").insert({ id: 1, name })` | `await knex("table").insert({ name })` (id e auto) |
 | Rota sem async/await | `async (request, reply) => { await knex... }` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Insert nao completa e resposta volta vazia | Falta `await` antes do insert | Adicione `await knex("table").insert(...)` |
+| Erro de coluna nao encontrada | Nome da coluna no objeto nao corresponde ao schema | Verifique nomes das colunas na migration |
+| Status 200 retornado em vez de 201 | Usando status padrao | Use `reply.status(201).send()` para criacao |
+| Erro de constraint violation | Tentando inserir id ou valor duplicado | Omita colunas auto-geradas e verifique unique constraints |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de conexao e fluxo insert
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodo-de-insert/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodo-de-insert/references/code-examples.md)

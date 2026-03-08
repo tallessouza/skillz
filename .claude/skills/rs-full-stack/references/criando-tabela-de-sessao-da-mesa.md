@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tabela-sessao-mesa
 description: "Applies Knex migration patterns for session/status tracking tables with foreign keys, timestamps, and nullable columns. Use when user asks to 'create a migration', 'add a session table', 'track table status', 'create foreign key', or 'control open/close status'. Ensures correct foreign key references, nullable timestamps for state control, and proper rollback methods. Make sure to use this skill whenever creating migrations that track temporal state (open/close, start/end). Not for query building, seed files, or application logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-migrations
+  tags: [knex, migrations, foreign-key, timestamps, session-tracking]
 ---
 
 # Migrations com Tabelas de Sessão e Controle de Estado
@@ -78,13 +84,16 @@ await knex.schema.createTable("tables_sessions", (table) => {
 | Migration sem método `down` | `down` com `dropTable` correspondente |
 | FK sem `.notNullable()` em relação obrigatória | `.notNullable().references("id").inTable("tabela")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| FK rejeita insercao com erro de constraint | ID referenciado nao existe na tabela pai | Insira o registro na tabela pai antes de referenciar |
+| `closed_at` nunca e null | Coluna definida sem `.nullable()` | Adicione `.nullable()` na definicao da coluna |
+| `opened_at` sem data automatica | Falta `.defaultTo(knex.fn.now())` | Adicione o default de timestamp na definicao |
+| Rollback falha na migration | Metodo `down` nao implementado | Adicione `knex.schema.dropTable("tables_sessions")` no down |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre timestamps como indicador de estado e padrões de FK
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-sessao-da-mesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-sessao-da-mesa/references/code-examples.md)

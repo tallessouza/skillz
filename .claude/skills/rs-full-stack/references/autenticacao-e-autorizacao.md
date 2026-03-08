@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-autenticacao-e-autorizacao
 description: "Enforces correct authentication and authorization patterns when building backend systems. Use when user asks to 'add login', 'protect routes', 'add auth', 'create middleware', 'check permissions', or 'add roles'. Distinguishes authentication (identity verification via credentials/tokens) from authorization (permission checking via roles/rules). Make sure to use this skill whenever implementing any auth-related feature. Not for OAuth provider setup, session storage strategies, or cryptographic algorithm selection."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api
+  tags: [authentication, authorization, jwt, middleware, security]
 ---
 
 # Autenticacao e Autorizacao
@@ -81,13 +87,16 @@ Todos sao **autenticados**, mas cada papel tem **autorizacoes** diferentes.
 - Nao cobre estrategias de armazenamento de token (cookie vs localStorage vs httpOnly)
 - Nao cobre algoritmos de hash de senha ou assinatura de JWT
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Retornando 401 quando deveria ser 403 | Confusao entre autenticacao e autorizacao | 401 = identidade nao verificada, 403 = permissao insuficiente |
+| Token valido mas acesso negado | Middleware de autorizacao bloqueando por role | Verifique se o usuario tem a role/permissao necessaria |
+| Todas as rotas acessiveis apos login | Faltou middleware de autorizacao | Adicione middleware que verifica permissoes alem da autenticacao |
+| Erro "email ou senha invalido" generico | Nao revelar qual campo esta errado | Comportamento correto — mensagem generica por seguranca |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-autenticacao-e-autorizacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-autenticacao-e-autorizacao/references/code-examples.md)

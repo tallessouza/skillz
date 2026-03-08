@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-node-npm
-description: "Guides Node.js and npm setup and version verification when user asks to 'install node', 'setup npm', 'check node version', 'configure node environment', or 'start a new project from scratch'. Applies rules: always use LTS version, verify installation with version commands, understand LTS vs Current distinction. Make sure to use this skill whenever setting up a new development environment or onboarding someone to Node.js. Not for package management workflows, dependency resolution, or npm scripts configuration."
+description: "Configures Node.js and npm setup and version verification when user asks to 'install node', 'setup npm', 'check node version', 'configure node environment', or 'start a new project from scratch'. Applies rules: always use LTS version, verify installation with version commands, understand LTS vs Current distinction. Make sure to use this skill whenever setting up a new development environment or onboarding someone to Node.js. Not for package management workflows, dependency resolution, or npm scripts configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: environment-setup
+  tags: [nodejs, npm, lts, nvm, installation, version-management]
 ---
 
 # Conhecendo o Node e o NPM
@@ -78,13 +84,16 @@ A Current tem numeracao maior porque inclui todas as funcionalidades novas. Essa
 - Se `npm --version` retorna erro mas `node` funciona: npm pode ter falhado na instalacao. Reinstale o Node
 - Se precisa de versao especifica: use `nvm install <version>` em vez de instalar manualmente
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `node: command not found` | Node nao esta no PATH | Reinstalar Node ou configurar PATH manualmente |
+| `npm --version` retorna erro mas `node` funciona | npm falhou na instalacao | Reinstalar Node (npm vem junto) |
+| Precisa de versao especifica do Node | Projeto exige versao diferente da instalada | Usar `nvm install <version>` e `nvm use <version>` |
+| Versao Current instalada em vez de LTS | Download do botao errado no site | Baixar novamente selecionando o botao LTS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre LTS vs Current, estrategia de releases do Node
 - [code-examples.md](references/code-examples.md) — Comandos de verificacao e cenarios de instalacao expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-node-e-o-npm/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-node-e-o-npm/references/code-examples.md)

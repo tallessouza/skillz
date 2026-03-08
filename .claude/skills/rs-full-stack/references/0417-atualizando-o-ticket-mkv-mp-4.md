@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0417-atualizando-ticket
 description: "Applies the update record pattern in Node.js file-based databases when user asks to 'update a record', 'edit entry', 'implement PUT endpoint', 'modify database row', or 'create update method'. Enforces findIndex lookup, spread-merge for partial updates, persist after mutation, and updated_at timestamp. Make sure to use this skill whenever implementing update/PUT operations on in-memory or file-based databases. Not for SQL databases, ORMs, or frontend state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, database, update, spread-operator, findIndex]
 ---
 
 # Atualizando Registros em Banco de Dados (File-based)
@@ -101,8 +107,11 @@ update(table, id, data) {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre findIndex vs find, spread merge e persistencia
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0417-atualizando-o-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0417-atualizando-o-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Update nao persiste apos reiniciar servidor | `persist()` nao foi chamado apos mutacao | Adicione `this.#persist()` apos modificar o array |
+| Campos existentes desaparecem apos update | Sobrescrevendo objeto inteiro sem spread | Use `{ ...dadosAtuais, ...novosDados }` para merge parcial |
+| `findIndex` retorna `-1` mas update executa | Nao ha guard clause antes da mutacao | Adicione `if (rowIndex > -1)` antes de modificar |
+| `updated_at` nao atualiza | Campo nao esta sendo passado no controller | Passe `updated_at: new Date()` no objeto de dados do update |

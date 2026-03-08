@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-tracer-basico
 description: "Applies Jaeger tracing setup and FortIO load testing within Istio service mesh on Kubernetes. Use when user asks to 'install Jaeger', 'configure tracing', 'distributed tracing', 'load test with FortIO', 'test service mesh', or 'observability setup'. Guides installation via Istio addons, runs in-cluster load tests, and validates trace collection in Kiali. Make sure to use this skill whenever setting up tracing in a Kubernetes service mesh environment. Not for application-level instrumentation, Grafana Tempo setup, or APM tool comparison."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-observability
+  tags: [jaeger, tracing, fortio, istio, kiali, kubernetes, load-testing, observability]
 ---
 
 # Configurando Tracer Basico com Jaeger e FortIO
@@ -102,14 +108,14 @@ QPS abaixo do solicitado indica que a aplicacao atingiu seu limite — considere
 | Testar com QPS alto sem baseline | Comecar com QPS baixo, aumentar gradualmente |
 | Instalar Jaeger em namespace separado do Istio | Instalar em `istio-system` como addon oficial |
 
+## Troubleshooting
+
+### FortIO nao aparece no grafo do Kiali
+**Symptom:** Apos rodar teste de carga com FortIO, o trafego nao aparece no Kiali
+**Cause:** O namespace onde o FortIO foi executado nao tem a label `istio-injection=enabled`
+**Fix:** Aplique a label com `kubectl label namespace <ns> istio-injection=enabled` e reexecute o teste
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-tracer-basico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-tracer-basico/references/code-examples.md)

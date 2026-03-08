@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-seletores-e-estados
 description: "Applies Tailwind CSS pseudo-selectors and state modifiers when styling components. Use when user asks to 'add hover effect', 'style before/after', 'handle disabled state', 'add pseudo-element', or any Tailwind interactive styling task. Covers before:/after: pseudo-elements, hover:/disabled:/enabled: states, and modifier stacking like enabled:hover:. Make sure to use this skill whenever generating Tailwind classes for interactive or stateful elements. Not for Tailwind layout, spacing, or color theory outside of state-based styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: interatividade
+  tags: [tailwind, flexbox]
 ---
 
 # Seletores e Estados no Tailwind
@@ -98,15 +104,19 @@ description: "Applies Tailwind CSS pseudo-selectors and state modifiers when sty
 | `placeholder:` | `::placeholder` | Texto de input |
 | `selection:` | `::selection` | Texto selecionado |
 | `focus:` | `:focus` | Acessibilidade |
+## Troubleshooting
+
+### Focus ring aparece no clique do botao
+**Symptom:** Ao clicar num botao, o ring de foco aparece desnecessariamente.
+**Cause:** Usando `focus:` em vez de `focus-visible:` no botao.
+**Fix:** Use `focus-visible:ring` para botoes e tabs (so ativa via teclado). Reserve `focus:` para inputs.
+
+### Focus ring nao aparece no input com wrapper
+**Symptom:** Ao focar o input dentro de uma div wrapper, nenhum estilo muda na div.
+**Cause:** `focus:` na div nao funciona porque divs nao recebem foco diretamente.
+**Fix:** Use `focus-within:` na div wrapper para detectar foco em qualquer filho.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-seletores-e-estados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-seletores-e-estados/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-seletores-e-estados/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-seletores-e-estados/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

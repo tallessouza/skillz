@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-relacionamentos-tabelas
 description: "Applies Prisma ORM relationship patterns when defining database schemas with relations. Use when user asks to 'create a schema', 'add a relation', 'define foreign key', 'setup prisma model', or 'relate tables in prisma'. Covers 1:1, 1:N, N:N patterns, naming conventions for relation fields vs database columns, and auto-generated inverse relations. Make sure to use this skill whenever writing or reviewing Prisma schema files with relationships. Not for raw SQL migrations, query optimization, or non-Prisma ORMs."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-relationships
+  tags: [prisma, relationships, foreign-key, one-to-many, schema, relation, inverse-relation]
 ---
 
 # Relacionamentos entre Tabelas no Prisma
@@ -110,14 +116,14 @@ model Gym {
 | Esquecer o relacionamento inverso | Sempre declarar ambos os lados |
 | Criar colunas manuais para relacoes | Deixar a extensao do Prisma gerar automaticamente |
 
+## Troubleshooting
+
+### Prisma erro "The relation field on model X is missing the opposite relation field"
+**Symptom:** `prisma migrate dev` falha com erro sobre campo de relacionamento inverso ausente
+**Cause:** Ao definir `user User @relation(...)` em CheckIn, o model User nao tem o campo inverso `checkIns CheckIn[]`
+**Fix:** Adicione o campo de relacionamento inverso no model pai: `checkIns CheckIn[]` no model User. Salvar o arquivo com a extensao do Prisma ativa pode gerar automaticamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-relacionamentos-entre-tabelas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-relacionamentos-entre-tabelas/references/code-examples.md)

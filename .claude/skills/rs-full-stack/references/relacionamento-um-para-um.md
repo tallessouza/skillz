@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-relacionamento-um-para-um
 description: "Applies one-to-one relationship patterns when creating SQL tables with foreign keys. Use when user asks to 'create a table with foreign key', 'relate two tables', 'one-to-one relationship', 'add address table', or 'connect tables in SQL'. Enforces primary key, foreign key with REFERENCES, UNIQUE constraint for 1:1, and NOT NULL on required columns. Make sure to use this skill whenever creating related SQL tables or modeling entity relationships. Not for many-to-many relationships, ORM migrations, or NoSQL schemas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-relationships
+  tags: [sql, one-to-one, foreign-key, unique-constraint, database-design]
 ---
 
 # Relacionamento Um para Um (SQL)
@@ -93,6 +99,15 @@ CREATE TABLE student_address (
 | Foreign key sem declaracao FOREIGN KEY | `FOREIGN KEY(student_id) REFERENCES students(id)` |
 | Tudo numa linha so (ilegivel) | Separe FOREIGN KEY em linha propria para clareza |
 | `address` como nome de tabela generica | `student_address` (explicita o dono) |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro de UNIQUE constraint ao inserir | Ja existe registro filho para esse pai | Verifique se o pai ja tem registro vinculado antes do INSERT |
+| REFERENCES retorna erro de sintaxe | Falta parenteses em `REFERENCES tabela(coluna)` | Adicione parenteses: `REFERENCES students(id)` |
+| Relacao virou 1:N em vez de 1:1 | Falta constraint UNIQUE na FK | Adicione `UNIQUE` na coluna de FK |
+| Registro filho sem pai | FK permite NULL | Adicione `NOT NULL` na coluna de FK |
 
 ## Deep reference library
 

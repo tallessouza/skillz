@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-listando-os-agendamentos
 description: "Applies Next.js server action error handling and appointment listing patterns when building forms with server actions. Use when user asks to 'handle server action errors', 'list data from server', 'show form validation errors', 'create appointment system', or 'use toast notifications with server actions'. Make sure to use this skill whenever implementing server actions that return errors or listing server data in Next.js pages. Not for client-side-only validation, REST API routes, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: server-actions
+  tags: [server-actions, error-handling, toast, form-validation, app-router, next-js, appointments]
 ---
 
 # Listando Agendamentos e Tratativa de Erros em Server Actions
@@ -91,14 +97,19 @@ async function handleSubmit(formData: FormData) {
 | `form.reset()` antes de verificar erro | `form.reset()` apenas no caminho de sucesso |
 | Ignorar mensagem de erro do backend | `toast.error(result.error)` mostrando a mensagem real |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-listando-os-agendamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-listando-os-agendamentos/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-listando-os-agendamentos/references/deep-explanation.md) — O instrutor mostra uma transicao importante: sair de dados mockados para dados reais. No Next.js App
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-listando-os-agendamentos/references/code-examples.md) — // app/page.tsx

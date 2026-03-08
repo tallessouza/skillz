@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estilizando-navegacao-02
 description: "Enforces CSS container pattern with padding-inline, max-width, and margin-inline auto for consistent layout spacing. Use when user asks to 'create a layout', 'center content', 'add container class', 'style navigation', or 'set max-width with padding'. Applies rules: padding-inline for horizontal spacing, max-width includes padding in calculation, margin-inline auto for centering, full-width background wrapper pattern. Make sure to use this skill whenever building page layouts or container components in CSS. Not for component-level styling, animations, or responsive breakpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout-container
+  tags: [css, container, padding-inline, max-width, margin-inline, layout, centering]
 ---
 
 # Container Pattern e Background Full-Width
@@ -98,13 +104,16 @@ description: "Enforces CSS container pattern with padding-inline, max-width, and
 | `max-width: 1216px` com padding de 32px | `max-width: 1280px` (inclui padding) |
 | `width: 100%` no container | Omita — block elements ja sao 100% por padrao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Background cortado nas laterais | Background aplicado no elemento com max-width | Mover background para wrapper externo sem restricao de largura |
+| Conteudo nao centralizado | `margin-inline: auto` ausente no container | Adicionar `margin-inline: auto` junto com `max-width` |
+| Padding lateral nao contabilizado no max-width | max-width definido sem somar padding | Somar padding lateral (ambos os lados) ao max-width desejado |
+| Container ocupa 100% sem max-width | `max-width` nao definido | Adicionar `max-width` com valor calculado (conteudo + padding) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre inline properties, calculo de max-width e pattern de wrapper
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estilizando-a-navegacao-parte-02/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estilizando-a-navegacao-parte-02/references/code-examples.md)

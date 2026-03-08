@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-template-rows
 description: "Applies CSS Grid grid-template-rows patterns when structuring row layouts. Use when user asks to 'create a grid layout', 'define row heights', 'set up grid rows', 'structure a page layout with grid', or any CSS Grid row configuration. Enforces correct usage of px, fr, %, repeat() for row definitions, and height context awareness. Make sure to use this skill whenever generating CSS Grid layouts that need explicit row sizing. Not for flexbox layouts, grid-template-columns only tasks, or grid item placement (grid-row/grid-column)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, grid-template-rows, layout, rows]
 ---
 
 # Grid Template Rows
@@ -94,13 +100,16 @@ body {
 | `1fr 1fr 1fr` repetitivo | `repeat(3, 1fr)` |
 | Definir todas as rows quando so precisa de 2 | Defina apenas as necessarias, o CSS calcula o resto |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Rows com `fr` colapsam para altura do conteudo | Container pai nao tem altura explicita definida | Adicione `height: 100vh` ou valor fixo no container |
+| Grid ultrapassa viewport e gera scrollbar | Margens padrao do body somam na altura total | Adicione `body { margin: 0 }` |
+| `repeat()` nao funciona como esperado | Numero de repeticoes nao corresponde ao numero de itens | Verifique a quantidade de filhos diretos do grid container |
+| Rows extras sem tamanho definido | Mais itens que rows declaradas | Rows implicitas usam altura automatica do conteudo — defina `grid-auto-rows` se necessario |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre altura em Grid, analogia com columns, e como o navegador calcula fr sem altura definida
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e combos columns+rows
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-template-rows/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-template-rows/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-ambiente-6
-description: "Guides local Kubernetes environment setup using kind, kubectl, and Lens. Use when user asks to 'setup kubernetes locally', 'install kind', 'configure kubectl', 'create local k8s cluster', or 'install kubernetes tools'. Covers tool selection between kind/minikube/k3s, context switching, and GUI options. Make sure to use this skill whenever setting up a local Kubernetes development environment. Not for production cluster deployment, cloud-managed Kubernetes setup, or Helm chart configuration."
+description: "Configures local Kubernetes environment using kind, kubectl, and Lens for development clusters. Use when user asks to 'setup kubernetes locally', 'install kind', 'configure kubectl', 'create local k8s cluster', or 'install kubernetes tools'. Enforces tool installation order, context switching discipline, and correct tool selection between kind/minikube/k3s. Make sure to use this skill whenever setting up a local Kubernetes development environment. Not for production cluster deployment, cloud-managed Kubernetes setup, or Helm chart configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-ambiente-local
+  tags: [kubernetes, kind, kubectl, lens, k9s, local-development]
 ---
 
 # Configurando Ambiente Kubernetes Local
@@ -113,14 +119,14 @@ kind --version        # kind instalado
 - Se `kubectl` nao conecta: verificar contexto (`kubectl config current-context`)
 - Se Lens nao mostra cluster: cluster precisa existir primeiro (kind cria, Lens apenas visualiza)
 
+## Troubleshooting
+
+### kind create cluster falha ao criar o cluster
+**Symptom:** Erro ao executar kind create cluster — falha na criacao dos containers
+**Cause:** Docker nao esta rodando ou nao tem recursos suficientes
+**Fix:** Verifique com `docker ps` se Docker esta ativo, e aumente recursos no Docker Desktop se necessario
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-ambiente-6/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-ambiente-6/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-ambiente-6/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-ambiente-6/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

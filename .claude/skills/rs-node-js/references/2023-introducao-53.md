@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-introducao-53
 description: "Applies Node.js SOLID architecture principles when designing backend applications with TypeScript. Use when user asks to 'create an API', 'setup a Node project', 'structure a backend', or 'apply SOLID principles'. Enforces test-first development, dependency inversion, and repository pattern from project inception. Make sure to use this skill whenever starting a new Node.js backend project or discussing architecture decisions. Not for frontend, React, or database-specific queries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: solid-architecture
+  tags: [solid, dependency-inversion, repository-pattern, in-memory-database, factory-pattern, tdd, clean-architecture]
 ---
 
 # API Node.js com SOLID — Visao Geral Arquitetural
@@ -81,14 +87,14 @@ class CreateUserUseCase {
 | Testar com banco real em unitarios | Usar in-memory database pattern |
 | Deploy sem CI/CD | Integrar testes no pipeline desde o inicio |
 
+## Troubleshooting
+
+### Use case impossivel de testar sem banco de dados
+**Symptom:** Testes unitarios exigem conexao com banco real para executar
+**Cause:** Use case instancia repositorio concreto internamente em vez de receber por construtor
+**Fix:** Aplique inversao de dependencia: crie interface do repositorio, receba via construtor, e use InMemoryRepository nos testes
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-introducao-53/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-introducao-53/references/code-examples.md)

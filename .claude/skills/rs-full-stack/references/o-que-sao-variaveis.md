@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-sao-variaveis
 description: "Applies fundamental variable concepts when teaching or explaining JavaScript basics. Use when user asks to 'explain variables', 'what are variables', 'how memory works in JS', 'teach JS basics', or 'explain RAM and variables'. Reinforces mental models: memory as closet, variables as labeled drawers, mutability as content replacement. Make sure to use this skill whenever explaining programming fundamentals to beginners. Not for advanced scoping, closures, hoisting, or memory management optimization."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-javascript
+  tags: [javascript, variaveis, memoria, ram, beginner]
 ---
 
 # O que são Variáveis
@@ -68,6 +74,15 @@ gaveta = 42              // JS permite trocar o tipo (dinâmico)
 - Este modelo mental não cobre escopo, hoisting, closures ou garbage collection
 - A analogia do armário simplifica — memória real não funciona como gavetas físicas
 - Tipagem dinâmica será aprofundada em aulas posteriores
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `ReferenceError: x is not defined` | Variavel nao foi declarada antes do uso | Declare a variavel com `let`, `const` ou `var` antes de usa-la |
+| Variavel perde valor entre execucoes | Dados na RAM sao temporarios | Use armazenamento persistente (localStorage, banco de dados) se precisar manter |
+| Variavel com valor inesperado | Reatribuicao acidental em outro ponto do codigo | Use `const` quando o valor nao deve mudar, `let` quando deve |
+| `TypeError: Assignment to constant variable` | Tentou reatribuir uma `const` | Use `let` se o valor precisa mudar, ou crie nova variavel |
 
 ## Deep reference library
 

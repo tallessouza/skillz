@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-valor-despesa
 description: "Applies DOM element creation with innerHTML and currency formatting patterns when building expense or financial UI components in JavaScript. Use when user asks to 'create expense item', 'format currency value', 'build financial list', 'display money amount', or 'use innerHTML with template literals'. Enforces correct nested element creation via innerHTML, currency symbol separation, and string formatting with toUpperCase+replace. Make sure to use this skill whenever generating code that displays formatted monetary values in DOM elements. Not for backend payment processing, API design, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, innerhtml, currency-formatting, template-literals]
 ---
 
 # Criando Valor de Despesa com innerHTML e Formatação
@@ -73,13 +79,16 @@ expenseAmount.innerHTML = `<small>R$</small>${newExpense.amount
 | Múltiplos `createElement` para estrutura simples aninhada | `innerHTML` com template literal |
 | `element.className = "classe"` (sobrescreve existentes) | `element.classList.add("classe")` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Simbolo R$ nao aparece menor que o valor | Tag `<span>` em vez de `<small>` no innerHTML | Use `<small>R$</small>` para corresponder ao seletor CSS |
+| `replace("r$", "")` nao remove o simbolo | Case mismatch na string | Normalize com `toUpperCase()` antes do `replace("R$", "")` |
+| Valor duplicado com simbolo | `replace` nao executou corretamente | Verifique a cadeia: `.toUpperCase().replace("R$", "")` |
+| Elemento nao aparece na tela | Falta `append` no elemento pai | Use `parent.append(element)` apos configurar o innerHTML |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre innerHTML vs createElement e formatação de moeda
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-valor-da-despesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-valor-da-despesa/references/code-examples.md)

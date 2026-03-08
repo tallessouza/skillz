@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-instalando-tailwind-css-v3
 description: "Guides Tailwind CSS v3 installation and configuration in Next.js 15 projects using Pages Router. Use when user asks to 'install tailwind v3', 'downgrade tailwind to v3', 'configure tailwind with next.js pages router', 'setup postcss with tailwind', or 'migrate from tailwind v4 to v3'. Make sure to use this skill whenever setting up Tailwind CSS v3 in a Next.js project. Not for Tailwind v4 setup, App Router tailwind config, or styling/utility class guidance."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: instalacao
+  tags: [tailwind-css, tailwind-v3, postcss, autoprefixer, next-js, pages-router, configuration]
 ---
 
 # Instalando Tailwind CSS v3 no Next.js 15
@@ -102,14 +108,19 @@ export default config;
 | Pasta `app/` tambem existe | Adicionar `./src/app/**/*.{js,jsx,ts,tsx,mdx}` ao content |
 | Usando JavaScript puro | Manter `tailwind.config.js` com `module.exports` |
 
+## Troubleshooting
+
+### Estilos Tailwind nao aplicam
+**Symptom:** Classes Tailwind no JSX nao geram CSS correspondente
+**Cause:** Arquivo/pasta nao esta mapeado no array `content` do tailwind.config
+**Fix:** Adicionar o path da pasta no `content` do tailwind.config: `'./src/{nova-pasta}/**/*.{js,ts,jsx,tsx}'`. Reiniciar o servidor de desenvolvimento
+
+### Fontes customizadas nao carregam
+**Symptom:** Fonte do Google Fonts/local nao aparece, fallback e usado
+**Cause:** Configuracao incorreta do next/font ou CSS variable nao aplicada
+**Fix:** Usar `next/font/google` ou `next/font/local` e aplicar a className no elemento raiz do layout. Verificar que a variavel CSS esta sendo referenciada no Tailwind config
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-instalando-o-tailwind-css-v-3-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-instalando-o-tailwind-css-v-3-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-instalando-o-tailwind-css-v-3-1/references/deep-explanation.md) — A partir do Next.js 15, o setup padrao (`create-next-app`) instala Tailwind CSS v4 automaticamente. 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-instalando-o-tailwind-css-v-3-1/references/code-examples.md) — pnpm remove tailwindcss

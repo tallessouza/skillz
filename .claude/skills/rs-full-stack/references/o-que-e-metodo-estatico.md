@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-o-que-e-metodo-estatico
 description: "Enforces correct usage of static methods in JavaScript/TypeScript classes. Use when user asks to 'create a class', 'add a static method', 'call a method without instantiating', or 'use utility functions in a class'. Applies rules: static methods receive all data via parameters (never via constructor/this), call via ClassName.method() without new. Make sure to use this skill whenever generating classes with utility or helper methods. Not for instance methods, inheritance patterns, or decorator usage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: poo-javascript
+  tags: [javascript, classes, static, metodo-estatico, oop]
 ---
 
 # Métodos Estáticos
@@ -103,13 +109,16 @@ User.showMessage('essa é uma mensagem') // "essa é uma mensagem"
 | `constructor(x) { this.x = x }` + `static use() { this.x }` | `static use(x) { x }` |
 | `constructor() {}` (vazio, sem uso) | Omita o constructor |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `this.prop` retorna `undefined` em metodo estatico | `this` nao referencia instancia em contexto estatico | Passe dados por parametro ao inves de usar `this` |
+| `new User().staticMethod()` nao funciona | Metodos estaticos nao estao na instancia | Chame via `User.staticMethod()` sem `new` |
+| Constructor nunca executa | Metodo estatico chamado sem `new` | Remova o constructor se so usa metodos estaticos |
+| Metodo nao aparece no autocomplete da instancia | Metodos estaticos pertencem a classe, nao a instancia | Acesse via nome da classe diretamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-que-e-metodo-estatico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-que-e-metodo-estatico/references/code-examples.md)

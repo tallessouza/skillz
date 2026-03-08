@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-seletores-1
 description: "Enforces correct CSS selector usage when writing stylesheets. Use when user asks to 'style an element', 'select elements in CSS', 'write CSS rules', 'add a class selector', or 'target HTML elements'. Covers type, id, class, attribute, and universal selectors with correct syntax. Make sure to use this skill whenever generating CSS selectors or reviewing selector usage. Not for CSS properties, layout, animations, or JavaScript DOM queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentals
+  tags:
+    - css
+    - selectors
+    - specificity
+    - class
+    - id
 ---
 
 # Seletores CSS
@@ -94,6 +105,15 @@ title { color: green; }    /* Errado: seleciona a tag <title>, nao o atributo */
 | `title { }` para atributo | `[title] { }` |
 | `class="pink"` no CSS | `.pink` no CSS |
 | `id="text"` no CSS | `#text` no CSS |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Estilo nao aplica no elemento | Seletor escrito incorretamente (ex: `.#nome`) | Use `#nome` ou `.nome` separadamente, nunca misture |
+| Todos os elementos recebem o estilo | Seletor universal `*` ou seletor de tipo muito amplo | Use seletor mais especifico como classe ou id |
+| Seletor de atributo nao funciona | Usando `title { }` em vez de `[title] { }` | Envolva o atributo em colchetes: `[title]` |
+| CSS sobrescrito por outra regra | Especificidade inferior ao seletor concorrente | Aumente especificidade ou reorganize a cascata |
 
 ## Deep reference library
 

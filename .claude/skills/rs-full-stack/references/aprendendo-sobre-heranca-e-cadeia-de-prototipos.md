@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-heranca-prototipos
 description: "Applies JavaScript prototype chain knowledge when writing or reviewing JS/TS code involving inheritance, object creation, or class usage. Use when user asks to 'explain prototypes', 'create a class', 'extend an object', 'understand inheritance', or debug prototype-related issues. Ensures correct mental model of prototype chain, null termination, and sugar syntax awareness. Make sure to use this skill whenever discussing JS inheritance or object hierarchies. Not for CSS, HTML, or non-JS language inheritance."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, prototypes, inheritance, oop, prototype-chain]
 ---
 
 # Herança e Cadeia de Protótipos (Prototype Chain)
@@ -82,13 +88,16 @@ A keyword `class` nao muda o mecanismo — apenas torna a sintaxe mais amigavel.
 - Modificar prototipos em runtime pode causar bugs dificeis de rastrear
 - Para compartilhar comportamento sem hierarquia, preferir composicao (mixins, Object.assign)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `instanceof` retorna resultado inesperado | Cadeia de prototipos foi modificada em runtime | Use `Object.getPrototypeOf()` para inspecionar a cadeia real |
+| Metodo herdado nao aparece no objeto | Metodo esta no prototype, nao e propriedade propria | Use `hasOwnProperty()` para distinguir propriedades proprias de herdadas |
+| Performance lenta ao acessar propriedade | Cadeia de prototipos muito profunda | Mantenha hierarquias rasas e considere composicao em vez de heranca |
+| `class extends` nao funciona como esperado | Confusao entre heranca classica e prototype chain | Lembre que `class` e syntax sugar — o mecanismo subjacente e prototype chain |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-heranca-e-cadeia-de-prototipos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-heranca-e-cadeia-de-prototipos/references/code-examples.md)

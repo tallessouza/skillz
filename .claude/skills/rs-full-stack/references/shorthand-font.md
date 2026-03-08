@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-shorthand-font
 description: "Applies CSS font shorthand rules when writing stylesheet code. Use when user asks to 'style text', 'set font properties', 'write CSS', or 'create a component with typography'. Enforces awareness that font shorthand requires font-size AND font-family, recommends individual properties for partial changes. Make sure to use this skill whenever generating CSS font declarations. Not for JavaScript, HTML structure, or non-typography CSS properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-typography
+  tags:
+    - css
+    - font
+    - shorthand
+    - typography
+    - font-family
 ---
 
 # Shorthand Font no CSS
@@ -71,6 +82,15 @@ description: "Applies CSS font shorthand rules when writing stylesheet code. Use
 | `font: sans-serif` (sem size) | `font-family: sans-serif` |
 | `font: bold 1rem sans-serif` so pra bold | `font-weight: bold` |
 | `font: condensed 1rem Arial` sem checar a fonte | Teste se a fonte suporta stretch primeiro |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Shorthand `font:` nao aplica | Falta font-size ou font-family (ambos obrigatorios) | Inclua ambos: `font: 16px sans-serif` |
+| Shorthand reseta propriedades nao declaradas | Shorthand sobrescreve todas as sub-propriedades | Use propriedades individuais quando mudar apenas uma |
+| `font: condensed` nao funciona | Fonte nao suporta stretch condensed | Verifique se a fonte tem variante condensed |
+| line-height ignorada no shorthand | Sintaxe incorreta para line-height | Use barra: `font: 16px/1.5 sans-serif` |
 
 ## Deep reference library
 

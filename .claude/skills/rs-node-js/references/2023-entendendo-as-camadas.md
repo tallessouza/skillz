@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entendendo-as-camadas
-description: "Applies Clean Architecture layered structure when building NestJS applications. Use when user asks to 'create a NestJS app', 'structure a Nest project', 'implement clean architecture', 'add a controller', 'create a use case', or 'organize layers'. Maps Controllers, Use Cases, Entities, Repositories, Presenters, and Gateways to their correct layers. Make sure to use this skill whenever scaffolding or restructuring a NestJS project with Clean Architecture. Not for frontend architecture, microservices communication, or database schema design."
+name: 2023-entendendo-as-camadas
+description: "Organizes NestJS code into Clean Architecture layers: infrastructure (controllers, Prisma), adapters (presenters, gateways, repositories), application (use cases), and domain (entities). Use when user asks to 'organize NestJS layers', 'separate controller from business logic', 'implement Clean Architecture', or 'create a presenter'. Make sure to use this skill whenever structuring a NestJS application with proper layer separation or deciding where to place a new file. Not for Fastify projects, frontend architecture, or microservice orchestration."
+category: coding-lens
+tags: [cache, entities, nestjs, prisma, repository, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: clean-architecture
+  tags: [clean-architecture, nestjs, camadas, controller, use-case, presenter, gateway, repository]
 ---
 
 # Clean Architecture no NestJS — Camadas
@@ -124,14 +133,14 @@ export class UserPresenter {
 | Importar ORM dentro da camada de dominio | Dominio nao conhece infraestrutura |
 | Acessar API externa direto no use case | Crie Gateway com interface + implementacao |
 
+## Troubleshooting
+
+### Controller contem logica de negocio e acessa Prisma diretamente
+**Symptom:** Controller faz queries ao banco, valida regras e retorna entidade completa com campos sensiveis
+**Cause:** Violacao de camadas — controller assumiu responsabilidade de use case e repositorio
+**Fix:** Extraia a logica para um Use Case, crie um Repository para acesso a dados e um Presenter para filtrar a resposta
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entendendo-as-camadas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entendendo-as-camadas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatando-data-hora
 description: "Applies date and time formatting patterns when writing JavaScript/TypeScript code. Use when user asks to 'format a date', 'display date', 'show timestamp', 'format time', 'padStart date', or any date string formatting task. Enforces two-digit padding with padStart, getMonth+1 correction, and template literal date assembly. Make sure to use this skill whenever generating code that displays dates or times to users. Not for date arithmetic, timezone conversion, or date parsing from strings."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, date, time, formatting, padStart, getMonth]
 ---
 
 # Formatando Data e Hora em JavaScript
@@ -80,13 +86,16 @@ console.log(`${day}/${month}/${year} as ${hours}:${minutes}`)
 | `new Date('2024-7-2')` | `new Date('2024-07-02')` — sem zero gera Invalid Date |
 | Concatenar com `+` para montar data | Template literal com `${}` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Mes exibido esta errado (um a menos) | `getMonth()` retorna 0-11, nao 1-12 | Adicione `+ 1`: `(date.getMonth() + 1)` |
+| Dia/mes sem zero a esquerda (ex: `2/7/2024`) | Falta `padStart(2, '0')` na conversao | Aplique `.toString().padStart(2, '0')` |
+| `Invalid Date` ao criar Date com string | Formato da string nao e ISO valido | Use formato com zeros: `'2024-07-02T14:30:00'` |
+| `getYear()` retorna 124 em vez de 2024 | `getYear()` esta depreciado | Use `getFullYear()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre padStart, getMonth offset, e padroes ISO
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatando-uma-data-e-uma-hora/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatando-uma-data-e-uma-hora/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-fetch-produto
 description: "Applies Next.js App Router patterns for fetching single-resource data via dynamic API routes and server components. Use when user asks to 'fetch product details', 'create dynamic API route', 'get data by slug', 'build product page', or 'use params in Next.js route handler'. Covers dynamic [param] folders, route handler typing, Zod parse validation, server-side fetch with revalidation, and page params interface. Make sure to use this skill whenever building detail pages or dynamic API routes in Next.js App Router. Not for client-side fetching, React Query, or Pages Router patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, dynamic-routes, route-handler, zod, server-components, data-fetching, revalidation]
 ---
 
 # Fetch de Dados em Pagina Dinamica (Next.js App Router)
@@ -135,14 +141,19 @@ export async function GET(
 | fetch sem revalidate em server component | `api('/path', { next: { revalidate: 3600 } })` |
 | Passar dados via props entre componentes para evitar refetch | Fazer fetch no componente que precisa — memoization deduplica |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-dados-do-produto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-fetch-de-dados-do-produto/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-dados-do-produto/references/deep-explanation.md) — No Next.js App Router, a estrutura de pastas define as rotas. Quando voce cria `api/products/[slug]/
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-fetch-de-dados-do-produto/references/code-examples.md) — app/

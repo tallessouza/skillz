@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-acessando-dir-trabalho
 description: "Applies Docker container inspection workflow using docker exec to access working directories and verify file contents. Use when user asks to 'access container files', 'inspect container', 'check workdir', 'list files inside container', or 'debug container contents'. Make sure to use this skill whenever exploring or verifying what is inside a running Docker container. Not for building images, writing Dockerfiles, or container orchestration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [docker, container, exec, workdir, debugging]
 ---
 
 # Acessando Diretório de Trabalho do Container
@@ -86,13 +92,16 @@ exit
 | Esquecer `-it` e esperar terminal interativo | Sempre passe `-it` para sessao interativa |
 | Hardcodar `bash` sem testar | Tente `bash`, fallback para `/bin/sh` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `OCI runtime exec failed: exec failed: unable to start container process: exec: "bash": executable file not found` | Container usa imagem minima sem bash | Use `/bin/sh` em vez de `bash` |
+| `Error: No such container` | Container nao esta em execucao | Execute `docker start <id>` antes do `exec` |
+| `pwd` retorna path diferente do WORKDIR | Container foi iniciado com `--workdir` diferente | Verifique o Dockerfile e o comando `docker run` usado |
+| Arquivos esperados nao aparecem no `ls` | `.dockerignore` excluindo os arquivos | Revise o `.dockerignore` e reconstrua a imagem |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre containers efemeros e WORKDIR
 - [code-examples.md](references/code-examples.md) — Fluxo completo de build, run e exec com exemplos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-acessando-diretorio-de-trabalho/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-acessando-diretorio-de-trabalho/references/code-examples.md)

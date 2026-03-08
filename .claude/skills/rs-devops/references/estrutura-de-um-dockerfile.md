@@ -1,6 +1,12 @@
 ---
 name: rs-devops-estrutura-de-um-dockerfile
 description: "Enforces correct Dockerfile structure and instruction ordering when writing or reviewing Dockerfiles. Use when user asks to 'create a Dockerfile', 'dockerize an application', 'build a Docker image', 'containerize a project', or 'write a Dockerfile'. Applies rules: correct instruction order (FROM→WORKDIR→COPY→RUN→EXPOSE→CMD), package.json-first copy pattern, WORKDIR best practices, CMD array syntax, and image size awareness. Make sure to use this skill whenever generating or reviewing any Dockerfile. Not for docker-compose, Kubernetes manifests, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-fundamentos
+  tags: [dockerfile, docker, build, workdir, cmd, entrypoint, layers, node-js]
 ---
 
 # Estrutura de um Dockerfile
@@ -109,14 +115,14 @@ CMD ["yarn", "run", "start"]
 | Ignorar EXPOSE | `EXPOSE 3000` para documentar a porta |
 | `RUN mkdir /app && cd /app` | `WORKDIR /app` (cria e define de uma vez) |
 
+## Troubleshooting
+
+### Build ignora cache e reinstala dependencias toda vez
+**Symptom:** `docker build` demora muito porque `RUN yarn` executa novamente mesmo sem mudancas em dependencias
+**Cause:** `COPY . .` esta antes de `RUN yarn`, invalidando o cache da layer de dependencias a cada mudanca de codigo
+**Fix:** Copie `package.json` (e lockfile) primeiro, depois `RUN yarn`, e so entao `COPY . .` — assim o cache de dependencias e preservado
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-estrutura-de-um-dockerfile/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-estrutura-de-um-dockerfile/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

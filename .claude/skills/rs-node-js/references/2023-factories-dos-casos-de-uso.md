@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-factories-casos-de-uso
 description: "Enforces the Factory pattern for use case instantiation in Node.js SOLID architecture. Use when user asks to 'create a use case', 'add a new feature', 'implement a service', or 'wire up dependencies'. Ensures every use case has a dedicated make function that encapsulates dependency resolution. Make sure to use this skill whenever creating or refactoring use cases with repository dependencies. Not for HTTP controllers, route definitions, or middleware configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: solid-patterns
+  tags: [factory, use-case, dependency-injection, solid, repository, make-function]
 ---
 
 # Factories dos Casos de Uso
@@ -97,14 +103,14 @@ app.post('/check-ins', async (req, res) => {
 | `const repo = req.app.get('repo')` | Factory encapsula a resolucao |
 | Instanciar use case sem factory fora de testes | Sempre usar `make*UseCase()` em codigo de producao |
 
+## Troubleshooting
+
+### Controller instancia repositorios diretamente ao inves de usar factory
+**Symptom:** Ao trocar de ORM ou banco, precisa alterar todos os controllers
+**Cause:** Acoplamento direto entre controller e implementacao concreta do repositorio
+**Fix:** Crie uma factory `make{UseCaseName}()` que instancia os repositorios concretos e retorna o use case pronto — controller so chama a factory
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-factories-dos-casos-de-uso/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-factories-dos-casos-de-uso/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-mappers
+name: rs-node-js-2023-conversa-entre-camadas-mappers
 description: "Enforces mapper pattern between layers when writing NestJS/TypeScript code with Prisma or any ORM. Use when user asks to 'create a repository', 'fetch from database', 'convert entity', 'map between layers', or 'implement clean architecture persistence'. Applies rules: never return ORM objects directly, create static toDomain/toPrisma mappers, handle null vs undefined correctly, use ValueObject.create for existing values. Make sure to use this skill whenever implementing repository methods that bridge database and domain layers. Not for pure domain logic, DTOs for HTTP responses, or frontend mapping."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [mapper, clean-architecture, prisma, domain-layer, data-conversion]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Conversa entre Camadas (Mappers)
@@ -112,14 +119,14 @@ async findById(id: string): Promise<Question | null> {
 | `updatedAt?: Date` sem null | `updatedAt?: Date \| null` — banco retorna null, nao undefined |
 | Logica de conversao inline no repositorio | Mapper class dedicada com metodos estaticos |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-conversa-entre-camadas-mappers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-conversa-entre-camadas-mappers/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-conversa-entre-camadas-mappers/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-conversa-entre-camadas-mappers/references/code-examples.md) — Todos os exemplos de código expandidos com variações

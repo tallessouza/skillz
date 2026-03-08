@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-casos-de-uso
 description: "Applies Either pattern to refactor use case return types for functional error handling in TypeScript/Node.js. Use when user asks to 'refactor use cases', 'add error handling to use cases', 'apply Either pattern', 'implement functional errors', or 'use Left/Right returns'. Enforces consistent Either wrapping across all use cases with proper error type mapping. Make sure to use this skill whenever refactoring error handling in use case layers or applying DDD functional error patterns. Not for HTTP controllers, middleware error handling, or try/catch exception patterns."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: either-pattern
+  tags: [either, left, right, error-handling, functional, use-case, refactoring, typescript]
 ---
 
 # Refatorando Casos de Uso com Either
@@ -107,14 +113,14 @@ async execute(params): Promise<AnswerQuestionUseCaseResponse> {
 | `right(null)` para sucesso sem payload | `right({})` |
 | Mesmo erro generico para falhas diferentes | Erro semantico por ponto de falha |
 
+## Troubleshooting
+
+### TypeScript erro "Type 'Left<Error>' is not assignable to type 'Either<null, ...>'"
+**Symptom:** O retorno `left(new ResourceNotFoundError())` nao compila porque o tipo Response usa `null` no lado esquerdo
+**Cause:** O tipo `Either<null, SuccessType>` indica que nao ha erro possivel, mas o codigo tenta retornar um erro
+**Fix:** Atualize o tipo Response para incluir a classe de erro: `Either<ResourceNotFoundError, { entity }>` em vez de `Either<null, { entity }>`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-casos-de-uso/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-casos-de-uso/references/code-examples.md)

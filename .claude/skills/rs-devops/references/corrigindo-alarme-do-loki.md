@@ -1,6 +1,12 @@
 ---
 name: rs-devops-corrigindo-alarme-do-loki
 description: "Applies LogQL alerting patterns when configuring Loki alerts in Grafana. Use when user asks to 'create alert for logs', 'monitor Loki errors', 'alert on log entries', 'count_over_time LogQL', or 'Grafana alarm from logs'. Enforces count_over_time wrapping for log-based alerts since logs are not natively countable like metrics. Make sure to use this skill whenever creating alerting rules from Loki log queries. Not for Prometheus metric alerts, dashboard visualization, or log pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-alerting
+  tags: [loki, logql, grafana, alerting, count-over-time, logs, monitoring]
 ---
 
 # Alertas no Loki com count_over_time
@@ -78,14 +84,14 @@ count_over_time({job="my-app"} |= "error"[5m]) > 0
 | Contar todos os logs sem filtro | Filtrar por nivel, status code ou texto especifico |
 | Janela de 6h para alerta de erro critico | Janela de 1-5m para erros que precisam de acao rapida |
 
+## Troubleshooting
+
+### Alerta de log no Grafana nunca dispara
+**Symptom:** Alerta configurado com query Loki nunca e acionado, mesmo com erros nos logs
+**Cause:** Query de log crua (`{job="app"} |= "error"`) usada diretamente no alerta — logs nao sao contaveis nativamente
+**Fix:** Envolva a query com `count_over_time`: `count_over_time({job="app"} |= "error"[5m]) > 0`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-corrigindo-alarme-do-loki/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-corrigindo-alarme-do-loki/references/code-examples.md)

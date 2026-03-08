@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-align-items
 description: "Applies CSS Flexbox align-items rules when writing layout code. Use when user asks to 'align items', 'center vertically', 'create a flex layout', 'fix vertical alignment', or 'use flexbox'. Enforces correct cross-axis alignment with align-items values: stretch, flex-start, center, flex-end, baseline. Make sure to use this skill whenever generating flexbox layout code that involves cross-axis positioning. Not for justify-content, grid layout, or inline text alignment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, flexbox, align-items, layout, alignment]
 ---
 
 # Align-Items no Flexbox
@@ -96,13 +102,16 @@ description: "Applies CSS Flexbox align-items rules when writing layout code. Us
 | Confundir baseline com flex-end | Baseline alinha pelo texto, flex-end pela borda inferior do container |
 | Usar align-items esperando mover no eixo principal | Usar justify-content para o eixo principal |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `align-items: center` não faz nada | Container sem altura definida (sem espaço no eixo cruzado) | Adicione `height` explícita no container flex |
+| Itens esticam mesmo com `align-items: center` | Item filho tem `align-self: stretch` ou height: 100% | Remova dimensão fixa do item ou ajuste `align-self` |
+| Baseline não alinha como esperado | Elementos sem texto (imagens, divs vazias) | Baseline só funciona com conteúdo textual |
+| Alinhamento horizontal não muda | Confundiu eixos — `align-items` é vertical em row | Use `justify-content` para o eixo principal |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eixo cruzado, stretch e baseline
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-align-items/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-align-items/references/code-examples.md)

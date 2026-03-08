@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-parametros-nomeados
 description: "Applies query string parameter conventions when building Node.js APIs or HTTP requests. Use when user asks to 'add filters', 'implement pagination', 'create query parameters', 'parse URL params', or 'build API endpoints with search'. Enforces correct naming, security rules, and URL structure for query strings. Make sure to use this skill whenever designing API routes that accept optional filters or pagination. Not for route params, request body design, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [query-string, query-params, pagination, filters, url-parameters]
 ---
 
 # Parâmetros Nomeados (Query Strings)
@@ -77,13 +83,13 @@ GET /products?category=computer&price=5000  ← filtros opcionais OK
 | `?userId=15` para recurso obrigatório | `/users/15` como route param |
 | Query params sem nome (posicionais) | Sempre `nome=valor` |
 
+## Troubleshooting
+
+### Problem: Sensitive data (passwords, tokens) exposed in browser history or server logs
+- **Cause**: Sensitive data was passed as query parameters in the URL instead of in the request body
+- **Fix**: Always send sensitive data via POST request body, never in query strings; use query params only for optional, non-sensitive filters
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre quando usar cada tipo de parâmetro
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com Insomnia, fetch e Node.js
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0215-parametros-nomeados-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0215-parametros-nomeados-mkv-mp-4/references/code-examples.md)

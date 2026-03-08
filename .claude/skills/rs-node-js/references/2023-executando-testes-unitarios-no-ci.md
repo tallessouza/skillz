@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-unitarios-ci
 description: "Generates GitHub Actions workflow for running unit tests on CI when setting up continuous integration for Node.js projects. Use when user asks to 'setup CI', 'add GitHub Actions', 'run tests on push', 'configure CI/CD', or 'automate tests'. Follows pattern: checkout, setup-node with cache, npm ci, npm run test. Make sure to use this skill whenever creating CI pipelines for Node.js/TypeScript projects. Not for CD/deployment pipelines, Docker builds, or infrastructure provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ci-cd
+  tags: [github-actions, unit-tests, ci, npm-ci, setup-node, cache, workflow]
 ---
 
 # Executando Testes Unitarios no CI
@@ -104,14 +110,14 @@ gh run view --log
 - Cada commit fica associado a um check verde (sucesso) ou vermelho (falha)
 - Clicar no job para ver logs detalhados de cada step
 
+## Troubleshooting
+
+### npm ci falha com missing package-lock.json
+**Symptom:** `npm ERR! The `npm ci` command can only install with an existing package-lock.json`
+**Cause:** O `package-lock.json` nao esta commitado no repositorio
+**Fix:** Commite o `package-lock.json` no git — `npm ci` depende dele para instalacao deterministica
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-executando-testes-unitarios-no-ci/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-executando-testes-unitarios-no-ci/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

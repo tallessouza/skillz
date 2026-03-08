@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-setup-carrinho
 description: "Applies shopping cart database schema patterns when designing e-commerce cart systems in Node.js. Use when user asks to 'create a cart', 'setup shopping cart', 'design cart schema', 'e-commerce database', or 'marketplace cart tables'. Enforces multi-store cart isolation, cart history for AI-generated suggestions, and unique constraints on cart items. Make sure to use this skill whenever building cart functionality for a marketplace or multi-vendor system. Not for payment processing, checkout flow, or order fulfillment schemas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, ia-node, node-js]
 ---
 
 # Setup do Carrinho — Schema de E-commerce
@@ -73,14 +79,14 @@ DROP TABLE IF EXISTS users CASCADE;
 | Drop tables sem CASCADE | Sempre `DROP TABLE IF EXISTS ... CASCADE` |
 | Misturar produtos de lojas no mesmo carrinho | Um carrinho = uma loja, sempre |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-do-carrinho/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-setup-do-carrinho/references/code-examples.md)

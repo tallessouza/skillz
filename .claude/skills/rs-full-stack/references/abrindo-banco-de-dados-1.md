@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-abrindo-banco-de-dados-1
-description: "Guides connecting to SQLite databases using BeeKeeper Studio GUI client. Use when user asks to 'open database', 'view SQLite file', 'connect BeeKeeper', 'inspect database tables', or 'browse database'. Applies steps for creating, saving, and reusing database connections. Make sure to use this skill whenever setting up database visualization for SQLite projects. Not for database migrations, query writing, or schema design."
+description: "Demonstrates connecting to SQLite databases using BeeKeeper Studio GUI client. Use when user asks to 'open database', 'view SQLite file', 'connect BeeKeeper', 'inspect database tables', or 'browse database'. Applies steps for creating, saving, and reusing database connections. Make sure to use this skill whenever setting up database visualization for SQLite projects. Not for database migrations, query writing, or schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sqlite, beekeeper, database, gui, connection]
 ---
 
 # Abrindo Banco de Dados com BeeKeeper Studio
@@ -38,6 +44,13 @@ description: "Guides connecting to SQLite databases using BeeKeeper Studio GUI c
 1. No painel lateral, expandir a tabela clicando na seta
 2. Verificar as colunas e tipos configurados
 
+## Verificacao via terminal
+
+```bash
+# Confirmar que o arquivo .db existe antes de abrir no BeeKeeper
+ls -la src/database/database.db
+```
+
 ## Output format
 
 Conexao salva e reutilizavel no BeeKeeper Studio, com acesso visual as tabelas e colunas do banco SQLite.
@@ -52,13 +65,16 @@ Conexao salva e reutilizavel no BeeKeeper Studio, com acesso visual as tabelas e
 - A tabela esperada aparece no painel lateral do BeeKeeper
 - As colunas correspondem ao schema definido nas migrations
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo `.db` nao aparece no seletor | Migrations nao foram executadas ainda | Execute `npx knex migrate:latest` antes de abrir o BeeKeeper |
+| Conexao falha ao conectar | Servidor da API pode estar travando o arquivo | Feche o servidor antes de conectar pelo BeeKeeper |
+| Tabelas nao aparecem apos conectar | Banco vazio ou migrations falharam | Verifique o output do comando de migration por erros |
+| BeeKeeper mostra erro de permissao | Arquivo `.db` com permissao restrita | Verifique as permissoes do arquivo com `ls -la` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ferramentas de visualizacao de banco
 - [code-examples.md](references/code-examples.md) — Exemplos de navegacao e uso do BeeKeeper
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abrindo-banco-de-dados-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abrindo-banco-de-dados-1/references/code-examples.md)

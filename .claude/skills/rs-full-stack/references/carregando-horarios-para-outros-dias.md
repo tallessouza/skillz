@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-carregando-horarios-outros-dias
 description: "Enforces reactive schedule reloading when date input changes in vanilla JS forms. Use when user asks to 'update list on input change', 'reload data when select changes', 'clear and refresh options on change', or 'handle date picker change event'. Applies pattern: clear existing DOM list before repopulating, separate change handler into its own module, reuse existing load functions. Make sure to use this skill whenever building forms where changing one input must refresh another section. Not for React/Vue state management or backend scheduling logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, events, onchange, modules, scheduling]
 ---
 
 # Recarregar Dados ao Mudar Input
@@ -94,13 +100,16 @@ export function schedulesDay() {
 | Colocar handler de change inline no main.js | Criar modulo separado `input.change.js` |
 | `addEventListener` dentro do modulo de load | Separar registro de evento do carregamento de dados |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Itens duplicam ao mudar a data | Falta `innerHTML = ""` antes de popular | Adicione limpeza do container antes do render |
+| Listener de change nao dispara | Modulo de change nao importado no entry point | Adicione `import "./form/date.change.js"` no main.js |
+| Funcao de load nao acessivel | Export ausente na funcao original | Adicione `export` na declaracao da funcao |
+| Lista fica vazia apos mudar data | Funcao de load nao recebe a nova data | Verifique se `selectedDate.value` e passado corretamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de modulos e o bug de acumulacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-carregando-horarios-para-outros-dias/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-carregando-horarios-para-outros-dias/references/code-examples.md)

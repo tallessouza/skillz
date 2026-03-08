@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-else-if
 description: "Enforces correct if/else-if/else chaining in JavaScript when writing conditional logic. Use when user asks to 'write conditions', 'check multiple cases', 'add if else', 'handle different scenarios', or any branching logic task. Applies rules: chain with else-if when only one branch should execute, use separate ifs only when multiple branches can fire independently, always end chains with else for exhaustive coverage. Make sure to use this skill whenever generating conditional branching code. Not for ternary operators, switch statements, or pattern matching."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, condicionais, if-else, controle-de-fluxo, branching]
 ---
 
 # If Encadeado (else if / else)
@@ -94,13 +100,16 @@ if (hour <= 12) {
 | Cadeia sem `else` final quando os casos sao exaustivos | Adicione `else` para capturar o residual |
 | `if (x) {} else { if (y) {} }` aninhado | `if (x) {} else if (y) {}` na mesma linha |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Duas branches executam quando so uma deveria | Ifs separados em vez de if/else-if encadeado | Use else if para branches mutuamente exclusivas |
+| Nenhuma branch executa | Condicoes nao cobrem o valor atual | Adicione else final para capturar o caso residual |
+| Branch errada executa primeiro | Ordem das condicoes — generica antes da especifica | Ordene da mais especifica para a mais generica |
+| Ranges sobrepostos causam bug | Condicao sem delimitacao completa do range | Use && para delimitar inicio e fim: hour > 12 && hour <= 18 |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre verificacao sequencial vs independente
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-else-if/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-else-if/references/code-examples.md)

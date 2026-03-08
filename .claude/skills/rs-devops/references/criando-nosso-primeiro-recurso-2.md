@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-primeiro-recurso-azure
 description: "Applies Terraform resource creation patterns for Azure when writing infrastructure-as-code. Use when user asks to 'create azure resource', 'terraform azure', 'resource group terraform', 'azure rm', or 'provision azure infrastructure'. Enforces correct location format, tag best practices, and provider troubleshooting. Make sure to use this skill whenever generating Terraform code targeting Azure, even for simple resources. Not for AWS, GCP, Kubernetes, or non-Terraform Azure CLI provisioning."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-azure
+  tags: [terraform, azure, resource-group, azurerm, iac, location]
 ---
 
 # Criando Recursos no Azure com Terraform
@@ -96,14 +102,14 @@ resource "azurerm_resource_group" "rg" {
 | Nome de recurso sem indicar ambiente | Nome com sufixo: `-hmg`, `-prd`, `-dev` |
 | Hardcoded values repetidos | Variaveis em `terraform.tfvars` |
 
+## Troubleshooting
+
+### terraform plan trava sem output ao usar Azure
+**Symptom:** `terraform plan` fica parado indefinidamente sem produzir nenhuma saida.
+**Cause:** O provedor Azure tenta registrar providers automaticamente e pode travar se a conta nao tem permissao para isso.
+**Fix:** Adicione `skip_provider_registration = true` no bloco `provider "azurerm"` para pular o registro automatico de providers.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-nosso-primeiro-recurso-2/references/code-examples.md)

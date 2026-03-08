@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estruturando-secao-mais-lidas
 description: "Applies semantic HTML structure patterns for repeated content sections like 'most read', 'trending', or 'featured' lists. Use when user asks to 'create a section', 'build a card list', 'structure a news section', 'make a grid of articles', or 'layout repeated content'. Enforces figure/figcaption patterns, proper header with navigation links, and grid-based card layouts. Make sure to use this skill whenever building content listing sections with repeated card elements. Not for styling, animations, or JavaScript interactivity."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-layout
+  tags: [html, semantic-html, figure, grid, card-layout]
 ---
 
 # Estruturando Seções de Listagem de Conteúdo
@@ -113,13 +119,16 @@ description: "Applies semantic HTML structure patterns for repeated content sect
 | Ícone como `<img>` inline | `<span>` vazio + CSS background/pseudo-element |
 | Espaçamento via margin nos cards | Grid com `gap-16` no container |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Cards nao alinham lado a lado | Falta `display: grid` no container | Adicionar classe `grid` com `gap-16` no container dos figures |
+| Header titulo e link nao ficam lado a lado | Falta `grid-flow-col` no header | Adicionar `class="grid grid-flow-col"` no header |
+| Imagem nao preenche o card | Falta `object-fit: cover` e `height: 100%` | Estilizar imagens do figure com essas propriedades |
+| Tag de categoria nao aparece destacada | Falta estilo no `.content-tag` | Adicionar CSS para `.content-tag` com cor e tamanho |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre semântica HTML e escolhas de estrutura
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estruturando-a-secao-mais-lidas-da-semana/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estruturando-a-secao-mais-lidas-da-semana/references/code-examples.md)

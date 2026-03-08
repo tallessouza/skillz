@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-site-estatico-vs-dinamico
 description: "Applies the static vs dynamic site mental model when designing web architectures. Use when user asks to 'create a website', 'build a page', 'choose between static and dynamic', 'design a web app', or discusses server rendering strategies. Guides decisions on whether content should be static (pre-built HTML/CSS/JS) or dynamic (database-driven, personalized). Make sure to use this skill whenever the user is deciding between static site generators and server-rendered apps. Not for CSS styling, layout design, or JavaScript runtime behavior."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: web-fundamentals
+  tags:
+    - web
+    - static-site
+    - dynamic-site
+    - architecture
+    - ssr
 ---
 
 # Site Estático vs Site Dinâmico
@@ -57,6 +68,15 @@ Um site estático pode ter JavaScript que responde a cliques e muda a interface.
 
 - A maioria dos apps reais é híbrida: partes estáticas (homepage, docs) + partes dinâmicas (dashboard, perfil)
 - Este modelo é simplificado — existem estratégias intermediárias como ISR, SSG com revalidação, e edge rendering
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Site "dinamico" mas conteudo nunca muda | Confusao entre JS no browser e dinamismo do servidor | Dinamico = servidor adapta resposta; JS local = interatividade |
+| Performance ruim em pagina com conteudo fixo | Renderizacao dinamica desnecessaria | Converta para estatico (SSG) paginas que nao mudam por usuario |
+| SEO fraco em SPA | Conteudo renderizado apenas no client | Use SSR/SSG para garantir HTML pre-renderizado para crawlers |
+| Custo alto de hospedagem para site simples | Servidor dinamico para conteudo que poderia ser estatico | Migre para hospedagem estatica (GitHub Pages, Vercel static) |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-armazenando-dados
 description: "Applies data storage strategy selection when building Node.js applications. Use when user asks to 'store data', 'save data', 'persist data', 'choose database vs file', or 'create a JSON file for storage'. Guides decision between in-memory, file-based (JSON), and database storage based on persistence needs. Make sure to use this skill whenever the user needs to decide where to store application data in Node.js. Not for database schema design, SQL queries, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [data-storage, json-file, in-memory, persistence, nodejs]
 ---
 
 # Armazenamento de Dados no Node.js
@@ -74,13 +80,13 @@ Usar quando: aplicacao em producao, multiplos usuarios simultaneos, queries comp
 - Para dados grandes ou queries complexas, arquivo JSON se torna impraticavel
 - Em producao, banco de dados e quase sempre a escolha correta
 
+## Troubleshooting
+
+### Problem: Data disappears after restarting the Node.js server
+- **Cause**: Data is stored only in memory (array/object variable), which is cleared when the process stops
+- **Fix**: Switch to file-based storage with `fs.writeFile('db.json', JSON.stringify(data))` to persist data across restarts
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre volatilidade, trade-offs e quando migrar de arquivo para banco
 - [code-examples.md](references/code-examples.md) — Exemplos completos de CRUD com arquivo JSON no Node.js
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0301-armazenando-dados-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0301-armazenando-dados-mkv-mp-4/references/code-examples.md)

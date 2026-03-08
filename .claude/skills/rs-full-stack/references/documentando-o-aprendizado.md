@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-documentando-o-aprendizado
 description: "Enforces active learning documentation practices when studying programming with AI assistance. Use when user asks to 'document what I learned', 'create study notes', 'review my code changes', 'explain what was built', or any learning reflection task. Applies PARI methodology (Pergunte, Anote, Revise, Explique) and generates structured documentation for future review. Make sure to use this skill whenever the user is in a learning context and needs to consolidate knowledge from AI-assisted coding sessions. Not for API documentation, README files, or production code documentation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [aprendizado, documentacao, metodologia, pari, estudo-ativo]
 ---
 
 # Documentando o Aprendizado
@@ -105,13 +111,16 @@ git commit -m "docs: documentacao da feature X para revisao"
 
 Aprender programacao com IA e como aprender matematica: ninguem aprende calculo sem fazer continhas basicas primeiro. A IA gerando tudo e como pular direto pro calculo — voce reprova ate voltar nos fundamentos. Escrever codigo "na mao" treina o cerebro, assim como fazer contas antes de usar calculadora. No futuro voce usara ferramentas para acelerar, mas so porque ja domina os fundamentos.
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Documentacao acumula e ninguem le | Foco em arquivar em vez de revisar | Aplique o passo 4 do PARI: revise ativamente no dia seguinte |
+| Nao consigo explicar o que fiz ontem | Faltou documentar durante a sessao | Peca ao AI para gerar documentacao ANTES de fechar o editor |
+| Documentacao muito longa e confusa | Tentou documentar tudo de uma vez | Documente cada micro-feature separadamente |
+| Codigo do AI funciona mas nao entendo | Aceitou sem perguntar | Pare e pergunte "por que usou X aqui?" antes de aceitar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre PARI, analogia com matematica, e por que reescrever importa
 - [code-examples.md](references/code-examples.md) — Exemplos de prompts de documentacao e templates de revisao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-documentando-o-aprendizado/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-documentando-o-aprendizado/references/code-examples.md)

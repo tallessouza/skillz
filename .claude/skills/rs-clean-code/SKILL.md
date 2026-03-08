@@ -51,3 +51,14 @@ Quando chamado pelo `rs-implementation-workflow`:
 - **Fase 1 (DDD)** → Siga o ramo "Modelando domínio"
 - **Fase 2 (SOLID)** → Siga o ramo "Estruturando arquitetura"
 - **Fase 3 (Implementação)** → Siga o ramo "Escrevendo código" + "Escrevendo React components" conforme stack
+
+## Cross-References — Decision Coverage
+
+Quando este router nao cobre uma decisao, delegue para:
+
+| Decisao | Delegue para | Motivo |
+|---------|-------------|--------|
+| D1_RUNTIME (Node.js) | [rs-node-js](../rs-node-js/SKILL.md) | Runtime, Fastify, NestJS |
+| D1_FRAMEWORK_WEB (Next.js) | [rs-next-js](../rs-next-js/SKILL.md) | Next.js / React |
+| D3_TESTING (Jest/Playwright) | [rs-testes-e](../rs-testes-e/SKILL.md) | Testes |
+| D3_DEPLOY (Docker/CI) | [rs-devops](../rs-devops/SKILL.md) | Deploy, CI/CD |

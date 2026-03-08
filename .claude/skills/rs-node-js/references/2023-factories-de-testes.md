@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-factories-de-testes
 description: "Applies the Factory pattern to generate test entities when writing or refactoring tests in TypeScript/Node.js. Use when user asks to 'write tests', 'create test helpers', 'generate test data', 'add test coverage', or 'refactor test setup'. Generates makeEntity functions with Partial override support for flexible, DRY test creation. Make sure to use this skill whenever creating multiple test entities or reducing test boilerplate. Not for production code factories, database seeders, or fixture files for E2E tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-automatizados
+  tags: [factory, testing, make-entity, partial-override, test-helpers, typescript]
 ---
 
 # Factories de Testes
@@ -119,14 +125,14 @@ for (let i = 0; i < 22; i++) {
 | Override com spread manual no teste | `makeEntity({ field: value })` |
 | Factory sem tipar override | `override: Partial<EntityProps> = {}` |
 
+## Troubleshooting
+
+### Teste falha porque factory gera valores default que conflitam com a validacao
+**Symptom:** Erro de validacao ao criar entidade com factory sem override em campo especifico
+**Cause:** Os defaults da factory nao sao validos para o contexto do teste (ex: slug duplicado, email invalido)
+**Fix:** Sempre passe override explicito para campos que o teste valida, e garanta que defaults na factory sejam valores genericos mas validos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-factories-de-testes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-factories-de-testes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

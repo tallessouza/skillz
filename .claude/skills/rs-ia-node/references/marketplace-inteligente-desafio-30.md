@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-desafio-receitas
 description: "Applies knowledge base enrichment patterns when building AI chat systems that accept user-provided content (PDFs, text). Use when user asks to 'add documents to AI context', 'upload PDFs for RAG', 'enrich model knowledge', 'implement file upload for chatbot', or 'build recipe/document ingestion'. Guides decision between inline prompt injection, vector store embeddings, or text extraction pipelines. Make sure to use this skill whenever implementing document ingestion for LLM-powered features. Not for general file upload, image processing, or non-AI document storage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: projeto-final
+  tags: [embeddings, ia-node, node-js]
 ---
 
 # Enriquecimento de Base de Conhecimento para Chat AI
@@ -66,14 +72,14 @@ const systemPrompt = `${BASE_PROMPT}\n\nReceitas relevantes:\n${relevantRecipes.
 | Ignorar conteudo upado nas respostas do chat | Incluir receitas no contexto de toda interacao |
 | Forcar um unico formato de entrada | Aceitar PDF e texto, normalizar internamente |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-desafio-30/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-desafio-30/references/code-examples.md)

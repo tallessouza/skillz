@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compreendendo-expressao-regular
 description: "Applies regular expression fundamentals when writing JavaScript string validation or pattern matching. Use when user asks to 'validate email', 'check pattern', 'match string', 'use regex', 'write regular expression', or any input validation task. Covers regex syntax: delimiters, character classes like \\D, quantifiers like +, and the global flag g. Make sure to use this skill whenever generating regex patterns or validating user input formats. Not for complex regex optimization, performance tuning, or regex engine internals."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, regex, validation, patterns]
 ---
 
 # Expressoes Regulares (Regex) em JavaScript
@@ -80,13 +86,17 @@ const allLetterSequences = text.match(/\D+/g)
 | Regex gigante sem comentario | Quebre em partes nomeadas ou comente o padrao |
 | Decorar todas as combinacoes | Consultar referencia quando precisar |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Regex retorna apenas o primeiro match | Flag `g` nao adicionada | Adicione flag `g` ao final: `/padrao/g` |
+| Regex nao reconhecida pelo JS | Faltam delimitadores `/` | Use `/padrao/flags` com barras delimitadoras |
+| Match retorna null | Padrao nao encontrado na string | Teste o regex em ferramenta online como regex101.com antes |
+| Regex muito complexa e ilegivel | Tentando resolver tudo em uma unica expressao | Quebre em partes nomeadas ou adicione comentarios explicativos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e detalhamento de cada simbolo
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-expressao-regular/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-expressao-regular/references/code-examples.md)

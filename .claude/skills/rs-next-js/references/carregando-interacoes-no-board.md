@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-carregando-interacoes-no-board
 description: "Applies the pattern of loading client-side data (likes, interactions) inside server-side Next.js pages by extracting a client component. Use when user asks to 'add likes to a server page', 'use useQuery in a server component', 'load interactions in Next.js board', 'mix server and client data fetching', or 'optimize repeated lookups with useMemo Map'. Make sure to use this skill whenever combining server-side data loading with client-side React Query in Next.js App Router. Not for pure API routes, full client-side apps, or server actions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: interacoes-e-cache
+  tags: [react-query, server-client-split, useQuery, useMemo, Map, next-js, app-router]
 ---
 
 # Carregando Interacoes em Paginas Server-Side (Next.js)
@@ -169,14 +175,19 @@ export function BoardContent({ issues }: { issues: IssueListResponse }) {
 | Importar de `api` no client component | Importar de `http` (funcoes client-side) |
 | Repetir logica de lookup em cada coluna | Extrair `interactions.get(issue.id)` uma vez por item |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-carregando-interacoes-no-board/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-carregando-interacoes-no-board/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-carregando-interacoes-no-board/references/deep-explanation.md) — No Next.js App Router, pages sao server components por padrao. Isso significa que voce pode usar `as
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-carregando-interacoes-no-board/references/code-examples.md) — // app/board/page.tsx

@@ -1,13 +1,19 @@
 ---
 name: rs-devops-conhecendo-as-tres-maneiras
 description: "Applies the Three Ways of DevOps framework when diagnosing organizational maturity, planning DevOps adoption, or improving development workflows. Use when user asks to 'implement DevOps', 'improve deployment flow', 'assess team maturity', 'accelerate delivery', or 'improve dev-ops collaboration'. Provides a progressive adoption model: First Way (flow), Second Way (feedback), Third Way (learning). Make sure to use this skill whenever evaluating or planning DevOps culture adoption. Not for container setup, CI/CD pipeline configuration, or specific tool implementation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: devops-culture
+  tags: [devops, three-ways, culture, flow, feedback, learning, phoenix-project]
 ---
 
 # As Três Maneiras do DevOps
 
 > Implemente DevOps progressivamente: primeiro acelere o fluxo, depois estabeleca feedback continuo, por fim cultive aprendizado organizacional.
 
-## Contexto
+## Key concepts
 
 As Tres Maneiras vem do livro "O Projeto Phoenix" (mesmos autores do Manual de DevOps). Cada maneira corresponde a um fluxo na evolucao DevOps. Comece pela primeira e evolua — nao tente implementar tudo de uma vez.
 
@@ -89,14 +95,14 @@ Tres Maneiras guiam COMO implementar.
 | Automatizar sem antes ter visibilidade | Primeiro entenda o fluxo, depois automatize |
 | Feedback so em retrospectiva mensal | Feedback deve ser continuo, nao periodico |
 
+## Troubleshooting
+
+### Equipe tentou implementar as 3 maneiras de uma vez e falhou
+**Symptom:** Iniciativas de DevOps abandonadas por sobrecarga de mudancas simultaneas
+**Cause:** As Tres Maneiras sao progressivas — implementar todas de uma vez gera resistencia e confusao
+**Fix:** Comece pela Primeira Maneira (acelerar fluxo, automatizar), consolide, depois avance para feedback e aprendizado
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-as-tres-maneiras/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-as-tres-maneiras/references/code-examples.md)

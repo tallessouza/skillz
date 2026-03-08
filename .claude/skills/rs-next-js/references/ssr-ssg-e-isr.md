@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-ssr-ssg-e-isr
 description: "Applies correct Next.js Pages Router data fetching strategy (SSR, SSG, ISR) when building pages with getServerSideProps, getStaticProps, or revalidate. Use when user asks to 'fetch data in Next.js', 'add getServerSideProps', 'make page static', 'add ISR', 'choose rendering strategy', or 'improve SEO in Next.js'. Make sure to use this skill whenever choosing between SSR/SSG/ISR in Pages Router projects. Not for App Router, React Server Components, or client-side fetching with useEffect."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: rendering-strategies
+  tags: [ssr, ssg, isr, getServerSideProps, getStaticProps, revalidate, pages-router, seo]
 ---
 
 # SSR, SSG e ISR — Next.js Pages Router
@@ -121,14 +127,19 @@ export default function Blog({ posts }: { posts: Post[] }) {
 | Rebuild completo para atualizar 1 pagina | ISR com `revalidate` |
 | `getServerSideProps` em todas as paginas "por seguranca" | Avalie caso a caso — SSG/ISR tem performance superior |
 
+## Troubleshooting
+
+### Dados nao atualizam apos modificacao (SSG/ISR)
+**Symptom:** Pagina mostra dados antigos mesmo apos atualizar no banco de dados
+**Cause:** Em SSG, a pagina e gerada apenas no build. Em ISR, existe um intervalo de revalidacao
+**Fix:** Para SSG, rodar `next build` novamente. Para ISR, aguardar o intervalo de `revalidate` expirar. Para dados que precisam ser sempre frescos, usar SSR com `getServerSideProps`
+
+### getServerSideProps/getStaticProps nao executa
+**Symptom:** Funcao de data fetching parece nao ser chamada, dados nao aparecem
+**Cause:** Essas funcoes so funcionam em arquivos dentro de `pages/`, nao em componentes ou arquivos fora do diretorio pages
+**Fix:** Mover a funcao para o arquivo de pagina dentro de `pages/`. Em App Router, usar fetch direto no Server Component com async/await
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-ssr-ssg-e-isr/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-ssr-ssg-e-isr/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-ssr-ssg-e-isr/references/deep-explanation.md) — O problema original que o Next.js veio resolver: SPAs classicas com React puro enviam uma pagina HTM
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-ssr-ssg-e-isr/references/code-examples.md) — Para testar as tres estrategias, gere o build e inicie em modo producao:

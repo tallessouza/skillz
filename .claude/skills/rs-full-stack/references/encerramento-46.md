@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-encerramento-46
-description: "Summarizes authentication and authorization concepts including JWT, roles, and access control layers in Node.js applications. Use when user asks 'what is authentication vs authorization', 'explain JWT', 'how do roles work', or 'access control in Node'. Make sure to use this skill whenever the user needs a quick mental model of auth layers before implementing. Not for actual implementation code, database setup, or specific framework configuration."
+description: "Outlines authentication and authorization concepts including JWT, roles, and access control layers in Node.js applications. Use when user asks 'what is authentication vs authorization', 'explain JWT', 'how do roles work', or 'access control in Node'. Make sure to use this skill whenever the user needs a quick mental model of auth layers before implementing. Not for actual implementation code, database setup, or specific framework configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: autenticacao
+  tags: [jwt, autenticacao, autorizacao, roles, seguranca]
 ---
 
 # Autenticação vs Autorização — Mental Model
 
 > Autenticação verifica QUEM é o usuário; autorização verifica O QUE ele pode fazer.
 
-## Key concept
+## Key concepts
 
 Autenticação e autorização são duas camadas distintas de acesso em uma aplicação. Implementá-las separadamente (sem banco de dados primeiro) ajuda a entender cada conceito antes de integrar com persistência.
 
@@ -37,6 +43,26 @@ Autenticação e autorização são duas camadas distintas de acesso em uma apli
 - Rules definem acesso por perfil
 - Verificação acontece após confirmar autenticação
 
+## Example
+
+```javascript
+// Middleware de autenticacao (verifica QUEM)
+function authMiddleware(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1]
+  const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  req.user = decoded
+  next()
+}
+
+// Middleware de autorizacao (verifica O QUE)
+function authorize(role) {
+  return (req, res, next) => {
+    if (req.user.role !== role) return res.status(403).json({ error: 'Forbidden' })
+    next()
+  }
+}
+```
+
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
@@ -56,13 +82,16 @@ Autenticação e autorização são duas camadas distintas de acesso em uma apli
 - Este modelo mental é o fundamento — implementação real requer banco de dados, refresh tokens, e tratamento de edge cases
 - Roles simples podem não ser suficientes para sistemas complexos (considerar RBAC/ABAC)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Token JWT expirado retorna 401 | Token tem tempo de vida limitado | Implemente refresh token ou re-autentique o usuario |
+| Usuario autenticado mas sem permissao | Falta middleware de autorizacao apos autenticacao | Adicione middleware de verificacao de roles apos o middleware de auth |
+| JWT invalido apos restart do servidor | Secret mudou ou nao esta em variavel de ambiente | Armazene JWT_SECRET em .env e mantenha consistente entre deploys |
+| Roles nao funcionam para usuarios novos | Role padrao nao atribuida na criacao | Defina role default no cadastro: role = "user" |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre separação de autenticação e autorização
 - [code-examples.md](references/code-examples.md) — Exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encerramento-46/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encerramento-46/references/code-examples.md)

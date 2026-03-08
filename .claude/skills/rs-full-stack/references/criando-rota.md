@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-rota
 description: "Enforces separation of app logic from server bootstrap in Node.js APIs to enable E2E testing. Use when user asks to 'create an API', 'setup E2E tests', 'organize server files', 'separate app from server', or 'avoid port conflicts in tests'. Applies pattern: app.ts exports the http server instance, server.ts calls listen(). Make sure to use this skill whenever creating Node.js HTTP servers that will be tested. Not for frontend routing, Express middleware patterns, or database setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: node-api-testing
+  tags: [nodejs, http-server, e2e-testing, app-server-separation]
 ---
 
 # Separacao App/Server para Testes E2E
@@ -105,13 +111,16 @@ app.listen(3333, () => console.log("Server is running!"))
 | Funcoes de logica de negocio dentro de server.ts | Arquivo separado (sum.ts, utils.ts) |
 | Porta hardcoded no arquivo de teste | Porta 0 ou variavel de ambiente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `EADDRINUSE: address already in use` no teste | Teste importa `server.ts` que chama `listen()` | Importe `app.ts` (sem listen) no teste |
+| Teste E2E nao conecta ao servidor | Servidor nao foi iniciado no teste | Chame `app.listen(0)` no setup do teste para porta aleatoria |
+| Porta fixa conflita entre dev e teste | Ambos usam a mesma porta | Use porta 0 no teste para atribuicao automatica |
+| `app` nao exportado | Falta `export` no app.ts | Adicione `export { app }` ou `export const app = ...` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e conflito de portas
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-rota/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-rota/references/code-examples.md)

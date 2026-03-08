@@ -1,6 +1,12 @@
 ---
 name: rs-devops-modularizando-o-cloudfront
 description: "Applies Terraform module patterns for AWS CloudFront distribution linked to S3 buckets. Use when user asks to 'create cloudfront', 'add CDN', 'modularize terraform', 'connect cloudfront to s3', or 'terraform module dependencies'. Enforces inter-module output passing, depends_on for resource ordering, and variable wiring between modules. Make sure to use this skill whenever creating Terraform CloudFront distributions or wiring module outputs as inputs. Not for CloudFront invalidation, Lambda@Edge, or non-Terraform CDN setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modulos-cloudfront
+  tags: [terraform, cloudfront, modules, outputs, depends-on, s3, cdn]
 ---
 
 # Modularizando o CloudFront no Terraform
@@ -166,14 +172,14 @@ resource "aws_cloudfront_distribution" "cloudfront" {
 | Rodar plan sem init apos novo modulo | `terraform init` primeiro |
 | Criar outputs.tf vazio "por precaucao" | Crie apenas quando outro modulo precisar consumir |
 
+## Troubleshooting
+
+### Terraform plan falha com "module.s3.bucket_id is not defined"
+**Symptom:** `terraform plan` retorna erro de output nao definido ao referenciar modulo S3
+**Cause:** O modulo S3 nao tem `outputs.tf` com o output `bucket_id` declarado, ou `terraform init` nao foi executado apos adicionar o modulo
+**Fix:** Crie `outputs.tf` no modulo S3 com `output "bucket_id"` e rode `terraform init` antes de `plan`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-modularizando-o-cloudfront/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-modularizando-o-cloudfront/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

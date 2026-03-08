@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-o-que-sao-server-actions
 description: "Applies Server Actions patterns when writing Next.js form handling and data mutation code. Use when user asks to 'create a form', 'handle form submission', 'mutate data in Next.js', 'create a server action', or 'submit data to server'. Enforces use server directive, async function pattern, revalidation, and progressive enhancement. Make sure to use this skill whenever building forms or data mutations in Next.js App Router. Not for REST API routes, GET requests, data fetching, or client-side-only state management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: server-actions
+  tags: [next-js, server-actions, forms, use-server, revalidation, progressive-enhancement, mutations, app-router]
 ---
 
 # Server Actions no Next.js
@@ -168,14 +174,19 @@ export default function Page() {
 | `"use server"` dentro de arquivo `"use client"` | Arquivo separado `actions.ts` com `"use server"` no topo |
 | Server action para servir dados a clientes externos | API Route REST para APIs publicas |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-o-que-sao-server-actions/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-o-que-sao-server-actions/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-o-que-sao-server-actions/references/deep-explanation.md) — Server Actions implementam o padrao **RPC (Remote Procedure Call)** — uma chamada de rede que aparec
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-o-que-sao-server-actions/references/code-examples.md) — Este e o codigo que o instrutor mostrou como exemplo do boilerplate excessivo:

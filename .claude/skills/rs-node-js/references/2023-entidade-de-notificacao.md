@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-entidade-de-notificacao
-description: "Enforces DDD subdomain entity creation patterns when writing Node.js/TypeScript domain entities. Use when user asks to 'create an entity', 'add a new subdomain', 'implement domain model', 'create notification entity', or any DDD bounded context work. Applies rules: mirror folder structure per subdomain, use domain-specific terminology (never generic 'user'), static create with defaults, optional read timestamps. Make sure to use this skill whenever creating entities in a DDD architecture. Not for API controllers, database schemas, or infrastructure layer code."
+name: 2023-entidade-de-notificacao
+description: "Creates entities in new DDD subdomains with replicated folder structure, domain-specific terminology (recipientId not userId), and static create methods with defaults. Use when user asks to 'create a subdomain', 'add a notification entity', 'model a new bounded context', or 'structure DDD subdomains'. Make sure to use this skill whenever adding a new subdomain to a DDD application or creating entities that reference other subdomains only by ID. Not for modifying existing subdomains, cross-domain integration logic, or database schema design."
+category: coding-lens
+tags: [ddd, domain-events, entities, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: subdominio-notificacao
+  tags: [ddd, subdominio, entities, notification, linguagem-ubiqua, typescript]
 ---
 
 # Entidade em Novo Subdominio (DDD)
@@ -115,14 +124,14 @@ export class Notification extends Entity<NotificationProps> {
 | Importar entidade Forum dentro de Notification | Usar apenas UniqueEntityId para referencia |
 | Pasta unica `entities/` para todos os dominios | `domain/{subdomain}/enterprise/entities/` |
 
+## Troubleshooting
+
+### Subdominio de notificacao importa entidades do subdominio forum
+**Symptom:** Acoplamento entre subdominios — mudancas no forum quebram notificacao
+**Cause:** Importacao direta de entidades cross-domain ao inves de usar apenas IDs
+**Fix:** Referencie outros subdominios somente via `UniqueEntityId` — a integracao entre subdominios vem via Domain Events, nao via import direto
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-entidade-de-notificacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-entidade-de-notificacao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

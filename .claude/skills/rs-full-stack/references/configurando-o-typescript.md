@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-o-typescript
 description: "Generates optimized tsconfig.json for Node.js projects following Microsoft's official Node Target Mapping. Use when user asks to 'setup typescript', 'configure tsconfig', 'init typescript project', 'create node api with typescript', or 'start new node project'. Applies correct target, module, lib, and strict settings based on Node.js version. Make sure to use this skill whenever creating a new Node.js + TypeScript project or reviewing tsconfig.json configuration. Not for frontend/browser TypeScript config, Deno, or Bun runtimes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-setup
+  tags: [typescript, tsconfig, node-target-mapping, strict-mode, es-modules]
 ---
 
 # Configurando o TypeScript para Node.js
@@ -98,13 +104,16 @@ Um arquivo `tsconfig.json` limpo, sem comentarios, com apenas as propriedades at
 - `npx tsc --noEmit` deve passar sem erros
 - Imports entre arquivos `.ts` devem resolver corretamente
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npx tsc --init` falha | TypeScript nao instalado | `npm i -D typescript` |
+| Erros de modulo apos configurar tsconfig | `"type": "module"` no package.json inconsistente | Alinhar package.json com `module: "Node16"` do tsconfig |
+| `npx tsc --noEmit` mostra erros de tipos em node_modules | `skipLibCheck` desabilitado | Adicionar `"skipLibCheck": true` |
+| Imports entre arquivos `.ts` nao resolvem | moduleResolution incorreto | Usar `"moduleResolution": "Node16"` junto com `"module": "Node16"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada propriedade e o Node Target Mapping
 - [code-examples.md](references/code-examples.md) — Exemplos de tsconfig para diferentes cenarios e versoes de Node
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-o-typescript/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-o-typescript/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatando-o-total
 description: "Applies JavaScript value formatting patterns when working with currency display, string interpolation, and number validation. Use when user asks to 'format currency', 'display money values', 'replace characters in numbers', 'validate if value is number', or 'use template literals'. Ensures proper use of toString before replace, isNaN guards, and formatCurrency with replace chains. Make sure to use this skill whenever formatting numeric output for display in Brazilian Real or any locale. Not for backend currency calculations, database storage, or Intl.NumberFormat deep configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, formatting, currency, template-literals, isNaN, validation]
 ---
 
 # Formatando Valores para Exibição
@@ -93,13 +99,16 @@ document.getElementById("result").textContent = `${formatted} reais`
 | Reimplementar formatação que já existe | `formatExistente(valor).replace(...)` |
 | Continuar execução após dado inválido | `return` early após detectar erro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `TypeError: total.replace is not a function` | Chamando `.replace()` em um Number | Converta para string primeiro: `String(total).replace(...)` |
+| `isNaN` retorna false para string vazia | String vazia e convertida para 0 por `isNaN` | Verifique tambem se o valor nao e vazio: `value === "" \|\| isNaN(value)` |
+| Template literal mostra `[object Object]` | Variavel contem um objeto, nao uma string/numero | Verifique o tipo da variavel antes de interpolar |
+| Valor exibido com ponto em vez de virgula | Nao aplicou `.replace(".", ",")` | Use `String(total).replace(".", ",")` para formato brasileiro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre replace em Number vs String, isNaN e reatribuição
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatando-o-total/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatando-o-total/references/code-examples.md)

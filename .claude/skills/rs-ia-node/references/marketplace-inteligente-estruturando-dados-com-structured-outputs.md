@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-structured-outputs
 description: "Applies OpenAI Structured Outputs pattern with Zod schema validation when generating typed JSON responses from LLMs. Use when user asks to 'parse AI response', 'get structured data from GPT', 'validate LLM output', 'use zod with openai', or 'structured outputs'. Ensures correct use of beta parse API, Zod schemas, refusal handling, and token limit errors. Make sure to use this skill whenever integrating OpenAI responses with typed schemas. Not for general Zod validation, non-OpenAI LLMs, or basic JSON mode."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: structured-outputs
+  tags: [zod, node-js, function-calling, openai, ia-node, structured-outputs]
 ---
 
 # Structured Outputs com OpenAI e Zod
@@ -111,14 +117,14 @@ const data = completion.choices[0].message.parsed // tipado: { products: { name:
 | Ignorar refusal e acessar parsed direto | Checar `message.refusal` antes |
 | `max_tokens: 1` com schema complexo | Tokens suficientes para o JSON completo |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-estruturando-dados-com-structured-outputs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-estruturando-dados-com-structured-outputs/references/code-examples.md)

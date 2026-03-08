@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-primeiro-projeto
-description: "Guides creation of a first HTML project in VS Code with proper file structure and conventions. Use when user asks to 'create an HTML project', 'start a web project', 'setup VS Code for HTML', or 'create index.html'. Covers project folder creation, emmet abbreviation, anchor navigation with IDs, and browser preview. Make sure to use this skill whenever setting up a basic HTML project from scratch. Not for advanced build tools, frameworks, or deployment workflows."
+description: "Configures creation of a first HTML project in VS Code with proper file structure and conventions. Use when user asks to 'create an HTML project', 'start a web project', 'setup VS Code for HTML', or 'create index.html'. Covers project folder creation, emmet abbreviation, anchor navigation with IDs, and browser preview. Make sure to use this skill whenever setting up a basic HTML project from scratch. Not for advanced build tools, frameworks, or deployment workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, project-setup, vscode, emmet, anchor-navigation]
 ---
 
 # Criando Meu Primeiro Projeto HTML
@@ -101,13 +107,15 @@ Dar dois cliques no arquivo `index.html` no explorador de arquivos do sistema op
 - `lang="pt-br"` está definido no `<html>`
 - Apenas um `h1` na página
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Emmet `!` nao gera boilerplate | Arquivo nao tem extensao `.html` ou Emmet desabilitado | Renomeie para `.html` e verifique que Emmet esta habilitado nas settings do VS Code |
+| Links de ancora nao rolam para a secao | `href="#id"` nao bate com o `id` da section | Verifique que o valor do `href` (sem `#`) e identico ao `id` da section |
+| Pagina abre em branco no navegador | Arquivo vazio ou body sem conteudo | Verifique que ha conteudo dentro da tag `<body>` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre convenções, Emmet e ancoragem
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-meu-primeiro-projeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-meu-primeiro-projeto/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre convencoes, Emmet e ancoragem
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

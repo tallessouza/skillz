@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-intro-function-calling
 description: "Applies Function Calling patterns when integrating OpenAI SDK with dynamic data retrieval. Use when user asks to 'call a function from AI', 'connect AI to database', 'dynamic tool use', 'let AI decide which function to call', or 'structured function calling'. Ensures correct tool definition, parameter schema, and automated execution flow. Make sure to use this skill whenever building AI features that need real-time data or side effects (DB writes, notifications, API calls). Not for prompt engineering, structured outputs, or static AI responses without tool use."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: function-calling
+  tags: [openai, ia-node, node-js, function-calling]
 ---
 
 # Function Calling — Conceito e Aplicação
@@ -112,14 +118,14 @@ const tools = [
 | Chamar a função manualmente antes do prompt | Deixar o modelo decidir quando chamar via tools |
 | Definir tool sem description clara | Descrever exatamente o que a função faz e seus parâmetros |
 
+## Troubleshooting
+
+### Modelo nao chama a funcao esperada
+**Symptom:** completion retorna content direto em vez de tool_calls
+**Cause:** Description da tool muito vaga, ou prompt do usuario nao indica necessidade de dados reais
+**Fix:** Melhore a description da tool com casos de uso claros. Adicione no prompt instrucoes explicitas como "considere apenas produtos em estoque" 
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-a-function-calling/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-a-function-calling/references/code-examples.md)

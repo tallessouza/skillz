@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-rest-params
 description: "Applies JavaScript rest params pattern when writing functions that accept variable arguments. Use when user asks to 'create a function with multiple params', 'handle dynamic arguments', 'collect remaining parameters', or 'use spread/rest operator'. Ensures correct usage of ...rest syntax to collect indefinite arguments as arrays. Make sure to use this skill whenever generating functions with flexible parameter lists. Not for spread operator in array/object literals, destructuring assignments, or TypeScript overloads."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modern
+  tags: [javascript, rest-params, functions, variadic, es6]
 ---
 
 # Rest Params em JavaScript
@@ -99,13 +105,16 @@ values(2, 1, 3, 4) // 2 1 3 4 — todos capturados
 | `console.log(rest)` quando quer valores soltos | `console.log(...rest)` com spread |
 | `function(...rest)` em producao | `function(...prices)` com nome descritivo |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SyntaxError ao usar rest params | Rest param nao esta na ultima posicao | Mova `...rest` para o final da lista de parametros |
+| `arguments` retorna objeto estranho, nao array | `arguments` e array-like, nao um Array real | Use rest params `...args` que retorna Array nativo |
+| console.log mostra array em vez de valores soltos | Imprimindo o array direto | Use spread no log: `console.log(...values)` |
+| Rest param captura mais argumentos que o esperado | Parametros nomeados insuficientes antes do rest | Adicione parametros nomeados para os argumentos conhecidos: `function(a, b, ...rest)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre rest vs spread vs arguments, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-rest-params/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-rest-params/references/code-examples.md)

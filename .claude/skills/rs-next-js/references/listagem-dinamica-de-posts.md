@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-listagem-dinamica-de-posts
 description: "Generates dynamic post listings using ContentLayer in Next.js Pages Router. Use when user asks to 'list posts dynamically', 'render blog posts', 'use ContentLayer', 'map over posts', 'format dates in Next.js', or 'define nested types in ContentLayer'. Applies patterns: allPosts iteration, date formatting with toLocaleDateString, defineNestedType for structured frontmatter fields. Make sure to use this skill whenever working with ContentLayer post listings or blog index pages in Next.js. Not for static site generation, MDX rendering, or App Router server components."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: contentlayer
+  tags: [contentlayer, blog, listing, defineNestedType, date-formatting, pages-router, next-js]
 ---
 
 # Listagem Dinâmica de Posts com ContentLayer
@@ -115,14 +121,19 @@ export default function Blog() {
 | Editar arquivos em `.contentlayer/generated/` | Editar apenas `contentlayer.config.ts` e rebuild |
 | Instalar libs de data so para formatacao simples | Usar `toLocaleDateString` nativo |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-listagem-dinamica-de-posts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-listagem-dinamica-de-posts/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-listagem-dinamica-de-posts/references/deep-explanation.md) — O ContentLayer funciona como uma camada intermediaria entre seus arquivos Markdown e o Next.js. Quan
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-listagem-dinamica-de-posts/references/code-examples.md) — import {

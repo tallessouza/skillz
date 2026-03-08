@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-footer
 description: "Applies Footer component patterns when building Next.js pages with Tailwind CSS. Use when user asks to 'create a footer', 'add footer component', 'build page layout', or 'add navigation links to footer'. Enforces responsive flex layout, proper Next.js Image/Link usage, and componentization of repeated elements like logos. Make sure to use this skill whenever generating footer or layout components in Next.js projects. Not for header-specific logic, API routes, or server-side data fetching."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-layout
+  tags: [footer, layout, tailwind, responsive, next-js, Link, Image]
 ---
 
 # Componente Footer em Next.js
@@ -125,14 +131,19 @@ export const Logo = () => (
 | `<div>` para lista de links de navegacao | `<nav>` com links semanticos |
 | Estilos fixos sem responsividade | Breakpoints `sm:`, `md:`, `lg:` do Tailwind |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-footer/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-footer/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-footer/references/deep-explanation.md) — O instrutor segue o padrao de criar cada secao do layout como componente isolado (`header.tsx`, `foo
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-footer/references/code-examples.md) — import Link from "next/link";

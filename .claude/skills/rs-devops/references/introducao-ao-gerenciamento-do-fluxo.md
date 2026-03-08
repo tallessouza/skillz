@@ -1,6 +1,12 @@
 ---
 name: rs-devops-intro-gerenciamento-fluxo
 description: "Applies Istio service mesh setup patterns when configuring Kubernetes clusters with Istio. Use when user asks to 'install Istio', 'setup service mesh', 'configure sidecar injection', 'deploy Istio on Kubernetes', or 'manage Istio namespace'. Covers installation via Helm, automatic sidecar injection, Istio CTL usage, service discovery, and Ambient Mode architecture. Make sure to use this skill whenever setting up or managing Istio in a Kubernetes cluster. Not for application-level code, CI/CD pipelines, or non-Istio networking."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-gerenciamento-fluxo
+  tags: [istio, helm, sidecar, kubernetes, service-mesh, ambient-mode, service-discovery]
 ---
 
 # Gerenciamento de Fluxo com Istio no Kubernetes
@@ -102,14 +108,14 @@ kubectl apply -f my-app-deployment.yaml
 | Depender de istioctl em producao | Abstrair com Helm charts e GitOps |
 | Ignorar o service discovery nativo | Usar matchLabels e Services do Kubernetes |
 
+## Troubleshooting
+
+### Pods com sidecar Istio ficam em CrashLoopBackOff
+**Symptom:** Apos habilitar injecao automatica, pods novos ficam reiniciando
+**Cause:** Recursos insuficientes no cluster para rodar o container extra do Istio proxy, ou conflito de portas entre app e sidecar
+**Fix:** Verifique recursos do cluster com `kubectl describe pod -n <namespace>` e aumente limites de CPU/memoria se necessario
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-introducao-ao-gerenciamento-do-fluxo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-introducao-ao-gerenciamento-do-fluxo/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

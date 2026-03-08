@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-buscando-agendamentos-api
 description: "Applies async data fetching patterns when consuming APIs in vanilla JavaScript modules. Use when user asks to 'fetch data from API', 'load schedules', 'call backend endpoint', 'consume server data', or builds frontend modules that load data. Enforces async/await with named service imports, object parameters for flexibility, and proper module separation. Make sure to use this skill whenever creating frontend code that fetches filtered data from an API. Not for React/framework state management, backend API creation, or database queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, async-await, fetch, api, modules, frontend]
 ---
 
 # Buscando Dados da API com Async/Await
@@ -79,13 +85,16 @@ async function loadSchedules(date) {
 | Fetch e render na mesma funcao monolitica | Fetch separado, render em metodo dedicado |
 | Digitar nome do import manualmente | Usar autocomplete do editor |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **await used without async keyword** | Add `async` to the function declaration — `await` only works inside async functions. |
+| **API returns data but UI does not update** | Separate fetch logic from rendering — log the data first with `console.log` to confirm it arrives correctly. |
+| **Service import fails silently** | Check the import path and file extension — typos in module names cause undefined imports without errors in some setups. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre async/await, objetos como parametros e separacao fetch/render
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-buscando-os-agendamentos-na-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-buscando-os-agendamentos-na-api/references/code-examples.md)

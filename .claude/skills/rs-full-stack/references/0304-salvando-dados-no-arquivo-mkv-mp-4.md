@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0304-salvando-dados-arquivo
 description: "Applies in-memory-to-file persistence pattern when building Node.js databases without external DB. Use when user asks to 'save data to file', 'persist in-memory data', 'create a simple database', or 'store data without a database'. Ensures data is written to disk after every mutation using a persist method. Make sure to use this skill whenever implementing file-based storage in Node.js. Not for SQL databases, ORMs, or cloud storage solutions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, file-persistence, json, fs, in-memory-database, serialization]
 ---
 
 # Salvando Dados no Arquivo (Persistencia File-Based)
@@ -91,13 +97,17 @@ insert(table, data) {
 | Ler do arquivo a cada requisicao | Manter objeto em memoria como cache |
 | `JSON.stringify(data)` sem formatacao | `JSON.stringify(data, null, 2)` para legibilidade |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dados perdidos ao reiniciar o servidor | `#persist()` nao esta sendo chamado apos mutacao | Adicionar `this.#persist()` ao final de insert, update e delete |
+| Arquivo `db.json` vazio ou com `{}` | Persist chamado antes de qualquer insert | Comportamento esperado — arquivo e criado vazio inicialmente |
+| Erro `ENOENT` ao escrever arquivo | Diretorio do path nao existe | Verificar que o diretorio pai do `databasePath` existe |
+| Dados duplicados no arquivo | `#persist()` chamado antes de push | Chamar `#persist()` sempre apos a mutacao, nao antes |
+| JSON invalido no arquivo | Escrita interrompida (crash durante writeFile) | Usar `JSON.stringify(data, null, 2)` e tratar erro na leitura |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre persistencia file-based e trade-offs
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0304-salvando-dados-no-arquivo-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0304-salvando-dados-no-arquivo-mkv-mp-4/references/code-examples.md)

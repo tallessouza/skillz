@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-entendendo-docker-compose
 description: "Applies Docker Compose best practices when writing or reviewing docker-compose.yml files. Use when user asks to 'create a docker-compose', 'add a database service', 'configure postgres container', 'setup docker for development', or any container orchestration task. Enforces correct structure: version, services, image pinning, restart policies, port mapping, environment variables, and persistent volumes. Make sure to use this skill whenever generating or modifying docker-compose files. Not for Dockerfile creation, Kubernetes configs, or production deployment orchestration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: docker-e-banco-de-dados
+  tags: [docker-compose, postgres, volumes, containers, development-environment, next-js]
 ---
 
 # Docker Compose — Estrutura e Boas Praticas
@@ -131,14 +137,19 @@ volumes:
 | Porta hardcoded sem comentario | Comentar o mapeamento host:container |
 | Sem `container_name` | `container_name: projeto-servico` |
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-o-docker-compose-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-o-docker-compose-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-o-docker-compose-1/references/deep-explanation.md) — O instrutor usa consistentemente a metafora de **receita de bolo** para explicar o Docker Compose:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-o-docker-compose-1/references/code-examples.md) — O arquivo docker-compose.yml usado no projeto Pet Shop do curso:

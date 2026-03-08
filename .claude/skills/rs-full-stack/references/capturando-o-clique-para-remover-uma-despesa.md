@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-capturando-clique-remover
 description: "Applies event delegation pattern to capture clicks on specific elements within a list. Use when user asks to 'remove item from list', 'delete list item on click', 'handle click on icon inside list', 'event delegation', or 'capture click on child element'. Ensures correct use of addEventListener on parent container with target class verification instead of attaching listeners to each item. Make sure to use this skill whenever implementing click-to-remove in dynamic lists. Not for form submission, keyboard events, or drag-and-drop interactions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dom, event-delegation, click, classList, dynamic-list]
 ---
 
 # Capturando Clique para Remover Item de Lista
@@ -75,13 +81,16 @@ expenseList.addEventListener("click", (event) => {
 | Listener sem verificacao de target | Sempre filtre com `classList.contains` antes de agir |
 | `document.addEventListener("click", ...)` | Listener no container mais proximo — evita capturar cliques fora da lista |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Clique nao dispara no icone de remover | `event.target` retorna elemento filho (ex: `<img>` dentro do botao) | Use `event.target.closest(".remove-icon")` em vez de `classList.contains` |
+| Listener nao funciona em itens novos | Listener adicionado diretamente nos itens e nao no pai | Use event delegation no container pai |
+| Todos os cliques na lista disparam a acao | Falta verificacao de `classList.contains` | Adicione `if (event.target.classList.contains("remove-icon"))` |
+| `querySelector` retorna `null` para a lista | Seletor CSS nao bate com o HTML | Verifique o seletor contra a estrutura do DOM |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre event delegation, bubbling e por que o clique propaga
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-capturando-o-clique-para-remover-uma-despesa/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-capturando-o-clique-para-remover-uma-despesa/references/code-examples.md)

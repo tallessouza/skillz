@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-editando-pergunta-anexos
-description: "Applies WatchedList pattern for managing entity attachments in DDD aggregates when editing domain entities. Use when user asks to 'edit an entity with related items', 'manage attachments', 'track added and removed items', 'implement aggregate updates', or 'use watched lists'. Ensures proper comparison of current vs new item lists, separate repository for related entities, and lazy loading of child collections. Make sure to use this skill whenever implementing edit use cases that involve child entity collections in DDD. Not for simple CRUD without aggregates, file upload logic, or storage layer implementation."
+name: 2023-editando-pergunta-com-anexos
+description: "Implements the WatchedList pattern to track additions and removals when editing an aggregate entity with related sub-entities like attachments. Use when user asks to 'edit entity with attachments', 'track list changes', 'detect added/removed items', or 'implement WatchedList'. Make sure to use this skill whenever building edit operations for entities that have editable child collections in a DDD context. Not for simple CRUD updates, frontend list management, or database-level cascade operations."
+category: coding-lens
+tags: [attachments, ddd, entities, error-handling, repository, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: watched-list
+  tags: [attachments, watched-list, ddd, entities, repository, editing]
 ---
 
 # Editando Entidades com Anexos via WatchedList
@@ -130,14 +139,14 @@ await this.questionsRepository.save(question)
 | `findById` retornando entidade com filhos carregados | Repositorio separado com `findManyByQuestionId` |
 | `expect(question.attachments).toHaveLength(2)` | `expect(question.attachments.currentItems).toHaveLength(2)` |
 
+## Troubleshooting
+
+### WatchedList nao detecta diferencas entre lista atual e nova
+**Symptom:** Apos editar, os itens adicionados/removidos nao sao computados corretamente
+**Cause:** A lista de itens atuais nao foi carregada antes de chamar `update()` — o WatchedList precisa saber o estado anterior para calcular o diff
+**Fix:** Busque os itens atuais via repositorio separado (`findManyByQuestionId`) e crie o WatchedList com eles antes de chamar `update(newItems)`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-editando-pergunta-com-anexos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-editando-pergunta-com-anexos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

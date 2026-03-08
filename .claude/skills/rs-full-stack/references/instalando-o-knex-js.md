@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-knex-js
 description: "Applies correct Knex.js and database driver installation when setting up a Node.js project with SQL database access. Use when user asks to 'install knex', 'setup query builder', 'add database to node project', 'configure sqlite', or 'install database driver'. Ensures correct package versions and driver pairing. Make sure to use this skill whenever setting up Knex.js in a JavaScript/TypeScript project. Not for Prisma, TypeORM, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-installation
+  tags: [knex, sqlite, database, query-builder, npm]
 ---
 
 # Instalando o Knex.js
@@ -49,13 +55,16 @@ Confirme que ambos os pacotes aparecem no `package.json` em `dependencies`.
 | Usar versao latest sem fixar | `npm i knex@3.1.0 sqlite3@5.1.7` |
 | Instalar driver errado pro banco | Consulte a tabela acima |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Knex instalado mas nao conecta ao banco | Driver do banco nao instalado | Instalar o driver correto junto: `npm i knex sqlite3` |
+| Erro de compilacao do sqlite3 | Dependencias nativas ausentes | No Linux: `sudo apt-get install build-essential`, no macOS: instalar Xcode CLI tools |
+| Versao do Knex incompativel | Versao latest com breaking changes | Fixar versao: `npm i knex@3.1.0` |
+| Driver errado para o banco | Instalou sqlite3 mas usa PostgreSQL | Consultar tabela de drivers e instalar o correto (ex: `pg` para PostgreSQL) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre query builders vs ORMs e escolha do Knex
 - [code-examples.md](references/code-examples.md) — Comandos de instalacao para todos os bancos suportados
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-knex-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-knex-js/references/code-examples.md)

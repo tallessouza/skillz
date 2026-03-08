@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-sobre-sessoes
 description: "Enforces secure session management practices when building server-side multi-page applications. Use when user asks to 'implement sessions', 'configure cookies', 'setup authentication with sessions', 'secure session handling', or works with PHP/Laravel/Django/Rails session code. Applies rules: use framework sessions, rename default cookie, enforce httpOnly/secure/strict flags, validate session entropy. Make sure to use this skill whenever generating session-related code or configuring session cookies. Not for JWT authentication, SPA token management, or client-side storage."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: session-management
+  tags: [security, sessions, cookies]
 ---
 
 # Gerenciamento Seguro de Sessoes
@@ -89,14 +95,14 @@ session.use_strict_mode = 1
 | Session ID com baixa entropia | Usar CSPRNG do framework com ID longo |
 | Guardar sessoes sem proteger o servidor | Proteger diretorio de sessoes no servidor |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sobre-sessoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sobre-sessoes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sobre-sessoes/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sobre-sessoes/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

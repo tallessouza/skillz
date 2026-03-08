@@ -1,15 +1,32 @@
 ---
 name: rs-node-js-2023-fundamentos-do-docker
 description: "Applies Docker container fundamentals when setting up development environments or database services. Use when user asks to 'run postgres', 'setup database', 'docker compose', 'containerize', 'development environment', or mentions Docker, containers, or local services. Ensures correct mental model of containers vs VMs and proper isolation practices. Make sure to use this skill whenever the user needs to run external services locally. Not for Dockerfile optimization, CI/CD pipelines, or production deployment strategies."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: docker-fundamentals
+  tags: [docker, containers, postgres, redis, development-environment, devops]
 ---
 
 # Fundamentos do Docker
 
 > Utilize containers Docker para isolar servicos externos (bancos de dados, cache, filas) do ambiente de desenvolvimento, mantendo a maquina limpa e o setup reproduzivel.
 
-## Conceito central
+## Key concepts
 
 Docker cria containers — ambientes isolados que compartilham o kernel do sistema operacional host, diferente de VMs que instalam um SO completo. Containers sao mais rapidos, mais leves e descartaveis.
+
+```bash
+# Subir container PostgreSQL para desenvolvimento
+docker run --name my-postgres -e POSTGRES_PASSWORD=mysecret -p 5432:5432 -d postgres
+
+# Verificar containers ativos
+docker ps
+
+# Parar e remover container
+docker stop my-postgres && docker rm my-postgres
+```
 
 ## Modelo mental: Container vs VM
 
@@ -47,14 +64,14 @@ Docker cria containers — ambientes isolados que compartilham o kernel do siste
 | Usar VirtualBox para rodar um banco local | Usar Docker (mais leve, mais rapido) |
 | Deixar containers antigos rodando eternamente | Parar e remover quando nao estiver usando |
 
+## Troubleshooting
+
+### Container Docker nao inicia ou porta ja em uso
+**Symptom:** docker run falha com erro de porta ja alocada ou o container para imediatamente
+**Cause:** Outro processo ou container ja esta usando a mesma porta no host
+**Fix:** Use docker ps para verificar containers ativos, pare o conflitante com docker stop, ou mapeie para outra porta (-p 5433:5432)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fundamentos-do-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fundamentos-do-docker/references/code-examples.md)

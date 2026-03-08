@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-migrando-listagem-posts
 description: "Applies Next.js App Router migration patterns when converting Pages Router components to App Router. Use when user asks to 'migrate to app router', 'convert pages to app router', 'use server components', 'move from pages to app directory', or 'use useSearchParams'. Enforces server-first data fetching, correct use-client boundaries, and useSearchParams over useRouter query. Make sure to use this skill whenever migrating Next.js pages or refactoring router usage. Not for creating new App Router projects from scratch or API route migration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: migracao-app-router
+  tags: [app-router, migration, useSearchParams, server-components, use-client, data-fetching, next-js]
 ---
 
 # Migrando Pages Router para App Router
@@ -140,14 +146,19 @@ export function BlogList({ posts }: BlogListProps) {
 | `useEffect` para buscar dados no client | Data fetching direto no server component |
 | Pagina inteira como client component | Isole interatividade no menor componente possivel |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-migrando-a-listagem-de-posts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-migrando-a-listagem-de-posts/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-migrando-a-listagem-de-posts/references/deep-explanation.md) — O instrutor enfatiza que a migracao nao e simplesmente mover arquivos — e repensar onde cada respons
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-migrando-a-listagem-de-posts/references/code-examples.md) — // app/blog/page.tsx

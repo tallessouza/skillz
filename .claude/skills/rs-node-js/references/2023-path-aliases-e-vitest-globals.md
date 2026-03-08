@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-path-aliases-vitest-globals
 description: "Applies TypeScript path aliases and Vitest globals configuration when setting up a Node.js project with Vitest. Use when user asks to 'configure path aliases', 'setup vitest', 'remove vitest imports', 'configure tsconfig paths', or 'setup test globals'. Ensures correct tsconfig.json paths, vite-tsconfig-paths plugin, and Vitest globals. Make sure to use this skill whenever configuring a new TypeScript project with Vitest or fixing relative import paths. Not for Jest configuration, Webpack aliases, or runtime module resolution."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: project-setup
+  tags: [path-aliases, vitest, tsconfig, vite-tsconfig-paths, globals, typescript, testing]
 ---
 
 # Path Aliases e Vitest Globals
@@ -97,14 +103,14 @@ describe('Entity', () => {
 | `vite.config.js` sem tsconfigPaths plugin | Sempre incluir `tsconfigPaths()` nos plugins |
 | `globals: true` sem `types: ["vitest/globals"]` | Configurar ambos juntos |
 
+## Troubleshooting
+
+### Vitest nao resolve imports com @/ alias
+**Symptom:** Erro `Cannot find module '@/domain/entities/...'` ao rodar testes
+**Cause:** O plugin `vite-tsconfig-paths` nao esta configurado no `vite.config.ts`
+**Fix:** Instale `vite-tsconfig-paths` e adicione `plugins: [tsconfigPaths()]` no `vite.config.ts`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-path-aliases-e-vitest-globals/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-path-aliases-e-vitest-globals/references/code-examples.md)

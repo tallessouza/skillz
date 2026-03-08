@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-depurando-o-codigo
 description: "Applies Chrome DevTools debugging techniques when user asks to 'debug code', 'find a bug', 'add breakpoint', 'inspect variables', or 'step through code'. Guides systematic debugging with breakpoints, watch expressions, and step-by-step execution in browser. Make sure to use this skill whenever the user is troubleshooting frontend JavaScript issues or learning debugging workflows. Not for Node.js server-side debugging, IDE debuggers, or automated testing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: developer-tools
+  tags: [DevTools, debugging, breakpoints, Chrome, Watch, step-through]
 ---
 
 # Depurando Código com Chrome DevTools
@@ -101,13 +107,16 @@ form.onsubmit = function (event) {
 | Step Into (seta para baixo) | Entra dentro da funcao chamada |
 | Step Out (seta para cima) | Sai da funcao atual, volta pro chamador |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Breakpoint nao para a execucao | Arquivo no Sources nao e o mesmo que esta rodando | Faca hard refresh (Ctrl+Shift+R) para recarregar |
+| Variavel mostra `undefined` no Watch | Breakpoint esta antes da atribuicao | Mova o breakpoint para depois da linha de atribuicao |
+| Sources nao mostra o arquivo JS | Arquivo nao foi carregado pela pagina | Verifique se o script esta linkado no HTML |
+| Codigo para em breakpoint antigo | Breakpoint nao foi removido | Clique no numero da linha para remover o breakpoint |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-depurando-o-codigo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-depurando-o-codigo/references/code-examples.md)

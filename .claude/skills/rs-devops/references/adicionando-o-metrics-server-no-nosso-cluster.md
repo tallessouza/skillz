@@ -1,6 +1,12 @@
 ---
 name: rs-devops-metrics-server-cluster
-description: "Guides Metrics Server installation on local Kubernetes clusters. Use when user asks to 'install metrics server', 'setup cluster metrics', 'configure kubectl top', 'fix TLS certificate error in k8s', or 'prepare cluster for HPA'. Applies steps: download YAML locally (GitOps), disable TLS verification for local clusters, verify pod status, troubleshoot certificate errors. Make sure to use this skill whenever setting up monitoring or autoscaling prerequisites in Kubernetes. Not for HPA configuration, production TLS setup, or Prometheus/Grafana monitoring."
+description: "Configures Metrics Server installation on local Kubernetes clusters with TLS workarounds and GitOps manifest management. Use when user asks to 'install metrics server', 'setup cluster metrics', 'configure kubectl top', 'fix TLS certificate error in k8s', or 'prepare cluster for HPA'. Enforces local YAML download over remote apply, TLS verification bypass for local clusters, and pod health validation. Make sure to use this skill whenever setting up monitoring or autoscaling prerequisites in Kubernetes. Not for HPA configuration, production TLS setup, or Prometheus/Grafana monitoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, metrics-server, kubectl-top, hpa, tls]
 ---
 
 # Instalação do Metrics Server em Cluster Kubernetes Local
@@ -88,14 +94,14 @@ kubectl top po -n primeira-aplicacao
 | Criar Metrics Server em namespace da aplicação | Deixar em `kube-system` (é componente de cluster) |
 | Achar que sem Metrics Server o HPA funciona | HPA depende do Metrics Server para coletar CPU/memória |
 
+## Troubleshooting
+
+### Metrics Server pod fica em 0/1 Ready com erro de certificado TLS
+**Symptom:** Pod do metrics-server nao atinge Ready state, logs mostram erro de verificacao de certificado
+**Cause:** Clusters locais (Kind, minikube) nao possuem Certificate Authority valido
+**Fix:** Adicione `--kubelet-insecure-tls` nos args do container no manifesto YAML e reaplique
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adicionando-o-metrics-server-no-nosso-cluster/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adicionando-o-metrics-server-no-nosso-cluster/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adicionando-o-metrics-server-no-nosso-cluster/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adicionando-o-metrics-server-no-nosso-cluster/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

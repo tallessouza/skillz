@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-rota-atualizar-ticket
 description: "Applies Node.js PUT route pattern for updating resources by ID. Use when user asks to 'create update route', 'add PUT endpoint', 'update resource by id', 'edit ticket endpoint', or any REST update operation in vanilla Node.js. Enforces route params with :id, controller separation, and proper request/response handling. Make sure to use this skill whenever building CRUD update endpoints in Node.js without frameworks. Not for Express/Fastify routes, database queries, or request body parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, put, update, route-params, crud, rest]
 ---
 
 # Rota PUT para Atualizar Recurso por ID
@@ -92,13 +98,16 @@ export function update(request, response, database) {
 | `import { update } from './update'` (sem extensao) | `import { update } from './update.js'` |
 | Toda logica CRUD num unico controller | Um arquivo por operacao: index.js, update.js, create.js |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| PUT retorna 404 | Rota não registrada ou `:id` não está no path | Verifique se a rota usa `PUT /tickets/:id` com o parâmetro |
+| Controller não é encontrado | Import sem extensão `.js` | Adicione `.js` no final do import: `'./update.js'` |
+| Rota não funciona após criar novo arquivo | Servidor não detectou o novo arquivo | Reinicie o servidor (Ctrl+C e execute novamente) |
+| ID não chega no controller | Route params não estão sendo extraídos | Verifique se o middleware de routing extrai params do regex |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de controllers, route params e troubleshooting de servidor
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0415-rota-para-atualizar-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0415-rota-para-atualizar-ticket-mkv-mp-4/references/code-examples.md)

@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-0307-encerramento
-description: "Provides a Node.js fundamentals checklist and mental model when reviewing or starting Node.js projects. Use when user asks to 'review Node basics', 'check Node fundamentals', 'start a Node project from scratch', or 'what do I need to know about Node'. Ensures all foundational concepts are covered: API design, HTTP server, request/response cycle, route params, query params, body parsing, in-memory data, file persistence. Make sure to use this skill whenever scaffolding a new Node.js API from zero. Not for advanced topics like authentication, databases, ORMs, or deployment."
+description: "Outlines a Node.js fundamentals checklist and mental model when reviewing or starting Node.js projects. Use when user asks to 'review Node basics', 'check Node fundamentals', 'start a Node project from scratch', or 'what do I need to know about Node'. Ensures all foundational concepts are covered: API design, HTTP server, request/response cycle, route params, query params, body parsing, in-memory data, file persistence. Make sure to use this skill whenever scaffolding a new Node.js API from zero. Not for advanced topics like authentication, databases, ORMs, or deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, fundamentals, checklist, api, http-server, review]
 ---
 
 # Fundamentos do Node.js — Checklist de Conceitos
 
 > Antes de avançar para projetos complexos, garanta domínio de cada fundamento do Node.js.
 
-## Checklist de fundamentos
+## Key concepts
 
 Ao criar ou revisar uma aplicação Node.js básica, verificar cobertura de cada conceito:
 
@@ -33,6 +39,19 @@ Ao criar ou revisar uma aplicação Node.js básica, verificar cobertura de cada
 | Rota filtra/busca coleção | Query param (`?search=`) |
 | Cliente envia dados complexos | Body JSON com POST/PUT |
 
+## Exemplo minimo
+
+```javascript
+import http from 'node:http'
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' })
+  res.end(JSON.stringify({ message: 'Node.js funcionando' }))
+})
+
+server.listen(3333, () => console.log('Server running on port 3333'))
+```
+
 ## Quando aplicar
 
 - Ao iniciar um novo projeto Node.js do zero
@@ -49,13 +68,17 @@ Este checklist cobre apenas fundamentos. Não substitui conhecimento de:
 - Deploy e infraestrutura
 - Frameworks como Fastify/Express
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `node src/server.js` não executa | Faltou `"type": "module"` no package.json | Adicionar `"type": "module"` para habilitar ESModules |
+| Servidor não reinicia ao salvar | Usando `node` em vez de `node --watch` | Configurar script `"dev": "node --watch src/server.js"` |
+| Route params retornam undefined | Path não tem `:param` definido | Verificar que a rota usa `/resource/:id` com dois-pontos |
+| Body da requisição é undefined | Faltou middleware de parsing de JSON | Processar chunks do body antes de parsear com `JSON.parse` |
+| Dados em memória somem ao reiniciar | Sem persistência em arquivo | Implementar persistência com `fs` para salvar dados em JSON |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cada fundamento e como se conectam
 - [code-examples.md](references/code-examples.md) — Exemplos de código para cada conceito fundamental
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0307-encerramento-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0307-encerramento-mp-4/references/code-examples.md)

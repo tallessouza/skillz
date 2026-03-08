@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-abrindo-banco-de-dados
-description: "Guides through opening and inspecting SQLite databases using Beekeeper Studio. Use when user asks to 'open database', 'view SQLite', 'inspect tables', 'connect to database with Beekeeper', or 'check migration history'. Applies steps for connecting Beekeeper to SQLite, verifying table structure, and inspecting migration history. Make sure to use this skill whenever setting up database visualization for a Node.js/Knex project. Not for creating migrations, writing queries, or database schema design."
+description: "Demonstrates opening and inspecting SQLite databases using Beekeeper Studio. Use when user asks to 'open database', 'view SQLite', 'inspect tables', 'connect to database with Beekeeper', or 'check migration history'. Applies steps for connecting Beekeeper to SQLite, verifying table structure, and inspecting migration history. Make sure to use this skill whenever setting up database visualization for a Node.js/Knex project. Not for creating migrations, writing queries, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [sqlite, beekeeper, knex, migrations, database, inspection]
 ---
 
 # Abrindo Banco de Dados SQLite com Beekeeper
@@ -76,13 +82,17 @@ Confirmacao visual de que:
 - `SELECT * FROM tabela_dominio` retorna resultado vazio mas sem erro (tabela existe)
 - `SELECT * FROM knex_migrations` mostra a migration executada com timestamp
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo `.db` nao encontrado | Migrations nao foram executadas | Execute `npx knex migrate:latest` para criar o banco |
+| Tabela do dominio nao aparece | Erro de sintaxe na migration | Verifique o arquivo de migration e rode novamente |
+| Beekeeper nao conecta | Path incorreto ou arquivo locked | Confirme o caminho e feche processos que usam o arquivo |
+| `knex_migrations` vazio | Nenhuma migration foi executada com sucesso | Verifique erros no terminal ao rodar migrations |
+| `sqlite_sequence` sem dados | Nenhum insert com auto-increment foi feito | Normal — so popula apos o primeiro INSERT |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre tabelas internas do SQLite e Knex
 - [code-examples.md](references/code-examples.md) — Queries de inspecao e exemplos de verificacao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abrindo-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abrindo-banco-de-dados/references/code-examples.md)

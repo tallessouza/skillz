@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-metricas-customizadas
 description: "Enforces OpenTelemetry custom metrics patterns when instrumenting applications with counters, gauges, or histograms. Use when user asks to 'add metrics', 'create counter', 'instrument application', 'track errors', 'monitor requests', or 'setup OpenTelemetry metrics'. Applies MeterProvider configuration, vendor-agnostic instrumentation, and counter patterns for success/error tracking. Make sure to use this skill whenever adding observability metrics to any application. Not for tracing, logging, Prometheus server configuration, or Grafana dashboards."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-opentelemetry
+  tags: [opentelemetry, metrics, counter, gauge, histogram, observability, instrumentation]
 ---
 
 # Métricas Customizadas com OpenTelemetry
@@ -93,14 +99,14 @@ const requestError = meter.createCounter('request_error')
 | MeterProvider + metricReader no NodeSDK ao mesmo tempo | Escolha um lugar só — conflito causa erro de dupla declaração |
 | Configuração de metrics inline no service | Extraia para arquivo `tracer.ts` ou lib separada |
 
+## Troubleshooting
+
+### Erro de dupla declaracao de metricReader
+**Symptom:** Aplicacao lanca erro ao inicializar com mensagem sobre metric reader ja registrado ou conflito de MeterProvider.
+**Cause:** O metricReader foi configurado tanto no NodeSDK quanto em um MeterProvider separado, causando conflito.
+**Fix:** Escolha um unico lugar para configurar o metricReader — ou no NodeSDK ou no MeterProvider separado, nunca em ambos.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-metricas-customizadas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-metricas-customizadas/references/code-examples.md)

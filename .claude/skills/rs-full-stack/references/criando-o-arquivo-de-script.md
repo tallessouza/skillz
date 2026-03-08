@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-arquivo-de-script
 description: "Applies correct script tag placement and JavaScript file setup when creating HTML projects. Use when user asks to 'create a project', 'setup HTML and JS', 'connect JavaScript to HTML', 'add a script file', or 'start a web project'. Ensures script tags go at end of body for performance. Make sure to use this skill whenever setting up new HTML/JS projects or adding script files. Not for Node.js server scripts, bundler configs, or module imports."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-javascript-basics
+  tags: [html, javascript, script-tag, setup, performance]
 ---
 
 # Criando e Conectando Arquivo JavaScript
@@ -88,8 +94,12 @@ console.log("javascript carregado")
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre carregamento e performance
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-de-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-arquivo-de-script/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Console nao mostra mensagem de teste | Script nao esta conectado ao HTML | Verifique o atributo `src` na tag `<script>` e o caminho do arquivo |
+| Script executa antes do DOM carregar | Tag `<script>` no `<head>` sem defer | Mova a tag para antes de `</body>` |
+| Erro "file not found" no console | Nome do arquivo no src diferente do arquivo real | Compare o nome exato (case-sensitive) no src e no filesystem |
+| Pagina carrega lentamente | Script grande no `<head>` bloqueando render | Mova para o final do body ou adicione `defer` |
+| Console.log aparece em producao | Debug temporario nao foi removido | Remova todos os console.log de verificacao apos confirmar conexao |

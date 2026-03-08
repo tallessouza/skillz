@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-rotas-metodos-http
 description: "Applies HTTP route and method patterns when building Node.js APIs. Use when user asks to 'create a route', 'add an endpoint', 'handle HTTP requests', 'build a REST API', or 'set up Express/Fastify routes'. Enforces correct method semantics (GET=read, POST=create, PUT=full update, PATCH=partial update, DELETE=remove) and route differentiation by method+URL pair. Make sure to use this skill whenever creating backend routes in Node.js. Not for frontend fetch calls, WebSocket handlers, or GraphQL resolvers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [http-methods, routing, rest-api, get, post, put, patch, delete]
 ---
 
 # Rotas HTTP e Metodos HTTP no Node.js
@@ -94,14 +100,14 @@ if (method === 'POST' && url === '/users') {
 | Else encadeado para cada rota | Early return com ifs independentes |
 | Roteamento sem fallback | Sempre tenha resposta padrao no final |
 
+## Troubleshooting
+
+### Mesma URL retorna resposta errada dependendo do cliente
+**Symptom:** GET /users e POST /users retornam a mesma resposta
+**Cause:** Roteamento verifica apenas a URL sem considerar o metodo HTTP
+**Fix:** Sempre verifique `method === 'GET' && url === '/users'` — metodo E url juntos identificam a rota
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-rotas-de-criacao-e-listagem-metodos-http/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-rotas-de-criacao-e-listagem-metodos-http/references/code-examples.md)

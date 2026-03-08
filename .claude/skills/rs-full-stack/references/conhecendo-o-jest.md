@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-jest
 description: "Applies Jest setup and configuration patterns when adding automated tests to a Node.js/TypeScript project. Use when user asks to 'add tests', 'setup jest', 'configure testing', 'implement automated tests', or 'add unit tests' to a project. Covers installation, config files, script setup, and first test structure. Make sure to use this skill whenever setting up Jest from scratch in a new or existing project. Not for writing specific test cases, mocking strategies, or migrating between test frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing
+  tags: [jest, testing-setup, ts-jest, unit-tests, test-script, devDependency]
 ---
 
 # Conhecendo o Jest — Setup e Configuracao
@@ -106,13 +112,16 @@ describe('sum', () => {
 | `console.log` para validar resultado | `expect(result).toBe(expected)` |
 | Rodar testes manualmente um por um | `npm test` para rodar todos de uma vez |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Jest nao encontra arquivos de teste | Convencao de nome incorreta | Usar `*.spec.ts` ou `*.test.ts` e configurar `testMatch` |
+| `SyntaxError` ao rodar testes TypeScript | ts-jest nao instalado ou configurado | `npm i -D ts-jest` e usar `preset: 'ts-jest'` no config |
+| Jest instalado como dependencia de producao | Instalado sem flag `-D` | Reinstalar com `npm i -D jest` |
+| `npm test` nao executa nada | Script `test` ausente no package.json | Adicionar `"test": "jest"` nos scripts |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que Jest e o padrao do mercado
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de configuracao e primeiro teste
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-jest/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-jest/references/code-examples.md)

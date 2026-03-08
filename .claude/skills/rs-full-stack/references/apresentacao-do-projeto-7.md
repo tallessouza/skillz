@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-apresentacao-do-projeto-7
 description: "Applies HTML form project setup structure when creating enrollment forms or multi-field HTML form projects. Use when user asks to 'create a form', 'setup form project', 'build enrollment form', 'organize form assets', or 'export SVG icons from Figma'. Covers folder structure, SVG asset export workflow, and icon organization. Make sure to use this skill whenever starting an HTML form project with custom inputs like radio and checkbox. Not for form validation logic, backend processing, or JavaScript form handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, forms, project-setup, figma, svg, assets]
 ---
 
 # Setup de Projeto de Formulário HTML
@@ -97,13 +103,16 @@ assets/
 | Todos os assets soltos na raiz | Organizar em `assets/icons/`, `assets/` |
 | Exportar ícones um por um | Selecionar todos com Shift e exportar em lote |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| SVG exportado do Figma nao aparece no HTML | Caminho do arquivo incorreto ou extensao errada | Verifique o path relativo e confirme que o arquivo e `.svg` |
+| Icone faltando apos exportacao em lote | Nem todas as layers estavam selecionadas no Figma | Selecione individualmente o icone faltante e exporte novamente |
+| Imagem aparece quebrada no navegador | Nome do arquivo contem acentos ou espacos | Renomeie sem acentos e sem espacos, use lowercase |
+| Export do Figma gera PNG em vez de SVG | Formato de exportacao nao foi alterado para SVG | No painel de export, selecione SVG antes de clicar em Export |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre estrutura de projeto e SVG como XML
 - [code-examples.md](references/code-examples.md) — Exemplos de estrutura de pastas e workflow de export
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-apresentacao-do-projeto-7/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-apresentacao-do-projeto-7/references/code-examples.md)

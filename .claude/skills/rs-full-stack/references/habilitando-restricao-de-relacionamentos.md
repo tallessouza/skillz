@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-habilitando-restricao-relacionamentos
 description: "Enforces foreign key constraint configuration in Knex.js with SQLite when setting up database connections. Use when user asks to 'configure knex', 'setup sqlite foreign keys', 'enable foreign key constraints', 'knexfile configuration', or 'database relationships in knex'. Make sure to use this skill whenever configuring Knex.js with SQLite to prevent data inconsistency. Not for PostgreSQL/MySQL setups where foreign keys are enabled by default."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, sqlite, foreign-keys, pragma, database-config]
 ---
 
 # Habilitando Restricao de Relacionamentos no Knex.js
@@ -83,13 +89,16 @@ const config: Knex.Config = {
 | Colocar pragma no migration | Colocar no `pool.afterCreate` do knexfile |
 | Validar FKs manualmente na aplicacao | Deixar o banco enforcar via pragma |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Foreign key nao validada ao inserir dados | Pragma `foreign_keys = ON` nao configurado | Adicione `pool.afterCreate` com `PRAGMA foreign_keys = ON` no knexfile |
+| Pool de conexoes trava ao iniciar | Callback `done` nao esta sendo chamado no `afterCreate` | Passe `done` como segundo argumento de `connection.run()` |
+| FK funciona no dev mas nao no teste | Banco in-memory reseta pragma a cada conexao | Configure o pragma no `afterCreate` tambem no ambiente de teste |
+| Erro "SQLITE_CONSTRAINT: FOREIGN KEY constraint failed" | Tentando inserir referencia a registro inexistente | Verifique se o registro pai existe antes de inserir o registro filho |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que SQLite desabilita FKs e impacto na consistencia
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variacoes e cenarios de erro
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-habilitando-restricao-de-relacionamentos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-habilitando-restricao-de-relacionamentos/references/code-examples.md)

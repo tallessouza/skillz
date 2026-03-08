@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-retry-e-timeout
 description: "Applies Istio VirtualService timeout and retry configurations when writing service mesh manifests. Use when user asks to 'configure timeout', 'add retries', 'set request timeout', 'improve resilience', or 'handle slow services' in Kubernetes/Istio context. Enforces correct YAML structure for timeout, retries with attempts and perTryTimeout, and backoff strategies. Make sure to use this skill whenever generating or reviewing Istio VirtualService routing rules. Not for application-level timeout code, HTTP client configuration, or non-Istio service meshes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-resilience
+  tags: [istio, timeout, retry, virtual-service, resilience, kubernetes, service-mesh]
 ---
 
 # Configurando Retry e Timeout no Istio
@@ -103,14 +109,14 @@ Resultado: requisicoes retornam 504 em 200ms ao inves de travar. Fortio consegue
 | Retry sincrono para processos criticos | Fila assincrona + DLQ para garantir entrega |
 | Timeout no nível errado do YAML | Timeout dentro do bloco `http[].route`, mesmo nivel do `retries` |
 
+## Troubleshooting
+
+### Requisicoes retornando 504 imediatamente
+**Symptom:** Todas as requisicoes retornam 504 Gateway Timeout mesmo com upstream saudavel
+**Cause:** Timeout configurado muito baixo (ex: `0.2s`) para um upstream que normalmente responde em 300ms+
+**Fix:** Ajuste o timeout para um valor acima da latencia media do upstream, ex: `timeout: 1s`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-retry-e-timeout/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-retry-e-timeout/references/code-examples.md)

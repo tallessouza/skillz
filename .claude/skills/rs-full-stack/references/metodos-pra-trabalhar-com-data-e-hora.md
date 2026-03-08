@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-metodos-data-hora
 description: "Applies JavaScript Date getter methods correctly when working with dates and times. Use when user asks to 'get day of week', 'extract month from date', 'format date', 'work with Date object', or 'manipulate dates in JS'. Enforces zero-indexed corrections for getMonth() and getDay(), and proper method selection. Make sure to use this skill whenever generating code that reads date/time components from Date objects. Not for date formatting libraries like date-fns or dayjs, nor for date arithmetic or timezone handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-date-time
+  tags: [javascript, date, time, getMonth, getDay, getFullYear]
 ---
 
 # Métodos para Trabalhar com Data e Hora
@@ -69,13 +75,16 @@ console.log(`Mês: ${date.getMonth() + 1}`) // Mostra 7 (julho)
 | `date.getMonth()` para exibição direta | `date.getMonth() + 1` |
 | `date.getDay()` achando que é dia do mês | `date.getDate()` para dia do mês |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Mes aparece errado (1 a menos) | `getMonth()` retorna 0-11 | Sempre adicione +1 para exibicao: `getMonth() + 1` |
+| `getYear()` retorna valor estranho (ex: 124) | `getYear()` e deprecated | Use `getFullYear()` que retorna 4 digitos |
+| Dia da semana nao bate | `getDay()` retorna 0-6 onde 0 = domingo | Use array de nomes indexado por `getDay()` |
+| Confundiu dia do mes com dia da semana | `getDate()` = dia do mes, `getDay()` = dia da semana | Verifique qual metodo esta usando |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre zero-indexing e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-metodos-pra-trabalhar-com-data-e-hora/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-metodos-pra-trabalhar-com-data-e-hora/references/code-examples.md)

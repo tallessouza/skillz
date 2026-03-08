@@ -1,6 +1,12 @@
 ---
 name: rs-devops-ajustando-o-yaml
 description: "Applies declarative YAML configuration patterns for Kubernetes Gateway API and Istio service mesh resources. Use when user asks to 'configure gateway', 'create namespace yaml', 'declarative kubernetes', 'service mesh yaml', 'istio gateway config', or 'waypoint configuration'. Ensures proper separation between infra and app resources, CRD-based Gateway API usage, and namespace label management. Make sure to use this skill whenever writing Kubernetes YAML for Gateway API or Istio ambient mode resources. Not for application code, Helm charts, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-declarative
+  tags: [devops]
 ---
 
 # Configuracao Declarativa de YAML para Service Mesh
@@ -96,14 +102,14 @@ kubectl get crd
 | Definir waypoint name diferente no Gateway e no label do namespace | Use o mesmo nome em ambos |
 | Manter rotas de Gateway antigo quando migrou para waypoint | Delete rotas e comente Gateway antigo |
 
+## Troubleshooting
+
+### Gateway waypoint nao e reconhecido pelo namespace
+**Symptom:** Pods no namespace nao utilizam o waypoint configurado no Gateway
+**Cause:** O nome do Gateway no YAML nao corresponde ao label `istio.io/use-waypoint` no namespace
+**Fix:** Garanta que o `metadata.name` do Gateway corresponda exatamente ao valor do label `istio.io/use-waypoint` no namespace YAML
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-ajustando-o-yaml/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-ajustando-o-yaml/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-ajustando-o-yaml/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-ajustando-o-yaml/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

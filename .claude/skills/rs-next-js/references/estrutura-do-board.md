@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-estrutura-do-board
 description: "Applies board layout structure patterns when building Kanban-style interfaces with Next.js and Tailwind CSS. Use when user asks to 'create a board', 'build a kanban', 'layout columns', 'task board', or 'grid layout with columns'. Enforces grid-based column layout, dynamic viewport height, custom color theming, proper font loading, and card container patterns. Make sure to use this skill whenever building multi-column board UIs in Next.js projects. Not for API routes, database schemas, or drag-and-drop logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: estilizacao-e-tailwind
+  tags: [kanban, board, grid, tailwind, dvh, custom-colors, font-loading, next-js]
 ---
 
 # Estrutura do Board
@@ -122,14 +128,19 @@ export default function Home() {
 | `Inter({ subsets: ["latin", "cyrillic", ...] })` | `Inter({ subsets: ["latin"] })` somente o necessario |
 | Tudo num arquivo so sem componentes | Extrair header, coluna e card em componentes |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-estrutura-do-board/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-estrutura-do-board/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-estrutura-do-board/references/deep-explanation.md) — O instrutor explica que `h-dvh` (Dynamic Viewport Height) é superior ao `h-screen` (que usa apenas `
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-estrutura-do-board/references/code-examples.md) — /* app/globals.css */

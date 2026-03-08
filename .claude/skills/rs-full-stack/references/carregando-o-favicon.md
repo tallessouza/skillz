@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-carregando-o-favicon
 description: "Applies favicon configuration in Webpack projects using HtmlWebpackPlugin. Use when user asks to 'add favicon', 'configure favicon webpack', 'setup html webpack plugin favicon', or 'add icon to tab'. Ensures correct path.resolve usage and favicon property in HtmlWebpackPlugin config. Make sure to use this skill whenever configuring favicons in Webpack-based projects. Not for Vite, Next.js, or other bundlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [webpack, favicon, html-webpack-plugin, assets, configuration]
 ---
 
 # Carregando o Favicon no Webpack
@@ -65,13 +71,16 @@ new HtmlWebpackPlugin({
 | `favicon: './src/assets/favicon.svg'` | `favicon: path.resolve(__dirname, 'src', 'assets', 'favicon.svg')` |
 | Adicionar tag `<link rel="icon">` manualmente no HTML | Deixe o HtmlWebpackPlugin injetar automaticamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Favicon nao aparece na aba | Cache do browser | Pare o dev server, limpe cache, reinicie |
+| Erro no build por path invalido | Caminho relativo em vez de `path.resolve` | Use `path.resolve(__dirname, 'src', 'assets', 'favicon.svg')` |
+| Favicon nao aparece no `dist/` apos build | Propriedade `favicon` ausente no HtmlWebpackPlugin | Adicione `favicon:` na configuracao do plugin |
+| SVG nao suportado como favicon | Browser antigo sem suporte a SVG favicon | Converta para PNG ou ICO como fallback |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre build pipeline e hot reload com favicon
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variacoes de formato e estrutura
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-carregando-o-favicon/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-carregando-o-favicon/references/code-examples.md)

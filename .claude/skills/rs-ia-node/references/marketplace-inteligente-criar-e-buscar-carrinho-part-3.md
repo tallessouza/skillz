@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-criar-buscar-carrinho-3
 description: "Enforces cart management patterns for marketplace APIs with multi-store logic. Use when user asks to 'add to cart', 'manage cart items', 'handle shopping cart', 'implement cart logic', or 'build e-commerce cart'. Applies rules: one active cart per user, same-store concatenation, different-store cart replacement, upsert on duplicate items via ON CONFLICT. Make sure to use this skill whenever implementing cart or checkout features in a marketplace with multiple stores. Not for payment processing, order fulfillment, or frontend cart UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, ia-node, node-js]
 ---
 
 # Gerenciamento de Carrinho Multi-Loja
@@ -127,14 +133,14 @@ async function addToCart(userId: string, productId: string, quantity: number) {
 | Duplicar bloco de insert dentro e fora do if | Manter insert apenas no fluxo correto, sem duplicacao |
 | Verificar loja no SELECT do carrinho | Buscar carrinho ativo primeiro, comparar loja no codigo |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho-part-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho-part-3/references/code-examples.md)

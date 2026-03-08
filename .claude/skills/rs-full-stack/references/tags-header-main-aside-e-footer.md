@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tags-header-main-aside-footer
 description: "Enforces correct usage of HTML semantic structure tags header, main, aside, and footer when writing HTML pages. Use when user asks to 'create a page', 'build a layout', 'structure HTML', 'add a header', or 'create page skeleton'. Ensures proper semantic hierarchy and content placement. Make sure to use this skill whenever generating HTML page structures, even for simple pages. Not for CSS layout, styling, or non-HTML templating."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentos
+  tags: [html, semantic, structure, header, main, aside, footer, layout]
 ---
 
 # Tags Semânticas de Estrutura: header, main, aside, footer
@@ -97,6 +103,15 @@ description: "Enforces correct usage of HTML semantic structure tags header, mai
 | `<div class="sidebar">` | `<aside>` |
 | `<div class="footer">` | `<footer>` |
 | Múltiplos `<main>` na página | Um único `<main>` por página |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Conteudo aparece fora da area esperada | Tags semanticas mal aninhadas ou faltando fechamento | Verifique se cada `<header>`, `<main>`, `<aside>`, `<footer>` esta corretamente aberta e fechada |
+| Leitor de tela nao identifica secoes | Usando `<div>` em vez de tags semanticas | Substitua `<div class="header">` por `<header>`, etc. |
+| Multiplos `<main>` causando warnings | Mais de um `<main>` na pagina | Mantenha apenas UM `<main>` por pagina |
+| Layout CSS nao se aplica corretamente | Estilos referenciando classes em vez de tags semanticas | Atualize seletores CSS para usar as tags diretamente |
 
 ## Deep reference library
 

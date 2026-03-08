@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-servico-agendamento
 description: "Applies POST request service pattern when creating API communication modules in JavaScript. Use when user asks to 'create a service', 'send data to API', 'make a POST request', 'create scheduling function', or 'build fetch wrapper'. Enforces: async/await with try-catch, object destructuring for parameters, proper headers, JSON.stringify body, user-friendly error alerts. Make sure to use this skill whenever creating service functions that send data to a REST API. Not for GET requests, server-side API routes, or database operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-api-integration
+  tags: [javascript, fetch, post-request, async-await, services]
 ---
 
 # Criando Servicos de Requisicao POST
@@ -108,13 +114,16 @@ export async function scheduleNew({ id, name, when }) {
 | fetch sem try-catch | Sempre envolva em try-catch |
 | Erro silencioso no catch | `console.log(error)` + `alert()` para o usuario |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Failed to fetch` ou erro de rede | API nao esta rodando ou URL incorreta | Verifique se o servidor esta ativo e `apiConfig.baseUrl` esta correto |
+| API recebe body vazio | Falta `Content-Type: application/json` no header | Adicione `headers: { "Content-Type": "application/json" }` |
+| Dados chegam como string na API | Body nao foi serializado | Use `JSON.stringify()` no body do fetch |
+| CORS bloqueando a requisicao | Frontend e API em dominios/portas diferentes | Configure CORS no servidor da API |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre async/await, desestruturacao e flexibilidade de objetos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-servico-de-agendamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-servico-de-agendamento/references/code-examples.md)

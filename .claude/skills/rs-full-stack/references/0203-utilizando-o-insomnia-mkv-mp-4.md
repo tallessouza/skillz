@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-insomnia
-description: "Guides Insomnia API client setup and usage when testing REST APIs. Use when user asks to 'test an API', 'send a request', 'setup Insomnia', 'create API collection', or 'debug endpoint'. Covers workspace organization, collections, HTTP requests, and response inspection. Make sure to use this skill whenever configuring Insomnia or explaining API testing workflows with GUI clients. Not for automated testing, CI/CD integration, or code-based HTTP clients like axios or fetch."
+description: "Demonstrates Insomnia API client setup and usage when testing REST APIs. Use when user asks to 'test an API', 'send a request', 'setup Insomnia', 'create API collection', or 'debug endpoint'. Covers workspace organization, collections, HTTP requests, and response inspection. Make sure to use this skill whenever configuring Insomnia or explaining API testing workflows with GUI clients. Not for automated testing, CI/CD integration, or code-based HTTP clients like axios or fetch."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [insomnia, api-testing, http-client, rest, debugging]
 ---
 
 # Utilizando o Insomnia
@@ -82,13 +88,13 @@ Workspace (ex: "Skillz City")
 - Resposta aparece no painel direito com status code e body
 - Se nao responder: verificar se a porta na URL esta correta e o servidor esta ativo
 
+## Troubleshooting
+
+### Problem: Insomnia returns "Error: connect ECONNREFUSED"
+- **Cause**: The server is not running or is listening on a different port than the one in the URL
+- **Fix**: Start the server with `npm run dev` and verify the port matches the URL (e.g., `http://localhost:3333`)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e contexto do instrutor
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de configuracao e uso
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0203-utilizando-o-insomnia-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0203-utilizando-o-insomnia-mkv-mp-4/references/code-examples.md)

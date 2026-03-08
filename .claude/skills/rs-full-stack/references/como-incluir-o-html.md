@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-incluir-o-html
 description: "Applies HtmlWebpackPlugin configuration when setting up Webpack to bundle HTML with JavaScript. Use when user asks to 'configure webpack', 'bundle HTML', 'add HTML to webpack', 'setup webpack plugins', or 'include HTML in build output'. Ensures correct plugin installation, CommonJS import, and plugins array configuration. Make sure to use this skill whenever configuring Webpack build pipelines that need HTML output. Not for Vite, Parcel, esbuild, or other bundlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [webpack, html, html-webpack-plugin, bundling, build, plugins]
 ---
 
 # HtmlWebpackPlugin — Incluir HTML no Bundle Webpack
@@ -79,13 +85,17 @@ Apos o build, a pasta `dist/` contera:
 | Instalar sem `-D` | `npm install html-webpack-plugin -D` |
 | Colocar plugin como objeto sem `new` | `new HtmlWebpackPlugin()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Cannot find module 'html-webpack-plugin'` | Pacote nao instalado | `npm install html-webpack-plugin -D` |
+| HTML gerado sem conteudo customizado | Nenhum template especificado | Passe `{ template: './src/index.html' }` ao construtor |
+| `import` em vez de `require` causa erro | webpack.config.js usa CommonJS | Troque para `const X = require('html-webpack-plugin')` |
+| Script tag duplicada no HTML | Tag manual + plugin injetando automaticamente | Remova tags `<script>` manuais do template HTML |
+| `dist/index.html` nao criado apos build | Plugin nao adicionado ao array `plugins` | Verifique que `new HtmlWebpackPlugin()` esta no array |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que usar CommonJS e como o plugin funciona internamente
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com configuracoes customizadas
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-html/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-html/references/code-examples.md)

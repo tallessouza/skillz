@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-remocao-de-registros
 description: "Applies the delete record pattern in Node.js HTTP APIs when implementing 'delete route', 'remove record', 'delete endpoint', or 'remove user'. Enforces findIndex lookup before splice, 204 No Content response, database persistence only on change, and route params extraction via regex groups. Make sure to use this skill whenever building DELETE routes in pure Node.js servers. Not for ORMs, frameworks like Express/Fastify, or frontend deletion logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: delete-records
+  tags: [delete, http, findIndex, splice, 204, route-params, in-memory-database]
 ---
 
 # Remocao de Registros em API Node.js Puro
@@ -95,14 +101,14 @@ delete(table, id) {
 | `this.#persist()` fora do `if` | `this.#persist()` dentro do bloco que confirma remocao |
 | `req.params = route.params.groups` | `req.params = { ...route.params.groups }` (spread remove null prototype) |
 
+## Troubleshooting
+
+### DELETE remove o ultimo item do array em vez do item correto
+**Symptom:** Ao deletar um registro que nao existe, o ultimo item do array e removido silenciosamente
+**Cause:** `splice(-1, 1)` remove o ultimo elemento — `findIndex` retorna `-1` quando nao encontra, e o codigo nao valida antes de chamar splice
+**Fix:** Sempre verifique `if (rowIndex > -1)` antes de chamar `splice(rowIndex, 1)`. Nunca passe o resultado de `findIndex` direto para `splice`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-remocao-de-registros/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-remocao-de-registros/references/code-examples.md)

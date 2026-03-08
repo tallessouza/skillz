@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-parametros-dinamicos
 description: "Applies URL parsing with regex for dynamic route parameters in Node.js HTTP servers. Use when user asks to 'parse URL parameters', 'handle query strings', 'create dynamic routes', 'extract route params', or 'build a Node.js router'. Implements regex-based path matching for named params (:id) and query params (?key=value). Make sure to use this skill whenever building raw Node.js HTTP routing without frameworks. Not for Express/Fastify/Hono routing, frontend URL handling, or redirect logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, regex, route-params, query-params, routing, url]
 ---
 
 # Parâmetros Dinâmicos em Rotas Node.js
@@ -97,13 +103,16 @@ const route = routes.find(r => r.method === method && r.path.test(url))
 | Query param parsing manual com `split('?')` | Grupo regex `(?<query>\\?(.*))?$` |
 | Esquecer `return` em função utilitária | Sempre retorne o valor transformado |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Rota com query params retorna 404 | Comparação exata `===` em vez de regex | Use `route.path.test(url)` com regex gerada por `parseRoutePath` |
+| `parseRoutePath` retorna `undefined` | Função utilitária sem `return` | Adicione `return pathRegex` ao final da função |
+| Route param não é capturado | `:param` não convertido em grupo regex | Verifique se `replaceAll` com `routeParameterRegex` está correto |
+| Query params opcionais quebram a rota | Regex não tem grupo opcional para query | Adicione `(?<query>\\?(.*))?$` no final do pattern |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre regex de rotas, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0412-parametros-dinamicos-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0412-parametros-dinamicos-mp-4/references/code-examples.md)

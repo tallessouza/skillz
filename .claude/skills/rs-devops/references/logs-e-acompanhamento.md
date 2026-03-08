@@ -1,6 +1,12 @@
 ---
 name: rs-devops-logs-e-acompanhamento
 description: "Applies AppRunner logging, metrics monitoring, and CI/CD pipeline stabilization practices when deploying containers to AWS. Use when user asks to 'monitor AppRunner', 'check deploy logs', 'wait for deploy', 'configure CI/CD pipeline stability', or 'add health check wait'. Covers waitForServiceStability, CloudWatch logs, metrics (2XX/4XX/5XX), and pipeline output steps. Make sure to use this skill whenever configuring AppRunner deploys or debugging deploy pipeline timing issues. Not for local Docker development, Kubernetes, or non-AWS container orchestration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: apprunner-monitoring
+  tags: [apprunner, cloudwatch, ci-cd, github-actions, deploy, monitoring, aws]
 ---
 
 # Logs e Acompanhamento no AppRunner
@@ -101,14 +107,14 @@ Otimizacao possivel: usar `docker push --all-tags` para enviar todas as tags em 
 | Fazer dois `docker push` separados (hash + latest) | Use `docker push --all-tags` em um unico comando |
 | Assumir que o servico esta no ar so porque o health check iniciou | Aguarde a mensagem "routing traffic to application" nos logs |
 
+## Troubleshooting
+
+### Pipeline reporta sucesso mas aplicacao retorna 404
+**Symptom:** GitHub Actions mostra check verde mas a URL do AppRunner retorna erro
+**Cause:** Falta `waitForServiceStabilitySeconds` na action — a pipeline encerra ao iniciar o deploy, nao ao confirmar que funcionou
+**Fix:** Adicione `waitForServiceStabilitySeconds: 180` na action do AppRunner para travar a pipeline ate confirmacao
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-logs-e-acompanhamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-logs-e-acompanhamento/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-pergunta-com-anexos
-description: "Enforces correct attachment association patterns in NestJS clean architecture when implementing entity relationships with pre-existing records. Use when user asks to 'create question with attachments', 'associate attachments', 'implement file upload relationship', 'fix attachment mapping', or 'debug entity relationship mapping'. Applies rules: attachments must exist before association, use correct ID field in mappers (attachmentId not entity id), create factories for E2E tests. Make sure to use this skill whenever implementing many-to-many relationships through pivot entities in clean architecture. Not for file upload handling, storage configuration, or simple CRUD without relationships."
+name: 2023-criando-pergunta-com-anexos-2024
+description: "Implements entity-attachment association in NestJS/Prisma using correct mapper IDs and dedicated test factories. Use when user asks to 'associate attachments with entities', 'create attachment mappers', 'test entity with attachments E2E', or 'fix attachment ID mapping'. Enforces: use attachmentId not pivot id in mappers, create separate factories for base entities and pivots, verify associations in database after creation. Make sure to use this skill whenever implementing entity-attachment relationships with Prisma mappers in NestJS. Not for file upload logic, frontend attachment UI, or domain-only attachment modeling."
+category: coding-lens
+tags: [attachments, entities, error-handling, nestjs, prisma, repository]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-prisma
+  tags: [attachments, prisma, nestjs, mappers, e2e-testing, factories]
 ---
 
 # Criando Pergunta com Anexos
@@ -114,14 +123,14 @@ static toPrisma(questionAttachment: QuestionAttachment) {
 | Testar apenas criacao da pergunta | Testar tambem que attachments foram associados no banco |
 | Confiar que `currentItems` esta correto sem verificar | Adicionar console.log em `createMany` para debug |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-pergunta-com-anexos-2024/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-pergunta-com-anexos-2024/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

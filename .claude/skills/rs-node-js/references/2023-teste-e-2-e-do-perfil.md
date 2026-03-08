@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-teste-e2e-perfil
 description: "Applies E2E testing patterns for authenticated routes in Node.js APIs using Supertest. Use when user asks to 'write e2e test', 'test authenticated route', 'test profile endpoint', 'test protected route', or 'add integration test with auth'. Enforces the cascade pattern: create user, authenticate, then test with token. Make sure to use this skill whenever writing E2E tests for routes that require authentication. Not for unit tests, in-memory repository tests, or frontend testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-solid-nodejs
+  tags: [e2e-testing, authenticated-routes, supertest, bearer-token, profile]
 ---
 
 # Teste E2E de Rotas Autenticadas
@@ -135,14 +141,14 @@ it('should get profile', async () => {
 | Testar auth e profile no mesmo `it` | Um `it` por comportamento testado |
 | Esquecer `beforeAll(app.ready)` e `afterAll(app.close)` | Sempre incluir setup/teardown do app |
 
+## Troubleshooting
+
+### Teste de rota autenticada retorna 401 Unauthorized
+**Symptom:** Requisicao para rota protegida falha mesmo com token valido
+**Cause:** Token nao enviado no header Authorization ou formato incorreto (falta 'Bearer ' prefix)
+**Fix:** Use `.set('Authorization', `Bearer ${token}`)` no Supertest para enviar o token corretamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-do-perfil/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-do-perfil/references/code-examples.md)

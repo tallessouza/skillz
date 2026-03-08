@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-nomes-para-variaveis
 description: "Enforces JavaScript variable naming conventions when writing JS/TS code. Use when user asks to 'create a variable', 'write a function', 'name this', or any code generation in JavaScript/TypeScript. Applies camelCase by default, prohibits accents, numbers as first char, Portuguese names, and meaningless names like x/temp/data. Make sure to use this skill whenever generating JS/TS variables or functions. Not for Python, Ruby, or non-JS languages where snake_case is standard."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, naming, camelCase, variables, conventions]
 ---
 
 # Nomes para Variáveis JavaScript
@@ -84,13 +90,16 @@ let productName = "Mouse"
 | `let productname = ...` | `let productName = ...` |
 | `let product name = ...` | `let productName = ...` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `SyntaxError: Unexpected number` | Variavel comeca com numero (`1user`) | Renomeie para comecar com letra (`firstUser`, `user1`) |
+| Caracteres estranhos no codigo | Acentos ou caracteres especiais no nome | Use apenas letras ASCII sem acentos |
+| Dificil entender o que a variavel guarda | Nome generico como `x`, `data`, `temp` | Renomeie com nome descritivo: `productName`, `userEmail` |
+| Inconsistencia no estilo de nomes | Mistura de camelCase com snake_case | Padronize em camelCase para JS/TS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre case-sensitivity, padrões e recomendações
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-nomes-para-variaveis/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-nomes-para-variaveis/references/code-examples.md)

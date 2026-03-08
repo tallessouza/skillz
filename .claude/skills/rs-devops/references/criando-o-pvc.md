@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-o-pvc
 description: "Generates Kubernetes PersistentVolumeClaim manifests following best practices. Use when user asks to 'create a PVC', 'claim storage in k8s', 'write PVC manifest', 'persistent volume claim yaml', or 'configure storage for deployment'. Enforces resource requests, storageClassName, accessModes, and selector matchLabels for proper PV binding. Make sure to use this skill whenever generating PVC manifests or configuring pod storage claims. Not for PV creation, StorageClass definition, or CSI driver configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-storage
+  tags: [kubernetes, pvc, persistent-volume-claim, storage, storageclass, accessmodes]
 ---
 
 # Criando PVC no Kubernetes
@@ -102,14 +108,14 @@ spec:
 | `kubectl apply -f pvc.yaml` sem `-n` | `kubectl apply -f pvc.yaml -n <namespace>` |
 | Assumir que storage e por pod | Entender que o request e para o deployment inteiro |
 
+## Troubleshooting
+
+### PVC fica com status Pending indefinidamente
+**Symptom:** `kubectl get pvc` mostra status `Pending` e o PVC nunca faz binding com um PV.
+**Cause:** O StorageClass usa `volumeBindingMode: WaitForFirstConsumer`, que so faz binding quando um Pod que consome o PVC e agendado.
+**Fix:** Crie o Deployment/Pod que referencia o PVC. O binding acontece automaticamente quando o scheduler posiciona o Pod. Se precisa binding imediato, use `volumeBindingMode: Immediate` no StorageClass.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-o-pvc/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-o-pvc/references/code-examples.md)

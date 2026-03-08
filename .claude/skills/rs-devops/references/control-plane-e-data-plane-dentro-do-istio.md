@@ -1,13 +1,19 @@
 ---
 name: rs-devops-control-plane-data-plane-istio
 description: "Applies Istio architecture knowledge when designing or configuring service mesh infrastructure. Use when user asks to 'setup Istio', 'configure service mesh', 'add sidecar proxy', 'configure Envoy', 'enable mTLS', or 'use ambient mode'. Enforces correct separation between control plane (istiod) and data plane (Envoy proxies). Make sure to use this skill whenever working with Istio configuration, service mesh architecture, or Kubernetes networking with Istio. Not for general Kubernetes networking without Istio, nor for application-level HTTP routing without service mesh."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: istio-architecture
+  tags: [istio, control-plane, data-plane, istiod, envoy, sidecar, ambient-mode, mtls]
 ---
 
 # Control Plane e Data Plane no Istio
 
 > Ao configurar Istio, separe claramente responsabilidades: control plane (istiod) define politicas e configuracoes, data plane (Envoy proxies) executa o trafego.
 
-## Conceito central
+## Key concepts
 
 O Istio segue o mesmo padrao conceitual do Kubernetes: um **control plane** (cerebro) que define regras e um **data plane** (execucao) que aplica essas regras no trafego real. O control plane converte regras de alto nivel em configuracoes de baixo nivel para os proxies.
 
@@ -90,14 +96,14 @@ Execucao acontece **por no** do cluster, nao por pod.
 | Confundir control plane do K8s com control plane do Istio | Sao cerebros separados: K8s gerencia containers, Istio gerencia rede/mesh |
 | Assumir que ambient mode nao tem data plane | Data plane existe, so nao usa sidecar — usa ztunnel + waypoint proxy |
 
+## Troubleshooting
+
+### Alto consumo de recursos com Istio em cluster grande
+**Symptom:** Cada pod tem um sidecar Envoy adicional, consumindo CPU e memoria significativos no cluster
+**Cause:** Modo sidecar injeta um proxy em cada pod, multiplicando consumo por numero de pods
+**Fix:** Avalie migrar para ambient mode que usa ztunnel (por no) + waypoint proxy, reduzindo consumo significativamente
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-control-plane-e-data-plane-dentro-do-istio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-control-plane-e-data-plane-dentro-do-istio/references/code-examples.md)

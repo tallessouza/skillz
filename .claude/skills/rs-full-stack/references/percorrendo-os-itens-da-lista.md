@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-percorrendo-itens-lista
 description: "Applies for-loop list traversal patterns when iterating over DOM elements to calculate totals or aggregate values. Use when user asks to 'loop through elements', 'calculate total from list', 'sum values from DOM', 'iterate over items', or 'traverse list items'. Enforces accumulator pattern, scoped querySelector on individual elements, and proper index-based access. Make sure to use this skill whenever generating code that iterates DOM collections to extract and aggregate data. Not for array method patterns like map/reduce/forEach or non-DOM iteration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: dom-javascript
+  tags: [javascript, dom, for-loop, queryselector, acumulador]
 ---
 
 # Percorrendo Itens da Lista com For Loop
@@ -85,6 +91,15 @@ for (let i = 0; i < itens.length; i++) {
 | `for (let i = 0; i < 5; i++)` (hardcoded) | `for (let i = 0; i < itens.length; i++)` |
 | `total = itemAmount` (substitui) | `total += parseFloat(itemAmount.innerText)` (acumula) |
 | Variavel de controle sem inicializar | `let total = 0` antes do loop |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Total sempre retorna o valor do primeiro item | Usando `document.querySelector` ao inves de escopar no item | Use `itens[i].querySelector('.class')` dentro do loop |
+| `parseFloat` retorna `NaN` | Texto contem caracteres nao numericos (R$, virgula) | Limpe a string antes: `texto.replace(/[^0-9.-]/g, '')` |
+| Loop executa zero vezes | Colecao DOM esta vazia ou seletor errado | Verifique o seletor do `querySelectorAll` e se os elementos existem |
+| Total nao acumula (mostra so ultimo valor) | Usando `=` ao inves de `+=` | Use `total += valor` para acumular, nao `total = valor` |
 
 ## Deep reference library
 

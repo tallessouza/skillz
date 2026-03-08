@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-use-clipboard-hook
 description: "Generates a reusable useClipboard custom hook when writing React copy-to-clipboard functionality. Use when user asks to 'copy to clipboard', 'copy link', 'share button', 'clipboard hook', or 'copy text feedback'. Applies pattern: navigator.clipboard API with try/catch, auto-reset state via configurable timeout, useCallback for stable reference. Make sure to use this skill whenever implementing any copy-to-clipboard feature in React/Next.js. Not for native mobile clipboard, file copying, or drag-and-drop operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: custom-hooks
+  tags: [clipboard, custom-hook, useClipboard, react, share, copy-to-clipboard]
 ---
 
 # useClipboard Hook Pattern
@@ -121,14 +127,19 @@ function ShareButton({ url }: { url: string }) {
 | Estado de copia sem auto-reset | Timeout configuravel que reseta `isCopied` |
 | Ignorar verificacao de suporte | Checar `navigator.clipboard` antes de usar |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-funcionalidade-ao-compatilhar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-funcionalidade-ao-compatilhar/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-funcionalidade-ao-compatilhar/references/deep-explanation.md) — O instrutor enfatiza a importancia de encapsular a logica de copia em um hook dedicado porque:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-funcionalidade-ao-compatilhar/references/code-examples.md) — hooks/

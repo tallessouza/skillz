@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-teste-e2e-registro
 description: "Applies E2E testing patterns with Supertest and Vitest for Fastify API routes. Use when user asks to 'write e2e test', 'test an endpoint', 'test a controller', 'create integration test', or 'test API route'. Enforces app lifecycle management with beforeAll/afterAll, proper HTTP assertions, and Supertest request patterns. Make sure to use this skill whenever creating tests that hit HTTP endpoints in a Fastify/Node.js application. Not for unit tests, use-case tests, or repository tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-e2e
+  tags: [e2e, supertest, vitest, fastify, testing, http, api]
 ---
 
 # Teste E2E com Supertest e Vitest
@@ -122,14 +128,14 @@ describe('Register (E2E)', () => {
 | Teste sem `afterAll(app.close)` | Sempre fechar com `app.close()` no `afterAll` |
 | `request(app)` direto na instancia Fastify | `request(app.server)` para acessar o HTTP server nativo |
 
+## Troubleshooting
+
+### Supertest retorna erro de conexao recusada
+**Symptom:** `Error: connect ECONNREFUSED 127.0.0.1:3333` ao rodar testes
+**Cause:** O app.ready() nao foi chamado no beforeAll, ou o servidor esta tentando fazer listen em uma porta ja em uso
+**Fix:** Garanta que `await app.ready()` esta no `beforeAll` e que voce esta usando `request(app.server)` (sem chamar `app.listen()`)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-do-registro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-do-registro/references/code-examples.md)

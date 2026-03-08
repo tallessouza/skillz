@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conectando-repo-remoto
-description: "Guides connecting a local Git repository to a remote GitHub repository. Use when user asks to 'connect to GitHub', 'push to remote', 'add remote origin', 'create GitHub repo', or 'link local repo to GitHub'. Covers repository creation on GitHub, adding remote origin, and first push. Make sure to use this skill whenever setting up a new GitHub remote for an existing local project. Not for Git basics like commits, branches, or resolving merge conflicts."
+description: "Connects a local Git repository to a remote GitHub repository. Use when user asks to 'connect to GitHub', 'push to remote', 'add remote origin', 'create GitHub repo', or 'link local repo to GitHub'. Covers repository creation on GitHub, adding remote origin, and first push. Make sure to use this skill whenever setting up a new GitHub remote for an existing local project. Not for Git basics like commits, branches, or resolving merge conflicts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, github, remote, push, repository]
 ---
 
 # Conectando Repositório Local com Repositório Remoto
@@ -78,13 +84,17 @@ git remote -v
 | **.gitignore** | Idem — criando do zero. Se já tem local, criar o `.gitignore` manualmente |
 | **License** | Quer definir como outros podem usar seu código (MIT, Apache, etc.) |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Push rejeitado com erro de autenticacao | Email do git config diferente da conta GitHub | Verifique `git config --global user.email` e corrija para o email do GitHub |
+| Push rejeitado por conflito | Repositorio remoto criado com README/gitignore | Use `git pull --rebase origin main` antes do push ou recrie o repo sem arquivos iniciais |
+| Remote origin ja existe | Tentando adicionar origin duplicado | Use `git remote set-url origin URL` para atualizar o URL existente |
+| Branch main nao existe | Branch local ainda se chama master | Execute `git branch -M main` para renomear a branch |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre public vs private, README, gitignore, licenças e histórico do nome main
 - [code-examples.md](references/code-examples.md) — Todos os comandos expandidos com variações e cenários
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conectando-repositorio-local-com-repositorio-remoto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conectando-repositorio-local-com-repositorio-remoto/references/code-examples.md)

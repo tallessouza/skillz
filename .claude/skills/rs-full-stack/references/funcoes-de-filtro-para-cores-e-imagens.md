@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-filter-functions
 description: "Applies CSS filter functions (blur, brightness, contrast, drop-shadow, opacity, invert, hue-rotate, saturate, sepia) when styling elements or images. Use when user asks to 'add blur', 'adjust brightness', 'apply filter', 'create hover effect', 'style an image', or 'add shadow with filter'. Combines multiple filters for dynamic visual effects. Make sure to use this skill whenever generating CSS that involves visual transformations on images or elements. Not for CSS layout, positioning, or box-shadow (use box-shadow property instead of filter: drop-shadow when appropriate)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-functions
+  tags: [css, filter, blur, brightness, contrast, drop-shadow, hue-rotate, sepia]
 ---
 
 # Funções de Filtro CSS
@@ -111,13 +117,16 @@ description: "Applies CSS filter functions (blur, brightness, contrast, drop-sha
 | `brightness(0)` achando que remove filtro | `brightness(1)` é o padrão neutro |
 | `hue-rotate(200)` sem unidade | `hue-rotate(200deg)` sempre com deg |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Segundo `filter` sobrescreve o primeiro | Duas declarações `filter` separadas | Combine todos os filtros numa única declaração: `filter: blur(2px) opacity(0.5)` |
+| `filter: unset` não remove filtro no hover | Especificidade CSS ou `!important` conflitante | Verifique cascade e especificidade do seletor |
+| `hue-rotate` não muda a cor | Falta unidade `deg` | Sempre use `hue-rotate(200deg)` com unidade |
+| Sombra cortada com `clip-path` | `box-shadow` é cortada pelo clip-path | Use `filter: drop-shadow()` que respeita o recorte |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cada filtro, a roda HSL, e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-funcoes-de-filtro-para-cores-e-imagens/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-funcoes-de-filtro-para-cores-e-imagens/references/code-examples.md)

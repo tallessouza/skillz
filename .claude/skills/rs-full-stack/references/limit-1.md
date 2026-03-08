@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-limit-1
 description: "Applies SQL LIMIT clause patterns when writing database queries. Use when user asks to 'query database', 'list top N', 'get first records', 'paginate results', or 'limit SQL results'. Enforces correct ORDER BY + LIMIT composition for ranking queries. Make sure to use this skill whenever generating SQL that returns a subset of rows. Not for application-level pagination logic, ORM configuration, or cursor-based pagination."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-database
+  tags: [sql, limit, order-by, pagination, query]
 ---
 
 # SQL LIMIT
@@ -75,13 +81,16 @@ SELECT * FROM products ORDER BY price DESC LIMIT 3;
 | Trazer tudo e filtrar na aplicacao | Usar LIMIT direto no SQL |
 | `ORDER BY price LIMIT 3` (direcao implicita) | `ORDER BY price DESC LIMIT 3` (direcao explicita) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| LIMIT retorna registros diferentes a cada execucao | Falta ORDER BY na query | Adicione ORDER BY antes do LIMIT |
+| LIMIT nao retorna o esperado | Direcao do ORDER BY incorreta (ASC vs DESC) | Especifique explicitamente DESC ou ASC |
+| Paginacao retorna registros duplicados | OFFSET sem ORDER BY estavel | Use coluna unica (id) no ORDER BY |
+| Query lenta com LIMIT grande | Banco precisa ordenar todos antes de limitar | Adicione indice na coluna do ORDER BY |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre LIMIT, ordem de execucao SQL e performance
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-limit-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-limit-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estrutura-html-inicial
 description: "Applies HTML structuring methodology when converting a visual design (Figma/mockup) into semantic HTML. Use when user asks to 'create HTML from design', 'structure a page', 'convert layout to HTML', 'build HTML skeleton', or 'start a new page from Figma'. Follows design-to-tag mapping, semantic sectioning, and Emmet shortcuts. Make sure to use this skill whenever building HTML structure from any visual reference. Not for CSS styling, JavaScript logic, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-fundamentals
+  tags: [html, semantic-html, figma, emmet, design-to-code]
 ---
 
 # Estrutura HTML a partir de Design
@@ -100,13 +106,16 @@ Use Live Server (extensao VS Code) para visualizar em tempo real:
 | Criar cada item de lista como `<p>` | Use `<ul><li>` para listas |
 | Tentar perfeicao no primeiro commit | Construa o esqueleto, commite, refine depois |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Emmet nao expande no VS Code | Arquivo nao reconhecido como HTML | Verificar extensao `.html` e linguagem no canto inferior direito |
+| Secoes sem espacamento visual | CSS nao aplicado ainda | Normal na fase de estrutura — estilize depois |
+| Tags semanticas nao renderizam diferente | Tags semanticas nao tem estilo visual padrao | Adicionar CSS — semantica e para acessibilidade, nao visual |
+| Imagem nao aparece | Caminho do `src` incorreto | Verificar caminho relativo e nome do arquivo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e forma de pensar ao mapear design para HTML
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com atalhos Emmet e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estrutura-html-inicial/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estrutura-html-inicial/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comprimento-string
 description: "Applies string length patterns when writing JavaScript/TypeScript code that measures, validates, or counts characters. Use when user asks to 'validate password', 'check string length', 'count characters', 'count digits in a number', or any input validation task. Ensures correct use of .length property (not method), space-awareness, and number-to-string conversion for digit counting. Make sure to use this skill whenever generating validation code involving character counts. Not for array length, file size, or buffer operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, string, length, validation, characters]
 ---
 
 # Comprimento de Strings
@@ -61,13 +67,15 @@ const digits = String(12345).length // 5 — converte para string primeiro
 | `(12345).length` | `String(12345).length` |
 | `typeof value + value.length` | `String(value).length` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `TypeError: .length is not a function` | Chamou `.length()` com parenteses | Remova os parenteses — `.length` e propriedade |
+| `.length` retorna `undefined` em numero | Numeros nao possuem `.length` | Converta com `String(number).length` |
+| Contagem inclui espacos inesperados | Espacos contam como caracteres | Use `.trim()` antes se quiser ignorar espacos nas pontas |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre propriedade vs metodo e cadeia de caracteres
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-obtendo-o-comprimento-de-uma-string/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-obtendo-o-comprimento-de-uma-string/references/code-examples.md)

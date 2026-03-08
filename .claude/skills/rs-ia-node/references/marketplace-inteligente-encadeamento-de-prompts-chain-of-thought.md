@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-chain-of-thought
 description: "Applies Chain of Thought prompting technique when building LLM prompts for multi-step tasks. Use when user asks to 'write a prompt', 'create a system prompt', 'build an AI prompt', 'improve prompt quality', or 'get better LLM results'. Breaks complex tasks into numbered reasoning steps with examples. Make sure to use this skill whenever designing prompts that require the model to perform analysis, decomposition, or multi-step reasoning. Not for simple single-step prompts, UI code, or non-LLM tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: prompt-engineering
+  tags: [prompt-engineering, ia-node, node-js]
 ---
 
 # Chain of Thought — Encadeamento de Prompts
@@ -90,14 +96,14 @@ Necessidade: ${userNeed}`
 | Etapas vagas: "analise e retorne" | Etapas especificas: "divida X em Y, para cada Y liste Z" |
 | Todas as instrucoes em um paragrafo corrido | Etapas numeradas com separacao visual clara |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-encadeamento-de-prompts-chain-of-thought/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-encadeamento-de-prompts-chain-of-thought/references/code-examples.md)

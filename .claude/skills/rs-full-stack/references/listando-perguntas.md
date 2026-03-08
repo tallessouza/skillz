@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listando-perguntas
 description: "Applies Prisma findMany pattern when implementing list/index endpoints in Node.js APIs. Use when user asks to 'list records', 'create an index endpoint', 'fetch all items', 'implement GET route', or 'query all rows with Prisma'. Ensures correct controller structure with async/await and Prisma client usage. Make sure to use this skill whenever generating CRUD list endpoints with Prisma ORM. Not for single-record queries, filtering, pagination, or complex Prisma queries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: prisma-orm
+  tags: [prisma, findMany, rest-api, controller, crud]
 ---
 
 # Listando Registros com Prisma (Index Endpoint)
@@ -68,13 +74,16 @@ async index() {
 | Callback sem await | `await prisma.questions.findMany()` |
 | Query SQL raw para listagem simples | `prisma.model.findMany()` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| findMany retorna array vazio | Tabela sem dados ou model name incorreto | Verifique se o nome do model no Prisma corresponde ao schema |
+| Erro "Cannot read properties of undefined" | Prisma client nao inicializado | Verifique se `prisma` foi importado e instanciado corretamente |
+| Dados retornados sem await | Falta `await` antes do findMany | Adicione `await` — queries Prisma sao assincronas |
+| Endpoint retorna Promise em vez de dados | Funcao nao marcada como async | Adicione `async` na declaracao da funcao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o padrao index e convencoes REST
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listando-perguntas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listando-perguntas/references/code-examples.md)

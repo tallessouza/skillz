@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-fluxo-eventos-dominio
 description: "Enforces Domain Events with PubSub pattern for cross-subdomain communication in DDD architectures. Use when user asks to 'notify another domain', 'dispatch domain event', 'communicate between bounded contexts', 'decouple use cases', or 'trigger side effects after persistence'. Applies two-phase dispatch: register event on entity creation, dispatch only after repository persistence. Make sure to use this skill whenever implementing cross-domain communication or entity-triggered side effects in DDD projects. Not for simple function calls, HTTP webhooks, or message broker configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: domain-events
+  tags: [ddd, domain-events, pubsub, clean-architecture, aggregate, typescript]
 ---
 
 # Fluxo de Eventos de Domínio
@@ -125,14 +131,14 @@ export class AnswerQuestionUseCase {
 | Enviar notificação antes de confirmar persistência | Duas fases: register + dispatch após save |
 | Subscriber com dependência direta do publisher | Subscriber conhece apenas o evento, não quem publicou |
 
+## Troubleshooting
+
+### Evento de dominio nunca dispara o subscriber
+**Symptom:** O subscriber registrado nunca e chamado, mesmo apos criar a entidade e persistir
+**Cause:** O repositorio nao chama DomainEvents.dispatchEventsForAggregate() apos o save
+**Fix:** Adicione DomainEvents.dispatchEventsForAggregate(entity.id) no metodo create/save do repositorio, apos a persistencia
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-fluxo-de-eventos-de-dominio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-fluxo-de-eventos-de-dominio/references/code-examples.md)

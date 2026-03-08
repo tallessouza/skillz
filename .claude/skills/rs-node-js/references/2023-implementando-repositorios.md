@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-implementando-repositorios
 description: "Applies Prisma repository implementation patterns when creating NestJS repositories, data access layers, or database abstractions. Use when user asks to 'create a repository', 'implement data access', 'add Prisma CRUD', 'create NestJS service for database', or 'implement repository pattern'. Enforces mapper usage, consistent method signatures, and proper async/await patterns. Make sure to use this skill whenever generating repository classes that wrap Prisma. Not for business logic, controllers, or domain entity design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-repository-patterns
+  tags: [prisma, repository, nestjs, mapper, crud, pagination, clean-architecture]
 ---
 
 # Implementando Repositórios Prisma no NestJS
@@ -147,14 +153,14 @@ class PrismaAnswersRepository implements AnswersRepository {
 | Esquecer `async` em método com `await` | Sempre marcar `async` na assinatura |
 | `params.page` sem desestruturar | `{ page }` desestruturado nos parâmetros |
 
+## Troubleshooting
+
+### Metodo do repositorio retorna tipo do Prisma em vez da entidade de dominio
+**Symptom:** O controller recebe um objeto com campos do banco (snake_case) em vez da entidade com value objects
+**Cause:** O metodo do repositorio retorna o resultado do Prisma diretamente sem usar o mapper toDomain()
+**Fix:** Sempre converta com PrismaEntityMapper.toDomain(result) antes de retornar do metodo do repositorio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementando-repositorios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementando-repositorios/references/code-examples.md)

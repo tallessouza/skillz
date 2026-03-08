@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-aplicando-filtro-na-listagem
 description: "Applies Next.js search filter patterns when building list pages with server-side filtering. Use when user asks to 'add search to a list', 'filter server components', 'use URL params for filtering', 'implement search in Next.js', or 'build a board with filters'. Covers URL constructor for fetch params, useQueryState shallow:false for server re-render, Next.js Image cost decisions, and empty states. Make sure to use this skill whenever implementing search/filter in Next.js server components. Not for client-side-only filtering, pagination, or infinite scroll."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: search-filtering
+  tags: [search, filter, URL-constructor, useQueryState, server-components, empty-state]
 ---
 
 # Aplicando Filtro na Listagem (Next.js)
@@ -105,14 +111,19 @@ const [search, setSearch] = useQueryState('q', { shallow: false })
 | Lista vazia sem feedback visual | Empty state com mensagem descritiva |
 | `{items.map(...)}` sem checar length | Ternario: `length === 0 ? empty : map` |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-aplicando-filtro-na-listagem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-aplicando-filtro-na-listagem/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-aplicando-filtro-na-listagem/references/deep-explanation.md) — O instrutor discorda da regra do Biome/ESLint que obriga o uso de `<Image>` do Next.js. O raciocinio
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-aplicando-filtro-na-listagem/references/code-examples.md) — // biome-ignore lint/a11y/useAltText: GitHub already optimizes the image

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-embeddings-intro
 description: "Applies embedding-based similarity search patterns when building product recommendation, semantic search, or text-to-number comparison features in Node.js. Use when user asks to 'find similar items', 'recommend products', 'semantic search', 'compare texts', 'use embeddings', or 'OpenAI embedding API'. Covers pre-processing strategy, cosine similarity, and vector storage. Make sure to use this skill whenever implementing any feature that requires measuring similarity between texts or items. Not for image embeddings, fine-tuning models, or RAG with document chunking."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: embeddings
+  tags: [postgresql, embeddings, node-js, openai, ia-node]
 ---
 
 # Embeddings — Transformando Texto em Numeros
@@ -105,14 +111,14 @@ Considere: ${similar.map(p => p.name).join(", ")}`
 | Retornar todos os resultados da comparacao | Limitar a top 10-20 mais similares |
 | Ignorar embedding ao cadastrar produto | Sempre gerar e salvar junto com o produto |
 
+## Troubleshooting
+
+### Busca por similaridade retorna produtos irrelevantes
+**Symptom:** Produtos retornados nao tem relacao semantica com o input
+**Cause:** Embeddings gerados com pouco contexto (so nome, sem descricao) ou modelo de embedding diferente entre geracao e busca
+**Fix:** Concatene nome + descricao ao gerar embeddings. Garanta que o mesmo modelo de embedding e usado na geracao e na busca
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-aos-embeddings/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-introducao-aos-embeddings/references/code-examples.md)

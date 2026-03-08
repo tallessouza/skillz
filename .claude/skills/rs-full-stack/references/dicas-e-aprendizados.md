@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-dicas-e-aprendizados
 description: "Applies responsive CSS best practices when writing stylesheets or media queries. Use when user asks to 'make responsive', 'add media queries', 'mobile first', 'desktop first', 'use rem', 'organize CSS files', or any responsive layout task. Enforces simultaneous mobile+desktop strategy, 62.5% font-size trick, media query placement near related rules, and bundler awareness. Make sure to use this skill whenever generating responsive CSS. Not for JavaScript logic, backend code, or non-CSS layout tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-responsive
+  tags: [CSS, responsive, media-queries, mobile-first, rem, font-size, bundler]
 ---
 
 # Dicas de Responsividade CSS
@@ -136,13 +142,16 @@ h1 { font-size: 4.8rem; }
 | Assumir que rem em media query herda do root | rem/em em media query sempre usa 16px base |
 | Fazer todo mobile, depois todo desktop | Para layouts complexos, faca simultaneamente |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Media query nao funciona com rem | Media queries sempre usam 16px como base | Calcule com base em 16px: `48em = 768px` |
+| Layout quebra ao remover 62.5% trick | Todos os valores rem dependem dessa base | Se usou 62.5%, mantenha durante todo o projeto |
+| Muitas requisicoes HTTP por CSS | Cada arquivo CSS gera uma requisicao | Use bundler (Vite, Webpack) em producao |
+| Media query de uma secao afeta outra | Query em arquivo separado sem contexto | Coloque media queries proximas ao codigo que modificam |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Mobile First vs Desktop First, regra de tres do 62.5%, e como media queries calculam unidades
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e cenarios reais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-dicas-e-aprendizados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-dicas-e-aprendizados/references/code-examples.md)

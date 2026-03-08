@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-between-1
-description: "Applies SQL BETWEEN clause for range filtering in database queries. Use when user asks to 'filter by range', 'query between values', 'SQL where between', 'filter prices', or any SQL query involving numeric/date intervals. Ensures BETWEEN syntax over verbose >= AND <= comparisons. Make sure to use this skill whenever writing SQL range filters. Not for non-range conditions like IN, LIKE, or equality checks."
+description: "Applies SQL BETWEEN clause for range filtering in database queries. Use when user asks to 'filter by range', 'query between values', 'SQL where between', 'filter prices', or any SQL query involving numeric/date intervals. Ensures BETWEEN syntax over verbose greater-than-or-equal AND less-than-or-equal comparisons. Make sure to use this skill whenever writing SQL range filters. Not for non-range conditions like IN, LIKE, or equality checks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, between, range, filter, where]
 ---
 
 # SQL BETWEEN — Filtro de Intervalos
@@ -66,13 +72,16 @@ WHERE price BETWEEN 600 AND 1200;
 | `BETWEEN 1200 AND 600` (ordem invertida) | `BETWEEN 600 AND 1200` |
 | `BETWEEN` quando precisa de exclusao | `> 600 AND <= 1200` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| BETWEEN retorna zero resultados | Valores min e max invertidos | Use `BETWEEN menor AND maior`, nunca ao contrario |
+| Resultado inclui os extremos inesperadamente | BETWEEN e inclusivo por definicao | Se precisa excluir extremo, use `> min AND < max` |
+| Filtro de datas nao funciona | Formato de data incorreto | Use formato ISO: `BETWEEN '2024-01-01' AND '2024-12-31'` |
+| Erro de sintaxe no BETWEEN | Faltou AND entre os valores | Sintaxe correta: `BETWEEN valor1 AND valor2` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar BETWEEN vs operadores
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com datas, numeros e variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-between-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-between-1/references/code-examples.md)

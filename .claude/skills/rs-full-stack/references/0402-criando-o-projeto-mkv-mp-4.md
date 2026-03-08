@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-projeto
 description: "Applies Node.js project scaffolding conventions when setting up a new backend project. Use when user asks to 'create a node project', 'initialize an API', 'setup a new backend', 'scaffold a server', or 'start a new express/node app'. Enforces src/ structure, ESModules config, node --watch dev script, and proper package.json fields. Make sure to use this skill whenever bootstrapping any Node.js API project from scratch. Not for frontend projects, monorepo setup, or Docker/deployment configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, project-setup, esmodules, package-json, scaffolding, npm]
 ---
 
 # Criando Projeto Node.js
@@ -92,13 +98,17 @@ project-name/
 - `npm run dev` inicia com watch mode
 - `cat package.json | grep type` retorna `"module"`
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: Cannot use import statement` | Faltou `"type": "module"` no package.json | Adicionar `"type": "module"` ao package.json |
+| `node --watch` nao reconhecido | Node.js versao menor que 18 | Atualizar Node.js para versao 18+ |
+| `Error: Cannot find module 'src/server.js'` | Path incorreto no `main` ou no script | Verificar que `src/server.js` existe e o path esta correto |
+| `npm run dev` nao reinicia ao salvar | Script usando `node` em vez de `node --watch` | Alterar script para `"dev": "node --watch src/server.js"` |
+| `require is not defined` | Usando CommonJS em projeto ESModules | Substituir `require()` por `import` e `module.exports` por `export` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada decisao de configuracao
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de package.json e estrutura
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0402-criando-o-projeto-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0402-criando-o-projeto-mkv-mp-4/references/code-examples.md)

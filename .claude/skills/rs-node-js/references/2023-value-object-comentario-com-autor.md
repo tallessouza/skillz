@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-vo-comentario-autor
 description: "Enforces Value Object patterns for composite data structures in Domain-Driven Design with TypeScript. Use when user asks to 'return data from multiple entities', 'create a DTO', 'combine entities', 'list with related data', or 'represent joined data in domain layer'. Applies rules: Value Objects for multi-entity data, no entity inheritance for composites, explicit property naming, factory method pattern, mandatory getters for serialization. Make sure to use this skill whenever creating domain classes that aggregate data from multiple entities. Not for single-entity CRUD, database schemas, or REST controller logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: value-objects-ddd
+  tags: [value-object, ddd, composite, multi-entity, factory-method, typescript]
 ---
 
 # Value Object para Dados Compostos (Multi-Entidade)
@@ -108,14 +114,14 @@ const comments: CommentWithAuthor[] = await repo.findManyWithAuthor()
 | `vo1 === vo2` para comparar Value Objects | `vo1.equals(vo2)` com JSON.stringify |
 | Value Object com todos os campos de todas as entidades | Apenas os campos necessarios para o caso de uso |
 
+## Troubleshooting
+
+### Value Object nao serializa propriedades ao converter para JSON
+**Symptom:** `JSON.stringify(commentWithAuthor)` retorna `{}` ou nao inclui as propriedades esperadas
+**Cause:** As propriedades estao em `this.props` (protegido) e nao tem getters publicos para serializar
+**Fix:** Adicione getters para cada propriedade que precisa aparecer na serializacao: `get commentId() { return this.props.commentId }`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-value-object-comentario-com-autor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-value-object-comentario-com-autor/references/code-examples.md)

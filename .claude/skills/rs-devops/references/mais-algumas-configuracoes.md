@@ -1,6 +1,12 @@
 ---
 name: rs-devops-mais-algumas-configuracoes
 description: "Enforces Terraform module configuration best practices when writing HCL code. Use when user asks to 'create a module', 'configure terraform', 'add variables to terraform', 'add tags to resources', or 'refactor hardcoded values'. Applies rules: no hardcoded values in modules, tags on every resource, map(string) for tags, defaults with override pattern, terraform fmt and validate before plan. Make sure to use this skill whenever writing or reviewing Terraform modules. Not for Terraform state management, CI/CD pipelines, or cloud provider CLI usage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modulos
+  tags: [terraform, modules, tags, variables, hcl, cloudfront, best-practices]
 ---
 
 # Configuracao de Modulos Terraform
@@ -114,14 +120,14 @@ resource "aws_s3_bucket" "this" {
 | Tags hardcoded dentro do modulo | Tags passadas via variavel do consumidor |
 | Variavel de tags sem default | `default = {}` para tags opcionais |
 
+## Troubleshooting
+
+### Terraform validate falha com "argument not expected"
+**Symptom:** `terraform validate` retorna erro de argumento inesperado ao passar variavel para modulo
+**Cause:** A variavel esta sendo passada no bloco `module {}` mas nao foi declarada no `variables.tf` do modulo
+**Fix:** Declare a variavel no `variables.tf` do modulo com `type`, `description` e opcionalmente `default`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-mais-algumas-configuracoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-mais-algumas-configuracoes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

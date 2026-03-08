@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-animacao-das-abas
-description: "Applies Framer Motion layoutId animation pattern when building tab components with animated active indicators. Use when user asks to 'animate tabs', 'sliding tab indicator', 'active tab animation', 'tab underline transition', or 'framer motion tabs'. Ensures smooth layout transitions instead of mount/unmount jumps. Make sure to use this skill whenever creating tabbed interfaces with animated indicators in React. Not for page transitions, route animations, or non-tab layout animations."
+description: "Applies Framer Motion layoutId animation pattern when building tab components with animated active indicators. Use when user asks to 'animate tabs', 'sliding tab indicator', 'active tab animation', 'tab underline transition', or 'framer motion tabs'. Ensures smooth layout transitions instead of mount/unmount jumps. Make sure to use this skill whenever creating tabbed interfaces with animated indicators in React. Not for page transitions, route animations, or non-tab layout animations (use Framer Motion docs directly for those)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: animacoes
+  tags: [tailwind, framer-motion, tabs, animation, layoutId, react]
 ---
 
 # Animacao de Abas com Framer Motion layoutId
@@ -31,7 +37,6 @@ function TabItem({ label, isActive, onClick }: TabItemProps) {
   return (
     <button onClick={onClick} className="relative px-4 py-2">
       <span>{label}</span>
-
       {isActive && (
         <motion.div
           layoutId="activeTab"
@@ -47,35 +52,19 @@ function TabItem({ label, isActive, onClick }: TabItemProps) {
 
 **Before (sem animacao — indicador aparece/desaparece abruptamente):**
 ```tsx
-function TabItem({ label, isActive, onClick }: TabItemProps) {
-  return (
-    <button onClick={onClick} className="relative px-4 py-2">
-      <span>{label}</span>
-      {isActive && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500" />
-      )}
-    </button>
-  )
-}
+{isActive && (
+  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500" />
+)}
 ```
 
 **After (com Framer Motion — indicador desliza suavemente):**
 ```tsx
-import { motion } from 'framer-motion'
-
-function TabItem({ label, isActive, onClick }: TabItemProps) {
-  return (
-    <button onClick={onClick} className="relative px-4 py-2">
-      <span>{label}</span>
-      {isActive && (
-        <motion.div
-          layoutId="activeTab"
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500"
-        />
-      )}
-    </button>
-  )
-}
+{isActive && (
+  <motion.div
+    layoutId="activeTab"
+    className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500"
+  />
+)}
 ```
 
 ## Heuristics
@@ -84,26 +73,31 @@ function TabItem({ label, isActive, onClick }: TabItemProps) {
 |----------|------|
 | Indicador de aba ativa (underline, background, borda) | `motion.div` com `layoutId` |
 | Multiplos grupos de tabs na mesma pagina | `layoutId` unico por grupo |
-| Quer customizar a transicao | Adicione prop `transition={{ type: "spring", stiffness: 500, damping: 30 }}` |
-| Tab dentro de componente server (Next.js App Router) | Extraia o TabItem para um componente client (`"use client"`) |
+| Customizar a transicao | `transition={{ type: "spring", stiffness: 500, damping: 30 }}` |
+| Tab em Server Component (Next.js App Router) | Extraia para componente client (`"use client"`) |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Animar com CSS transitions entre mount/unmount | Use `layoutId` do Framer Motion |
-| Colocar `motion.div` em TODAS as abas (ativa e inativa) | Renderize `motion.div` apenas na aba ativa |
-| Usar o mesmo `layoutId` em grupos de tabs diferentes | Use IDs unicos por grupo: `layoutId="activeTab-groupName"` |
-| Calcular posicao manualmente com refs e offsets | Deixe o `layoutId` resolver automaticamente |
+| CSS transitions entre mount/unmount | `layoutId` do Framer Motion |
+| `motion.div` em TODAS as abas | Renderize apenas na aba ativa |
+| Mesmo `layoutId` em grupos diferentes | IDs unicos por grupo |
+| Calcular posicao com refs e offsets | Deixe `layoutId` resolver |
+
+## Troubleshooting
+
+### Indicador pula em vez de deslizar
+**Symptom:** O underline aparece instantaneamente na nova aba sem animacao.
+**Cause:** O `motion.div` esta em mais de uma aba ao mesmo tempo, ou o `layoutId` difere entre instancias.
+**Fix:** Garanta que apenas a aba ativa renderiza o `motion.div` e que o `layoutId` e identico em todos os TabItems do grupo.
+
+### Animacao conflita entre dois grupos de tabs
+**Symptom:** O indicador "pula" entre grupos de tabs diferentes.
+**Cause:** Dois grupos compartilham o mesmo `layoutId`.
+**Fix:** Use IDs unicos por grupo: `layoutId="activeTab-settings"` e `layoutId="activeTab-profile"`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-animacao-das-abas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-animacao-das-abas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-animacao-das-abas/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-animacao-das-abas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

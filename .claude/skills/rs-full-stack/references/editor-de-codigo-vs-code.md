@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-editor-de-codigo-vs-code
-description: "Guides VSCode installation and edition selection when user asks to 'setup VSCode', 'install code editor', 'configure development environment', or 'which VSCode version'. Covers Stable vs Insiders vs Web (vscode.dev) with decision framework. Make sure to use this skill whenever recommending or setting up VSCode for a new project. Not for VSCode extensions, themes, settings, or keybindings configuration."
+description: "Configures VSCode installation and edition selection when user asks to 'setup VSCode', 'install code editor', 'configure development environment', or 'which VSCode version'. Covers Stable vs Insiders vs Web (vscode.dev) with decision framework. Make sure to use this skill whenever recommending or setting up VSCode for a new project. Not for VSCode extensions, themes, settings, or keybindings configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ambiente
+  tags: [vscode, editor, instalacao, ambiente, ferramentas]
 ---
 
 # Editor de Código — VSCode
@@ -44,6 +50,16 @@ description: "Guides VSCode installation and edition selection when user asks to
 3. Ao abrir arquivos, ele acessa o sistema de arquivos local da máquina
 4. Salvar código sempre no Git, porque os arquivos ficam apenas no contexto do browser
 
+## Example
+
+```bash
+# Instalar o comando 'code' no PATH (rodar dentro do VSCode)
+# Ctrl+Shift+P > "Shell Command: Install 'code' command in PATH"
+
+# Abrir projeto no VSCode via terminal
+code /path/to/project
+```
+
 ## Output format
 
 Ambiente configurado com:
@@ -62,13 +78,16 @@ Ambiente configurado com:
 - Abrir o VSCode e verificar se a interface carrega corretamente
 - Se Insiders instalado: confirmar que ambos (Stable e Insiders) abrem independentemente
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Download nao detecta a plataforma correta | Browser nao reporta o OS corretamente | Clique em "Other Platforms" e selecione manualmente |
+| VSCode Insiders apresenta bugs | Insiders recebe releases diarias instáveis | Use a versao Stable para trabalho; Insiders apenas para experimentos |
+| vscode.dev nao salva arquivos | Arquivos ficam no contexto do browser apenas | Salve sempre no Git ou faca download dos arquivos |
+| Comando `code` nao funciona no terminal | PATH nao configurado durante instalacao | No VSCode: Ctrl+Shift+P > "Shell Command: Install 'code' command in PATH" |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre cada edição e trade-offs
 - [code-examples.md](references/code-examples.md) — Configurações e dicas práticas de uso
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-editor-de-codigo-vs-code/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-editor-de-codigo-vs-code/references/code-examples.md)

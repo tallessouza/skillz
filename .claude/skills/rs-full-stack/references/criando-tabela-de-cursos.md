@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela-de-cursos
 description: "Generates SQL CREATE TABLE statements when user asks to 'create a table', 'define a schema', 'add a new entity', or 'set up database tables'. Applies correct column types, PRIMARY KEY, AUTO_INCREMENT, and NOT NULL constraints. Make sure to use this skill whenever generating DDL for relational databases. Not for queries (SELECT), migrations, or ORM model definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, create-table, ddl, primary-key, auto-increment, constraints]
 ---
 
 # Criando Tabelas SQL
@@ -71,13 +77,16 @@ CREATE TABLE courses (
 | Tabela sem chave primaria | Sempre definir PRIMARY KEY |
 | Nome de tabela no singular | Nome no plural: `courses`, `students` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `syntax error` no CREATE TABLE | Virgula apos ultima coluna ou palavra reservada com erro | Verifique a sintaxe e remova virgula final |
+| ID nao incrementa automaticamente | Falta `AUTO_INCREMENT` ou `AUTOINCREMENT` (depende do banco) | Adicione a clausula de auto incremento correta para o SGBD |
+| Registros com nome nulo | Coluna sem constraint `NOT NULL` | Adicione `NOT NULL` em campos obrigatorios |
+| Tabela com nome no singular causa confusao | Convencao nao seguida | Renomeie para plural: `courses`, `students` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre chaves primarias, auto incremento e constraints
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-cursos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela-de-cursos/references/code-examples.md)

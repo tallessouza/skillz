@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-banco-de-dados
 description: "Applies in-memory JSON database pattern with file persistence when building Node.js APIs without external databases. Use when user asks to 'create a database', 'persist data to file', 'store data in JSON', 'build a simple API with storage', or 'create a Node.js CRUD'. Implements class-based database with fs module, auto-create on instantiate, and JSON read/write cycle. Make sure to use this skill whenever building small Node.js APIs that need simple persistence without PostgreSQL/MongoDB. Not for production databases, ORMs, or SQL/NoSQL setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, database, json, fs, persistence, class]
 ---
 
 # Banco de Dados JSON com Persistencia em Arquivo
@@ -95,13 +101,16 @@ server.post('/users', (req, res) => {
 | Criar instancia separada por rota | Uma instancia compartilhada entre todas as rotas |
 | Deixar `#database` como propriedade publica | Use `#` para tornar privada |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Arquivo `db.json` não é criado | Construtor não executou `#persist()` no catch | Verifique se o catch do `readFile` chama `this.#persist()` |
+| Dados perdidos ao reiniciar | `#persist()` não está sendo chamado após operações de escrita | Adicione `this.#persist()` ao final de todo método que modifica dados |
+| `SyntaxError` ao ler db.json | Arquivo JSON corrompido | Delete o `db.json` e reinicie — o construtor recria |
+| Múltiplas instâncias sobrescrevem dados | Criando `new Database()` em cada rota | Instancie uma vez e compartilhe a mesma referência |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre construtor, ciclo read/write, e new URL
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0409-criando-o-banco-de-dados-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0409-criando-o-banco-de-dados-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-rodando-nosso-container-1
 description: "Applies Docker container execution with port mapping when user asks to 'run a container', 'start docker', 'expose a port', 'map ports', or 'docker run'. Enforces correct -p flag syntax for port mapping between host and container. Make sure to use this skill whenever running Docker containers or configuring port exposure. Not for Dockerfile creation, image building, or docker-compose."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Docker Containers"
+  tags: ['docker', 'containers', 'port-mapping', 'devops']
 ---
 
 # Rodando Container Docker
@@ -83,6 +89,15 @@ docker run -p 3333:3333 nome-da-imagem
 | `docker run imagem` (sem -p) | `docker run -p 3333:3333 imagem` |
 | Porta host diferente sem necessidade | Mesma porta host:container |
 | Ignorar o EXPOSE do Dockerfile | Mapear exatamente a porta exposta |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Container roda mas localhost nao responde | Falta mapeamento de porta `-p` | Execute com `docker run -p 3333:3333 imagem` |
+| Porta mapeada mas conexao recusada | Porta do `-p` nao bate com o EXPOSE do Dockerfile | Verifique o EXPOSE e use a mesma porta: `-p EXPOSE:EXPOSE` |
+| Erro "port already in use" | Outra aplicacao usando a mesma porta no host | Mude a porta do host: `-p 3334:3333` ou pare o processo na porta |
+| Container para imediatamente apos iniciar | Aplicacao dentro do container crasha | Verifique logs com `docker logs <container-id>` |
 
 ## Deep reference library
 

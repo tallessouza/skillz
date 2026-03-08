@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-text-align-line-height
 description: "Applies CSS text-align and line-height best practices when styling text elements. Use when user asks to 'style text', 'align text', 'fix line spacing', 'adjust line-height', or 'format paragraph'. Enforces unitless multiplier for line-height instead of fixed pixels, and correct text-align values. Make sure to use this skill whenever writing CSS that involves text layout or typography. Not for font-family, font-weight, or color styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentos
+  tags: [css, text-align, line-height, typography, styling]
 ---
 
 # Text Align e Line Height
@@ -99,6 +105,15 @@ description: "Applies CSS text-align and line-height best practices when styling
 | `line-height: 2rem` | `line-height: 2` |
 | `line-height: 1em` | `line-height: 1` |
 | `text-align: justify` em card pequeno | `text-align: left` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Line-height fica desproporcional ao mudar font-size | Usando valor fixo em pixels | Troque para multiplicador sem unidade (ex: `1.5`) |
+| Texto justificado com lacunas visiveis | `text-align: justify` em blocos curtos | Use `text-align: left` para textos curtos |
+| Espacamento entre linhas nao muda | Propriedade sendo sobrescrita por outra regra CSS | Verifique especificidade e heranca no DevTools |
+| Conversao de pixels para multiplicador incorreta | Calculo errado da divisao | Divida line-height em px pelo font-size em px (ex: 24/16 = 1.5) |
 
 ## Deep reference library
 

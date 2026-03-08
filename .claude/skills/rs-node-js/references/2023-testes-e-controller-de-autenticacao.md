@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-controller-auth
 description: "Applies TDD patterns for authentication use cases and controllers in Node.js with SOLID architecture. Use when user asks to 'write auth tests', 'create authentication', 'test use case', 'implement login', or 'create session controller'. Enforces SUT naming, repository-level setup instead of cross-use-case dependencies, semantic REST routes as entities, and proper HTTP status codes. Make sure to use this skill whenever writing tests for use cases or creating authentication controllers in Node/Fastify apps. Not for frontend auth, JWT token generation, or session management logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: autenticacao-e-tdd
+  tags: [tdd, authentication, use-case, sut, fastify, controller, bcrypt, sessions]
 ---
 
 # Testes e Controller de Autenticacao
@@ -129,14 +135,14 @@ const { user } = await sut.execute({ email: 'j@e.com', password: '123456' })
 | `reply.status(201)` para login | `reply.status(200)` para login |
 | `password: '123456'` no create do repo | `password_hash: await hash('123456', 6)` |
 
+## Troubleshooting
+
+### Teste de autenticacao falha com InvalidCredentialsError inesperado
+**Symptom:** `expect().rejects.toBeInstanceOf(InvalidCredentialsError)` nao e lancado, ou o teste passa quando deveria falhar
+**Cause:** O usuario foi criado via outro use case (RegisterUseCase) em vez de diretamente no repositorio, testando dois use cases simultaneamente
+**Fix:** Crie o usuario direto no repositorio com `password_hash: await hash('123456', 6)` em vez de chamar outro use case
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-controller-de-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-controller-de-autenticacao/references/code-examples.md)

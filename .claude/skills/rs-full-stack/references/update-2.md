@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-update-2
 description: "Applies Prisma ORM update patterns when writing database update operations in Node.js/TypeScript. Use when user asks to 'update a record', 'edit database entry', 'modify with Prisma', 'put route', or 'update query'. Enforces correct use of where clause, data separation, and route parameter extraction. Make sure to use this skill whenever generating Prisma update code or PUT/PATCH endpoints. Not for create, delete, or read operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-prisma
+  tags: [prisma, update, put-route, orm, node-js]
 ---
 
 # Update com Prisma ORM
@@ -97,6 +103,14 @@ app.put('/questions/:id', async (request, reply) => {
 | ID no body: `request.body.id` | ID na URL: `request.params.id` |
 | `userId` no body do update | Omita campos imutaveis do body |
 | `app.post('/questions/:id')` para update | `app.put('/questions/:id')` |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `Record to update not found` | ID no `where` não existe no banco | Verifique o valor de `request.params.id` e se o registro existe |
+| Update silencioso sem efeito | Campos no `data` são undefined | Confirme que `request.body` contém os campos esperados |
+| Erro de tipo no `where` | ID é string mas schema espera número | Converta o tipo ou ajuste o schema do Prisma para usar String |
 
 ## Deep reference library
 

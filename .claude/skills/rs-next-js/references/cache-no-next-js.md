@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-cache-no-next-js
 description: "Applies Next.js caching patterns with useCache, cacheLife, cacheTag, and updateTag when writing or reviewing Next.js server components. Use when user asks to 'add cache', 'optimize loading', 'cache server component', 'use useCache', 'invalidate cache', or 'revalidate data' in Next.js apps. Enforces server-only caching, tag-based invalidation, and proper cache lifetime configuration. Make sure to use this skill whenever implementing data fetching in Next.js server components. Not for client-side state management, React Query, SWR, or browser caching strategies."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: cache-e-revalidacao
+  tags: [cache, useCache, cacheLife, cacheTag, updateTag, revalidation, next-js, server-components]
 ---
 
 # Cache no Next.js
@@ -124,14 +130,19 @@ async function BoardPage() {
 | Cache de dados personalizados por usuario | Cachear apenas dados compartilhados |
 | Esquecer `Suspense`/`loading.tsx` ao habilitar cache | Toda pagina precisa de fallback de loading |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-cache-no-next-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-cache-no-next-js/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-cache-no-next-js/references/deep-explanation.md) — O cache no Next.js evita que uma informacao igual para varios usuarios seja carregada multiplas veze
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-cache-no-next-js/references/code-examples.md) — // next.config.ts

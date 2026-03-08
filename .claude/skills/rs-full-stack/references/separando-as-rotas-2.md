@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-separando-as-rotas-2
 description: "Enforces Express route separation patterns when structuring Node.js/Express APIs. Use when user asks to 'create routes', 'organize express app', 'add new endpoint', 'structure API', or 'separate routes'. Applies rules: one file per domain, index aggregator, prefix in aggregator not in route file, export Router instances. Make sure to use this skill whenever creating or refactoring Express route files. Not for frontend routing, React Router, or Next.js routes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-api
+  tags:
+    - express
+    - routes
+    - api
+    - architecture
+    - nodejs
 ---
 
 # Separando Rotas no Express
@@ -110,6 +121,15 @@ src/
 | Prefixo `/products` no arquivo de rota E no index | Prefixo so no index, `/` no arquivo de rota |
 | Importar cada arquivo de rota no server.ts | Importar apenas `routes` do index |
 | `export default Router()` anonimo | `const productRoutes = Router(); export { productRoutes }` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Rota duplicada `/products/products` | Prefixo definido no arquivo de rota E no index | Defina prefixo apenas no index, use `/` no arquivo de rota |
+| 404 em todas as rotas | `app.use(routes)` ausente no server.ts | Adicione `app.use(routes)` apos `app.use(express.json())` |
+| Import de rotas falha | Exportacao nomeada vs default inconsistente | Use `export { productRoutes }` e `import { productRoutes }` |
+| Rotas nao respondem | Router nao exportado ou nao registrado no index | Verifique `routes.use("/prefix", domainRoutes)` no index |
 
 ## Deep reference library
 

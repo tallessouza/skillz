@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-escrevendo-primeiro-teste
 description: "Enforces Jest testing best practices when writing unit tests in TypeScript/JavaScript. Use when user asks to 'write a test', 'create a test', 'add tests', 'test this function', or any test creation task. Applies rules: use expect().toBe() for value assertions, write descriptive test names that explain input and expected output, always verify tests fail before trusting they pass. Make sure to use this skill whenever generating test code. Not for E2E tests, integration tests with databases, or test infrastructure setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testing-jest
+  tags: [jest, testing, unit-tests, expect, toBe, assertions, typescript]
 ---
 
 # Escrevendo Testes com Jest
@@ -79,13 +85,16 @@ test('sum of 3 and 7 must be 10', () => {
 | Confiar que teste passa sem verificar falha | Simular falha mudando expected, depois corrigir |
 | `console.log(result)` para verificar | `expect(result).toBe(expected)` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao nao acessivel no arquivo de teste | Funcao nao exportada do modulo | Adicionar `export` na declaracao da funcao |
+| `toBe` falha para objetos iguais | `toBe` usa igualdade estrita de referencia | Usar `toEqual` para comparacao profunda de objetos |
+| Teste passa mas nao deveria | Falso positivo — teste nao valida o comportamento correto | Mudar expected para valor errado, confirmar falha, corrigir |
+| Jest nao encontra arquivo de teste | Padrao de nome incorreto | Usar `*.test.ts` ou `*.spec.ts` conforme configuracao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre expectativas, falsos positivos e leitura de erros do Jest
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-escrevendo-o-primeiro-teste/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-escrevendo-o-primeiro-teste/references/code-examples.md)

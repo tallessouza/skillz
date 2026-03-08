@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-proposta-2026
-description: "Guides TypeScript setup in Node.js applications when user asks to 'add TypeScript to Node', 'setup TypeScript project', 'configure tsconfig', 'create Node API with TypeScript', or 'initialize TypeScript backend'. Applies Node+TypeScript integration patterns including compiler config, dev tooling, and project structure. Make sure to use this skill whenever setting up a new Node.js project with TypeScript from scratch. Not for frontend TypeScript, React/Next.js setup, or TypeScript language features and syntax."
+description: "Configures TypeScript setup in Node.js applications when user asks to 'add TypeScript to Node', 'setup TypeScript project', 'configure tsconfig', 'create Node API with TypeScript', or 'initialize TypeScript backend'. Applies Node+TypeScript integration patterns including compiler config, dev tooling, and project structure. Make sure to use this skill whenever setting up a new Node.js project with TypeScript from scratch. Not for frontend TypeScript, React/Next.js setup, or TypeScript language features and syntax."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-typescript
+  tags:
+    - nodejs
+    - typescript
+    - tsconfig
+    - setup
 ---
 
 # TypeScript em Aplicacao Node.js
@@ -105,6 +115,14 @@ app.get('/users', async (req: Request, res: Response) => {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que TypeScript no Node e detalhes praticos
 - [code-examples.md](references/code-examples.md) — Exemplos de configuracao expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "Cannot find module" ao importar | `esModuleInterop` nao habilitado no tsconfig | Adicione `"esModuleInterop": true` no `compilerOptions` |
+| Compilacao gera arquivos em local inesperado | `outDir` ou `rootDir` mal configurados no tsconfig | Verifique que `outDir` aponta para `./dist` e `rootDir` para `./src` |
+| `any` aceito silenciosamente sem erro | `strict` mode nao habilitado | Adicione `"strict": true` no tsconfig.json |
 
 ---
 

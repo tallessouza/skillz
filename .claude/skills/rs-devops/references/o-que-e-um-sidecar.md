@@ -1,6 +1,12 @@
 ---
 name: rs-devops-o-que-e-um-sidecar
 description: "Applies sidecar proxy patterns when designing or reviewing Kubernetes service mesh architectures. Use when user asks to 'configure service mesh', 'add sidecar proxy', 'setup Istio/Linkerd', 'design microservice communication', or 'implement traffic interception in K8s'. Make sure to use this skill whenever discussing pod-level proxy patterns or service-to-service communication in Kubernetes. Not for application-level HTTP clients, API gateway configuration, or ingress controller setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh
+  tags: [sidecar, service-mesh, istio, envoy, proxy, kubernetes, microservices]
 ---
 
 # Sidecar em Service Mesh
@@ -72,14 +78,14 @@ spec:
 - Complexidade operacional: mais containers para monitorar e atualizar
 - Nem toda aplicacao precisa de service mesh — avalie a real necessidade antes de adotar
 
+## Troubleshooting
+
+### Pod com sidecar nao sobe (2/2 nunca atinge Ready)
+**Symptom:** Pod fica em estado Init ou 1/2 Ready indefinidamente apos habilitar sidecar injection
+**Cause:** Sidecar proxy (Envoy) nao consegue se conectar ao control plane do Istio (Istiod) ou porta conflita
+**Fix:** Verificar se Istiod esta rodando (`kubectl get pods -n istio-system`), checar logs do sidecar container com `kubectl logs <pod> -c istio-proxy`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-e-um-sidecar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-e-um-sidecar/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

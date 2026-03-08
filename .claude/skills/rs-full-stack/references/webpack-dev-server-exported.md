@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-webpack-dev-server
 description: "Configures webpack dev server for local development with hot reload. Use when user asks to 'setup webpack dev server', 'add hot reload', 'create local dev server with webpack', or 'configure webpack for development'. Applies correct devServer config with static directory, port, and open options. Make sure to use this skill whenever setting up webpack development environment. Not for production builds, deployment, or non-webpack bundlers like Vite or Parcel."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [webpack, dev-server, hot-reload, bundler, development]
 ---
 
 # Webpack Dev Server
@@ -86,6 +92,15 @@ npm run dev
 
 - Acesse `http://localhost:{porta}` e verifique se a pagina carrega
 - Modifique um arquivo source e confirme que o navegador atualiza automaticamente
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `Cannot find module 'webpack-dev-server'` | Pacote nao instalado | Execute `npm install webpack-dev-server --save-dev` |
+| Pagina em branco no navegador | `static.directory` aponta para pasta errada | Verifique se o `index.html` esta na pasta configurada em `static.directory` |
+| Hot reload nao funciona | Mudou `webpack.config.js` sem reiniciar | Pare o servidor (Ctrl+C) e reinicie com `npm run dev` |
+| Porta ja em uso | Outro processo usando a porta configurada | Mude a `port` no devServer ou encerre o processo na porta |
 
 ## Deep reference library
 

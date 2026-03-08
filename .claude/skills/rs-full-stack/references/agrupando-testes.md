@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-agrupando-testes
 description: "Enforces test grouping with describe blocks when writing or reviewing test files. Use when user asks to 'write tests', 'create test file', 'add test cases', 'organize tests', or 'group tests'. Applies suite structure using describe to group related test cases by functionality. Make sure to use this skill whenever generating test files with multiple test cases for the same function or feature. Not for application code, CI/CD configuration, or test runner setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [testing, describe, jest, test-organization, suites]
 ---
 
 # Agrupando Testes com Describe
@@ -91,13 +97,16 @@ describe('sum', () => {
 | `describe('testes', ...)` generico | `describe('sum', ...)` com nome da funcionalidade |
 | `describe` com um unico teste dentro | Teste solto ou aguardar ter mais cenarios |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Saída do test runner sem hierarquia | Testes estão soltos sem `describe` | Agrupe testes relacionados dentro de `describe('funcionalidade', ...)` |
+| `describe` com nome genérico na saída | Nome do describe é "testes" ou "tests" | Use o nome da funcionalidade testada: `describe('sum', ...)` |
+| `beforeEach` afeta testes de outra funcionalidade | Setup compartilhado fora do `describe` | Mova `beforeEach` para dentro do `describe` correspondente |
+| Teste isolado falha mas passa no grupo | Dependência oculta entre testes | Verifique se testes compartilham estado sem cleanup |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-agrupando-testes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-agrupando-testes/references/code-examples.md)

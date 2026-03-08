@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-listagem-de-comentarios
 description: "Enforces Next.js comment listing patterns with proper Server/Client component isolation. Use when user asks to 'list comments', 'create a comment component', 'build a feed', 'display user posts', or any listing UI with avatars and timestamps. Applies rules: isolate interactive elements into small ClientComponents, keep list components as async ServerComponents, use date-fns formatDistanceToNow for relative timestamps, handle empty states. Make sure to use this skill whenever building listing interfaces in Next.js App Router. Not for form submission, authentication, or API route creation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-ui
+  tags: [server-components, client-components, compound-components, date-fns, listing, app-router, next-js]
 ---
 
 # Listagem de Comentarios no Next.js App Router
@@ -193,14 +199,19 @@ export default async function CommentList({ issueId }: { issueId: string }) {
 | `new Date().toLocaleDateString()` para "tempo atras" | `formatDistanceToNow(date, { addSuffix: true })` |
 | Um componente monolitico para o card | Compound components com sub-componentes nomeados |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-listagem-de-comentarios/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-listagem-de-comentarios/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-listagem-de-comentarios/references/deep-explanation.md) — O instrutor enfatiza um ponto crucial que muitos desenvolvedores erram ao migrar para o App Router: 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-listagem-de-comentarios/references/code-examples.md) — app/

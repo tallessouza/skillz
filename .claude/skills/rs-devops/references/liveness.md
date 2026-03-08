@@ -1,6 +1,12 @@
 ---
 name: rs-devops-liveness
 description: "Applies Kubernetes Liveness Probe configuration patterns when writing Pod specs, Deployments, or health check configs. Use when user asks to 'configure liveness', 'add health checks', 'setup probes', 'fix pod restarts', or 'kubernetes deployment yaml'. Enforces initialDelaySeconds, correct thresholds, and probe layering (Startup → Readiness → Liveness). Make sure to use this skill whenever generating Kubernetes manifests with probes. Not for application-level health check endpoint code or Docker healthchecks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-probes
+  tags: [kubernetes, liveness, readiness, startup, probes, health-check, self-healing]
 ---
 
 # Kubernetes Liveness Probe
@@ -113,14 +119,14 @@ livenessProbe:
 | Liveness sem Startup Probe | Sempre use Startup Probe como primeira camada |
 | Mesmo path para Readiness e Liveness | Use `/ready` para Readiness, `/healthz` para Liveness |
 
+## Troubleshooting
+
+### Pod entra em restart loop infinito
+**Symptom:** Pod reinicia constantemente, `kubectl describe pod` mostra "Liveness probe failed"
+**Cause:** Liveness probe dispara antes da aplicacao estar pronta porque falta `initialDelaySeconds` ou Startup Probe
+**Fix:** Adicione Startup Probe com `initialDelaySeconds` >= tempo de boot da aplicacao, e configure `initialDelaySeconds` de 10s no Liveness como camada extra
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-liveness/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-liveness/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

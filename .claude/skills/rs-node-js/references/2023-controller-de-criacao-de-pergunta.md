@@ -1,6 +1,13 @@
 ---
-name: rs-node-2023-controller-criacao-pergunta
+name: rs-node-js-2023-controller-de-criacao-de-pergunta
 description: "Applies NestJS controller patterns with Zod body validation when creating REST endpoints. Use when user asks to 'create a controller', 'add an endpoint', 'validate request body', 'create a POST route in NestJS', or 'use Zod with NestJS'. Enforces per-route validation pipe, slug generation, and Prisma integration. Make sure to use this skill whenever building NestJS controllers with body validation. Not for frontend components, database schema design, or authentication setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller com Validacao Zod no NestJS
@@ -116,14 +123,14 @@ export class CreateQuestionController {
 | `return await this.prisma.question.create(...)` em POST | `await` sem `return` — 201 sem body |
 | `user.sub` sem desestruturar | `const userId = user.sub` para clareza |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-de-criacao-de-pergunta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-pergunta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-de-criacao-de-pergunta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

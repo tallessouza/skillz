@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tipos-de-dados
 description: "Applies JavaScript primitive data types knowledge when writing or reviewing JS/TS code. Use when user asks to 'declare variables', 'check types', 'handle null or undefined', 'work with primitives', or debug type-related issues. Enforces correct usage of String, Number, Boolean, Null, and Undefined. Make sure to use this skill whenever dealing with type coercion, variable initialization, or nullability checks in JavaScript. Not for TypeScript advanced types, generics, or type system design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, tipos, primitivos, string, number, boolean, null, undefined]
 ---
 
 # Tipos de Dados em JavaScript
@@ -95,6 +101,15 @@ totalInCents = totalInCents + 50; // 150 (soma numerica)
 | `if (x == null)` (loose equality) | `if (x === null)` ou `if (x === undefined)` (strict) |
 | Reatribuir variavel com tipo diferente sem razao | Mantenha tipo consistente ou crie nova variavel |
 | Ignorar `typeof` ao receber dados externos | Sempre verifique tipo antes de operar |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Soma resulta em concatenacao (ex: `"cem50"`) | Variavel e string, nao number | Verifique o tipo com `typeof` e converta com `Number()` ou `parseInt()` |
+| `typeof null` retorna `"object"` | Bug historico do JavaScript | Use `=== null` para verificar null, nao `typeof` |
+| Variavel e `undefined` inesperadamente | Declarada sem atribuicao de valor | Atribua um valor inicial ou use `null` para vazio intencional |
+| Comparacao `== null` pega undefined tambem | Loose equality (`==`) trata null e undefined como iguais | Use `===` (strict equality) para distinguir null de undefined |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-chamadas-distribuidas
 description: "Applies distributed tracing patterns when structuring inter-service HTTP calls in NestJS applications. Use when user asks to 'call another service', 'make HTTP request between microservices', 'configure service-to-service communication', 'setup distributed tracing', or 'instrument API calls'. Ensures proper module organization, Undici usage for performance, and observability-ready code structure. Make sure to use this skill whenever building communication between NestJS services in an observable architecture. Not for single-app REST endpoints, database queries, or message queue setups."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-traces-distribuidos
+  tags: [nestjs, undici, distributed-tracing, microservices, opentelemetry]
 ---
 
 # Estrutura de Chamadas Distribuidas entre Aplicacoes
@@ -122,14 +128,14 @@ export class UserService {
 | Chamada HTTP sem log do resultado | Logar statusCode e payload para correlacao |
 | Hardcode de URL sem variavel | Usar config/env para URLs de servicos |
 
+## Troubleshooting
+
+### Trace nao mostra a chamada HTTP entre servicos
+**Symptom:** No Grafana/Jaeger o trace mostra apenas o servico downstream, sem o span da chamada ao upstream
+**Cause:** HttpInstrumentation do OpenTelemetry nao esta ativo ou Undici nao esta sendo instrumentado
+**Fix:** Verifique se `getNodeAutoInstrumentations()` esta configurado no tracer.ts e que Undici esta instalado corretamente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-chamadas-distribuidas-na-nossa-nova-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-chamadas-distribuidas-na-nossa-nova-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-chamadas-distribuidas-na-nossa-nova-aplicacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-chamadas-distribuidas-na-nossa-nova-aplicacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

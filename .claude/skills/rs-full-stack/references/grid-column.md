@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-grid-column
 description: "Applies CSS Grid column and row placement using virtual grid lines when writing layout code. Use when user asks to 'create a layout', 'position grid items', 'span columns', 'use grid-column', or 'build a CSS grid layout'. Enforces virtual line numbering system for grid-column-start/end and grid-row-start/end shorthand. Make sure to use this skill whenever generating CSS Grid item placement code. Not for Flexbox layouts, grid container properties, or grid-template definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags: [css, grid, grid-column, grid-row, virtual-lines, positioning]
 ---
 
 # Grid Column e Grid Row — Posicionamento de Items
@@ -100,13 +106,16 @@ footer  { grid-column: 1 / 4; }
 | `grid-row` quando o fluxo ja resolve | Omita a propriedade |
 | `div:nth-child(n)` para layout semantico | Use `header`, `main`, `aside`, `footer` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Item ocupa menos colunas que esperado | Confusao entre linhas virtuais e colunas | Lembre: 3 colunas = 4 linhas virtuais. `grid-column: 1 / 3` ocupa 2 colunas |
+| Item nao aparece na posicao esperada | Usando `grid-column-start` e `grid-column-end` separados | Prefira shorthand: `grid-column: 1 / 4` |
+| Layout quebrado ao adicionar mais items | Items sem grid-column criam linhas implicitas | Configure apenas items que precisam de posicao explicita |
+| `grid-column: 1 / 2` ocupa so 1 coluna | Correto — vai da linha 1 ate a linha 2 (1 coluna) | Para 2 colunas use `grid-column: 1 / 3` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Conceito de linhas virtuais, raciocinio completo e analogias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-grid-column/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-grid-column/references/code-examples.md)

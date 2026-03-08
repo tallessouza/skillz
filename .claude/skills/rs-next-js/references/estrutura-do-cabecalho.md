@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-estrutura-do-cabecalho
 description: "Enforces Next.js component colocation and header structure patterns when building layouts with Tailwind CSS. Use when user asks to 'create a header', 'build a layout', 'organize components in Next.js', 'add search input with icon', or 'structure a dashboard shell'. Applies rules: colocate components near usage, avoid bloated components folder, use route-based organization, position icons inside inputs with pointer-events-none. Make sure to use this skill whenever creating Next.js layout components or organizing component files. Not for API routes, server actions, data fetching, or backend logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-e-organizacao
+  tags: [header, colocation, component-organization, search-input, tailwind, tw-merge, next-js]
 ---
 
 # Estrutura de Componentes e Header no Next.js
@@ -137,14 +143,19 @@ app/
 | `overflow-y: scroll` sempre visivel | `overflow-y: auto` para mostrar so quando necessario |
 | Escrever classe Tailwind completa toda vez | Usar prefixo parcial (ex: `bgn9` autocompleta `bg-navy-900`) |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-estrutura-do-cabecalho/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-estrutura-do-cabecalho/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-estrutura-do-cabecalho/references/deep-explanation.md) — O instrutor explica uma filosofia clara: **a estrutura de pastas do Next.js ja organiza a aplicacao 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-estrutura-do-cabecalho/references/code-examples.md) — // app/(dashboard)/layout.tsx

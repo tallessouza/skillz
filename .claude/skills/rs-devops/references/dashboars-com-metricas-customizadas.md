@@ -1,6 +1,12 @@
 ---
 name: rs-devops-dashboards-metricas-customizadas
-description: "Applies Grafana dashboard creation patterns with custom Prometheus metrics when user asks to 'create a dashboard', 'add metrics panel', 'monitor custom metrics', 'setup Grafana visualization', or 'configure thresholds'. Enforces actionable dashboards with error-focused panels, service_name scoping, threshold configuration, and environment segmentation. Make sure to use this skill whenever building observability dashboards or configuring Grafana panels. Not for alerting rules configuration, Prometheus scraping setup, or metrics instrumentation in application code."
+description: "Applies Grafana dashboard patterns for custom OpenTelemetry metrics when building actionable monitoring views. Use when user asks to 'create metrics dashboard', 'visualize custom metrics', 'grafana prometheus panel', 'dashboard for errors', or 'monitor custom counters'. Enforces error-first panel priority, service_name scoping, correct visualization types, and row organization. Make sure to use this skill whenever creating Grafana dashboards for custom application metrics. Not for log dashboards, trace visualization, or alerting configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-grafana
+  tags: [grafana, dashboard, custom-metrics, prometheus, promql, counters, histograms]
 ---
 
 # Dashboards com Metricas Customizadas
@@ -9,82 +15,40 @@ description: "Applies Grafana dashboard creation patterns with custom Prometheus
 
 ## Rules
 
-1. **Priorize metricas de erro** — dashboards de acompanhamento de sucesso sao bonitos mas nao acionaveis, porque metricas de erro permitem acao imediata quando o numero cresce
-2. **Sempre scope por service_name** — metricas podem ser globais e multiplas aplicacoes podem emitir a mesma metrica, o `service_name` diferencia a origem
-3. **Configure thresholds visuais** — use cores (verde base, vermelho acima do limite) para trazer acionabilidade visual imediata ao bater o olho no dashboard
-4. **Segmente por environment** — staging e producao devem ter paineis ou filtros separados, porque o mesmo dashboard sem filtro mistura dados e gera falsos positivos
-5. **Use o tipo de visualizacao correto** — Time Series para counters, Histogram para histogramas (buckets), porque o grafico de barra segmenta melhor por bucket
-6. **Organize com rows** — agrupe paineis em rows nomeadas (ex: "Metricas", "Erros") para navegacao rapida no dashboard
+1. **Priorize metricas de erro** — metricas de erro permitem acao imediata
+2. **Sempre scope por service_name** — multiplas apps podem emitir mesma metrica
+3. **Configure thresholds visuais** — verde base, vermelho acima do limite
+4. **Segmente por environment** — staging e producao separados
+5. **Use o tipo de visualizacao correto** — Time Series para counters, Histogram para histogramas
+6. **Organize com rows** — agrupe paineis em rows nomeadas
 
 ## How to write
 
-### Painel basico com counter (Prometheus)
-
 ```promql
-# Selecione a metrica counter com scope de service_name
-hello_success_total{service_name="app-skillz"}
-```
-
-### Painel de erro (acionavel)
-
-```promql
-# Metricas de erro sao prioridade — numero crescente = acao necessaria
+# Painel de erro (acionavel)
 hello_error_total{service_name="app-skillz"}
-```
 
-### Painel de histograma (duracao)
-
-```promql
-# Use visualizacao Histogram para metricas de duracao com buckets
+# Painel de histograma
 request_duration_bucket{service_name="app-skillz"}
 ```
-
-## Example
-
-**Before (dashboard sem acionabilidade):**
-- Painel unico mostrando `hello_success_total` sem filtro de service_name
-- Sem thresholds configurados
-- Sem segmentacao por environment
-- Visualizacao Time Series para histograma
-
-**After (com esta skill aplicada):**
-- Row "Metricas de Erro" com `hello_error_total{service_name="app-skillz"}`
-- Row "Acompanhamento" com `hello_success_total{service_name="app-skillz"}`
-- Threshold: verde como base, vermelho acima de 30 (ou limite definido pelo time)
-- Filtro de environment (staging/production) no dashboard
-- Histogram para `request_duration_bucket`, Time Series para counters
-- Cada save do dashboard com comentario descritivo (funciona como um commit)
-
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| Metrica e um counter de sucesso | Crie o painel mas priorize o equivalente de erro |
-| Metrica e um histograma | Use visualizacao Histogram, nao Time Series |
-| Multiplas apps emitem mesma metrica | Filtre por `service_name` no painel |
-| Dashboard serve staging e prod | Adicione variavel de environment como filtro |
-| Numero pode indicar problema acima de X | Configure threshold com cor vermelha |
-| Salvando alteracoes no dashboard | Adicione comentario descritivo (funciona como commit) |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Dashboard so com metricas de sucesso | Priorize paineis de erro (acionaveis) |
+| Dashboard so com metricas de sucesso | Priorize paineis de erro |
 | Metrica sem filtro de `service_name` | Sempre scope: `metric{service_name="app"}` |
-| Threshold sem cor de alerta | Verde base + vermelho acima do limite |
 | Histograma renderizado como Time Series | Use visualizacao Histogram para buckets |
 | Paineis soltos sem organizacao | Agrupe em rows nomeadas |
-| Staging e prod no mesmo painel sem filtro | Segmente por environment |
+
+## Troubleshooting
+
+### Metrica aparece sem dados no painel do Grafana
+**Symptom:** O painel mostra "No data" mesmo com a aplicacao rodando e emitindo metricas.
+**Cause:** A query PromQL nao filtra por `service_name`, e o Prometheus pode ter multiplas aplicacoes emitindo metricas com nomes diferentes.
+**Fix:** Adicione o filtro `{service_name="app-skillz"}` na query PromQL para garantir que esta consultando a aplicacao correta.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-dashboars-com-metricas-customizadas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-dashboars-com-metricas-customizadas/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

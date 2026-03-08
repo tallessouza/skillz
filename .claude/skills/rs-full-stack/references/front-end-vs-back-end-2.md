@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-front-end-vs-back-end
 description: "Applies client-server mental model when discussing web architecture. Use when user asks 'what is front-end', 'what is back-end', 'how does a website work', 'client-server', or 'how browser communicates with server'. Guides architectural decisions by clarifying front-end vs back-end boundaries. Make sure to use this skill whenever explaining web fundamentals or deciding where logic belongs. Not for specific framework setup, deployment, or database design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-web
+  tags: [web, frontend, backend, client-server, architecture]
 ---
 
 # Front-end vs Back-end
@@ -73,13 +79,16 @@ Usuario ve e interage com o resultado
 - Essa divisao e simplificada — existem padroes como SSR (Server-Side Rendering) e SSG (Static Site Generation) que borram a linha entre front e back
 - Aplicacoes modernas com frameworks full-stack (Next.js, Nuxt) executam codigo em ambos os lados
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Logica de negocio exposta no front-end | Decisao incorreta sobre onde colocar a logica | Mova validacoes criticas e regras de negocio para o back-end |
+| Dados sensiveis visiveis no navegador | Informacoes retornadas pela API sem filtragem | Filtre os campos no back-end antes de enviar a resposta |
+| Pagina nao carrega mas API funciona | Problema no front-end (JS, CSS, HTML) | Inspecione o console do navegador para erros de renderizacao |
+| API retorna dados mas pagina mostra vazio | Front-end nao esta processando a resposta corretamente | Verifique o fetch/axios e o parsing do JSON no front-end |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de comunicacao cliente-servidor
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-front-end-vs-back-end-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-front-end-vs-back-end-2/references/code-examples.md)

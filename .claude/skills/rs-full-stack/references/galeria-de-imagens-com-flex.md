@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-galeria-imagens-flex
 description: "Applies flexbox image gallery patterns when building photo grids or image galleries with CSS. Use when user asks to 'create a gallery', 'display images in a grid', 'layout photos', 'image gallery with flex', or 'photo grid layout'. Enforces flex-wrap, object-fit cover, consistent sizing, and proper gap/padding. Make sure to use this skill whenever creating any image gallery or photo grid component. Not for CSS Grid layouts, carousels, sliders, or single image display."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-flexbox
+  tags: [css, flexbox, gallery, images, flex-wrap, object-fit]
 ---
 
 # Galeria de Imagens com Flexbox
@@ -100,13 +106,16 @@ main img {
 | Imagens sem `object-fit` quando nao sao quadradas | `object-fit: cover` |
 | `padding: 24px` quando so precisa vertical | `padding-block: 24px` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagens extrapolam o container | Falta `flex-wrap: wrap` | Adicione `flex-wrap: wrap` no container flex |
+| Imagens distorcidas | Falta `object-fit: cover` | Adicione `object-fit: cover` nas imagens com dimensoes fixas |
+| Espacamento irregular entre imagens | Usando `margin` em vez de `gap` | Use `gap` no container flex em vez de margin nas imagens |
+| Imagens com tamanhos inconsistentes | Sem dimensoes fixas definidas | Defina `width` e `height` explicitos nas imagens |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre flex-wrap, object-fit e organizacao de galerias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-galeria-de-imagens-com-flex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-galeria-de-imagens-com-flex/references/code-examples.md)

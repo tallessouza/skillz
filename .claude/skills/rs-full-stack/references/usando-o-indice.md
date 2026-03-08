@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-usando-o-indice
 description: "Applies correct indexOf and splice patterns when manipulating arrays in JavaScript/TypeScript. Use when user asks to 'find element position', 'remove item from array', 'delete by index', 'splice array', or 'indexOf'. Ensures proper -1 check for not-found cases and correct splice parameters (start, deleteCount). Make sure to use this skill whenever generating code that searches or removes elements in arrays by position. Not for array iteration, filtering, mapping, or sorting operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-arrays
+  tags: [javascript, arrays, indexOf, splice, array-manipulation]
 ---
 
 # Usando indexOf e splice em Arrays
@@ -79,6 +85,14 @@ if (pos !== -1) {
 | `fruits.splice(fruits.indexOf("x"), 1)` sem checar -1 | `const pos = fruits.indexOf("x"); if (pos !== -1) fruits.splice(pos, 1)` |
 | `splice(1, 3)` achando que o segundo param e o indice final | `splice(1, 3)` — lembre: segundo param e QUANTIDADE, nao indice final |
 | `delete fruits[2]` | `fruits.splice(2, 1)` — delete deixa `undefined` no lugar |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `splice` remove o último elemento inesperadamente | `indexOf` retornou `-1` e splice interpretou como último índice | Sempre verifique `if (pos !== -1)` antes de chamar splice |
+| Array fica com `undefined` no lugar do item removido | Usou `delete array[i]` em vez de `splice` | Use `array.splice(i, 1)` para remover e reindexar |
+| `indexOf` não encontra objeto no array | `indexOf` usa comparação por referência para objetos | Use `findIndex` com callback para comparar por propriedades |
 
 ## Deep reference library
 

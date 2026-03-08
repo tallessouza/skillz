@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-node-watch
 description: "Applies Node.js --watch flag and npm scripts setup when configuring development servers or auto-restart workflows. Use when user asks to 'setup dev server', 'auto restart node', 'create npm scripts', 'watch file changes', or 'configure package.json scripts'. Make sure to use this skill whenever setting up a Node.js development environment with file watching. Not for production deployment, process managers like PM2, or bundler watch modes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: node-fundamentals
+  tags: [node-watch, npm-scripts, dev-server, auto-restart, package-json, development]
 ---
 
 # Node --watch e NPM Scripts
@@ -79,14 +85,14 @@ npm run dev
 | Parar e reiniciar servidor manualmente a cada mudanca | Usar `--watch` para auto-restart |
 | Deixar `package.json` sem script `dev` | Sempre criar alias no `scripts` |
 
+## Troubleshooting
+
+### node --watch nao reinicia ao salvar arquivo
+**Symptom:** Servidor nao reinicia automaticamente apos mudancas no codigo
+**Cause:** Versao do Node.js anterior a v18 nao suporta a flag `--watch`
+**Fix:** Atualize o Node.js para v18+ ou use `nodemon` como fallback temporario
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-node-watch/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-node-watch/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-dom
 description: "Applies DOM tree structure knowledge when writing JavaScript that interacts with HTML documents. Use when user asks to 'manipulate the DOM', 'access HTML elements', 'modify page content', 'traverse nodes', or 'understand DOM structure'. Ensures correct mental model of document-node-element hierarchy. Make sure to use this skill whenever generating code that reads or writes to the DOM. Not for CSS styling, server-side rendering, or virtual DOM frameworks like React."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, dom, document, nodes, html, manipulacao]
 ---
 
 # DOM — Document Object Model
@@ -75,13 +81,16 @@ Uma pagina complexa tera centenas de nos. A forma de manipular via JavaScript e 
 - Frameworks como React abstraem o DOM com virtual DOM — a manipulacao direta e rara nesses contextos
 - Performance pode degradar com manipulacoes excessivas do DOM real (reflows/repaints)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Cannot read properties of null` ao acessar elemento | Script executa antes do DOM estar pronto | Mova o `<script>` para antes de `</body>` ou use `defer`/`DOMContentLoaded` |
+| `querySelector` retorna `null` | Seletor nao corresponde a nenhum elemento no DOM | Verifique o seletor no DevTools (Elements > Ctrl+F) |
+| Alteracao no DOM nao aparece na tela | Elemento esta oculto por CSS ou fora da viewport | Inspecione com DevTools e verifique `display`, `visibility`, `opacity` |
+| `document.getElementById` nao funciona | ID inexistente ou com typo | Confirme o atributo `id` no HTML e verifique case sensitivity |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-dom/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-dom/references/code-examples.md)

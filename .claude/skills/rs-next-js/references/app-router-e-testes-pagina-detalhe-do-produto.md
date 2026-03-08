@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-product-detail-page
 description: "Generates product detail page structure in Next.js App Router with dynamic routes, CSS Grid layout, and next/image. Use when user asks to 'create product page', 'build product detail', 'make PDP', 'product detail layout', or 'dynamic route page in Next.js'. Applies patterns: dynamic route folders with brackets, 3-column grid with image spanning 2 cols, max-height container, next/image with quality 100 for large images. Make sure to use this skill whenever building e-commerce product pages or detail pages with image + info layout in Next.js. Not for listing pages, cart logic, or checkout flows."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, product-detail, dynamic-route, css-grid, next-image, e-commerce]
 ---
 
 # Pagina de Detalhe do Produto (Next.js App Router)
@@ -134,14 +141,19 @@ export default function Product() {
 | Rota dinamica sem colchetes na pasta | `[slug]/page.tsx` |
 | Integrar API antes de validar layout | Dados estaticos primeiro |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-detalhe-do-produto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-pagina-detalhe-do-produto/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-detalhe-do-produto/references/deep-explanation.md) — No Next.js App Router, parametros dinamicos na URL sao representados por pastas com colchetes. Para 
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-pagina-detalhe-do-produto/references/code-examples.md) — // app/store/product/[slug]/page.tsx

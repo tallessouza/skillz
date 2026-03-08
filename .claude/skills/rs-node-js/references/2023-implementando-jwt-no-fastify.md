@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-jwt-fastify
 description: "Applies JWT authentication patterns with Fastify when implementing auth routes, login endpoints, or protected routes. Use when user asks to 'add authentication', 'protect a route', 'implement login', 'generate JWT token', or 'validate token' in Fastify/Node.js apps. Enforces JWT isolation in HTTP layer, never in use cases. Make sure to use this skill whenever building auth flows in Fastify applications. Not for OAuth, API tokens, session-based auth, or non-Fastify frameworks."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: jwt-fastify
+  tags: [jwt, fastify, authentication, typescript, clean-architecture, nodejs]
 ---
 
 # Implementando JWT no Fastify
@@ -133,14 +139,14 @@ return reply.status(200).send({ token })
 | Acessar `request.user` sem verificar | Sempre `await request.jwtVerify()` antes |
 | Payload com dados sensiveis | Payload vazio, apenas `sub` no sign |
 
+## Troubleshooting
+
+### TypeScript nao reconhece request.user.sub
+**Symptom:** Erro Property sub does not exist on type ao acessar request.user.sub
+**Cause:** O arquivo de declaracao de tipos para FastifyJWT nao foi criado ou nao esta no tsconfig includes
+**Fix:** Crie @types/fastify-jwt.d.ts com declare module '@fastify/jwt' exportando interface FastifyJWT { user: { sub: string } }
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementando-jwt-no-fastify/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementando-jwt-no-fastify/references/code-examples.md)

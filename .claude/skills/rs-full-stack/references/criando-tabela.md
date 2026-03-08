@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-tabela
 description: "Applies Knex.js migration patterns when creating database tables with schema builder. Use when user asks to 'create a migration', 'create a table', 'add columns', 'setup database schema', or 'write knex migration'. Enforces correct up/down structure, column types, constraints, and default values using Knex schema builder API. Make sure to use this skill whenever generating Knex migrations or database table definitions. Not for raw SQL queries, Prisma, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-migrations
+  tags: [knex, migrations, schema-builder, create-table, database]
 ---
 
 # Criando Tabelas com Knex Migrations
@@ -105,13 +111,16 @@ npm run knex -- migrate:latest    # Executa todas as migrations pendentes
 npm run knex -- migrate:rollback  # Desfaz a ultima migration (chama down)
 ```
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `migration is not yet run` | Migrations pendentes nao executadas | Execute `npm run knex -- migrate:latest` |
+| Rollback falha com erro | Metodo `down` nao implementado ou incorreto | Implemente `knex.schema.dropTable("nome_tabela")` no down |
+| Coluna aceita null quando nao deveria | Falta `.notNullable()` na definicao | Adicione `.notNullable()` apos o tipo da coluna |
+| `created_at` mostra null | Falta `.defaultTo(knex.fn.now())` | Adicione o default de timestamp na definicao da coluna |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre up/down, simetria de migrations e ciclo de vida
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes de tipos de coluna
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-tabela/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-tabela/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-listagem-catalogo-frontend
 description: "Applies frontend catalog listing patterns using Axios, SWR, and Next.js when building product pages or integrating frontend with backend APIs. Use when user asks to 'list products', 'fetch catalog', 'integrate frontend with API', 'use SWR', or 'create product page with search'. Enforces Axios instance setup, SWR for state management, URL search params over React state for search, and CORS configuration. Make sure to use this skill whenever building e-commerce frontends or catalog UIs with Next.js. Not for backend API implementation, database queries, or cart/checkout logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: catalog
+  tags: [next-js, frontend, node-js, ia-node, swr]
 ---
 
 # Listagem do Catalogo no Frontend
@@ -133,14 +139,14 @@ function handleSearch(value: string) {
 | Ignorar CORS e debugar no console | `app.enableCors()` no backend |
 | `fetch` sem tipagem | Axios com generics `api.get<Product[]>()` |
 
+## Troubleshooting
+
+### Dados nao aparecem no frontend
+**Symptom:** Componente renderiza vazio apesar de dados existirem no backend
+**Cause:** CORS bloqueando requisicao, ou nome de propriedade inconsistente entre frontend e backend
+**Fix:** Habilite CORS no backend (`app.enableCors()`). Verifique se as chaves do JSON de resposta batem com o que o componente espera
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-frontend/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-frontend/references/code-examples.md)

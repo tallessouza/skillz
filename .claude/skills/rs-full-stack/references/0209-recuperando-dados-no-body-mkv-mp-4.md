@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-0209-recuperando-body
 description: "Enforces manual request body parsing in pure Node.js HTTP servers. Use when user asks to 'parse request body', 'read POST data', 'handle JSON body', 'create HTTP server', or 'receive data from request' without Express or frameworks. Applies chunked stream reading with Buffer.concat and toString. Make sure to use this skill whenever building raw Node.js HTTP handlers that need body data. Not for Express, Fastify, or any framework-based body parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [nodejs, body-parsing, buffer, for-await, streams]
 ---
 
 # Recuperando Dados no Body (Node.js Puro)
@@ -98,13 +104,13 @@ const server = http.createServer(async (request, response) => {
 | `chunk.toString()` dentro do loop | `Buffer.concat(buffers).toString()` apos coletar tudo |
 | Handler sincrono com streams | `async (request, response) => {}` |
 
+## Troubleshooting
+
+### Problem: `request.body` is undefined in native Node.js HTTP server
+- **Cause**: Native Node.js `http.createServer` does not provide `request.body` — the body must be manually collected from the stream
+- **Fix**: Use `for await (const chunk of request)` to collect chunks, then `JSON.parse(Buffer.concat(buffers).toString())` to parse
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre streams, chunks e Buffer no Node
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0209-recuperando-dados-no-body-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0209-recuperando-dados-no-body-mkv-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-variantes-com-slots
 description: "Applies Tailwind Variants Slots API pattern when styling multiple elements inside a component based on shared state. Use when user asks to 'style multiple elements based on state', 'create component variants', 'use tailwind variants slots', 'conditional styling across elements', or builds components with state-dependent multi-element styling. Make sure to use this skill whenever a component needs to change styles of 2+ child elements based on a single prop/state. Not for single-element variants, basic Tailwind classes, or CSS-in-JS solutions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, flexbox, tailwind-variants]
 ---
 
 # Tailwind Variants — Slots API
@@ -121,15 +127,19 @@ const { container, icon, deleteButton } = fileItem({ state })
 | `cn(base, state === 'error' && '...')` repetido | Variante `error` no objeto de slots |
 | `className` ignorado em componente interno | `button({ variant, className })` repassando |
 | Slots nomeados como `div1`, `span2` | Nomes semanticos: `container`, `icon`, `deleteButton` |
+## Troubleshooting
+
+### Classes Tailwind nao aplicam
+**Symptom:** Classe adicionada mas sem efeito visual.
+**Cause:** O arquivo nao esta incluido no `content` do tailwind.config, ou a classe esta sendo sobrescrita por especificidade.
+**Fix:** Verifique que o path do arquivo esta em `content: ['./src/**/*.tsx']` no tailwind.config. Use DevTools para inspecionar se outra classe sobrescreve.
+
+### Autocomplete do Tailwind nao funciona
+**Symptom:** VS Code nao sugere classes Tailwind.
+**Cause:** Extensao Tailwind CSS IntelliSense nao instalada ou configurada.
+**Fix:** Instale a extensao "Tailwind CSS IntelliSense" no VS Code e recarregue a janela.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variantes-com-slots/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-variantes-com-slots/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variantes-com-slots/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-variantes-com-slots/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

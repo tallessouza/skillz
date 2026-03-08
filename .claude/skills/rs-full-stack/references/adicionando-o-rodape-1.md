@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-o-rodape-1
 description: "Applies footer layout patterns with CSS pseudo-element animations when building navigation footers, social link sections, or hover effects. Use when user asks to 'create a footer', 'add social links', 'hover underline animation', 'scale on hover', or 'pseudo-element transitions'. Covers flexbox footer layout, ::after underline grow effect, ::before circle reveal, and logo rotate on hover. Make sure to use this skill whenever building footer sections or hover micro-interactions with CSS. Not for JavaScript animations, header navigation, or complex keyframe sequences."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, footer, pseudo-elements, animation, hover, flexbox, social-links]
 ---
 
 # Footer com Animações CSS
@@ -152,13 +158,17 @@ nav a:hover::after {
 | Link de ícone sem texto acessível | `<a href="#" title="Instagram">` |
 | `z-index: 999` no fundo | `z-index: -1` para jogar atrás |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pseudo-elemento nao aparece | Faltou `content: ""` | Sempre declare `content: ""` mesmo que vazio |
+| Underline aparece mas nao anima | `transition` ausente ou no `:hover` | Adicione `transition: transform 200ms` no estado base do `::after` |
+| Circulo de fundo fica na frente do texto | `z-index` nao definido ou positivo | Use `z-index: -1` no `::before` |
+| `position: absolute` posiciona no viewport | Pai sem `position: relative` | Adicione `position: relative` no elemento pai |
+| Animacao de scale abrupta | `transition` nao declarada | Adicione `transition: scale 200ms` no estado base |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre pseudo-elementos, z-index e transições
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-o-rodape-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-o-rodape-1/references/code-examples.md)

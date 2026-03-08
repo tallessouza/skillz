@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-atributos-globais-1
 description: "Applies HTML global attributes knowledge when writing HTML markup. Use when user asks to 'create HTML elements', 'add attributes', 'improve accessibility', or 'write semantic HTML'. Ensures correct usage of class, id, data-*, hidden, title, tabindex, lang, and aria-* attributes on any HTML element. Make sure to use this skill whenever generating HTML that needs global attributes. Not for CSS styling, JavaScript logic, or framework-specific component props."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, global-attributes, accessibility, aria, semantic-html]
 ---
 
 # Atributos Globais HTML
 
 > Atributos globais podem ser aplicados a qualquer elemento HTML, independente da tag — use-os para acessibilidade, identificacao, e manipulacao de elementos.
 
-## Key concept
+## Key concepts
 
 Atributos globais sao atributos que funcionam em QUALQUER elemento HTML. Diferente de atributos especificos (como `src` em `<img>` ou `href` em `<a>`), atributos globais nao alteram a estrutura ou comportamento visual do elemento — eles adicionam metadados, acessibilidade, identificacao e hooks para CSS/JS.
 
@@ -52,6 +58,17 @@ Nao memorize todos os atributos globais de uma vez. Aprenda os fundamentais (`id
 - Ao melhorar acessibilidade (`aria-*`, `lang`, `tabindex`)
 - Ao controlar visibilidade sem JS (`hidden`)
 
+## Example
+
+```html
+<div id="app" class="container" data-page="home" lang="pt-BR">
+  <button tabindex="0" role="button" title="Clique para enviar" aria-label="Enviar formulario">
+    Enviar
+  </button>
+  <p hidden>Este paragrafo esta oculto mas presente no DOM</p>
+</div>
+```
+
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
@@ -61,13 +78,16 @@ Nao memorize todos os atributos globais de uma vez. Aprenda os fundamentais (`id
 | `data-` para dados que ja tem atributo semantico | Use o atributo semantico proprio (`lang`, `title`, etc.) |
 | `style="display:none"` para esconder | Use `hidden` — semantico e acessivel |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `id` duplicado causa comportamento inconsistente | Mesmo `id` usado em multiplos elementos | Use `id` para elemento unico, `class` para multiplos |
+| `data-*` nao aparece no JavaScript | Acesso incorreto ao dataset | Use `element.dataset.nomeDaPropriedade` (camelCase sem `data-`) |
+| `tabindex` nao funciona no elemento | Valor incorreto ou elemento nao focavel por padrao | Use `tabindex="0"` para adicionar ao fluxo natural de tabulacao |
+| `title` tooltip nao aparece em mobile | `title` depende de hover que nao existe em touch | Use solucao alternativa com CSS/JS para exibir tooltip em mobile |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atributos-globais-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atributos-globais-1/references/code-examples.md)

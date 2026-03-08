@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-o-projeto-3
 description: "Generates Express + TypeScript project setup with correct dependencies, tsconfig.json, and dev scripts. Use when user asks to 'create an API', 'setup Express project', 'configure TypeScript with Express', 'start a Node.js backend', or 'initialize a REST API'. Follows pinned dependency versions and proper dev/prod separation. Make sure to use this skill whenever scaffolding a new Express+TS backend from scratch. Not for frontend setup, database configuration, or deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-setup
+  tags: [express, typescript, project-setup, tsconfig, tsx, api]
 ---
 
 # Setup Express + TypeScript API
@@ -101,13 +107,16 @@ Servidor rodando em `http://localhost:3333` pronto para receber requisicoes JSON
 - Terminal mostra "Server is running on port 3333"
 - `curl http://localhost:3333` responde (404 esperado, sem erro de conexao)
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Tipagem do Express reclama no import | `@types/express` nao instalado | `npm i -D @types/express@4.17.21` |
+| `tsx` nao reconhecido como comando | tsx nao instalado como devDependency | `npm i -D tsx@4.16.2` |
+| `req.body` retorna undefined em POST | Middleware JSON nao ativado | Adicionar `app.use(express.json())` antes das rotas |
+| package.json perdeu alteracoes manuais apos install | Arquivo estava aberto durante `npm install` | Fechar o arquivo antes de rodar npm install |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada opcao do tsconfig e escolha de versoes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-o-projeto-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-o-projeto-3/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-pacote-day-js
 description: "Applies day.js library patterns when working with dates and times in JavaScript/TypeScript. Use when user asks to 'format a date', 'compare dates', 'add days to a date', 'manipulate time', or 'work with dates in JS'. Guides lightweight library selection over heavy alternatives like moment.js. Make sure to use this skill whenever date/time manipulation is needed in JavaScript projects. Not for backend-only date handling with native SQL functions or Python datetime."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-libraries
+  tags: [dayjs, date-manipulation, date-formatting, lightweight, moment-alternative, npm-packages]
 ---
 
 # Day.js — Manipulacao de Data e Hora
@@ -98,13 +104,16 @@ const futureDate = dayjs(date).add(days, 'day')
 | Contribuidores ativos | Repositorio no GitHub |
 | Comunidade | Issues, PRs, stars no GitHub |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `dayjs is not a function` | Import incorreto | Usar `import dayjs from 'dayjs'` (default import) |
+| Funcionalidade avancada nao disponivel | Plugin nao carregado | Verificar e importar plugin necessario: `dayjs.extend(plugin)` |
+| Formatacao retorna resultado inesperado | Tokens de formato incorretos | Consultar docs do dayjs para tokens corretos (DD/MM/YYYY vs dd/mm/yyyy) |
+| Bundle size maior que esperado | Usando moment.js em vez de dayjs | Substituir `moment` por `dayjs` (~2KB vs 70KB+) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escolha de bibliotecas e ecossistema npm
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-pacote-day-js/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-pacote-day-js/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-componentizando-file-input
 description: "Applies the composition pattern to build flexible file input components in React when user asks to 'create upload component', 'build file input', 'componentize input', or 'make reusable upload'. Splits monolithic file inputs into Root, Trigger, ImagePreview, and Control subcomponents for maximum reusability. Make sure to use this skill whenever building file upload UI or refactoring existing upload components. Not for styling individual inputs, form validation, or server-side file handling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: componentes
+  tags: [tailwind, react, flexbox, composition-pattern, forms]
 ---
 
 # Componentizando File Input com Composition Pattern
@@ -143,15 +149,19 @@ import * as FileInput from './components/Form/FileInput'
 | htmlFor hardcoded igual em dois file inputs | id unico por Control, htmlFor correspondente |
 | Duplicar componente inteiro para variacao sem preview | Omitir ImagePreview na composicao |
 | Estilizar layout no componente interno | Passar className no Root |
+## Troubleshooting
+
+### Input nao ocupa largura total
+**Symptom:** Input aparece com largura menor que o container.
+**Cause:** Input HTML tem largura intrinseca menor que o container.
+**Fix:** Adicione `w-full` no input ou `flex-1` se estiver dentro de flex container.
+
+### Estilos do input aparecem duplicados
+**Symptom:** Borda dupla ou sombra duplicada no input com wrapper.
+**Cause:** Tanto o wrapper quanto o input tem estilos de borda.
+**Fix:** Estilize apenas o wrapper (div fake input) e use `border-0 bg-transparent p-0 outline-none` no input real.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-componentizando-file-input/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-componentizando-file-input/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-componentizando-file-input/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-componentizando-file-input/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

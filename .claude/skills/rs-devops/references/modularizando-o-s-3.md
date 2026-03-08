@@ -1,6 +1,12 @@
 ---
 name: rs-devops-modularizando-o-s-3
 description: "Enforces Terraform module creation patterns when writing infrastructure-as-code for AWS. Use when user asks to 'create a terraform module', 'modularize infrastructure', 'organize terraform code', 'create reusable terraform', or 'setup S3 with CloudFront'. Applies rules: modules/ folder convention, variables for genericity, outputs for inter-module communication, terraform init after module changes, terraform fmt for linting. Make sure to use this skill whenever creating or refactoring Terraform modules. Not for Terraform state management, CI/CD pipelines, or non-AWS providers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-modulos-s3
+  tags: [terraform, s3, modules, variables, outputs, workspace, iac]
 ---
 
 # Modularizacao Terraform — Modulos S3
@@ -138,14 +144,14 @@ module "s3" {
 | Usar indentacao de 4 espacos | `terraform fmt` para padrao de 2 espacos |
 | Colocar modulos internos fora de `modules/` | Convencao: `modules/{nome_recurso}/` |
 
+## Troubleshooting
+
+### Terraform retorna "argument not expected" ao passar variavel para modulo
+**Symptom:** `terraform plan` falha com erro de argumento inesperado no bloco `module {}`
+**Cause:** A variavel esta sendo passada no bloco `module {}` mas nao foi declarada no `variables.tf` do modulo
+**Fix:** Declare toda variavel esperada no `variables.tf` do modulo antes de passa-la no bloco `module {}`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-modularizando-o-s-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-modularizando-o-s-3/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

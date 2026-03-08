@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-abstraindo-criacao-entidades
 description: "Enforces static factory method pattern for DDD entity creation in TypeScript. Use when user asks to 'create an entity', 'implement a domain model', 'build a DDD class', 'add a factory method', or any entity/aggregate design task. Applies rules: static create() method, protected constructor, Optional utility type for auto-filled props, auto-generate IDs when not provided. Make sure to use this skill whenever designing domain entities in DDD or Clean Architecture projects. Not for DTOs, database models, or simple data classes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-entity-creation
+  tags: [ddd, entity, factory-method, typescript, clean-architecture, value-object, domain-model]
 ---
 
 # Abstraindo Criacao de Entidades (DDD)
@@ -113,14 +119,19 @@ const question = Question.create({
 | `new UniqueEntityId()` no chamador quando id e conhecido | `new UniqueEntityId(existingId)` para reaproveitar |
 | Sobrescrever construtor da classe pai | Usar `create()` estatico que chama `new` internamente |
 
+## Troubleshooting
+
+### Entidade nao aceita id existente na reconstrucao
+**Symptom:** Ao buscar do banco e reconstruir a entidade, um novo ID e gerado
+**Cause:** O `create()` nao recebe o parametro `id` ou nao passa para o construtor
+**Fix:** Garanta que `create(props, id?)` repassa `id` como segundo argumento de `new Entity(props, id)`
+
+### Campo auto-preenchido aparece como undefined
+**Symptom:** `entity.createdAt` retorna `undefined` apos criacao
+**Cause:** O default `props.createdAt ?? new Date()` nao foi adicionado dentro do `create()`
+**Fix:** Adicione spread + default: `{ ...props, createdAt: props.createdAt ?? new Date() }`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-abstraindo-criacao-de-entidades/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-abstraindo-criacao-de-entidades/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-abstraindo-criacao-de-entidades/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-abstraindo-criacao-de-entidades/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

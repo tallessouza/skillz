@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-operadores-and-e-or
 description: "Enforces correct usage of SQL AND and OR operators when writing queries with multiple conditions. Use when user asks to 'write a query', 'filter results', 'add conditions to WHERE', 'combine filters in SQL', or any SQL query with multiple criteria. Applies rules: AND requires all conditions true, OR requires at least one true, choose operator based on filtering intent. Make sure to use this skill whenever generating SQL with multiple WHERE conditions. Not for single-condition queries, JOIN logic, or application-level boolean logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-fundamentals
+  tags: [sql, AND, OR, WHERE, operators]
 ---
 
 # Operadores AND e OR no SQL
@@ -84,13 +90,15 @@ WHERE price > 500
 | `WHERE a = 1 AND b = 2 OR c = 3` (ambiguo) | `WHERE a = 1 AND (b = 2 OR c = 3)` |
 | Multiplos OR quando quer listar valores | `WHERE status IN ('active', 'pending')` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Query retorna todos os registros em vez de filtrar | Usou OR onde deveria ser AND para intervalo | Troque para AND: `WHERE price > 500 AND price < 1000` |
+| Resultado inesperado ao misturar AND e OR | Precedencia de AND sobre OR | Adicione parenteses para explicitar a logica |
+| Filtro por lista de valores fica verboso com OR | Multiplos `OR field = 'x'` | Use `IN ('x', 'y', 'z')` em vez de multiplos OR |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo com analogia de verdadeiro/falso e analise registro por registro
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e cenarios adicionais
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-operadores-and-e-or/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-operadores-and-e-or/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-conhecendo-o-projeto-2032
 description: "Applies Next.js project setup conventions when initializing a landing page with blog using Pages Router. Use when user asks to 'create a landing page', 'start a Next.js project', 'setup a blog with Next', or 'clean up a Next.js starter'. Enforces component-based section architecture, responsive design structure, and proper project cleanup before development. Make sure to use this skill whenever scaffolding a new Next.js Pages Router project with landing page and blog sections. Not for App Router projects, API-only backends, or existing project refactoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: setup-projeto
+  tags: [project-setup, landing-page, pages-router, boilerplate, componentization, next-js]
 ---
 
 # Setup de Projeto Next.js: Landing Page + Blog
@@ -80,14 +86,19 @@ Cada secao do design vira um componente independente com sua propria pasta.
 | Ignorar mobile no inicio | Estruture mobile-first desde o primeiro componente |
 | Misturar blog e landing page no mesmo layout | Separe rotas e layouts |
 
+## Troubleshooting
+
+### Erro ao iniciar projeto Next.js
+**Symptom:** `npm run dev` falha com erros de modulo ou dependencia
+**Cause:** Dependencias nao instaladas, versao do Node incompativel, ou conflito de pacotes
+**Fix:** Rodar `npm install` para garantir dependencias. Verificar versao do Node (`node -v`, minimo 18+). Deletar `node_modules` e `package-lock.json` e reinstalar
+
+### TypeScript errors no projeto novo
+**Symptom:** Erros de tipo em arquivos recem-criados
+**Cause:** tsconfig.json nao inclui os paths corretos ou falta `@types` de dependencias
+**Fix:** Verificar `include` no tsconfig.json. Instalar types necessarios: `npm i -D @types/react @types/node`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2032/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2032/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2032/references/deep-explanation.md) — O instrutor apresenta um projeto que sera desenvolvido ao longo do modulo: uma landing page completa
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-conhecendo-o-projeto-2032/references/code-examples.md) — Esta aula e primariamente de overview e limpeza. O instrutor demonstrou a remocao de:

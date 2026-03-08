@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-input-password
 description: "Applies HTML password input best practices when building forms with password fields. Use when user asks to 'create a login form', 'add password field', 'build registration form', 'implement authentication UI', or any form with sensitive data. Enforces POST method for passwords, proper minlength/maxlength, pattern validation, and inputmode. Make sure to use this skill whenever generating HTML forms that include password inputs. Not for backend authentication logic, encryption, or hashing strategies."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, input, password, security, validation, pattern, forms]
 ---
 
 # Input Password em Formulários HTML
@@ -110,13 +116,16 @@ description: "Applies HTML password input best practices when building forms wit
 | password sem minlength | password com `minlength="8"` no mínimo |
 | pattern sem title | pattern com `title="descrição do formato"` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Senha visivel na URL apos submit | Form usando `method="GET"` | Trocar para `method="POST"` |
+| Pattern e minlength conflitam | Quantificador `{4,8}` nao bate com minlength="8" | Alinhar regex quantifier com minlength/maxlength |
+| Teclado numerico nao abre no mobile | `inputmode` nao definido | Adicionar `inputmode="numeric"` para PINs |
+| Mensagem de erro generica no pattern | `title` nao definido | Adicionar `title="Descricao do formato esperado"` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre GET vs POST, conflitos pattern/minlength, e estratégias de segurança frontend
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações e anotações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-input-password/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-input-password/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre GET vs POST, conflitos pattern/minlength, e estrategias de seguranca frontend
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes e anotacoes

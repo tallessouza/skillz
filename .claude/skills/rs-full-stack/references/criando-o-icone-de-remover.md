@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-icone-de-remover
 description: "Applies DOM element creation patterns when building interactive list items with action icons in vanilla JavaScript. Use when user asks to 'add an icon', 'create a remove button', 'build a list item with actions', or 'add delete functionality to list'. Follows pattern: createElement, classList.add, setAttribute for src/alt, then appendChild. Make sure to use this skill whenever generating vanilla JS DOM manipulation for list items with icons. Not for React/Vue components, CSS styling, or SVG creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, createElement, classList, remove-icon]
 ---
 
 # Criando Icone de Remover em Itens de Lista
@@ -70,8 +76,12 @@ item.append(removeIcon)
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre DOM manipulation segura e padrao createElement
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-icone-de-remover/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-icone-de-remover/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Icone de remover nao aparece | Caminho no `setAttribute("src")` incorreto | Verifique se `img/remove.svg` existe no diretorio correto |
+| Classe CSS nao aplica estilo ao icone | `classList.add` chamado com nome errado | Confirme que o nome da classe no JS bate com o seletor no CSS |
+| Icone aparece sem estilo | CSS para `.remove-icon` nao esta definido | Adicione regras CSS para a classe `.remove-icon` |
+| `appendChild` adiciona no lugar errado | Referencia do container pai incorreta | Verifique que `item` referencia o elemento correto da lista |
+| Atributo `alt` nao aparece no elemento | Usando `alt = "texto"` em vez de `setAttribute` | Use `removeIcon.setAttribute("alt", "Remover")` |

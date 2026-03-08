@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-texto-maiusculo-e-minusculo
 description: "Applies JavaScript string case transformation methods toUpperCase and toLowerCase when manipulating text. Use when user asks to 'convert text to uppercase', 'lowercase a string', 'normalize case', 'compare strings case-insensitive', or any string case manipulation. Ensures immutability awareness: these methods return new strings without modifying the original. Make sure to use this skill whenever generating code that transforms string casing in JavaScript or TypeScript. Not for CSS text-transform, locale-aware collation, or regex-based case conversion."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, string, toUpperCase, toLowerCase, immutability]
 ---
 
 # Texto Maiúsculo e Minúsculo
@@ -75,6 +81,15 @@ console.log(nameUpper) // "JOÃO SILVA"
 |-------------|---------------|
 | `text.toUpperCase()` esperando que `text` mude | `const upper = text.toUpperCase()` |
 | `if (a === b)` com strings de casing diferente | `if (a.toLowerCase() === b.toLowerCase())` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel original nao mudou apos `toUpperCase()` | Strings sao imutaveis em JavaScript | Armazene o retorno: `const upper = text.toUpperCase()` |
+| Comparacao case-insensitive falha | Comparando sem normalizar o casing | Use `.toLowerCase()` em ambos os lados: `a.toLowerCase() === b.toLowerCase()` |
+| Caracteres acentuados nao convertem corretamente | Problema de encoding ou locale | `toUpperCase()` e `toLowerCase()` funcionam com Unicode; verifique o encoding do arquivo |
+| `TypeError: toUpperCase is not a function` | Variavel nao e string | Verifique o tipo com `typeof` antes de chamar o metodo |
 
 ## Deep reference library
 

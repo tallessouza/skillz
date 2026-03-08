@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ajustes-finais-5
 description: "Enforces a final review checklist for CSS layout projects before commit. Use when user says 'review my layout', 'final adjustments', 'polish the CSS', 'prepare for commit', or 'check before publishing'. Applies rules: verify font consistency across sections, fix image sizing with object-fit and border-radius, ensure visual consistency with design specs. Make sure to use this skill whenever finishing a CSS/HTML project or preparing a layout for deployment. Not for responsive design breakpoints, JavaScript functionality, or backend deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, review, checklist, layout, polish]
 ---
 
 # Ajustes Finais em Projetos CSS
@@ -76,13 +82,16 @@ git push
 | Font-family hardcoded quando há variável | `font-family: var(--font-family)` |
 | Comitar sem revisão visual | Reduzir janela e verificar cada seção |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Imagem de perfil distorcida | Faltou `object-fit: cover` | Adicione `width`, `height` fixos e `object-fit: cover` |
+| Fonte diferente em uma seção | Valor hardcoded em vez de variável CSS | Substitua por `var(--font-family)` |
+| Layout quebra ao reduzir janela | Elementos com largura fixa em px | Revise e ajuste para unidades relativas onde possível |
+| Imagem circular aparece oval | `border-radius: 50%` sem `width` e `height` iguais | Garanta dimensões iguais antes de aplicar border-radius |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre por que detalhes escapam e como criar hábito de revisão
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código da aula com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-ajustes-finais-5/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-ajustes-finais-5/references/code-examples.md)

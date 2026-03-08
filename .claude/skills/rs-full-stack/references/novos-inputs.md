@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-novos-inputs
 description: "Enforces documentation-first and browser compatibility checking when using HTML form inputs. Use when user asks to 'create a form', 'add an input', 'use date picker', 'check browser support', or any HTML form task. Applies rules: always verify caniuse.com for new input types, prefer widely-supported inputs, check Safari/iOS partial support. Make sure to use this skill whenever generating HTML forms with specialized input types like date, week, month, time. Not for CSS styling, JavaScript validation, or backend form processing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-forms
+  tags: [html, forms, input-types, browser-compatibility, caniuse]
 ---
 
 # Novos Inputs HTML e Compatibilidade de Navegadores
@@ -98,13 +104,16 @@ description: "Enforces documentation-first and browser compatibility checking wh
 | Ignorar Safari/iOS por ser "minoria" | Testar sempre, iOS tem parcela significativa de usuarios |
 | Decorar todos os input types | Consultar DevDocs quando precisar |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Input `type="week"` aparece como texto no Safari | Safari/iOS nao suporta `week` | Use `type="date"` que tem suporte amplo |
+| Input `type="month"` nao funciona no iOS | Safari/iOS nao suporta `month` | Use `type="date"` e extraia o mes no backend |
+| Campo de data nao aparece com date picker | Navegador antigo ou tipo nao suportado | Verifique no caniuse.com e considere fallback |
+| Formato de data enviado diferente do esperado | Cada input type tem formato proprio | `date` envia `YYYY-MM-DD`, verifique a documentacao no DevDocs |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre compatibilidade, analogias do instrutor e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de input types com variacoes e formatos de envio
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-novos-inputs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-novos-inputs/references/code-examples.md)

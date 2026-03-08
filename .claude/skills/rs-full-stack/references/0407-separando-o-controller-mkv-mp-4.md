@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-separando-controller
 description: "Enforces controller separation pattern when structuring Node.js routes and handlers. Use when user asks to 'create a route', 'add an endpoint', 'organize routes', 'separate controllers', or 'structure an API'. Applies rules: one controller per file, group by domain, destructured request/response objects, route files only list routes. Make sure to use this skill whenever creating or refactoring Node.js API routes. Not for frontend components, database models, or middleware logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, controller, routes, separation, crud, architecture]
 ---
 
 # Separando Controllers
@@ -109,13 +115,16 @@ export async function create({ request, response }) {
 | Um arquivo com todos os controllers | Um arquivo por acao (`create.js`, `update.js`) |
 | Rota que importa dependencias de banco | Controller que importa dependencias de banco |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `request` ou `response` é `undefined` no controller | Passando como parâmetros posicionais em vez de objeto | Use `{ request, response }` desestruturado |
+| Controller não é encontrado no import | Caminho relativo errado ou falta extensão `.js` | Confira o path e adicione `.js` |
+| Rota não executa a lógica esperada | Arquivo de rotas contém lógica em vez de delegar | Mova a lógica para `controllers/{domínio}/ação.js` |
+| Novo controller não funciona | Servidor não reiniciado após criar arquivo | Reinicie o servidor Node.js |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de responsabilidades e propagacao de objetos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0407-separando-o-controller-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0407-separando-o-controller-mkv-mp-4/references/code-examples.md)

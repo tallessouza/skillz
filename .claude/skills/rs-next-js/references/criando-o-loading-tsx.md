@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-o-loading-tsx
 description: "Applies Next.js loading.tsx special file pattern when creating routes with async data fetching. Use when user asks to 'add loading state', 'create a loading page', 'fetch data in server component', 'add suspense to route', or 'create loading.tsx'. Enforces correct placement of loading files in App Router folder hierarchy and async server component data fetching. Make sure to use this skill whenever generating Next.js App Router routes that fetch data. Not for client-side loading states with useState, React Query, or SWR."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: loading-state
+  tags: [next-js, loading-tsx, suspense, app-router, server-components, streaming, special-files]
 ---
 
 # Loading.tsx — Special File do Next.js App Router
@@ -117,14 +123,19 @@ export default async function UsersPage() {
 | Loading inline com ternario no componente | Arquivo `loading.tsx` separado no segmento |
 | `loading.js` (sem extensao tsx) em projeto TypeScript | `loading.tsx` |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-loading-tsx/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-loading-tsx/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-loading-tsx/references/deep-explanation.md) — O `loading.tsx` e um **special file** do Next.js App Router. Quando o Next detecta esse arquivo em u
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-loading-tsx/references/code-examples.md) — Retirado diretamente da aula — um loader com icone girando e borda animada:

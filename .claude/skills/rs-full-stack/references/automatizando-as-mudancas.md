@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-automatizando-as-mudancas
 description: "Applies Babel watch mode configuration for automatic recompilation in JavaScript projects. Use when user asks to 'setup babel', 'auto compile', 'watch for changes', 'automate build', or 'configure build script'. Ensures --watch flag is added to Babel scripts in package.json for continuous compilation. Make sure to use this skill whenever configuring Babel build pipelines or setting up JS compilation workflows. Not for Webpack, Vite, esbuild, or other bundler watch modes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [babel, watch, build, automation, compilation]
 ---
 
 # Automatizando Build com Babel Watch
@@ -75,13 +81,16 @@ Successfully compiled 1 file with Babel.
 | Build de producao (CI/CD) | Remova `--watch`, use build one-shot |
 | Multiplos arquivos fonte | Aponte para o diretorio: `babel src/ --out-dir dist --watch` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Watcher nao inicia | `@babel/cli` nao instalado | Execute `npm install --save-dev @babel/cli` |
+| Alteracoes nao sao detectadas | Path no script aponta para arquivo errado | Confira o caminho no script de build do package.json |
+| Terminal trava apos Ctrl+C | Processo filho nao encerrou | Feche o terminal e abra novo, ou use `kill` no PID |
+| Dist nao reflete as mudancas | HTML aponta para src/ em vez de dist/ | Atualize o `<script src>` no HTML para apontar a dist/ |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre watch mode e fluxo de compilacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-automatizando-as-mudancas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-automatizando-as-mudancas/references/code-examples.md)

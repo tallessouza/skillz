@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-como-incluir-o-babel
 description: "Configures Babel with Webpack for browser compatibility. Use when user asks to 'add Babel to Webpack', 'setup transpiling', 'configure browser compatibility', 'add babel-loader', or 'support older browsers with Webpack'. Make sure to use this skill whenever integrating Babel into a Webpack build pipeline. Not for standalone Babel CLI usage, Vite, or other bundlers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [babel, webpack, transpiling, browser-compatibility, babel-loader, build]
 ---
 
 # Como Incluir o Babel no Webpack
@@ -80,13 +86,17 @@ A rule do Babel fica dentro de `module.rules` no `webpack.config.js`, junto com 
 | Passar `use` como string simples quando precisa de options | Usar objeto com `loader` e `options` |
 | Esquecer o array aninhado em presets | Usar `[['@babel/preset-env', { targets }]]` — array dentro de array |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Module not found: babel-loader` | Pacote nao instalado | `npm install babel-loader @babel/core @babel/preset-env -D` |
+| Build falha com erro de preset | Sintaxe errada no array `presets` | Use array aninhado: `[['@babel/preset-env', { targets }]]` |
+| Transpilacao muito lenta | `node_modules` nao excluido da rule | Adicione `exclude: /node_modules/` na rule de JS |
+| Codigo nao transpilado para ES5 | Targets muito permissivos | Ajuste o valor de `targets` no preset-env |
+| Conflito entre `.babelrc` e options na rule | Duas fontes de configuracao | Use apenas uma: ou `.babelrc` ou `options` na rule do Webpack |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre compatibilidade e papel do Babel no pipeline
 - [code-examples.md](references/code-examples.md) — Configuracao completa do webpack.config.js com todas as rules
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-babel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-como-incluir-o-babel/references/code-examples.md)

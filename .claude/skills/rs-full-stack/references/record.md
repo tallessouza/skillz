@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-record
 description: "Enforces correct usage of TypeScript Record utility type when mapping object types. Use when user asks to 'type an object', 'map keys to values', 'restrict object keys', 'create a dictionary type', or 'define object structure with Record'. Applies rules: key-value type mapping, union types as keys for restriction, custom interfaces as values. Make sure to use this skill whenever generating TypeScript objects that need structured key-value typing. Not for array typing, tuple types, or generic utility types like Partial/Pick/Omit."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags:
+    - typescript
+    - utility-types
+    - record
+    - typing
 ---
 
 # TypeScript Record Utility Type
@@ -99,6 +109,14 @@ const config: Record<string, number> = {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do Record
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "Property X is missing in type" | Union type como chave exige TODAS as chaves presentes | Inclua todas as chaves do union ou use `Partial<Record<...>>` |
+| Erro ao adicionar chave extra | Record com union type restringe chaves permitidas | Remova a chave extra ou expanda o union type |
+| `Record<string, number>` aceita qualquer chave | `string` como chave nao restringe nomes | Use union type para limitar: `Record<"a" \| "b", number>` |
 
 ---
 

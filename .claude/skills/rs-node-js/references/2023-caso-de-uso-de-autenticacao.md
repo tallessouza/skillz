@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-caso-de-uso-de-autenticacao
 description: "Enforces inside-out authentication use case patterns when building auth features in Node.js with SOLID principles. Use when user asks to 'implement login', 'create authentication', 'build auth use case', 'add sign in', or 'validate credentials'. Applies rules: start from use case not controller, generic error messages for all auth failures, bcrypt compare for password validation, boolean naming with is/has/does prefix. Make sure to use this skill whenever implementing authentication flows in Node.js applications. Not for JWT token generation, session management, OAuth flows, or frontend auth UI."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: authentication
+  tags: [authentication, use-case, bcrypt, solid, security, credentials, nodejs]
 ---
 
 # Caso de Uso de Autenticacao
@@ -116,14 +122,19 @@ if (!doesPasswordMatches) {
 | `if (password === user.password)` | `if (await compare(password, user.password_hash))` |
 | Use case como funcao solta | Use case como classe com constructor recebendo dependencias |
 
+## Troubleshooting
+
+### Use case lanca erro inesperado
+**Symptom:** Teste falha com erro nao tratado no use case
+**Cause:** Entidade dependente nao foi criada no repositorio in-memory antes de executar
+**Fix:** Pre-seed o repositorio com todas as entidades necessarias usando factories antes de chamar `sut.execute()`
+
+### Comparacao de ID falha silenciosamente
+**Symptom:** `authorId !== entity.authorId` sempre retorna true mesmo com IDs corretos
+**Cause:** `entity.authorId` e um UniqueEntityID, nao uma string
+**Fix:** Use `.toString()` na comparacao: `entity.authorId.toString() !== authorId`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-caso-de-uso-de-autenticacao/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-autenticacao/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-caso-de-uso-de-autenticacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-componente-period-section
 description: "Applies the PeriodSection component pattern when building schedule/appointment grid layouts in Next.js. Use when user asks to 'create a schedule view', 'build appointment list', 'show time slots', 'display bookings grid', or 'render period-based data'. Enforces empty state handling, responsive grid columns, and component extraction for repeated row items. Make sure to use this skill whenever building any list/grid that groups items by time period. Not for form inputs, date pickers, or calendar month views."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-agendamento
+  tags: [period-section, schedule, grid, empty-state, next-js, tailwind, component]
 ---
 
 # Componente PeriodSection
@@ -118,14 +124,19 @@ function PeriodSection({ period }) {
 | Estilos prematuros em wrapper de animacao | Div limpa, estilize quando integrar motion |
 | `<table>` para layout responsivo | Grid CSS com `grid-cols-2` |
 
+## Troubleshooting
+
+### Componente nao renderiza ou renderiza vazio
+**Symptom:** Componente importado corretamente mas nao aparece na tela
+**Cause:** Falta de export default/named, ou props obrigatorias nao passadas
+**Fix:** Verificar que o componente tem export correto (default ou named). Checar TypeScript props para garantir que todas as props obrigatorias estao sendo passadas
+
+### Props nao atualizam o componente
+**Symptom:** Componente mostra dados antigos mesmo quando props mudam
+**Cause:** Componente nao re-renderiza por falta de key unica em listas, ou estado interno sobrescreve props
+**Fix:** Adicionar `key` unica em elementos de lista. Se usando estado interno, sincronizar com props via useEffect ou derivar estado das props
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-componente-period-section/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-componente-period-section/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-componente-period-section/references/deep-explanation.md) — O instrutor enfatiza que a primeira coisa a fazer ao renderizar uma lista de agendamentos e verifica
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-componente-period-section/references/code-examples.md) — // components/PeriodSection.tsx

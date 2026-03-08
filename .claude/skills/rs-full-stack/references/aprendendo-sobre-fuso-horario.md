@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fuso-horario
 description: "Applies correct timezone and timestamp handling when writing JavaScript/TypeScript date code. Use when user asks to 'work with dates', 'format a date', 'convert timezone', 'handle timestamps', or 'create a Date object'. Enforces UTC-first thinking, timestamp awareness, and local vs UTC distinction. Make sure to use this skill whenever generating code that involves Date objects, timestamps, or timezone conversions. Not for calendar UI components, date picker libraries, or cron scheduling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, dates, timezone, utc, timestamps, intl]
 ---
 
 # Fuso Horário e Timestamps em JavaScript
@@ -80,13 +86,16 @@ const display = new Date(createdAt).toLocaleString('pt-BR')
 | `new Date("2026-03-01")` sem timezone | `new Date("2026-03-01T00:00:00Z")` com Z explícito |
 | Comparar `date1.toString() === date2.toString()` | `date1.getTime() === date2.getTime()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `new Date(0)` mostra 1969 em vez de 1970 | Fuso horario local e negativo (ex: UTC-3 no Brasil) | Isso e correto — meia-noite UTC de 1970 e 21h de 31/12/1969 no Brasil |
+| Datas salvas no banco chegam com hora errada | Usando `toString()` que aplica fuso local | Use `toISOString()` ou timestamp numerico para persistir |
+| Comparacao de datas falha | Comparando strings em vez de timestamps | Compare com `date.getTime()` para comparacao numerica precisa |
+| `new Date("2026-03-01")` retorna dia anterior | Hora interpretada como meia-noite UTC, exibida em fuso negativo | Adicione `T00:00:00` com timezone explicito: `new Date("2026-03-01T00:00:00Z")` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre epoch, UTC e deslocamento local
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-fuso-horario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-fuso-horario/references/code-examples.md)

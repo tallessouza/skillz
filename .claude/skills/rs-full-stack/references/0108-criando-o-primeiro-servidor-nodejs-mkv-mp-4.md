@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-primeiro-servidor-nodejs
 description: "Applies Node.js HTTP server creation patterns when writing backend code with native http module. Use when user asks to 'create a server', 'setup Node.js backend', 'build an API', 'start a Node project', or 'listen on a port'. Enforces createServer with request/response naming, proper response handling with .end(), and server.listen structure. Make sure to use this skill whenever generating Node.js HTTP server code from scratch. Not for Express, Fastify, or other framework-based servers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, http, server, createServer, response, native]
 ---
 
 # Criando Servidor HTTP com Node.js Nativo
@@ -82,13 +88,13 @@ server.listen(3333)
 | `response.write()` sem `response.end()` | Sempre finalize com `response.end()` |
 | `require('http')` | `import http from 'node:http'` |
 
+## Troubleshooting
+
+### Problem: Browser shows infinite loading when accessing the server
+- **Cause**: The request handler does not call `response.end()`, leaving the connection open indefinitely
+- **Fix**: Always finalize every response with `response.end('content')` in all code paths of the handler
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre request/response, servidor em execucao e o ciclo de vida
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0108-criando-o-primeiro-servidor-nodejs-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0108-criando-o-primeiro-servidor-nodejs-mkv-mp-4/references/code-examples.md)

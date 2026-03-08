@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-busca-dinamica-1
 description: "Enforces URL-based filtering patterns using Next.js searchParams in Server Components. Use when user asks to 'filter data by URL', 'use searchParams', 'filter by date in Next.js', 'dynamic search', or 'query string filtering'. Applies rules: searchParams as Promise (Next.js 15+), date-fns for date manipulation, Prisma gte/lte range queries, orderBy for sorted results. Make sure to use this skill whenever implementing URL-based filtering or search in Next.js App Router. Not for client-side useSearchParams, pagination, or infinite scroll."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: busca-e-filtros
+  tags: [searchParams, filtering, date-fns, prisma, server-components, next-js, url-state]
 ---
 
 # Busca Dinamica com searchParams (Server Components)
@@ -120,14 +126,19 @@ export default async function Home({
 | findMany sem orderBy em listas temporais | findMany com `orderBy: { scheduledAt: 'asc' }` |
 | useState para filtro que deveria ser na URL | searchParams no Server Component |
 
+## Troubleshooting
+
+### Busca nao retorna resultados
+**Symptom:** Campo de busca nao filtra ou retorna lista vazia
+**Cause:** Query parameter nao esta sendo lido corretamente ou filtro no servidor esta incorreto
+**Fix:** Verificar que o search param esta sendo passado via URL (`?search=termo`). No servidor, usar `searchParams` da pagina para acessar o valor
+
+### Busca recarrega a pagina inteira
+**Symptom:** Ao digitar no campo de busca, toda a pagina recarrega
+**Cause:** Formulario fazendo submit tradicional ao inves de navegacao client-side
+**Fix:** Usar `router.push()` com query params ao inves de form submit. Debounce no onChange para evitar requisicoes excessivas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-busca-dinamica-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-busca-dinamica-1/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-busca-dinamica-1/references/deep-explanation.md) — O instrutor enfatiza uma vantagem fundamental: se voce filtra por data via URL (`?date=2025-09-08`),
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-busca-dinamica-1/references/code-examples.md) — import { parseISO, startOfDay, endOfDay } from 'date-fns'

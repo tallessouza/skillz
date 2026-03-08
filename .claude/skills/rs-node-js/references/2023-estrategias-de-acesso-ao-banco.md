@@ -1,13 +1,21 @@
 ---
 name: rs-node-js-2023-estrategias-acesso-banco
 description: "Applies database access strategy selection (native drivers, query builders, ORMs) when architecting Node.js backend data layers. Use when user asks to 'connect to database', 'choose between knex and prisma', 'setup database', 'pick a database strategy', or 'add database to node app'. Guides abstraction level choice based on project phase and complexity. Make sure to use this skill whenever the user is deciding how to interact with a database in Node.js. Not for SQL query writing, schema design, or migration execution."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: banco-de-dados
+  tags: [database, knex, prisma, orm, query-builder, driver-nativo, sqlite, nodejs]
 ---
 
 # Estrategias de Acesso ao Banco de Dados
 
 > Escolha o nivel de abstracao do banco baseado na fase do projeto e na experiencia do time — driver nativo, query builder ou ORM.
 
-## Regra fundamental
+## Key concepts
+
+### Regra fundamental
 
 Priorize bancos relacionais (SQL) sobre NoSQL, porque bancos relacionais cobrem 90% dos casos reais de aplicacoes Node.js. NoSQL resolve problemas especificos — so adote quando souber exatamente qual problema esta resolvendo.
 
@@ -80,14 +88,14 @@ Use SQLite em desenvolvimento porque:
 | Escolher ORM sem entender SQL basico | Aprenda SQL via query builder primeiro, ORM depois |
 | Instalar Postgres/MySQL local para aprender | Use SQLite — zero fricao para primeiros passos |
 
+## Troubleshooting
+
+### Escolha de ORM antes de entender SQL basico
+**Symptom:** Desenvolvedor nao consegue debugar queries geradas pelo ORM ou otimizar performance
+**Cause:** Pular a etapa de aprendizado com query builder direto para ORM, sem entender o SQL subjacente
+**Fix:** Comece com Knex.js (query builder) para aprender SQL com abstracao leve, depois migre para ORM quando dominar os fundamentos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-estrategias-de-acesso-ao-banco/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-estrategias-de-acesso-ao-banco/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-in-memory-databases
 description: "Applies the In-Memory Test Database pattern when writing unit tests for use cases in Node.js/TypeScript. Use when user asks to 'write unit tests', 'test a use case', 'create test doubles', 'mock a repository', or 'test without database'. Implements in-memory repositories that mirror real database operations using plain arrays. Make sure to use this skill whenever creating unit tests for application use cases or implementing the repository pattern. Not for integration tests, e2e tests, or actual database configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: unit-testing
+  tags: [in-memory, test-doubles, repository-pattern, unit-tests, vitest, typescript]
 ---
 
 # In-Memory Test Database Pattern
@@ -133,14 +139,14 @@ it('should register', async () => {
 | `items` como variavel privada | `public items` para inspecao nos testes |
 | Recriar repositorio manualmente em cada it() | Usar `beforeEach` para instanciar |
 
+## Troubleshooting
+
+### In-Memory repository retorna undefined ao inves de null
+**Symptom:** Teste falha porque o use case espera `null` mas recebe `undefined` ao buscar entidade inexistente
+**Cause:** `Array.find()` retorna `undefined` quando nao encontra, mas a interface do repositorio espera `null`
+**Fix:** Normalize o retorno: `const user = this.items.find(...); if (!user) return null; return user`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-in-memory-databases/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-in-memory-databases/references/code-examples.md)

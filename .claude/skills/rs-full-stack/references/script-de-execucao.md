@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-script-de-execucao
 description: "Generates Knex CLI execution scripts for TypeScript projects. Use when user asks to 'setup knex', 'configure knex with typescript', 'create migration script', 'run knex with tsx', or 'knex CLI not working with typescript'. Applies the tsx+node --import pattern to bridge Knex CLI with TypeScript configs. Make sure to use this skill whenever setting up Knex in a TypeScript project. Not for writing migration content, query building, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Knex CLI Setup"
+  tags: ['knex', 'typescript', 'cli', 'migrations', 'tsx']
 ---
 
 # Script de Execução Knex com TypeScript
@@ -72,6 +78,15 @@ npm run knex -- migrate:make create-courses
 
 - Apos criar o script, executar `npm run knex -- migrate:make test` e verificar se o arquivo foi criado em `database/migrations/`
 - Se falhar, verificar se `tsx` esta instalado como dependencia
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Knex CLI nao processa arquivo TypeScript | Executando `npx knex` diretamente sem loader | Use o script `npm run knex` com `node --import tsx` |
+| Argumentos nao passados ao Knex | Falta `--` antes dos argumentos | Use `npm run knex -- migrate:make nome` com double dash |
+| Erro "tsx not found" | tsx nao instalado como dependencia | Instale com `npm i -D tsx` |
+| Migration criada em diretorio errado | Diretorio de migrations nao configurado no knexfile | Configure `migrations.directory` no `knexfile.ts` |
 
 ## Deep reference library
 

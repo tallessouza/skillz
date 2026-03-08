@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-incremento-e-decremento
 description: "Enforces correct usage of increment and decrement operators in JavaScript/TypeScript code. Use when user asks to 'increment a variable', 'add to counter', 'loop counter', 'update a value', or writes code with ++ or -- operators. Applies rules: prefix vs postfix awareness, += and -= for values greater than 1, avoid silent postfix bugs in expressions. Make sure to use this skill whenever generating code with counters, loops, or numeric variable mutations. Not for string concatenation, array operations, or mathematical formulas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, operators, increment, decrement, counters]
 ---
 
 # Incremento e Decremento
@@ -76,13 +82,16 @@ console.log(displayCount) // 11 — correto
 | `x = x - 10` | `x -= 10` |
 | `result = a++ + b++` | Separe em linhas: `a++; b++; result = a + b` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Variavel mostra valor anterior apos `x++` | Postfix retorna valor ANTES do incremento | Use `++x` (prefixo) quando precisar do valor atualizado imediatamente |
+| `const` com `++` gera erro | `const` nao permite reatribuicao | Use `let` para variaveis que precisam ser incrementadas |
+| Resultado inesperado em expressao com `++` | Mistura de incremento com outras operacoes na mesma linha | Separe o incremento em linha propria para clareza |
+| Loop infinito com decremento | Condicao de parada nunca alcancada | Verifique se o decremento direciona para a condicao de parada |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre prefixo vs sufixo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-incremento-e-decremento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-incremento-e-decremento/references/code-examples.md)

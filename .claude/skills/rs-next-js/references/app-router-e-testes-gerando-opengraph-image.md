@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-opengraph-image
 description: "Generates dynamic OpenGraph images in Next.js App Router using ImageResponse and opengraph-image.tsx files. Use when user asks to 'create og image', 'generate share image', 'dynamic social preview', 'opengraph image', or 'meta image for each page'. Applies convention-based file routing for og images with dynamic params. Make sure to use this skill whenever generating social sharing images or configuring opengraph metadata in Next.js projects. Not for static metadata, favicon generation, or general image optimization."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, opengraph, og-image, ImageResponse, social-sharing, seo, meta-tags]
 ---
 
 # Gerando OpenGraph Image no Next.js
@@ -114,14 +121,19 @@ O Next gera automaticamente as meta tags:
 | Tailwind classes (`className="bg-zinc-950"`) | Inline styles com `tailwindcss/colors` |
 | Extensao `.png/.jpg` quando quer imagem dinamica | Extensao `.tsx` para gerar via codigo |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-gerando-opengraph-image/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-gerando-opengraph-image/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-gerando-opengraph-image/references/deep-explanation.md) — O Next.js usa convencao de nomes de arquivo para metadados. Quando encontra um arquivo chamado `open
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-gerando-opengraph-image/references/code-examples.md) — Basta colocar o arquivo na pasta da rota:

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-collector-do-otel
 description: "Generates OpenTelemetry Collector configuration with Docker Compose setup and YAML config. Use when user asks to 'setup otel', 'configure opentelemetry', 'add observability', 'setup collector', or 'configure telemetry pipeline'. Covers receivers (OTLP/Prometheus), processors (batch/resource), exporters (Loki/Tempo/Mimir), extensions, and Docker Compose integration. Make sure to use this skill whenever setting up OpenTelemetry Collector in a Docker environment. Not for application-level instrumentation, SDK setup, or Grafana dashboard configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-otel-collector
+  tags: [opentelemetry, otel-collector, docker-compose, receivers, exporters, observability]
 ---
 
 # Configurando o Collector do OpenTelemetry
@@ -131,14 +137,14 @@ services:
 | Usar imagem core sem contrib | Use `otel/opentelemetry-collector-contrib` |
 | Config sem TLS insecure em dev | Declare `tls: insecure: true` para comunicacao interna |
 
+## Troubleshooting
+
+### OTel Collector falha ao conectar com backends
+**Symptom:** Logs do collector mostram erros de conexao com Loki, Tempo ou Mimir
+**Cause:** Backends nao estao prontos quando o collector inicia, ou nomes de servico Docker estao incorretos
+**Fix:** Verifique se `depends_on` inclui todos os backends e que os nomes nos exporters correspondem aos nomes dos servicos no Docker Compose
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-collector-do-otel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-collector-do-otel/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-collector-do-otel/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-collector-do-otel/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

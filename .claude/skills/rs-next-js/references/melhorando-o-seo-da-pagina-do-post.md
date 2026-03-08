@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-seo-pagina-post
 description: "Generates dynamic metadata for Next.js pages using generateMetadata function. Use when user asks to 'add SEO to a page', 'dynamic meta tags', 'open graph for posts', 'generateMetadata Next.js', or 'improve SEO on dynamic routes'. Applies correct pattern for async params, fallback metadata in layout, and structured open graph. Make sure to use this skill whenever creating or editing Next.js pages that need dynamic meta tags or SEO optimization. Not for static-only metadata, sitemap generation, or robots.txt configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: seo
+  tags: [seo, generateMetadata, dynamic-metadata, open-graph, next-js, async-params]
 ---
 
 # SEO Dinâmico com generateMetadata no Next.js
@@ -126,14 +132,19 @@ export default async function BlogPost({ params }: Props) {
 | Retornar undefined quando post nao existe | Retornar `{}` (objeto vazio) |
 | Duplicar tipagem de Props para componente e metadata | Compartilhar um unico type Props |
 
+## Troubleshooting
+
+### Meta tags nao aparecem no preview de compartilhamento
+**Symptom:** Ao compartilhar link no WhatsApp/Twitter/LinkedIn, preview aparece sem imagem ou descricao
+**Cause:** Falta de tags Open Graph ou tags com valores vazios/incorretos
+**Fix:** Adicionar `og:title`, `og:description`, `og:image` via metadata export ou generateMetadata. Verificar com https://cards-dev.twitter.com/validator
+
+### Title duplicado ou generico no Google
+**Symptom:** Google mostra title diferente do configurado ou igual para todas as paginas
+**Cause:** Title identico em todas as paginas ou faltando configuracao especifica por rota
+**Fix:** Configurar metadata unica por pagina usando `export const metadata` ou `generateMetadata` com dados dinamicos
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-pagina-do-post/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-pagina-do-post/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-pagina-do-post/references/deep-explanation.md) — O instrutor demonstra um insight pratico: ao verificar um post sem metadata, ele percebe que o post 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-melhorando-o-seo-da-pagina-do-post/references/code-examples.md) — // app/layout.tsx

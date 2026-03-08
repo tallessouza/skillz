@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-display-block
 description: "Enforces correct usage of CSS display block properties when writing HTML/CSS code. Use when user asks to 'style a div', 'layout elements', 'set width and height', 'add margin or padding', or any CSS layout task. Applies rules: block occupies full horizontal line, width/height apply normally, padding/margin/border work completely. Make sure to use this skill whenever generating CSS for block-level elements. Not for flexbox, grid, inline, or inline-block layout questions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-layout
+  tags: [CSS, display-block, box-model, width, height, margin, padding]
 ---
 
 # Display Block
@@ -79,13 +85,16 @@ section {
 | Colocar `display: block` em elemento que ja e block | Omita a declaracao — div, section, p ja sao block |
 | Esquecer que block ocupa 100% da largura sem width definido | Defina width explicitamente se precisar de largura menor |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Duas divs nao ficam lado a lado | Elementos block ocupam linha inteira | Use `display: flex` ou `display: inline-block` |
+| `display: block` nao muda nada | Elemento ja e block por padrao (div, p, section) | Omita a declaracao — ja e o comportamento padrao |
+| Width de 100% causa overflow horizontal | Padding/border adicionam ao width total | Adicione `box-sizing: border-box` |
+| Elemento block nao respeita width definido | Verifique se nao ha `!important` ou regra mais especifica | Inspecione com DevTools > Computed |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-display-block/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-display-block/references/code-examples.md)

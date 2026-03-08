@@ -1,6 +1,12 @@
 ---
 name: rs-devops-iniciando-configuracao
-description: "Guides CI/CD pipeline migration from Docker Hub to AWS ECR with secure OIDC authentication. Use when user asks to 'configure ECR login', 'migrate from Docker Hub to ECR', 'setup AWS credentials in GitHub Actions', 'configure CI/CD for AppRunner', or 'setup OIDC for AWS'. Applies secure credential patterns using IAM roles instead of access tokens. Make sure to use this skill whenever configuring GitHub Actions pipelines that push images to AWS ECR. Not for Docker Hub setup, Kubernetes deployments, or ECS task definitions."
+description: "Configures CI/CD pipeline migration from Docker Hub to AWS ECR with secure OIDC authentication. Use when user asks to 'configure ECR login', 'migrate from Docker Hub to ECR', 'setup AWS credentials in GitHub Actions', 'configure CI/CD for AppRunner', or 'setup OIDC for AWS'. Applies secure credential patterns using IAM roles instead of access tokens. Make sure to use this skill whenever configuring GitHub Actions pipelines that push images to AWS ECR. Not for Docker Hub setup, Kubernetes deployments, or ECS task definitions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-ecr
+  tags: [ecr, aws, oidc, github-actions, ci-cd, docker, iam]
 ---
 
 # Pipeline CI/CD: Docker Hub → AWS ECR
@@ -84,14 +90,14 @@ Recursos necessarios:
 - Se `configure-aws-credentials` falha: verificar se Identity Provider do GitHub esta criado na AWS e a role confia no repositorio correto
 - Se push falha: verificar se o ECR repository existe na mesma regiao configurada
 
+## Troubleshooting
+
+### Login ECR falha com "not authorized to perform ecr:GetAuthorizationToken"
+**Symptom:** Step de login no ECR falha com erro de permissao
+**Cause:** A IAM role associada via OIDC nao possui a policy `AmazonEC2ContainerRegistryPowerUser` ou o Identity Provider do GitHub nao esta configurado corretamente na AWS
+**Fix:** Verifique que a IAM role tem a policy correta e que o Identity Provider confia no repositorio GitHub correto (audience e subject)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-iniciando-configuracao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-iniciando-configuracao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

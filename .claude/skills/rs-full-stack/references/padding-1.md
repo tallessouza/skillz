@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-padding-1
 description: "Applies CSS padding shorthand conventions when writing styles or layouts. Use when user asks to 'add padding', 'style a component', 'add spacing', 'create a layout', or 'write CSS'. Enforces shorthand syntax with correct value ordering (top, right, bottom, left), warns against padding on inline elements. Make sure to use this skill whenever generating CSS that involves internal spacing. Not for margin, gap, or external spacing properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-fundamentos
+  tags: [css, padding, box-model, espacamento, shorthand]
 ---
 
 # CSS Padding (Preenchimento Interno)
@@ -81,6 +87,15 @@ description: "Applies CSS padding shorthand conventions when writing styles or l
 | 4 propriedades separadas (`padding-top`, `-right`, `-bottom`, `-left`) quando valores sao simetricos | Shorthand com 1 ou 2 valores |
 | `padding: 20px 20px 20px 20px` | `padding: 20px` |
 | `padding: 20px 40px 20px 40px` | `padding: 20px 40px` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Padding vertical nao funciona em `<span>` | Elemento inline nao respeita padding vertical no fluxo | Adicione `display: inline-block` ou `display: block` ao elemento |
+| Padding aumenta o tamanho total do elemento | `box-sizing` esta como `content-box` (padrao) | Adicione `box-sizing: border-box` para incluir padding no tamanho |
+| Padding aparece em lado errado | Ordem dos valores no shorthand esta incorreta | Lembre: sentido relogio — top, right, bottom, left |
+| Padding sobrepoe conteudo adjacente | Elemento inline com padding vertical | Mude o display para `block` ou `inline-block` |
 
 ## Deep reference library
 

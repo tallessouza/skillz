@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-postgre-sql-com-docker
 description: "Applies PostgreSQL Docker container setup and Prisma migration workflow when user asks to 'setup database', 'run postgres', 'docker postgres', 'create container', 'prisma migrate', or 'configure database for Node.js project'. Covers Bitnami image security, port mapping, container lifecycle, and Prisma migration flow. Make sure to use this skill whenever setting up PostgreSQL with Docker for Node.js APIs. Not for production deployment, Docker Compose orchestration, or cloud-managed databases."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: docker-postgresql
+  tags: [postgresql, docker, prisma, migrations, bitnami, container, database-setup]
 ---
 
 # PostgreSQL com Docker
@@ -105,14 +111,14 @@ docker start api-solid-pg
 | Criar SQL manual para tabelas | `npx prisma migrate dev` gera automaticamente |
 | Instalar PostgreSQL direto na maquina | Usar Docker para isolamento por projeto |
 
+## Troubleshooting
+
+### Container nao inicia ou porta ja em uso
+**Symptom:** `docker run` falha com erro "port is already allocated" ou "container name already in use"
+**Cause:** Outro container ou processo ja esta usando a porta 5432, ou um container com o mesmo nome ja existe
+**Fix:** Use `docker ps -a` para listar containers existentes. Se o container existe, use `docker start {nome}`. Se a porta esta ocupada por outro processo, mude o mapeamento para `-p 5433:5432`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-postgre-sql-com-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-postgre-sql-com-docker/references/code-examples.md)

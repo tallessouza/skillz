@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-abertura-38
 description: "Introduces ORM concepts and Prisma ORM as the standard database abstraction layer for Node.js applications. Use when user asks 'what is an ORM', 'should I use Prisma', 'how to connect to database', 'setup database', or 'ORM vs raw SQL'. Make sure to use this skill whenever discussing database access strategies in Node.js/TypeScript projects. Not for specific Prisma queries, migrations, or schema design — see dedicated Prisma skills for those."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [prisma, orm, database, typescript, type-safety]
 ---
 
 # ORM — Conceito e Prisma como Escolha Padrão
 
 > Um ORM abstrai a comunicação com o banco de dados, permitindo manipular dados usando a linguagem da aplicação em vez de SQL direto.
 
-## Conceito chave
+## Key concepts
 
 ORM (Object-Relational Mapping) é uma camada que mapeia tabelas do banco de dados para objetos da aplicação. Em vez de escrever SQL manual, o desenvolvedor manipula entidades usando métodos da linguagem (TypeScript/JavaScript), e o ORM traduz essas operações para queries SQL.
 
@@ -21,6 +27,19 @@ ORM (Object-Relational Mapping) é uma camada que mapeia tabelas do banco de dad
 | Queries muito complexas com joins específicos | Prisma + raw SQL pontual (`$queryRaw`) |
 | Projeto precisa de type-safety no acesso a dados | Prisma (schema gera tipos automaticamente) |
 | Prototipagem rápida com banco de dados | Prisma — setup rápido com `prisma init` |
+
+## Exemplo de uso do Prisma
+
+```bash
+# Inicializar Prisma no projeto
+npx prisma init
+
+# Aplicar migrations
+npx prisma migrate dev --name init
+
+# Gerar tipos TypeScript
+npx prisma generate
+```
 
 ## Facilidades que um ORM traz
 
@@ -47,8 +66,11 @@ Este módulo cobre Prisma ORM especificamente. Os conceitos de ORM são universa
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre ORM, analogias e contexto histórico
 - [code-examples.md](references/code-examples.md) — Exemplos comparativos ORM vs SQL raw
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abertura-38/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abertura-38/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Prisma nao gera tipos | `prisma generate` nao executado apos alterar schema | Execute `npx prisma generate` apos cada mudanca no schema |
+| Erro de conexao com banco | DATABASE_URL incorreta no `.env` | Verifique formato: `postgresql://user:pass@host:port/db` |
+| Queries lentas com Prisma | ORM gerando SQL subotimo para aggregations | Use `$queryRaw` para queries analiticas complexas |
+| Migrations nao aplicam | Estado do banco inconsistente | Execute `npx prisma migrate reset` (cuidado: apaga dados) |

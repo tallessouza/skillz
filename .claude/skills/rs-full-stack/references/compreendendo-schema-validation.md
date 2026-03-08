@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-schema-validation
 description: "Applies schema validation patterns when validating request data in Node.js/TypeScript APIs. Use when user asks to 'validate request body', 'add validation', 'validate input', 'create schema', or 'validate email/password'. Enforces schema-based validation: define expected shape, property types, formats, and constraints before processing data. Make sure to use this skill whenever implementing input validation in API routes. Not for database-level constraints, frontend form validation, or authentication logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [validation, zod, schema, api, typescript]
 ---
 
 # Schema Validation
@@ -96,13 +102,17 @@ app.post('/users', (request, reply) => {
 | Validar dentro da lógica de negócio | Validar na entrada, antes do processamento |
 | Regras de validação espalhadas pelo código | Um esquema centralizado por operação |
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Zod lanca erro mesmo com dados corretos | Tipo do campo nao corresponde ao schema | Use `z.coerce.number()` para campos que chegam como string |
+| Erro nao retorna detalhes uteis | Usando `.parse()` em vez de `.safeParse()` | Use `safeParse` para obter `result.error.issues` com detalhes |
+| Validacao nao bloqueia dados invalidos | Schema definido mas nao chamado na rota | Chame `schema.safeParse(request.body)` antes de processar dados |
+| Campo opcional causa erro de validacao | Faltou `.optional()` no schema | Adicione `.optional()` ao campo no schema Zod |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogia das formas geométricas e mental model
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variações de validação
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-schema-validation/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-schema-validation/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-seed-de-produtos
 description: "Generates Knex.js seed files for populating database tables with sample or batch data. Use when user asks to 'seed the database', 'populate table', 'insert sample data', 'create test data', or 'bulk insert records'. Applies Knex seed:make and seed:run commands with table cleanup before insertion. Make sure to use this skill whenever creating seed files or populating tables with initial data in Knex projects. Not for migrations, schema changes, or single-record inserts via API."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Knex Database Seeds"
+  tags: ['knex', 'database', 'seeds', 'testing', 'data-population']
 ---
 
 # Seed de Produtos com Knex.js
@@ -73,6 +79,15 @@ Tabela populada com todos os registros definidos no array de insert. Registros a
 
 - Executar `seed:run` e verificar via API GET ou query direta que os registros existem
 - Executar `seed:run` duas vezes seguidas e confirmar que não há duplicatas
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Dados duplicados apos rodar seed | Falta `del()` antes do insert | Adicione `await knex("tabela").del()` antes do insert |
+| Seed falha com foreign key constraint | Tentando deletar tabela referenciada | Execute seeds na ordem correta ou desabilite constraints temporariamente |
+| Arquivo de seed nao encontrado | Diretorio de seeds nao configurado no knexfile | Configure `seeds.directory` no `knexfile.ts` |
+| Seed roda mas tabela continua vazia | Erro silencioso no insert | Verifique se os nomes das colunas batem com o schema da migration |
 
 ## Deep reference library
 

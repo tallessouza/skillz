@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-secao-download
 description: "Applies responsive download section layout patterns when building landing page sections with cards, absolute-positioned images, and app store buttons. Use when user asks to 'create a download section', 'build a CTA card with image', 'add app store buttons', or 'fix horizontal scroll overflow'. Enforces card-based layout with absolute positioning, overflow-x hidden fix, and media query breakpoints. Make sure to use this skill whenever building promotional sections with side-by-side content and decorative images. Not for navigation, hero sections, or form layouts."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Layout Patterns"
+  tags: ['css', 'layout', 'responsive', 'position-absolute', 'landing-page']
 ---
 
 # Seção Download — Layout Responsivo com Card e Imagem Absoluta
@@ -140,6 +146,15 @@ html {
 | `alt="botão"` ou `alt="imagem"` em links de store | `alt="Baixar da Apple Store"` descrevendo a ação |
 | Padding fixo sem media query para desktop | Padding mobile-first + padding maior no `@media (min-width: 80em)` |
 | Largura fixa na div de texto sem breakpoint | `max-width` apenas dentro da media query desktop |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Scroll horizontal apareceu na pagina | Imagem com position absolute vazando da viewport | Adicione `overflow-x: hidden` no `html` |
+| Imagem absoluta nao aparece no card | Card pai sem `position: relative` | Adicione `position: relative` no container do card |
+| Card parece colado sem espaco para imagem | Falta padding compensatorio | Adicione `padding-bottom` proporcional a altura da imagem absoluta |
+| Botoes de store quebram em mobile | Botoes em flex sem wrap | Adicione `flex-wrap: wrap` no container dos botoes |
 
 ## Deep reference library
 

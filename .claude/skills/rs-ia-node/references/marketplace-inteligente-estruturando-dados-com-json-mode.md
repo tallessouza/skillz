@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-json-mode
 description: "Enforces correct OpenAI JSON Mode usage with Zod validation when building AI-powered APIs in Node.js. Use when user asks to 'parse AI response', 'get structured data from OpenAI', 'validate LLM output', 'use JSON mode', or 'structured output from GPT'. Applies rules: always set response_format, always include 'JSON' in prompt, always validate with Zod, handle parse errors. Make sure to use this skill whenever integrating OpenAI responses into typed backends. Not for Structured Outputs (response_format type json_schema), prompt engineering, or frontend rendering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: structured-outputs
+  tags: [zod, node-js, function-calling, openai, ia-node, structured-outputs]
 ---
 
 # Estruturando Dados com JSON Mode
@@ -101,14 +107,14 @@ return res.json(result.data)
 | Prompt sem a palavra "JSON" | Incluir "JSON" explicitamente no prompt |
 | Usar `schema.parse()` (throws) em API | Usar `schema.safeParse()` e tratar `.success` |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-estruturando-dados-com-json-mode/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-estruturando-dados-com-json-mode/references/code-examples.md)

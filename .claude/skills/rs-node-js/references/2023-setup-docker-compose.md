@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-setup-docker-compose
 description: "Generates Docker Compose configurations for NestJS/Node.js projects with PostgreSQL. Use when user asks to 'setup docker', 'add postgres', 'create docker-compose', 'configure database with docker', or 'add a database container'. Applies correct volume mapping, environment variables, container naming, and port forwarding. Make sure to use this skill whenever setting up local development databases for Node.js projects. Not for Kubernetes, production deployment, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [docker, docker-compose, postgres, database, infrastructure, development]
 ---
 
 # Setup Docker Compose para Desenvolvimento
@@ -104,14 +110,14 @@ docker compose up -d
 | Usar mesma imagem em dev e prod | Dev: `postgres`, Prod: `bitnami/postgres` |
 | Rodar sem flag `-d` | Use `docker compose up -d` para modo detached |
 
+## Troubleshooting
+
+### Container Postgres nao persiste dados apos docker compose down
+**Symptom:** Dados do banco desaparecem ao recriar o container
+**Cause:** Volume nao configurado ou mapeado para diretorio local
+**Fix:** Adicione `volumes: ['./.data/pg:/data/postgres']` no service e defina `PGDATA: /data/postgres` no environment
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-setup-docker-compose/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-setup-docker-compose/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-diferenca-type-interface
 description: "Enforces correct choice between Type and Interface in TypeScript code. Use when user asks to 'create a type', 'define an interface', 'extend a type', 'merge declarations', or any TypeScript type definition task. Applies rules: use interface for declaration merging and object shapes, use type for primitives aliases and intersections. Make sure to use this skill whenever defining TypeScript types or reviewing type definitions. Not for runtime JavaScript code, documentation, or non-TypeScript projects."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript
+  tags: [TypeScript, type, interface, declaration-merging, extends, intersection]
 ---
 
 # Diferença entre Type e Interface no TypeScript
@@ -109,13 +115,16 @@ interface Product { name: string } // OK, unificado
 | Misturar `type` e `interface` sem criterio no mesmo projeto | Escolher um padrao e seguir consistentemente |
 | Prefixo `I` obrigatorio em interfaces (`IProduct`) | Usar apenas se for convencao do time |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `Duplicate identifier` ao declarar type duas vezes | Types nao suportam declaration merging | Use `interface` se precisa de merge, ou renomeie |
+| `interface X extends string` nao compila | Interfaces nao podem extender primitivos | Use `type X = string` para alias de primitivos |
+| Confusao entre `&` e `extends` | Ambos compoe tipos, mas de formas diferentes | Use `&` para composicao rapida, `extends` para hierarquia |
+| Inconsistencia no projeto (mistura type/interface) | Falta de convencao | Defina padrao com o time e siga consistentemente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-diferenca-entre-type-e-interface/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-diferenca-entre-type-e-interface/references/code-examples.md)

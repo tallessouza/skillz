@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-eslint-prettier-lefthook
 description: "Applies ESLint, Prettier, and Lefthook configuration when setting up a Next.js project or configuring code quality tools. Use when user asks to 'setup linting', 'configure prettier', 'add git hooks', 'setup lefthook', 'configure eslint', or 'setup code quality'. Ensures pre-commit and pre-push hooks enforce formatting and type checking. Make sure to use this skill whenever setting up a new Next.js project's code quality pipeline. Not for runtime configuration, deployment, or CI/CD pipeline setup."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: setup-projeto
+  tags: [eslint, prettier, lefthook, git-hooks, pre-commit, code-quality, next-js]
 ---
 
 # Configurando ESLint, Prettier e Lefthook
@@ -111,14 +117,19 @@ pre-push:
 | Esquecer `pnpx lefthook install` | Sempre executar apos criar `lefthook.yml` |
 | Cada dev configurar VS Code individualmente | Criar `.vscode/settings.json` no repositorio |
 
+## Troubleshooting
+
+### Estado nao atualiza na tela
+**Symptom:** Chamou setState mas o componente nao re-renderiza
+**Cause:** Mutacao direta do estado (push em array, modificacao de objeto) ao inves de criar nova referencia
+**Fix:** Sempre criar novo objeto/array: `setItems([...items, newItem])` ao inves de `items.push(newItem)`. React compara por referencia
+
+### Context nao disponivel em componente filho
+**Symptom:** useContext retorna undefined ou valor padrao
+**Cause:** Componente esta fora do Provider ou Provider esta em nivel errado da arvore
+**Fix:** Verificar que o Provider envolve o componente que consome o contexto. Em App Router, Provider com "use client" deve estar no layout
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-configurando-es-lint-prettier-e-lefthook/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-configurando-es-lint-prettier-e-lefthook/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-configurando-es-lint-prettier-e-lefthook/references/deep-explanation.md) — O instrutor faz uma distincao clara entre as tres ferramentas:
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-configurando-es-lint-prettier-e-lefthook/references/code-examples.md) — pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier lefthook

@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-hooks-globais-fastify
+name: rs-node-js-2023-configurando-um-hook-global
 description: "Applies Fastify global hook and plugin scoping patterns when writing Node.js APIs with Fastify. Use when user asks to 'add middleware', 'create a hook', 'add logging', 'add global validation', 'register preHandler', or any Fastify route interceptor task. Ensures correct hook placement based on desired scope (plugin-local vs app-wide). Make sure to use this skill whenever registering Fastify hooks or middleware. Not for Express.js middleware, authentication logic, or database query patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-rest-fastify
+  tags: [fastify, hooks, middleware, preHandler, plugin-scope]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Hooks Globais no Fastify
@@ -104,14 +111,14 @@ app.get('/hello', async () => 'Hello World') // logRequest dispara aqui tambem
 | Usar `preHandler` inline em todas as rotas uma a uma | Use `app.addHook('preHandler', fn)` no escopo desejado |
 | Registrar hook global DEPOIS de `app.register()` | Registre ANTES para garantir que afeta os plugins |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-configurando-um-hook-global/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-configurando-um-hook-global/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-um-hook-global/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-um-hook-global/references/code-examples.md) — Todos os exemplos de código expandidos com variações

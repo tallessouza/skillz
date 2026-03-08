@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-o-webpack
 description: "Applies Webpack 5 initial setup and configuration when scaffolding a new frontend build pipeline. Use when user asks to 'setup webpack', 'configure bundler', 'create build pipeline', 'initialize webpack config', or 'add webpack to project'. Follows correct entry/output patterns, path.resolve for cross-OS compatibility, and CommonJS syntax in config files. Make sure to use this skill whenever setting up Webpack from scratch in a Node.js project. Not for Vite, esbuild, Rollup, or other bundler configurations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: webpack-config
+  tags: [webpack, bundler, configuration, nodejs, build]
 ---
 
 # Configuracao Inicial do Webpack
@@ -85,13 +91,16 @@ Resultado: pasta `dist/` com `main.js` compilado.
 - `devDependencies` no package.json contem webpack e webpack-cli
 - Nenhum erro no terminal ao executar build
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `import/export` falha no webpack.config.js | Config usa ESM mas roda no Node (CommonJS) | Usar `require()` e `module.exports` no webpack.config.js |
+| `dist/main.js` nao gerado | Entry point com caminho incorreto | Verificar `entry: path.resolve(__dirname, "src", "main.js")` |
+| Pasta `dist/` nao aparece na IDE | Arvore de arquivos nao atualizada | Recarregar a arvore de arquivos (reload) |
+| Erro de caminhos no Windows | Caminhos com barras invertidas | Usar `path.resolve()` para compatibilidade cross-OS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre CommonJS vs ESM em configs e path.resolve
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-o-webpack/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-o-webpack/references/code-examples.md)

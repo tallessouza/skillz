@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-objeto-prototype
 description: "Applies JavaScript prototype chain knowledge when writing or debugging object inheritance. Use when user asks to 'explain prototype', 'debug inheritance', 'check prototype chain', 'understand __proto__', or works with Object.create/class extends. Ensures correct mental model of prototype chain navigation from specific type up to null. Make sure to use this skill whenever prototype or inheritance questions arise in JavaScript. Not for TypeScript class syntax, design patterns, or React component hierarchy."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentos
+  tags: [javascript, prototype, inheritance, prototype-chain, object]
 ---
 
 # Prototype Chain em JavaScript
@@ -83,13 +89,16 @@ console.log(address.__proto__.__proto__ === null)    // true
 | Ignorar a cadeia de prototype | Navegar ate null para entender heranca completa |
 | Usar `__proto__` em codigo de producao | Usar `Object.getPrototypeOf()` em producao |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `console.log` nao mostra o prototype | `console.log` serializa apenas propriedades proprias | Use `console.dir(obj)` para ver a cadeia completa |
+| `__proto__` nao aparece em strings | Strings sao primitivos, console nao expande automaticamente | Acesse via `"texto".__proto__` ou `Object.getPrototypeOf("texto")` |
+| Metodo herdado nao aparece em `Object.keys()` | `Object.keys` retorna apenas propriedades proprias | Use `for...in` para iterar incluindo propriedades herdadas |
+| `__proto__` deprecated em producao | `__proto__` e legacy e pode ser removido | Use `Object.getPrototypeOf(obj)` em codigo de producao |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cadeia de heranca, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto-prototype/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-um-objeto-prototype/references/code-examples.md)

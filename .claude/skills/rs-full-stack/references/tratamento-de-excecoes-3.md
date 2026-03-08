@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-tratamento-de-excecoes
 description: "Enforces strategic try-catch exception handling patterns when writing JavaScript/TypeScript code. Use when user asks to 'handle errors', 'add try-catch', 'connect to database', 'fetch data', 'read files', or any code involving external dependencies. Applies rules: try-catch only for external dependencies, user-friendly error messages, never wrap entire codebase. Make sure to use this skill whenever generating code that depends on external resources (APIs, databases, filesystem, network). Not for validation logic, type checking, or lint rules."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-excecoes
+  tags: [javascript, try-catch, error-handling, exceptions, api, database]
 ---
 
 # Tratamento de Exceções
@@ -98,6 +104,15 @@ try {
 | `catch (e) { throw e }` (re-throw sem valor) | `catch (e) { throw new Error("Operação X falhou: " + e.message) }` |
 | `catch (e) { alert(e.stack) }` | `catch (e) { showMessage("Mensagem amigável") }` |
 | Try-catch em `2 + 2` | Sem try-catch — operação determinística |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro nao capturado mesmo com try-catch | Operacao assincrona sem `await` dentro do try | Adicione `await` antes da chamada assincrona |
+| Stack trace exposto ao usuario | Retornando `error.stack` na resposta | Retorne mensagem amigavel e logue o erro internamente |
+| Catch vazio esconde erros | `catch (e) {}` sem tratamento | Sempre logue o erro: `console.error("Contexto:", error)` |
+| Aplicacao trava em erro de rede | Fetch sem try-catch | Envolva chamadas de rede em try-catch com fallback |
 
 ## Deep reference library
 

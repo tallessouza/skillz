@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-strict-mode
 description: "Enforces JavaScript strict mode usage when writing vanilla JS or configuring projects. Use when user asks to 'write JavaScript', 'create a script', 'fix silent errors', 'debug unexpected behavior', or 'setup a JS project'. Applies strict mode activation, catches silent failures like undeclared variables, duplicate parameters, read-only property assignment, and undeletable property deletion. Make sure to use this skill whenever generating vanilla JavaScript that runs outside modules/frameworks. Not for TypeScript (already strict), ES modules (implicit strict), or framework-specific configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, strict-mode, debugging, error-handling, best-practices]
 ---
 
 # Strict Mode do JavaScript
@@ -86,13 +92,16 @@ console.log(sum(1, 3, 2)); // Resultado: 6
 | `delete window.document` | Nao tente deletar propriedades nativas |
 | Arquivo `.js` sem `"use strict"` | Primeira linha: `"use strict";` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel global criada sem querer | Faltou declaracao com `let`/`const` e strict mode nao ativo | Adicione `"use strict";` no topo do arquivo |
+| `"use strict"` nao funciona | Nao esta na primeira linha do arquivo ou funcao | Mova para a primeira instrucao executavel (antes de qualquer codigo) |
+| Erro ao usar strict mode com codigo legado | Codigo antigo depende de comportamentos que strict mode proibe | Ative strict mode por funcao em vez de globalmente para migracao gradual |
+| ES Module ja e strict por padrao | `"use strict"` redundante em arquivos com import/export | Remova a diretiva — ES Modules sao strict automaticamente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do strict mode
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-strict-mode/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-strict-mode/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aplicando-imutabilidade
 description: "Enforces immutability patterns when manipulating objects and arrays in JavaScript/TypeScript. Use when user asks to 'copy an object', 'clone an array', 'update object properties', 'spread operator', or any code involving object/array assignment. Applies rules: never assign objects directly (creates reference, not copy), always use spread operator for shallow copies, place overrides after spread. Make sure to use this skill whenever generating code that copies or derives objects/arrays. Not for deep cloning nested structures, Immer/immutable.js library usage, or Redux state management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, immutability, spread-operator, objects, arrays]
 ---
 
 # Imutabilidade em JavaScript
@@ -84,13 +90,16 @@ console.log(list1) // ['apple', 'banana'] — original intacto
 | `{ number: 30, ...obj }` (override antes) | `{ ...obj, number: 30 }` (override depois) |
 | `obj.prop = value` em objeto recebido | `const updated = { ...obj, prop: value }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Alterar copia muda o original | Atribuicao direta cria referencia, nao copia | Use spread operator `{ ...original }` ou `[...original]` |
+| Override no spread nao funciona | Propriedade colocada antes do spread | Coloque overrides DEPOIS do spread: `{ ...obj, prop: value }` |
+| Objeto aninhado ainda compartilha referencia | Spread faz apenas shallow copy | Use `structuredClone()` ou spread aninhado para objetos profundos |
+| Push no array copia altera o original | Arrays copiados por referencia com `=` | Crie novo array com spread: `[...original, newItem]` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre referencias vs copias na memoria
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aplicando-imutabilidade/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aplicando-imutabilidade/references/code-examples.md)

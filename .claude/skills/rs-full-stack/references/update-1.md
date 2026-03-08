@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-update-1
 description: "Applies Knex query builder update pattern when writing Node.js PUT/PATCH routes. Use when user asks to 'update a record', 'edit data', 'create a PUT route', 'modify database entry', or 'knex update'. Enforces proper parameter extraction, where clause filtering, and response handling. Make sure to use this skill whenever generating update endpoints with Knex. Not for SELECT queries, INSERT operations, or DELETE routes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, update, put-route, query-builder, node-js]
 ---
 
 # Knex Update com Query Builder
@@ -86,6 +92,14 @@ app.put('/courses/:id', async (request, response) => {
 | ID hardcoded na query | ID vindo de `request.params` |
 | Dados e ID misturados no body | ID nos params, dados no body |
 | Callback sem async/await | `async (request, response) =>` com `await` |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Update atualiza todas as linhas da tabela | Faltou cláusula `where` no query builder | Sempre adicione `.where({ id })` antes de executar |
+| Registro não é atualizado mas não dá erro | ID passado não existe na tabela | Verifique o valor de `request.params.id` e se existe no banco |
+| Erro `Cannot set headers after they are sent` | Faltou `return` antes de `response.json()` | Adicione `return` em todas as chamadas de response |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-perfil-do-usuario
 description: "Applies Tailwind CSS patterns for user profile components with avatar, text truncation, and responsive grid layouts. Use when user asks to 'create a profile card', 'build a sidebar profile', 'truncate long text', 'handle overflow text in Tailwind', or 'create avatar with name layout'. Covers truncate utility, custom grid-template-columns, and hover states on icon buttons. Make sure to use this skill whenever building profile sections or handling text overflow in Tailwind. Not for form inputs, authentication logic, or backend user management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, css-grid, flexbox]
 ---
 
 # Perfil do Usuario com Tailwind
@@ -112,15 +118,19 @@ theme: {
 | `h-[1px]` para divisoria | `h-px` (classe nativa do Tailwind) |
 | Botao de icone sem padding com hover:bg | `p-2 hover:bg-zinc-50 rounded-md` |
 | `overflow-hidden text-ellipsis whitespace-nowrap` separados | `truncate` (agrupa as 3 propriedades) |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-perfil-do-usuario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-perfil-do-usuario/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-perfil-do-usuario/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-perfil-do-usuario/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

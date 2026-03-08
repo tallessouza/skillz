@@ -1,6 +1,15 @@
 ---
 name: rs-full-stack-primeira-funcao
 description: "Enforces correct function declaration and invocation patterns when writing JavaScript. Use when user asks to 'create a function', 'write a function', 'declare a function', or 'call a function' in JavaScript. Applies rules: use function keyword with named declaration, define scope with curly braces, invoke with parentheses, reuse instead of duplicating. Make sure to use this skill whenever generating basic JavaScript functions. Not for arrow functions, async functions, or advanced patterns like closures and HOFs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags:
+    - javascript
+    - functions
+    - fundamentals
 ---
 
 # Primeira Função em JavaScript
@@ -82,6 +91,14 @@ showGreeting()
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre declaração vs execução e o conceito de escopo
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Funcao declarada mas nada acontece | Funcao nao foi invocada com parenteses | Adicione `()` apos o nome: `showGreeting()` |
+| Console mostra referencia da funcao em vez do resultado | Usou `showGreeting` sem parenteses | Use `showGreeting()` para executar |
+| Erro "is not defined" ao chamar funcao | Nome da funcao esta diferente na declaracao e na chamada | Verifique que o nome e identico (case-sensitive) |
 
 ---
 

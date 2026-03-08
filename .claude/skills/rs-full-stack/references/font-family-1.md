@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-font-family-1
 description: "Applies CSS font-family conventions when writing stylesheets or component styles. Use when user asks to 'style text', 'change font', 'add typography', 'set font-family', or any CSS text styling task. Enforces fallback chain order: specific font, family alternative, generic category. Make sure to use this skill whenever generating CSS that involves typography, even if the user doesn't mention fonts. Not for importing external/custom fonts (Google Fonts, @font-face) or JavaScript font loading."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-tipografia
+  tags: [css, font-family, typography, fallback, web-safe-fonts]
 ---
 
 # Font Family em CSS
@@ -95,13 +101,16 @@ body {
 3. Aba **Computed** → buscar `font-family`
 4. Mostra qual fonte esta efetivamente renderizada
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Fonte nao aparece no navegador | Nome da fonte com espaco sem aspas | Adicione aspas: `"Lucida Sans"` |
+| Fonte diferente entre OS | Fonte nao instalada no sistema do usuario | Adicione fallback web-safe antes do generico |
+| DevTools mostra fonte diferente da declarada | Primeira fonte da cadeia nao encontrada, usando fallback | Verifique na aba Computed > font-family qual fonte esta ativa |
+| `font-family: serif sans-serif` nao funciona | Falta virgula entre as fontes | Separe com virgula: `font-family: serif, sans-serif` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre fallback, web-safe fonts e genericos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-font-family-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-font-family-1/references/code-examples.md)

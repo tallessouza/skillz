@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-hash-integrity
 description: "Applies Subresource Integrity (SRI) hash calculation when loading external scripts or CDN resources. Use when user asks to 'add a CDN script', 'load external library', 'include third-party script', 'calculate SRI hash', or 'secure script tag'. Generates correct integrity attributes with SHA-256/384/512 hashes in base64. Make sure to use this skill whenever adding script tags with external src or linking CDN resources. Not for internal scripts, CSP headers, or general cryptography tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security]
 ---
 
 # Calculo de Hash para Subresource Integrity
@@ -94,14 +100,14 @@ print(f"sha256-{b64}")
 | Hash calculado da URL | Hash calculado do conteudo do arquivo |
 | Copiar hash antigo apos atualizar versao da lib | Recalcular hash do novo arquivo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-processo-de-calculo-de-hash-para-integrity/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-processo-de-calculo-de-hash-para-integrity/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-processo-de-calculo-de-hash-para-integrity/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-processo-de-calculo-de-hash-para-integrity/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

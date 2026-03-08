@@ -1,6 +1,12 @@
 ---
 name: rs-devops-persistindo-informacoes-nos-volumes
-description: "Enforces Docker volume persistence patterns when writing docker run, docker-compose, or container orchestration code. Use when user asks to 'create a container', 'persist data', 'mount a volume', 'run docker', or 'set up a database container'. Applies rules: always mount volumes for stateful containers, never rely on container filesystem for persistence, verify mounts with docker inspect. Make sure to use this skill whenever generating Docker commands or docker-compose files with stateful services. Not for Dockerfile authoring, image building, or CI/CD pipeline configuration."
+description: "Applies Docker volume patterns when configuring data persistence for containers. Use when user asks to 'persist data in docker', 'mount volume', 'keep data after container restart', 'configure docker-compose volumes', or 'backup container data'. Enforces named volumes over anonymous and volume verification with docker inspect. Make sure to use this skill whenever running stateful containers with Docker. Not for Kubernetes storage, application code, or CI/CD pipelines."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-volumes
+  tags: [docker, volumes, persistence, mount, container, data, stateful]
 ---
 
 # Persistencia de Dados com Docker Volumes
@@ -105,14 +111,275 @@ ls src/               # file.log EXISTE
 | Recriar container esquecendo o `-v` | Documentar o comando completo com volume no docker-compose |
 | Usar volumes anonimos para dados criticos | Usar volumes nomeados: `-v nome-explicito:/path` |
 
+## Troubleshooting
+
+### Dados desaparecem ao recriar container mesmo com volume
+**Symptom:** Arquivos criados no container nao persistem apos `docker stop` e `docker run`
+**Cause:** Esqueceu de passar `-v volume-name:/path` ao recriar o container — o volume existe mas nao esta montado
+**Fix:** Sempre incluir `-v` no comando `docker run` referenciando o mesmo volume nomeado; usar `docker inspect` para confirmar montagem
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
 
+---
+
+# Deep Explanation: Persistencia de Dados com Docker Volumes
+
+## O modelo mental do instrutor
+
+O instrutor demonstra um conceito fundamental que muitos iniciantes em Docker nao compreendem intuitivamente: **o filesystem de um container e efemero**. Quando voce cria um arquivo dentro de um container, esse arquivo vive apenas naquele contexto de execucao. A unica forma de garantir persistencia e atraves de volumes.
+
+## A analogia implicita: volume como HD externo
+
+O volume funciona como um HD externo conectado ao container. Voce pode:
+- Desconectar o HD (parar o container sem `-v`)
+- Destruir o computador (deletar o container)
+- Comprar um computador novo (criar novo container)
+- Reconectar o HD (rodar `docker run -v`) e todos os arquivos estarao la
+
+## O experimento demonstrado na aula
+
+O instrutor faz um experimento em 4 etapas para provar o comportamento:
+
+### Etapa 1: Criar arquivo com volume
+```bash
+docker exec -it <container> bash
+touch src/file.log
+exit
+```
+Resultado: arquivo criado dentro do container que tem volume montado.
+
+### Etapa 2: Parar e recriar container COM volume
+```bash
+docker stop <container>
+docker run -v app-volume:/app/src ...
+docker exec -it <novo-container> bash
+ls src/  # file.log EXISTE
+```
+Resultado: arquivo persiste porque o volume mantem os dados.
+
+### Etapa 3: Recriar container SEM volume
+```bash
+docker stop <container>
+docker run ...  # sem -v
+docker exec -it <novo-container> bash
+ls src/  # file.log NAO EXISTE
+```
+Resultado: arquivo desaparece porque o novo container nao referencia o volume.
+
+### Etapa 4: Volume continua existindo
+```bash
+docker volume inspect <volume-name>
+```
+Resultado: mesmo sem nenhum container usando, o volume e seus dados continuam existindo. Se voce criar um novo container apontando para esse volume, o `file.log` volta a aparecer.
+
+## Insight critico: volume != container
+
+O ponto mais importante da aula e que **volumes e containers tem ciclos de vida independentes**:
+
+- Deletar container → volume continua
+- Deletar arquivos no container → volume mantem (se o arquivo estava no volume)
+- Rodar container sem `-v` → volume existe mas nao esta acessivel
+- Rodar container com `-v` novamente → dados voltam a aparecer
+
+## Contexto futuro mencionado
+
+O instrutor menciona que no modulo de orquestracao (modulo 4), volumes serao usados para:
+- Rodar bancos de dados com dados persistentes
+- Workflows com commit → build → container
+- Cenarios mais proximos de producao
+
+## Erro comum que o instrutor destaca
+
+O erro mais perigoso e **esquecer o `-v` ao recriar um container**. Os dados nao sao perdidos (o volume existe), mas o container nao consegue ve-los. Isso causa confusao porque parece que os dados sumiram, quando na verdade so nao estao montados.
+
+## Tags de imagem e ambiente local
+
+O instrutor explica por que sempre usa a mesma tag (`:v3`): no ambiente local, sem pipeline de CI/CD, nao ha rebuild automatico. No dia a dia com pipeline, cada commit gera um build e uma nova tag. Isso e relevante porque em producao, ao atualizar a imagem, o volume deve ser preservado entre versoes.
 
 ---
 
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-persistindo-informacoes-nos-volumes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-persistindo-informacoes-nos-volumes/references/code-examples.md)
+# Code Examples: Persistencia de Dados com Docker Volumes
+
+## Exemplo 1: Fluxo completo da aula
+
+### Passo 1 — Verificar container rodando
+```bash
+docker ps
+# CONTAINER ID   IMAGE           STATUS          PORTS
+# def123abc      api-skillz:v3   Up 5 minutes    0.0.0.0:3000->3000/tcp
+```
+
+### Passo 2 — Entrar no container
+```bash
+docker exec -it def123abc bash
+```
+
+### Passo 3 — Listar arquivos e criar novo
+```bash
+ls src/
+# index.js  package.json  node_modules/
+
+touch src/file.log
+
+ls src/
+# index.js  package.json  node_modules/  file.log
+```
+
+### Passo 4 — Sair, parar e recriar com volume
+```bash
+exit
+docker stop def123abc
+docker run -d -v meu-volume:/app/src --network minha-rede -p 3000:3000 api-skillz:v3
+```
+
+### Passo 5 — Verificar persistencia
+```bash
+docker exec -it <novo-id> bash
+ls src/
+# index.js  package.json  node_modules/  file.log  ← PERSISTIU
+cat src/file.log
+# (vazio, porque so fizemos touch)
+```
+
+## Exemplo 2: Recriar SEM volume (dados inacessiveis)
+
+```bash
+# Parar container atual
+docker stop <container-id>
+
+# Rodar SEM -v
+docker run -d --network minha-rede -p 3000:3000 api-skillz:v3
+
+# Verificar — sem volume montado
+docker inspect <novo-id> | grep -A 10 "Mounts"
+# "Mounts": []   ← VAZIO
+
+# Entrar e verificar
+docker exec -it <novo-id> bash
+ls src/
+# index.js  package.json  node_modules/   ← SEM file.log
+```
+
+## Exemplo 3: Volume continua existindo independentemente
+
+```bash
+# Mesmo sem container usando, o volume existe
+docker volume inspect meu-volume
+# [
+#     {
+#         "CreatedAt": "2024-01-15T10:30:00Z",
+#         "Driver": "local",
+#         "Labels": {},
+#         "Mountpoint": "/var/lib/docker/volumes/meu-volume/_data",
+#         "Name": "meu-volume",
+#         "Options": {},
+#         "Scope": "local"
+#     }
+# ]
+
+# Reassociar — dados voltam
+docker run -d -v meu-volume:/app/src -p 3000:3000 api-skillz:v3
+docker exec -it <id> bash
+ls src/
+# file.log EXISTE novamente
+```
+
+## Exemplo 4: Aplicacao pratica — banco de dados
+
+```bash
+# Criar volume nomeado para PostgreSQL
+docker volume create postgres-data
+
+# Rodar Postgres COM volume
+docker run -d \
+  --name meu-postgres \
+  -v postgres-data:/var/lib/postgresql/data \
+  -e POSTGRES_PASSWORD=senha123 \
+  -p 5432:5432 \
+  postgres:15
+
+# Mesmo deletando o container, os dados do banco persistem
+docker rm -f meu-postgres
+
+# Recriar — banco com todos os dados intactos
+docker run -d \
+  --name meu-postgres \
+  -v postgres-data:/var/lib/postgresql/data \
+  -e POSTGRES_PASSWORD=senha123 \
+  -p 5432:5432 \
+  postgres:15
+```
+
+## Exemplo 5: docker-compose com volumes (padrao recomendado)
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    image: api-skillz:v3
+    ports:
+      - "3000:3000"
+    volumes:
+      - app-data:/app/src
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: senha123
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  app-data:      # volume nomeado — persiste entre docker-compose down/up
+  postgres-data:  # volume nomeado — dados do banco seguros
+
+networks:
+  app-network:
+```
+
+```bash
+# Subir
+docker-compose up -d
+
+# Derrubar (volumes preservados)
+docker-compose down
+
+# Derrubar E deletar volumes (CUIDADO — perda de dados)
+docker-compose down -v
+```
+
+## Comandos uteis para debug de volumes
+
+```bash
+# Listar todos os volumes
+docker volume ls
+
+# Inspecionar volume especifico
+docker volume inspect <nome-do-volume>
+
+# Ver quais containers usam um volume
+docker ps -a --filter volume=<nome-do-volume>
+
+# Remover volumes orfaos (sem container associado)
+docker volume prune
+
+# Remover volume especifico
+docker volume rm <nome-do-volume>
+
+# Backup de volume para arquivo tar
+docker run --rm -v <volume>:/data -v $(pwd):/backup alpine \
+  tar czf /backup/volume-backup.tar.gz -C /data .
+
+# Restaurar volume de backup
+docker run --rm -v <volume>:/data -v $(pwd):/backup alpine \
+  tar xzf /backup/volume-backup.tar.gz -C /data
+```

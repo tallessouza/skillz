@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-propriedade-metodo-privado
 description: "Enforces private properties and methods in JavaScript/TypeScript classes using # prefix. Use when user asks to 'create a class', 'encapsulate data', 'hide implementation details', 'make properties private', or 'protect internal state'. Applies rules: use # for internal state, expose only public API methods, never leak storage/persistence internals. Make sure to use this skill whenever generating classes with internal state or data storage. Not for module-level privacy, closures, or TypeScript access modifiers (private keyword)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, classes, encapsulation, private-fields, oop, clean-code]
 ---
 
 # Propriedade e Método Privado
@@ -113,13 +119,17 @@ class Database {
 | `return this.database[table]` (pode ser undefined) | `return this.#database[table] ?? []` |
 | Renomear só a declaração e esquecer referências | Renomear declaração + TODAS as referências internas |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `SyntaxError: Private field '#x' must be declared` | Propriedade `#x` usada sem declaração na classe | Declarar `#x = valor` no corpo da classe antes de usar |
+| `Property '#database' is not accessible outside class` | Tentando acessar propriedade privada de fora | Usar métodos públicos (insert, select) em vez de acessar diretamente |
+| `this.database is not defined` após renomear para `#database` | Referências internas não foram atualizadas | Renomear TODAS as referências de `this.database` para `this.#database` |
+| Método privado não aparece no autocomplete | Comportamento esperado — `#` oculta do exterior | Acessar apenas de dentro da classe |
+| `select` retorna `undefined` para tabela inexistente | Sem fallback para tabela vazia | Usar `return this.#database[table] ?? []` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre encapsulamento, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0306-propriedade-e-metodo-privado-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0306-propriedade-e-metodo-privado-mkv-mp-4/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-entendendo-docker
 description: "Applies Docker container mental models when deciding between virtualization, emulation, and containers. Use when user asks to 'set up Docker', 'run database in container', 'configure dev environment', 'explain Docker vs VM', or 'why use containers'. Ensures correct analogies and architectural reasoning for containerization decisions. Make sure to use this skill whenever Docker or container concepts arise in project setup discussions. Not for Docker Compose configuration, Dockerfile writing, or container orchestration commands."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: docker-e-banco-de-dados
+  tags: [docker, containers, virtualization, vm, development-environment, next-js]
 ---
 
 # Entendendo o Docker
@@ -54,14 +60,19 @@ Cenario tipico: rodar Postgres em container para desenvolvimento.
 - Docker nao substitui emulacao quando ha diferenca de arquitetura de CPU
 - Containers Linux em Windows/Mac rodam via uma VM leve intermediaria (Docker Desktop)
 
+## Troubleshooting
+
+### Build falha no deploy da Vercel
+**Symptom:** Deploy falha com erros de TypeScript ou dependencias
+**Cause:** Erros de tipo ignorados em desenvolvimento que sao estritamente validados no build de producao
+**Fix:** Rodar `npm run build` localmente antes de fazer push. Corrigir todos os erros de tipo. Verificar que todas as variaveis de ambiente estao configuradas na Vercel
+
+### API routes nao funcionam em producao
+**Symptom:** Rotas de API funcionam localmente mas retornam 500 em producao
+**Cause:** Variaveis de ambiente faltando no ambiente de producao ou paths absolutos incorretos
+**Fix:** Configurar variaveis de ambiente no painel da Vercel. Usar paths relativos ou variaveis de ambiente para URLs
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-entendendo-o-que-e-o-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-entendendo-o-que-e-o-docker/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-entendendo-o-que-e-o-docker/references/deep-explanation.md) — Na area de desenvolvimento, consistencia de ambiente sempre foi um desafio. O instrutor ilustra com 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-entendendo-o-que-e-o-docker/references/code-examples.md) — Esta aula e puramente conceitual — nao ha codigo demonstrado. O instrutor foca em explicar os concei

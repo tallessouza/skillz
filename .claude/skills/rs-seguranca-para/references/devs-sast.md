@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-sast
 description: "Applies SAST (Static Application Security Testing) practices when setting up code analysis, CI pipelines, or security tooling. Use when user asks to 'add security scanning', 'setup static analysis', 'integrate SAST', 'find vulnerabilities in code', or 'configure SonarQube/Bandit'. Guides tool selection between language-specific and generic analyzers, integration in git hooks and CI. Make sure to use this skill whenever configuring code security analysis or choosing SAST tools. Not for runtime security, WAF configuration, or penetration testing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, sast, static-analysis, code-scanning]
 ---
 
 # SAST — Static Application Security Testing
@@ -106,14 +112,14 @@ async def get_data():
 | Rodar SAST so no CI | Rodar tambem no pre-commit para feedback rapido |
 | Usar so ferramenta generica | Adicionar tambem a especifica da linguagem |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sast/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-sast/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sast/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-sast/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

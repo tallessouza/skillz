@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-before-all
 description: "Applies beforeAll test setup patterns when writing automated tests with Vitest or Jest. Use when user asks to 'write tests', 'setup test environment', 'share state between tests', 'initialize before tests', or 'prepare test data'. Ensures correct variable scoping in describe blocks and proper use of beforeAll for shared setup like database connections, file loading, or computed values. Make sure to use this skill whenever generating test files or adding test suites. Not for beforeEach, afterAll, afterEach, or test mocking patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: testes
+  tags: [vitest, jest, beforeAll, testing, setup]
 ---
 
 # beforeAll — Setup Antes dos Testes
@@ -96,13 +102,16 @@ describe("sum", () => {
 | Logica de setup repetida em cada `it()` | `beforeAll` para setup compartilhado |
 | `beforeAll` para estado que muda entre testes | `beforeEach` para estado mutavel |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel compartilhada e `undefined` nos testes | Faltou atribuir valor no `beforeAll` | Adicione atribuicao dentro do `beforeAll` callback |
+| TypeScript reclama que variavel pode ser undefined | Faltou tipagem explicita na declaracao | Use `let result: number` em vez de `let result` |
+| `beforeAll` async nao espera completar | Faltou `await` ou retorno de Promise | Use `async/await` dentro do beforeAll |
+| Estado compartilhado contamina entre testes | `beforeAll` roda uma vez, estado mutavel persiste | Use `beforeEach` para estado que muda entre testes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre escopo de variaveis e ciclo de vida dos hooks de teste
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-before-all/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-before-all/references/code-examples.md)

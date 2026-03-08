@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-perguntas-com-anexos
 description: "Enforces aggregate persistence patterns when saving entities with child collections in Clean Architecture. Use when user asks to 'save an entity with related items', 'persist attachments', 'create aggregate root', 'sync child entities on edit', or 'implement repository for aggregates'. Applies DDD aggregate rules: parent repository calls child repository, WatchedList tracks additions/removals, createMany/deleteMany sync on edit. Make sure to use this skill whenever implementing repository methods that persist entities with nested collections. Not for file upload handling, single-entity CRUD, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: aggregate-persistence
+  tags: [aggregate, ddd, repository, watched-list, createMany, deleteMany, clean-architecture]
 ---
 
 # Persistencia de Agregados com Colecoes Filhas
@@ -105,14 +111,14 @@ async create(question: Question) {
 | Assumir que criar no dominio = criar no banco | Mapear a acao de dominio para a operacao correta de persistencia |
 | Persistir filhos diretamente no controller | Deixar o repositorio raiz orquestrar a persistencia do agregado |
 
+## Troubleshooting
+
+### Anexos nao sao salvos ao criar a entidade pai
+**Symptom:** Entidade pai e criada no banco mas os anexos associados nao aparecem
+**Cause:** O repositorio raiz nao chama `createMany` no repositorio filho apos persistir a entidade pai
+**Fix:** Adicione `await this.questionAttachmentsRepository.createMany(question.attachments.getItems())` dentro do metodo `create` do repositorio raiz
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-perguntas-com-anexos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-perguntas-com-anexos/references/code-examples.md)

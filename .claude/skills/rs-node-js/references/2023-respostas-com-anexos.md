@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-respostas-com-anexos
 description: "Applies the answer-with-attachments pattern when implementing NestJS clean architecture features that mirror existing question-attachment logic. Use when user asks to 'add attachments to answers', 'sync attachments on edit', 'create many-to-many relationships', or 'replicate question pattern for answers'. Enforces domain-first development, repository createMany/deleteMany, Prisma mapper toPrismaUpdateMany, and e2e test factories. Make sure to use this skill whenever extending entity-attachment relationships in clean architecture. Not for file upload handling, storage services, or unrelated NestJS CRUD."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, clean-architecture, attachments, repository, prisma, domain-first, watched-list]
 ---
 
 # Respostas com Anexos (Clean Architecture)
@@ -125,14 +131,14 @@ async create(answer: Answer) {
 | Enviar attachments obrigatorio no edit | Usar `z.array().default([])` para campo opcional |
 | Sync sequencial (await + await) | `Promise.all([update, createMany, deleteMany])` |
 
+## Troubleshooting
+
+### Foreign key constraint violation ao criar answer com attachments
+**Symptom:** Prisma throws foreign key constraint error when creating answer with attachments
+**Cause:** `createMany` dos attachments executado antes do `create` da answer — a foreign key referencia uma answer que ainda nao existe
+**Fix:** Sempre execute `prisma.answer.create()` primeiro, depois `answerAttachmentsRepository.createMany()` na sequencia
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-respostas-com-anexos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-respostas-com-anexos/references/code-examples.md)

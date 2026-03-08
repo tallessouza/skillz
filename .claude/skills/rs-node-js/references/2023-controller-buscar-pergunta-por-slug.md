@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-get-question-by-slug
+name: rs-node-js-2023-controller-buscar-pergunta-por-slug
 description: "Applies NestJS controller pattern for fetching a single resource by slug with route params, presenter mapping, and E2E testing. Use when user asks to 'create a controller', 'fetch by slug', 'get single resource', 'NestJS route param', or 'E2E test controller'. Follows pattern: route param extraction, use case delegation, presenter mapping, and comprehensive E2E spec. Make sure to use this skill whenever building NestJS controllers that fetch a single entity by identifier. Not for listing/pagination controllers, authentication, or database schema design."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Buscar Recurso por Slug (NestJS)
@@ -113,14 +120,14 @@ export class GetQuestionBySlugController {
 | Use case sem `@Injectable()` | Adicionar decorator para injecao de dependencia |
 | E2E test sem autenticacao | Criar usuario, gerar token, enviar no header |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-buscar-pergunta-por-slug/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-buscar-pergunta-por-slug/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-buscar-pergunta-por-slug/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-buscar-pergunta-por-slug/references/code-examples.md) — Todos os exemplos de código expandidos com variações

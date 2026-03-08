@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-formatando-mensagens-de-erro
 description: "Enforces standardized Zod validation error handling in Node.js REST APIs. Use when user asks to 'handle validation errors', 'format Zod errors', 'create error handler', 'add error middleware', or 'validate request body'. Applies pattern: catch ZodError by instanceof, return 400 with message + formatted issues. Make sure to use this skill whenever building error handling middleware in APIs that use Zod. Not for generic try/catch, HTTP client errors, or frontend form validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-error-handling
+  tags: [node-js, zod, error-handling, validation, rest-api]
 ---
 
 # Formatando Mensagens de Erro do Zod
@@ -107,13 +113,16 @@ app.setErrorHandler((error, request, response) => {
 | Status 500 para erro de validação | Status 400 (Bad Request) |
 | Error handler sem `return` entre condições | `return response.status(...)` em cada branch |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| ZodError retorna 500 em vez de 400 | `instanceof ZodError` nao esta no error handler | Adicione o check antes do handler generico de 500 |
+| `error.format()` retorna objeto vazio | Nenhum campo falhou na validacao (erro pode ser de outro tipo) | Verifique que o erro e realmente ZodError com `instanceof` |
+| Handler continua executando apos responder | Falta `return` antes de `response.status(...)` | Adicione `return` em cada branch do error handler |
+| Import do ZodError falha | Import incorreto do pacote zod | Use `import { ZodError } from "zod"` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre instanceof chain e format() do Zod
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos com variações e cenários
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-formatando-mensagens-de-erro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-formatando-mensagens-de-erro/references/code-examples.md)

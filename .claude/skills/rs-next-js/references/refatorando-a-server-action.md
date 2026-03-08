@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-refatorando-server-action
 description: "Applies DRY refactoring patterns for Next.js Server Actions when duplicated logic exists across create/update operations. Use when user asks to 'refactor server action', 'remove duplicated logic', 'extract shared validation', 'DRY up create and update', or 'organize server action code'. Enforces extract-function-first over class/entity abstractions for simple cases. Make sure to use this skill whenever refactoring Next.js server actions or extracting shared logic from CRUD operations. Not for API route handlers, client-side state management, or database query optimization."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: server-actions-refactoring
+  tags: [next-js, server-actions, refactoring, dry, extract-function, pure-functions, crud]
 ---
 
 # Refatorando Server Actions
@@ -131,14 +137,19 @@ async function updateAppointment(id: string, data: AppointmentInput) {
 | Logica inline repetida em create e update | Funcao compartilhada com destructuring |
 | `export default class Appointment` para validacao simples | `export function calculatePeriods()` |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-refatorando-a-server-action/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-refatorando-a-server-action/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-refatorando-a-server-action/references/deep-explanation.md) — O instrutor identifica um problema classico: a mesma logica de validacao de horarios aparece tanto n
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-refatorando-a-server-action/references/code-examples.md) — // Pode ficar em actions.ts ou em appointment-utils.ts

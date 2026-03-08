@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-manipulando-objetos-imutaveis
 description: "Enforces immutable object manipulation patterns when writing JavaScript/TypeScript code. Use when user asks to 'update an object', 'modify properties', 'remove a field', 'add a property', or any object transformation task. Applies spread operator for updates, rest/destructuring for property removal, never mutates originals. Make sure to use this skill whenever generating code that transforms objects. Not for array manipulation, state management libraries, or deep clone scenarios."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-moderno
+  tags: [javascript, immutability, spread, destructuring, objects]
 ---
 
 # Manipulando Objetos Imutáveis
@@ -81,13 +87,16 @@ const { category, ...bookWithoutCategory } = book
 | `Object.assign(obj, changes)` | `const updated = { ...obj, ...changes }` |
 | `obj['newProp'] = value` | `const updated = { ...obj, newProp: value }` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Spread nao copia objetos aninhados profundamente | Spread faz shallow copy | Aplique spread em cada nivel: `{ ...obj, nested: { ...obj.nested, key: value } }` |
+| Propriedade removida ainda aparece no objeto | Usou `delete` que muta o original | Use destructuring rest: `const { prop, ...rest } = obj` |
+| Override nao funciona no spread | Override antes do spread em vez de depois | Coloque override DEPOIS do spread: `{ ...obj, key: newValue }` |
+| Estado React nao atualiza apos spread | Referencia do objeto nao mudou (shallow compare) | Garanta que esta criando novo objeto com spread, nao mutando |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-manipulando-objetos-imutaveis/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-manipulando-objetos-imutaveis/references/code-examples.md)

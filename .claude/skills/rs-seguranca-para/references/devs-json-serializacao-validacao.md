@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-json-serializacao-validacao
 description: "Enforces safe JSON serialization and input validation when building APIs or handling user input. Use when user asks to 'parse JSON', 'receive user input', 'create an API endpoint', 'deserialize data', or 'validate request body'. Applies rules: never use eval/new Function, never use native serializers (pickle/PHP serialize), always validate input schemas, use JSON.parse for JavaScript. Make sure to use this skill whenever generating code that receives or parses external data. Not for internal data transformation, logging, or file I/O with trusted sources."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, serialization, deserialization, pickle, json, input-validation, sanitization]
 ---
 
 # JSON, Serialização e Validação
@@ -114,14 +120,14 @@ def save_person(person: Person) -> Person:
 | `app.post('/x', (req) => use(req.body))` | `app.post('/x', (req) => use(schema.parse(req.body)))` |
 | Parser JSON custom/artesanal | Parser nativo da linguagem |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-json-serializacao-validacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-json-serializacao-validacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-json-serializacao-validacao/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-json-serializacao-validacao/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

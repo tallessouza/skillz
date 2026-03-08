@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-modificando-req-d-ts
 description: "Enforces correct patterns for extending Express Request type and modifying requests in middleware. Use when user asks to 'add property to request', 'extend request type', 'create middleware that adds data', 'type augmentation express', or 'declaration merging'. Make sure to use this skill whenever creating Express middleware that attaches data to req or extending Express typings. Not for response modification, error middleware, or non-Express frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-typescript
+  tags: [express, typescript, declaration-merging, request, d-ts]
 ---
 
 # Modificando Request e Arquivos .d.ts no Express
@@ -100,13 +106,16 @@ function myMiddleware(req: Request, res: Response, next: NextFunction) {
 | `@types/express` modificado em `node_modules/` | Arquivo `.d.ts` no projeto |
 | `request["user_id"]` para contornar erro | Tipagem correta com namespace Express |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `Property 'user_id' does not exist on type 'Request'` | Falta arquivo `.d.ts` com declaration merging | Crie `src/types/request.d.ts` com `declare namespace Express` |
+| `.d.ts` criado mas TypeScript nao reconhece | Arquivo fora do escopo do `tsconfig.json` | Verifique que `include` no tsconfig abrange `src/types/` |
+| Propriedade e `undefined` na rota | Middleware que seta a propriedade nao esta na cadeia da rota | Adicione o middleware antes do handler da rota |
+| IntelliSense nao mostra a propriedade | Editor precisa recarregar | Reinicie o TypeScript server (Ctrl+Shift+P → Restart TS Server) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre namespaces, declaration merging e organizacao de tipos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-modificando-requisicao-e-arquivo-d-ts/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-modificando-requisicao-e-arquivo-d-ts/references/code-examples.md)

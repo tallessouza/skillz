@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-logging
 description: "Enforces security-aware logging practices when writing application code. Use when user asks to 'add logging', 'implement logs', 'track events', 'audit trail', 'monitor activity', or any observability task. Applies rules: never log secrets/PII/session tokens, separate log storage from app storage, include security relevance flag, log both legitimate high-risk actions and suspicious activity. Make sure to use this skill whenever generating logging code or designing observability. Not for infrastructure monitoring, firewall logs, or log aggregation tool setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: infrastructure-security
+  tags: [security, logging, audit-trail, observability]
 ---
 
 # Logging de Seguranca para Aplicacoes
@@ -129,14 +135,14 @@ logger.info({
 | Logs na pasta publica do Apache/Nginx | Pasta com permissoes restritas, fora do webroot |
 | Mesmo usuario/token acessa app e logs | Usuarios e credenciais separados |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-logging/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-logging/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-logging/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-logging/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

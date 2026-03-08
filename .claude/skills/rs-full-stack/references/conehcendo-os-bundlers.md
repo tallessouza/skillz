@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-conhecendo-os-bundlers
-description: "Explains bundler concepts when user asks about 'bundlers', 'webpack', 'vite', 'esbuild', 'module bundling', 'dependency graph', or 'build tools'. Applies mental model of dependency resolution and packing phases. Make sure to use this skill whenever discussing frontend build pipelines or why bundlers exist. Not for configuring specific bundler tools or writing bundler plugins."
+description: "Introduces bundler concepts when user asks about 'bundlers', 'webpack', 'vite', 'esbuild', 'module bundling', 'dependency graph', or 'build tools'. Applies mental model of dependency resolution and packing phases. Make sure to use this skill whenever discussing frontend build pipelines or why bundlers exist. Not for configuring specific bundler tools or writing bundler plugins."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [bundlers, webpack, vite, javascript, build-tools]
 ---
 
 # Conhecendo os Bundlers
 
 > Bundlers agrupam e empacotam arquivos e suas dependencias em um ou mais pacotes para otimizar o carregamento da pagina.
 
-## Key concept
+## Key concepts
 
 Um bundler resolve um problema fundamental: o navegador precisa carregar muitos arquivos JavaScript separados, cada um com suas dependencias. Em vez de forcar o navegador a fazer dezenas de requisicoes HTTP, o bundler analisa toda a arvore de dependencias e gera um unico arquivo (ou poucos arquivos otimizados) que o navegador consegue processar eficientemente.
 
@@ -75,13 +81,17 @@ Com o grafo completo, o bundler pega todos os arquivos mapeados e os integra em 
 - Este modelo mental cobre o conceito fundamental — bundlers modernos (Webpack, Vite, esbuild, Rollup) adicionam features como code splitting, tree shaking, hot module replacement e lazy loading que vao alem do empacotamento basico
 - Bundlers nao sao a unica solucao: ES Modules nativos do navegador e import maps sao alternativas para projetos simples
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Bundle nao gerado | Entry point nao configurado corretamente | Verifique que o arquivo de entrada esta correto na configuracao do bundler |
+| Dependencia nao encontrada no bundle | Import nao resolvido pelo bundler | Confirme que o pacote esta instalado e o caminho de importacao esta correto |
+| Bundle muito grande | Sem code splitting ou tree shaking | Configure code splitting e verifique se tree shaking esta ativo no bundler |
+| Erro de modulo ao carregar no navegador | Arquivo nao processado pelo bundler | Confirme que todos os arquivos passam pelo pipeline do bundler |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre grafos de dependencia, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos visuais de antes/depois com variacoes de estrutura
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conehcendo-os-bundlers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conehcendo-os-bundlers/references/code-examples.md)

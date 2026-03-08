@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-number-3
 description: "Applies JavaScript Number type rules when writing code that handles numeric values. Use when user asks to 'create a variable with a number', 'handle prices', 'work with decimals', 'fix NaN error', or any numeric operation in JavaScript. Enforces: dot as decimal separator, integer/float awareness, NaN prevention via type checking before arithmetic. Make sure to use this skill whenever generating JS/TS code with numeric operations. Not for string manipulation, date handling, or BigInt operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, number, NaN, float, arithmetic]
 ---
 
 # Tipo Number em JavaScript
@@ -83,13 +89,15 @@ const result = price / input
 | Ignorar `NaN` retornado | Verificar com `Number.isNaN()` antes de usar |
 | `isNaN(value)` (global, coerce) | `Number.isNaN(value)` (preciso, sem coercion) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Resultado de operacao e `NaN` | Operando e string ou undefined | Valide com `Number.isNaN()` antes de operar |
+| `7,5` causa erro de sintaxe | Virgula nao e separador decimal em JS | Use ponto: `7.5` |
+| `"12" + 8` retorna `"128"` | Operador `+` concatena strings | Converta com `Number()` ou `parseFloat()` antes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre Number, NaN e separadores decimais
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-number-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-number-3/references/code-examples.md)

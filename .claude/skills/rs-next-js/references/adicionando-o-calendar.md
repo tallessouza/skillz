@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-adicionando-o-calendar
 description: "Applies Calendar DatePicker implementation pattern in Next.js with Popover, controlled state, and URL sync. Use when user asks to 'add a date picker', 'implement calendar selection', 'create a date input', or 'add popover with calendar'. Enforces controlled component pattern with URL update on selection and proper popover state management. Make sure to use this skill whenever building date selection UI in React/Next.js projects. Not for date formatting libraries, date range pickers, or backend date handling."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: ui-components
+  tags: [calendar, datepicker, popover, controlled-component, url-sync, shadcn]
 ---
 
 # Adicionando Calendar com DatePicker
@@ -123,14 +129,19 @@ const handleDateSelect = (selectedDate: Date | undefined) => {
 | Deixar border padrao do PopoverContent com Calendar | Adicione `border-0` e `p-0` |
 | Repetir estilizacao do DatePicker em multiplos lugares | Extraia sub-componente reutilizavel |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-o-calendar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-o-calendar/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-o-calendar/references/deep-explanation.md) — O instrutor enfatiza que o Calendar deve ser um **Controlled Component** — ou seja, o estado da data
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-o-calendar/references/code-examples.md) — "use client"

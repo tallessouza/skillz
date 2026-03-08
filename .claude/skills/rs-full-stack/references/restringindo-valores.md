@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-restringindo-valores
 description: "Enforces TypeScript literal union types to restrict variable values instead of broad string/number types. Use when user asks to 'create a type', 'define allowed values', 'restrict options', 'use union types', or writes variables typed as string that should have limited options. Make sure to use this skill whenever generating TypeScript code with finite sets of values like status, size, role, or category. Not for generic string manipulation, validation logic, or runtime checks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, union-types, type-alias, literal-types, type-safety]
 ---
 
 # Restringindo Valores com Type Aliases
@@ -92,6 +98,15 @@ size = "sm"        // ERRO — compilador rejeita
 | `let size: "small" \| "medium" \| "large"` repetido em 5 lugares | `type Size = "small" \| "medium" \| "large"` definido uma vez |
 | Comentario `// aceita: small, medium, large` | Type union que o compilador enforce |
 | Magic strings espalhadas sem type | Type centralizado + autocomplete |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "Type 'string' is not assignable to type 'Size'" | Variavel tipada como `string` em vez do union type | Use o type alias: `let size: Size` em vez de `let size: string` |
+| Valor valido rejeitado pelo compilador | Valor nao esta na lista do union type | Adicione o valor ao type: `type Size = "small" \| "medium" \| "large" \| "xl"` |
+| Switch/if nao cobre todos os casos | Falta case para um dos valores do union | Adicione todos os cases ou use `default` com `never` para exhaustiveness |
+| Union type nao valida em runtime | TypeScript so valida em compile-time | Adicione validacao runtime na fronteira (ex: Zod, `includes()`) |
 
 ## Deep reference library
 

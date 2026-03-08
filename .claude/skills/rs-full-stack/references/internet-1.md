@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-internet-1
 description: "Applies foundational internet and web architecture concepts when designing or explaining web applications. Use when user asks to 'explain how the web works', 'what is DNS', 'how does a browser find a server', 'client-server architecture', or 'how the internet works'. Ensures correct use of terms like IP, DNS, domain, backbone, intranet vs internet, and client-server file exchange. Make sure to use this skill whenever explaining web fundamentals or onboarding junior developers. Not for network engineering, TCP/IP deep protocol analysis, or infrastructure deployment."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: web-fundamentals
+  tags: [internet, web, dns, http, fundamentals]
 ---
 
 # Internet e Web — Fundamentos
@@ -100,13 +106,16 @@ Voce nao precisa memorizar IPs ou entender cada roteador. Mas eventualmente vai 
 - Nao substitui conhecimento de redes para devops/infra
 - O modelo DNS apresentado e simplificado (nao cobre resolvers recursivos, TTL, etc.)
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Site nao carrega mas internet funciona | Problema de DNS ou dominio | Verificar DNS com `nslookup dominio.com` |
+| "ERR_NAME_NOT_RESOLVED" no navegador | DNS nao consegue resolver o dominio | Verificar se o dominio esta correto ou trocar DNS para 8.8.8.8 |
+| Localhost nao responde | Servidor local nao esta rodando | Iniciar o servidor na porta correta |
+| Confusao entre internet e web | Conceitos misturados | Internet = infraestrutura fisica, Web = servicos sobre ela |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do instrutor
 - [code-examples.md](references/code-examples.md) — Diagramas expandidos e exemplos praticos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-internet-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-internet-1/references/code-examples.md)

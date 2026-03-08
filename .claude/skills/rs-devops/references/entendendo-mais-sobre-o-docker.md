@@ -1,6 +1,12 @@
 ---
-name: rs-devops-docker-fundamentals
-description: "Applies Docker image and container concepts when writing Dockerfiles, docker commands, or containerized applications. Use when user asks to 'dockerize an app', 'create a Dockerfile', 'run a container', 'build an image', or mentions Docker workflow. Enforces understanding that images are immutable build artifacts and containers are ephemeral runtime instances. Make sure to use this skill whenever Docker containers or images are discussed. Not for Kubernetes orchestration, Docker Compose multi-service setups, or CI/CD pipeline configuration."
+name: rs-devops-entendendo-mais-sobre-o-docker
+description: "Applies Docker image vs container distinction and core CLI operations. Use when user asks to 'understand Docker images vs containers', 'list Docker images', 'manage containers', or 'explain Docker build vs run'. Enforces image/container separation, ephemeral container mindset, volume usage for persistence, and build-before-run workflow. Make sure to use this skill whenever explaining Docker fundamentals or running basic Docker CLI commands. Not for Dockerfile writing (use entendendo-sobre-uma-imagem-base) or Docker Compose (use declarando-multiplos-containers)."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-fundamentos
+  tags: [docker, images, containers, cli, build, run, ephemeral]
 ---
 
 # Docker: Imagens e Containers
@@ -9,82 +15,43 @@ description: "Applies Docker image and container concepts when writing Dockerfil
 
 ## Rules
 
-1. **Separe imagem de container** — imagem e o build (receita), container e o run (execucao), porque confundir os dois causa erros de persistencia e deploy
-2. **Containers sao efemeros por padrao** — tudo salvo dentro de um container e perdido quando ele para, porque o container roda em cima da imagem imutavel sem persistencia propria
-3. **Use volumes para persistencia** — nunca salve dados importantes apenas no filesystem do container, porque ao reiniciar o container os dados somem
-4. **Siga a logica de comandos Docker** — `docker image <acao>` para imagens, `docker container <acao>` para containers, porque a CLI segue um padrao intuitivo de recurso + acao
-5. **Build antes de Run** — sempre `docker build` para criar a imagem, depois `docker run` para executar o container, porque nao existe container sem imagem
-
-## Key Concepts
-
-### Imagem Docker
-```
-Imagem = modelo imutavel + somente leitura + receita de bolo
-         Define TUDO que o container precisa para rodar
-         Criada via: docker build
-```
-
-### Container Docker
-```
-Container = instancia em tempo de execucao de uma imagem
-            Efemero por padrao (dados nao persistem)
-            Criado via: docker run
-```
-
-### Ciclo de vida
-```
-Aplicacao → Dockerfile (manifesto) → docker build → Imagem → docker run → Container
-                                                                              ↓
-                                                                    Container para
-                                                                              ↓
-                                                                    Dados perdidos (sem volume)
-```
+1. **Separe imagem de container** — imagem e o build (receita), container e o run (execucao)
+2. **Containers sao efemeros por padrao** — dados salvos dentro sao perdidos quando ele para
+3. **Use volumes para persistencia**
+4. **Build antes de Run** — sempre `docker build` para criar a imagem, depois `docker run`
 
 ## CLI Principal
 
-### Comandos de Imagem
 ```bash
-docker image ls          # Listar imagens
-docker image rm <id>     # Remover imagem
-docker build -t app .    # Criar imagem a partir do Dockerfile
+# Imagens
+docker image ls
+docker image rm <id>
+docker build -t app .
+
+# Containers
+docker container ls
+docker container ls -a
+docker run <imagem>
+docker container rm <id>
 ```
-
-### Comandos de Container
-```bash
-docker container ls      # Listar containers rodando
-docker container ls -a   # Listar todos (incluindo parados)
-docker run <imagem>      # Criar e executar container
-docker container rm <id> # Remover container
-```
-
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| Precisa persistir dados (uploads, DB) | Use volumes (`-v` ou `--mount`) |
-| Quer inspecionar uma imagem | `docker image inspect <id>` |
-| Container parou e dados sumiram | Comportamento esperado — use volumes |
-| Quer verificar se Docker esta instalado | `docker --version` ou `docker info` |
-| Precisa rebuildar apos mudanca no codigo | `docker build` novamente (imagem e imutavel) |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| Salvar uploads no filesystem do container sem volume | Montar volume para diretorio de uploads |
+| Salvar uploads no filesystem do container sem volume | Montar volume |
 | Confundir `docker build` com `docker run` | Build cria imagem, Run executa container |
-| Editar arquivos dentro do container em producao | Rebuildar a imagem com as mudancas |
-| Ignorar que container e efemero | Planejar persistencia com volumes desde o inicio |
-| Rodar `docker run` sem ter feito `docker build` | Sempre buildar a imagem primeiro |
+| Editar arquivos dentro do container em producao | Rebuildar a imagem |
+| Rodar `docker run` sem ter feito `docker build` | Sempre buildar primeiro |
+
+## Troubleshooting
+
+### Alteracoes no codigo nao refletem no container
+**Symptom:** Container roda mas mostra versao antiga do codigo
+**Cause:** Imagem nao foi rebuilda apos as alteracoes — container usa imagem antiga
+**Fix:** Rodar `docker build -t app .` novamente e recriar o container com `docker run`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-entendendo-mais-sobre-o-docker/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-entendendo-mais-sobre-o-docker/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

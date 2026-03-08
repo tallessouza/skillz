@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exportacao-padrao-ou-nomeada
 description: "Enforces correct usage of default and named exports/imports in JavaScript modules. Use when user asks to 'create a module', 'export a function', 'import from file', 'organize modules', or any ES module task. Applies rules: named exports use exact names with braces, default exports import without braces and name is arbitrary, prefer named exports for explicitness. Make sure to use this skill whenever generating JS/TS modules with imports/exports. Not for CommonJS require/module.exports or bundler configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modules
+  tags: [javascript, es-modules, export, import, named-export, default-export]
 ---
 
 # Exportação Padrão ou Nomeada
@@ -101,13 +107,16 @@ import { formatDate, parseDate } from './utils.js'
 | `import { sum } from './calc.js'` quando sum é default | `import sum from './calc.js'` (sem chaves para default) |
 | `import sum from './calc.js'` quando sum é named | `import { sum } from './calc.js'` (com chaves para named) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: The requested module does not provide an export named 'X'` | Tentando importar named export que nao existe | Verificar o nome exato do export no modulo fonte |
+| Import funciona mas nome nao bate com a funcao | Usando default export com nome arbitrario | Usar named export para rastreabilidade: `export function X` |
+| `SyntaxError: A module cannot have multiple default exports` | Dois `export default` no mesmo arquivo | Converter um deles para named export |
+| Import com chaves retorna undefined | Funcao e default export mas importada como named | Remover chaves: `import sum from './calc.js'` |
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exportacao-padrao-ou-nomeada/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exportacao-padrao-ou-nomeada/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

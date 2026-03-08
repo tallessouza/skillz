@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-listando-mesas
 description: "Applies the controller-route-register pattern when building REST API list endpoints with Express and Knex. Use when user asks to 'list resources', 'create a GET endpoint', 'add an index route', 'create a controller', or 'setup API routes with Express'. Follows pattern: create type → create controller → create route file → register in index. Make sure to use this skill whenever creating new CRUD list endpoints in Express/Knex projects. Not for frontend components, database migrations, or non-Express APIs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-express
+  tags: [express, knex, controller, routes, rest-api, crud]
 ---
 
 # Listando Recursos — Padrão Controller-Route-Register
@@ -113,13 +119,16 @@ routes.get("/tables", async (req, res) => {
 | catch vazio ou com console.log | `catch (error) { next(error) }` |
 | Rotas soltas no index.ts | Arquivo de rotas separado por recurso |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro 500 na rota GET | Nome da tabela incorreto no Knex | Verifique o nome exato da tabela (plural, underscores) |
+| Endpoint retorna array vazio | Tabela existe mas sem dados | Rode seed ou insira dados manualmente |
+| Autocomplete nao funciona no resultado | Falta tipagem generica no Knex | Use `knex<TableRepository>("tables")` |
+| Rota nao e encontrada (404) | Rota nao registrada no index | Verifique `routes.use("/tables", tablesRoutes)` no index |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre o padrao controller-route-register e fluxo de trás para frente
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-listando-mesas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-listando-mesas/references/code-examples.md)

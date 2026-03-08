@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-script-compilar
 description: "Enforces npm script creation patterns in package.json for build automation. Use when user asks to 'create a build script', 'automate compilation', 'add npm scripts', 'configure babel', or 'setup package.json scripts'. Applies correct script structure, Babel CLI usage, and output directory conventions. Make sure to use this skill whenever creating or modifying npm scripts in package.json. Not for webpack/vite/esbuild configuration or CI/CD pipeline setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [npm, scripts, package-json, babel, build, automation]
 ---
 
 # Scripts Personalizados no package.json
@@ -74,13 +80,16 @@ npm run build
 | Digitar comando longo toda vez | `npm run build` |
 | Colocar scripts depois de devDependencies | Colocar scripts antes de devDependencies |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `babel: command not found` ao rodar `npm run build` | `@babel/cli` nao esta instalado | Instale com `npm i -D @babel/cli @babel/core` |
+| Script nao executa com `npm build` | `build` nao e lifecycle script — precisa de `run` | Use `npm run build` (exceto `start`, `test` que nao precisam de `run`) |
+| Pasta `dist` nao e criada | Path incorreto no `--out-dir` | Verifique se o path usa `./dist` com prefixo relativo |
+| Babel compila mas nao transforma ES6+ | Falta preset de transformacao | Instale `@babel/preset-env` e configure `.babelrc` ou `babel.config.json` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que scripts existem e como o npm resolve pacotes
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-um-script-para-compilar/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-um-script-para-compilar/references/code-examples.md)

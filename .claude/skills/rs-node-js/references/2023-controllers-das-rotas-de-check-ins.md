@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controllers-check-ins
+name: rs-node-js-2023-controllers-das-rotas-de-check-ins
 description: "Generates RESTful controllers for resource routes in Fastify/Node.js APIs following SOLID patterns. Use when user asks to 'create a controller', 'add routes', 'create check-in endpoint', 'implement CRUD routes', or 'setup resource controllers'. Applies patterns: Zod schema validation per source (body/params/query), use case factory injection, route grouping with auth hooks, correct HTTP verbs and status codes. Make sure to use this skill whenever creating new API controllers or routes in Fastify. Not for frontend components, database schemas, or use case business logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controllers de Rotas por Recurso
@@ -144,14 +151,14 @@ return reply.status(201).send()
 | `reply.status(200).send()` apos criacao | `reply.status(201).send()` |
 | `reply.send({ ok: true })` sem corpo real | `reply.status(204).send()` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controllers-das-rotas-de-check-ins/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controllers-das-rotas-de-check-ins/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controllers-das-rotas-de-check-ins/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controllers-das-rotas-de-check-ins/references/code-examples.md) — Todos os exemplos de código expandidos com variações

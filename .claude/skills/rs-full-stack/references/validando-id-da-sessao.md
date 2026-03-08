@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-validando-id-da-sessao
 description: "Enforces Zod-based route parameter validation pattern when building Express/Fastify APIs. Use when user asks to 'validate params', 'parse route id', 'convert param to number', 'validate request parameters', or builds any CRUD endpoint with dynamic IDs. Applies z.string().transform().refine() pattern for safe string-to-number conversion. Make sure to use this skill whenever creating API endpoints that receive IDs as route parameters. Not for query string validation, body validation, or frontend form validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-backend
+  tags: [zod, validation, route-params, express, fastify, typescript]
 ---
 
 # Validando ID de Parametros de Rota com Zod
@@ -103,6 +109,15 @@ async update(request: Request, response: Response, next: NextFunction) {
 | `Number(request.params.id)` direto | Transform + refine com mensagem de erro |
 | `if (!id) return res.status(400)` manual | Zod parse que lanca ZodError automaticamente |
 | Validacao inline no meio da logica | Validacao no topo do controller, antes de qualquer operacao |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `ZodError: Expected string, received undefined` | `request.params.id` nao existe na rota | Verifique se a rota tem `/:id` definido |
+| Parse retorna NaN sem erro | Usando `z.coerce.number()` sem refine | Use `z.string().transform(Number).refine(!isNaN)` |
+| Tipo do id e string apos parse | Schema nao inclui `.transform(Number)` | Adicione transform antes do refine |
+| Erro 500 em vez de 400 para id invalido | Nao tem error handler global para ZodError | Configure middleware que captura ZodError e retorna 400 |
 
 ## Deep reference library
 

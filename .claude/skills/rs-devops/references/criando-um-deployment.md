@@ -1,6 +1,12 @@
 ---
-name: rs-devops-criando-um-deployment
-description: "Applies Kubernetes Deployment manifest patterns when writing YAML for container orchestration. Use when user asks to 'create a deployment', 'deploy to kubernetes', 'write k8s manifest', 'update container version', or 'manage replicas'. Enforces correct apiVersion, resource limits, namespace usage, selector-label matching, and rolling update strategy. Make sure to use this skill whenever generating Kubernetes Deployment YAML or discussing deployment vs ReplicaSet. Not for Services, Ingress, ConfigMaps, or non-Kubernetes container orchestration."
+name: rs-devops-criando-deployment
+description: "Applies Kubernetes Deployment manifest patterns when creating production workloads. Use when user asks to 'create deployment', 'write deployment yaml', 'deploy to kubernetes', 'configure replicas', or 'set resource limits'. Enforces Deployment over ReplicaSet, namespace usage, label consistency, resource requests/limits, and containerPort declaration. Make sure to use this skill whenever generating Kubernetes Deployment manifests. Not for StatefulSets, DaemonSets, Jobs, or Helm chart templates."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-deployments
+  tags: [kubernetes, deployment, replicas, resources, labels, namespace]
 ---
 
 # Kubernetes Deployment
@@ -9,17 +15,15 @@ description: "Applies Kubernetes Deployment manifest patterns when writing YAML 
 
 ## Rules
 
-1. **Sempre especifique namespace no apply** — `kubectl apply -f file.yaml -n namespace`, porque sem isso o recurso vai para o namespace `default` e causa confusao organizacional
-2. **Deployment > ReplicaSet > Pod** — nunca use ReplicaSet ou Pod isolado para workloads de producao, porque somente o Deployment tem controle de implantacao (versionamento e rollback)
-3. **Labels do selector devem coincidir com labels do template** — o `matchLabels` do spec.selector deve ser identico ao `metadata.labels` do template, porque o Deployment usa isso para encontrar seus Pods
-4. **Sempre defina resources requests e limits** — omitir resources e uma ma pratica que gera alertas e scheduling imprevisivel
-5. **Limits = 2x requests como baseline** — CPU e memoria dos limits devem ser pelo menos o dobro dos requests, porque isso da margem para picos sem desperdicar recursos
-6. **Sempre declare containerPort** — explicitar a porta do container no manifest documenta o servico e facilita integracao com Services
+1. **Sempre especifique namespace no apply** — `kubectl apply -f file.yaml -n namespace`
+2. **Deployment > ReplicaSet > Pod** — nunca use ReplicaSet ou Pod isolado para producao
+3. **Labels do selector devem coincidir com labels do template**
+4. **Sempre defina resources requests e limits**
+5. **Limits = 2x requests como baseline**
+6. **Sempre declare containerPort**
 
 ## How to write
 
-### Deployment completo
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -48,87 +52,24 @@ spec:
           ports:
             - containerPort: 80
 ```
-
-### Aplicando com namespace
-
-```bash
-kubectl apply -f deployment.yaml -n primeira-app
-```
-
-## Example
-
-**Before (Pod isolado — sem controle de versao):**
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-spec:
-  containers:
-    - name: nginx
-      image: nginx:1.27.1-alpine-slim
-```
-Problema: alterar a imagem nao causa re-deploy. Sem replicas, sem rollback.
-
-**After (Deployment — controle completo):**
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx
-spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:1.27.1-alpine-slim
-          resources:
-            requests:
-              cpu: 100m
-              memory: 164Mi
-            limits:
-              cpu: 200m
-              memory: 328Mi
-          ports:
-            - containerPort: 80
-```
-Alterar a imagem e rodar `kubectl apply` dispara rolling update automatico com zero downtime.
-
-## Heuristics
-
-| Situacao | Faca |
-|----------|------|
-| Novo workload stateless | Sempre use Deployment, nunca Pod ou ReplicaSet direto |
-| Atualizar versao da imagem | Altere o campo `image` no YAML e rode `kubectl apply -f -n namespace` |
-| Rollback necessario | `kubectl rollout undo deployment/nome -n namespace` |
-| Verificar status do deploy | `kubectl rollout status deployment/nome -n namespace` |
-| Escalar replicas | Altere `replicas` no YAML ou use `kubectl scale deployment/nome --replicas=N` |
 
 ## Anti-patterns
 
 | Nunca faca | Faca em vez disso |
 |------------|-------------------|
-| `kubectl apply -f x.yaml` sem `-n` | `kubectl apply -f x.yaml -n meu-namespace` |
-| Usar ReplicaSet diretamente | Usar Deployment que gerencia o ReplicaSet |
-| Usar Pod isolado em producao | Usar Deployment com replicas >= 2 |
-| Omitir resources/limits | Definir requests e limits para CPU e memoria |
-| Labels diferentes entre selector e template | Garantir que matchLabels == template.metadata.labels |
+| `kubectl apply` sem `-n` | Sempre especifique namespace |
+| Usar ReplicaSet diretamente | Usar Deployment |
+| Pod isolado em producao | Deployment com replicas >= 2 |
+| Omitir resources/limits | Definir requests e limits |
+
+## Troubleshooting
+
+### Pod criado no namespace default acidentalmente
+**Symptom:** `kubectl get pods` no namespace da aplicacao nao mostra os pods, mas eles existem no namespace `default`.
+**Cause:** O comando `kubectl apply` foi executado sem a flag `-n <namespace>`.
+**Fix:** Sempre use `kubectl apply -f deployment.yaml -n <namespace>`. Para corrigir, delete os pods do namespace errado e reaplique com `-n`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-um-deployment/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-um-deployment/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

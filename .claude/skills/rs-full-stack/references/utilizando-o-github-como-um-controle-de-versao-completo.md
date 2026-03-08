@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-github-dev-editor
 description: "Applies github.dev browser-based editing workflow when user asks to 'edit on GitHub', 'commit without terminal', 'use github.dev', 'edit in browser', or 'quick fix on GitHub'. Guides through pressing dot shortcut, staging, committing, and pushing directly from the browser VS Code editor. Make sure to use this skill whenever the user needs to make changes without a local dev environment. Not for local Git CLI workflows, GitHub Actions, or GitHub API automation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags: [github, github-dev, browser-editor, version-control, commit]
 ---
 
 # GitHub como Editor de Código via github.dev
@@ -83,6 +89,14 @@ Commits aparecem no histórico do repositório normalmente, como qualquer commit
 | Mensagens genéricas como "update" | Mensagens descritivas: "deleted hello.txt", "update readme description" |
 | Deletar e commit sem revisar | Verificar no painel de versão antes do push |
 | Usar github.dev para trabalho extenso | Clonar e usar ambiente local completo |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| Pressionar `.` não abre o editor | Não está autenticado no GitHub ou extensão bloqueando | Acesse `github.dev/{user}/{repo}` diretamente na barra de endereço |
+| Commit & Push falha | Sem permissão de escrita no repositório | Verifique se tem acesso de push ao repo ou faça fork primeiro |
+| Alteração commitada por engano | Push já enviou ao remoto | Faça novo commit corrigindo — não é possível desfazer push pelo github.dev |
 
 ## Deep reference library
 

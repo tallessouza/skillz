@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-finalizando-inputs-radio
 description: "Applies HTML radio input group patterns with CSS grid auto-fit layout when building form sections with multiple selectable options. Use when user asks to 'create radio buttons', 'build a selection grid', 'make a sport selector', 'form with image options', or any grouped radio input UI. Ensures correct name/id/label linking, grid responsive layout with auto-fit, and semantic wrapper structure. Make sure to use this skill whenever creating radio button groups with visual cards or image-based selections. Not for checkbox groups, dropdown selects, or CSS grid theory without form context."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-formularios
+  tags: [html, radio, forms, css-grid, auto-fit, accessibility]
 ---
 
 # Radio Inputs com Grid Responsivo
@@ -102,13 +108,16 @@ description: "Applies HTML radio input group patterns with CSS grid auto-fit lay
 | Layout fixo com colunas hardcoded | `auto-fit` + `minmax()` para responsividade |
 | Copiar bloco inteiro com div pai junto | Copiar apenas o `radial-inner` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Multiplos radios selecionados ao mesmo tempo | Atributo `name` diferente entre os radios | Garanta que todos do grupo usem o mesmo `name` |
+| Clicar no label nao seleciona o radio | `for` do label nao corresponde ao `id` do input | Verifique que `<label for="x">` e `<input id="x">` combinam |
+| Grid nao redistribui colunas no mobile | Falta `auto-fit` ou `minmax()` no `grid-template-columns` | Use `repeat(auto-fit, minmax(7.5rem, 1fr))` |
+| Layout quebrado apos copiar bloco de radio | Copiou uma div pai extra junto com o `radial-inner` | Remova a div extra e mantenha apenas o `radial-inner` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre grid auto-fit, erros comuns de copia e estrutura semantica
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-finalizando-os-inputs-radio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-finalizando-os-inputs-radio/references/code-examples.md)

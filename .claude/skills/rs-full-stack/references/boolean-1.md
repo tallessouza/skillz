@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-boolean-1
 description: "Enforces boolean naming conventions and usage patterns when writing JavaScript/TypeScript code. Use when user asks to 'create a boolean variable', 'add a loading state', 'write a flag', 'check if something is true', or any code with boolean logic. Applies rules: is/has/should prefixes, cause-over-effect naming, no truthy shortcuts for clarity. Make sure to use this skill whenever generating boolean variables or conditions. Not for general variable naming, string/number types, or control flow logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, boolean, naming-conventions, types, clean-code]
 ---
 
 # Boolean — Tipo e Convenções
@@ -76,13 +82,16 @@ if (isLoading) { /* ... */ }
 | `const loading = "true"` | `const isLoading = true` |
 | `const disabled = 1` | `const isDisabled = true` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Boolean variable name unclear** | Prefix with `is`, `has`, `should`, `can`, or `was` — the name should read as a yes/no question. |
+| **Condition always evaluates to true** | Check for truthy coercion — `'false'` (string) is truthy in JS. Use strict boolean values, not strings. |
+| **Comparing boolean with `=== true`** | Remove the explicit comparison — `if (isReady)` is cleaner and equivalent to `if (isReady === true)`. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, origem histórica e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-boolean-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-boolean-1/references/code-examples.md)

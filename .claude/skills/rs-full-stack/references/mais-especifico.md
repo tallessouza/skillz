@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-mais-especifico
 description: "Enforces CSS specificity best practices when writing stylesheets. Use when user asks to 'style a component', 'fix CSS not applying', 'override styles', 'debug CSS specificity', or 'write CSS'. Guards against inline styles and !important abuse. Make sure to use this skill whenever generating CSS or debugging style conflicts. Not for JavaScript logic, HTML structure, or CSS layout/positioning techniques."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-styling
+  tags: [css, specificity, inline-style, important, selectors]
 ---
 
 # Especificidade CSS: inline style e !important
@@ -87,13 +93,16 @@ body .third-party-widget .title {
 | `font-size: 12px !important` | Seletor mais especifico: `#container .titulo { }` |
 | `!important` para "resolver rapido" | Investigar qual seletor esta vencendo e ajustar especificidade |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Estilo CSS nao aplica mesmo com seletor correto | Inline style na tag sobrescreve | Remova o atributo `style` da tag HTML |
+| `!important` nao funciona | Outro `!important` com especificidade maior | Evite cascata de `!important` — resolva com seletor mais especifico |
+| Estilo de lib externa nao pode ser sobrescrito | Seletor da lib e mais especifico | Aumente especificidade: `body .lib-widget .title { }` |
+| Estilos conflitantes entre arquivos CSS | Ordem de carregamento dos arquivos | O ultimo arquivo carregado vence — reordene os imports |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia de especificidade e analogias
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-mais-especifico/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-mais-especifico/references/code-examples.md)

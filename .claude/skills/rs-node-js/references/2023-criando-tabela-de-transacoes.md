@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-tabela-de-transacoes
-description: "Enforces Knex migration patterns when creating or altering database tables in Node.js. Use when user asks to 'create a migration', 'add a column', 'create a table', 'alter table', 'rollback migration', or 'setup database schema'. Applies rules: always pair up/down methods, use UUID over auto-increment, use knex.fn.now() for timestamps, never edit shipped migrations. Make sure to use this skill whenever generating Knex migration code or discussing database schema changes. Not for Prisma, TypeORM, Sequelize, or raw SQL migrations."
+name: 2023-criando-tabela-de-transacoes
+description: "Creates Knex migration files with proper up/down methods, UUID primary keys, notNullable constraints, and knex.fn.now() for timestamps. Use when user asks to 'create a migration', 'add database table', 'write migration up and down', 'alter table with Knex', or 'add columns to existing table'. Enforces: always implement both up and down, use UUID over increments, use knex.fn.now() for timestamps, notNullable on required fields, never edit shared migrations. Make sure to use this skill whenever writing Knex migration files to create or alter database tables. Not for Prisma migrations, raw SQL DDL, or schema design decisions."
+category: coding-lens
+tags: [knex, migrations, prisma, testing, typescript, uuid]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: database-migrations
+  tags: [knex, migrations, up-down, uuid, database, rollback]
 ---
 
 # Migrations com Knex
@@ -111,14 +120,14 @@ export async function down(knex) {
 | `npx knex migrate:latest` | Executar todas as migrations pendentes |
 | `npx knex migrate:rollback` | Desfazer ultima batch de migrations |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-tabela-de-transacoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-tabela-de-transacoes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

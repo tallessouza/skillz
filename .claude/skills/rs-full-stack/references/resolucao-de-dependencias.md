@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-resolucao-de-dependencias
 description: "Applies semantic versioning and NPM dependency resolution conventions when managing packages in Node.js projects. Use when user asks to 'install a package', 'update dependencies', 'fix version', 'pin dependency', 'check package.json', or any NPM/dependency task. Enforces correct use of ~, ^, and @ symbols in package.json. Make sure to use this skill whenever reviewing or modifying package.json dependencies. Not for Yarn/pnpm-specific features, publishing packages, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: nodejs-tooling
+  tags: [npm, semver, dependencies, package-json, versioning]
 ---
 
 # Resolucao de Dependencias
@@ -80,6 +86,15 @@ npm install dayjs@1.11.10
 | `"lib": ">=2.0.0"` | `"lib": "^2.0.0"` |
 | Incrementar MAJOR para bugfix | Incrementar PATCH para bugfix |
 | Incrementar PATCH para nova feature | Incrementar MINOR para nova feature |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `npm install` instala versao diferente da esperada | Uso de `^` ou `~` permite range de versoes | Fixe versao exata removendo `^` e `~` |
+| Breaking change apos `npm update` | `^` permitiu atualizacao de minor com incompatibilidade | Use `~` para aceitar apenas patches ou fixe versao exata |
+| "ERESOLVE unable to resolve dependency tree" | Conflito de versoes entre dependencias | Use `npm install --legacy-peer-deps` ou ajuste versoes manualmente |
+| package-lock.json com versao diferente do package.json | Lock file desatualizado | Delete `node_modules` e `package-lock.json`, execute `npm install` |
 
 ## Deep reference library
 

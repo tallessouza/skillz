@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-revisao-e-despedida
 description: "Enforces CSS animation and transition best practices when writing stylesheets. Use when user asks to 'add animation', 'create transition', 'animate element', 'make it move', or any CSS motion task. Applies rules: keyframes-first workflow, Animation Timeline awareness, prefers-reduced-motion for accessibility, moderation over excess. Make sure to use this skill whenever generating CSS animations or transitions. Not for JavaScript animation libraries, SVG animations, or Canvas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Animations"
+  tags: ['css', 'animations', 'transitions', 'accessibility', 'keyframes']
 ---
 
 # CSS Animations & Transitions — Boas Práticas
@@ -102,6 +108,15 @@ description: "Enforces CSS animation and transition best practices when writing 
 | Animar `width`/`height`/`top`/`left` | Animar `transform` e `opacity` (GPU-accelerated) |
 | Múltiplas animações simultâneas no mesmo elemento | Uma animação composta bem planejada |
 | Usar JS para o que CSS transitions resolvem | CSS primeiro, JS quando precisar de controle dinâmico |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Animacao nao aparece | `animation-name` nao corresponde ao `@keyframes` | Verifique que o nome no `animation:` bate com o `@keyframes` definido |
+| Animacao causa jank/travamento | Animando propriedades que causam layout (width, height, top) | Anime apenas `transform` e `opacity` que sao GPU-accelerated |
+| Usuario com sensibilidade a movimento afetado | Falta `prefers-reduced-motion` | Adicione `@media (prefers-reduced-motion: reduce)` desabilitando animacoes |
+| Transicao nao funciona no hover | Propriedade `transition` declarada no estado `:hover` | Declare `transition` no estado base do elemento, nao no `:hover` |
 
 ## Deep reference library
 

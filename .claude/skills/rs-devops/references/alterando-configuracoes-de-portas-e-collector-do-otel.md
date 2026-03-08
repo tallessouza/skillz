@@ -1,6 +1,12 @@
 ---
 name: rs-devops-otel-collector-config
 description: "Applies OpenTelemetry Collector configuration patterns for Prometheus integration in Docker Compose observability stacks. Use when user asks to 'configure OTEL', 'add Prometheus exporter', 'setup observability', 'configure collector', or 'connect OpenTelemetry to Prometheus'. Covers port mapping, batch processor tuning, Prometheus exporter setup, and service pipeline wiring. Make sure to use this skill whenever configuring OTEL Collector YAML or adding new exporters to an observability stack. Not for application-level instrumentation, custom metrics creation, or Grafana dashboard building."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observability-otel
+  tags: [observability]
 ---
 
 # Configuracao do OTEL Collector com Prometheus
@@ -126,14 +132,14 @@ service:
 | Batch sem timeout | Defina timeout explicito (ex: 10s) para evitar acumulo indefinido |
 | Ignorar depends_on no Compose | Declare dependencias para garantir ordem de startup |
 
+## Troubleshooting
+
+### Metricas nao aparecem no Grafana apos adicionar exporter
+**Symptom:** Novo exporter configurado mas metricas nao chegam ao destino
+**Cause:** O exporter foi declarado em `exporters` mas nao foi registrado em `service.pipelines`
+**Fix:** Adicione o exporter na lista de exporters do pipeline correspondente em `service.pipelines.metrics.exporters`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-alterando-configuracoes-de-portas-e-collector-do-otel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-alterando-configuracoes-de-portas-e-collector-do-otel/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-alterando-configuracoes-de-portas-e-collector-do-otel/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-alterando-configuracoes-de-portas-e-collector-do-otel/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

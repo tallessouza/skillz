@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-objeto-ticket
 description: "Enforces proper object construction patterns for API resources in Node.js when creating entities with user-provided and system-generated fields. Use when user asks to 'create an endpoint', 'build a POST route', 'create a resource object', 'set up a CRUD entity', or 'design an API model'. Applies rules: separate user-input from system-defaults, always generate UUID with node:crypto, set default status, include createdAt/updatedAt timestamps. Make sure to use this skill whenever building POST endpoints or constructing resource objects in Node.js APIs. Not for database schema design, frontend forms, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, uuid, entity, crud, post, timestamps]
 ---
 
 # Criando Objetos de Recurso em APIs Node.js
@@ -92,13 +98,16 @@ function create(request, response) {
 | `status` definido pelo usuario no POST | `status: "open"` fixo na API |
 | `response.end(ticket)` | `response.end(JSON.stringify(ticket))` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `randomUUID is not a function` | Versão do Node.js abaixo de 19 ou import sem destructuring | Use `import { randomUUID } from 'node:crypto'` e Node >= 19 |
+| Body retorna `undefined` | Middleware de body parsing não foi executado antes | Certifique-se que `jsonHandler` roda antes do controller |
+| Status `201` não aparece na resposta | Usando `response.end()` sem `writeHead(201)` | Encadeie `response.writeHead(201).end(JSON.stringify(data))` |
+| Campos do usuário misturados com campos do sistema | Usando `request.body` direto sem desestruturar | Extraia apenas os campos esperados com destructuring |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de campos, UUID e timestamps
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0408-criando-o-objeto-de-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0408-criando-o-objeto-de-ticket-mkv-mp-4/references/code-examples.md)

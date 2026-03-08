@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-ask-mode-professor-ia
-description: "Guides how to use AI as a learning assistant when studying code. Use when user asks to 'explain this code', 'help me understand', 'what does this do', 'teach me', or 'explain like I'm a beginner'. Applies first principles prompting, context isolation, and hallucination awareness. Make sure to use this skill whenever the user is in learning mode and wants code explanations. Not for code generation, debugging, or refactoring tasks."
+description: "Teaches how to use AI as a learning assistant when studying code. Use when user asks to 'explain this code', 'help me understand', 'what does this do', 'teach me', or 'explain like I'm a beginner'. Applies first principles prompting, context isolation, and hallucination awareness. Make sure to use this skill whenever the user is in learning mode and wants code explanations. Not for code generation, debugging, or refactoring tasks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [ai, learning, prompting, study-tools, first-principles]
 ---
 
 # Ask Mode: Professor Particular com IA
@@ -85,13 +91,16 @@ da quinta serie, explique os first principles.
 | Contradizer a IA e aceitar a "correcao" dela | Pesquisar por conta propria quando discordar |
 | Achar humilhante pedir explicacao simplificada | Usar didatica simples — e a forma mais eficaz de extrair explicacoes |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| IA da explicacao muito generica | Trecho de codigo grande demais no contexto | Selecione apenas o pedaco especifico que nao entendeu |
+| IA alucina informacao incorreta | Comportamento probabilistico, especialmente quando contradita | Verifique na documentacao oficial antes de confiar |
+| Explicacoes de CSS e JS se misturam | Assuntos diferentes no mesmo chat | Abra um novo chat para cada assunto/contexto |
+| IA concorda com correcao errada do usuario | Tendencia da IA de concordar sempre (sycophancy) | Pesquise por conta propria e compare com fontes oficiais |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre alucinacao, probabilidade vs determinismo, e evolucao de prompts
 - [code-examples.md](references/code-examples.md) — Exemplos completos de interacao com IA para aprendizado
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-ask-mode-professor-particular-com-ia/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-ask-mode-professor-particular-com-ia/references/code-examples.md)

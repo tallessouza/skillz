@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-interface-3
 description: "Enforces correct TypeScript interface usage when defining custom types for objects. Use when user asks to 'create a type', 'define an interface', 'type an object', 'add typing to a function parameter', or any task involving custom object shapes. Applies rules: PascalCase naming, no I-prefix, interfaces for object shapes, typed function parameters. Make sure to use this skill whenever generating TypeScript code that involves object structures or function parameters with multiple properties. Not for primitive types, union types, or type aliases for non-object shapes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-interfaces
+  tags: [typescript, interface, types, typing, functions]
 ---
 
 # Interfaces no TypeScript
@@ -81,13 +87,16 @@ createProduct({ id: 1, name: "Produto X", price: 29.90 })
 | `function fn(product: any)` | `function fn(product: Product)` |
 | `function fn(product: object)` | `function fn(product: Product)` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Erro "Property does not exist on type" | Propriedade nao declarada na interface | Adicionar a propriedade com tipo correto na interface |
+| Interface nao reconhecida em outro arquivo | Interface nao exportada | Adicionar `export` antes de `interface` |
+| Erro ao passar objeto com propriedades extras | TypeScript rejeita propriedades nao declaradas | Remover propriedades extras ou adicionar na interface |
+| Autocomplete nao funciona para propriedades | Tipo do parametro e `any` ou `object` | Usar a interface tipada como tipo do parametro |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre quando usar interfaces, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-interface-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-interface-3/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-confirmando-acao
 description: "Applies the confirm-action workflow pattern for AI marketplace carts when building 'action confirmation flows', 'cart suggestion systems', 'embedding similarity search for products', or 'confirm then execute patterns'. Enforces: embed input, cosine similarity pre-filter, group by store, then send to AI. Make sure to use this skill whenever implementing confirmation flows that trigger AI-based cart generation or product similarity searches with pgvector. Not for basic CRUD, simple chat responses, or frontend confirmation UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: ai-cart-suggestions
+  tags: [embeddings, ia-node, postgresql, node-js]
 ---
 
 # Confirmando Acao — Fluxo de Confirmacao com Embedding e Similaridade
@@ -103,14 +109,14 @@ const result = await sql`
 | Ignorar action types desconhecidos | Lancar erro explicito |
 | Fazer JOIN com stores na query de similaridade | Query simples em products, agrupar no codigo |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-confirmando-acao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-confirmando-acao/references/code-examples.md)

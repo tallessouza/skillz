@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-conexao-banco
 description: "Generates Knex database connection module when user asks to 'connect to database', 'setup knex', 'create db connection', 'configure database', or 'initialize knex'. Applies pattern: import knex, rename to avoid conflict, import config, export configured instance. Make sure to use this skill whenever setting up database connectivity in a Node/TypeScript project using Knex. Not for Prisma, TypeORM, Sequelize, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, database, connection, typescript, configuration]
 ---
 
 # Conexao com Banco de Dados via Knex
@@ -76,13 +82,15 @@ const users = await knex("users").select("*")
 | Hardcode de connection string no arquivo de conexao | Import do knexfile/config externo |
 | Exportar o construtor knex sem configurar | Exportar instancia ja configurada |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `Error: Cannot find module 'knex'` | Knex nao instalado no projeto | Execute `npm install knex` e o driver do banco (ex: `better-sqlite3`) |
+| `SQLITE_CANTOPEN: unable to open database file` | Path do arquivo de banco incorreto no knexfile | Verifique que o path relativo no `connection.filename` esta correto em relacao a raiz do projeto |
+| Nome `knex` conflita com import | Import padrao e export usam o mesmo nome | Renomeie o import para `knexConfig` e exporte como `knex` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre separacao de conexao e configuracao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-conexao-com-o-banco-de-dados/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-conexao-com-o-banco-de-dados/references/code-examples.md)

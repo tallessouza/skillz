@@ -1,6 +1,12 @@
 ---
 name: rs-devops-envoy
-description: "Applies Envoy Proxy knowledge when designing or reviewing service mesh architectures with Istio. Use when user asks to 'configure Istio', 'setup service mesh', 'add sidecar proxy', 'configure Envoy', or discusses Data Plane networking. Explains Envoy's role as L4/L7 proxy in Istio's Data Plane. Make sure to use this skill whenever Istio or Envoy proxy topics arise. Not for application-level HTTP clients, API gateways like Kong/Nginx, or general networking unrelated to service mesh."
+description: "Applies Envoy proxy concepts when working with Istio service mesh or Kubernetes networking. Use when user asks about 'Envoy proxy', 'Istio data plane', 'sidecar proxy', 'L4/L7 proxy', or 'service mesh proxy layer'. Covers Envoy's role as data plane in Istio, its decoupled architecture, and L4/L7 capabilities. Make sure to use this skill whenever discussing or configuring the proxy layer in an Istio service mesh. Not for Envoy standalone configuration, EnvoyFilter CRDs, or non-Istio proxy setups."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: service-mesh
+  tags: [envoy, istio, proxy, data-plane, sidecar, service-mesh, cncf]
 ---
 
 # Envoy Proxy
@@ -9,28 +15,12 @@ description: "Applies Envoy Proxy knowledge when designing or reviewing service 
 
 ## Key concept
 
-Envoy e um proxy open source (CNCF) desenvolvido pela Lyft que opera nas camadas 4 (TCP) e 7 (HTTP/gRPC) do modelo OSI. Ele foi projetado para ser completamente desacoplado da aplicacao: o codigo da aplicacao nao conhece e nao precisa conhecer o Envoy. Isso cria uma alta abstracao de rede onde o proxy encapsula responsabilidades de networking, permitindo que desenvolvedores foquem na logica de negocio.
+Envoy e um proxy open source (CNCF) desenvolvido pela Lyft que opera nas camadas 4 (TCP) e 7 (HTTP/gRPC). Totalmente desacoplado da aplicacao: o codigo nao conhece o Envoy. No Istio, atua como o Data Plane.
 
-No contexto do Istio, o Envoy atua como o Data Plane — o componente que efetivamente processa o trafego entre servicos.
-
-## Decision framework
-
-| Quando voce encontrar | Aplique |
-|----------------------|---------|
-| Necessidade de observabilidade entre servicos | Envoy como sidecar proxy no Data Plane do Istio |
-| Trafego TCP ou HTTP/gRPC entre microservicos | Envoy opera em ambas camadas (L4 e L7) |
-| Desenvolvedores preocupados com networking | Envoy abstrai — aplicacao nao precisa conhecer o proxy |
-| Escolha entre proxy acoplado vs desacoplado | Envoy foi criado para ser desacoplado — preferir este modelo |
-
-## How to think about it
-
-### Desacoplamento total
-
-A aplicacao nao importa bibliotecas do Envoy, nao configura rotas nele, nao sabe que ele existe. O Envoy e injetado como sidecar container no Pod do Kubernetes. Todo trafego de entrada e saida passa pelo Envoy transparentemente.
+## Desacoplamento total
 
 ```yaml
-# O Envoy e injetado automaticamente pelo Istio — nao pelo dev
-# Basta anotar o namespace:
+# Envoy injetado automaticamente pelo Istio
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -39,55 +29,37 @@ metadata:
     istio-injection: enabled
 ```
 
-### Camadas de atuacao
-
-```
-Camada 7 (HTTP/gRPC) ─── Roteamento por path, headers, retries, circuit breaking
-Camada 4 (TCP)       ─── Conexoes TCP puras, TLS mutual, load balancing
-```
-
-Envoy atua em ambas simultaneamente, diferente de proxies que so operam em L7.
-
-### Relacao Envoy → Istio
+## Relacao Envoy / Istio
 
 ```
 Istio
-├── Control Plane (istiod)  ← Configura as regras
-└── Data Plane (Envoy)      ← Executa o trafego
+├── Control Plane (istiod)  <- Configura as regras
+└── Data Plane (Envoy)      <- Executa o trafego
 ```
-
-O Envoy e o "musculo" do Istio. O Control Plane define as politicas; o Data Plane (Envoy) as aplica em cada Pod.
 
 ## Common misconceptions
 
 | Pessoas pensam | Realidade |
 |---------------|-----------|
-| Envoy e parte do Istio | Envoy e projeto independente (CNCF), Istio o utiliza como Data Plane |
-| Preciso configurar Envoy no codigo | Envoy e totalmente desacoplado — zero impacto no codigo da aplicacao |
+| Envoy e parte do Istio | Envoy e projeto independente (CNCF) |
+| Preciso configurar Envoy no codigo | Totalmente desacoplado |
 | Envoy so funciona com HTTP | Opera em L4 (TCP) e L7 (HTTP/gRPC) |
-| Envoy foi criado pelo Google | Foi desenvolvido pela Lyft |
-
-## When to apply
-
-- Ao arquitetar service mesh com Istio
-- Ao debugar problemas de networking entre microservicos (verificar sidecar Envoy)
-- Ao decidir se precisa de proxy L4 vs L7 (Envoy faz ambos)
-- Ao explicar para desenvolvedores por que nao precisam se preocupar com networking no service mesh
+| Envoy foi criado pelo Google | Desenvolvido pela Lyft |
 
 ## Limitations
 
-- Envoy sozinho nao e um service mesh — precisa do Control Plane (Istio) para orquestracao
-- Adiciona latencia (minima) por ser um hop extra no trafego
-- Configuracao avancada do Envoy diretamente (EnvoyFilter) pode ser complexa e fragil
+- Envoy sozinho nao e um service mesh — precisa do Control Plane
+- Adiciona latencia (minima) por ser um hop extra
+- EnvoyFilter pode ser complexo e fragil
+
+## Troubleshooting
+
+### Sidecar Envoy nao aparece no pod
+**Symptom:** `kubectl get pods` mostra apenas 1/1 containers quando deveria ter 2/2 (app + envoy)
+**Cause:** Namespace nao tem o label `istio-injection: enabled` ou o pod foi criado antes da instalacao do Istio
+**Fix:** Adicione `istio-injection: enabled` ao namespace e faca `kubectl rollout restart deployment <name> -n <namespace>`
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-envoy/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-envoy/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-git-pull-push-sync
 description: "Enforces git pull before git push workflow when synchronizing local and remote repositories. Use when user asks to 'push code', 'sync repo', 'send changes', 'update remote', or 'collaborate with git'. Applies the pull-verify-push cycle to prevent conflicts. Make sure to use this skill whenever performing git push operations or advising on collaborative git workflows. Not for branching strategies, merge conflicts resolution, or git rebase workflows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git
+  tags: [git, pull, push, sync, remote]
 ---
 
 # Sincronização entre Repositório Local e Remoto
@@ -78,13 +84,16 @@ git push
 | Push direto após criar arquivo | `git add` → `git commit` → `git pull` → `git push` |
 | Assumir que pull recente dispensa novo pull | Pull novamente antes de cada push |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `git push` retorna "everything up to date" | Faltou `git add` e/ou `git commit` | Execute `git status` para verificar o estado |
+| `git push` rejeitado | Repositorio remoto tem commits que o local nao tem | Execute `git pull` antes do push |
+| Conflito apos `git pull` | Outro colaborador editou o mesmo arquivo | Resolva os conflitos manualmente, depois commit e push |
+| Arquivo novo nao aparece no remoto | Arquivo nao foi adicionado ao stage | Execute `git add arquivo` antes do commit |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre o ciclo pull-push e dinâmica de colaboração
 - [code-examples.md](references/code-examples.md) — Exemplos práticos completos do fluxo de sincronização
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-modificacoes-entre-repositorio-local-e-remoto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-modificacoes-entre-repositorio-local-e-remoto/references/code-examples.md)

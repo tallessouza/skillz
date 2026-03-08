@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-break-1
 description: "Applies correct break statement usage in JavaScript/TypeScript loops and switch cases. Use when user asks to 'write a switch', 'create a loop', 'implement a for loop', 'add switch case', or any code with loops/switch. Ensures break placement prevents fall-through bugs in switch and controls loop termination. Make sure to use this skill whenever generating switch/case or loop code with early exit conditions. Not for continue statements, return-based flow control, or async/iterator patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, break, switch, loops, control-flow]
 ---
 
 # Break — Controle de Fluxo em Repetições e Switch
@@ -99,13 +105,16 @@ switch (option) {
 | Loop completo quando só precisa do primeiro match | `if (found) break` dentro do loop |
 | `break` após `console.log` quando quer ocultar a saída | `break` antes do `console.log` |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Switch case executes multiple blocks** | Missing `break` causes fall-through — add `break` at the end of each `case` block. |
+| **Loop does not stop when condition is met** | Ensure `break` is inside the correct loop scope — in nested loops, `break` only exits the innermost one. |
+| **Code after break is unreachable** | Move any logic that should execute before the `break` statement, not after it. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre fall-through e posicionamento do break
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-break-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-break-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-interface-do-repositorio
 description: "Enforces repository interface pattern and Dependency Inversion when writing Node.js backend code. Use when user asks to 'create a repository', 'implement SOLID', 'decouple from database', 'invert dependencies', or 'create use case'. Applies contract-first design: interface defines methods, concrete classes implement, use cases depend only on abstractions. Make sure to use this skill whenever creating repositories, use cases, or data access layers in TypeScript/Node.js. Not for frontend components, UI patterns, or REST controller design."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: solid-patterns
+  tags: [repository-pattern, dependency-inversion, solid, interface, typescript, use-case, clean-architecture]
 ---
 
 # Interface do Repositório — Dependency Inversion
@@ -130,14 +136,14 @@ export class RegisterUseCase {
 | `Promise<User>` quando busca pode falhar | `Promise<User \| null>` |
 | Repositorios soltos na raiz de `repositories/` | Subpasta por provider: `repositories/prisma/` |
 
+## Troubleshooting
+
+### Use case importa diretamente o Prisma ao inves da interface
+**Symptom:** Use case nao pode ser testado sem banco de dados real
+**Cause:** O use case importa `PrismaUsersRepository` diretamente em vez da interface `UsersRepository`
+**Fix:** Troque o import para a interface e receba o repositorio via construtor: `constructor(private usersRepository: UsersRepository)`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-interface-do-repositorio/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-interface-do-repositorio/references/code-examples.md)

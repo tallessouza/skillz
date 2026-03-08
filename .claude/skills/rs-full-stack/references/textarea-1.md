@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-textarea-1
 description: "Enforces correct HTML textarea usage when building forms. Use when user asks to 'create a form', 'add a textarea', 'build a comment box', 'add multi-line input', or any HTML form with large text fields. Applies rules: always use name attribute, avoid rows/cols in favor of CSS, use maxlength/minlength for validation, handle whitespace inside tags carefully. Make sure to use this skill whenever generating HTML forms with multi-line text inputs. Not for single-line inputs, select dropdowns, or CSS styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-formularios
+  tags: [html, textarea, form, input, validation, whitespace]
 ---
 
 # Textarea em Formularios HTML
@@ -97,6 +103,15 @@ textarea[name="comment"] {
 | `<textarea>` sem `name` | `<textarea name="descricao">` |
 | `wrap="off"` sem motivo | Omita `wrap` (padrao `soft` e suficiente) |
 | Validacao de tamanho via JS | `maxlength="500" minlength="10"` |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Textarea ja aparece com texto/espacos dentro | Whitespace entre as tags `<textarea>` e `</textarea>` | Cole as tags sem espaco: `<textarea name="msg"></textarea>` |
+| Valor nao e enviado no submit do formulario | Faltando atributo `name` | Adicione `name="campo"` na tag textarea |
+| Textarea nao redimensiona como esperado | Usando atributos `rows`/`cols` em vez de CSS | Remova rows/cols e use CSS `width`/`height`/`resize` |
+| Validacao de tamanho nao funciona | Usando JavaScript em vez de atributos nativos | Use `maxlength` e `minlength` diretamente no HTML |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-o-prometheus
 description: "Applies Prometheus configuration patterns when setting up observability stacks with Docker Compose. Use when user asks to 'configure Prometheus', 'add metrics monitoring', 'setup observability', 'create prometheus.yaml', or 'add scrape targets'. Covers Docker Compose service definition, prometheus.yaml scrape configs, port management, Mimir integration, and Grafana datasource setup. Make sure to use this skill whenever adding Prometheus to a containerized environment. Not for application-level instrumentation, custom metrics code, or PromQL query writing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-prometheus
+  tags: [prometheus, docker-compose, scrape-config, grafana, metrics, observability]
 ---
 
 # Configurando o Prometheus
@@ -111,14 +117,14 @@ otel-collector:
 | Hardcodar IP nos targets dentro do container | Use nome do servico Docker (DNS interno) |
 | Criar prometheus.yaml sem montar volume | Monte via volumes no docker-compose |
 
+## Troubleshooting
+
+### Prometheus e Mimir conflitam na porta 9090
+**Symptom:** Ao subir o Docker Compose, um dos containers falha por conflito de porta
+**Cause:** Ambos Prometheus e Mimir usam porta 9090 por padrao
+**Fix:** Mude a porta externa do Mimir para 9009 (`9009:9009`) e ajuste a porta interna no config do Mimir
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-prometheus/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-prometheus/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-prometheus/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-prometheus/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

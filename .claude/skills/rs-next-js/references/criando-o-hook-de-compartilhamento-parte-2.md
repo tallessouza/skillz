@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-hook-compartilhamento-pt2
 description: "Applies social sharing hook patterns when building share functionality in React/Next.js. Use when user asks to 'create share buttons', 'share to social media', 'build sharing hook', 'add social providers', or 'share link to twitter/linkedin/facebook'. Enforces provider-config pattern, window.open for external links, useMemo/useCallback optimization, and dynamic button generation from config objects. Make sure to use this skill whenever implementing any social sharing feature in React. Not for internal navigation, clipboard-only copy, or native Web Share API implementations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: social-sharing-hook
+  tags: [react, next-js, social-sharing, useMemo, useCallback, window-open, hook-patterns]
 ---
 
 # Hook de Compartilhamento Social
@@ -137,14 +143,19 @@ const { shareButtons } = useShare({ url: postURL, title, text: description })
 | useCallback sem useMemo no config | useMemo no config, useCallback na funcao |
 | Type provider como `string` | Union type `'linkedin' \| 'facebook' \| ...` |
 
+## Troubleshooting
+
+### Estado nao atualiza na tela
+**Symptom:** Chamou setState mas o componente nao re-renderiza
+**Cause:** Mutacao direta do estado (push em array, modificacao de objeto) ao inves de criar nova referencia
+**Fix:** Sempre criar novo objeto/array: `setItems([...items, newItem])` ao inves de `items.push(newItem)`. React compara por referencia
+
+### Context nao disponivel em componente filho
+**Symptom:** useContext retorna undefined ou valor padrao
+**Cause:** Componente esta fora do Provider ou Provider esta em nivel errado da arvore
+**Fix:** Verificar que o Provider envolve o componente que consome o contexto. Em App Router, Provider com "use client" deve estar no layout
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-o-hook-de-compartilhamento-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-o-hook-de-compartilhamento-parte-2/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-o-hook-de-compartilhamento-parte-2/references/deep-explanation.md) — O instrutor explica que define `share` como `const share = ...` (arrow function) em vez de `function
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-o-hook-de-compartilhamento-parte-2/references/code-examples.md) — export type SocialProvider = 'linkedin' | 'facebook' | 'slack' | 'twitter' | 'threads'

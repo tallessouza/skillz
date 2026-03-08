@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-funcoes-assincronas
 description: "Enforces correct async/await patterns when writing JavaScript/TypeScript asynchronous code. Use when user asks to 'fetch data', 'call an API', 'query database', 'write async function', or any code involving promises. Applies rules: always await async calls when result is needed, handle both resolve and reject paths, use async/await over raw promises. Make sure to use this skill whenever generating code that calls external services, databases, or any non-immediate operation. Not for synchronous logic, pure calculations, or UI-only component styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-async
+  tags: [async-await, promises, error-handling, try-catch, promise-all, fire-and-forget]
 ---
 
 # Funções Assíncronas e Async/Await
@@ -92,13 +98,16 @@ async function loadUserData() {
 | `await` sem `try/catch` em operacao externa | `try { await op() } catch (e) { handle(e) }` |
 | Ignorar Promise rejeitada | Sempre tratar com `catch` ou `try/catch` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Variavel contem `Promise { <pending> }` em vez do valor | `await` ausente na chamada | Adicionar `await` antes da funcao assincrona |
+| Erro `TypeError: user.name is not a property` | Tentando acessar propriedade de uma Promise nao resolvida | Usar `await` para resolver a Promise primeiro |
+| Erro silencioso sem mensagem | Promise rejeitada sem tratamento | Envolver em `try/catch` ou adicionar `.catch()` |
+| Chamadas paralelas executando em sequencia | Usando `await` sequencial para operacoes independentes | Usar `Promise.all([a(), b()])` para paralelizar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre promises, analogias do instrutor e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-funcoes-assincronas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-funcoes-assincronas/references/code-examples.md)

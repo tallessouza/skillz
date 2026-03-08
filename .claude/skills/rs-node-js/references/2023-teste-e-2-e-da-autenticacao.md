@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-teste-e2e-autenticacao
 description: "Enforces E2E testing patterns for authentication routes in Node.js APIs using Supertest and Vitest. Use when user asks to 'write e2e test', 'test authentication endpoint', 'test login route', 'create integration test for auth', or 'test sessions controller'. Applies rules: test happy path only, create prerequisites via API not ORM, validate token shape not value, keep e2e tests minimal. Make sure to use this skill whenever generating e2e tests for auth flows. Not for unit tests, repository tests, or use-case tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-solid-nodejs
+  tags: [e2e-testing, authentication, supertest, jwt, sessions, vitest]
 ---
 
 # Teste E2E da Autenticação
@@ -119,14 +125,14 @@ it('should be able to authenticate', async () => {
 | `it('should not authenticate with wrong password')` no e2e | Esse cenario vai no teste unitario do use case |
 | Dezenas de testes e2e por controller | 1-3 testes e2e por controller, cobrindo fluxos principais |
 
+## Troubleshooting
+
+### Teste e2e de auth falha porque usuario nao existe
+**Symptom:** POST /sessions retorna 401 mesmo com credenciais corretas
+**Cause:** Pre-requisito (criacao de usuario) feito via Prisma direto em vez de via API — hash pode diferir
+**Fix:** Crie o usuario via `request(app.server).post('/users').send({...})` para simular o fluxo real completo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-da-autenticacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-teste-e-2-e-da-autenticacao/references/code-examples.md)

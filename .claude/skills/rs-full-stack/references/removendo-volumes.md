@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-removendo-volumes
 description: "Applies Docker volume removal procedures when managing containers and volumes. Use when user asks to 'remove volume', 'delete docker volume', 'clean up volumes', 'prune containers', or 'free disk space in docker'. Covers listing, removing individual volumes, handling in-use errors, and batch cleanup with prune. Make sure to use this skill whenever dealing with Docker volume lifecycle management. Not for creating volumes, configuring volume mounts, or Docker Compose volume definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker-fundamentals
+  tags: [docker, volumes, cleanup, prune, devops]
 ---
 
 # Removendo Volumes no Docker
@@ -86,6 +92,15 @@ Após execução bem-sucedida, `docker volume ls` não deve mais listar o volume
 | Assumir que `docker stop` libera o volume | `docker rm` no container após o stop |
 | Remover containers um a um quando há muitos | `docker container prune` para limpeza em lote |
 | Assumir que remover container remove o volume | `docker volume rm` explicitamente após remover containers |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| "volume is in use" ao tentar remover | Containers (mesmo parados) ainda vinculados | Execute `docker ps -a` para encontrar e remover containers vinculados |
+| Volume persiste apos remover containers | Remocao de container nao remove volume automaticamente | Execute `docker volume rm` explicitamente |
+| `docker container prune` removeu containers indesejados | Prune remove TODOS os containers parados | Use `docker rm <id>` individual para controle granular |
+| Volume nao aparece em `docker volume ls` | Volume pode estar em outra rede ou compose stack | Verifique com `docker inspect` nos containers relacionados |
 
 ## Deep reference library
 

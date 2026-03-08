@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-usando-classes-nos-modulos
 description: "Applies class-based module patterns when organizing JavaScript/TypeScript code into modules. Use when user asks to 'refactor functions into a class', 'create a module', 'organize code with classes', 'export a class', or 'convert functions to class methods'. Enforces proper class syntax: no function keyword in methods, PascalCase class names, named exports, instantiation before use. Make sure to use this skill whenever refactoring standalone functions into class-based modules. Not for React components, decorators, or inheritance patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-modules
+  tags: [javascript, classes, modules, es-modules, export]
 ---
 
 # Classes em Módulos JavaScript
@@ -115,6 +121,14 @@ console.log(calc.sum(2, 3))
 | `import { sum } from './calc.js'` (método solto de classe) | `import { Calc } from './calc.js'` (importar a classe) |
 | `Calc.sum(2, 3)` sem instanciar | `const calc = new Calc(); calc.sum(2, 3)` |
 | Exportar métodos individualmente + classe | Exportar apenas a classe |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `TypeError: Calc is not a constructor` | Importou o método em vez da classe, ou esqueceu o `new` | Use `import { Calc }` e instancie com `new Calc()` |
+| `calc.sum is not a function` | Não instanciou a classe antes de chamar o método | Crie instância com `const calc = new Calc()` antes de usar |
+| `SyntaxError: Unexpected token 'export'` | Arquivo não está configurado como ES Module | Adicione `"type": "module"` no `package.json` ou use extensão `.mjs` |
 
 ## Deep reference library
 

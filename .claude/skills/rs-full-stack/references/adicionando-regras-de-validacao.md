@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-regras-de-validacao
 description: "Enforces Zod validation rules when writing API input schemas in TypeScript/Node.js. Use when user asks to 'validate input', 'add validation', 'create schema', 'validate request body', or 'use Zod'. Applies rules: chain .trim() before .min(), use .positive() for prices, always customize error messages, prefer Zod chains over manual if/else validation. Make sure to use this skill whenever writing Zod schemas or API input validation. Not for database constraints, frontend form validation libraries, or Joi/Yup schemas."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [zod, validation, schema, typescript, api]
 ---
 
 # Regras de Validação com Zod
@@ -96,13 +102,16 @@ const { name, price } = bodySchema.parse(request.body)
 | Validação com if/else quando Zod disponível | Schema Zod declarativo com chain |
 | Tudo em uma linha longa | Uma validação por linha na chain |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `.min(6)` passa com string de espaços | `.trim()` não foi chamado antes de `.min()` | Reordene: `.trim().min(6)` |
+| Mensagem de erro genérica "Expected string" | Faltou `{ message: "..." }` no validador | Adicione mensagem customizada em cada chain |
+| Preço zero é aceito | Usou `.min(0)` ou `.nonnegative()` | Use `.positive()` para rejeitar zero |
+| Erro de tipo em `request.body` | Body não foi parseado como JSON | Verifique middleware `express.json()` ou equivalente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre ordem de trim/min, analogia pipeline, e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-regras-de-validacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-regras-de-validacao/references/code-examples.md)

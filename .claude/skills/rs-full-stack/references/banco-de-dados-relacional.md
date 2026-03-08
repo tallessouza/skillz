@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-banco-de-dados-relacional
 description: "Applies relational database concepts when designing schemas, creating tables, or modeling data. Use when user asks to 'create a table', 'design a schema', 'model data', 'set up database', or 'define entities'. Enforces one-subject-per-table, plural naming, proper primary keys, and column type separation. Make sure to use this skill whenever creating or reviewing database table structures. Not for query optimization, indexing strategies, or ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [database, relational, tables, primary-key, schema]
 ---
 
 # Banco de Dados Relacional
@@ -79,13 +85,16 @@ banco_de_dados
 | Tabela sem PRIMARY KEY | Sempre defina `id` como PRIMARY KEY |
 | Coluna que mistura texto e numeros | Uma coluna por tipo de dado |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Registros duplicados na tabela | Tabela sem PRIMARY KEY definida | Adicione coluna `id` com PRIMARY KEY |
+| Nao consegue deletar registro especifico | Sem identificador unico | Use WHERE com chave primaria: `DELETE FROM tabela WHERE id = valor` |
+| Dados de assuntos diferentes misturados | Tabela unica para multiplas entidades | Separe em tabelas distintas, uma por assunto |
+| Coluna aceita tipos errados | Tipo da coluna definido de forma generica | Defina tipos especificos (INTEGER, TEXT, DECIMAL) na criacao da tabela |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre estrutura relacional, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos de criacao de tabelas e estruturas expandidos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-banco-de-dados-relacional/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-banco-de-dados-relacional/references/code-examples.md)

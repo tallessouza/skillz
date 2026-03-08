@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-iniciando-repositorio-git
-description: "Guides through initializing a Git repository with 'git init'. Use when user asks to 'start a project with git', 'initialize a repo', 'git init', 'create a repository', or 'setup version control'. Covers terminal navigation with cd/pwd and repo creation. Make sure to use this skill whenever someone needs to start tracking a project with Git from scratch. Not for branching, committing, pushing, or any post-init Git operations."
+description: "Initializes a Git repository with git init including terminal navigation and verification. Use when user asks to 'start a project with git', 'initialize a repo', 'git init', 'create a repository', or 'setup version control'. Covers terminal navigation with cd/pwd and repo creation. Make sure to use this skill whenever someone needs to start tracking a project with Git from scratch. Not for branching, committing, pushing, or any post-init Git operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-fundamentals
+  tags: [git, git-init, terminal, version-control, setup]
 ---
 
 # Iniciando Um Repositório Git
@@ -79,13 +85,16 @@ Confirme que a pasta `.git/` aparece na listagem. Se aparecer, o repositorio foi
 | Projeto ja tem `.git/` | Nao execute `git init` novamente — o repositorio ja existe |
 | Quer iniciar em pasta nova | `mkdir meu-projeto && cd meu-projeto && git init` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `git: command not found` | Git nao instalado | Instalar de https://git-scm.com |
+| `not a directory` ao usar `cd` | Caminho digitado incorretamente | Verificar caminho com explorador de arquivos ou `ls` |
+| `git init` executado na pasta errada | Navegou para diretorio incorreto | Deletar `.git/` com `rm -rf .git` e repetir no diretorio correto |
+| Pasta `.git/` nao aparece com `ls` | `ls` padrao oculta arquivos com ponto | Usar `ls -la` para listar arquivos ocultos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre navegacao no terminal e o que git init faz internamente
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos por sistema operacional
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-iniciando-um-repositorio-git/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-iniciando-um-repositorio-git/references/code-examples.md)

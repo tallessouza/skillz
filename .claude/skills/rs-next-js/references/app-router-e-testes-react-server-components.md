@@ -1,6 +1,13 @@
 ---
 name: rs-nextjs-app-router-react-server-components
 description: "Enforces correct usage of React Server Components and Client Components in Next.js App Router. Use when user asks to 'create a component', 'add interactivity', 'use onClick', 'add useState', 'build a page in Next.js', or any Next.js component work. Applies rules: default to Server Component, use 'use client' only when interactivity needed, understand hydration process, never send unnecessary JS to browser. Make sure to use this skill whenever writing Next.js App Router components. Not for Pages Router, API routes, or non-Next.js React projects."
+
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, react-server-components, client-components, use-client, hydration, performance]
 ---
 
 # React Server Components no Next.js App Router
@@ -137,14 +144,19 @@ export function BuyButton() {
 | Enviar pagina inteira como Client Component por causa de um botao | Componha: Server Component pai + Client Component filho isolado |
 | Esperar console.log de Server Component no navegador | Olhe o terminal onde `npm run dev` esta rodando |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-react-server-components/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-react-server-components/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-react-server-components/references/deep-explanation.md) — Quando o usuario acessa qualquer pagina de uma aplicacao Next.js (App Router), o que acontece e:
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-react-server-components/references/code-examples.md) — // app/catalog/product/[...data]/page.tsx — Server Component (padrao)

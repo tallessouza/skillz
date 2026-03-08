@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-anatomia-das-tags-1
 description: "Enforces correct HTML tag anatomy when writing HTML markup. Use when user asks to 'create HTML', 'write a page', 'add an element', 'fix HTML structure', or any markup task. Applies rules: proper opening/closing tags, correct attribute placement, self-closing tags for void elements, element nesting. Make sure to use this skill whenever generating HTML, even for small snippets. Not for CSS styling, JavaScript logic, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, tags, anatomy, elements, attributes]
 ---
 
 # Anatomia das Tags HTML
@@ -80,13 +86,16 @@ description: "Enforces correct HTML tag anatomy when writing HTML markup. Use wh
 | `<p>Texto</div>` (fechamento errado) | `<p>Texto</p>` |
 | `<h1 >` (espaco antes de >) | `<h1>` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| Layout quebrado sem motivo aparente | Tag não fechada corretamente | Verifique se toda tag de abertura tem seu `</tag>` correspondente |
+| Imagem com `</img>` no final | Tratou void element como tag normal | Remova `</img>` -- `<img>` é void element e não precisa de fechamento |
+| Atributo não funciona | Atributo colocado fora da tag de abertura | Mova atributos para dentro de `<tag atributo="valor">` |
+| Conteúdo aparece fora do elemento | Tag de fechamento com nome diferente | Confirme que abertura e fechamento usam o mesmo nome: `<p>...</p>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre anatomia de tags, terminologia (elemento, filho, no) e void elements
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-anatomia-das-tags-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-anatomia-das-tags-1/references/code-examples.md)

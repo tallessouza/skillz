@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-configurando-o-knex
 description: "Generates Knex query builder configuration and database connection setup for Node.js projects. Use when user asks to 'setup knex', 'configure database', 'connect to sqlite', 'add query builder', or 'create database connection file'. Follows pattern: client + connection + export. Make sure to use this skill whenever setting up Knex in a Node.js/TypeScript project. Not for Prisma, TypeORM, Drizzle, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-rest-fastify
+  tags: [knex, database, sqlite, query-builder, configuration]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Configurando o Knex
@@ -117,14 +124,14 @@ temp/
 | Commitar arquivo .db no git | Adicionar *.db no .gitignore |
 | Hardcodar connection string de producao | Usar variaveis de ambiente |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-configurando-o-knex/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-configurando-o-knex/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-o-knex/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-o-knex/references/code-examples.md) — Todos os exemplos de código expandidos com variações

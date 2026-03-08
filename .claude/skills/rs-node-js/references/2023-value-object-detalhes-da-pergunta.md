@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-vo-question-details
 description: "Enforces Value Object pattern for aggregating multiple entity relationships in DDD applications. Use when user asks to 'create a detail view', 'combine relationships', 'return entity with related data', 'aggregate author and attachments', or 'build a query with joins'. Applies rules: use Details suffix for 2+ relationships, create new repository methods instead of replacing, prefix IDs with entity name, reuse existing entity classes when all fields needed. Make sure to use this skill whenever building read-model Value Objects that combine data from multiple entities. Not for simple entity CRUD, single-relationship Value Objects, or write operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-value-objects
+  tags: [value-object, ddd, details, relationships, repository, read-model, typescript]
 ---
 
 # Value Object para Detalhes com Multiplos Relacionamentos
@@ -142,14 +148,14 @@ async execute({ slug }: Request): Promise<Response> {
 | Criar estrutura nova para anexo quando classe existe | `attachments: Attachment[]` (reuso) |
 | Retornar `null` silenciosamente quando autor nao existe no teste | `throw new Error('Author with ID ... does not exist')` |
 
+## Troubleshooting
+
+### Value Object retorna dados incompletos (autor ou anexos faltando)
+**Symptom:** `QuestionDetails` retorna com `author` undefined ou `attachments` vazio mesmo quando os dados existem no banco/repositorio.
+**Cause:** O in-memory repository nao recebeu as dependencias corretas no construtor, ou os dados de teste nao foram populados nos repositorios auxiliares (studentsRepository, attachmentsRepository).
+**Fix:** Verifique que o construtor do in-memory repository recebe todos os repositorios auxiliares e que os dados de teste foram inseridos em cada um antes de chamar `findDetailsBySlug`.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-value-object-detalhes-da-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-value-object-detalhes-da-pergunta/references/code-examples.md)

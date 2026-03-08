@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-gerenciadores-de-pacote
 description: "Applies package manager best practices when setting up JavaScript/Node.js projects. Use when user asks to 'install dependencies', 'setup a project', 'add a package', 'manage dependencies', or 'configure npm'. Enforces correct separation of production vs development dependencies, proper use of npm commands, and dependency management hygiene. Make sure to use this skill whenever initializing projects or managing packages. Not for build tools, bundlers, or transpiler configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: tooling
+  tags: [npm, package-manager, dependencies, node-modules, lockfile]
 ---
 
 # Gerenciadores de Pacote
@@ -16,7 +22,7 @@ description: "Applies package manager best practices when setting up JavaScript/
 5. **Nunca commite node_modules** — o gerenciador de pacotes recria a pasta a partir do lockfile, porque versionar node_modules gera conflitos e repositorios gigantes
 6. **Respeite o lockfile** — `package-lock.json` garante versoes compativeis e reproduziveis entre ambientes, porque sem ele cada `npm install` pode resolver versoes diferentes
 
-## Conceitos-chave
+## Key concepts
 
 ### O que e um gerenciador de pacotes
 
@@ -36,6 +42,22 @@ O gerenciador mais popular para JavaScript. Funciona no ecossistema Node mas e u
 **Producao:** pacotes necessarios para o projeto funcionar quando o usuario esta usando.
 
 **Desenvolvimento:** pacotes necessarios apenas enquanto o dev esta codando (transpiladores, linters, test frameworks).
+
+## Example
+
+```bash
+# Inicializar projeto
+npm init -y
+
+# Instalar dependencia de producao
+npm install express
+
+# Instalar dependencia de desenvolvimento
+npm install -D typescript
+
+# Verificar vulnerabilidades
+npm audit
+```
 
 ## Heuristics
 
@@ -59,13 +81,16 @@ O gerenciador mais popular para JavaScript. Funciona no ecossistema Node mas e u
 | Instalar pacote global para o projeto | Use `npx` ou instale local no projeto |
 | Ignorar `npm audit` warnings | Corrija vulnerabilidades ou documente como debt |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `npm install` falha com erros de permissao | Instalacao global sem sudo ou diretorio protegido | Use `npx` para executar ou instale local no projeto |
+| Versoes diferentes entre ambientes | Lockfile nao commitado ou ignorado | Commite `package-lock.json` e use `npm ci` em CI/CD |
+| Pacote de dev foi para producao | Instalado sem flag `-D` | Reinstale com `npm install -D pacote` |
+| `node_modules` commitado acidentalmente | Falta `.gitignore` com `node_modules` | Adicione ao `.gitignore` e remova do tracking: `git rm -r --cached node_modules` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre gerenciadores, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de comandos expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-gerenciadores-de-pacote/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-gerenciadores-de-pacote/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-repositorios-do-prisma
 description: "Applies Prisma repository implementation patterns when creating database repositories that follow interface contracts. Use when user asks to 'implement repository', 'create prisma repository', 'implement database layer', 'connect use cases to database', or 'implement persistence'. Enforces patterns: findFirst vs findUnique selection, date range filtering, pagination with skip/take, count queries, and proper Prisma Client usage. Make sure to use this skill whenever implementing repository classes that use Prisma ORM. Not for schema design, migrations, or Prisma configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-repository-implementation
+  tags: [prisma, repository, findFirst, findUnique, pagination, count, date-range, dayjs]
 ---
 
 # Repositórios do Prisma
@@ -141,14 +147,14 @@ export class PrismaUsersRepository implements UsersRepository {
 | Passar objeto dayjs direto ao Prisma | Use `.toDate()` para converter para Date nativo |
 | Criar métodos que não existem na interface | Implemente apenas o contrato definido |
 
+## Troubleshooting
+
+### findUnique falha com "Argument where of type requires at least one unique field"
+**Symptom:** TypeScript erro ao usar `findUnique` com um campo que nao e `@id` nem `@unique`
+**Cause:** `findUnique` so aceita campos marcados como unique no schema Prisma — campos normais nao sao aceitos
+**Fix:** Use `findFirst` em vez de `findUnique` para campos sem constraint unique. `findFirst` aceita qualquer campo no `where`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-repositorios-do-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-repositorios-do-prisma/references/code-examples.md)

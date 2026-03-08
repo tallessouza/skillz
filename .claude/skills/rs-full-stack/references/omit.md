@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-omit
 description: "Applies TypeScript Omit utility type when reusing interfaces with excluded properties. Use when user asks to 'create a type without some fields', 'reuse an interface', 'exclude properties from a type', 'omit fields', or any type manipulation task. Enforces correct Omit syntax with union operator for multiple exclusions. Make sure to use this skill whenever generating TypeScript types that derive from existing ones by removing fields. Not for Pick, Partial, Required, or other utility types."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-fundamentals
+  tags: [typescript, omit, utility-types, interfaces, type-manipulation]
 ---
 
 # Omit — Reutilizar Tipagem Excluindo Propriedades
@@ -91,13 +97,15 @@ type BookSummary = Omit<Book, "description" | "pages">
 | `Omit<T, "a">` + `Omit<..., "b">` aninhado | `Omit<T, "a" \| "b">` |
 | Modificar interface original para caso especifico | Criar type derivado com `Omit` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Tipo derivado nao reflete mudancas na interface original | Criou interface duplicada manualmente | Use `Omit<Original, "field">` para manter sincronia |
+| Erro de sintaxe ao omitir multiplos campos | Usou virgula em vez de pipe | Use `Omit<T, "a" \| "b">` com pipe |
+| Omit remove mais campos do que desejado | Muitos campos excluidos — dificil de ler | Considere `Pick` quando mantém poucos campos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases do Omit
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-omit/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-omit/references/code-examples.md)

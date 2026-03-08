@@ -1,6 +1,12 @@
 ---
 name: rs-devops-git-actions
 description: "Applies GitHub Actions CI/CD architecture when setting up workflows, pipelines, or automation in GitHub repositories. Use when user asks to 'create a workflow', 'setup CI/CD', 'configure GitHub Actions', 'add a pipeline', or 'automate tests and deploy'. Covers workflow structure, actions, runners, branch-based triggers, and YAML declarative config. Make sure to use this skill whenever creating or modifying .github/workflows/ files. Not for Jenkins, CircleCI, GitLab CI, Azure Pipelines, or non-GitHub CI/CD tools."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd
+  tags: [github-actions, ci-cd, workflow, runners, pipeline, automation, yaml]
 ---
 
 # GitHub Actions — CI/CD no GitHub
@@ -103,14 +109,14 @@ Sem integracao externa, sem configuracao de webhook, tudo no mesmo ecossistema.
 | Escrever scripts bash longos inline nos steps | Extraia para actions reutilizaveis ou scripts separados |
 | Usar runner sem especificar SO | Declare explicitamente `runs-on: ubuntu-latest` |
 
+## Troubleshooting
+
+### Workflow nao dispara ao fazer push
+**Symptom:** Push na branch nao aciona o workflow do GitHub Actions
+**Cause:** O trigger `on.push.branches` nao inclui a branch atual ou o arquivo YAML tem erro de sintaxe
+**Fix:** Verifique se a branch esta listada em `on.push.branches`, valide o YAML com um linter, e confira que o arquivo esta em `.github/workflows/`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-git-actions/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-git-actions/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

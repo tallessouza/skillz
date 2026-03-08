@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-campos-do-formulario
 description: "Applies Tailwind CSS Grid layout patterns when building form sections with labels, inputs, and responsive columns. Use when user asks to 'create a form', 'build form fields', 'layout form with grid', 'add form inputs with labels', or 'responsive form layout'. Enforces minmax grid columns, divide-y separators, and proper label-input alignment. Make sure to use this skill whenever building multi-field forms with Tailwind. Not for form validation, submission logic, or non-Tailwind styling."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: layout
+  tags: [tailwind, react, css-grid, flexbox, forms]
 ---
 
 # Campos do Formulário com Tailwind CSS Grid
@@ -130,15 +136,19 @@ gridTemplateColumns: {
 | `flex` para alinhar label e input | `grid grid-cols-form gap-3` |
 | Media queries para colapsar colunas | `minmax(0, 15rem)` que colapsa naturalmente |
 | `<br />` para quebrar linha na label | `<span className="block mt-0.5">` |
+## Troubleshooting
+
+### Layout quebrando no mobile
+**Symptom:** Elementos ficam fora da tela ou empilhados de forma inesperada no mobile.
+**Cause:** Grid com colunas fixas nao se adapta a telas pequenas sem breakpoints.
+**Fix:** Use `flex flex-col` como base mobile e `lg:grid lg:grid-cols-*` apenas no desktop.
+
+### Espacamento inconsistente entre secoes
+**Symptom:** Alguns elementos tem mais espaco que outros apesar de usar o mesmo gap.
+**Cause:** Mistura de `space-y` e `gap` no mesmo container, ou margins conflitando.
+**Fix:** Escolha `gap` (com flex/grid) ou `space-y` (com flow layout), nunca ambos no mesmo container.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-campos-do-formulario/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-campos-do-formulario/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-campos-do-formulario/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-campos-do-formulario/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

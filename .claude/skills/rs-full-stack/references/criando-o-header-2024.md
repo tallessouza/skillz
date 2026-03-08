@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-o-header-2024
 description: "Applies responsive header construction patterns when building landing page headers with CSS utilities. Use when user asks to 'create a header', 'build navigation', 'make responsive nav', 'add logo and links', or 'responsive layout with utility classes'. Enforces flex alignment, gap escaping, margin-right auto logo pattern, and responsive button sizing with media queries. Make sure to use this skill whenever building header components for landing pages. Not for complex app shells, sticky headers with scroll behavior, or JavaScript-based navigation menus."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-responsive
+  tags: [css, header, responsive, media-query, flexbox, navigation]
 ---
 
 # Criando o Header Responsivo
@@ -122,8 +128,12 @@ header nav a:first-child {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre margin-right auto, escape CSS e decisoes de breakpoint
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-o-header-2024/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-o-header-2024/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Classe `.gap-1.5` nao funciona | Ponto nao esta escapado no CSS | Use `.gap-1\.5` com contrabarra antes do ponto |
+| Links desktop aparecem no mobile | Faltou `display: none` na classe `desktop-only` | Adicione `.desktop-only { display: none }` e mostre no breakpoint |
+| Logo nao empurra nav para a direita | Faltou `margin-right: auto` no primeiro link | Adicione `header nav a:first-child { margin-right: auto }` |
+| Botao nao muda de tamanho no desktop | Media query com breakpoint incorreto | Verifique `@media (min-width: 80rem)` e as classes do botao |
+| Texto com gradient clip quebra no hover | `-webkit-background-clip: text` interfere com hover | Adicione `-webkit-background-clip: initial` no hover state |

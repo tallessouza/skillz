@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-avg
 description: "Applies SQL AVG aggregate function patterns when writing database queries. Use when user asks to 'calculate average', 'get mean value', 'average price', 'media de valores', or any query involving averages. Enforces correct AVG syntax with column specification, FROM clause, and optional WHERE filtering. Make sure to use this skill whenever generating SQL queries that compute averages. Not for SUM, COUNT, MIN, MAX, or other aggregate functions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql
+  tags: [sql, aggregate, avg, average, query]
 ---
 
 # SQL AVG — Calculando Médias
@@ -78,13 +84,16 @@ WHERE category = 'áudio';
 | `WHERE category = áudio` | `WHERE category = 'áudio'` — aspas no texto |
 | `SELECT Price FROM ...` e calcular no app | `SELECT AVG(Price) FROM ...` — deixe o banco calcular |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "not a single-group function" | Faltou FROM na query | Adicione `FROM tabela` apos `SELECT AVG(coluna)` |
+| Resultado NULL | Coluna so tem valores NULL ou tabela vazia | Verifique os dados com `SELECT * FROM tabela` |
+| Media incorreta | WHERE filtrando registros errados | Confira a condicao do WHERE e aspas em valores texto |
+| `AVG(*)` da erro | AVG nao aceita asterisco | Especifique a coluna: `AVG(Price)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre AVG, quando usar e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-avg/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-avg/references/code-examples.md)

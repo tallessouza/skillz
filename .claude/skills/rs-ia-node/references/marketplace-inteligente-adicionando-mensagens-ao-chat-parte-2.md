@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-msg-chat-pt2
 description: "Applies SQL aggregation patterns with JSON aggregate and left joins when building chat message retrieval endpoints in Node.js. Use when user asks to 'fetch chat messages', 'aggregate related data in SQL', 'join messages with actions', 'return nested JSON from database', or 'build chat session query'. Ensures proper grouping, null filtering, and message_actions table design. Make sure to use this skill whenever building chat/message retrieval with related data aggregation. Not for frontend chat UI, WebSocket setup, or LLM prompt engineering."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: chat
+  tags: [ia-node, node-js, chat]
 ---
 
 # Agregacao de Mensagens no Chat com JSON Aggregate
@@ -112,14 +118,14 @@ const session = await db.query(`
 | `inner join messages` para buscar sessao | `left join messages` (sessao pode existir sem msgs) |
 | Acao como coluna na mensagem | Tabela `message_actions` separada com tipos extensiveis |
 
+## Troubleshooting
+
+### Resultado inesperado do modelo
+**Symptom:** Resposta da IA nao corresponde ao formato ou conteudo esperado
+**Cause:** Prompt insuficiente, parametros mal configurados, ou modelo sem contexto adequado
+**Fix:** Revise o prompt com exemplos concretos (few-shot), ajuste temperature, e verifique se os dados necessarios foram fornecidos ao modelo
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-adicionando-mensagens-ao-chat-parte-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-adicionando-mensagens-ao-chat-parte-2/references/code-examples.md)

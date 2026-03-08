@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-prototype-pollution
 description: "Guards against JavaScript Prototype Pollution vulnerabilities when writing merge functions, object manipulation, or processing user input. Use when user asks to 'deep merge objects', 'merge user input', 'update object properties dynamically', 'parse JSON payload', or 'handle untrusted data'. Applies rules: never use DeepMerge without __proto__ filtering, never trust client input, never expose secrets to client. Make sure to use this skill whenever writing code that merges or spreads untrusted data into objects. Not for general XSS, SQL injection, or non-JavaScript security topics."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, prototype-pollution, javascript, object-manipulation]
 ---
 
 # Prototype Pollution
@@ -111,14 +117,14 @@ function updatePessoa(id: string, payload: string) {
 | `if (user.admin)` sem validação server-side | Validar permissões no servidor, nunca confiar no client |
 | Bibliotecas de merge sem proteção contra proto | Lodash `_.merge` (tem proteção) ou merge manual com filtro |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-object-prototype-pollution/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-object-prototype-pollution/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-object-prototype-pollution/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-object-prototype-pollution/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

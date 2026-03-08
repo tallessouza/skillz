@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-undefined-e-null
 description: "Enforces correct usage of undefined and null in JavaScript/TypeScript code. Use when user asks to 'initialize variables', 'declare variables', 'set default values', 'handle empty states', or 'check for null'. Applies rules: never assign undefined explicitly, use null for intentional emptiness, distinguish automatic vs intentional absence. Make sure to use this skill whenever generating variable declarations or handling empty/missing values. Not for error handling, type checking, or control flow logic."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, undefined, null, variables, primitives]
 ---
 
 # Undefined e Null
@@ -89,6 +95,14 @@ console.log("O valor é:", empathy)   // null
 | `if (x == undefined)` quando precisa distinguir | `if (x === undefined)` ou `if (x === null)` |
 | `x = undefined` para "limpar" variável | `x = null` |
 | `return undefined` explicitamente | `return` (sem valor) |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `x == null` retorna true para undefined e null | Loose equality (`==`) trata ambos como equivalentes | Use `===` para distinção exata entre undefined e null |
+| `typeof null` retorna `"object"` | Bug histórico do JavaScript que nunca foi corrigido | Use `x === null` para checar null, não `typeof` |
+| Variável é undefined mesmo após atribuição | Atribuição ocorreu em escopo diferente ou de forma assíncrona | Verifique escopo e timing da atribuição |
 
 ## Deep reference library
 

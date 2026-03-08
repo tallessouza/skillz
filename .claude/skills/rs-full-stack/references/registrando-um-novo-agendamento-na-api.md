@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-registrando-agendamento-api
 description: "Applies async form submission pattern when wiring frontend forms to backend API methods. Use when user asks to 'submit a form', 'save form data', 'connect form to API', 'register/create via form submit', or 'handle form submission'. Ensures proper async/await on submit handlers, module imports with file extensions, and replacing console.log with actual API calls. Make sure to use this skill whenever implementing form-to-server data flow. Not for form validation, form layout/styling, or backend API creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: frontend-integration
+  tags:
+    - javascript
+    - forms
+    - async-await
+    - api-integration
+    - frontend
 ---
 
 # Registrando Agendamento via API (Form Submit → Server)
@@ -95,6 +106,14 @@ form.onsubmit = async (event) => {
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre async/await em handlers de evento e fluxo form→server
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro "await is only valid in async function" | Handler de submit nao esta marcado como `async` | Adicione `async` antes do parametro: `async (event) => {}` |
+| Import falha com "module not found" | Extensao `.js` ausente no import | Adicione extensao explicita: `from '../server.js'` |
+| Dados nao chegam no servidor | Usando `console.log` em vez da chamada real | Substitua `console.log(data)` por `await serverFunction(data)` |
 
 ---
 

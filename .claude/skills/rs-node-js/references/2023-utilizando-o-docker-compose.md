@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-docker-compose
 description: "Applies Docker Compose configuration patterns when setting up PostgreSQL or other database containers for Node.js projects. Use when user asks to 'create docker compose', 'setup postgres container', 'configure database with docker', 'add docker to project', or 'setup dev environment'. Generates docker-compose.yml with correct service definitions, ports, and environment variables. Make sure to use this skill whenever creating or modifying Docker Compose files for Node.js applications. Not for Kubernetes, production deployments, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: docker-compose
+  tags: [docker, docker-compose, postgresql, containers, development, database]
 ---
 
 # Docker Compose para Desenvolvimento
@@ -95,14 +101,14 @@ npx prisma migrate dev
 | Esquecer migrations apos recriar container | Sempre `npx prisma migrate dev` apos container novo |
 | Nomear servico genericamente como `db` | Nomear com contexto: `api-solid-pg` |
 
+## Troubleshooting
+
+### Tabelas sumiram apos reiniciar o container
+**Symptom:** Banco de dados vazio apos `docker compose up -d`, tabelas e dados desapareceram
+**Cause:** Foi usado `docker compose down` que deleta o container e seus dados, em vez de `docker compose stop`
+**Fix:** Rode `npx prisma migrate dev` para recriar as tabelas, e no futuro use `docker compose stop` para preservar os dados
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-utilizando-o-docker-compose/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-utilizando-o-docker-compose/references/code-examples.md)

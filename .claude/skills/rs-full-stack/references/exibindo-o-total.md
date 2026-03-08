@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-exibindo-o-total
 description: "Applies dynamic total calculation and DOM display patterns when writing vanilla JavaScript. Use when user asks to 'calculate a total', 'display result on page', 'multiply values and show', 'update DOM with calculation', or 'show computed value in HTML'. Ensures proper variable creation, arithmetic operations, and getElementById + textContent usage for displaying results. Make sure to use this skill whenever generating vanilla JS that computes and renders values dynamically. Not for React/framework components, CSS styling, or number formatting."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags: [javascript, dom, getElementById, textContent, arithmetic, calculation]
 ---
 
 # Exibindo o Total Dinamicamente
@@ -90,13 +96,16 @@ function convertCurrency() {
 | `querySelector("#result")` quando tem ID | `getElementById("result")` |
 | Calculo sem variavel intermediaria | Variavel nomeada (`total`, `subtotal`) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Resultado exibido como `NaN` | Variavel `amount` ou `price` e string, nao numero | Converter com `Number()` ou `parseFloat()` antes de multiplicar |
+| `textContent` nao atualiza | `getElementById` retorna `null` (ID nao existe) | Verificar se o ID no HTML bate exatamente com o usado no JS |
+| Resultado com muitas casas decimais | Multiplicacao de floats gera imprecisao | Usar `.toFixed(2)` para formatar o resultado |
+| Valor exibido como `0` | Variavel nao inicializada ou input vazio | Verificar se as variaveis tem valores atribuidos antes do calculo |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre getElementById vs querySelector e textContent vs innerHTML
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-exibindo-o-total/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-exibindo-o-total/references/code-examples.md)

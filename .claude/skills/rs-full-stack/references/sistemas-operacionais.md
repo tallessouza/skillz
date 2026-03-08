@@ -1,13 +1,24 @@
 ---
 name: rs-full-stack-sistemas-operacionais
 description: "Applies operating system concepts when discussing hardware-software interaction, memory management, or development environment choices. Use when user asks about 'which OS to use', 'memory vs disk', 'why I lost my file', 'development environment setup', or 'how computers manage resources'. Make sure to use this skill whenever explaining OS-level behavior or recommending dev environments. Not for application-level code, networking, or web protocols."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: computing-fundamentals
+  tags:
+    - operating-systems
+    - hardware
+    - memory
+    - dev-environment
+    - fundamentals
 ---
 
 # Sistemas Operacionais
 
 > O Sistema Operacional e o software que gerencia todo o hardware e software da maquina — entender seu funcionamento e essencial para qualquer desenvolvedor.
 
-## Key concept
+## Key concepts
 
 O SO (Sistema Operacional) e o cerebro do computador. Ele controla hardware (mouse, teclado, HD, memoria) e coordena todos os programas instalados. Os tres principais para desenvolvimento sao Windows, macOS (OSX) e Linux. Cada um opera de forma diferente, mas todos fazem o mesmo trabalho fundamental: gerenciar recursos.
 
@@ -50,6 +61,20 @@ Windows com WSL2 fecha essa lacuna para a maioria dos casos.
 | Todos os SO sao iguais por dentro | Kernel, filesystem e gerenciamento de processos diferem significativamente |
 | Celular nao tem SO | Android (Linux) e iOS tem SOs completos |
 
+## Example
+
+```bash
+# Verificar qual SO esta rodando
+uname -s        # Linux, Darwin (macOS)
+
+# Verificar processos ativos (Linux/macOS)
+ps aux | head -10
+
+# Verificar uso de memoria
+free -h          # Linux
+vm_stat          # macOS
+```
+
 ## When to apply
 
 - Ao configurar ambiente de desenvolvimento e precisar escolher ou justificar um SO
@@ -62,6 +87,15 @@ Windows com WSL2 fecha essa lacuna para a maioria dos casos.
 - Este conhecimento e conceitual — nao substitui documentacao especifica de cada SO
 - Detalhes de kernel, syscalls e internals requerem estudo aprofundado por SO
 - Para configuracao pratica de ambiente dev, consulte guias especificos do SO escolhido
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo perdido apos queda de energia | Dados estavam na RAM e nao foram salvos no disco | Ative auto-save no editor e salve frequentemente |
+| Ferramentas de dev nao funcionam no Windows | Terminal nao e Unix nativo | Instale WSL2 para ter terminal Linux no Windows |
+| Comando funciona no Mac mas nao no Windows | Comandos Unix vs DOS diferem | Use WSL2 ou adapte para equivalente Windows |
+| Programa trava e nao responde | Processo consumindo recursos alem do permitido | Use gerenciador de tarefas para encerrar o processo |
 
 ## Deep reference library
 

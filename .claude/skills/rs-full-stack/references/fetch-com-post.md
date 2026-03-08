@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-fetch-com-post
 description: "Applies correct fetch POST request patterns when writing JavaScript/TypeScript API calls. Use when user asks to 'send data to API', 'create a resource', 'submit a form', 'POST request', 'fetch with POST', or 'cadastrar via API'. Enforces method, headers, JSON.stringify body, and await sequencing. Make sure to use this skill whenever generating code that sends data to an API endpoint. Not for GET requests, file uploads, or WebSocket communication."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fetch
+  tags: [javascript, fetch, post, json, async-await, form-submit]
 ---
 
 # Fetch com POST
@@ -99,13 +105,16 @@ form.addEventListener("submit", async (event) => {
 | `form.addEventListener("submit", (e) => { fetch(...) })` | Adicione `e.preventDefault()` e `async` na callback |
 | `fetch(...); loadProducts()` sem await | `await fetch(...); await loadProducts()` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| API recebe body vazio | Objeto passado direto sem `JSON.stringify` | Envolver dados em `JSON.stringify({...})` |
+| Erro 405 Method Not Allowed | `method: "POST"` ausente (fetch usa GET por padrao) | Adicionar `method: "POST"` nas opcoes do fetch |
+| API retorna 400 Bad Request | `Content-Type` header ausente | Adicionar `headers: { "Content-Type": "application/json" }` |
+| Dados desatualizados apos cadastro | `loadProducts()` executa antes do POST completar | Adicionar `await` no fetch e no reload da lista |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre serializacao, Content-Type, JSON vs XML, e sequenciamento async
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fetch-com-post/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fetch-com-post/references/code-examples.md)

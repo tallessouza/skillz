@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-secao-customer-story
 description: "Enforces data-driven component patterns when building repeated UI sections in Next.js/React. Use when user asks to 'create a section with cards', 'build a testimonials section', 'add customer stories', 'create repeated components', or 'build a landing page section'. Applies rules: extract data arrays above component, iterate with .map(), never copy-paste JSX for similar items, keep data separate from presentation. Make sure to use this skill whenever generating repeated UI elements in React/Next.js. Not for API data fetching, server components, or database queries."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: landing-page-sections
+  tags: [data-driven, map, testimonials, cards, react-patterns, next-js, component-design]
 ---
 
 # Separacao de Dados e Apresentacao em Componentes Repetidos
@@ -130,14 +136,19 @@ export const CustomerStorySection = () => (
 | Dados hardcoded inline no JSX | Array de objetos acima do componente |
 | Nomes de imagem genericos (`img1.png`) | Nomes padronizados (`customer-01.png`) |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-secao-customer-story/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-secao-customer-story/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-secao-customer-story/references/deep-explanation.md) — O instrutor destaca que, embora a seccao de "Customer Story" pareca simples visualmente, ela introdu
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-secao-customer-story/references/code-examples.md) — components/

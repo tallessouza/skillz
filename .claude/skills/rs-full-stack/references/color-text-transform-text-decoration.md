@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-color-text-transform-decoration
 description: "Applies CSS color, text-transform, and text-decoration properties when styling text elements. Use when user asks to 'style text', 'change text color', 'uppercase text', 'remove link underline', 'add text decoration', or 'format links'. Covers color values, text-transform modes, and text-decoration shorthand with line, style, color, and thickness. Make sure to use this skill whenever generating CSS that involves text styling or link formatting. Not for layout, spacing, fonts, or box-model properties."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, color, text-transform, text-decoration, styling, links]
 ---
 
 # Color, Text-Transform e Text-Decoration
@@ -124,13 +130,17 @@ a:hover {
 | `text-decoration: none` em todos os links globalmente | `text-decoration: none` apenas em contextos onde clicabilidade é óbvia |
 | `text-decoration-line: underline; text-decoration-color: red; text-decoration-style: wavy;` separados sem necessidade | `text-decoration: underline wavy red` shorthand |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `text-decoration: none` não remove sublinhado | Especificidade insuficiente ou regra sobrescrita | Inspecione com DevTools e aumente a especificidade do seletor |
+| `text-transform: uppercase` não funciona | Propriedade aplicada no elemento errado ou sobrescrita | Verifique herança e cascata no DevTools |
+| Cor do texto não muda com `color` | Outra regra com maior especificidade prevalece | Use DevTools para identificar a regra que sobrescreve |
+| Shorthand `text-decoration` ignorado em navegador antigo | Browser não suporta valores combinados no shorthand | Separe em propriedades individuais: `text-decoration-line`, `text-decoration-color`, etc. |
+| Link sem sublinhado perde indicação visual | `text-decoration: none` sem alternativa visual | Adicione cor distinta, `font-weight` ou `:hover` com `underline` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre UX de links, shorthand anatomy e text-transform
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-color-text-transform-text-decoration/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-color-text-transform-text-decoration/references/code-examples.md)

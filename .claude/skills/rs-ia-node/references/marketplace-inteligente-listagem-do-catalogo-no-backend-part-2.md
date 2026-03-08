@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-listagem-catalogo-2
 description: "Applies NestJS catalog listing patterns with PostgreSQL integration when building product APIs. Use when user asks to 'list products', 'query database in NestJS', 'join tables in raw SQL', 'add search filtering', or 'integrate Postgres with NestJS service'. Covers typed raw queries, json_build_object for joins, parameterized search with wildcards, and proper connection lifecycle. Make sure to use this skill whenever implementing catalog or product listing endpoints with raw PostgreSQL in NestJS. Not for ORM-based queries (TypeORM/Prisma), frontend catalog display, or AI/embedding search."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: catalog
+  tags: [ia-node, postgresql, node-js, nestjs]
 ---
 
 # Listagem de Catalogo com PostgreSQL Raw Queries no NestJS
@@ -135,14 +141,14 @@ async findAll(search?: string) {
 | `SELECT *` com join | Selecionar colunas explicitas + json_build_object |
 | Esquecer client.end() | Implementar onApplicationShutdown |
 
+## Troubleshooting
+
+### Rota retorna 404 mesmo existindo
+**Symptom:** Endpoint retorna 404 Not Found apesar de estar definido no controller
+**Cause:** Modulo nao registrado no AppModule, ou @Param sem decorator no handler
+**Fix:** Verifique se o modulo esta no `imports` do AppModule e que @Param('name') decora o parametro
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-backend-part-2/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-listagem-do-catalogo-no-backend-part-2/references/code-examples.md)

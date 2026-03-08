@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-de-rbac
 description: "Applies RBAC test fixing patterns when writing or fixing end-to-end tests that break after adding role-based access control. Use when user asks to 'fix broken tests after RBAC', 'add admin role to test user', 'create authenticated test user with role', or 'tests failing 401 after authorization'. Ensures test helpers create users with correct roles via direct database insertion instead of API routes. Make sure to use this skill whenever tests fail due to missing role/permission context. Not for implementing RBAC middleware, designing role systems, or unit testing use cases."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: rbac-e-autorizacao
+  tags: [rbac, testing, e2e, roles, authorization, prisma, fastify]
 ---
 
 # Testes de RBAC
@@ -128,14 +134,14 @@ export async function createAndAuthenticateUser(
 | Ignorar testes quebrando apos RBAC e desativar middleware | Corrigir o helper para suportar a nova realidade de roles |
 | Criar academia via Prisma para evitar o problema de role | Corrigir o usuario para ter permissao e testar o fluxo completo |
 
+## Troubleshooting
+
+### Testes retornam 401 apos adicionar RBAC
+**Symptom:** Testes que passavam agora retornam status 401 Unauthorized
+**Cause:** O helper de criacao de usuario usa a rota POST /users que cria usuarios com role MEMBER, mas a rota testada exige role ADMIN
+**Fix:** Altere o helper para criar usuarios via `prisma.user.create()` com parametro `isAdmin` e role explicita
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-de-rbac/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-de-rbac/references/code-examples.md)

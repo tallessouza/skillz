@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-configurando-vitest
 description: "Configures Vitest test runner with TypeScript path aliases in Node.js projects. Use when user asks to 'setup tests', 'configure vitest', 'add testing', 'create test environment', or 'setup vitest with tsconfig paths'. Applies vite-tsconfig-paths plugin, creates vit.config.ts, and sets up test/test:watch scripts. Make sure to use this skill whenever setting up a new Node.js project test environment with Vitest. Not for writing actual test cases, Jest configuration, or frontend testing setup."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [vitest, testing, typescript-paths, test-runner]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Configurando Vitest
@@ -96,14 +103,14 @@ npm run test
 | Importar `defineConfig` de `vite` | Importar `defineConfig` de `vitest/config` |
 | Criar apenas script `test` sem watch | Criar ambos `test` e `test:watch` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-configurando-vitest/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-configurando-vitest/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-vitest/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-vitest/references/code-examples.md) — Todos os exemplos de código expandidos com variações

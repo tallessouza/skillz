@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-configurando-vitest-swc
+name: rs-node-js-2023-configurando-vitest-com-swc
 description: "Applies Vitest with SWC configuration when setting up tests in NestJS projects. Use when user asks to 'configure vitest', 'setup tests in nestjs', 'add e2e tests', 'configure swc', or 'setup test environment for nest'. Covers SWC compiler for decorator support, tsconfig paths, e2e test separation, and proper TypeScript target. Make sure to use this skill whenever configuring test infrastructure in NestJS applications. Not for writing actual test logic, React testing, or Jest configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: api-solid
+  tags: [vitest, swc, nestjs, testing, e2e, decorators]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Configurando Vitest com SWC no NestJS
@@ -125,14 +132,14 @@ import { AppModule } from '@/app.module'
 | ESBuild padrao com decorators NestJS | SWC via `unplugin-swc` |
 | `@vitest/coverage-c8` (deprecado) | `@vitest/coverage-v8` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-configurando-vitest-com-swc/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-configurando-vitest-com-swc/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-vitest-com-swc/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-configurando-vitest-com-swc/references/code-examples.md) — Todos os exemplos de código expandidos com variações

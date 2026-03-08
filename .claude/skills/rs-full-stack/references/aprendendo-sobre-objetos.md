@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aprendendo-sobre-objetos
 description: "Enforces correct JavaScript object modeling with properties and methods when creating objects to represent real-world entities. Use when user asks to 'create an object', 'model a domain entity', 'define a class', or 'represent something in code'. Applies abstraction principles: properties for characteristics (values), methods for behaviors (functions), named by domain not structure. Make sure to use this skill whenever modeling domain entities in JavaScript/TypeScript. Not for array manipulation, DOM handling, or async patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, objects, modeling, abstraction, domain-entities]
 ---
 
 # Modelagem de Objetos em JavaScript
@@ -107,13 +113,16 @@ const carro = {
 | Metodo fora do objeto que manipula o objeto | Metodo dentro do objeto como comportamento |
 | Array de valores soltos para representar entidade | Objeto com propriedades nomeadas |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Propriedade retorna `undefined` | Nome da propriedade digitado incorretamente ou inexistente | Verifique os nomes com `Object.keys(obj)` |
+| Metodo nao consegue acessar propriedades do objeto | Usando arrow function que nao tem `this` proprio | Use method shorthand `metodo() {}` em vez de arrow function |
+| Objeto com nomes abreviados dificulta leitura | Propriedades com nomes crípticos como `n`, `q`, `r` | Nomeie propriedades de forma descritiva: `nome`, `quantidade`, `responsavel` |
+| `console.log(obj)` mostra `[Object object]` | Conversao implicita para string | Use `console.log(JSON.stringify(obj, null, 2))` ou `console.dir(obj)` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre abstracao, analogias concreto vs abstrato, e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-objetos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aprendendo-sobre-objetos/references/code-examples.md)

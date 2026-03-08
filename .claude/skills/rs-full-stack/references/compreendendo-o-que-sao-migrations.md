@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-compreendendo-migrations
 description: "Applies database migration concepts and patterns when working with Query Builders or ORMs. Use when user asks to 'create a migration', 'modify database schema', 'add a column', 'version the database', or 'rollback migration'. Ensures correct understanding of migrations as change management mechanisms, not just table creators. Make sure to use this skill whenever database schema evolution is discussed. Not for writing raw SQL, application-level CRUD operations, or ORM model definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [database, migrations, schema, versioning, sql]
 ---
 
 # Compreendendo Migrations
@@ -69,13 +75,17 @@ Pessoa A cria migration de produtos. Pessoa B cria migration de fornecedores. Am
 - Rollback pode causar perda de dados se a migration adicionou/removeu colunas com dados
 - Em bancos muito grandes, migrations de alteracao podem ser lentas (lock de tabela)
 
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Migration ja aplicada sendo editada | Tentando alterar migration existente | Crie uma nova migration para alteracoes — nunca edite migrations ja aplicadas |
+| Rollback perdeu dados | Migration de rollback removeu coluna com dados | Faca backup antes de rollback e use data migrations quando necessario |
+| Migrations fora de ordem em equipe | Conflito de timestamps entre branches | Resolva conflitos de migration antes de merge e rode pendentes em sequencia |
+| Banco nao reflete alteracoes | Migrations pendentes nao executadas | Rode o comando de migrate (ex: `npx knex migrate:latest`) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-compreendendo-o-que-sao-migrations/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-compreendendo-o-que-sao-migrations/references/code-examples.md)

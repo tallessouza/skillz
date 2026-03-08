@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-validando-data-do-check-in
 description: "Applies date validation patterns using Day.js startOf/endOf in Node.js use cases and in-memory repositories. Use when user asks to 'validate dates', 'check same day', 'compare dates ignoring time', 'implement check-in', or 'date range validation'. Enforces startOfDay/endOfDay boundary pattern, Prisma Decimal handling, and multi-dependency use case injection. Make sure to use this skill whenever implementing date comparisons that ignore time components in Node.js. Not for frontend date pickers, date formatting for display, or timezone conversion logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: validacao-de-datas
+  tags: [dayjs, date-validation, startOf, endOf, prisma-decimal, check-in]
 ---
 
 # Validando Datas com Day.js em Use Cases Node.js
@@ -109,14 +115,14 @@ const existing = checkIns.find(c => {
 | Buscar academia dentro do repositorio de check-ins | Injetar gymsRepository separado no use case |
 | Duplicar criacao de academia em cada teste | Mover para beforeEach |
 
+## Troubleshooting
+
+### Comparacao de datas permite check-in duplicado no mesmo dia
+**Symptom:** Usuario consegue fazer dois check-ins no mesmo dia, validacao nao detecta duplicata
+**Cause:** Usando `startOf('day')` em vez de `startOf('date')` no Day.js, que retorna dia da semana em vez de inicio do dia
+**Fix:** Substitua `dayjs(date).startOf('day')` por `dayjs(date).startOf('date')` para obter o inicio do dia correto
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-validando-data-do-check-in/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-validando-data-do-check-in/references/code-examples.md)

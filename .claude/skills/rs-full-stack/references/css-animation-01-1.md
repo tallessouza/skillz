@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-css-animation-01-1
 description: "Enforces correct CSS @keyframes animation patterns when writing CSS/SCSS animations. Use when user asks to 'animate an element', 'create a CSS animation', 'move element with CSS', 'add keyframes', or 'use animation-fill-mode'. Applies rules: timeline-first thinking with @keyframes, from/to or percentage-based keyframes, animation-name + animation-duration as minimum pair, fill-mode for persisting states. Make sure to use this skill whenever generating CSS animations or transitions involving keyframes. Not for CSS transitions (use transition property), JavaScript animations, or SVG animations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-animacoes
+  tags: [css, animation, keyframes, fill-mode, transform, timeline]
 ---
 
 # CSS Animations com @keyframes
@@ -122,13 +128,16 @@ description: "Enforces correct CSS @keyframes animation patterns when writing CS
 | Porcentagens sem pensar na timeline completa | Mapeie mentalmente cada % na linha do tempo antes de codar |
 | Esperar que o elemento fique no estado final automaticamente | O comportamento padrao e VOLTAR ao estado original — use `forwards` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Animacao nao executa | Falta `animation-duration` | Sempre defina `animation-name` e `animation-duration` como par minimo |
+| Elemento volta ao estado original apos animacao | Falta `animation-fill-mode` | Adicione `animation-fill-mode: forwards` para manter o estado final |
+| Elemento "pula" antes do delay | Estado inicial do keyframe difere do estado base | Use `animation-fill-mode: backwards` ou `both` para aplicar o keyframe durante o delay |
+| Porcentagens nao funcionam como esperado | Timeline nao mapeada mentalmente antes de codar | Desenhe a timeline (0% a 100%) no papel antes de definir as porcentagens |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre linha do tempo, fill-mode backwards vs forwards vs both, e modelo mental de "puxar propriedades"
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e anotacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-css-animation-01-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-css-animation-01-1/references/code-examples.md)

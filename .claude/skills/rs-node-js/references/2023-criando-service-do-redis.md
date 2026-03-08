@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-service-do-redis
-description: "Generates Redis service integration in NestJS applications following clean architecture patterns. Use when user asks to 'add Redis', 'create cache service', 'integrate Redis with NestJS', 'setup Redis connection', or 'implement caching layer'. Applies patterns: extend ioredis class, env-based configuration with defaults, onModuleDestroy cleanup, separate cache module. Make sure to use this skill whenever setting up Redis or cache infrastructure in NestJS projects. Not for Redis pub/sub, Redis Streams, or Bull queue configuration."
+name: 2023-criando-service-do-redis
+description: "Creates a Redis service for NestJS by extending the ioredis Redis class with environment-based configuration and lifecycle hooks. Use when user asks to 'integrate Redis with NestJS', 'create Redis service', 'setup cache with ioredis', 'configure Redis connection', or 'add Redis module'. Enforces: extend Redis class from ioredis, configure via EnvService with defaults, implement onModuleDestroy for cleanup, never call connect manually, separate CacheModule from DatabaseModule. Make sure to use this skill whenever adding Redis connectivity to a NestJS application. Not for standalone Redis scripts, frontend caching, or non-NestJS Node.js projects."
+category: coding-lens
+tags: [cache, modules, nestjs, prisma, redis, streams]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: cache-redis
+  tags: [redis, ioredis, nestjs, cache, dependency-injection, lifecycle-hooks]
 ---
 
 # Criando Service do Redis no NestJS
@@ -136,14 +145,14 @@ export class RedisService extends Redis implements OnModuleDestroy {
 | Cache e database no mesmo modulo | Modulos separados: `CacheModule` e `DatabaseModule` |
 | Usar pacote `redis` com callbacks | Usar `ioredis` com Promises nativas |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-service-do-redis/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-service-do-redis/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

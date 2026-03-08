@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-query-selector-1
 description: "Applies correct DOM querySelector patterns when writing JavaScript/TypeScript code. Use when user asks to 'select an element', 'access the DOM', 'get element by class', 'query selector', or any DOM manipulation task. Enforces CSS-style selectors with # for ID and . for class, querySelector vs querySelectorAll distinction. Make sure to use this skill whenever generating DOM access code. Not for React refs, virtual DOM, or framework-specific selectors."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-dom
+  tags:
+    - javascript
+    - dom
+    - querySelector
+    - selectors
 ---
 
 # Query Selector
@@ -78,6 +88,14 @@ const allItems = document.querySelectorAll('li')
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `querySelector` retorna `null` | Elemento nao existe no DOM ou seletor errado | Verifique que o seletor usa `#` para ID e `.` para classe |
+| `querySelectorAll` retorna NodeList vazia | Classe ou tag inexistente no HTML | Inspecione o HTML para confirmar que os elementos existem |
+| Seletor sem prefixo seleciona tag errada | `querySelector('guest')` busca tag `<guest>`, nao classe | Use `querySelector('.guest')` para classe ou `querySelector('#guest')` para ID |
 
 ---
 

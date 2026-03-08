@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-servico-container
 description: "Applies AWS AppRunner IAM permission configuration using Terraform when setting up container services. Use when user asks to 'configure AppRunner', 'create IAM role for AppRunner', 'give AppRunner ECR access', 'setup container permissions on AWS', or 'deploy container with Terraform'. Covers trust policy, managed policy ARNs, inline policies with multiple statements, and ECR integration. Make sure to use this skill whenever configuring AppRunner permissions or ECR access roles via IaC. Not for ECS/EKS deployments, Lambda permissions, or non-Terraform IaC tools."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: aws-apprunner
+  tags: [aws, apprunner, iam, ecr, terraform, container, permissions]
 ---
 
 # Configurando Servico do Container (AppRunner + ECR)
@@ -120,14 +126,14 @@ terraform apply -auto-approve
 | Pular `terraform plan` | Sempre plan antes de apply, mesmo sabendo que plan nao pega tudo |
 | Esquecer `iam:PassRole` | Sem PassRole, alteracoes de role em runtime falham silenciosamente |
 
+## Troubleshooting
+
+### Erro 400 (Bad Request) no terraform apply
+**Symptom:** `terraform plan` passa mas `terraform apply` falha com erro 400
+**Cause:** SIDs duplicados nos statements da inline policy — cada SID deve ser unico
+**Fix:** Garanta que cada statement tem um SID unico (Statement1, Statement2, Statement3, etc.)
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-servico-que-vai-rodar-o-container/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-servico-que-vai-rodar-o-container/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-node-2023-listando-comentarios-autor
 description: "Enforces repository pattern for returning related entity data (e.g., comments with author) in Clean Architecture with NestJS. Use when user asks to 'return related data', 'join entities in repository', 'list with author', 'fetch with details', or 'add relationship to query'. Applies rules: create new method instead of modifying existing, use value objects for composed returns, inject InMemory repositories directly for test access. Make sure to use this skill whenever implementing repository methods that need cross-entity data in Clean Architecture. Not for database queries, ORM configuration, or controller implementation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: clean-architecture-repositories
+  tags: [repository-pattern, value-objects, relationships, in-memory, clean-architecture, nestjs, ddd]
 ---
 
 # Listando Dados com Relacionamentos no Repositório
@@ -118,14 +124,14 @@ it('should list comments with author', async () => {
 | Ignorar autor inexistente silenciosamente | `throw new Error(...)` com mensagem descritiva |
 | Criar comentários em testes sem autor associado | Sempre criar e inserir o student antes |
 
+## Troubleshooting
+
+### Teste falha com "Author with ID ... does not exist"
+**Symptom:** Erro ao listar comentarios com autor no teste unitario
+**Cause:** O student/author nao foi criado e inserido no `InMemoryStudentsRepository` antes de criar o comentario
+**Fix:** Crie o student com `makeStudent()` e insira em `studentsRepository.items.push(student)` antes de criar comentarios associados
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-listando-comentarios-com-autor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-listando-comentarios-com-autor/references/code-examples.md)

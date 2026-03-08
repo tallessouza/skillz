@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-where-com-igual
 description: "Enforces correct SQL SELECT and WHERE equality patterns when writing database queries. Use when user asks to 'query a table', 'filter records', 'select from database', 'write a SELECT', or 'find rows where'. Applies rules: specify columns instead of asterisk, use exact equality with case sensitivity awareness, quote text values, no quotes for numbers. Make sure to use this skill whenever generating SQL queries with equality filters. Not for INSERT, UPDATE, DELETE, or advanced WHERE operators (LIKE, IN, BETWEEN)."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: sql-database
+  tags: [sql, select, where, equality, filtering, case-sensitivity]
 ---
 
 # SQL SELECT com WHERE Igual
@@ -73,6 +79,15 @@ WHERE name = 'Mouse';
 | `WHERE name = 'mouse'` (se valor e 'Mouse') | `WHERE name = 'Mouse'` |
 | `WHERE price = '1200'` | `WHERE price = 1200` |
 | `WHERE name = '%Mouse%'` (quando quer exato) | `WHERE name = 'Mouse'` |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Query retorna zero linhas com filtro de texto | Case sensitivity — `'mouse'` vs `'Mouse'` | Verifique o case exato do valor no banco ou use `LOWER()` |
+| Erro de sintaxe ao filtrar por numero | Numero entre aspas causa cast implicito | Use `WHERE price = 1200` sem aspas para numeros |
+| `WHERE name = 'Mouse Pad'` nao encontra | Espacos extras ou caracteres invisíveis no dado | Use `TRIM()` ou verifique o valor exato com `SELECT HEX(name)` |
+| Query lenta com WHERE em tabela grande | Coluna filtrada nao tem indice | Crie indice na coluna: `CREATE INDEX idx_name ON products(name)` |
 
 ## Deep reference library
 

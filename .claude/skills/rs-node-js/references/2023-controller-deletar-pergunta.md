@@ -1,6 +1,13 @@
 ---
 name: rs-node-js-2023-controller-deletar-pergunta
 description: "Applies NestJS delete controller pattern when user asks to 'create a delete endpoint', 'remove resource', 'delete controller', or 'implement DELETE route' in NestJS. Enforces HTTP 204 status, no request body, param-based ID extraction, author authorization, and module registration. Make sure to use this skill whenever building delete operations in NestJS Clean Architecture. Not for soft-delete logic, bulk deletion, or non-NestJS frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller: Deletar Pergunta (NestJS Clean Architecture)
@@ -115,14 +122,14 @@ async handle(
 | Testar apenas o status code | Verificar que o registro foi removido do banco (`toBeNull()`) |
 | Esquecer de registrar no module | Sempre adicionar controller + use case no module |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-pergunta/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-deletar-pergunta/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-pergunta/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-deletar-pergunta/references/code-examples.md) — Todos os exemplos de código expandidos com variações

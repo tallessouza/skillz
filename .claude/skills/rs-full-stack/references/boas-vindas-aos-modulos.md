@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-boas-vindas-aos-modulos
 description: "Enforces code organization into separate files using JavaScript modules when building larger applications. Use when user asks to 'organize code', 'split into files', 'create modules', 'separate responsibilities', or starts a multi-file project. Applies module-based architecture with clear separation of concerns. Make sure to use this skill whenever a project grows beyond a single file. Not for bundler configuration, package management, or framework-specific module systems."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, modules, es-modules, import, export, organization]
 ---
 
 # Módulos JavaScript — Separação de Responsabilidades
@@ -76,13 +82,16 @@ function formatResponse(data) { /* ... */ }
 | Funções de domínios diferentes juntas | Um arquivo por domínio/responsabilidade |
 | Copiar/colar funções entre arquivos | Importar de um módulo compartilhado |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Import not found error** | Check the file extension in the import path — Node.js ESM requires `.js` extension, and relative paths must start with `./`. |
+| **Circular dependency issues** | Reorganize so that shared logic lives in a separate utility module imported by both files instead of importing each other. |
+| **File growing too large** | If a file exceeds ~100 lines or contains unrelated functions, split by responsibility into separate modules. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre por que modularizar e quando separar
 - [code-examples.md](references/code-examples.md) — Exemplos expandidos de organização modular
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-boas-vindas-aos-modulos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-boas-vindas-aos-modulos/references/code-examples.md)

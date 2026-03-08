@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-estrutura-dos-cards
 description: "Applies compound component pattern when building card UI components in React/Next.js. Use when user asks to 'create a card component', 'build a board UI', 'implement task cards', 'create kanban cards', or any card-based layout. Enforces subcomponent architecture (Root, Header, Title, Number, Footer) with proper composition. Make sure to use this skill whenever generating card components for project management, kanban, or board UIs. Not for form components, modals, or navigation elements."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-e-organizacao
+  tags: [compound-components, card, kanban, composition, tailwind, next-js, react]
 ---
 
 # Estrutura de Cards com Compound Components
@@ -128,14 +134,19 @@ function Card({ title, number, likes, comments, href }) {
 | Botoes de acao misturados com titulo | Footer separado para acoes, Header para informacoes |
 | `className="card"` com CSS global | Tailwind classes inline no componente |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-estrutura-dos-cards/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-estrutura-dos-cards/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-estrutura-dos-cards/references/deep-explanation.md) — O instrutor segue um padrao consistente no projeto: tanto o componente Section quanto o Card usam a 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-estrutura-dos-cards/references/code-examples.md) — // components/card.tsx

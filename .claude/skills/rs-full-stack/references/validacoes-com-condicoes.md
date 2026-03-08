@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-validacoes-com-condicoes
 description: "Applies conditional validation patterns when writing API endpoint handlers in Node.js/Express. Use when user asks to 'validate request body', 'add input validation', 'check required fields', 'validate API data', or 'add field constraints'. Enforces per-field error messages, trim before length check, negative number guards, and motivates migration to schema validation. Make sure to use this skill whenever creating POST/PUT endpoints with body parsing. Not for schema-based validation (Zod/Joi), authentication, or database constraints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: api-validation
+  tags: [validation, express, api, input-validation, error-handling]
 ---
 
 # Validações com Condições
@@ -85,6 +91,14 @@ if (price <= 0) {
 | `if (price < 0)` permitindo zero | `if (price <= 0)` para preços |
 | Múltiplos `res.json()` sem `return` | `return res.status(400).json(...)` |
 | 15 blocos de if em sequência | Schema validation com Zod/Joi |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `Cannot set headers after they are sent to the client` | Faltou `return` após `res.status(400).json(...)` | Adicione `return` antes de cada resposta de erro |
+| String com espaços passa na validação | Checou truthiness sem `trim()` | Use `name.trim().length` para validar conteúdo real |
+| Preço zero é aceito como válido | Usou `< 0` em vez de `<= 0` | Use `price <= 0` para rejeitar zero e negativos |
 
 ## Deep reference library
 

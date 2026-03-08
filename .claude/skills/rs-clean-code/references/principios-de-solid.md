@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-principios-de-solid
 description: "Applies SOLID principles when writing or reviewing TypeScript/Node.js code. Use when user asks to 'refactor code', 'improve architecture', 'apply SOLID', 'create a service', 'design classes', or 'make code testable'. Enforces SRP via connectors test, OCP via extension over conditionals, LSP via substitutable dependencies, ISP via granular interfaces, DIP via injected dependencies. Make sure to use this skill whenever structuring backend services or reviewing class design. Not for UI styling, database queries, or DevOps configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: principios-de-solid
+  tags: [solid, srp, ocp, lsp, isp, dip, dependency-injection, typescript, architecture]
 ---
 
 # Principios SOLID
@@ -158,6 +164,13 @@ async function registerUser(
 | Funcao que cria + notifica + loga | Uma funcao por acao, orquestrador separado |
 | Interface com 10 metodos | Varias interfaces de 1-3 metodos |
 | Classe que conhece implementacao da dependencia | Classe que conhece apenas a interface |
+
+## Troubleshooting
+
+### Teste unitario requer banco de dados rodando
+**Symptom:** Testes falham porque dependem de conexao real com PostgreSQL/MySQL para executar
+**Cause:** O use case importa diretamente o ORM ou cliente de banco em vez de receber um repositorio via construtor
+**Fix:** Aplique DIP: crie uma interface `UserRepository`, injete via construtor no use case, e nos testes passe uma implementacao `InMemoryUserRepository` que nao precisa de banco real
 
 ## Deep reference library
 

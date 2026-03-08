@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conceito-middleware
 description: "Applies Node.js middleware patterns when building Express/Fastify/Koa APIs. Use when user asks to 'create middleware', 'add authentication', 'intercept requests', 'validate permissions', or 'add logging to routes'. Enforces correct middleware chain flow: access request, modify, respond early, or call next. Make sure to use this skill whenever implementing request interceptors or route guards in Node.js. Not for frontend interceptors, Axios interceptors, or browser service workers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [middleware, nodejs, express, authentication, request-interceptor]
 ---
 
 # Middleware em Node.js
@@ -102,13 +108,13 @@ app.get('/admin', ensureAuthenticated, ensureRole('admin'), (req, res) => {
 | Modificar `res.body` apos `res.send()` | Toda modificacao ANTES de enviar a resposta |
 | Middleware que faz `next()` E envia resposta | Faca um OU outro, nunca ambos |
 
+## Troubleshooting
+
+### Problem: Request hangs indefinitely and never returns a response
+- **Cause**: The middleware neither calls `next()` nor sends a response with `res.end()` / `res.json()`
+- **Fix**: Every middleware must either call `next()` to continue the chain or send a response to end the cycle
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Analogia do seguranca, fluxo completo do ciclo request-response, e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de middleware expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0210-conceito-de-middleware-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0210-conceito-de-middleware-mkv-mp-4/references/code-examples.md)

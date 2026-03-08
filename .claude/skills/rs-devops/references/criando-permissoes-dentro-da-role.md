@@ -1,6 +1,12 @@
 ---
-name: rs-devops-criando-permissoes-role
-description: "Applies AWS IAM Role inline policy and ECR repository configuration via Terraform when user asks to 'configure ECR permissions', 'create ECR repository', 'setup IAM role for CI/CD', 'terraform ECR', or 'pipeline permissions'. Enforces least-privilege inline policies, ECR scan-on-push, and id-token permissions for GitHub Actions OIDC. Make sure to use this skill whenever setting up AWS ECR access for CI/CD pipelines with Terraform. Not for ECS/EKS cluster setup, application deployment, or Docker image building."
+name: rs-devops-criando-permissoes-role-ecr
+description: "Applies IAM inline policy patterns for ECR access when configuring CI/CD permissions with Terraform. Use when user asks to 'configure ECR permissions', 'create IAM role for ECR', 'setup pipeline permissions', 'fix ECR push errors', or 'terraform ECR role'. Enforces least-privilege inline policies, scan_on_push, and id-token permissions for GitHub Actions OIDC. Make sure to use this skill whenever setting up IAM roles for container registry access. Not for general IAM policies, S3 permissions, or non-ECR registry configurations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-ecr-permissions
+  tags: [terraform, iam, ecr, permissions, github-actions, oidc, inline-policy]
 ---
 
 # Criando Permissoes na Role para ECR
@@ -53,8 +59,6 @@ resource "aws_iam_role" "ecr_role" {
 
 ### Step 2: Criar repositorio ECR
 
-Criar arquivo `ecr.tf`:
-
 ```hcl
 resource "aws_ecr_repository" "app" {
   name                 = "skillz-ci"
@@ -78,13 +82,6 @@ permissions:
   contents: read
 ```
 
-### Step 4: Aplicar via Terraform
-
-```bash
-terraform plan
-terraform apply
-```
-
 ## Heuristics
 
 | Situacao | Faca |
@@ -105,6 +102,13 @@ terraform apply
 | Criar ECR manualmente na console | Criar via Terraform para rastreabilidade |
 | Omitir `permissions` no GitHub Actions | Declarar `id-token: write` e `contents: read` |
 
+## Troubleshooting
+
+### Pipeline falha com erro de id-token ao assumir role
+**Symptom:** GitHub Actions falha com erro relacionado a `id-token` ou `OIDC` ao tentar assumir a role AWS.
+**Cause:** O workflow YAML nao declara `permissions: id-token: write`, impedindo o OIDC de gerar o token necessario.
+**Fix:** Adicione `permissions: { id-token: write, contents: read }` no job do workflow que assume a role AWS.
+
 ## Verification
 
 - Na AWS Console: Role > Permissions > verificar inline policy presente
@@ -113,12 +117,5 @@ terraform apply
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-permissoes-dentro-da-role/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-permissoes-dentro-da-role/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

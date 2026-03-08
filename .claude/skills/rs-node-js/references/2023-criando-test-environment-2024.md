@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-test-environment
-description: "Applies Prisma test environment setup with Vitest when configuring end-to-end tests in Node.js projects. Use when user asks to 'setup e2e tests', 'configure test environment', 'create prisma test environment', 'isolate test database', or 'setup vitest workspace'. Generates schema-isolated PostgreSQL databases per test suite run with automatic cleanup. Make sure to use this skill whenever setting up end-to-end testing infrastructure with Prisma and Vitest. Not for unit test writing, test assertions, or non-Prisma database testing."
+name: 2023-criando-test-environment-2024
+description: "Creates an isolated Prisma test environment for Vitest E2E tests using PostgreSQL schema isolation with random UUIDs per test run. Use when user asks to 'setup E2E test environment', 'isolate test database', 'configure Prisma with Vitest', 'create test environment', or 'separate unit and E2E tests'. Enforces: PostgreSQL schema isolation over separate databases, randomUUID for schema names, setup/teardown with CREATE/DROP SCHEMA CASCADE, Vitest projects for unit vs E2E separation, prisma db push over migrate deploy. Make sure to use this skill whenever configuring E2E testing infrastructure with Prisma and Vitest. Not for unit tests with mocks, frontend testing, or non-PostgreSQL databases."
+category: coding-lens
+tags: [deploy, error-handling, migrations, modules, prisma, testing]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testing-e2e
+  tags: [vitest, prisma, test-environment, postgresql, schema-isolation, e2e-testing]
 ---
 
 # Criando Test Environment (Prisma + Vitest)
@@ -151,14 +160,14 @@ describe('Register', () => {
 | Banco de dev compartilhado com testes | Schema isolado por execucao |
 | Cleanup manual de tabelas | `DROP SCHEMA CASCADE` no teardown |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-test-environment-2024/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-test-environment-2024/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

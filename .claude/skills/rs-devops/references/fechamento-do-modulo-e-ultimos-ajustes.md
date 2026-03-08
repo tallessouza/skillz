@@ -1,6 +1,12 @@
 ---
 name: rs-devops-docker-push-all-tags
 description: "Enforces optimized Docker push workflows in CI/CD pipelines by using docker push --all-tags instead of duplicate push commands. Use when user asks to 'build docker image', 'push to registry', 'setup CI/CD pipeline', 'optimize docker workflow', or 'configure GitHub Actions for Docker'. Eliminates redundant push steps and ensures both version tag and latest tag are pushed in a single command. Make sure to use this skill whenever writing Dockerfiles or CI/CD pipelines that push images to registries. Not for Kubernetes deployments, Docker Compose, or local development workflows."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: ci-cd-docker
+  tags: [docker, push, all-tags, ci-cd, github-actions, registry, pipeline-optimization]
 ---
 
 # Docker Push Otimizado com All-Tags
@@ -72,14 +78,14 @@ description: "Enforces optimized Docker push workflows in CI/CD pipelines by usi
 | Push sem tag latest | Sempre taguear latest antes do push |
 | Build e push na mesma linha | Separar em steps distintos |
 
+## Troubleshooting
+
+### docker push --all-tags falha com "tag does not exist"
+**Symptom:** `docker push --all-tags` retorna erro indicando que nenhuma tag foi encontrada
+**Cause:** O nome da imagem no push nao corresponde exatamente ao nome usado no build/tag (case-sensitive, registry prefix)
+**Fix:** Verifique que o nome da imagem no `docker push` e identico ao usado em `docker build -t` e `docker tag`, incluindo o prefixo do registry
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-fechamento-do-modulo-e-ultimos-ajustes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-fechamento-do-modulo-e-ultimos-ajustes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

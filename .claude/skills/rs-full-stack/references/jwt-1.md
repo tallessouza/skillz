@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-jwt-1
 description: "Applies JWT (JSON Web Token) knowledge when implementing authentication and authorization flows. Use when user asks to 'create auth', 'implement login', 'generate token', 'validate JWT', or 'add authorization'. Explains JWT structure (header, payload, signature) and guides correct usage in API security. Make sure to use this skill whenever working with token-based authentication or authorization middleware. Not for session-based auth, OAuth provider setup, or cookie-based authentication."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: authentication-jwt
+  tags: [jwt, authentication, authorization, token, security, api]
 ---
 
 # JWT (JSON Web Token)
@@ -70,13 +76,15 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 - Payload é legível por qualquer um — não armazene dados sensíveis
 - Tokens grandes aumentam o tamanho de cada requisição HTTP
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| API retorna 401 mesmo com token válido | Token não está sendo enviado no header `Authorization: Bearer <token>` | Confira o formato do header e que o prefixo `Bearer ` (com espaço) está presente |
+| Payload decodificado está vazio | Token malformado (sem as 3 partes separadas por `.`) | Verifique que o token tem formato `header.payload.signature` |
+| "Invalid Signature" ao verificar token | Secret do servidor difere do usado para assinar | Confirme que o mesmo secret é usado no `sign` e no `verify` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-jwt-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-jwt-1/references/code-examples.md)

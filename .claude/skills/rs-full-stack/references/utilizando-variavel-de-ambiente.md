@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-utilizando-variavel-de-ambiente
 description: "Enforces environment variable best practices in Node.js projects. Use when user asks to 'create env file', 'add environment variables', 'hide secrets', 'configure .env', 'setup JWT secret', or any task involving sensitive data in code. Applies rules: .env file at project root, UPPER_SNAKE_CASE naming, --env-file flag in scripts, .gitignore protection, .env.example for sharing. Make sure to use this skill whenever creating or modifying environment variables or sensitive configuration. Not for CI/CD pipeline env vars, Docker environment configuration, or cloud provider secret management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: node-js-fundamentals
+  tags: [node-js, environment-variables, dotenv, security, configuration]
 ---
 
 # Variáveis de Ambiente em Node.js
@@ -104,6 +110,14 @@ const dbPassword = process.env.DATABASE_PASSWORD
 | Commitar `.env` no Git | Adicionar `.env` ao `.gitignore` |
 | Compartilhar `.env` com valores reais | Criar `.env.example` sem valores |
 | Alterar `.env` e esperar hot reload | Reiniciar a aplicação |
+
+## Troubleshooting
+
+| Problema | Causa | Solução |
+|----------|-------|---------|
+| `process.env.VAR` retorna undefined | Variável não carregada ou app não reiniciada após alterar `.env` | Reinicie a aplicação e verifique `--env-file .env` no script |
+| Valor da variável inclui aspas literais | Parser do `.env` interpreta aspas de forma diferente | Use aspas apenas quando o valor contém espaços; remova aspas para valores simples |
+| `.env` commitado acidentalmente no Git | Arquivo não estava no `.gitignore` | Adicione `.env` ao `.gitignore` e remova do tracking: `git rm --cached .env` |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-testes-e2e-check-ins
 description: "Applies E2E testing patterns for REST API routes using Vitest and Supertest. Use when user asks to 'write e2e tests', 'test API routes', 'test endpoints', 'create integration tests', or 'test check-in routes'. Covers direct database seeding with Prisma, createMany for bulk inserts, findUniqueOrThrow for type-safe queries, and post-mutation database assertions. Make sure to use this skill whenever writing end-to-end tests for Node.js API routes. Not for unit tests, repository tests, or use-case tests."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: testes-e2e-check-ins
+  tags: [e2e, testing, vitest, supertest, prisma, check-in, createMany, fastify]
 ---
 
 # Testes E2E de Rotas de Check-ins
@@ -118,14 +124,14 @@ it('should be able to validate a check-in', async () => {
 | Duplicar logica de autenticacao em cada teste | `createAndAuthenticateUser(app)` |
 | `expect(response.body).toEqual(...)` sem objectContaining | `expect.objectContaining({})` para campos parciais |
 
+## Troubleshooting
+
+### findUniqueOrThrow lanca erro mesmo com registro existente
+**Symptom:** `prisma.user.findUniqueOrThrow()` lanca `RecordNotFound` apesar de ter criado o usuario
+**Cause:** O usuario foi criado via rota HTTP em uma transacao separada e o teste consulta antes da persistencia completar
+**Fix:** Use `prisma.user.findFirstOrThrow()` quando nao tem o ID exato, ou aguarde a resposta HTTP antes de consultar o banco
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-rotas-de-check-ins/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-testes-e-2-e-de-rotas-de-check-ins/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-abertura-39
 description: "Applies authentication and authorization concepts when building Node.js APIs with JWT. Use when user asks to 'add auth', 'protect routes', 'implement login', 'use JWT', or 'add authorization'. Distinguishes authentication (who are you?) from authorization (what can you do?) and enforces correct token-based flows. Make sure to use this skill whenever implementing auth in Node.js applications. Not for OAuth provider setup, session-based auth, or frontend auth UI components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, jwt, authentication, authorization, middleware]
 ---
 
 # Autenticação vs Autorização com JWT em Node.js
@@ -78,8 +84,11 @@ app.delete('/users/:id', verifyJWT, verifyAdmin, deleteUserController)
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre a separação auth/authz e por que JWT é o padrão em APIs Node
 - [code-examples.md](references/code-examples.md) — Exemplos completos de fluxo JWT com middleware em Node.js
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-abertura-39/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-abertura-39/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| 401 em rotas que deveriam ser publicas | Middleware de auth aplicado globalmente | Aplique middleware apenas em rotas protegidas, nao em login/registro |
+| 403 retornado em vez de 401 | Confusao entre autenticacao e autorizacao | 401 = nao autenticado (token invalido), 403 = nao autorizado (sem permissao) |
+| Token JWT nao decodifica | Secret key diferente entre sign e verify | Use a mesma secret key em ambas as operacoes |
+| Senha aparece no payload do JWT | Dados sensíveis incluidos no token | Armazene apenas `userId` e `role` no payload do JWT |

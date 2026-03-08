@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-layout-structure
 description: "Enforces Next.js App Router layout and route group patterns when structuring applications. Use when user asks to 'create a layout', 'organize routes', 'add loading states', 'structure next.js app', or 'create route groups'. Applies rules: parenthesized route groups for logical grouping without URL impact, separate layouts per route group, isolated loading.tsx per route segment. Make sure to use this skill whenever scaffolding or restructuring a Next.js App Router project. Not for API routes, middleware, or server actions."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, app-router, layout, route-groups, loading-states, project-structure]
 ---
 
 # Estrutura de Layout no Next.js App Router
@@ -111,14 +117,19 @@ app/
 | `app/store/page.tsx` (sem parenteses) | `app/(store)/(home)/page.tsx` (com parenteses) |
 | Logica de dados no layout | Logica de dados na page, layout so estrutura |
 
+## Troubleshooting
+
+### Pagina 404 ao navegar para rota existente
+**Symptom:** Rota existe no codigo mas retorna 404
+**Cause:** Arquivo nao esta na estrutura correta do App Router (`app/{rota}/page.tsx`) ou Pages Router (`pages/{rota}.tsx`)
+**Fix:** Verificar que o arquivo se chama exatamente `page.tsx` (App Router) ou que o export default existe (Pages Router). Reiniciar o servidor de desenvolvimento
+
+### Layout nao aplica na rota filha
+**Symptom:** Layout do diretorio pai nao envolve a pagina filha
+**Cause:** Arquivo `layout.tsx` ausente ou nao retorna `{children}` no JSX
+**Fix:** Garantir que o layout recebe e renderiza `children` como prop. Verificar que o layout esta no nivel correto da hierarquia de pastas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-layout-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-layout-da-aplicacao/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-layout-da-aplicacao/references/deep-explanation.md) — O instrutor explica que o `layout.tsx` na raiz do `app/` aplica a **todas** as paginas da aplicacao.
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-layout-da-aplicacao/references/code-examples.md) — // app/layout.tsx — NAO coloque header/footer aqui

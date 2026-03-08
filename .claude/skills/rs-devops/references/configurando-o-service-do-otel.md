@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-service-otel
 description: "Generates OpenTelemetry Collector service configuration with pipelines for logs, traces, and metrics. Use when user asks to 'configure OTEL', 'setup OpenTelemetry pipelines', 'define OTEL service', 'connect receivers processors exporters', or 'configure observability stack'. Applies correct pipeline structure linking receivers, processors, and exporters per signal type. Make sure to use this skill whenever setting up or modifying an OpenTelemetry Collector config. Not for application-level instrumentation, Grafana dashboard creation, or Prometheus query writing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: observabilidade-otel-service
+  tags: [opentelemetry, otel-collector, pipelines, receivers, processors, exporters]
 ---
 
 # Configurando o Service do OpenTelemetry Collector
@@ -65,14 +71,14 @@ service:
 | Ignorar erro de conexao em producao | Debug a porta/hostname e corrija antes de deploy |
 | Expor Prometheus receiver sem necessidade | Use apenas otlp como receiver se e o unico protocolo |
 
+## Troubleshooting
+
+### Pipeline do OTEL Collector falha silenciosamente
+**Symptom:** Collector inicia sem erros mas sinais (logs/traces/metricas) nao chegam ao backend
+**Cause:** Nomes usados nas pipelines nao correspondem exatamente aos nomes definidos nas secoes receivers/processors/exporters
+**Fix:** Verifique que os nomes nas pipelines sao identicos aos definidos nas secoes de receivers, processors e exporters do config YAML
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-configurando-o-service-do-otel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-configurando-o-service-do-otel/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-configurando-o-service-do-otel/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-configurando-o-service-do-otel/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

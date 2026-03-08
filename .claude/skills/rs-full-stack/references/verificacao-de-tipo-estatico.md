@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-verificacao-tipo-estatico
-description: "Explains TypeScript static type checking benefits when user asks about 'why use TypeScript', 'TypeScript vs JavaScript', 'type checking', 'static analysis', or 'TypeScript advantages'. Applies mental model: TypeScript catches errors before runtime by analyzing code statically. Make sure to use this skill whenever discussing TypeScript fundamentals or justifying TypeScript adoption. Not for advanced TypeScript features, generics, or type manipulation."
+description: "Demonstrates TypeScript static type checking benefits when user asks about 'why use TypeScript', 'TypeScript vs JavaScript', 'type checking', 'static analysis', or 'TypeScript advantages'. Applies mental model: TypeScript catches errors before runtime by analyzing code statically. Make sure to use this skill whenever discussing TypeScript fundamentals or justifying TypeScript adoption. Not for advanced TypeScript features, generics, or type manipulation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript
+  tags: [typescript, static-typing, type-checking, intellisense, error-detection]
 ---
 
 # Verificacao de Tipo Estatico no TypeScript
 
 > TypeScript identifica problemas no codigo antes da execucao, antecipando erros que so apareceriam em runtime com JavaScript puro.
 
-## Key concept
+## Key concepts
 
 TypeScript e um **verificador de tipos estaticos**: analisa o codigo em tempo de desenvolvimento (no editor) e aponta inconsistencias sem precisar rodar a aplicacao. Isso significa que erros como modificar constantes, chamar strings como funcoes, ou acessar propriedades inexistentes sao detectados imediatamente, com feedback visual no editor.
 
@@ -63,6 +69,15 @@ Parece que TypeScript exige mais codigo (tipar tudo), mas na pratica voce escrev
 
 - TypeScript verifica tipos em **tempo de compilacao**, nao em runtime — dados externos (APIs, input de usuario) ainda precisam de validacao
 - Nem todo erro logico e pego por tipos — TypeScript garante consistencia de tipos, nao corretude de logica de negocio
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Editor nao mostra erros de tipo | TypeScript nao configurado no projeto | Execute `npx tsc --init` e reinicie o editor |
+| IntelliSense nao sugere propriedades | Variavel tipada como `any` | Defina o tipo explicitamente ou deixe o TypeScript inferir |
+| Erro `Property does not exist on type` | Acessando propriedade inexistente no tipo | Verifique as propriedades disponiveis no tipo ou adicione a propriedade |
+| TypeScript nao pega erro em dados de API | Verificacao estatica nao valida dados em runtime | Use Zod ou outra lib de validacao para dados externos |
 
 ## Deep reference library
 

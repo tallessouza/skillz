@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-atualizando-um-objeto
 description: "Applies JavaScript object property update patterns when writing code that modifies objects. Use when user asks to 'update an object', 'change a property', 'modify object values', or 'mutate object state'. Covers dot notation and bracket notation for property updates. Make sure to use this skill whenever generating code that changes existing object properties. Not for object creation, destructuring, or spread operations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript
+  tags: [javascript, objects, dot-notation, bracket-notation]
 ---
 
 # Atualizando Objetos em JavaScript
@@ -68,13 +74,16 @@ product.quantity = 90
 | `obj = { ...obj, prop: novoValor }` para mutacao simples em objeto local | `obj.prop = novoValor` |
 | Usar colchetes com string literal sem motivo: `obj["name"]` | `obj.name` quando a chave e estatica |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `TypeError: Cannot set property` | Objeto e `null` ou `undefined` | Verifique que o objeto foi inicializado antes de atualizar |
+| Propriedade nao aparece no console.log | Nome da propriedade com typo | Confira o nome exato da propriedade com `Object.keys(obj)` |
+| Colchetes nao funcionam com variavel | Variavel nao contem o nome correto da propriedade | Faca `console.log(variavel)` para verificar o valor |
+| Objeto `const` permite atualizar propriedades | `const` impede reatribuicao, nao mutacao | Comportamento esperado — use `Object.freeze()` se quiser imutabilidade |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-atualizando-um-objeto/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-atualizando-um-objeto/references/code-examples.md)

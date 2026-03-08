@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-persistindo-volumes
 description: "Enforces correct Docker volume usage for data persistence when writing Docker commands or docker-compose files. Use when user asks to 'create a container', 'persist data', 'docker run', 'docker-compose', or 'mount volume'. Applies rules: always separate container from volume, never store state inside containers, always use -v flag for persistent data. Make sure to use this skill whenever generating Docker run commands or compose files that involve any form of data storage. Not for Dockerfile creation, image building, or container networking."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: docker
+  tags: [docker, volumes, persistencia, container, docker-compose]
 ---
 
 # Persistindo Informações nos Volumes Docker
@@ -79,6 +85,15 @@ touch /app/data/test.txt   # arquivo criado no volume
 | Criar arquivos importantes sem volume | Montar volume antes de gravar dados |
 | `docker run` sem -v apos `docker stop` | `docker run -v mesmo-volume:/path` para manter dados |
 | Backup copiando do container | Backup direto do volume (`docker cp` ou volume inspect) |
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Dados desaparecem ao recriar container | Container foi criado sem flag `-v` | Recrie com `docker run -v nome-volume:/path` |
+| Volume montado mas dados nao persistem | Caminho do volume nao aponta para onde a app grava | Verifique o diretorio de dados da aplicacao e ajuste o mount path |
+| Permissao negada ao acessar volume | Usuario do container nao tem permissao no diretorio | Ajuste permissoes com `chown` ou configure o usuario no Dockerfile |
+| `docker volume ls` nao mostra o volume | Volume nao foi criado ou nome esta errado | Crie explicitamente com `docker volume create nome` ou verifique o nome |
 
 ## Deep reference library
 

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-input-validation
 description: "Enforces paranoid input validation patterns when writing backend code that handles user input. Use when user asks to 'create an API endpoint', 'handle form data', 'process payments', 'generate CSV', 'export to Excel', or any code that receives external data. Applies rules: validate types before processing, reject fractional values in integer fields, sanitize strings before export, never trust user input in generated files. Make sure to use this skill whenever writing code that accepts user input, even for internal tools. Not for frontend UI validation, authentication flows, or cryptography."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: backend-security
+  tags: [security, input-validation, backend]
 ---
 
 # Input Validation — Paranoia como Padrão
@@ -116,14 +122,14 @@ function transfer(from, to, amount) {
 | Tratar validacao faltante como "bug low priority" | Todo bug de validacao e falha de seguranca potencial |
 | Validar apenas no frontend | Valide sempre no backend, frontend e bonus |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-input-validation-e-falhas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-input-validation-e-falhas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-input-validation-e-falhas/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-input-validation-e-falhas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

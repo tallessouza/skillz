@@ -1,114 +1,55 @@
 ---
 name: rs-redux-zustand-criando-reducer-do-player
-description: "Enforces Redux Toolkit slice creation patterns and useSelector best practices when building state management with Redux. Use when user asks to 'create a slice', 'setup Redux store', 'use useSelector', 'manage state with Redux', or 'create a reducer'. Applies rules: granular selectors instead of returning full state, createSlice structure, proper slice export and store registration. Make sure to use this skill whenever generating Redux Toolkit code or reviewing selector usage. Not for Zustand, Context API, or non-Redux state management."
+description: "Enforces Redux Toolkit createSlice patterns and granular useSelector best practices when building state slices. Use when user asks to 'create a slice', 'setup Redux state', 'use useSelector correctly', 'manage nested state with Redux', or 'create a reducer'. Applies granular selectors, proper slice export, and store registration patterns. Make sure to use this skill whenever writing Redux Toolkit slices or reviewing selector usage for performance. Not for Zustand stores (use setup-do-zustand), Context API, or non-Redux state."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: redux-zustand
+  module: criando-reducer
+  tags: [redux-toolkit, createSlice, useSelector, selectors, performance, react]
 ---
 
 # Criando Reducer do Player com Redux Toolkit
 
-> Ao criar slices Redux, estruture o estado inicial com dados tipados, exporte apenas o reducer, e use selectors granulares que acessam exatamente a informacao necessaria.
+> Estruture o estado inicial com dados tipados, exporte apenas o reducer, e use selectors granulares.
 
 ## Rules
 
-1. **Use `createSlice` do Redux Toolkit** — nunca crie reducers manualmente com switch/case, porque o Toolkit elimina boilerplate e garante imutabilidade automatica
-2. **Exporte o reducer, nao o slice** — `export const player = playerSlice.reducer`, porque o store espera reducers, nao slices
-3. **Selectors devem ser granulares** — acesse `state.player.course.modules`, nunca retorne `state.player` inteiro, porque o Redux so re-renderiza quando a informacao especifica muda
-4. **Nunca desestruture dentro do selector** — retorne exatamente o campo que precisa, porque desestruturacao quebra a otimizacao de re-render do Redux
-5. **Estruture o initialState como resposta de API** — use ids, titulos e arrays aninhados como se viessem de um backend, porque facilita a integracao futura
-6. **Registre cada slice no combineReducers** — adicione o reducer exportado no `store/index.ts`, porque slices nao registrados sao silenciosamente ignorados
+1. **Use `createSlice`** — nunca crie reducers com switch/case manual, porque Toolkit garante imutabilidade via Immer
+2. **Exporte o reducer, nao o slice** — `export const player = playerSlice.reducer`
+3. **Selectors granulares** — acesse `state.player.course.modules`, nunca `state.player` inteiro, porque Redux so re-renderiza quando o dado especifico muda
+4. **Nunca desestruture dentro do selector** — retorne o campo exato, porque desestruturacao quebra otimizacao de re-render
+5. **Multiplos campos = multiplos selectors** — um `useAppSelector` por campo necessario
 
 ## How to write
 
-### Criando um slice
-
 ```typescript
-import { createSlice } from '@reduxjs/toolkit'
-
-const playerSlice = createSlice({
-  name: 'player',
-  initialState: {
-    course: {
-      modules: [
-        {
-          id: '1',
-          title: 'Modulo 1',
-          lessons: [
-            { id: 'abc123', title: 'Aula 1', duration: '09:13' },
-          ],
-        },
-      ],
-    },
-  },
-  reducers: {},
-})
-
-export const player = playerSlice.reducer
-```
-
-### Registrando no store
-
-```typescript
-import { player } from './slices/player'
-
-export const store = configureStore({
-  reducer: { player },
-})
-```
-
-### Selector granular (correto)
-
-```typescript
+// Correto — granular
 const modules = useAppSelector(state => state.player.course.modules)
-```
-
-### Multiplas informacoes do estado
-
-```typescript
-const modules = useAppSelector(state => state.player.course.modules)
-const outraInfo = useAppSelector(state => state.player.outroCampo)
-// Use dois selectors separados, cada um granular
+// Errado — re-renderiza em qualquer mudanca do player
+const { course } = useAppSelector(state => state.player)
 ```
 
 ## Example
 
-**Before (selector generico — causa re-renders desnecessarios):**
-```typescript
-const { course, currentLesson } = useAppSelector(state => state.player)
-const modules = course.modules
-```
-
-**After (selector granular — re-renderiza apenas quando modules muda):**
-```typescript
-const modules = useAppSelector(state => state.player.course.modules)
-```
-
-## Heuristics
-
-| Situation | Do |
-|-----------|-----|
-| Precisa de um campo do state | Selector que acessa o campo exato |
-| Precisa de multiplos campos | Multiplos `useAppSelector`, um por campo |
-| Dados aninhados (modules[i].lessons) | Selector com indice: `state.player.course.modules[index].lessons` |
-| Slice sem actions ainda | Deixe `reducers: {}` vazio, adicione depois |
-| Nomeando o slice | Use o nome do dominio: `player`, `cart`, `auth` |
+**Before:** `const { course, currentLesson } = useAppSelector(state => state.player)`
+**After:** `const modules = useAppSelector(state => state.player.course.modules)`
 
 ## Anti-patterns
 
 | Never write | Write instead |
 |-------------|---------------|
-| `return state.player` (slice inteiro) | `return state.player.course.modules` (campo especifico) |
-| `const { modules, ...rest } = useAppSelector(s => s.player)` | `const modules = useAppSelector(s => s.player.course.modules)` |
+| `return state.player` | `return state.player.course.modules` |
 | `export default playerSlice` | `export const player = playerSlice.reducer` |
-| `createReducer` com switch/case manual | `createSlice` com reducers object |
-| Dados mockados sem estrutura de API | initialState com ids, arrays, campos tipados |
+
+## Troubleshooting
+
+### Componente re-renderiza em toda mudanca de state
+**Symptom:** Componente que mostra modules re-renderiza quando currentLessonIndex muda.
+**Cause:** Selector retorna o slice inteiro.
+**Fix:** Acesse o campo exato: `state.player.course.modules`.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/redux-zustand/rs-redux-zustand-criando-reducer-do-player/references/deep-explanation.md)
-- [Code examples](../../../data/skills/redux-zustand/rs-redux-zustand-criando-reducer-do-player/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-reducer-do-player/references/deep-explanation.md) — Selectors granulares vs Context API, organizacao de pastas
+- [code-examples.md](../../../data/skills/redux-zustand/rs-redux-zustand-criando-reducer-do-player/references/code-examples.md) — Slice completo, store registration, consumindo modules e lessons

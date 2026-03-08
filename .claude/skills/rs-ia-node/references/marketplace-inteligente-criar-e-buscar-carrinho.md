@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-criar-buscar-carrinho
 description: "Applies TDD workflow for implementing cart creation and retrieval in NestJS with PostgreSQL. Use when user asks to 'create a cart feature', 'add to cart endpoint', 'implement shopping cart', 'write cart tests', or 'TDD with NestJS'. Follows pattern: write e2e test first, create module/service/controller, implement route, verify. Make sure to use this skill whenever building cart or similar CRUD features with test-first approach in NestJS. Not for frontend cart UI, payment processing, or authentication implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: cart
+  tags: [e-commerce, postgresql, node-js, nestjs, ia-node]
 ---
 
 # Criar e Buscar Carrinho (TDD em NestJS)
@@ -124,14 +130,14 @@ Registrar `CartModule` no `AppModule` e executar `test:e2e --runInBand`.
 | Fazer query direto no service sem tipar | Criar tipo `Cart` e tipar o retorno da query |
 | Usar alias `@/` nos testes sem configurar tsconfig do jest | Usar caminho relativo |
 
+## Troubleshooting
+
+### Carrinho retorna vazio mesmo com items
+**Symptom:** GET /cart retorna carrinho sem items ou com items nulos
+**Cause:** Inner join exclui carrinhos sem items, ou left join retorna [{id: null}] em vez de []
+**Fix:** Use left join com filter `WHERE items.id IS NOT NULL` e coalesce para array vazio
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-criar-e-buscar-carrinho/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aninhamento-de-tags
 description: "Enforces correct HTML tag nesting and parent-child relationships when writing HTML markup. Use when user asks to 'create HTML', 'write a page', 'add elements', 'nest tags', or 'fix HTML structure'. Applies rules: proper open/close order (LIFO), parent-child hierarchy, inline elements inside block elements. Make sure to use this skill whenever generating or reviewing HTML markup. Not for CSS styling, JavaScript logic, or framework-specific templating."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, nesting, hierarchy, tags, structure]
 ---
 
 # Aninhamento de Tags HTML
@@ -65,13 +71,16 @@ description: "Enforces correct HTML tag nesting and parent-child relationships w
 | Tags abertas sem fechamento correspondente | Sempre pares: `<tag>...</tag>` |
 | Aninhamento sem indentacao | Indente cada nivel para visualizar hierarquia |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| CSS não aplica ao elemento filho | Tag fechada fora de ordem quebrou a hierarquia | Verifique que tags fecham na ordem inversa (LIFO) |
+| Browser renderiza ok mas validador acusa erro | Browser corrige silenciosamente HTML mal formado | Corrija o aninhamento -- não confie na correção automática |
+| Estilo do pai não herda para o filho | Elemento inline fora do bloco correto | Mova elementos inline para dentro dos block elements |
+| JavaScript querySelector não encontra o elemento | DOM real difere do HTML escrito por correção automática | Indente e valide a hierarquia manualmente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia pai-filho, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aninhamento-de-tags/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aninhamento-de-tags/references/code-examples.md)

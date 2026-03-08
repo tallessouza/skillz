@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-o-prisma
 description: "Applies Prisma ORM setup conventions when initializing a Node.js/TypeScript project with Prisma. Use when user asks to 'setup Prisma', 'add an ORM', 'configure database', 'start a new API project', or 'install Prisma'. Ensures VSCode extension, format-on-save config, and Prisma Studio awareness. Make sure to use this skill whenever setting up Prisma in a new or existing project. Not for writing Prisma schemas, queries, or migrations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database
+  tags: [prisma, orm, prisma-studio, vscode-extension, format-on-save, database-setup]
 ---
 
 # Configuracao do Prisma ORM
@@ -72,13 +78,16 @@ Ambiente configurado com:
 | Editar arquivos `.prisma` sem a extensao instalada | Instalar extensao Prisma primeiro |
 | Formatar arquivos `.prisma` manualmente | Configurar format-on-save |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Arquivo `.prisma` sem syntax highlight | Extensao Prisma nao instalada no VSCode | Instalar extensao oficial "Prisma" no VSCode |
+| Formatacao nao funciona ao salvar | `[prisma].editor.formatOnSave` nao configurado | Adicionar configuracao no `settings.json` do VSCode |
+| `npx prisma studio` nao abre | Porta ja em uso ou Prisma nao instalado | Verificar se Prisma esta instalado e porta 5555 esta livre |
+| Autocomplete nao funciona em arquivos `.prisma` | Extensao desatualizada ou nao ativa | Atualizar extensao e reiniciar VSCode |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre porque o Prisma e o ecossistema de ferramentas
 - [code-examples.md](references/code-examples.md) — Configuracoes completas do VSCode e comandos do Prisma
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-prisma/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-o-prisma/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-download-html-css-template
-description: "Guides project template setup from GitHub repositories when user asks to 'download a template', 'clone a starter project', 'setup HTML/CSS base', or 'start from a template repo'. Covers cloning, extracting, organizing folders, and opening in VS Code with Live Server. Make sure to use this skill whenever setting up a pre-built template as a project starting point. Not for creating HTML/CSS from scratch or building components."
+description: "Scaffolds project template setup from GitHub repositories for HTML/CSS starter projects. Use when user asks to 'download a template', 'clone a starter project', 'setup HTML/CSS base', or 'start from a template repo'. Covers cloning, extracting, organizing folders, and opening in VS Code with Live Server. Make sure to use this skill whenever setting up a pre-built template as a project starting point. Not for creating HTML/CSS from scratch or building components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: project-setup
+  tags: [git, github, template, vscode, live-server, setup]
 ---
 
 # Setup de Template HTML/CSS como Base de Projeto
@@ -84,13 +90,16 @@ Projeto aberto no VS Code com Live Server rodando, visual completo renderizado n
 | Buscar texto no arquivo atual | Ctrl+F |
 | Resultado mostra hierarquia | Arquivo > ocorrencias encontradas |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Live Server nao aparece no menu de contexto | Extensao nao instalada ou desabilitada | Instalar extensao "Live Server" no VS Code e verificar se esta ativa |
+| Estilos CSS nao carregam | Path no `<link>` do index.html incorreto | Verificar que aponta para `src/styles/index.css` |
+| Imagens quebradas (icone de imagem ausente) | Pasta `src/assets/` nao contem os arquivos | Verificar se o download/clone incluiu a pasta assets |
+| Porta 5500 ja em uso | Outra instancia do Live Server rodando | Fechar outras instancias ou mudar porta nas configuracoes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre workflow de setup e decisoes do instrutor
 - [code-examples.md](references/code-examples.md) — Estrutura completa do template Hair Day com detalhes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-fazendo-o-download-do-html-e-do-css/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-fazendo-o-download-do-html-e-do-css/references/code-examples.md)

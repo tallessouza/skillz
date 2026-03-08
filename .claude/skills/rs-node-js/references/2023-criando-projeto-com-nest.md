@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-projeto-com-nest
-description: "Applies NestJS project scaffolding and initial cleanup conventions when setting up a new NestJS project. Use when user asks to 'create a nest project', 'setup nestjs', 'start a new nest application', 'scaffold nest', or 'initialize backend with nest'. Follows opinionated cleanup: remove Jest in favor of Vitest, remove Prettier/ESLint defaults, change default port from 3000, clean test directory. Make sure to use this skill whenever bootstrapping a NestJS project from scratch. Not for adding features to existing NestJS projects, nor for Express/Fastify standalone setups."
+name: 2023-criando-projeto-com-nest
+description: "Scaffolds a clean NestJS project by removing default Jest/ESLint/Prettier configs and preparing for custom tooling setup. Use when user asks to 'create NestJS project', 'setup Nest application', 'scaffold backend with NestJS', or 'initialize NestJS with pnpm'. Enforces: use nest CLI with pnpm, remove Jest and configure Vitest later, change default port from 3000, clean generated test and lint files. Make sure to use this skill whenever starting a new NestJS backend project from scratch. Not for adding features to existing NestJS projects, Express/Fastify standalone setup, or frontend projects."
+category: workflow
+tags: [cache, fastify, modules, nestjs, testing, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-setup
+  tags: [nestjs, project-setup, pnpm, vitest, typescript, scaffolding]
 ---
 
 # Criando Projeto com NestJS
@@ -89,14 +98,14 @@ curl http://localhost:3353  # Hello World
 | Instalar via git clone do starter | Usar `nest new` via CLI global |
 | Manter testes e2e gerados | Limpar e reescrever com stack propria |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-projeto-com-nest/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-projeto-com-nest/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-devops-melhorando-gerenciamento-de-envs
 description: "Enforces correct usage of env vs envFrom in Kubernetes deployments when injecting ConfigMaps and Secrets. Use when user asks to 'create a deployment', 'inject environment variables', 'use configmap', 'mount secrets', or 'configure env in k8s'. Applies rules: envFrom for bulk injection, env for selective injection, key names must match application expectations. Make sure to use this skill whenever writing Kubernetes deployment manifests with environment variables. Not for Docker Compose, Helm chart templating, or application-level env parsing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-env-vars
+  tags: [kubernetes, configmap, secret, env, envfrom, deployment, environment-variables]
 ---
 
 # Gerenciamento de Env no Kubernetes: env vs envFrom
@@ -122,14 +128,14 @@ envFrom:
 | Secrets sensiveis apenas com Secret nativa do K8s em producao | Vault, Secret Manager ou solucao externa com rotacao |
 | Assumir que envFrom renomeia chaves como env faz | Teste sempre apos migrar de env para envFrom |
 
+## Troubleshooting
+
+### Variavel de ambiente undefined em runtime apos migrar para envFrom
+**Symptom:** Aplicacao retorna undefined para variaveis que funcionavam com `env`
+**Cause:** As chaves no ConfigMap/Secret nao correspondem ao nome esperado pela aplicacao — `envFrom` nao permite renomear
+**Fix:** Alinhe os nomes das chaves no ConfigMap/Secret com exatamente os nomes que a aplicacao espera, ou use `env` seletivo para renomear
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-melhorando-gerenciamento-de-envs/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-melhorando-gerenciamento-de-envs/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

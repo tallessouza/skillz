@@ -1,13 +1,19 @@
 ---
 name: rs-devops-o-que-e-kubernetes
 description: "Applies Kubernetes foundational knowledge when designing container orchestration architecture. Use when user asks to 'deploy to kubernetes', 'setup k8s cluster', 'orchestrate containers', 'scale application', or 'choose between k8s and simpler alternatives'. Guides trade-off analysis on whether Kubernetes fits the context. Make sure to use this skill whenever discussing container orchestration strategy or Kubernetes adoption decisions. Not for Docker basics, CI/CD pipelines, or IaC tooling like Terraform."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-fundamentals
+  tags: [kubernetes, k8s, container-orchestration, declarative, cncf, microservices]
 ---
 
 # O que e Kubernetes
 
 > Antes de adotar Kubernetes, analise se a complexidade se justifica para o contexto — escala e orquestracao de multiplos servicos sao os gatilhos reais.
 
-## Conceito central
+## Key concepts
 
 Kubernetes e um orquestrador de containers open source, mantido pela CNCF, que automatiza a implantacao de aplicacoes em containers de forma **declarativa**. Nasceu do projeto Borg do Google, e escrito em Go e 100% gratuito — o que se paga e o gerenciamento (EKS, GKE, AKS).
 
@@ -50,14 +56,27 @@ Kubernetes e um orquestrador de containers open source, mantido pela CNCF, que a
 | Achar que K8s substitui containerizacao | K8s orquestra containers — containerizar e pre-requisito |
 | Ignorar carga cognitiva do time | Considere maturidade do time antes de adotar |
 
+## Diagnostic
+
+```bash
+# Verificar se kubectl esta configurado
+kubectl cluster-info
+
+# Verificar versao do cluster
+kubectl version --short
+
+# Listar todos os recursos do cluster
+kubectl get all --all-namespaces
+```
+
+## Troubleshooting
+
+### Aplicacao funciona em Docker mas falha no Kubernetes
+**Symptom:** Container roda localmente com Docker mas pods ficam em CrashLoopBackOff no K8s
+**Cause:** Falta de configuracao de recursos (requests/limits), variáveis de ambiente ou volumes nao mapeados
+**Fix:** Verificar logs com `kubectl logs <pod>`, garantir que env vars estao no manifesto e que imagem esta acessivel pelo cluster
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-o-que-e-kubernetes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-o-que-e-kubernetes/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-customizando-o-vs-code
 description: "Applies optimized VSCode settings when user asks to 'configure vscode', 'setup editor', 'vscode settings', 'settings.json', or 'customize IDE'. Generates a clean, distraction-free settings.json with font size, line height, tab size, minimap, wordwrap, autosave, and zen mode. Make sure to use this skill whenever the user wants to set up or improve their VSCode configuration. Not for terminal setup, shell config, or IDE plugins/extensions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: ambiente-desenvolvimento
+  tags: [vscode, settings, editor, configuration, zen-mode, autosave]
 ---
 
 # Configuracao do VSCode
@@ -79,13 +85,16 @@ description: "Applies optimized VSCode settings when user asks to 'configure vsc
 | Escrever configs manualmente sem autocomplete | Digitar o inicio e aceitar a sugestao do editor |
 | Confundir quebra visual do wordWrap com nova linha | Observar os numeros de linha — wordWrap nao cria linhas novas |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Configuracao nao faz efeito | JSON invalido no settings.json | Verifique virgulas, chaves e aspas — use a validacao do editor |
+| AutoSave nao funciona | `files.autoSave` com valor incorreto | Use `"afterDelay"` (com aspas, exatamente assim) |
+| WordWrap cria linhas extras no arquivo | Confusao entre quebra visual e quebra real | WordWrap so afeta a exibicao — numeros de linha confirmam que nao ha linhas novas |
+| Zen Mode esconde tudo e nao consigo sair | Atalho de toggle desconhecido | Use Command Palette (`Ctrl+P` > "Zen Mode") para desativar |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-customizando-o-vs-code/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-customizando-o-vs-code/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-box-sizing-1
 description: "Enforces correct CSS box-sizing usage when writing layouts or styling elements. Use when user asks to 'style a component', 'fix layout overflow', 'add padding', 'set width and padding', or 'element is bigger than expected'. Applies border-box by default, explains content-box vs border-box calculation. Make sure to use this skill whenever generating CSS that combines width/height with padding or borders. Not for Flexbox/Grid alignment, animations, or typography."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css
+  tags: [css, box-sizing, border-box, content-box, layout, overflow]
 ---
 
 # Box Sizing
@@ -77,13 +83,16 @@ description: "Enforces correct CSS box-sizing usage when writing layouts or styl
 | Reduzir padding para caber na width | Mude para `border-box` e mantenha o padding desejado |
 | Ignorar porque "funciona no meu layout" | Aplique reset global para consistencia |
 
+
+## Troubleshooting
+
+| Problema | Solução |
+|----------|---------|
+| **Element overflows its container** | Apply `box-sizing: border-box` — with `content-box`, padding and border are added beyond the declared width. |
+| **Global reset not working** | Ensure the selector is `*, *::before, *::after { box-sizing: border-box; }` and it is not overridden by more specific rules. |
+| **Width 100% plus padding causes horizontal scroll** | This is classic content-box overflow — switch to `border-box` to include padding within the 100% width. |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre content-box vs border-box, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-box-sizing-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-box-sizing-1/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-comentario-de-documentacao
 description: "Enforces JSDoc documentation comments on functions when writing JavaScript/TypeScript code. Use when user asks to 'create a function', 'document code', 'add JSDoc', 'write a utility', or any function creation task. Applies @param with types and descriptions, @returns with type and meaning, and summary line. Make sure to use this skill whenever generating exported or shared functions. Not for inline comments, TODO comments, or README documentation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, jsdoc, documentation, functions, typescript]
 ---
 
 # Comentário de Documentação (JSDoc)
@@ -91,13 +97,17 @@ function signIn(email, password) {
 | Função pública sem JSDoc | Sempre adicionar bloco `/** */` |
 | `@returns` sem tipo | `@returns {number} User ID.` |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| IDE não mostra documentação no hover | Usando `/* */` em vez de `/** */` | Troque para dois asteriscos: `/** */` |
+| @param mostra tipo `any` | Tipo não declarado no @param | Adicione tipo: `@param {string} name` |
+| @returns não aparece no autocomplete | Bloco JSDoc mal formatado ou sem `*/` de fechamento | Verifique a sintaxe do bloco completo |
+| Documentação desatualizada após refactor | JSDoc não foi atualizado junto com o código | Atualize @param e @returns sempre que mudar a assinatura |
+| JSDoc não funciona em TypeScript | TypeScript já infere tipos, mas JSDoc ainda funciona | Use JSDoc para descrições textuais, tipos vêm das annotations TS |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre JSDoc, analogias do instrutor e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comentario-de-documentacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comentario-de-documentacao/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-criando-a-funcao-de-submit
 description: "Applies form submit pattern with date/time manipulation and toast notifications in Next.js. Use when user asks to 'create a submit function', 'handle form submission', 'format date and time for database', 'add toast notifications', or 'prepare data for server action'. Ensures correct DateTime construction from separate date and time fields using setHours, and configures Sonner toasts with Toaster provider. Make sure to use this skill whenever building form submissions that combine date and time inputs into a single DateTime field. Not for server actions, database operations, or form validation logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: form-submission
+  tags: [next-js, form-submit, date-time, setHours, sonner, toast, react-hook-form]
 ---
 
 # Criando a Funcao de Submit
@@ -104,14 +110,19 @@ async function onSubmit(data) {
 | `alert('Sucesso!')` para feedback | `toast.success('Agendamento criado com sucesso')` |
 | Toaster dentro de um componente filho | Toaster no layout raiz (provider global) |
 
+## Troubleshooting
+
+### Server Action nao executa ao submeter formulario
+**Symptom:** Formulario submete mas nada acontece, sem erros no console
+**Cause:** Action nao esta sendo passada corretamente ao form, ou falta "use server" no topo do arquivo de action
+**Fix:** Garantir que a funcao de action tem `"use server"` no topo. Passar a action via atributo `action` do form: `<form action={minhaAction}>`
+
+### Validacao de formulario nao mostra erros
+**Symptom:** Dados invalidos sao submetidos sem feedback ao usuario
+**Cause:** Validacao esta no servidor mas o retorno nao e tratado no cliente
+**Fix:** Usar `useActionState` (React 19) para capturar o retorno da server action e exibir erros. Adicionar validacao client-side com Zod para feedback instantaneo
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-criando-a-funcao-de-submit/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-criando-a-funcao-de-submit/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-criando-a-funcao-de-submit/references/deep-explanation.md) — O instrutor explica que no schema do Prisma existe apenas um campo `scheduleAt` do tipo `DateTime`. 
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-criando-a-funcao-de-submit/references/code-examples.md) — // Dentro do componente do formulario

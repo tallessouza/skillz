@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-secao-pricing-parte-2
 description: "Applies CSS gradient border techniques and premium card styling when building pricing sections or card components. Use when user asks to 'create a pricing card', 'add gradient border', 'style a premium card', 'build pricing section', or 'CSS card with decorative border'. Covers pseudo-element gradient borders, list styling with background icons, and CSS cascade for component overrides. Make sure to use this skill whenever styling pricing or plan comparison cards. Not for JavaScript logic, payment integration, or responsive breakpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "CSS Gradient Borders"
+  tags: ['css', 'gradients', 'borders', 'pseudo-elements', 'pricing-cards']
 ---
 
 # Estilizacao de Pricing Cards com Bordas Degradê
@@ -113,6 +119,15 @@ description: "Applies CSS gradient border techniques and premium card styling wh
 | `!important` para override de botao em pricing | Seletor mais especifico: `.pricing .btn { ... }` |
 | `z-index: 999` no card | `z-index: -1` no pseudo-element |
 | Chutar valores de font/spacing | Extrair do Figma com Copy CSS |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Borda degradê nao aparece com border-radius | Usando `border-image` que ignora `border-radius` | Use pseudo-element `::before` com `linear-gradient` como background |
+| Pseudo-element nao visivel | Card sem `padding` para revelar o pseudo-element | Adicione `padding: 2px` no container premium |
+| Pseudo-element sobrepoe conteudo | `z-index` incorreto ou ausente | Defina `z-index: -1` no `::before` |
+| Icone de check aparece como imagem quebrada | Usando `<img>` tag dentro do `<li>` | Use `background: url(check.svg) no-repeat` com `padding-left` |
 
 ## Deep reference library
 

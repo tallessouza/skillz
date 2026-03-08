@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-entendendo-a-sintaxe
 description: "Enforces correct CSS media query syntax when writing responsive styles. Use when user asks to 'make responsive', 'add breakpoints', 'write media queries', 'handle dark mode CSS', or 'adapt layout for mobile'. Applies rules: range syntax over min/max, orientation queries, prefers-color-scheme, AND combos for limits, NOT for inversion. Make sure to use this skill whenever writing CSS that adapts to screen size, device orientation, or user preferences. Not for JavaScript-based responsive logic, CSS Grid/Flexbox layout, or responsive images with srcset."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-media-queries
+  tags: [css, media-queries, responsive, breakpoints, dark-mode, orientation]
 ---
 
 # Media Queries — Sintaxe Completa
@@ -113,13 +119,16 @@ description: "Enforces correct CSS media query syntax when writing responsive st
 | JavaScript para detectar dark mode | `@media (prefers-color-scheme: dark)` |
 | `screen` sem necessidade de diferenciar print | Omita `screen` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Range syntax nao funciona no navegador | Navegador antigo sem suporte a range syntax | Usar fallback `min-width`/`max-width` ou verificar caniuse.com |
+| `prefers-color-scheme` nao detecta dark mode | Sistema operacional configurado como light | Testar alternando tema do SO ou usando DevTools para emular |
+| Media query nao aplica estilos | Especificidade do seletor fora da media query e maior | Aumentar especificidade dentro da media query ou reorganizar cascata |
+| NOT inverte resultado inesperado | Parenteses incorretos na condicao composta | Envolver a condicao completa em parenteses antes do NOT |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre evolucao da sintaxe, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-entendendo-a-sintaxe/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-entendendo-a-sintaxe/references/code-examples.md)

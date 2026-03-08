@@ -1,6 +1,12 @@
 ---
 name: rs-tailwind-logo-input-busca
 description: "Applies Tailwind CSS patterns for building sidebar layouts with logo and search input components. Use when user asks to 'create a sidebar', 'build a search input', 'add a logo component', 'layout with icon inside input', or 'fake input with icon in Tailwind'. Enforces flex composition, space-y spacing, placeholder styling, and accessibility-first patterns. Make sure to use this skill whenever building sidebar navigation or input components with icons in Tailwind. Not for form validation, backend logic, or non-Tailwind styling approaches."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: masterizando-o-tailwind
+  module: tailwind-css
+  tags: [tailwind, react, flexbox, forms]
 ---
 
 # Sidebar: Logo e Input de Busca com Tailwind
@@ -104,15 +110,19 @@ export function Sidebar() {
 | `export default function` | `export function Logo()` (named export) |
 | SVG com props kebab-case no React | Converter via transform.tools para camelCase |
 | Input com borda e fundo padrao | `border-0 bg-transparent p-0` no input real |
+## Troubleshooting
+
+### Input nao ocupa largura total
+**Symptom:** Input aparece com largura menor que o container.
+**Cause:** Input HTML tem largura intrinseca menor que o container.
+**Fix:** Adicione `w-full` no input ou `flex-1` se estiver dentro de flex container.
+
+### Estilos do input aparecem duplicados
+**Symptom:** Borda dupla ou sombra duplicada no input com wrapper.
+**Cause:** Tanto o wrapper quanto o input tem estilos de borda.
+**Fix:** Estilize apenas o wrapper (div fake input) e use `border-0 bg-transparent p-0 outline-none` no input real.
 
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/masterizando/rs-masterizando-o-tailwind-logo-e-input-de-busca/references/deep-explanation.md)
-- [Code examples](../../../data/skills/masterizando/rs-masterizando-o-tailwind-logo-e-input-de-busca/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-logo-e-input-de-busca/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](../../../data/skills/masterizando-o-tailwind/rs-masterizando-o-tailwind-logo-e-input-de-busca/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-middleware-global
 description: "Enforces correct Express middleware patterns when building REST APIs with TypeScript. Use when user asks to 'create middleware', 'add global middleware', 'intercept requests', 'setup Express app', or 'configure route pipeline'. Applies rules: proper typing with Request/Response/NextFunction imports, mandatory next() call, correct middleware ordering before routes, app.use() for global application. Make sure to use this skill whenever creating or modifying Express middleware in TypeScript projects. Not for authentication logic, error handling middleware specifics, or database middleware implementation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: express-middleware
+  tags: [express, middleware, global, typescript, request-pipeline]
 ---
 
 # Middleware Global no Express
@@ -98,13 +104,16 @@ app.post("/products", createProduct)
 | Criar middleware sem tipagem do Express | Importar `Request, Response, NextFunction` do express |
 | Misturar kebab-case e camelCase nos arquivos | Escolher um padrao e manter |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Middleware nao executa para uma rota | Middleware registrado DEPOIS da rota | Mova `app.use(middleware)` para ANTES das rotas |
+| Requisicao fica travada (hanging) | Esqueceu de chamar `next()` | Adicione `return next()` no final do middleware |
+| Tipos nao reconhecidos no middleware | Falta import dos tipos Express | Importe `Request, Response, NextFunction` do express |
+| Middleware executa em rotas que nao deveria | Usando `app.use()` global | Use middleware local na rota especifica |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre ordem de execucao, tipagem e ciclo de vida do middleware
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-middleware-global/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-middleware-global/references/code-examples.md)

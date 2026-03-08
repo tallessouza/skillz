@@ -1,6 +1,12 @@
 ---
 name: rs-devops-instrumentando-nova-app
 description: "Applies OpenTelemetry instrumentation setup when creating a new NestJS microservice for distributed tracing. Use when user asks to 'instrument a service', 'add observability', 'setup tracing for new app', 'configure OpenTelemetry', or 'add a microservice to tracing'. Follows patterns: shared tracer initialization, log configuration with Pino, OTLP exporter setup, service name/version differentiation. Make sure to use this skill whenever adding observability to a new Node.js/NestJS service. Not for frontend monitoring, infrastructure provisioning, or Prometheus metrics configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: opentelemetry-instrumentacao
+  tags: [opentelemetry, nestjs, tracing, pino, observability, microservices, otlp]
 ---
 
 # Instrumentando uma Nova Aplicacao com OpenTelemetry
@@ -99,14 +105,14 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
 | Esquecer `import './tracer'` como primeira linha | Sempre primeiro import no main.ts, porque instrumentacao deve iniciar antes de tudo |
 | Hardcodar endpoint do collector | Usar variavel de ambiente `OTEL_EXPORTER_OTLP_ENDPOINT` |
 
+## Troubleshooting
+
+### Novo servico nao aparece no Grafana Tempo
+**Symptom:** O servico instrumentado esta rodando mas nao aparece na lista de services no Tempo
+**Cause:** A variavel `OTEL_EXPORTER_OTLP_ENDPOINT` nao esta configurada ou aponta para endereco errado do collector
+**Fix:** Verifique que `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317` esta exportada e que o collector esta acessivel na porta 4317
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-instrumentando-uma-nova-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-instrumentando-uma-nova-aplicacao/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

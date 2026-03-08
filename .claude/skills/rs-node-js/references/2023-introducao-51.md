@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-introducao-51
 description: "Applies Node.js foundational mental models when making architecture decisions or explaining Node concepts. Use when user asks 'what is Node', 'how Node works', 'Node vs browser', 'why use Node', 'non-blocking IO', or 'Node streaming'. Provides correct framing: Node as platform (not language), V8 engine origin, non-blocking IO architecture, and streaming capabilities. Make sure to use this skill whenever explaining Node.js fundamentals or choosing Node for a project. Not for framework-specific code (Express, Fastify), nor for frontend React/Vue/Angular usage."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: node-fundamentals
+  tags: [nodejs, v8, non-blocking-io, streaming, platform, fundamentals]
 ---
 
 # Node.js — Fundamentos e Modelo Mental
@@ -55,6 +61,18 @@ Streaming e a habilidade de ler ou escrever dados de forma **parcial**. Exemplo:
 | Precisa de framework para comecar | E possivel (e recomendado para aprendizado) criar uma API REST completa sem dependencias externas |
 | Non-blocking IO = multithreading | Non-blocking IO e concorrencia via event loop, nao threads tradicionais |
 
+```javascript
+// Node.js: criando servidor HTTP sem dependencias externas
+const http = require('node:http')
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' })
+  res.end(JSON.stringify({ message: 'Hello from Node.js' }))
+})
+
+server.listen(3333, () => console.log('Server running on port 3333'))
+```
+
 ## When to apply
 
 - Ao explicar Node.js para alguem que esta comecando
@@ -68,14 +86,14 @@ Streaming e a habilidade de ler ou escrever dados de forma **parcial**. Exemplo:
 - Streaming e mencionado conceitualmente — implementacao pratica esta nas aulas seguintes
 - Nao cobre escolha entre Node e alternativas como Deno ou Bun
 
+## Troubleshooting
+
+### Confundir Node.js com uma linguagem de programacao
+**Symptom:** Desenvolvedor diz "programar em Node" como se Node fosse uma linguagem
+**Cause:** Node.js e frequentemente apresentado junto com JavaScript, causando confusao sobre o que cada um e
+**Fix:** Node.js e uma plataforma que executa JavaScript fora do browser usando a V8 engine. JavaScript e a linguagem; Node e o runtime
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-introducao-51/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-introducao-51/references/code-examples.md)

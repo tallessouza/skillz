@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-nullish
 description: "Applies Zod nullish() for optional schema fields when validating request data with Zod. Use when user asks to 'create a schema', 'validate request body', 'make field optional', 'zod validation', or 'optional property'. Enforces rule: Zod fields are required by default, use .nullish() to accept null or undefined. Make sure to use this skill whenever writing Zod schemas with optional fields. Not for general TypeScript optional types, database nullability, or non-Zod validation libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-validation
+  tags: [zod, nullish, optional, schema, validation]
 ---
 
 # Zod Nullish — Campos Opcionais em Schemas
@@ -79,13 +85,15 @@ const schema = z.object({
 | Remover campo do schema para torna-lo opcional | Manter no schema com `.nullish()` |
 | `price: z.number().nullable().optional()` | `price: z.number().nullish()` (equivalente e mais conciso) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Campo opcional ainda causa erro de validacao | Usou `.optional()` mas API envia `null` | Troque para `.nullish()` que aceita ambos |
+| Tipo inferido nao inclui `null` | Usou `.optional()` em vez de `.nullish()` | `.nullish()` infere `T \| null \| undefined` |
+| Schema rejeita payload valido | Campo obrigatorio quando deveria ser opcional | Adicione `.nullish()` ao campo no schema |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre obrigatoriedade padrao no Zod e diferenca entre optional, nullable e nullish
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-nullish/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-nullish/references/code-examples.md)

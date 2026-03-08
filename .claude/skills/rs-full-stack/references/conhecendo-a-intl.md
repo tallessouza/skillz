@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-conhecendo-a-intl
 description: "Applies JavaScript Intl API patterns for date/time formatting and locale detection. Use when user asks to 'format a date', 'get timezone', 'internationalize dates', 'locale formatting', or 'Intl API'. Enforces correct usage of Intl.DateTimeFormat for locale-aware formatting and timezone offset calculations. Make sure to use this skill whenever formatting dates for display or detecting user locale in JavaScript/TypeScript. Not for date arithmetic, date libraries like dayjs/moment, or server-side i18n frameworks."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [intl-api, date-formatting, locale, timezone, DateTimeFormat, internationalization]
 ---
 
 # Intl API — Formatacao de Data e Hora
@@ -78,13 +84,16 @@ const { timeZone, locale } = Intl.DateTimeFormat().resolvedOptions()
 | Hardcode de timezone string | `Intl.DateTimeFormat().resolvedOptions().timeZone` |
 | `getTimezoneOffset()` sem dividir por 60 quando quer horas | `getTimezoneOffset() / 60` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Formato de data inesperado | Locale implicito varia entre ambientes | Passar locale explicitamente: `new Intl.DateTimeFormat('pt-BR')` |
+| `getTimezoneOffset()` retorna valor positivo para UTC-3 | Comportamento nativo — valor e invertido | Dividir por 60 e inverter sinal se necessario |
+| DateTimeFormat nao disponivel | Ambiente muito antigo (IE) | Usar polyfill ou biblioteca como date-fns |
+| Formatacao diferente entre servidor e browser | Locale do servidor difere do browser | Definir locale explicitamente em ambos os ambientes |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre a API Intl, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-conhecendo-a-intl/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-conhecendo-a-intl/references/code-examples.md)

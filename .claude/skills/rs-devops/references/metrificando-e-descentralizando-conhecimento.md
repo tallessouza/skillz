@@ -1,6 +1,12 @@
 ---
 name: rs-devops-metrificando-descentralizando
 description: "Applies CALMS Measurement and Sharing principles when designing observability, metrics, or knowledge-sharing practices. Use when user asks to 'add monitoring', 'create dashboards', 'set up observability', 'document processes', 'share knowledge', or 'diagnose DevOps maturity'. Ensures metrics cover both business and technical layers, and knowledge is decentralized across the team. Make sure to use this skill whenever designing monitoring strategies or team knowledge processes. Not for implementing specific monitoring tools, writing code, or CI/CD pipeline configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: calms-measurement-sharing
+  tags: [calms, devops-culture, metrics, knowledge-sharing, observability, monitoring]
 ---
 
 # Mensuração e Compartilhamento de Conhecimento (CALMS M+S)
@@ -76,14 +82,14 @@ description: "Applies CALMS Measurement and Sharing principles when designing ob
 | Implementar feature sem mensuração | Defina métricas de sucesso antes do lançamento |
 | Compartilhar conhecimento só quando der problema | Crie ciclo contínuo: aprender → compartilhar → liberar tempo → aprender mais |
 
+## Troubleshooting
+
+### Time descobre problemas apenas quando clientes reportam
+**Symptom:** Erros em producao so sao detectados quando usuarios reclamam
+**Cause:** Falta monitoramento proativo com alertas configurados para metricas criticas
+**Fix:** Configure alertas para metricas tecnicas (5XX, latencia alta) e negociais (queda de conversao) com thresholds que disparam antes do impacto ser percebido pelo usuario
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-metrificando-e-descentralizando-conhecimento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-metrificando-e-descentralizando-conhecimento/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

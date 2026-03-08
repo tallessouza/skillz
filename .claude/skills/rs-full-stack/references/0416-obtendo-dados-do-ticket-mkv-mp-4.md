@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-obtendo-dados-ticket
 description: "Enforces correct request parameter extraction patterns in Node.js HTTP servers. Use when user asks to 'get route params', 'extract request body', 'parse URL parameters', 'handle PUT/POST data', or 'return status codes'. Applies destructuring for params and body, correct status codes (200, 201, 204). Make sure to use this skill whenever building Node.js HTTP route handlers that need to read input data. Not for Express.js middleware, query string parsing libraries, or frontend fetch calls."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [node, http, request-params, destructuring, status-codes]
 ---
 
 # Obtendo Dados da Requisicao em Node.js
@@ -100,8 +106,11 @@ server.put('/tickets/:id', (request, response) => {
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre route params vs query params vs body, e logica do status code
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
----
+## Troubleshooting
 
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-0416-obtendo-dados-do-ticket-mkv-mp-4/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-0416-obtendo-dados-do-ticket-mkv-mp-4/references/code-examples.md)
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `request.params` retorna `undefined` | Rota nao usa `:param` no path | Defina a rota como `/tickets/:id` com o parametro nomeado |
+| `request.body` retorna `undefined` | Middleware de body parsing nao configurado | Adicione middleware JSON antes das rotas |
+| Status 200 quando esperava 204 | Nao definiu writeHead explicitamente | Use `response.writeHead(204).end()` para respostas sem corpo |
+| Dados do body incompletos | Cliente nao enviou Content-Type JSON | Configure o header `Content-Type: application/json` no cliente |

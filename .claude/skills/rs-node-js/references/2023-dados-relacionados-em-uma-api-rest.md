@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-dados-relacionados-rest
-description: "Applies REST API data relationship strategies to avoid overfetching and underfetching when designing endpoints. Use when user asks to 'create an endpoint', 'return related data', 'design API routes', 'list with author', or 'fetch nested resources'. Guides decisions on when to include relationships inline vs separate requests. Make sure to use this skill whenever designing REST endpoints that involve related entities. Not for GraphQL APIs, database schema design, or frontend data fetching logic."
+name: 2023-dados-relacionados-em-uma-api-rest
+description: "Structures REST API endpoint design for related data, balancing overfetching vs underfetching by including relationships inline or as separate routes. Use when user asks to 'design API endpoints', 'include related data', 'fix N+1 requests', or 'structure REST relationships'. Make sure to use this skill whenever designing REST API responses that involve related entities like author, attachments, or nested collections. Not for GraphQL APIs, database schema design, or frontend data fetching."
+category: reference
+tags: [attachments, nestjs, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-design
+  tags: [rest-api, overfetching, underfetching, relationships, api-design, nestjs]
 ---
 
 # Dados Relacionados em uma API REST
@@ -87,14 +96,14 @@ GET /answers/:id/comments?page=2 -> [{ id, content, author: { id, name } }]
 - O meio-termo ideal depende do frontend especifico, nao existe formula universal
 - Performance de queries com JOINs deve ser monitorada — incluir relacionamentos inline tem custo no banco
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-dados-relacionados-em-uma-api-rest/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-dados-relacionados-em-uma-api-rest/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

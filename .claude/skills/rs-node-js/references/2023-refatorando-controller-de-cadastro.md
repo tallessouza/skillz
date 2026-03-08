@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-refatorando-controller
 description: "Enforces controller refactoring pattern in NestJS Clean Architecture: replace direct ORM/Prisma calls with domain use cases. Use when user asks to 'refactor controller', 'use clean architecture in NestJS', 'replace Prisma in controller', 'connect use case to controller', or 'wire up NestJS endpoint'. Make sure to use this skill whenever refactoring NestJS controllers to use domain layer. Not for creating use cases, domain entities, or Prisma schema changes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: controller-refactoring-register
+  tags: [nestjs, controller, clean-architecture, use-case, refactoring, prisma-removal, result-pattern]
 ---
 
 # Refatorando Controllers para Clean Architecture (NestJS)
@@ -113,14 +119,14 @@ export class CreateAccountController {
 | `throw new Error()` sem checar Result | `if (result.isLeft()) throw new ConflictException()` |
 | Importar PrismaService no controller refatorado | Importar o UseCase correspondente |
 
+## Troubleshooting
+
+### Controller refatorado retorna 500 em vez de 409 Conflict
+**Symptom:** Ao cadastrar usuario duplicado, a API retorna Internal Server Error em vez de Conflict
+**Cause:** O controller usa `throw new Error()` generico em vez de `throw new ConflictException()` ao tratar `result.isLeft()`
+**Fix:** Importe `ConflictException` do `@nestjs/common` e use `throw new ConflictException()` no bloco `if (result.isLeft())`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-refatorando-controller-de-cadastro/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-refatorando-controller-de-cadastro/references/code-examples.md)

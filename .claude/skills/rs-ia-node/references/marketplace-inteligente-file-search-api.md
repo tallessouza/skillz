@@ -1,6 +1,12 @@
 ---
 name: rs-ia-node-marketplace-file-search-api
 description: "Applies OpenAI File Search API pattern when implementing RAG with static data files. Use when user asks to 'add context to AI', 'upload files to OpenAI', 'create vector store', 'use file search', 'give AI access to documents', or 'contextualize a model'. Covers upload, VectorStore creation, and Responses API integration. Make sure to use this skill whenever integrating static knowledge bases with OpenAI models. Not for dynamic data, real-time inventory, embeddings from scratch, or non-OpenAI providers."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: ia-node-marketplace-inteligente
+  module: file-search
+  tags: [node-js, function-calling, file-search, responses-api, openai, ia-node]
 ---
 
 # File Search API — Contextualizacao com Arquivos Estaticos
@@ -144,14 +150,14 @@ const response = await client.responses.create({
 | Usar File Search para dados que mudam toda hora | Usar embeddings proprios ou injecao no prompt |
 | Injetar 10k+ tokens de contexto direto no prompt | Usar File Search para a OpenAI vetorizar automaticamente |
 
+## Troubleshooting
+
+### Resposta da API retorna null ou undefined
+**Symptom:** `completion.choices[0].message.content` retorna null
+**Cause:** O modelo retornou tool_calls em vez de content, ou max_tokens insuficiente
+**Fix:** Verifique `message.tool_calls` antes de acessar content. Aumente max_completion_tokens se a resposta foi cortada
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-file-search-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/ia-node/rs-ia-node-marketplace-inteligente-file-search-api/references/code-examples.md)

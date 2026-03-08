@@ -1,6 +1,12 @@
 ---
 name: rs-devops-open-container-initiative
 description: "Applies Open Container Initiative (OCI) standards when building, configuring, or reviewing container images and runtimes. Use when user asks to 'create a Dockerfile', 'build a container', 'review container setup', 'configure runtime', or 'ensure container portability'. Enforces vendor-agnostic, portable, OCI-compliant container practices. Make sure to use this skill whenever generating Dockerfiles or container configurations. Not for application code, CI/CD pipelines, or Kubernetes orchestration specifics."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: containers-fundamentos
+  tags: [oci, containers, docker, portability, runtime, image-spec, runc]
 ---
 
 # Open Container Initiative (OCI)
@@ -70,14 +76,14 @@ Significa que o container:
 - OCI não define CI/CD pipelines
 - Para detalhes de runtime avançado e Kubernetes, consultar documentação específica de runc e CRI
 
+## Troubleshooting
+
+### Container funciona no Docker mas falha em outro runtime
+**Symptom:** Imagem construida com Docker nao executa corretamente em Podman ou containerd
+**Cause:** O Dockerfile usa features especificas do Docker que nao sao parte da spec OCI (ex: BuildKit syntax exclusiva)
+**Fix:** Verifique que o Dockerfile usa apenas instrucoes padrao OCI-compliant e teste a imagem em multiplos runtimes antes de distribuir
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-open-container-initiative/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-open-container-initiative/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

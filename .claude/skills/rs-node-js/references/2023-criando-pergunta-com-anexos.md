@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-criando-pergunta-com-anexos
-description: "Applies DDD aggregate pattern for creating entities with child attachments in Node.js/TypeScript. Use when user asks to 'create entity with attachments', 'add files to an entity', 'implement aggregate with children', 'handle file uploads in DDD', or 'persist sub-entities through aggregate root'. Enforces pre-upload pattern (receive IDs not files), setter injection for circular dependencies, and single-repository persistence for aggregates. Make sure to use this skill whenever implementing parent-child entity creation in domain-driven design. Not for file upload infrastructure, storage configuration, or HTTP multipart handling."
+name: 2023-criando-pergunta-com-anexos
+description: "Implements the DDD Aggregate pattern for entities with sub-entities (attachments) by receiving pre-created IDs and persisting through the aggregate root repository. Use when user asks to 'create entity with attachments', 'implement aggregate root', 'handle sub-entities in DDD', or 'separate upload from creation'. Enforces: receive attachment IDs not files, use setter to resolve circular dependency, persist sub-entities through aggregate root repository. Make sure to use this skill whenever modeling parent-child entity relationships following DDD aggregate patterns. Not for file upload implementation, simple CRUD without DDD, or frontend file handling."
+category: coding-lens
+tags: [attachments, ddd, entities, repository, typescript, use-cases]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ddd-aggregate
+  tags: [ddd, attachments, aggregate-root, entities, use-cases, typescript]
 ---
 
 # Criando Entidade com Anexos (DDD Aggregate Pattern)
@@ -142,14 +151,14 @@ async execute({ authorId, title, content, attachmentIds }: CreateQuestionRequest
 | Criar anexos antes do pai sem resolver ID | Criar pai primeiro, depois anexos com `question.id`, injetar via setter |
 | Upload + criacao na mesma rota MultipartFormData | Rota de upload separada + rota de criacao JSON |
 
+## Troubleshooting
+
+### Resultado inesperado ao aplicar o padrao
+**Symptom:** Comportamento nao corresponde ao esperado apos seguir os passos
+**Cause:** Dependencias ou configuracoes previas podem estar faltando
+**Fix:** Verifique os prerequisites e confirme que todas as versoes estao compativeis
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-criando-pergunta-com-anexos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-criando-pergunta-com-anexos/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

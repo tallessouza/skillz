@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-metodos-nas-classes
 description: "Enforces correct class method syntax when writing JavaScript/TypeScript classes. Use when user asks to 'create a class', 'add a method', 'write a class method', or any OOP code generation task. Applies rules: no function keyword in class methods, use this to access instance properties, methods defined at class body level. Make sure to use this skill whenever generating class-based code. Not for standalone functions, arrow functions, or functional programming patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [javascript, classes, methods, oop, constructor, this]
 ---
 
 # Métodos em Classes JavaScript
@@ -98,13 +104,16 @@ class User {
 | Metodo definido dentro do constructor | Metodo no corpo da classe, mesmo nivel do constructor |
 | `const self = this` dentro de metodo | Use arrow function ou bind se precisar preservar contexto |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `SyntaxError: Unexpected identifier` | Usando `function` dentro do corpo da classe | Remova a palavra-chave `function`: use `metodo() {}` |
+| `this.propriedade` retorna `undefined` | Propriedade nao definida no constructor | Adicione `this.propriedade = valor` no constructor |
+| Metodo nao aparece na instancia | Metodo definido dentro do constructor como variavel local | Mova o metodo para o corpo da classe, no mesmo nivel do constructor |
+| `this` aponta para contexto errado | Metodo extraido do objeto e chamado separadamente | Use `.bind(this)` ou mantenha a chamada como `instancia.metodo()` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-metodos-nas-classes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-metodos-nas-classes/references/code-examples.md)

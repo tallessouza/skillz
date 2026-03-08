@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-principios
 description: "Enforces five Clean Code team principles when user asks to 'review code', 'improve code quality', 'set up a project', 'organize team workflow', or 'refactor codebase'. Applies: automated tests for confidence, code review with 2+ reviewers, constant refactoring, KISS simplicity, short iterations with small PRs. Make sure to use this skill whenever discussing code quality practices, team workflows, or project maintainability. Not for variable naming, formatting, or syntax-level clean code rules."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: principios-do-codigo-limpo
+  tags: [clean-code, team-practices, code-review, testing, kiss, refactoring, small-prs]
 ---
 
 # Principios do Codigo Limpo
@@ -40,6 +46,13 @@ Qualquer pessoa escreve codigo limpo sozinha. O desafio e manter codigo limpo em
 | Aprovar PR com "LGTM" sem ler | Revisar cada arquivo, apontar padroes inconsistentes |
 | Cuspir features sem refatorar | Reservar tempo para melhorar codigo existente |
 | Confiar no codigo sem testes | Escrever testes que garantam confianca em alteracoes |
+
+## Troubleshooting
+
+### PRs grandes que ninguem consegue revisar
+**Symptom:** PR aberta com 50+ arquivos alterados fica dias sem revisao ou recebe "LGTM" sem leitura real
+**Cause:** O desenvolvedor acumulou trabalho de varios dias em uma unica PR em vez de dividir em incrementos menores
+**Fix:** Quebre em PRs de 1-2 dias de trabalho (3-5 arquivos), envie parcialmente mesmo que o usuario final nao veja a feature completa ainda
 
 ## Deep reference library
 

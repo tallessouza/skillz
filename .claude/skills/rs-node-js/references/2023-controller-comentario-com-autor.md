@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-controller-comentario-autor
+name: rs-node-js-2023-controller-comentario-com-autor
 description: "Applies the Presenter pattern for API response formatting in NestJS clean architecture. Use when user asks to 'create a controller', 'format API response', 'return data from endpoint', 'add presenter', or 'map domain to response'. Enforces separation between domain objects and HTTP responses using Presenter classes that rename and reshape data for the frontend. Make sure to use this skill whenever building NestJS controllers that return domain entities. Not for database queries, use case logic, or frontend components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: nestjs-clean-architecture
+  tags: [nestjs, controller, clean-architecture, e2e-test, rest-api]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Controller com Presenter Pattern (NestJS Clean Architecture)
@@ -107,14 +114,14 @@ return { comments: comments.map(CommentWithAuthorPresenter.toHTTP) }
 | Usar mesmo Presenter para shapes diferentes | Criar Presenter por formato de resposta |
 | Testar E2E sem verificar campos renomeados | Verificar `authorName`, nao apenas `content` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-controller-comentario-com-autor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-controller-comentario-com-autor/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-comentario-com-autor/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-controller-comentario-com-autor/references/code-examples.md) — Todos os exemplos de código expandidos com variações

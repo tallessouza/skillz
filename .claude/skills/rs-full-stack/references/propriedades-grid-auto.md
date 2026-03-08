@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-propriedades-grid-auto
 description: "Applies CSS Grid auto properties (grid-auto-flow, grid-auto-rows, grid-auto-columns) when building grid layouts. Use when user asks to 'create a grid', 'layout items in columns', 'make a responsive grid', or 'auto-size grid rows/columns'. Enforces correct flow direction, auto-sizing patterns, and loop behavior understanding. Make sure to use this skill whenever generating CSS Grid code that needs automatic placement or sizing. Not for Flexbox layouts, Grid template definitions, or grid-area placement."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid
+  tags:
+    - css
+    - grid
+    - layout
+    - auto-flow
+    - responsive
 ---
 
 # Propriedades Grid Auto
@@ -94,6 +105,14 @@ description: "Applies CSS Grid auto properties (grid-auto-flow, grid-auto-rows, 
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre loop behavior, quando usar cada propriedade auto, e comparacao com grid-template
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e cenarios reais
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Itens nao fluem horizontalmente | `grid-auto-flow` esta no default (row) | Adicione `grid-auto-flow: column` |
+| Colunas automaticas com tamanho errado | Usando `grid-auto-rows` com `grid-auto-flow: column` | Use `grid-auto-columns` quando o fluxo e por colunas |
+| Loop de tamanhos nao funciona como esperado | Quantidade de valores no auto-rows/columns nao corresponde ao ciclo desejado | Verifique a sequencia de valores e que o container tem altura/largura suficiente |
 
 ---
 

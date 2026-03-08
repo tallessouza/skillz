@@ -1,6 +1,16 @@
 ---
 name: rs-full-stack-publicando-o-projeto
-description: "Guides publishing static HTML/CSS projects to GitHub Pages. Use when user asks to 'deploy to GitHub Pages', 'publish my site', 'host on GitHub', 'make my project live', or 'share my project online'. Covers repository setup, GitHub Pages activation, and README presentation. Make sure to use this skill whenever deploying a static frontend project to GitHub. Not for CI/CD pipelines, custom domains, or server-side deployments."
+description: "Configures publishing static HTML/CSS projects to GitHub Pages. Use when user asks to 'deploy to GitHub Pages', 'publish my site', 'host on GitHub', 'make my project live', or 'share my project online'. Covers repository setup, GitHub Pages activation, and README presentation. Make sure to use this skill whenever deploying a static frontend project to GitHub. Not for CI/CD pipelines, custom domains, or server-side deployments."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-github
+  tags:
+    - github-pages
+    - deploy
+    - static-site
+    - portfolio
 ---
 
 # Publicando Projeto no GitHub Pages
@@ -99,6 +109,14 @@ https://{usuario}.github.io/{nome-do-repositorio}
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre apresentacao de projetos e portfolio
 - [code-examples.md](references/code-examples.md) — Templates de README e configuracoes detalhadas
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Pagina mostra 404 apos habilitar Pages | `index.html` nao esta na raiz do branch configurado | Mova `index.html` para a raiz ou ajuste a pasta em Settings → Pages |
+| Deploy nao completa apos 5 minutos | Erro no build do GitHub Actions | Verifique a aba Actions no repositorio para ver logs de erro |
+| Repositorio privado nao permite GitHub Pages gratis | GitHub Pages gratuito requer repositorio publico | Mude para publico ou use GitHub Pro |
 
 ---
 

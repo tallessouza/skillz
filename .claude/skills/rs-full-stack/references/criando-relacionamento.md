@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-relacionamento
 description: "Enforces correct foreign key relationship patterns when creating Knex.js migrations with table relationships. Use when user asks to 'create a migration', 'add foreign key', 'create relationship', 'relate tables', or 'create a new table with references'. Applies rules: foreign key type must match primary key type, use .references().inTable() chain, always include down migration. Make sure to use this skill whenever generating Knex migrations that involve table relationships. Not for Prisma, TypeORM, or other ORMs."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: knex-migrations
+  tags: [knex, migrations, foreign-key, relationships, database]
 ---
 
 # Criando Relacionamentos com Knex.js
@@ -84,13 +90,16 @@ await knex.schema.createTable('course_modules', (table) => {
 | Migration sem `down` | `await knex.schema.dropTable('nome_tabela')` |
 | `table.integer('curso')` (nome generico) | `table.integer('course_id')` (convencao `{tabela}_id`) |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Erro ao rodar migration com FK | Tipo da FK diferente do tipo da PK referenciada | Use `integer()` se a PK e `increments()`, `uuid()` se a PK e `uuid()` |
+| Tabela referenciada nao existe | Migration da tabela pai nao rodou ainda | Verifique a ordem das migrations; a tabela pai deve existir primeiro |
+| Rollback falha com erro de constraint | Tabela filha tem registros referenciando a tabela pai | Delete registros dependentes antes do rollback ou adicione `onDelete('CASCADE')` |
+| Relacionamento nao aparece no Beekeeper | FK sem `.references().inTable()` | Adicione a cadeia completa de referencia na coluna FK |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre chaves estrangeiras, tipos de dados e visualizacao no Beekeeper
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-relacionamento/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-relacionamento/references/code-examples.md)

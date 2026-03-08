@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estilos-secao-mais-lidas
 description: "Applies CSS layout patterns for card grid sections with headers, tags, and hover effects. Use when user asks to 'style a card grid', 'create a weekly section', 'position tags over images', 'add hover arrow icons', or 'layout a news section'. Enforces reusable section+header patterns, grid repeat for equal columns, relative/absolute positioning for overlay tags, and hover state background-image swaps. Make sure to use this skill whenever styling grid-based card sections with overlaid elements. Not for JavaScript logic, data fetching, or responsive breakpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, grid, layout, cards, hover-effects, positioning]
 ---
 
 # Estilos para Seções de Cards em Grid (Mais Lidas da Semana)
@@ -131,13 +137,16 @@ section:has(> header) {
 | `margin-bottom: 80px` em cada section | `main { gap: 80px }` |
 | `.arrow:hover { display: block }` via JS | `&:hover span { background-image: url(...) }` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Tag nao aparece sobre a imagem | Container `figure` sem `position: relative` | Adicione `position: relative` ao container pai |
+| Cards com larguras desiguais no grid | Uso de largura fixa em vez de `1fr` | Use `grid-template-columns: repeat(N, 1fr)` |
+| Icone de seta nao muda no hover | Path do SVG hover incorreto ou seletor CSS errado | Verifique o caminho da imagem e use `&:hover span { background-image: url(...) }` |
+| Espacamento inconsistente entre secoes | Margin individual em cada secao | Use `gap` no container pai (main) |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre extração de padrões, nesting CSS e posicionamento
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-aplicando-estilos-na-secao-mais-lidas-da-semana/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-aplicando-estilos-na-secao-mais-lidas-da-semana/references/code-examples.md)

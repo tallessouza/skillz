@@ -1,6 +1,12 @@
 ---
 name: rs-devops-configurando-provider-azure
 description: "Applies Azure provider configuration patterns when writing Terraform code for Azure infrastructure. Use when user asks to 'configure Azure provider', 'setup Terraform for Azure', 'create Azure resources with Terraform', or 'add azurerm provider'. Covers required_providers block, features block, skip_provider_registration, resource groups, and Azure CLI authentication. Make sure to use this skill whenever generating Terraform code targeting Azure. Not for AWS or GCP provider configuration, nor for Azure Portal UI operations."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-providers
+  tags: [terraform, azure, azurerm, provider, resource-group, hcl, iac]
 ---
 
 # Configurando Provider Azure no Terraform
@@ -127,14 +133,14 @@ resource "azurerm_resource_group" "main" {
 | Tudo em um unico `.tf` | Separe em `providers.tf` e `main.tf` |
 | Credenciais hardcoded no provider | Use `az login` ou service principal via env vars |
 
+## Troubleshooting
+
+### Provider azurerm nao inicializa
+**Symptom:** Erro ao rodar `terraform init` com provider azurerm
+**Cause:** Bloco `features {}` ausente no provider — e obrigatorio mesmo vazio
+**Fix:** Adicione `provider "azurerm" { features {} }` no arquivo `providers.tf`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-conhecendo-e-configurando-provider-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-conhecendo-e-configurando-provider-1/references/code-examples.md)

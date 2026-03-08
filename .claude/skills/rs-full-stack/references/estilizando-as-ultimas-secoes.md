@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-estilizando-as-ultimas-secoes
 description: "Applies CSS Grid Template Areas layout patterns and image sizing techniques when building multi-section page layouts. Use when user asks to 'create a grid layout', 'organize sections with CSS Grid', 'make images square', 'use aspect-ratio', or 'style page sections'. Enforces grid-template-areas naming, fr units for flexible columns, aspect-ratio with object-fit for images, and margin-block shorthand. Make sure to use this skill whenever structuring page layouts with named grid areas. Not for Flexbox layouts, animations, or responsive breakpoints."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-grid-areas
+  tags: [css, grid, grid-template-areas, aspect-ratio, object-fit, fr-units, layout]
 ---
 
 # Estilizando Seções com CSS Grid Areas
@@ -119,13 +125,16 @@ h3 {
 | `margin-top: 8px; margin-bottom: 4px` | `margin-block: 8px 4px` |
 | Fixar todos os pixels exatos do design | Usar referências visuais com flexibilidade |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Secao nao ocupa a area grid esperada | `grid-area` nao atribuido ao elemento | Adicionar `.section-name { grid-area: name; }` correspondente |
+| Imagem distorcida dentro do grid | `object-fit` ausente com dimensoes fixas | Adicionar `object-fit: cover` junto com `aspect-ratio` |
+| Gap uniforme quando precisa de valores diferentes | Usando `gap` shorthand para ambos os eixos | Separar em `row-gap` e `column-gap` com valores distintos |
+| Colunas com proporcao fixa nao adaptam | Usando porcentagens em vez de fr units | Substituir `70% 30%` por `2fr 1.4fr` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre Pixel Perfect, grid-areas e decisões de layout
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-estilizando-as-ultimas-secoes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-estilizando-as-ultimas-secoes/references/code-examples.md)

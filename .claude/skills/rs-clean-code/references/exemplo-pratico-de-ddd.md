@@ -1,6 +1,12 @@
 ---
 name: rs-clean-code-exemplo-pratico-de-ddd
 description: "Enforces Domain-Driven Design structure when organizing Node.js/TypeScript projects. Use when user asks to 'create entities', 'organize domain', 'structure project folders', 'implement use cases', 'design domain model', or starts a new backend project. Applies rules: code independent of database, entities reflect business domain not DB tables, same real-world concept becomes different entities per subdomain, use cases as single-method classes. Make sure to use this skill whenever structuring backend domain logic or creating entities. Not for database schema design, ORM configuration, or frontend component architecture."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: clean-code
+  module: ddd-pratico
+  tags: [ddd, domain-driven-design, entities, use-cases, subdomains, typescript, backend]
 ---
 
 # Exemplo Pratico de DDD
@@ -139,10 +145,17 @@ src/
 | Regras de negocio no controller/route | Regras de negocio no caso de uso |
 | Projetar banco primeiro, codigo depois | Projetar dominio primeiro, banco e persistencia depois |
 
+## Troubleshooting
+
+### Entidades de subdominios diferentes ficam duplicando dados
+**Symptom:** Customer e Recipient possuem campos identicos (nome, email) e parece redundante manter duas classes.
+**Cause:** A separacao por subdominio parece desnecessaria quando os campos se sobrepoem, mas cada contexto evolui independentemente e pode ganhar campos especificos ao longo do tempo.
+**Fix:** Mantenha as entidades separadas. Se a duplicacao incomoda, confirme que cada subdominio realmente precisa daqueles campos. A sobreposicao inicial e esperada — com o tempo, cada entidade diverge naturalmente.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
 
 
 ---

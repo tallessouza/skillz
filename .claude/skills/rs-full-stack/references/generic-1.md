@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-generic-1
 description: "Enforces correct TypeScript generics usage when writing functions, hooks, or reusable utilities. Use when user asks to 'create a generic function', 'make this flexible', 'add type parameters', 'write a hook', or 'use generics'. Applies rules: generic constraints with extends, default type parameters, single-letter conventions (T/K/V/E/S), and generic-over-union when type must be locked at declaration. Make sure to use this skill whenever generating TypeScript code that needs flexible but consistent typing. Not for union types, simple type aliases, or interface definitions without type parameters."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript
+  tags: [typescript, generics, type-parameters, extends, constraints]
 ---
 
 # TypeScript Generics
@@ -115,13 +121,16 @@ s.set("outro");  // OK
 | Generic sem default quando ha tipo obvio | `<T = string>` com default |
 | `<Type>` como nome do generic | `<T>` seguindo convencao |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Generic aceita qualquer tipo inesperado | Falta constraint `extends` | Restrinja com `<T extends number \| string>` |
+| Tipo nao inferido corretamente | Falta tipo explicito na chamada | Especifique: `useState<string>()` em vez de `useState()` |
+| Erro de tipo no setter/getter | Generic nao propagado para todos os pontos | Garanta que state e setter usem o mesmo `T` |
+| Funcao sem tipo padrao causa erro quando chamada sem generic | Falta default type | Adicione `= string` ou tipo padrao: `<T extends X = string>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre generic vs union, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-generic-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-generic-1/references/code-examples.md)

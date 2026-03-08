@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-partial-pre-rendering-suspense-api
 description: "Applies Next.js Partial Pre-Rendering with React Suspense to split page loading into critical and deferred sections. Use when user asks to 'optimize page loading', 'add loading states', 'use Suspense', 'stream content', 'partial pre-rendering', or 'avoid blocking the whole page on slow data'. Make sure to use this skill whenever a Next.js page has multiple async server components with different loading priorities. Not for client-side data fetching, SWR/React Query patterns, or route-level loading.tsx files."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: partial-pre-rendering
+  tags: [next-js, suspense, streaming, partial-pre-rendering, skeleton, loading, server-components, performance]
 ---
 
 # Partial Pre-Rendering com Suspense API
@@ -112,14 +118,19 @@ export default async function IssuePage({ params }) {
 | Aguardar todos os dados para renderizar a pagina | Separar dados criticos (await direto) de secundarios (Suspense) |
 | Envolva a pagina inteira com Suspense | Envolva apenas os componentes lentos |
 
+## Troubleshooting
+
+### Loading state nao aparece durante carregamento
+**Symptom:** Pagina fica em branco durante o carregamento, sem skeleton ou spinner
+**Cause:** Arquivo `loading.tsx` ausente no diretorio da rota, ou Suspense boundary nao configurado
+**Fix:** Criar arquivo `loading.tsx` no diretorio da pagina que demora para carregar. Para granularidade maior, envolver componentes lentos com `<Suspense fallback={...}>`
+
+### Streaming SSR nao funciona
+**Symptom:** Pagina inteira espera todos os dados antes de renderizar
+**Cause:** Dados sao carregados na pagina principal sem Suspense boundary
+**Fix:** Mover fetch de dados para componentes filhos async e envolver com `<Suspense>`. Cada Suspense boundary habilita streaming independente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-partial-pre-rendering-suspense-api/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-partial-pre-rendering-suspense-api/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-partial-pre-rendering-suspense-api/references/deep-explanation.md) — Quando voce tem uma pagina com multiplos server components, cada um com seus proprios `await`, o Nex
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-partial-pre-rendering-suspense-api/references/code-examples.md) — // app/issues/[id]/page.tsx

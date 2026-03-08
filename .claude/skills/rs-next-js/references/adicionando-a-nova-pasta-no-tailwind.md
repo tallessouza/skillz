@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-tailwind-content-paths
 description: "Enforces Tailwind CSS content path configuration when restructuring project folders in Next.js. Use when user asks to 'move components', 'create new folder', 'refactor project structure', 'reorganize files', or reports 'styles not working after refactor'. Ensures tailwind.config content array includes all directories containing Tailwind classes. Make sure to use this skill whenever project folders are added, renamed, or reorganized. Not for Tailwind theme customization, plugin setup, or CSS-in-JS configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: tailwind-configuration
+  tags: [tailwind, content-paths, project-structure, next-js, tree-shaking, purge]
 ---
 
 # Tailwind Content Paths
@@ -79,14 +85,19 @@ module.exports = {
 | Usar `content: ['./src/**/*.{js,ts,jsx,tsx}']` generico demais | Listar pastas explicitamente para clareza e performance |
 | Ignorar extensoes `.mdx` no glob | Incluir todas as extensoes que podem conter classes Tailwind |
 
+## Troubleshooting
+
+### Estilos Tailwind nao aplicam
+**Symptom:** Classes Tailwind no JSX nao geram CSS correspondente
+**Cause:** Arquivo/pasta nao esta mapeado no array `content` do tailwind.config
+**Fix:** Adicionar o path da pasta no `content` do tailwind.config: `'./src/{nova-pasta}/**/*.{js,ts,jsx,tsx}'`. Reiniciar o servidor de desenvolvimento
+
+### Fontes customizadas nao carregam
+**Symptom:** Fonte do Google Fonts/local nao aparece, fallback e usado
+**Cause:** Configuracao incorreta do next/font ou CSS variable nao aplicada
+**Fix:** Usar `next/font/google` ou `next/font/local` e aplicar a className no elemento raiz do layout. Verificar que a variavel CSS esta sendo referenciada no Tailwind config
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-adicionando-a-nova-pasta-no-tailwind/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-adicionando-a-nova-pasta-no-tailwind/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-adicionando-a-nova-pasta-no-tailwind/references/deep-explanation.md) — O Tailwind CSS usa um processo chamado **purging** (ou tree-shaking) para remover classes CSS nao ut
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-adicionando-a-nova-pasta-no-tailwind/references/code-examples.md) — // tailwind.config.js — config padrao do Next.js

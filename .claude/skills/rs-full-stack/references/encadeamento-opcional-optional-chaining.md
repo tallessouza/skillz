@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-encadeamento-opcional
 description: "Applies optional chaining patterns when accessing nested object properties or methods in JavaScript/TypeScript. Use when user asks to 'access nested property', 'handle undefined', 'navigate object safely', 'avoid cannot read property error', or any code dealing with optional/nullable object access. Ensures ?. operator is used instead of manual null checks. Make sure to use this skill whenever generating code that accesses nested objects with potentially missing properties. Not for nullish coalescing (??), type narrowing, or schema validation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-moderno
+  tags: [javascript, optional-chaining, null-safety, undefined, operadores]
 ---
 
 # Encadeamento Opcional (Optional Chaining)
@@ -83,13 +89,16 @@ user.message?.()
 | `try { user.address.street } catch(e) { }` | `user.address?.street` |
 | `user?.name` (quando user sempre existe) | `user.name` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeError: Cannot read properties of undefined | Acesso direto a propriedade que nao existe | Use ?. antes do acesso: user.address?.street |
+| Optional chaining retorna undefined inesperadamente | Propriedade intermediaria e null ou undefined | Combine com ?? para valor padrao: user.name ?? "Anonimo" |
+| ESLint reclama de optional chaining desnecessario | Usando ?. em propriedade que sempre existe | Remova ?. de propriedades garantidas pelo tipo |
+| Metodo nao executa com ?.()  | Metodo nao existe no objeto | Comportamento correto — ?.() nao executa se metodo nao existe |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-encadeamento-opcional-optional-chaining/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-encadeamento-opcional-optional-chaining/references/code-examples.md)

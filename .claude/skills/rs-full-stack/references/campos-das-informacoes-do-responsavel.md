@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-campos-info-responsavel
 description: "Applies HTML form validation patterns with CSS pseudo-classes when building forms with 'required' fields, ':invalid/:valid' styling, sibling selectors, and error messages. Use when user asks to 'create a form', 'add validation', 'style invalid inputs', 'show error messages', or 'build registration form'. Make sure to use this skill whenever generating forms with client-side validation using pure HTML/CSS. Not for JavaScript validation, backend validation, or React/framework form libraries."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, forms, validation, pseudo-classes, fieldset]
 ---
 
 # Validacao de Formularios com CSS Pseudo-classes
@@ -114,13 +120,17 @@ input:not(:focus):valid ~ .error {
 | `display: block` no `<small>` | `display: inline-block` para manter propriedades inline e permitir margin |
 | Validacao so com JavaScript | Pseudo-classes CSS primeiro, JS para casos avancados |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `:invalid` nao aplica estilo | Falta atributo `required` no input | Adicione `required` para ativar pseudo-classes de validacao |
+| Mensagem de erro aparece mesmo com campo valido | Seletor CSS sem `:not(:focus)` na regra `:valid` | Use `input:not(:focus):valid ~ .error { display: none }` |
+| Seletor `~` nao funciona | Elemento `.error` nao e irmao do input no DOM | Garanta que `.error` esta no mesmo nivel hierarquico que o input |
+| Borda de erro aparece ao carregar a pagina | Campo required vazio e invalido por padrao | Adicione `:not(:placeholder-shown)` ou use JS para validar apos interacao |
+| `<small>` nao aceita margin-top | Elemento inline por padrao | Adicione `display: inline-block` ao `<small>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre pseudo-classes, seletores de irmao e comportamento de validacao
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-campos-das-informacoes-do-responsavel/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-campos-das-informacoes-do-responsavel/references/code-examples.md)

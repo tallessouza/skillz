@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-corpo-requisicao-json-stream-buffers
+name: rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers
 description: "Enforces correct request body parsing using Node.js streams and Buffers in raw HTTP servers. Use when user asks to 'read request body', 'parse JSON body', 'create HTTP server', 'handle POST request in Node', or 'build API without Express'. Applies pattern: collect stream chunks into buffer, concatenate, toString, JSON.parse, attach to req.body with try/catch. Make sure to use this skill whenever building raw Node.js HTTP servers without frameworks. Not for Express/Fastify/Koa body parsing, file uploads, or multipart form data."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [streams, buffers, for-await, http-body, nodejs]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # Corpo da Requisicao em JSON (Stream & Buffers)
@@ -121,14 +128,14 @@ const server = http.createServer(async (req, res) => {
 | `body.name` antes do JSON.parse | Sempre parse primeiro, acesse propriedades depois |
 | Callback-based stream reading | `async/await` com `for await...of` |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-corpo-da-requisicao-em-json-stream-buffers/references/code-examples.md) — Todos os exemplos de código expandidos com variações

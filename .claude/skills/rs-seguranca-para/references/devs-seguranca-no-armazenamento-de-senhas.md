@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-armazenamento-senhas
 description: "Enforces secure password storage practices when implementing authentication, user registration, or login systems. Use when user asks to 'store passwords', 'hash passwords', 'implement login', 'create user registration', 'build auth system', or any task involving password persistence. Applies rules: never store plaintext, use Argon2/scrypt/bcrypt hierarchy, always use salt+pepper, use cryptographically secure random generators. Make sure to use this skill whenever writing code that touches password storage or verification, even if the user doesn't mention security. Not for JWT tokens, session management, API key generation, or OAuth flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, password, hashing, bcrypt, argon2]
 ---
 
 # Seguranca no Armazenamento de Senhas
@@ -107,14 +113,14 @@ def hash_password(password):
 | C# | `System.Random` | `System.Security.Cryptography.RandomNumberGenerator` |
 | Ruby | `rand()` | `SecureRandom` |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-no-armazenamento-de-senhas/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-seguranca-no-armazenamento-de-senhas/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-no-armazenamento-de-senhas/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-seguranca-no-armazenamento-de-senhas/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

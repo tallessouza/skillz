@@ -1,6 +1,12 @@
 ---
 name: rs-devops-alpine-docker-image
 description: "Applies Alpine base image optimization when building Docker images or writing Dockerfiles. Use when user asks to 'create a Dockerfile', 'optimize Docker image', 'reduce image size', 'build a container', or 'configure Docker'. Enforces Alpine variant selection, proper tagging, and cache-aware build practices. Make sure to use this skill whenever writing or reviewing Dockerfiles. Not for Docker Compose, orchestration, or Kubernetes configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: docker-images
+  tags: [docker, github-actions, ci-cd]
 ---
 
 # Alpine em Imagens Docker
@@ -81,14 +87,14 @@ FROM node:18-alpine3.19
 | Rebuildar sem alteracao real | Confie no cache do Docker |
 | Ignorar tamanho da imagem | Compare com `docker image ls` apos cada mudanca |
 
+## Troubleshooting
+
+### Build falha com erro de dependencia nativa no Alpine
+**Symptom:** npm install falha com erro de compilacao (gyp, node-pre-gyp)
+**Cause:** Alpine usa musl libc em vez de glibc, e algumas dependencias nativas precisam de pacotes extras
+**Fix:** Adicione `RUN apk add --no-cache python3 make g++` antes do `npm install` ou use a variante slim como fallback
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-adicionando-o-alpine-na-nossa-imagem/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-adicionando-o-alpine-na-nossa-imagem/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/devops/rs-devops-adicionando-o-alpine-na-nossa-imagem/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/devops/rs-devops-adicionando-o-alpine-na-nossa-imagem/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

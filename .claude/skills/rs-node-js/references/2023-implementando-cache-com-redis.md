@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-cache-redis
 description: "Applies Redis caching patterns when implementing cache repositories in NestJS applications. Use when user asks to 'add caching', 'implement Redis', 'create cache repository', 'setup Redis with NestJS', or 'configure cache layer'. Covers docker-compose setup, Redis repository implementation with expiration, and NestJS module wiring. Make sure to use this skill whenever adding cache infrastructure to a NestJS or Node.js project. Not for in-memory caching, HTTP cache headers, or CDN configuration."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: redis-cache
+  tags: [redis, cache, nestjs, docker, repository-pattern, clean-architecture]
 ---
 
 # Implementando Cache com Redis no NestJS
@@ -112,14 +118,14 @@ async getQuestion(slug: string) {
 | Esquecer `exports` no CacheModule | Exporte CacheRepository para outros modulos consumirem |
 | Usar `EnvService` onde deveria ser `RedisService` | Verifique o tipo correto no constructor |
 
+## Troubleshooting
+
+### Cache retorna dados desatualizados indefinidamente
+**Symptom:** Apos atualizar um recurso, a API continua retornando o valor antigo
+**Cause:** O cache foi criado sem tempo de expiracao (sem EX) e nao e invalidado apos mutacoes
+**Fix:** Sempre use EX no set (ex: 'EX', 60 * 15) e chame cache.delete(key) apos operacoes de escrita no recurso
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-implementando-cache-com-redis/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-implementando-cache-com-redis/references/code-examples.md)

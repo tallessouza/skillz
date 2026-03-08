@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-css-sniffer
 description: "Guards against CSS injection vulnerabilities when reviewing or writing front-end code. Use when user asks to 'review security', 'sanitize input', 'allow custom CSS', 'theme customization', 'user-provided styles', or any feature accepting CSS from users. Ensures CSS inputs are validated with same rigor as HTML/JavaScript. Make sure to use this skill whenever code accepts user-controlled CSS, style attributes, theme names, or color values. Not for general XSS prevention, SQL injection, or backend security."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: frontend-security
+  tags: [security, css-injection, data-exfiltration]
 ---
 
 # CSS Injection (CSS Sniffer)
@@ -98,14 +104,14 @@ app.post('/settings', (req, res) => {
 | Confiar que `input type="color"` envia apenas cores | O usuario troca o tipo no DevTools e envia CSS arbitrario |
 | Sanitizar apenas HTML e JS, ignorar CSS | CSS exfiltra dados via `url()` e seletores de atributo |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-css-sniffer/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-css-sniffer/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-css-sniffer/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-css-sniffer/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

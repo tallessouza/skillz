@@ -1,6 +1,12 @@
 ---
 name: rs-nextjs-app-router-criando-estrutura
 description: "Generates initial Next.js App Router project structure with font variables, Tailwind config, and ESLint setup. Use when user asks to 'create a Next.js project', 'setup Next.js app router', 'configure Next.js with Tailwind', 'start a new e-commerce project', or 'scaffold a Next.js app'. Make sure to use this skill whenever setting up a new Next.js 13+ project with App Router. Not for page creation, component building, API routes, or deploying existing projects."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: app-router-e-testes
+  tags: [next-js, app-router, project-setup, tailwind, eslint, fonts, css-variables]
 ---
 
 # Criando Estrutura do App Next.js (App Router)
@@ -138,14 +144,19 @@ Passar arquivo por arquivo salvando para aplicar auto-fix.
 | Deixar theme do Tailwind com configs padrao inuteis | Limpar theme, manter minimo necessario |
 | Manter README/SVGs/favicon padrao do Next | Remover tudo que nao pertence ao projeto |
 
+## Troubleshooting
+
+### Comportamento diferente entre dev e producao
+**Symptom:** Funcionalidade funciona em `npm run dev` mas nao em `npm run build && npm start`
+**Cause:** Dev mode e mais permissivo — producao aplica otimizacoes, cache agressivo, e validacoes mais estritas
+**Fix:** Sempre testar com `npm run build && npm start` antes de deploy. Verificar que nao ha erros no build output. Limpar .next antes de rebuildar
+
+### Erro "Module not found" apos refatoracao
+**Symptom:** Import de modulo falha apos mover arquivo
+**Cause:** Path do import nao foi atualizado, ou alias de path (@/) nao esta configurado
+**Fix:** Atualizar todos os imports que referenciam o arquivo movido. Verificar tsconfig.json paths para aliases
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-estrutura-do-app/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-app-router-e-testes-criando-estrutura-do-app/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-estrutura-do-app/references/deep-explanation.md) — O instrutor explica que o padrao do `create-next-app` aplica a fonte Inter diretamente no className 
+- [code-examples.md](../../../data/skills/next-js-app-router-e-testes/rs-next-js-app-router-e-testes-criando-estrutura-do-app/references/code-examples.md) — // src/app/layout.tsx

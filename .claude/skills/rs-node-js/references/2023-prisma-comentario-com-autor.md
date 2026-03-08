@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-prisma-comment-with-author
 description: "Applies the shared mapper pattern when Prisma queries use include/eager loading to return related data. Use when user asks to 'return comments with author', 'include related data', 'create a mapper for relationships', 'eager loading in Prisma', or 'map Prisma includes to domain entities'. Ensures correct typing with intersection types and reusable mappers across similar entities. Make sure to use this skill whenever mapping Prisma results that include relationships to domain value objects. Not for basic Prisma CRUD without relationships, nor for schema/migration changes."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: prisma-relationship-mapper
+  tags: [prisma, mapper, include, eager-loading, intersection-types, relationships, value-object]
 ---
 
 # Prisma Mapper para Relacionamentos (Comment With Author)
@@ -129,14 +135,14 @@ async findManyByQuestionIdWithAuthor(questionId: string) {
 | Fazer query separada para buscar o autor | Usar `include: { author: true }` no findMany |
 | Retornar `Comment` quando precisa do autor | Retornar `CommentWithAuthor` (value object de dominio) |
 
+## Troubleshooting
+
+### TypeScript erro "Property 'author' does not exist on type 'Comment'"
+**Symptom:** O mapper recebe `raw` mas TypeScript reclama que `raw.author` nao existe
+**Cause:** O tipo do parametro nao inclui a intersecao com o relacionamento — esta usando `PrismaComment` puro em vez de `PrismaComment & { author: PrismaUser }`
+**Fix:** Crie um type alias com intersecao: `type PrismaCommentWithAuthor = PrismaComment & { author: PrismaUser }` e use como tipo do parametro `raw`
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-prisma-comentario-com-autor/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-prisma-comentario-com-autor/references/code-examples.md)

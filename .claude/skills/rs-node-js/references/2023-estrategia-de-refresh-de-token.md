@@ -1,6 +1,15 @@
 ---
-name: rs-node-js-2023-refresh-token
-description: "Applies JWT refresh token strategy with HttpOnly cookies when implementing authentication in Node.js/Fastify applications. Use when user asks to 'implement refresh token', 'add token renewal', 'keep user logged in', 'implement JWT authentication', or 'configure cookies for auth'. Covers token expiration, cookie security options, and Fastify JWT cookie integration. Make sure to use this skill whenever implementing authentication flows that need persistent sessions. Not for session-based auth, OAuth flows, or frontend cookie handling."
+name: 2023-estrategia-de-refresh-de-token
+description: "Implements JWT refresh token strategy with short-lived access tokens in response body and long-lived refresh tokens in HttpOnly cookies using Fastify JWT and @fastify/cookie. Use when user asks to 'implement refresh token', 'set up JWT with cookies', 'configure token rotation', or 'add persistent authentication'. Make sure to use this skill whenever implementing authentication that needs to persist user sessions beyond a single access token lifetime in Fastify. Not for session-based auth, OAuth2 flows, or non-Fastify frameworks."
+category: coding-lens
+tags: [cookies, fastify, jwt, refresh-token, typescript]
+mind_lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: autenticacao-jwt
+  tags: [jwt, refresh-token, cookies, httpOnly, fastify, authentication, security]
 ---
 
 # Estrategia de Refresh Token com JWT
@@ -120,14 +129,14 @@ return reply
 | Cookie sem `sameSite` | Sempre `sameSite: true` para prevenir CSRF |
 | `signed: true` sem configurar secret do cookie | `signed: false` ou configurar cookie secret separadamente |
 
+## Troubleshooting
+
+### Refresh token nao e enviado nas requisicoes subsequentes
+**Symptom:** Cookie `refreshToken` aparece no response mas nao e reenviado pelo frontend nas proximas requisicoes
+**Cause:** Frontend nao esta configurado com `withCredentials: true` (Axios) ou `credentials: 'include'` (fetch), e/ou o CORS do servidor nao tem `credentials: true`
+**Fix:** Configure `withCredentials: true` no cliente e `credentials: true` no CORS do servidor Fastify
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-estrategia-de-refresh-de-token/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-estrategia-de-refresh-de-token/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

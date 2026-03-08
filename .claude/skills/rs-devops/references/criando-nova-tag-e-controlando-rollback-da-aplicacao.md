@@ -1,6 +1,12 @@
 ---
 name: rs-devops-k8s-tag-rollback
 description: "Enforces Kubernetes tag immutability and rollback best practices when working with container deployments. Use when user asks to 'deploy to kubernetes', 'rollback deployment', 'manage k8s tags', 'fix deployment version', or 'undo kubernetes deploy'. Applies rules: never overwrite tags, use imagePullPolicy IfNotPresent, always sync imperative rollbacks to declarative manifests. Make sure to use this skill whenever managing Kubernetes deployments or container image versioning. Not for Docker image building, CI/CD pipeline setup, or Helm chart authoring."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-deployments
+  tags: [kubernetes, rollback, tag, immutability, deployment, imagePullPolicy]
 ---
 
 # Tag Imutável e Rollback no Kubernetes
@@ -85,14 +91,14 @@ git commit -m "fix: rollback to v1 due to issue in v2"
 | Rebuildar `v1` com código novo | Criar `v2` com o código novo |
 | Rollback e não avisar a equipe | Rollback + commit + comunicação |
 
+## Troubleshooting
+
+### Rollback imperativo foi sobrescrito pelo proximo kubectl apply
+**Symptom:** Apos fazer `kubectl rollout undo`, a versao problematica voltou ao proximo `kubectl apply`.
+**Cause:** O manifesto YAML declarativo nao foi atualizado apos o rollback imperativo, e o apply restaurou a versao antiga do YAML.
+**Fix:** Imediatamente apos um `kubectl rollout undo`, atualize o manifesto YAML com a tag correta e faca commit da mudanca.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-nova-tag-e-controlando-rollback-da-aplicacao/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-nova-tag-e-controlando-rollback-da-aplicacao/references/code-examples.md)

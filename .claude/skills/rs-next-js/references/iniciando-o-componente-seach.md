@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-iniciando-o-componente-seach
 description: "Applies Next.js Pages Router search component patterns when building search inputs, URL-driven filtering, or query parameter handling. Use when user asks to 'create a search component', 'add search to a page', 'sync input with URL', 'use router.push with query params', or 'handle search input in Next.js'. Enforces stateless URL-driven approach over useState, proper encodeURIComponent usage, and cn() for conditional Tailwind classes. Make sure to use this skill whenever building search or filter inputs in Next.js Pages Router. Not for App Router, server components, or API route search logic."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: componentes-ui
+  tags: [search, url-state, router-push, query-params, pages-router, next-js, cn-utility]
 ---
 
 # Search Component com Next.js Pages Router
@@ -116,14 +122,19 @@ function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
 | Template literal com ternario pra classes | `cn('classes-default', condition && 'classes-condicionais')` |
 | `className={query ? 'text-blue-300' : 'text-gray-300'}` | `cn('text-gray-300', query && 'text-blue-300')` |
 
+## Troubleshooting
+
+### Erro ao usar hooks em Server Component
+**Symptom:** Erro "useState/useEffect is not a function" ou "Hooks can only be called inside a Client Component"
+**Cause:** Tentativa de usar hooks React (useState, useEffect, useSession) em um componente sem a diretiva "use client"
+**Fix:** Adicionar `"use client"` no topo do arquivo OU extrair a parte interativa para um componente-folha separado com "use client"
+
+### Server Component nao consegue ser async apos adicionar "use client"
+**Symptom:** Erro ao usar `async function Component()` com `"use client"`
+**Cause:** Client Components nao suportam async/await — essa e uma restricao fundamental do React
+**Fix:** Remover "use client" e usar async/await direto (Server Component), ou manter "use client" e buscar dados via hooks (useEffect, React Query)
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-seach/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-seach/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-seach/references/deep-explanation.md) — O instrutor mostra duas abordagens deliberadamente. A primeira usa `useState` + `useEffect` para sin
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-iniciando-o-componente-seach/references/code-examples.md) — import { useRouter } from 'next/router'

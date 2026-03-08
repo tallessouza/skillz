@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-adicionando-o-rodape
 description: "Applies HTML footer structure and SVG icon alignment techniques when building page footers or aligning inline images with text. Use when user asks to 'create a footer', 'add a footer', 'align an icon with text', 'use vertical-align', or 'add SVG icons'. Covers footer semantics, SVG format benefits, vertical-align property, and why flexbox replaces it professionally. Make sure to use this skill whenever creating footers or aligning inline icons with text. Not for complex layouts, navigation bars, or flexbox-based implementations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, footer, svg, vertical-align, semantic, accessibility]
 ---
 
 # Footer com Alinhamento de Icones SVG
@@ -96,13 +102,16 @@ footer img {
 | `margin-bottom` no footer | `padding-bottom` no footer |
 | Ignorar alinhamento vertical do icone | `vertical-align: middle` ou flexbox |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Icone desalinhado com texto | Faltou `vertical-align: middle` na imagem | Adicione `vertical-align: middle` no CSS da imagem do footer |
+| SVG nao carrega | Caminho do `src` incorreto | Verifique o caminho relativo para o arquivo `.svg` |
+| Footer nao centralizado | Faltou `text-align: center` | Adicione `text-align: center` no CSS do footer |
+| Imagem sem descricao acessivel | Atributo `alt` ausente na tag `<img>` | Adicione `alt="descricao"` na imagem |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre SVG vs raster, vertical-align vs flexbox, e anatomia do footer
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-o-rodape/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-o-rodape/references/code-examples.md)

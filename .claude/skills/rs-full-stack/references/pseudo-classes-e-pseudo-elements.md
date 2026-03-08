@@ -1,6 +1,17 @@
 ---
 name: rs-full-stack-pseudo-classes-e-pseudo-elements
 description: "Applies CSS pseudo-classes and pseudo-elements correctly when writing styles. Use when user asks to 'style a component', 'add hover effect', 'create CSS', 'select elements', or 'add decorative elements'. Covers :hover, :not(), :has(), :nth-child(), ::before, ::after, ::first-letter, and :root. Make sure to use this skill whenever generating CSS that involves element states, structural selection, or generated content. Not for JavaScript event handling, CSS-in-JS runtime logic, or animation keyframes."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: css-selectors
+  tags:
+    - css
+    - pseudo-classes
+    - pseudo-elements
+    - selectors
+    - hover
 ---
 
 # Pseudo-classes e Pseudo-elements CSS
@@ -124,6 +135,14 @@ div::before { content: ""; display: block; width: 100%; height: 2px; background:
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
+
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `::before` ou `::after` nao aparece | Faltou `content` property | Adicione `content: ""` mesmo que vazio |
+| `:nth-child(2)` seleciona elemento errado | nth-child conta TODOS os filhos, nao apenas os do tipo | Verifique a posicao real no DOM ou use `:nth-of-type()` |
+| `:has()` nao funciona | Navegador antigo sem suporte | Verifique compatibilidade — `:has()` requer browsers modernos (2023+) |
 
 ---
 

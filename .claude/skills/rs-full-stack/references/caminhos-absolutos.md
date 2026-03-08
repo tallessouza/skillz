@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-caminhos-absolutos
 description: "Enforces correct absolute path usage in HTML links and resource references. Use when user asks to 'add a link', 'reference external site', 'create anchor tag', 'fix broken link', or any HTML href task. Applies rules: always include protocol (http/https), understand file:// vs http:// context, use full URLs for external resources. Make sure to use this skill whenever generating HTML links to external resources. Not for relative paths, file organization, or CSS/JS imports."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, paths, absolute-path, url, protocol, href]
 ---
 
 # Caminhos Absolutos em HTML
@@ -68,13 +74,16 @@ description: "Enforces correct absolute path usage in HTML links and resource re
 | `<a href="www.google.com">` | `<a href="https://www.google.com">` |
 | `<a href="/index.html">` (esperando site externo) | `<a href="https://site.com/index.html">` |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Link externo abre pagina de erro local | Falta `https://` no href | Adicione protocolo completo: `https://dominio.com` |
+| `href="www.site.com"` nao funciona | Navegador interpreta como caminho relativo | Use `https://www.site.com` |
+| Link com `/` aponta para raiz do SO | Arquivo aberto via `file://` | Use caminho relativo ou sirva via servidor HTTP |
+| Recurso externo nao carrega (mixed content) | Pagina HTTPS tentando carregar recurso HTTP | Use `https://` para todos os recursos externos |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre protocolos, file:// vs http://, e como o navegador resolve URLs
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-caminhos-absolutos/references/code-examples.md)

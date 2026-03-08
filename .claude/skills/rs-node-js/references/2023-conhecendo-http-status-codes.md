@@ -1,6 +1,13 @@
 ---
-name: rs-node-js-2023-http-status-codes
+name: rs-node-js-2023-conhecendo-http-status-codes
 description: "Enforces correct HTTP status code usage when building Node.js APIs or any backend route handler. Use when user asks to 'create an endpoint', 'return a response', 'handle errors in API', 'build a REST route', or 'set status code'. Applies semantic status codes: 201 for creation, 204 for no-content, 400 for client errors, 404 for not found, 500 for server errors. Make sure to use this skill whenever generating API route handlers or response logic. Not for frontend code, database queries, or authentication flows."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: node-js-2023
+  module: fundamentos-nodejs
+  tags: [http, status-codes, rest-api, semantics]
+  mind-lenses: [LT_01, LT_02, MF_01, GB_01, TH_04]
 ---
 
 # HTTP Status Codes
@@ -100,14 +107,14 @@ return res.writeHead(404).end()  // 404 Not Found
 | Texto generico sem status code | Status code semantico + body opcional |
 | 200 como fallback para rotas inexistentes | 404 no fallback |
 
+## Troubleshooting
+
+### Erro inesperado ao seguir este padrao
+**Symptom:** Codigo segue o padrao mas comportamento nao e o esperado
+**Cause:** Dependencia nao registrada no modulo ou configuracao incompleta
+**Fix:** Verificar registro completo no modulo (controllers, providers, imports) e dependencias instaladas
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-conhecendo-http-status-codes/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-conhecendo-http-status-codes/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/node-js-2023/rs-node-js-2023-conhecendo-http-status-codes/references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/node-js-2023/rs-node-js-2023-conhecendo-http-status-codes/references/code-examples.md) — Todos os exemplos de código expandidos com variações

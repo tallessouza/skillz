@@ -1,6 +1,12 @@
 ---
 name: rs-next-js-utilizando-o-revalidate-path
 description: "Applies Next.js revalidatePath pattern after server action mutations to auto-refresh page data. Use when user asks to 'create a server action', 'save data and update UI', 'revalidate cache', 'refresh page after mutation', or 'close dialog after submit'. Ensures stale data never shows after create/update/delete operations. Make sure to use this skill whenever writing Next.js server actions that mutate data. Not for client-side fetching, SWR, React Query, or static page generation."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: next-js
+  module: server-actions
+  tags: [revalidatePath, server-actions, cache, mutation, next-js, dialog, form-reset]
 ---
 
 # RevalidatePath em Server Actions
@@ -112,14 +118,19 @@ const [isOpen, setIsOpen] = useState(false)
 | `revalidatePath` antes da mutacao | `revalidatePath` depois do `prisma.create/update/delete` |
 | Esquecer `form.reset()` apos fechar | `setIsOpen(false)` seguido de `form.reset()` |
 
+## Troubleshooting
+
+### Dados cacheados nao atualizam apos mutacao
+**Symptom:** Apos criar/editar/deletar, a listagem mostra dados antigos
+**Cause:** Cache do Next.js serve a versao antiga da pagina
+**Fix:** Usar `revalidatePath('/caminho')` ou `revalidateTag('tag')` na server action apos a mutacao. Verificar que o path passado corresponde exatamente a rota da listagem
+
+### fetch retorna dados stale em producao
+**Symptom:** Dados frescos em desenvolvimento mas desatualizados em producao
+**Cause:** Em producao, Next.js aplica cache agressivo por padrao em fetch requests
+**Fix:** Adicionar `{ cache: 'no-store' }` ao fetch para desabilitar cache, ou usar `{ next: { revalidate: N } }` para ISR
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/next-js/rs-next-js-utilizando-o-revalidate-path/references/deep-explanation.md)
-- [Code examples](../../../data/skills/next-js/rs-next-js-utilizando-o-revalidate-path/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/next-js/rs-next-js-utilizando-o-revalidate-path/references/deep-explanation.md) — Quando voce chama `revalidatePath("/")`, esta dizendo ao Next.js: "os dados dessa rota mudaram, por
+- [code-examples.md](../../../data/skills/next-js/rs-next-js-utilizando-o-revalidate-path/references/code-examples.md) — Baseado diretamente no codigo da aula (pet shop scheduling):

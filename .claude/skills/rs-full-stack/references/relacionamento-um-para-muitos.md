@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-relacionamento-um-para-muitos
 description: "Applies one-to-many relationship patterns when designing SQL database schemas. Use when user asks to 'create a table', 'add a foreign key', 'model a relationship', 'design a schema with modules/items/children', or any database modeling task involving parent-child entities. Enforces correct foreign key typing, no UNIQUE on the many-side, and proper REFERENCES syntax. Make sure to use this skill whenever creating tables that reference other tables in a 1:N pattern. Not for one-to-one relationships, many-to-many junction tables, or application-level ORM configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-relationships
+  tags: [sql, one-to-many, foreign-key, database-design, schema]
 ---
 
 # Relacionamento Um para Muitos (1:N)
@@ -79,6 +85,15 @@ CREATE TABLE course_modules (
 | `FOREIGN KEY (id) REFERENCES courses(id)` | `FOREIGN KEY (course_id) REFERENCES courses(id)` |
 | FK com tipo diferente da PK (`TEXT` vs `INTEGER`) | Mesmo tipo da PK referenciada |
 | Sem FOREIGN KEY explícita (confiando só na app) | `FOREIGN KEY (col) REFERENCES tabela(pk)` sempre |
+
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| FK com UNIQUE transformou relacao em 1:1 | Constraint UNIQUE na coluna FK do lado "muitos" | Remova UNIQUE da FK na tabela filha |
+| Erro de tipo ao criar FK | Tipo da FK diferente do tipo da PK referenciada | Use o mesmo tipo (INTEGER, TEXT, etc.) em ambas |
+| INSERT falha com FK violation | Registro pai nao existe | Verifique se o ID pai existe antes do INSERT |
+| Filho orfao apos deletar pai | Sem ON DELETE CASCADE | Adicione `ON DELETE CASCADE` ou delete filhos primeiro |
 
 ## Deep reference library
 

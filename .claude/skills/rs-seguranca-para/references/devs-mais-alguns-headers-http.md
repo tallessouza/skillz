@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-headers-http
 description: "Enforces secure HTTP header configuration when setting up web servers, configuring security headers, or reviewing application security. Use when user asks to 'configure headers', 'secure my server', 'set up HSTS', 'hide server info', 'configure referrer policy', or any server/security hardening task. Applies Referrer-Policy, Strict-Transport-Security, and server information hiding rules. Make sure to use this skill whenever configuring web servers or reviewing HTTP response headers. Not for application-level authentication, cookies, sessions, or CORS configuration."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: http-security
+  tags: [security]
 ---
 
 # Headers HTTP de Seguranca
@@ -88,14 +94,14 @@ Referrer-Policy: strict-origin-when-cross-origin
 | Deixar `X-Powered-By` visivel | Remover o header completamente |
 | Ignorar headers de identificacao | Auditar e remover todos os headers informativos |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-mais-alguns-headers-http/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-mais-alguns-headers-http/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-mais-alguns-headers-http/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-mais-alguns-headers-http/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

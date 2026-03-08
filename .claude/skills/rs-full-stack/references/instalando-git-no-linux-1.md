@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-instalando-git-linux
-description: "Guides Git installation and initial configuration on Linux (Ubuntu/Debian). Use when user asks to 'install git', 'setup git on linux', 'configure git', 'git config username email', or 'prepare git for github'. Covers apt-get install, version verification, and global user config. Make sure to use this skill whenever setting up a new Linux development environment with Git. Not for Git workflow commands (commit, push, branch), Windows/macOS installation, or GitHub account creation."
+description: "Configures Git installation and initial setup on Linux (Ubuntu/Debian) with global user identity. Use when user asks to 'install git', 'setup git on linux', 'configure git', 'git config username email', or 'prepare git for github'. Covers apt-get install, version verification, and global user config. Make sure to use this skill whenever setting up a new Linux development environment with Git. Not for Git workflow commands (commit, push, branch), Windows/macOS installation, or GitHub account creation."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: git-linux
+  tags: [git, linux, ubuntu, configuration, terminal]
 ---
 
 # Instalando e Configurando Git no Linux
@@ -68,13 +74,16 @@ git --version && git config user.name && git config user.email
 
 Os tres comandos devem retornar valores validos.
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `apt-get` nao encontra pacote git | Lista de pacotes desatualizada | Executar `sudo apt-get update` antes de instalar |
+| `git --version` retorna erro | PATH nao inclui `/usr/bin/` | Verificar PATH com `echo $PATH` e adicionar se necessario |
+| Distro nao e Debian/Ubuntu | Comando de instalacao diferente | Consultar documentacao oficial em git-scm.com/download/linux |
+| Commits nao vinculam ao perfil GitHub | Email diferente do cadastrado no GitHub | Corrigir com `git config --global user.email` usando email do GitHub |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre por que configurar email e critico
 - [code-examples.md](references/code-examples.md) — Comandos para todas as distros e cenarios alternativos
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-linux-1/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-instalando-git-no-linux-1/references/code-examples.md)

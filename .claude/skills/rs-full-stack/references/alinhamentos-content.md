@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-alinhamentos-content
 description: "Applies CSS Grid content alignment properties (align-content, justify-content, place-content) when building grid layouts. Use when user asks to 'center a grid', 'align grid items', 'distribute space in grid', 'create a grid layout', or 'use place-content'. Make sure to use this skill whenever generating CSS Grid code that needs content distribution or alignment. Not for flexbox alignment, individual item alignment (align-self/justify-self), or grid-template definitions."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [css, grid, align-content, justify-content, layout]
 ---
 
 # Alinhamentos de Content no CSS Grid
@@ -106,13 +112,16 @@ description: "Applies CSS Grid content alignment properties (align-content, just
 | `space-around` | Espaco ao redor de cada grupo |
 | `space-evenly` | Espaco perfeitamente uniforme |
 
+## Troubleshooting
+
+| Problema | Causa provável | Solução |
+|----------|---------------|---------|
+| `place-content: center` não faz nada | Grid usa `1fr` que preenche todo o espaço | Troque para tamanhos fixos ou `auto` para criar espaço sobrando |
+| Itens não se distribuem com `space-between` | Grid sem altura/largura definida no container | Adicione `height: 100vh` ou dimensão explícita no container |
+| Só um eixo centraliza | Usou `align-content` ou `justify-content` isolado | Use `place-content: center` para centralizar ambos os eixos |
+| Grid centralizado mas itens desalinhados internamente | Confusão entre content e items | Use `place-items` para alinhar itens dentro das células |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre eixos, quando content alignment tem efeito, e analogias visuais
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-alinhamentos-content/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-alinhamentos-content/references/code-examples.md)

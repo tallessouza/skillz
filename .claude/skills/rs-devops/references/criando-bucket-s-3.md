@@ -1,6 +1,12 @@
 ---
 name: rs-devops-criando-bucket-s-3
 description: "Applies Terraform S3 bucket creation patterns for remote state storage when user asks to 'create s3 bucket', 'configure terraform state', 'setup remote backend', 'store tfstate in s3', or 'terraform backend s3'. Enforces versioning, lifecycle protection, and tagging best practices for state buckets. Make sure to use this skill whenever creating S3 buckets for Terraform state via IaC. Not for general S3 usage, application storage buckets, or non-Terraform state management."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: terraform-remote-state
+  tags: [terraform, s3, aws, remote-state, versioning, lifecycle, iac]
 ---
 
 # Criando Bucket S3 para Terraform State
@@ -110,14 +116,14 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 | Bucket sem tags | No minimo `IAC = "true"` |
 | Configurar backend antes de criar bucket | Criar bucket → apply → depois configurar backend |
 
+## Troubleshooting
+
+### Erro 404 ao configurar backend S3
+**Symptom:** `terraform init` falha com erro 404 ou "bucket does not exist" ao configurar backend remoto.
+**Cause:** O bucket S3 precisa existir antes de configurar o backend. O backend nao cria o bucket automaticamente.
+**Fix:** Crie o bucket primeiro com `terraform apply` usando state local, depois adicione o bloco `backend "s3"` e rode `terraform init` para migrar o state.
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-criando-bucket-s-3/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-criando-bucket-s-3/references/code-examples.md)

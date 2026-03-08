@@ -1,13 +1,19 @@
 ---
 name: rs-full-stack-o-que-e-depurar-o-codigo
 description: "Applies debugging mental model and breakpoint strategy when user asks to 'debug', 'find a bug', 'fix an error', 'inspect variables', 'add breakpoint', or 'step through code'. Guides systematic root-cause analysis using breakpoints and variable inspection. Make sure to use this skill whenever the user reports unexpected behavior or wants to understand code execution flow. Not for writing tests, logging strategies, or error handling patterns."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos-javascript
+  tags: [debug, breakpoint, depuracao, devtools, beginner]
 ---
 
 # Depuracao de Codigo (Debug)
 
 > Depurar e encontrar a raiz do problema etapa por etapa, nunca adivinhar.
 
-## Key concept
+## Key concepts
 
 Depuracao (debug) e o processo sistematico de encontrar e corrigir erros (bugs). O principio fundamental: quando o projeto tem comportamento inesperado, nao tente adivinhar a causa — percorra a execucao etapa por etapa ate chegar na raiz do problema. Breakpoints sao o instrumento principal: pausam a execucao numa linha especifica, dando controle para avancar passo a passo enquanto inspeciona variaveis e fluxos.
 
@@ -29,6 +35,19 @@ Breakpoints transformam a execucao do programa num video com controle remoto. Vo
 ### Etapa por etapa, nao salto
 
 O erro quase nunca esta onde voce acha que esta. A disciplina de percorrer etapa por etapa revela o ponto exato onde o comportamento diverge do esperado. Pular etapas e voltar a adivinhar.
+
+### Exemplo de breakpoint com debugger
+
+```javascript
+function calculateTotal(items) {
+  let total = 0
+  for (const item of items) {
+    debugger // Breakpoint: inspecione item e total aqui
+    total += item.price * item.quantity
+  }
+  return total
+}
+```
 
 ## Conceitos-chave
 
@@ -60,13 +79,16 @@ O erro quase nunca esta onde voce acha que esta. A disciplina de percorrer etapa
 - Em producao, breakpoints nao sao viaveis — use logging estruturado
 - Performance: debugger ativo pode mascarar bugs de timing/race condition
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Breakpoint nao pausa a execucao | Arquivo errado ou linha nao executada | Verifique se o breakpoint esta no arquivo correto e na linha que realmente executa |
+| Variavel aparece como `undefined` no debugger | Variavel ainda nao foi inicializada naquele ponto | Mova o breakpoint para depois da atribuicao da variavel |
+| Step over pula a funcao inteira | Step over executa a funcao sem entrar nela | Use Step into para entrar dentro da funcao |
+| Debugger nao conecta ao navegador | DevTools nao esta aberto ou porta errada | Abra DevTools (F12) antes de iniciar o debug |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Exemplos praticos de breakpoints e inspecao
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-o-que-e-depurar-o-codigo/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-o-que-e-depurar-o-codigo/references/code-examples.md)

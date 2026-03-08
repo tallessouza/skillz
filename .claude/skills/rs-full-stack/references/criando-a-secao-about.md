@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-criando-a-secao-about
 description: "Enforces patterns for building responsive HTML/CSS sections with mobile-first approach. Use when user asks to 'create a section', 'build an about page', 'add responsive layout', 'structure HTML sections', or 'hide elements on mobile/desktop'. Applies rules: semantic heading hierarchy, mobile-first visibility classes, background images with cover, CSS resets for images, even-columns layout. Make sure to use this skill whenever building landing page sections or responsive layouts. Not for JavaScript logic, backend code, or React components."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: html-css-responsive
+  tags: [html, css, responsive, mobile-first, sections, layout]
 ---
 
 # Criando Secoes Responsivas (About Section)
@@ -143,13 +149,15 @@ header p {
 | Arquivo CSS unico para uma section minima | `sections.css` compartilhado entre secoes |
 | Duplicar media queries por elemento | Agrupar regras do mesmo breakpoint |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| Imagem vaza para fora do container | Falta reset global `img { max-width: 100% }` | Adicione `img { max-width: 100%; display: inline-block }` no CSS global |
+| Elemento `.desktop-only` aparece no mobile | Media query nao aplicada ou breakpoint errado | Verifique que `display: none` esta no estilo padrao e `display: block` no `@media (min-width: 80em)` |
+| Ancora `href="#about"` nao rola ate a secao | Section nao tem o `id` correspondente | Adicione `id="about"` na tag `<section>` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre hierarquia HTML, ancoras e organizacao CSS
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-secao-about/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-secao-about/references/code-examples.md)

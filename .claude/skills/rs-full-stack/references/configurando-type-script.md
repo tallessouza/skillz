@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-configurando-type-script
 description: "Generates tsconfig.json configuration for Node.js TypeScript projects. Use when user asks to 'setup typescript', 'configure tsconfig', 'create tsconfig.json', 'init typescript project', or 'add typescript to node project'. Applies ES2022 target, Node16 modules, strict mode, and skipLibCheck. Make sure to use this skill whenever setting up a new TypeScript backend project. Not for frontend/React tsconfig, Deno, or Bun configurations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: typescript-setup
+  tags: [typescript, tsconfig, es2022, node16, strict-mode, skipLibCheck]
 ---
 
 # Configurando TypeScript (tsconfig.json)
@@ -69,13 +75,16 @@ Arquivo `tsconfig.json` na raiz do projeto com as compilerOptions acima.
 | `"strict": false` | `"strict": true` porque pega bugs em tempo de compilacao |
 | Omitir `skipLibCheck` | `"skipLibCheck": true` porque types de terceiros podem ter conflitos |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| TypeScript nao instalado | Dependencia ausente | `npm install -D typescript` |
+| Aplicacao quebra apos adicionar tsconfig | Configuracao incompativel com codigo existente | Verificar se `target` e `module` estao alinhados com o runtime |
+| Erros de tipo em bibliotecas de terceiros | `skipLibCheck` desabilitado | Adicionar `"skipLibCheck": true` |
+| Import de modulos CJS falha com sintaxe default | `esModuleInterop` desabilitado | Adicionar `"esModuleInterop": true` |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre cada opcao do tsconfig
 - [code-examples.md](references/code-examples.md) — Variacoes de tsconfig para diferentes cenarios
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-configurando-type-script/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-configurando-type-script/references/code-examples.md)

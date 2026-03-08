@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-git-pull-push
 description: "Enforces correct git pull/push workflow when syncing local and remote repositories. Use when user asks to 'push code', 'pull changes', 'sync with remote', 'update from origin', or 'send changes to GitHub'. Applies rule: always pull before push to avoid conflicts. Make sure to use this skill whenever advising on git remote operations or writing git scripts. Not for local-only git operations like commit, branch, or stash."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [git, pull, push, remote, sync, conflict-resolution]
 ---
 
 # Git Pull e Push — Sincronização com Repositório Remoto
@@ -76,13 +82,17 @@ git push origin main   # depois envia
 | Ignorar mensagem de CONFLICT | Abrir arquivos, resolver marcadores `<<<<<<<` |
 | Push direto na main sem verificar | `git pull origin main` primeiro |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| `rejected - non-fast-forward` no push | Remoto tem commits que o local nao tem | Execute `git pull origin main` antes do push |
+| Marcadores `<<<<<<<` nos arquivos apos pull | Conflito de merge detectado | Edite os arquivos, resolva manualmente, `git add .` e `git commit` |
+| `fatal: refusing to merge unrelated histories` | Repos local e remoto nao compartilham historico | `git pull origin main --allow-unrelated-histories` |
+| Push funciona mas arquivos nao aparecem no GitHub | Push feito em branch diferente da visualizada | Verifique a branch ativa no GitHub |
+| `git pull` sobrescreveu mudancas locais | Mudancas nao commitadas antes do pull | Sempre commite ou `git stash` antes de pull |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo sobre fluxo remoto/local e gestão de conflitos
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de sincronização com variações
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-comandos-para-atualizar-e-enviar-atualizacoes-entre-repositorios-remoto-e-local/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-comandos-para-atualizar-e-enviar-atualizacoes-entre-repositorios-remoto-e-local/references/code-examples.md)

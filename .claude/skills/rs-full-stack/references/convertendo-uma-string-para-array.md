@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-string-para-array
 description: "Applies string-to-array conversion patterns when writing JavaScript code. Use when user asks to 'split a string', 'convert string to array', 'separate words', 'split text', or 'get letters from string'. Covers split() for delimiter-based splitting and Array.from() for character-level decomposition. Make sure to use this skill whenever manipulating strings into arrays in JS. Not for array-to-string conversion, regex parsing, or JSON parsing."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: javascript-fundamentals
+  tags: [javascript, string, array, split, Array.from, conversion]
 ---
 
 # Convertendo String para Array
@@ -66,13 +72,15 @@ const nameLetters = Array.from(fullName)
 | `const res = Array.from(s)` | `const characters = Array.from(name)` |
 | `str.split('')` para caracteres | `Array.from(str)` (mais semantico e seguro com unicode) |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `split('')` retorna caracteres errados com emojis | `split('')` quebra surrogate pairs em dois elementos | Use `Array.from(str)` que respeita Unicode |
+| `split(' ')` retorna array com 1 elemento | String nao contem espacos ou usa espaco non-breaking | Verifique o caractere separador com `charCodeAt()` |
+| Array resultante contem strings vazias | Delimitadores consecutivos geram elementos vazios | Filtre com `.filter(Boolean)` apos o split |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-convertendo-uma-string-para-array/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-convertendo-uma-string-para-array/references/code-examples.md)

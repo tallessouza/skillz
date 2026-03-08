@@ -1,6 +1,12 @@
 ---
 name: rs-devops-explorando-a-escala-horizontal
 description: "Applies Kubernetes horizontal scaling patterns when designing pod autoscaling, HPA configuration, or replica strategies. Use when user asks to 'scale pods', 'configure HPA', 'add autoscaling', 'handle more traffic', or 'replicate application'. Covers HPA resource-based scaling, KEDA event-driven scaling, redundancy planning, and stateful caveats. Make sure to use this skill whenever designing Kubernetes workload scaling strategies. Not for vertical scaling (VPA), node-level autoscaling (Cluster Autoscaler), or non-Kubernetes infrastructure."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: devops
+  module: kubernetes-scaling
+  tags: [kubernetes, hpa, horizontal-scaling, autoscaling, keda, replicas, load-balancing]
 ---
 
 # Escala Horizontal no Kubernetes
@@ -117,14 +123,14 @@ spec:
 | Replicar pods stateful sem avaliar consistencia | Use StatefulSet e avalie estrategia de dados distribuidos |
 | Assumir que escalar pods resolve tudo | Verifique se os nos comportam os pods — pode precisar de Cluster Autoscaler |
 
+## Troubleshooting
+
+### HPA escala mas novos pods ficam em Pending
+**Symptom:** HPA aumenta replicas mas pods novos nao saem do status Pending
+**Cause:** Nos do cluster nao tem recursos suficientes para agendar novos pods — falta de CPU ou memoria nos nodes
+**Fix:** Habilite Cluster Autoscaler para adicionar nos automaticamente ou aumente o node pool manualmente
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/devops/rs-devops-explorando-a-escala-horizontal/references/deep-explanation.md)
-- [Code examples](../../../data/skills/devops/rs-devops-explorando-a-escala-horizontal/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

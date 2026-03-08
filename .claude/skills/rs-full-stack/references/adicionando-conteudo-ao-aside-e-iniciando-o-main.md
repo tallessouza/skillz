@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-aside-main-content
 description: "Enforces HTML semantic structure and CSS responsive image patterns when building page layouts with aside and main sections. Use when user asks to 'create a layout', 'build a page', 'add sidebar content', 'style images responsively', or 'structure HTML with aside/main'. Applies rules: global image max-width 100%, height auto for safety, semantic HTML nesting, CSS custom properties for colors/fonts, direct child selectors for scoped styling. Make sure to use this skill whenever generating HTML page layouts with sidebar patterns or responsive image styling. Not for JavaScript logic, form validation, or backend code."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: fundamentos
+  tags: [html, css, layout, aside, main, responsive, images, semantic]
 ---
 
 # Estrutura de Conteudo Aside/Main e Imagens Responsivas
@@ -111,13 +117,16 @@ img {
 | Cores hardcoded `color: #333` | `color: var(--text-primary)` |
 | Fontes repetidas em cada seletor | `font-family: var(--text)` no body |
 
+## Troubleshooting
+
+| Problema | Causa provavel | Solucao |
+|----------|---------------|---------|
+| Imagem estoura o container | Faltou `max-width: 100%` global nas imagens | Adicione `img { max-width: 100%; height: auto; }` no CSS global |
+| Estilo vaza para imagens aninhadas | Usando seletor descendente em vez de filho direto | Troque `.container img` por `.container > img` |
+| Custom property nao aplicada | Variavel nao definida no `:root` | Verifique se `--text-primary` esta declarada no `:root` |
+| `<strong>` dentro de `<h2>` sem efeito visual | h2 ja e bold por padrao | Use `<span>` com classe para estilizar com cor diferente |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo sobre max-width global, seletores de filho direto e hierarquia visual
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo da aula com variacoes e contexto expandido
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-adicionando-conteudo-ao-aside-e-iniciando-o-main/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-adicionando-conteudo-ao-aside-e-iniciando-o-main/references/code-examples.md)

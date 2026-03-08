@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-migration-produtos
 description: "Applies Knex.js migration patterns when creating database tables for products or similar entities. Use when user asks to 'create a migration', 'create a table', 'add a product table', 'setup database schema with Knex', or 'write a migration file'. Enforces correct column types, auto-increment primary keys, timestamps with defaultTo(knex.fn.now()), decimal for prices, and proper up/down structure. Make sure to use this skill whenever generating Knex migrations. Not for Prisma, TypeORM, Drizzle, or raw SQL migrations."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: database-knex
+  tags: [knex, migration, database, schema, typescript]
 ---
 
 # Criando Migrations de Produtos com Knex.js
@@ -99,13 +105,15 @@ export async function down(knex: Knex): Promise<void> {
 | Migration sem funcao `down` | `down` com `dropTable` correspondente |
 | `table.string('name')` sem restricao | `table.text('name').notNullable()` |
 
+## Troubleshooting
+
+| Problema | Causa | Solucao |
+|----------|-------|---------|
+| `migration failed` ao executar | Tabela ja existe no banco | Execute `npx knex migrate:rollback` antes de re-aplicar |
+| Precos salvos sem casas decimais | Coluna definida como `integer` em vez de `decimal` | Altere para `table.decimal('price')` e re-execute a migration |
+| `created_at` salva como NULL | Coluna sem `defaultTo(knex.fn.now())` | Adicione `.defaultTo(knex.fn.now())` na definicao da coluna |
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/full-stack/rs-full-stack-criando-a-migration-de-produtos/references/deep-explanation.md)
-- [Code examples](../../../data/skills/full-stack/rs-full-stack-criando-a-migration-de-produtos/references/code-examples.md)

@@ -1,6 +1,12 @@
 ---
 name: rs-seguranca-devs-validando-passkey-fido
 description: "Applies FIDO passkey server-side validation patterns when implementing WebAuthn registration flows. Use when user asks to 'validate passkey', 'verify FIDO registration', 'implement WebAuthn', 'register security key', or 'store credential public key'. Covers challenge verification, credential storage schema, user verification control, and origin validation. Make sure to use this skill whenever building passwordless authentication with FIDO2/WebAuthn. Not for login/authentication flow (separate step), OAuth, JWT tokens, or session management."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: seguranca-para-devs
+  module: autenticacao
+  tags: [security, webauthn, fido, passkey, passwordless]
 ---
 
 # Validando Passkey FIDO — Registro no Servidor
@@ -113,14 +119,14 @@ const verificationResp = await fetch('/verify-registration', {
 | Ignorar origin na verificacao | Passar `expectedOrigin` para prevenir CSRF |
 | Exigir `requireUserVerification: true` sem enviar `userVerification: 'required'` no challenge | Ambos devem estar alinhados, senao o registro falha |
 
+## Troubleshooting
+
+### Configuracao ou implementacao nao funciona como esperado
+**Symptom:** Comportamento inesperado ao aplicar as regras desta skill
+**Cause:** Configuracao parcial ou conflito com outras regras de seguranca
+**Fix:** Verifique que todas as regras foram aplicadas em conjunto. Consulte o deep-explanation.md para entender o raciocinio completo do instrutor.
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/seguranca-para/rs-seguranca-para-devs-validando-passkey-fido/references/deep-explanation.md)
-- [Code examples](../../../data/skills/seguranca-para/rs-seguranca-para-devs-validando-passkey-fido/references/code-examples.md)
+- [deep-explanation.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-validando-passkey-fido/references/deep-explanation.md) — Raciocinio completo do instrutor, analogias e edge cases
+- [code-examples.md](../../../data/skills/seguranca-para-devs/rs-seguranca-para-devs-validando-passkey-fido/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

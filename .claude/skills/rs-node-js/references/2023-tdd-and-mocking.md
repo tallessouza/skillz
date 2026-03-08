@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-tdd-and-mocking
 description: "Applies TDD (Test Driven Development) Red-Green-Refactor cycle when implementing business rules in Node.js. Use when user asks to 'implement a business rule', 'write tests first', 'use TDD', 'validate check-in', or 'mock dates in tests'. Enforces writing failing test first, minimal implementation to pass, then refactor. Includes Vitest date mocking with useFakeTimers/setSystemTime. Make sure to use this skill whenever implementing complex business rules that benefit from test-first approach. Not for simple CRUD operations, documentation, or frontend component testing."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: api-solid-nodejs
+  tags: [tdd, vitest, mocking, fake-timers, red-green-refactor, testing]
 ---
 
 # TDD & Mocking com Vitest
@@ -131,14 +137,14 @@ it('should allow check-in on different days', async () => {
 | `useFakeTimers` sem `useRealTimers` | Sempre resetar no `afterEach` |
 | Refatorar antes do teste passar | Red → Green → so entao Refactor |
 
+## Troubleshooting
+
+### Teste com data falha em dias diferentes
+**Symptom:** Teste que verificava check-in no mesmo dia passa em janeiro mas falha em fevereiro
+**Cause:** Teste usa `new Date()` real em vez de data fixa com `vi.setSystemTime()`
+**Fix:** Use `vi.useFakeTimers()` no beforeEach e `vi.setSystemTime(new Date(2022, 0, 20, 8, 0, 0))` para fixar a data
+
 ## Deep reference library
 
 - [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
 - [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-tdd-and-mocking/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-tdd-and-mocking/references/code-examples.md)

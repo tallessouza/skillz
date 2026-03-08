@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-e2e-tests-ci
 description: "Generates GitHub Actions workflow for running E2E tests on pull requests. Use when user asks to 'setup CI for e2e tests', 'run end-to-end tests in GitHub Actions', 'configure CI pipeline', 'add e2e workflow', or 'test on pull request'. Applies patterns: service containers for databases, environment variables without .env, health checks, PR-only triggers. Make sure to use this skill whenever configuring CI for integration or e2e tests that need database access. Not for unit test CI, deployment pipelines, or Docker Compose local development."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: ci-cd
+  tags: [github-actions, e2e-tests, ci, service-containers, postgresql, health-check]
 ---
 
 # E2E Tests no CI com GitHub Actions
@@ -107,14 +113,14 @@ Arquivo `.github/workflows/run-e2e-tests.yml` completo e funcional.
 | Rodar testes sem garantir que DB esta pronto | Configurar health check no service container |
 | Commitar `.env` no repositorio | Passar variaveis via `env` no workflow |
 
+## Troubleshooting
+
+### Testes falham com connection refused no CI
+**Symptom:** `ECONNREFUSED 127.0.0.1:5432` ao rodar testes E2E no GitHub Actions
+**Cause:** O service container do PostgreSQL ainda nao terminou de inicializar quando os testes comecam
+**Fix:** Adicione health check options ao service: `--health-cmd "pg_isready -U docker" --health-interval 10s --health-timeout 5s --health-retries 5`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-executando-testes-e-2-e-no-ci/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-executando-testes-e-2-e-no-ci/references/code-examples.md)
+- [deep-explanation.md](references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes

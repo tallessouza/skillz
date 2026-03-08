@@ -1,6 +1,12 @@
 ---
 name: rs-full-stack-salvando-pedido
 description: "Applies order persistence pattern when building restaurant or e-commerce APIs with Knex.js. Use when user asks to 'save an order', 'insert order items', 'create order endpoint', or 'persist cart items to database'. Enforces storing price-at-order-time separately from product price, proper typing for order repositories, and clean insert patterns. Make sure to use this skill whenever implementing order/cart persistence in Node.js APIs. Not for payment processing, order status management, or frontend cart UI."
+metadata:
+  author: Rocketseat
+  version: 1.0.0
+  course: full-stack
+  module: "Order Persistence"
+  tags: ['knex', 'database', 'orders', 'price-snapshot', 'typescript']
 ---
 
 # Salvando Pedido — Persistência de Itens no Banco
@@ -87,6 +93,15 @@ await knex<OrderRepository>("orders").insert({
 | `await knex("orders").insert(...)` sem tipagem | `await knex<OrderRepository>("orders").insert(...)` |
 | Calcular total via JOIN com products | Calcular com `quantity * price` da própria orders |
 | Retornar `product` inteiro após insert | Retornar apenas status ou nada |
+
+## Troubleshooting
+
+| Sintoma | Causa provavel | Solucao |
+|---------|---------------|---------|
+| Historico de pedidos com preco errado | Preco salvo por referencia ao produto, nao snapshot | Copie `product.price` para a coluna `price` da order no momento do insert |
+| Insert falha com foreign key violation | `table_session_id` ou `product_id` inexistente | Valide existencia do produto e da sessao antes do insert |
+| Tipagem incorreta no insert | Knex sem generic de tipagem | Use `knex<OrderRepository>("orders").insert(...)` |
+| Total calculado diverge do esperado | Calculando total via JOIN com products | Calcule `quantity * price` diretamente da tabela orders |
 
 ## Deep reference library
 

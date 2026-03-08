@@ -1,6 +1,12 @@
 ---
 name: rs-node-js-2023-ajustes-no-cache
 description: "Enforces correct cache storage strategy in NestJS when using domain classes and raw database data. Use when user asks to 'implement cache', 'fix cache', 'save to Redis', 'cache query results', or works with Prisma toDomain conversions and caching layers. Applies rule: always cache raw database data, never domain class instances, and convert toDomain only on cache hit. Make sure to use this skill whenever implementing or debugging cache in NestJS repositories. Not for HTTP caching, CDN config, or browser cache headers."
+metadata:
+  author: Rocketseat
+  version: 2.0.0
+  course: node-js-2023
+  module: nestjs-cache
+  tags: [nestjs, cache, redis, prisma, domain-mapping, raw-data, serialization]
 ---
 
 # Ajustes no Cache — NestJS com Domain Classes
@@ -154,14 +160,14 @@ async findDetailsBySlug(slug: string) {
 | Testar todos os campos do cache | Teste com `objectContaining` nos campos chave |
 | Rodar todos os testes de uma vez quando varios falham | Use `it.only` para resolver um por vez |
 
+## Troubleshooting
+
+### Cache hit retorna objeto sem metodos de dominio
+**Symptom:** `entity.someMethod()` lanca "is not a function" apos cache hit
+**Cause:** JSON.parse reconstroi objeto plano sem prototype da classe
+**Fix:** Aplique `Mapper.toDomain()` no resultado do `JSON.parse(cacheHit)`
+
 ## Deep reference library
 
-- [deep-explanation.md](references/deep-explanation.md) — Raciocínio completo do instrutor, analogias e edge cases
-- [code-examples.md](references/code-examples.md) — Todos os exemplos de código expandidos com variações
-
-
----
-
-## Deep dive
-- [Deep explanation](../../../data/skills/node-js/rs-node-js-2023-ajustes-no-cache/references/deep-explanation.md)
-- [Code examples](../../../data/skills/node-js/rs-node-js-2023-ajustes-no-cache/references/code-examples.md)
+- [deep-explanation.md](mdc:data/skills/node-js-2023/rs-node-js-2023-ajustes-no-cache/references/deep-explanation.md) — Raciocinio completo, analogias e edge cases
+- [code-examples.md](mdc:data/skills/node-js-2023/rs-node-js-2023-ajustes-no-cache/references/code-examples.md) — Todos os exemplos de codigo expandidos com variacoes
