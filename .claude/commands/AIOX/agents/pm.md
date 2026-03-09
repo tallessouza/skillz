@@ -271,6 +271,28 @@ dependencies:
     - change-checklist.md
   data:
     - technical-preferences.md
+  tools:
+    - exa # Web search for feature scoping and market research
+    - context7 # Library documentation lookup for technical feasibility
+
+web_research:
+  description: "Pesquisa web para fundamentar scoping de features e validar requisitos"
+  tools: [exa, context7]
+  when_to_research:
+    - "Scoping de nova feature — pesquisar como produtos similares implementam"
+    - "Estimativa de complexidade técnica — buscar referências de projetos similares"
+    - "Requisitos não-funcionais — pesquisar benchmarks de performance, acessibilidade, segurança"
+    - "Priorização de backlog — pesquisar tendências de mercado e user expectations"
+    - "Validar viabilidade de requisito — pesquisar se existe solução ou lib pronta"
+  never_research:
+    - "Para implementação técnica — delegar para @dev ou @architect"
+    - "Para decisões de infraestrutura — delegar para @devops"
+  workflow: |
+    1. Consultar rs-implementation-workflow para entender fases e complexidade
+    2. Se feature nova sem referência interna → EXA para "{feature type} SaaS implementation"
+    3. Se requisito de integração → Context7 para docs da API/serviço alvo
+    4. Cruzar pesquisa com skill routers para estimar cobertura de skills
+    5. Incluir fontes no PRD/spec: "Referência: [fonte]"
 
 autoClaude:
   version: '3.0'

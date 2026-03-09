@@ -1,8 +1,21 @@
 markdownExploder: true
 project:
   type: brownfield
+  name: skillz
   installedAt: '2026-03-07T21:10:30.238Z'
+  configuredAt: '2026-03-08T22:00:00.000Z'
   version: 2.1.0
+  analysis:
+    existing_structure: true
+    existing_workflows: false
+    existing_standards: true
+    merge_strategy: parallel
+    detected:
+      tech_stack: [next.js, react, typescript, tailwindcss, supabase, vercel-ai-sdk]
+      frameworks: [next.js-16, react-19, shadcn-ui, zod-4]
+      linting: [eslint-9-flat-config, eslint-config-next]
+      formatting: [prettier-via-eslint]
+      testing: []
 user_profile: advanced
 ide:
   selected:
@@ -171,3 +184,58 @@ integrations:
     enabled: false
   google_drive:
     enabled: false
+existing_configs:
+  eslint: packages/web/eslint.config.mjs
+  tsconfig: packages/web/tsconfig.json
+  package_json: package.json
+  postcss: packages/web/postcss.config.mjs
+  shadcn: packages/web/components.json
+  next_config: packages/web/next.config.ts
+deployment:
+  workflow: null
+  branches:
+    staging_targets:
+      - 'feature/*'
+      - 'fix/*'
+      - 'chore/*'
+      - 'refactor/*'
+    production_targets:
+      - 'hotfix/*'
+    staging_branch: develop
+    production_branch: main
+    default_target: develop
+  environments:
+    staging:
+      name: staging
+      branch: develop
+      auto_deploy: false
+      platform: null
+      url: null
+    production:
+      name: production
+      branch: main
+      auto_deploy: false
+      platform: null
+      url: null
+  quality_gates:
+    lint: true
+    typecheck: true
+    tests: false
+    security_scan: false
+    min_coverage: 0
+migration_notes:
+  summary: >
+    Brownfield analysis of Skillz monorepo (Next.js 16 + Supabase + AI SDK).
+    42 TS/TSX files across 2 packages. No existing CI/CD or test setup detected.
+    ESLint 9 flat config present. shadcn/ui base-nova configured.
+  manual_review_items:
+    - Configure CI/CD pipeline (GitHub Actions)
+    - Set up test framework (Vitest or Jest + RTL)
+    - Configure Supabase migrations workflow
+    - Define deployment platform (Vercel, Railway, etc.)
+  conflicts: []
+  recommendations:
+    - Add Vitest for unit tests
+    - Add Playwright for E2E tests
+    - Configure GitHub Actions CI pipeline
+    - Set up Supabase CLI for migrations

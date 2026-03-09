@@ -1,9 +1,32 @@
 # Skillz — Dev Agent + Skillz Skills Test Environment
 
+## ⚠️ REGRA #0 — PLAN MODE OBRIGATÓRIO
+
+**Toda tarefa de desenvolvimento DEVE começar em plan mode. Sem exceção.**
+
+```
+Recebeu tarefa de desenvolvimento (implementar, criar, build, refactor, fix)?
+  │
+  └─ OBRIGATÓRIO: Entre em plan mode ANTES de qualquer ação
+      → Use a tool EnterPlanMode
+      → O plano deve incluir: Skills Map, arquivos afetados, sequência de passos
+      → Web research durante o planejamento (EXA/Context7) quando necessário
+      → Só saia do plan mode (ExitPlanMode) quando o plano estiver aprovado
+```
+
+**Exceções (NÃO precisa de plan mode):**
+- Perguntas simples ("o que é X?", "onde fica Y?")
+- Comandos de agente (`*help`, `*status`, `*exit`)
+- Leitura/exploração de código sem modificação
+- Operações git simples (commit, push)
+
+---
+
 ## ⚠️ REGRA #1 — SKILLS SÃO OBRIGATÓRIAS (LEIA ANTES DE TUDO)
 
 **ANTES de escrever qualquer código, criar qualquer plano, ou entrar em plan mode:**
 
+0. **ENTRE EM PLAN MODE** — todo desenvolvimento começa planejando (ver Regra #0)
 1. Abra e leia `.claude/skills/rs-implementation-workflow/SKILL.md`
 2. Siga a decision tree para identificar quais skill routers se aplicam
 3. Navegue até os skill routers relevantes (`.claude/skills/rs-{domain}/SKILL.md`)
@@ -30,7 +53,7 @@
 
 ## Objetivo
 
-Ambiente de teste para validar a integração de ~2,087 skills extraídas de cursos Rocketseat com o @dev agent e CodeRabbit.
+Ambiente de teste para validar a integração de ~2,087 skills extraídas de cursos Skillz com o @dev agent e CodeRabbit.
 
 ## Estrutura
 

@@ -247,6 +247,7 @@ dependencies:
     - coderabbit # Automated code review, security scanning, pattern validation
     - git # Read-only: status, log, diff for review (NO PUSH - use @github-devops)
     - context7 # Research testing frameworks and best practices
+    - exa # Web research for vulnerability checks and test patterns
     - supabase # Database testing and data validation
 
   coderabbit_integration:
@@ -337,6 +338,25 @@ dependencies:
       - If "not authenticated" → user needs to run: wsl bash -c '~/.local/bin/coderabbit auth status'
     report_location: docs/qa/coderabbit-reports/
     integration_point: 'Runs automatically in *review and *gate workflows'
+
+  web_research:
+    description: "Pesquisa web para validar padrões de teste e descobrir vulnerabilidades"
+    tools: [exa, context7]
+    when_to_research:
+      - "Framework de teste com API nova — validar patterns atuais com Context7"
+      - "Vulnerabilidade de segurança potencial — pesquisar CVEs e OWASP updates"
+      - "Padrão de teste não coberto por rs-testes-e — buscar community best practices"
+      - "Coverage de edge cases — pesquisar relatórios de bugs em libs similares"
+      - "Playwright/Jest com comportamento inesperado — buscar issues conhecidos"
+    never_research:
+      - "Quando rs-testes-e tem o padrão documentado — usar direto"
+      - "Para decisões de arquitetura de testes — consultar skill router primeiro"
+    workflow: |
+      1. Consultar rs-testes-e e rs-quality para padrões documentados
+      2. Se padrão não coberto ou desatualizado → Context7 para docs do framework
+      3. Se vulnerability check → EXA para "CVE {library} {version}" ou OWASP top 10
+      4. Validar que teste cobre cenário real, não apenas cenário documentado
+      5. Reportar gaps encontrados para atualização dos skill routers
 
   git_restrictions:
     allowed_operations:

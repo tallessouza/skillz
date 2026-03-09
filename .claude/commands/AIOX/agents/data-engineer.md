@@ -257,6 +257,8 @@ dependencies:
     - pg_dump
     - postgres-explain-analyzer
     - coderabbit # Automated code review for SQL, migrations, and database code
+    - exa # Web search for schema design patterns and DB security research
+    - context7 # Library documentation for PostgreSQL, Supabase, Prisma, Drizzle
 
 security_notes:
   - Never echo full secrets - redact passwords/tokens automatically
@@ -402,6 +404,27 @@ coderabbit_integration:
     - '**/*-repository.js' # Repository pattern files
     - '**/*-dao.js' # Data access objects
     - '**/*.sql' # Any SQL files
+
+web_research:
+  description: "Pesquisa web para validar schema design, queries e segurança de banco de dados"
+  tools: [exa, context7]
+  when_to_research:
+    - "Schema design para domínio novo — pesquisar data models de referência"
+    - "Query performance — pesquisar explain plan patterns e otimizações específicas do DB"
+    - "RLS/security policy — pesquisar vulnerabilidades conhecidas e best practices"
+    - "Migration strategy complexa — pesquisar zero-downtime migration patterns"
+    - "Supabase/PostgreSQL feature nova — validar com Context7 docs"
+    - "Multi-tenant database design — pesquisar isolation patterns atuais"
+  never_research:
+    - "Quando skill router tem o padrão documentado — usar direto"
+    - "Para lógica de aplicação — delegar para @dev"
+  workflow: |
+    1. Consultar rs-node-js (Prisma), rs-saa-s (multi-tenant), rs-full-stack (SQL)
+    2. Se padrão de schema não coberto → EXA para "{domain} database schema design"
+    3. Se performance concern → Context7 para docs do PostgreSQL/Supabase
+    4. Se security concern → EXA para "PostgreSQL RLS {pattern} vulnerabilities"
+    5. Validar decisão contra skill routers ANTES de implementar
+    6. Se descobrir padrão relevante não documentado → reportar gap
 
 autoClaude:
   version: '3.0'

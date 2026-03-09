@@ -99,8 +99,8 @@ extraction_process:
       - "Conexões com outros conceitos"
 
   step_3_apply_extraction_prompt:
-    action: "Usar rocketseat-scraper/extraction-prompt.md como base"
-    file: "rocketseat-scraper/extraction-prompt.md"
+    action: "Usar Skillz-scraper/extraction-prompt.md como base"
+    file: "Skillz-scraper/extraction-prompt.md"
     phases:
       - "Phase 1: Classify (confirmado pelo analysis.yaml)"
       - "Phase 2: Description Engineering"
@@ -172,7 +172,7 @@ output:
     name: rs-{course}-{slug}
     description: "..."
     metadata:
-      author: Rocketseat
+      author: Skillz
       version: 1.0.0
       course: {course}
       module: {module}
@@ -199,7 +199,7 @@ output_examples:
       name: rs-go-goroutines-channels
       description: "Enforces goroutine and channel patterns when writing concurrent Go code. Use when user asks to 'run tasks in parallel', 'create a worker pool', 'use channels', or 'handle concurrency in Go'. Applies patterns: channel direction typing, select for multiplexing, done channel for cancellation. Make sure to use this skill whenever writing concurrent Go code. Not for JavaScript async/await (use rs-node-js), sync mutex patterns, or HTTP handlers."
       metadata:
-        author: Rocketseat
+        author: Skillz
         version: 1.0.0
         course: go
         module: concorrencia
@@ -228,7 +228,27 @@ dependencies:
   data:
     - mind-lenses.yaml
   external:
-    - "rocketseat-scraper/extraction-prompt.md"
+    - "Skillz-scraper/extraction-prompt.md"
+
+web_research:
+  description: "Pesquisa web para validar que código e padrões extraídos estão atualizados"
+  tools: [exa, context7]
+  when_to_research:
+    - "Código da transcrição usa API que pode ter mudado — Context7 para docs atuais"
+    - "Padrão extraído pode estar deprecado — pesquisar se comunidade ainda recomenda"
+    - "Versão de lib na transcrição é antiga — pesquisar breaking changes entre versões"
+    - "Instrutor apresenta workaround — pesquisar se o problema original já foi resolvido"
+    - "analysis.yaml marcou needs_validation: true — pesquisa obrigatória"
+  never_research:
+    - "Para mudar a opinião do instrutor — preservar analogias e raciocínio únicos"
+    - "Para adicionar conteúdo que o instrutor não ensinou — extraction, não invenção"
+  workflow: |
+    1. Seguir extraction_process (steps 1-6) normalmente
+    2. No step_3 (apply extraction prompt), se código usa lib específica → Context7
+    3. Se API mudou → adicionar nota na skill: "⚠️ API atualizada em {versão}: {mudança}"
+    4. Se padrão está deprecado → skill ainda documenta o padrão MAS adiciona: "Alternativa atual: {novo padrão}"
+    5. NUNCA remover conteúdo do instrutor — apenas ADICIONAR notas de atualização
+    6. No step_6 (quality check), validar que notas de pesquisa não contradizem o instrutor
 
 handoff_to:
   - agent: "@router-architect"

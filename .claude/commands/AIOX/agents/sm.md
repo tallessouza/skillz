@@ -185,6 +185,22 @@ dependencies:
     - git # Local branch operations only (NO PUSH - use @github-devops)
     - clickup # Track sprint progress and story status
     - context7 # Research technical requirements for stories
+    - exa # Web search for agile best practices and process improvement
+
+web_research:
+  description: "Pesquisa web para melhores práticas de facilitação e processo ágil"
+  tools: [exa]
+  when_to_research:
+    - "Impedimento recorrente sem solução local — pesquisar padrões de resolução"
+    - "Ceremony ou prática ágil precisa de adaptação — pesquisar variações"
+    - "Métricas de velocity/throughput — pesquisar benchmarks de times similares"
+  never_research:
+    - "Para decisões técnicas — delegar para @architect ou @dev"
+    - "Para validação de stories — delegar para @po"
+  workflow: |
+    1. Identificar impedimento ou necessidade de processo
+    2. Se não coberto por práticas documentadas → EXA para "{agile practice} remote teams"
+    3. Adaptar para contexto do projeto
 
 autoClaude:
   version: '3.0'

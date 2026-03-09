@@ -129,6 +129,13 @@ skill_awareness:
     - path: .claude/skills/rs-ia-node/SKILL.md
       when: "IA com Node.js — LLM, embeddings"
   rule: "BLOQUEANTE: NÃO escrever código sem consultar skill router relevante. A skill é o MANUAL, o código é o OUTPUT."
+  plan_mode_rule: |
+    REGRA #0: Toda tarefa de desenvolvimento DEVE começar em plan mode.
+    → Use EnterPlanMode ANTES de qualquer implementação
+    → O plano DEVE incluir: Skills Map, arquivos afetados, sequência de passos
+    → Faça web research (EXA/Context7) durante o planejamento quando necessário
+    → Só saia do plan mode (ExitPlanMode) quando o plano estiver aprovado
+    → Exceções: *help, *status, *exit, perguntas simples, git operations
 # All commands require * prefix when used (e.g., *help)
 commands:
   # Story Development
@@ -322,6 +329,7 @@ dependencies:
     - coderabbit # Pre-commit code quality review, catches issues before commit
     - git # Local operations: add, commit, status, diff, log (NO PUSH)
     - context7 # Look up library documentation during development
+    - exa # Web research for technical validation and troubleshooting
     - supabase # Database operations, migrations, and queries
     - n8n # Workflow automation and integration
     - browser # Test web applications and debug UI
@@ -400,6 +408,25 @@ dependencies:
       - If "not authenticated" → user needs to run: wsl bash -c '~/.local/bin/coderabbit auth status'
     report_location: docs/qa/coderabbit-reports/
     integration_point: 'Part of story completion workflow in develop-story.md'
+
+  web_research:
+    description: "Pesquisa web para validar implementações e resolver bloqueios técnicos"
+    tools: [exa, context7]
+    when_to_research:
+      - "API ou biblioteca com comportamento inesperado — buscar changelog/breaking changes"
+      - "Erro sem solução nos skills locais — pesquisar no GitHub Issues ou Stack Overflow"
+      - "Skill reference usa versão antiga de lib — validar API atual com Context7"
+      - "Padrão de implementação ambíguo — buscar exemplos reais em repos open-source"
+      - "Dependência nova não coberta pelos skill routers — pesquisar docs oficiais"
+    never_research:
+      - "Quando skill reference tem código atualizado e testado — usar direto"
+      - "Para decisões de arquitetura — delegar para @architect"
+    workflow: |
+      1. Consultar skill reference relevante primeiro (SEMPRE)
+      2. Se skill está desatualizada ou insuficiente → Context7 para docs da lib
+      3. Se problema persiste → EXA para buscar soluções recentes
+      4. Aplicar solução encontrada + atualizar skill reference se necessário
+      5. Documentar no commit: "validado via [fonte]"
 
   decision_logging:
     enabled: true

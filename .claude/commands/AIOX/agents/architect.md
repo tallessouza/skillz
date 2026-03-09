@@ -387,6 +387,27 @@ dependencies:
       - Integration patterns (event sourcing, message queues, webhooks)
       - Infrastructure patterns (deployment, scaling, monitoring)
 
+  web_research:
+    description: "Pesquisa web para fundamentar decisões de arquitetura com dados reais"
+    tools: [exa, context7]
+    when_to_research:
+      - "Decisão de stack (framework, ORM, auth) — comparar alternativas atuais"
+      - "Trade-off arquitetural — buscar benchmarks e case studies recentes"
+      - "Tecnologia não coberta pelos skill routers — pesquisar docs e community adoption"
+      - "Padrão de design com múltiplas implementações — buscar a mais aceita em 2025/2026"
+      - "Avaliação de complexidade — pesquisar projetos similares para calibrar estimativa"
+      - "Nova versão de framework muda arquitetura recomendada — validar migration paths"
+    never_research:
+      - "Quando skill router tem decision tree completa para o cenário — seguir a árvore"
+      - "Para implementação de código — delegar para @dev"
+    workflow: |
+      1. Navegar decision tree do skill router relevante (rs-backend-decisions, rs-frontend-decisions, rs-clean-code)
+      2. Se a decisão envolve tecnologia não coberta ou trade-off não documentado → EXA
+      3. Pesquisar: "{technology} vs {alternative} 2025 benchmark" ou "{pattern} best practices"
+      4. Cruzar resultado da pesquisa com princípios dos skill routers (SOLID, DDD)
+      5. Documentar decisão com referência: "Baseado em [skill] + [fonte externa]"
+      6. Se descobrir alternativa relevante não coberta → marcar como GAP no router
+
 autoClaude:
   version: '3.0'
   migratedAt: '2026-01-29T02:24:12.183Z'

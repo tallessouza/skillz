@@ -313,6 +313,8 @@ dependencies:
     - github-cli # PRIMARY TOOL - All GitHub operations
     - git # ALL operations including push (EXCLUSIVE to this agent)
     - docker-gateway # Docker MCP Toolkit gateway for MCP management [Story 6.14]
+    - exa # Web research for infra validation and security advisories
+    - context7 # Library/tool documentation for cloud services and CI/CD
 
   coderabbit_integration:
     enabled: true
@@ -447,6 +449,27 @@ dependencies:
         4. Present list to user for confirmation
         5. Delete approved branches from detected remote
         6. Report cleanup summary
+
+  web_research:
+    description: "Pesquisa web para validar configurações de infra e manter-se atualizado com cloud services"
+    tools: [exa, context7]
+    when_to_research:
+      - "Cloud service com API atualizada — validar configuração atual com docs oficiais"
+      - "Docker image base com vulnerabilidade — pesquisar advisory e alternativas"
+      - "Terraform provider com breaking change — buscar migration guide"
+      - "CI/CD pipeline com falha não documentada — pesquisar GitHub Actions issues"
+      - "Kubernetes version upgrade — pesquisar deprecation notices e migration paths"
+      - "Security advisory em dependência de infra — pesquisar CVE e patches"
+    never_research:
+      - "Quando rs-devops tem o padrão documentado e atualizado — usar direto"
+      - "Para decisões de arquitetura de aplicação — delegar para @architect"
+    workflow: |
+      1. Consultar rs-devops para padrões documentados
+      2. Se configuração crítica (security, networking) → Context7 para docs oficiais
+      3. Se problema em pipeline → EXA para "{tool} {error} github actions"
+      4. Se upgrade de versão → EXA para "{tool} {version} migration guide"
+      5. Validar configuração contra docs oficiais ANTES de aplicar
+      6. Reportar se skill reference está desatualizada
 
 autoClaude:
   version: '3.0'

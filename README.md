@@ -1,6 +1,6 @@
 # Skillz
 
-**5,000+ development skills extracted from 37 Rocketseat courses, structured for AI agent consumption.**
+**5,000+ development skills extracted from 37 Skillz courses, structured for AI agent consumption.**
 
 Skills are organized as progressive-disclosure references that AI coding agents (Claude Code, Cursor, etc.) can navigate via decision trees — from high-level routing to specific code patterns.
 
@@ -128,14 +128,14 @@ skillz/
 └── src/                          # Project source code
 ```
 
-## Extraction Pipeline (`rocketseat-scraper/`)
+## Extraction Pipeline (`Skillz-scraper/`)
 
 The full pipeline that scraped, transcribed, and transformed 5,028 lessons into structured skills.
 
 ### Pipeline stages
 
 ```
-1. Scrape          scraper.py         Rocketseat API → VTT captions → clean text
+1. Scrape          scraper.py         Skillz API → VTT captions → clean text
 2. Catalog         build-catalog.py   manifest.json files → unified catalog.json
 3. Extract         batch-extract.py   Transcripts + prompt → claude -p → SKILL.md + references/
 4. Output          skills-output/     Raw extracted skills (moved to data/skills/)
@@ -143,10 +143,10 @@ The full pipeline that scraped, transcribed, and transformed 5,028 lessons into 
 
 ### How it works
 
-**Stage 1 — Scraping** (`scraper.py`): Hits the Rocketseat API to auto-discover course modules, fetches VTT subtitle files from their CDN, and converts them to clean text transcripts.
+**Stage 1 — Scraping** (`scraper.py`): Hits the Skillz API to auto-discover course modules, fetches VTT subtitle files from their CDN, and converts them to clean text transcripts.
 
 ```bash
-python3 scraper.py --course-url "https://app.rocketseat.com.br/jornada/full-stack" --token "eyJ..."
+python3 scraper.py --course-url "https://app.Skillz.com.br/jornada/full-stack" --token "eyJ..."
 ```
 
 **Stage 2 — Catalog** (`build-catalog.py`): Reads all `manifest.json` files from `transcricoes/` and produces a unified `catalog.json` (5,028 entries) with metadata for each lesson.
@@ -190,7 +190,7 @@ The `extraction-prompt.md` is a detailed prompt engineering spec that instructs 
 
 ## Source
 
-All skills were extracted and structured from [Rocketseat](https://rocketseat.com.br) courses using the pipeline above. Content is educational reference material organized for AI agent consumption.
+All skills were extracted and structured from [Skillz](https://Skillz.com.br) courses using the pipeline above. Content is educational reference material organized for AI agent consumption.
 
 ## License
 

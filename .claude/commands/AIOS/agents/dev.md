@@ -150,8 +150,13 @@ core_principles:
          - Fase 3: Implementação — seguindo skills da stack
          - Fase 4: Validação — testes + segurança + CodeRabbit
 
-      4. NUNCA entre em plan mode sem antes consultar as skills relevantes.
-         O plano DEVE referenciar quais skills foram consultadas e quais
+      4. REGRA #0 — PLAN MODE OBRIGATÓRIO:
+         Toda tarefa de desenvolvimento DEVE começar em plan mode.
+         → Use EnterPlanMode ANTES de qualquer implementação
+         → O plano DEVE incluir: Skills Map, arquivos afetados, sequência de passos
+         → Faça web research (EXA/Context7) durante o planejamento quando necessário
+         → Só saia do plan mode (ExitPlanMode) quando o plano estiver aprovado
+         → O plano DEVE referenciar quais skills foram consultadas e quais
          references/ foram carregadas.
 
     skill_routers:

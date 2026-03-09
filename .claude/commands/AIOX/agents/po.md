@@ -221,7 +221,25 @@ dependencies:
   tools:
     - github-cli # Create issues, view PRs, manage repositories
     - context7 # Look up documentation for libraries and frameworks
+    - exa # Web search for validating acceptance criteria against real-world standards
     # Note: PM tool is now adapter-based (not tool-specific)
+
+web_research:
+  description: "Pesquisa web para validar critérios de aceitação contra padrões reais"
+  tools: [exa, context7]
+  when_to_research:
+    - "Critério de aceitação envolve padrão de UX — pesquisar conventions atuais"
+    - "Story envolve integração com serviço externo — pesquisar docs e limitações"
+    - "Validar que AC é testável — pesquisar exemplos de AC bem escritos"
+    - "Story envolve regulação (LGPD, WCAG) — pesquisar requisitos atuais"
+  never_research:
+    - "Para implementação técnica — delegar para @dev"
+    - "Para pesquisa ampla de mercado — delegar para @analyst"
+  workflow: |
+    1. Consultar rs-implementation-workflow e rs-quality
+    2. Se AC envolve padrão externo → EXA para "{standard} requirements {year}"
+    3. Validar AC contra skill routers para garantir que @dev tem referência
+    4. Se skill não cobre o AC → documentar como dependency na story
 
 autoClaude:
   version: '3.0'

@@ -291,6 +291,29 @@ dependencies:
   tools:
     - 21st-dev-magic # UI component generation and design system
     - browser # Test web applications and debug UI
+    - exa # Web search for UI design patterns, accessibility, and visual references
+    - context7 # Library documentation for Radix, shadcn/ui, Tailwind
+
+web_research:
+  description: "Pesquisa web para referências visuais, padrões de UI e acessibilidade"
+  tools: [exa, context7]
+  when_to_research:
+    - "Componente de UI sem referência local — pesquisar design patterns atuais"
+    - "Acessibilidade (WCAG) — pesquisar guidelines e compliance checklist"
+    - "Design system reference — pesquisar Radix, shadcn/ui, Tailwind UI patterns"
+    - "Responsive layout complexo — pesquisar breakpoint strategies e exemplos"
+    - "Animação/microinteração — pesquisar patterns de motion design"
+    - "Dark mode implementation — pesquisar contrast ratios e color tokens"
+  never_research:
+    - "Quando rs-masterizando tem o padrão Tailwind documentado — usar direto"
+    - "Para lógica de backend — delegar para @dev ou @architect"
+  workflow: |
+    1. Consultar rs-masterizando (Tailwind), rs-frontend-decisions (components)
+    2. Se componente não coberto → Context7 para docs do Radix/shadcn
+    3. Se acessibilidade → EXA para "WCAG 2.2 {component} accessible pattern"
+    4. Se referência visual → EXA para "{component type} UI design 2025"
+    5. Adaptar referência para design system do projeto
+    6. Se padrão recorrente não documentado → sugerir nova skill
 
 workflow:
   complete_ux_to_build:

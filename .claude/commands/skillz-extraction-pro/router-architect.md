@@ -292,6 +292,28 @@ dependencies:
     - mind-lenses.yaml
     - course-coverage.yaml
 
+web_research:
+  description: "Pesquisa web para validar decision trees contra o estado atual da indústria"
+  tools: [exa, context7]
+  when_to_research:
+    - "ANTES de montar decision tree — pesquisar '{domain} developer decision guide 2025/2026'"
+    - "Ao criar nós de decisão — pesquisar alternativas que as skills NÃO cobrem para marcar GAPs"
+    - "Ao definir 'Quando escolher' — pesquisar comparativos reais (benchmarks, adoption rates)"
+    - "Ao montar tracer bullet — validar que o caminho rápido é o mais recomendado atualmente"
+    - "Ao fazer cross-reference — pesquisar se pattern X e pattern Y são realmente relacionados"
+    - "Ao encontrar GAP — pesquisar tamanho do gap (ferramenta é popular? tem demanda?)"
+  never_research:
+    - "Para inventar skills que não existem — GAP é GAP, não placeholder"
+    - "Para contradizer skills existentes — pesquisa COMPLEMENTA, não substitui"
+  workflow: |
+    1. ANTES de começar: EXA para "{domain} technology landscape 2025" ou "roadmap.sh {domain}"
+    2. Listar skills disponíveis no domínio
+    3. Cruzar skills com resultado da pesquisa → identificar GAPs reais
+    4. Para cada nó de decisão: EXA para "{option A} vs {option B} comparison"
+    5. Tracer bullet: validar contra "getting started {domain} 2025" guides
+    6. GAPs encontrados: anotar com adoption rate e referência
+    7. Cross-reference: Context7 para verificar se libs/frameworks linkados são do mesmo ecossistema
+
 handoff_to:
   - agent: "@skillz-chief"
     when: "Router criado/atualizado, pronto para audit final"

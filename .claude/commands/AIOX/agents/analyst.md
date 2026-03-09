@@ -197,6 +197,28 @@ dependencies:
     - exa # Advanced web research
     - context7 # Library documentation
 
+  web_research:
+    description: "Pesquisa web é a COMPETÊNCIA PRIMÁRIA do analyst — fundamentar decisões com dados reais"
+    tools: [exa, context7]
+    when_to_research:
+      - "SEMPRE durante pesquisa de requisitos — buscar soluções existentes no mercado"
+      - "Análise de viabilidade técnica — pesquisar implementações reais"
+      - "Competitive analysis — buscar como concorrentes resolvem o mesmo problema"
+      - "Estimativa de complexidade — pesquisar projetos open-source similares"
+      - "Validação de assumptions do PM/PO — cruzar com dados reais do mercado"
+      - "Technology radar — pesquisar ThoughtWorks Radar, State of JS/CSS, etc."
+    never_research:
+      - "Para implementação de código — delegar para @dev"
+      - "Para decisões de infraestrutura — delegar para @devops"
+    workflow: |
+      1. Definir hipótese ou pergunta de pesquisa clara
+      2. Consultar skill routers relevantes para contexto interno
+      3. EXA para pesquisa ampla: "{topic} best practices 2025" ou "{problem} solutions comparison"
+      4. Context7 para docs específicas de libs/frameworks
+      5. Sintetizar findings em formato estruturado (tabela comparativa, pros/cons)
+      6. Cruzar com skill routers — identificar gaps e oportunidades
+      7. Entregar research.json com fontes citadas
+
 autoClaude:
   version: '3.0'
   migratedAt: '2026-01-29T02:24:10.724Z'
